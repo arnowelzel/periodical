@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/current"
+        android:icon="@android:drawable/ic_menu_today"
+        android:title="@string/menuitem_current"
+    />
+    <item
+        android:id="@+id/list"
+        android:icon="@android:drawable/ic_menu_recent_history"
+        android:title="@string/menuitem_list"
+    />
+    <item
+        android:id="@+id/about"
+        android:icon="@android:drawable/ic_menu_info_details"
+        android:title="@string/menuitem_about"
+    />
+    <item
+        android:id="@+id/copy"
+        android:icon="@android:drawable/ic_menu_save"
+        android:title="@string/menuitem_copy"
+    />
+    <item
+        android:id="@+id/restore"
+        android:icon="@android:drawable/ic_menu_revert"
+        android:title="@string/menuitem_restore"
+    />
+    <item
+        android:id="@+id/exit"
+        android:icon="@android:drawable/ic_menu_close_clear_cancel"
+        android:title="@string/menuitem_exit"
+    />
+</menu>
