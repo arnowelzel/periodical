@@ -17,7 +17,7 @@
     <string name="main_calday_fr">FR</string>
     <string name="main_calday_sa">SA</string>
     <string name="about_title">Info</string>
-    <string name="about_text">Periodical 0.1\nvon Arno Welzel\n\nBerechnung der Fruchtbarkeit nach Knaus-Ogino</string>
+    <string name="about_text">Periodical 0.3\nvon Arno Welzel\n\nBerechnung der Fruchtbarkeit nach Knaus-Ogino</string>
     <string name="about_details">WARNUNG: Es wird nicht empfohlen, diesen Kalender zur Empfängnisverhütung einzusetzen! Es gibt genauere Methoden, wie die Messung der Basaltemperatur.\n\nUm den ersten Tag der Periode zu kennzeichnen, einfach den Tag im Kalender antippen. Um einen Eintrag zu entfernen, erneut antippen.\n\nDie roten Rechtecke zeigen Tage der Periode an. Die grünen Rechtecke sind die berechneten fruchtbaren Tage. Der aktuelle Tag ist mit einem Kreis gekennzeichnet. Hellrote Tage sind die berechneten künftige Zyklen. Die Berechnung erfolgt für zwei Zyklen im Voraus.\n\nFür die Nutzung der Datensicherung muss eine Speicherkarte vorhanden sein.</string>
     <string name="about_ok">OK</string>
     <string name="backup_title">Daten sichern</string>

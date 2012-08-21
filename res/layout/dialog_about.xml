@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent" >"
+    android:layout_height="match_parent" >
 <RelativeLayout
     android:id="@+id/custom_dialog"
     android:layout_width="match_parent"
@@ -17,7 +17,7 @@
         android:gravity="center"
         android:text="@string/about_text"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        />"
+        />
 
     <TextView
         android:id="@+id/text2"
@@ -27,7 +27,7 @@
         android:layout_below="@+id/text1"
         android:text="@string/about_details"
         android:textAppearance="?android:attr/textAppearanceSmall"
-        />"
+        />
 
     <Button
     android:id="@+id/ok"

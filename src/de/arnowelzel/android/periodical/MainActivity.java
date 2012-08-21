@@ -106,14 +106,20 @@ public class MainActivity extends Activity {
 			monthCurrent = savedInstanceState.getInt(STATE_MONTH);
 			yearCurrent = savedInstanceState.getInt(STATE_YEAR);
 		}
-
+		
 		// Update calculated values
 		dbMain.loadCalculatedData();
+	}
 
+	/* Called when the activity starts interacting with the user */
+	@Override
+	protected void onResume() {
+		super.onResume();
+		
 		// Update calendar view
 		calendarUpdate();
 	}
-
+	
 	/* Called to save the current instance state */
 	@Override
 	protected void onSaveInstanceState(Bundle outState) {

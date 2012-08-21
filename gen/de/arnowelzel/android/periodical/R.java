@@ -32,8 +32,9 @@ public final class R {
         public static final int layer_start_normal=0x7f020012;
         public static final int layer_white_current=0x7f020013;
         public static final int layer_white_normal=0x7f020014;
-        public static final int text_calendar=0x7f020015;
-        public static final int text_calendar_start=0x7f020016;
+        public static final int periodical=0x7f020015;
+        public static final int text_calendar=0x7f020016;
+        public static final int text_calendar_start=0x7f020017;
     }
     public static final class id {
         public static final int about=0x7f060070;
