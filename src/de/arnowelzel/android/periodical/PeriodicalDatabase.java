@@ -175,6 +175,7 @@ public class PeriodicalDatabase {
 				this.average += length;
 			}
 		}
+		result.close();
 		
 		// Calculate global average and prediction if possible
 		if (count > 0) {
