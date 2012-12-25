@@ -2,7 +2,9 @@
 
 Better support for Android 3 and 4.
 
-List now also shows lengths of cycles.  
+List now also shows lengths of cycles.
+
+Maximum length is now properly displayed, if it is shorter than 28 days.  
 
 0.5
 
