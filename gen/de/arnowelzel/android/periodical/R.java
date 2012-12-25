@@ -172,6 +172,8 @@ public final class R {
         public static final int backup_ok=0x7f040016;
         public static final int backup_text=0x7f040015;
         public static final int backup_title=0x7f040014;
+        public static final int event_periodfirst=0x7f04001e;
+        public static final int event_periodlength=0x7f04001d;
         public static final int event_periodstart=0x7f04001c;
         public static final int main_button_next=0x7f040008;
         public static final int main_button_prev=0x7f040007;

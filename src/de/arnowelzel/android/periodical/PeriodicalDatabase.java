@@ -1,5 +1,7 @@
 /**
- * Periodical Database helper
+ * PeriodicalDatabase
+ * 
+ * This class provides the database to store all data of the app.
  */
 
 package de.arnowelzel.android.periodical;
@@ -70,11 +72,16 @@ public class PeriodicalDatabase {
 
 	/* Constructor, will try to create/open a writable database */
 	PeriodicalDatabase(Context context) {
+		open(context);
+
+		dayEntries = new Vector<DayEntry>();
+	}
+
+	/* Open the database */
+	void open(Context context) {
 		PeriodicalDataOpenHelper dataOpenHelper;
 		dataOpenHelper = new PeriodicalDataOpenHelper(context);
 		db = dataOpenHelper.getWritableDatabase();
-
-		dayEntries = new Vector<DayEntry>();
 	}
 
 	/* Close the database */
@@ -127,7 +134,7 @@ public class PeriodicalDatabase {
 			int eventday = Integer.parseInt(dbdate.substring(6, 8), 10);
 			GregorianCalendar eventdate = new GregorianCalendar(eventyear,
 					eventmonth - 1, eventday);
-
+			
 			if (isFirst) {
 				isFirst = false;
 
@@ -137,18 +144,26 @@ public class PeriodicalDatabase {
 				this.dayEntries.add(entryPrevious);
 			} else {
 				count++;
-
+				
 				// Create new day entry
 				entry = new DayEntry(eventtype, eventdate);
 				int length = entryPrevious.date.diffDayPeriods(entry.date);
 
-				// Update longest/shortest values, which are used to
-				// calculate the fertility window
-				if (length < this.shortest)
+				// Update values which are used to calculate the fertility window
+				if (count == 1) {
+					// If we have at least one period the shortest and
+					// and longest value is automatically the current length
 					this.shortest = length;
-				if (length > this.longest)
 					this.longest = length;
-
+				} else {
+					// We have more than two values, then update longest/shortest
+					// values
+					if (length < this.shortest)
+						this.shortest = length;
+					if (length > this.longest)
+						this.longest = length;
+				}
+				
 				// Calculate days from the last event until now
 				GregorianCalendar datePrevious = new GregorianCalendar();
 				datePrevious.setTime(entryPrevious.date.getTime());
@@ -176,7 +191,7 @@ public class PeriodicalDatabase {
 			}
 		}
 		result.close();
-		
+
 		// Calculate global average and prediction if possible
 		if (count > 0) {
 			this.average /= count;
@@ -207,16 +222,17 @@ public class PeriodicalDatabase {
 		System.gc();
 	}
 
-	/* Load data without calculating anything */ 
+	/* Load data without calculating anything */
 	void loadRawData(boolean sortAscending) {
 		DayEntry entry;
-		
+
 		// Clean up existing data
 		dayEntries.removeAllElements();
 
 		// Get all entries from the database
 		String statement = "select eventtype, eventdate from data order by eventdate";
-		if(!sortAscending) statement +=" desc";
+		if (!sortAscending)
+			statement += " desc";
 		Cursor result = db.rawQuery(statement, null);
 		while (result.moveToNext()) {
 			int eventtype = result.getInt(0);
@@ -231,10 +247,10 @@ public class PeriodicalDatabase {
 			entry = new DayEntry(eventtype, eventdate);
 			dayEntries.add(entry);
 		}
-		
+
 		System.gc();
 	}
-	
+
 	/* Get entry type from cache for a specific day in month */
 	int getEntry(int year, int month, int day) {
 		for (int dayPos = 0; dayPos < this.dayEntries.size(); dayPos++) {
@@ -263,7 +279,7 @@ public class PeriodicalDatabase {
 	public void restore(Context context) {
 		backupRestore(context, false);
 	}
-	
+
 	public void backupRestore(Context context, boolean backup) {
 		// Check if SD card is mounted
 		if (Environment.getExternalStorageState().equals(
@@ -279,14 +295,16 @@ public class PeriodicalDatabase {
 			sourceFile = new File(db.getPath());
 			destDir = new File(Environment.getExternalStorageDirectory()
 					.getAbsolutePath() + "/" + context.getPackageName());
-			destFile = new File(destDir
-					.getAbsolutePath()
-					+ "/" + sourceFile.getName());
+			destFile = new File(destDir.getAbsolutePath() + "/"
+					+ sourceFile.getName());
 		} else {
 			destFile = new File(db.getPath());
 			sourceFile = new File(Environment.getExternalStorageDirectory()
-					.getAbsolutePath() + "/" + context.getPackageName()
-					+ "/" + destFile.getName());
+					.getAbsolutePath()
+					+ "/"
+					+ context.getPackageName()
+					+ "/"
+					+ destFile.getName());
 		}
 
 		// Before we can copy anything, close the DB
@@ -300,7 +318,8 @@ public class PeriodicalDatabase {
 
 		// If everything is ok, then copy source to destination
 		if (ok) {
-			if(backup && destDir != null) destDir.mkdirs();
+			if (backup && destDir != null)
+				destDir.mkdirs();
 			FileInputStream in = null;
 			FileOutputStream out = null;
 			try {
@@ -330,8 +349,14 @@ public class PeriodicalDatabase {
 		}
 
 		// Open the DB again
-		PeriodicalDataOpenHelper dataOpenHelper;
-		dataOpenHelper = new PeriodicalDataOpenHelper(context);
-		db = dataOpenHelper.getWritableDatabase();
+		open(context);
+	}
+
+	/*
+	 * Get the path of the currently used database file, needed for external
+	 * backups
+	 */
+	String getPath() {
+		return db.getPath();
 	}
 }

@@ -7,6 +7,7 @@ package de.arnowelzel.android.periodical;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
+import android.app.backup.BackupManager;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
@@ -75,8 +76,9 @@ public class MainActivity extends Activity {
 
 	/* Database for calendar data */
 	private PeriodicalDatabase dbMain;
-
+	
 	/* Called when activity starts */
+	@SuppressWarnings("deprecation")
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -193,6 +195,7 @@ public class MainActivity extends Activity {
 			Button button = (Button) dialog.findViewById(R.id.ok);
 			button.setOnClickListener(new View.OnClickListener() {
 
+				@SuppressWarnings("deprecation")
 				public void onClick(View view) {
 					dismissDialog(DLG_ABOUT);
 				}
@@ -208,6 +211,7 @@ public class MainActivity extends Activity {
 	}
 
 	/* Handler for "About" menu action */
+	@SuppressWarnings("deprecation")
 	void showAbout() {
 		showDialog(DLG_ABOUT);
 	}
@@ -458,6 +462,10 @@ public class MainActivity extends Activity {
 						dbMain.restore(getApplicationContext());
 						dbMain.loadCalculatedData();
 						calendarUpdate();
+
+						// Notify backup agent about the change
+						BackupManager bm = new BackupManager(getApplicationContext());
+						bm.dataChanged();
 					}
 				});
 
@@ -502,6 +510,10 @@ public class MainActivity extends Activity {
 		// Update calculated values
 		dbMain.loadCalculatedData();
 		calendarUpdate();
+		
+		// Notify backup agent about the change
+		BackupManager bm = new BackupManager(this);
+		bm.dataChanged();
 	}
 
 	// Gesture detector to handle swipes

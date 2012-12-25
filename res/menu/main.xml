@@ -4,6 +4,7 @@
         android:id="@+id/current"
         android:icon="@android:drawable/ic_menu_today"
         android:title="@string/menuitem_current"
+        android:showAsAction="ifRoom|withText"
     />
     <item
         android:id="@+id/list"

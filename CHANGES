@@ -1,0 +1,16 @@
+0.6
+
+Better support for Android 3 and 4.
+
+List now also shows lengths of cycles.  
+
+0.5
+
+Fixed an internal bug (database cursor was not closed properly after reading the data).
+
+0.4
+
+Calendar view is now being updated when the application is in activated again, so a day
+change background to ensure that the current day is always marked properly (Issue #1).
+
+Added an application icon.
