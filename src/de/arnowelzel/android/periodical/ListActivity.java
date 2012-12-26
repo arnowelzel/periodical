@@ -4,7 +4,10 @@ import java.util.Iterator;
 
 import de.arnowelzel.android.periodical.PeriodicalDatabase.DayEntry;
 
+import android.annotation.SuppressLint;
+import android.app.ActionBar;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.widget.ArrayAdapter;
 
 public class ListActivity extends android.app.ListActivity {
@@ -12,6 +15,7 @@ public class ListActivity extends android.app.ListActivity {
 	private PeriodicalDatabase dbMain;
 
 	/* Called when activity starts */
+	@SuppressLint("NewApi")
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -54,8 +58,8 @@ public class ListActivity extends android.app.ListActivity {
 			}
 			pos++;
 		}
-		// If we have at least one entry, update the last days length description
-		// to "first entry"
+		// If we have at least one entry, update the last days length
+		// description to "first entry"
 		if (pos > 0) {
 			entries[pos - 1] += "\n" + getString(R.string.event_periodfirst);
 		}
@@ -64,6 +68,12 @@ public class ListActivity extends android.app.ListActivity {
 		// Set up view
 		setListAdapter(new ArrayAdapter<String>(this, R.layout.listitem,
 				entries));
+
+		// Activate "back button" in Action Bar if possible
+		if (android.os.Build.VERSION.SDK_INT >= 11) {
+			ActionBar actionBar = getActionBar();
+			actionBar.setDisplayHomeAsUpEnabled(true);
+		}
 	}
 
 	/* Called to save the current instance state */
@@ -76,5 +86,18 @@ public class ListActivity extends android.app.ListActivity {
 	@Override
 	protected void onDestroy() {
 		super.onDestroy();
+	}
+
+	/* Handler for ICS "home" button */
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		switch (item.getItemId()) {
+		case android.R.id.home:
+			// Home icon in action bar clicked, then close activity
+			finish();
+			return true;
+		default:
+			return super.onOptionsItemSelected(item);
+		}
 	}
 }

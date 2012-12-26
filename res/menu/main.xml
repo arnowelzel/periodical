@@ -8,8 +8,9 @@
     />
     <item
         android:id="@+id/list"
-        android:icon="@android:drawable/ic_menu_recent_history"
+        android:icon="@drawable/ic_menu_database"
         android:title="@string/menuitem_list"
+        android:showAsAction="ifRoom|withText"
     />
     <item
         android:id="@+id/about"

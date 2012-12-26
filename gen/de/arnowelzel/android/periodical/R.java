@@ -21,7 +21,7 @@ public final class R {
         public static final int button_calendar_start_normal=0x7f020007;
         public static final int button_calendar_white_current=0x7f020008;
         public static final int button_calendar_white_normal=0x7f020009;
-        public static final int ic_launcher=0x7f02000a;
+        public static final int ic_menu_database=0x7f02000a;
         public static final int layer_green_current=0x7f02000b;
         public static final int layer_green_normal=0x7f02000c;
         public static final int layer_lightred_current=0x7f02000d;
@@ -169,12 +169,19 @@ public final class R {
         public static final int about_title=0x7f040010;
         public static final int app_name=0x7f040000;
         public static final int backup_cancel=0x7f040017;
+        public static final int backup_failed=0x7f040019;
+        public static final int backup_finished=0x7f040018;
         public static final int backup_ok=0x7f040016;
         public static final int backup_text=0x7f040015;
         public static final int backup_title=0x7f040014;
-        public static final int event_periodfirst=0x7f04001e;
-        public static final int event_periodlength=0x7f04001d;
-        public static final int event_periodstart=0x7f04001c;
+        public static final int calendaraction_add=0x7f040024;
+        public static final int calendaraction_cancel=0x7f040027;
+        public static final int calendaraction_ok=0x7f040026;
+        public static final int calendaraction_remove=0x7f040025;
+        public static final int calendaraction_title=0x7f040023;
+        public static final int event_periodfirst=0x7f040022;
+        public static final int event_periodlength=0x7f040021;
+        public static final int event_periodstart=0x7f040020;
         public static final int main_button_next=0x7f040008;
         public static final int main_button_prev=0x7f040007;
         public static final int main_calday_fr=0x7f04000e;
@@ -190,9 +197,11 @@ public final class R {
         public static final int menuitem_exit=0x7f040006;
         public static final int menuitem_list=0x7f040003;
         public static final int menuitem_restore=0x7f040005;
-        public static final int restore_cancel=0x7f04001b;
-        public static final int restore_ok=0x7f04001a;
-        public static final int restore_text=0x7f040019;
-        public static final int restore_title=0x7f040018;
+        public static final int restore_cancel=0x7f04001d;
+        public static final int restore_failed=0x7f04001f;
+        public static final int restore_finished=0x7f04001e;
+        public static final int restore_ok=0x7f04001c;
+        public static final int restore_text=0x7f04001b;
+        public static final int restore_title=0x7f04001a;
     }
 }

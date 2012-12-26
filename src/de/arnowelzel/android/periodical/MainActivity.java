@@ -22,6 +22,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 import android.widget.ViewFlipper;
 
 import java.util.Calendar;
@@ -56,7 +57,7 @@ public class MainActivity extends Activity {
 			R.id.cal32_2, R.id.cal33_2, R.id.cal34_2, R.id.cal35_2,
 			R.id.cal36_2, R.id.cal37_2, R.id.cal38_2, R.id.cal39_2,
 			R.id.cal40_2, R.id.cal41_2, R.id.cal42_2 };
-	
+
 	/* Bundle entries */
 	final String STATE_MONTH = "month";
 	final String STATE_YEAR = "year";
@@ -76,7 +77,7 @@ public class MainActivity extends Activity {
 
 	/* Database for calendar data */
 	private PeriodicalDatabase dbMain;
-	
+
 	/* Called when activity starts */
 	@SuppressWarnings("deprecation")
 	@Override
@@ -108,7 +109,7 @@ public class MainActivity extends Activity {
 			monthCurrent = savedInstanceState.getInt(STATE_MONTH);
 			yearCurrent = savedInstanceState.getInt(STATE_YEAR);
 		}
-		
+
 		// Update calculated values
 		dbMain.loadCalculatedData();
 	}
@@ -117,11 +118,11 @@ public class MainActivity extends Activity {
 	@Override
 	protected void onResume() {
 		super.onResume();
-		
+
 		// Update calendar view
 		calendarUpdate();
 	}
-	
+
 	/* Called to save the current instance state */
 	@Override
 	protected void onSaveInstanceState(Bundle outState) {
@@ -219,9 +220,9 @@ public class MainActivity extends Activity {
 	/* Handler for "List" menu action */
 	void showList() {
 		Intent listIntent = new Intent(MainActivity.this, ListActivity.class);
-		startActivity(listIntent); 		
+		startActivity(listIntent);
 	}
-	
+
 	/* Update calendar data and view */
 	void calendarUpdate() {
 		// Initialize control ids for the target view to be used
@@ -234,10 +235,10 @@ public class MainActivity extends Activity {
 
 		// Output current year/month
 		TextView displayDate = (TextView) findViewById(R.id.displaydate);
-		displayDate.setText(String.format("%s %d\nØ%d ↓%d ↑%d",
-				DateUtils.getMonthString(this.monthCurrent-1, DateUtils.LENGTH_LONG),
-				this.yearCurrent,
-				dbMain.average, dbMain.shortest, dbMain.longest));
+		displayDate.setText(String.format("%s %d\nØ%d ↓%d ↑%d", DateUtils
+				.getMonthString(this.monthCurrent - 1, DateUtils.LENGTH_LONG),
+				this.yearCurrent, dbMain.average, dbMain.shortest,
+				dbMain.longest));
 
 		// Calculate first week day of month
 		GregorianCalendar cal = new GregorianCalendar(yearCurrent,
@@ -431,7 +432,21 @@ public class MainActivity extends Activity {
 
 					@Override
 					public void onClick(DialogInterface dialog, int which) {
-						dbMain.backup(getApplicationContext());
+						boolean ok = dbMain.backup(getApplicationContext());
+
+						// Show toast depending on result of operation
+						String text;
+						if (ok) {
+							text = getResources().getString(
+									R.string.backup_finished);
+						} else {
+							text = getResources().getString(
+									R.string.backup_failed);
+						}
+
+						Toast toast = Toast.makeText(getApplicationContext(),
+								text, Toast.LENGTH_SHORT);
+						toast.show();
 					}
 				});
 
@@ -454,18 +469,28 @@ public class MainActivity extends Activity {
 		builder.setMessage(getResources().getString(R.string.restore_text));
 		builder.setIcon(android.R.drawable.ic_dialog_alert);
 
-		builder.setPositiveButton(getResources().getString(R.string.restore_ok),
+		builder.setPositiveButton(
+				getResources().getString(R.string.restore_ok),
 				new OnClickListener() {
 
 					@Override
 					public void onClick(DialogInterface dialog, int which) {
-						dbMain.restore(getApplicationContext());
-						dbMain.loadCalculatedData();
-						calendarUpdate();
+						boolean ok = dbMain.restore(getApplicationContext());
+						
+						handleDatabaseEdit();
 
-						// Notify backup agent about the change
-						BackupManager bm = new BackupManager(getApplicationContext());
-						bm.dataChanged();
+						// Show toast depending on result of operation
+						String text;
+						if (ok) {
+							text = getResources().getString(
+									R.string.restore_finished);
+						} else {
+							text = getResources().getString(
+									R.string.restore_failed);
+						}
+						Toast toast = Toast.makeText(getApplicationContext(), text,
+								Toast.LENGTH_SHORT);
+						toast.show();
 					}
 				});
 
@@ -499,19 +524,68 @@ public class MainActivity extends Activity {
 				break;
 			nButtonClicked++;
 		}
-		int day = nButtonClicked - firstDay + 2;
+		final int day = nButtonClicked - firstDay + 2;
 
-		// Set or remove entry
-		if (dbMain.getEntry(yearCurrent, monthCurrent, day) != 1)
-			dbMain.add(yearCurrent, monthCurrent, day);
-		else
-			dbMain.remove(yearCurrent, monthCurrent, day);
+		// Set or remove entry with confirmation
+		final AlertDialog.Builder builder = new AlertDialog.Builder(this);
+		builder.setTitle(getResources()
+				.getString(R.string.calendaraction_title));
 
+		if (dbMain.getEntry(yearCurrent, monthCurrent, day) != 1) {
+			builder.setMessage(getResources().getString(
+					R.string.calendaraction_add));
+			builder.setPositiveButton(
+					getResources().getString(R.string.calendaraction_ok),
+					new OnClickListener() {
+
+						@Override
+						public void onClick(DialogInterface dialog, int which) {
+							dbMain.add(yearCurrent, monthCurrent, day);
+							handleDatabaseEdit();
+						}
+					});
+
+			builder.setNegativeButton(
+					getResources().getString(R.string.calendaraction_cancel),
+					new OnClickListener() {
+
+						@Override
+						public void onClick(DialogInterface dialog, int which) {
+						}
+					});
+		} else {
+			builder.setMessage(getResources().getString(
+					R.string.calendaraction_remove));
+			builder.setPositiveButton(
+					getResources().getString(R.string.calendaraction_ok),
+					new OnClickListener() {
+
+						@Override
+						public void onClick(DialogInterface dialog, int which) {
+							dbMain.remove(yearCurrent, monthCurrent, day);
+							handleDatabaseEdit();
+						}
+					});
+
+			builder.setNegativeButton(
+					getResources().getString(R.string.calendaraction_cancel),
+					new OnClickListener() {
+
+						@Override
+						public void onClick(DialogInterface dialog, int which) {
+						}
+					});
+		}
+		builder.show();
+	}
+
+	/* Helper to update view after database modification */
+	private void handleDatabaseEdit() {
 		// Update calculated values
 		dbMain.loadCalculatedData();
 		calendarUpdate();
-		
-		// Notify backup agent about the change
+
+		// Notify backup agent about the change and mark DB as clean
 		BackupManager bm = new BackupManager(this);
 		bm.dataChanged();
 	}

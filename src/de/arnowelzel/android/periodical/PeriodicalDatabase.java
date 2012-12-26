@@ -47,6 +47,9 @@ public class PeriodicalDatabase {
 
 	/* Reference to database */
 	private SQLiteDatabase db;
+	
+	/* Dirty flag to signal changes for the backup manager */
+	private boolean isDirty; 
 
 	/* Local helper to manage calculated calendar entries */
 	public class DayEntry {
@@ -82,6 +85,7 @@ public class PeriodicalDatabase {
 		PeriodicalDataOpenHelper dataOpenHelper;
 		dataOpenHelper = new PeriodicalDataOpenHelper(context);
 		db = dataOpenHelper.getWritableDatabase();
+		isDirty = false;
 	}
 
 	/* Close the database */
@@ -98,6 +102,8 @@ public class PeriodicalDatabase {
 				"insert into data (eventtype, eventdate) values (1, '%s')",
 				String.format("%04d%02d%02d", year, month, day));
 		db.execSQL(statement);
+		
+		isDirty = true;
 	}
 
 	/* Remove an entry for a specific day into the database */
@@ -107,6 +113,8 @@ public class PeriodicalDatabase {
 		statement = String.format("delete from data where eventdate='%s'",
 				String.format("%04d%02d%02d", year, month, day));
 		db.execSQL(statement);
+		
+		isDirty = true;
 	}
 
 	/* Update the calculation based on the entries in the database */
@@ -272,19 +280,19 @@ public class PeriodicalDatabase {
 	 * Helper to backup the database on the SD card if possible or restore it
 	 * from there
 	 */
-	public void backup(Context context) {
-		backupRestore(context, true);
+	public boolean backup(Context context) {
+		return backupRestore(context, true);
 	}
 
-	public void restore(Context context) {
-		backupRestore(context, false);
+	public boolean restore(Context context) {
+		return backupRestore(context, false);
 	}
 
-	public void backupRestore(Context context, boolean backup) {
+	public boolean backupRestore(Context context, boolean backup) {
 		// Check if SD card is mounted
 		if (Environment.getExternalStorageState().equals(
 				android.os.Environment.MEDIA_UNMOUNTED))
-			return;
+			return false;
 
 		File sourceFile = null;
 		File destDir = null;
@@ -344,12 +352,15 @@ public class PeriodicalDatabase {
 						out.close();
 				} catch (IOException e) {
 					e.printStackTrace();
+					ok = false;
 				}
 			}
 		}
 
 		// Open the DB again
 		open(context);
+		
+		return ok;
 	}
 
 	/*
@@ -358,5 +369,16 @@ public class PeriodicalDatabase {
 	 */
 	String getPath() {
 		return db.getPath();
+	}
+	
+	/*
+	 * Getter/setter for dirty flag
+	 */
+	boolean getDirty() {
+		return this.isDirty;
+	}
+
+	void setDirty(boolean isDirty) {
+		this.isDirty = isDirty;
 	}
 }
