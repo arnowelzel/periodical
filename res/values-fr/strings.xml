@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Periodical</string>
+    <string name="menuitem_about">À propos</string>
+    <string name="menuitem_current">Actuelle</string>
+    <string name="menuitem_list">Tableau</string>
+    <string name="menuitem_copy">Sauvegarde</string>
+    <string name="menuitem_restore">Restauration</string>
+    <string name="menuitem_exit">Arrêter</string>
+    <string name="main_button_prev">&lt;</string>
+    <string name="main_button_next">&gt;</string>
+    <string name="main_calday_su">DI</string>
+    <string name="main_calday_mo">LU</string>
+    <string name="main_calday_tu">MA</string>
+    <string name="main_calday_we">ME</string>
+    <string name="main_calday_th">JE</string>
+    <string name="main_calday_fr">VE</string>
+    <string name="main_calday_sa">SA</string>
+    <string name="about_title">À propos</string>
+    <string name="about_text">Periodical 0.8\nde Arno Welzel\n\nCalcul de la fertilité par référence à Knaus-Ogino</string>
+    <string name="about_details">ATTENTION: Il est déconseillé d\'utiliser ce calendrier pour éviter une grossesse! Il existe des méthodes plus précises, comme la mesure de la température basale du corps.\n\nPour indiquer le premier jour de la période, appuyez simplement sur le jour du calendrier. Pour supprimer l\'entrée, appuyez à nouveau sur.\n\nLes carrés rouges indiquent les jours de la période. Les journées vertes indiquent les jours fertiles calculées. Le jour courant est entouré d\'un cercle. Légers jours rouges sont les cycles calculés à venir. Le calcul est effectué pour deux cycles à l\'avance.\n\nPour utiliser la sauvegarde des données, une carte mémoire doit être présent.</string>
+    <string name="about_ok">OK</string>
+    <string name="backup_title">Sauvegarde les données</string>
+    <string name="backup_text">Voulez-vous sauvegarder les données actuelles sur la carte mémoire?\nCe remplacera la dernière sauvegarde!</string>
+    <string name="backup_ok">OK</string>
+    <string name="backup_cancel">Annuler</string>
+    <string name="backup_finished">Sauvegarde fait</string>
+    <string name="backup_failed">Échec de la sauvegarde!</string>
+    <string name="restore_title">Restaurer les données</string>
+    <string name="restore_text">Voulez-vous restaurer la dernière sauvegarde de la carte mémoire?\nCette remplacera les données actuelles!</string>
+    <string name="restore_ok">OK</string>
+    <string name="restore_cancel">Annuler</string>
+    <string name="restore_finished">Restaurer fait</string>
+    <string name="restore_failed">Échec de la restauration!</string>
+    <string name="event_periodstart">Période a commencé</string>
+    <string name="event_periodlength">Dernière période passé %s jours</string>
+    <string name="event_periodfirst">Première entrée</string>
+    <string name="calendaraction_title">Modifier une entrée de calendrier</string>
+    <string name="calendaraction_add">Marquez ce jour comme \"Période a commencé\"?</string>
+    <string name="calendaraction_remove">Retirer la marque \"Période a commencé\" pour ce jour?</string>
+    <string name="calendaraction_ok">Oui</string>
+    <string name="calendaraction_cancel">Non</string>
+</resources>
