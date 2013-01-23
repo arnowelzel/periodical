@@ -33,7 +33,7 @@
     <string name="restore_finished">Restaurer fait</string>
     <string name="restore_failed">Échec de la restauration!</string>
     <string name="event_periodstart">Période a commencé</string>
-    <string name="event_periodlength">Dernière période passé %s jours</string>
+    <string name="event_periodlength">Dernière cycle passé %s jours</string>
     <string name="event_periodfirst">Première entrée</string>
     <string name="calendaraction_title">Modifier une entrée de calendrier</string>
     <string name="calendaraction_add">Marquez ce jour comme \"Période a commencé\"?</string>

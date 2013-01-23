@@ -18,7 +18,7 @@
     <string name="main_calday_sa">SA</string>
     <string name="about_title">Info</string>
     <string name="about_text">Periodical 0.8\nby Arno Welzel\n\nCalculation of fertility according to Knaus-Ogino</string>
-    <string name="about_details">WARNING: It is not recommended to use this calendar to avoid pregnancy! There are more accurate methods, like measuring the basal body temperature.\n\nTo indicate the first day of the period, just tap the day in the calendar. To remove the entry, tap again.\n\nThe red squares indicate the days of the period. The green days indicate the calculated fertile days. The current day is marked with a circle. Light red days are the calculated future cycles. The calculation is done for two cycle in advance.\n\nTo use the data backup, a memory card must be present.</string>
+    <string name="about_details">WARNING: It is not recommended to use this calendar to avoid pregnancy! There are more accurate methods, like measuring the basal body temperature.\n\nTo indicate the first day of the period, just tap the day in the calendar. To remove the entry, tap again.\n\nThe red squares indicate the days of the period. The green days indicate the calculated fertile days. The current day is marked with a circle. Light red days are the calculated future cycles. The calculation is done for two cycles in advance.\n\nTo use the data backup, a memory card must be present.</string>
     <string name="about_ok">OK</string>
     <string name="backup_title">Backup data</string>
     <string name="backup_text">Do you want to backup the current data to the memory card?\nThis will replace the last backup!</string>
@@ -33,7 +33,7 @@
     <string name="restore_finished">Restore done</string>
     <string name="restore_failed">Restore failed!</string>
     <string name="event_periodstart">Period has started</string>
-    <string name="event_periodlength">Last period had %s days</string>
+    <string name="event_periodlength">Last cycle had %s days</string>
     <string name="event_periodfirst">First entry</string>
     <string name="calendaraction_title">Edit calendar entry</string>
     <string name="calendaraction_add">Mark this day as \"Period has started\"?</string>

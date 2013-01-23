@@ -33,7 +33,7 @@
     <string name="restore_finished">Wiederherstellung ausgeführt</string>
     <string name="restore_failed">Wiederherstellung fehlgeschlagen!</string>
     <string name="event_periodstart">Periode hat begonnen</string>
-    <string name="event_periodlength">Letzte Periode hatte %s Tage</string>
+    <string name="event_periodlength">Letzter Zyklus hatte %s Tage</string>
     <string name="event_periodfirst">Erster Eintrag</string>
     <string name="calendaraction_title">Kalendereintrag bearbeiten</string>
     <string name="calendaraction_add">Diesen Tag als \"Periode hat begonnen\" kennzeichnen?</string>
