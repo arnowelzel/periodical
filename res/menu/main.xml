@@ -13,6 +13,11 @@
         android:showAsAction="ifRoom|withText"
     />
     <item
+        android:id="@+id/help"
+        android:icon="@android:drawable/ic_menu_help"
+        android:title="@string/menuitem_help"
+    />
+    <item
         android:id="@+id/about"
         android:icon="@android:drawable/ic_menu_info_details"
         android:title="@string/menuitem_about"

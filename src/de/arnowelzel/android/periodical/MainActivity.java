@@ -35,6 +35,7 @@ public class MainActivity extends Activity {
 
 	/* Constants for dialog boxes */
 	final int DLG_ABOUT = 1;
+	final int DLG_HELP = 2;
 
 	/* Array for calendar button IDs */
 	final int calButtonIds[] = { R.id.cal01, R.id.cal02, R.id.cal03,
@@ -162,6 +163,10 @@ public class MainActivity extends Activity {
 			showList();
 			return true;
 
+		case R.id.help:
+			showHelp();
+			return true;
+			
 		case R.id.about:
 			showAbout();
 			return true;
@@ -187,14 +192,29 @@ public class MainActivity extends Activity {
 	@Override
 	public Dialog onCreateDialog(int id) {
 		Dialog dialog;
+		Button buttonOk;
 
 		switch (id) {
+		case DLG_HELP:
+			dialog = new Dialog(this);
+			dialog.setContentView(R.layout.dialog_help);
+			dialog.setTitle(R.string.help_title);
+			buttonOk = (Button) dialog.findViewById(R.id.ok);
+			buttonOk.setOnClickListener(new View.OnClickListener() {
+
+				@SuppressWarnings("deprecation")
+				public void onClick(View view) {
+					dismissDialog(DLG_HELP);
+				}
+			});
+			break;
+			
 		case DLG_ABOUT:
 			dialog = new Dialog(this);
 			dialog.setContentView(R.layout.dialog_about);
 			dialog.setTitle(R.string.about_title);
-			Button button = (Button) dialog.findViewById(R.id.ok);
-			button.setOnClickListener(new View.OnClickListener() {
+			buttonOk = (Button) dialog.findViewById(R.id.ok);
+			buttonOk.setOnClickListener(new View.OnClickListener() {
 
 				@SuppressWarnings("deprecation")
 				public void onClick(View view) {
@@ -211,6 +231,12 @@ public class MainActivity extends Activity {
 		return dialog;
 	}
 
+	/* Handler for "Help" menu action */
+	@SuppressWarnings("deprecation")
+	void showHelp() {
+		showDialog(DLG_HELP);
+	}
+	
 	/* Handler for "About" menu action */
 	@SuppressWarnings("deprecation")
 	void showAbout() {

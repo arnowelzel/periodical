@@ -37,7 +37,7 @@ public final class R {
         public static final int text_calendar_start=0x7f020017;
     }
     public static final class id {
-        public static final int about=0x7f060070;
+        public static final int about=0x7f060071;
         public static final int buttonnext=0x7f060008;
         public static final int buttonprev=0x7f060007;
         public static final int cal01=0x7f06000d;
@@ -126,17 +126,18 @@ public final class R {
         public static final int cal42_2=0x7f06006d;
         public static final int calendar=0x7f06000a;
         public static final int calendar_2=0x7f06003c;
-        public static final int copy=0x7f060071;
+        public static final int copy=0x7f060072;
         public static final int current=0x7f06006e;
         public static final int custom_dialog=0x7f060000;
         public static final int displaydate=0x7f060006;
-        public static final int exit=0x7f060073;
+        public static final int exit=0x7f060074;
+        public static final int help=0x7f060070;
         public static final int list=0x7f06006f;
         public static final int mainview=0x7f060004;
         public static final int mainwidget=0x7f060009;
         public static final int monthselector=0x7f060005;
         public static final int ok=0x7f060003;
-        public static final int restore=0x7f060072;
+        public static final int restore=0x7f060073;
         public static final int rowcal0107=0x7f06000c;
         public static final int rowcal0107_2=0x7f06003e;
         public static final int rowcal0814=0x7f060014;
@@ -156,52 +157,57 @@ public final class R {
     }
     public static final class layout {
         public static final int dialog_about=0x7f030000;
-        public static final int listitem=0x7f030001;
-        public static final int main=0x7f030002;
+        public static final int dialog_help=0x7f030001;
+        public static final int listitem=0x7f030002;
+        public static final int main=0x7f030003;
     }
     public static final class menu {
         public static final int main=0x7f050000;
     }
     public static final class string {
-        public static final int about_details=0x7f040012;
-        public static final int about_ok=0x7f040013;
-        public static final int about_text=0x7f040011;
-        public static final int about_title=0x7f040010;
+        public static final int about_details=0x7f040013;
+        public static final int about_ok=0x7f040014;
+        public static final int about_text=0x7f040012;
+        public static final int about_title=0x7f040011;
         public static final int app_name=0x7f040000;
-        public static final int backup_cancel=0x7f040017;
-        public static final int backup_failed=0x7f040019;
-        public static final int backup_finished=0x7f040018;
-        public static final int backup_ok=0x7f040016;
-        public static final int backup_text=0x7f040015;
-        public static final int backup_title=0x7f040014;
-        public static final int calendaraction_add=0x7f040024;
-        public static final int calendaraction_cancel=0x7f040027;
-        public static final int calendaraction_ok=0x7f040026;
-        public static final int calendaraction_remove=0x7f040025;
-        public static final int calendaraction_title=0x7f040023;
-        public static final int event_periodfirst=0x7f040022;
-        public static final int event_periodlength=0x7f040021;
-        public static final int event_periodstart=0x7f040020;
-        public static final int main_button_next=0x7f040008;
-        public static final int main_button_prev=0x7f040007;
-        public static final int main_calday_fr=0x7f04000e;
-        public static final int main_calday_mo=0x7f04000a;
-        public static final int main_calday_sa=0x7f04000f;
-        public static final int main_calday_su=0x7f040009;
-        public static final int main_calday_th=0x7f04000d;
-        public static final int main_calday_tu=0x7f04000b;
-        public static final int main_calday_we=0x7f04000c;
-        public static final int menuitem_about=0x7f040001;
-        public static final int menuitem_copy=0x7f040004;
-        public static final int menuitem_current=0x7f040002;
-        public static final int menuitem_exit=0x7f040006;
-        public static final int menuitem_list=0x7f040003;
-        public static final int menuitem_restore=0x7f040005;
-        public static final int restore_cancel=0x7f04001d;
-        public static final int restore_failed=0x7f04001f;
-        public static final int restore_finished=0x7f04001e;
-        public static final int restore_ok=0x7f04001c;
-        public static final int restore_text=0x7f04001b;
-        public static final int restore_title=0x7f04001a;
+        public static final int backup_cancel=0x7f04001b;
+        public static final int backup_failed=0x7f04001d;
+        public static final int backup_finished=0x7f04001c;
+        public static final int backup_ok=0x7f04001a;
+        public static final int backup_text=0x7f040019;
+        public static final int backup_title=0x7f040018;
+        public static final int calendaraction_add=0x7f040028;
+        public static final int calendaraction_cancel=0x7f04002b;
+        public static final int calendaraction_ok=0x7f04002a;
+        public static final int calendaraction_remove=0x7f040029;
+        public static final int calendaraction_title=0x7f040027;
+        public static final int event_periodfirst=0x7f040026;
+        public static final int event_periodlength=0x7f040025;
+        public static final int event_periodstart=0x7f040024;
+        public static final int help_ok=0x7f040017;
+        public static final int help_text=0x7f040016;
+        public static final int help_title=0x7f040015;
+        public static final int main_button_next=0x7f040009;
+        public static final int main_button_prev=0x7f040008;
+        public static final int main_calday_fr=0x7f04000f;
+        public static final int main_calday_mo=0x7f04000b;
+        public static final int main_calday_sa=0x7f040010;
+        public static final int main_calday_su=0x7f04000a;
+        public static final int main_calday_th=0x7f04000e;
+        public static final int main_calday_tu=0x7f04000c;
+        public static final int main_calday_we=0x7f04000d;
+        public static final int menuitem_about=0x7f040002;
+        public static final int menuitem_copy=0x7f040005;
+        public static final int menuitem_current=0x7f040003;
+        public static final int menuitem_exit=0x7f040007;
+        public static final int menuitem_help=0x7f040001;
+        public static final int menuitem_list=0x7f040004;
+        public static final int menuitem_restore=0x7f040006;
+        public static final int restore_cancel=0x7f040021;
+        public static final int restore_failed=0x7f040023;
+        public static final int restore_finished=0x7f040022;
+        public static final int restore_ok=0x7f040020;
+        public static final int restore_text=0x7f04001f;
+        public static final int restore_title=0x7f04001e;
     }
 }
