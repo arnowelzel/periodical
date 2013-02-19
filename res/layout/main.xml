@@ -18,6 +18,7 @@ android:layout_height="fill_parent"
          android:text=""
          android:gravity="center"
          android:layout_weight="1"
+         android:textStyle="bold"
          />
          <Button
          android:id="@+id/buttonprev"
@@ -54,13 +55,13 @@ android:layout_below="@+id/monthselector"
             android:layout_weight="0.6"
             android:orientation="horizontal" >
 
-            <TextView android:gravity="center" android:layout_height="fill_parent" android:text="@string/main_calday_su" />
-            <TextView android:gravity="center" android:layout_height="fill_parent" android:text="@string/main_calday_mo" />
-            <TextView android:gravity="center" android:layout_height="fill_parent" android:text="@string/main_calday_tu" />
-            <TextView android:gravity="center" android:layout_height="fill_parent" android:text="@string/main_calday_we" />
-            <TextView android:gravity="center" android:layout_height="fill_parent" android:text="@string/main_calday_th" />
-            <TextView android:gravity="center" android:layout_height="fill_parent" android:text="@string/main_calday_fr" />
-            <TextView android:gravity="center" android:layout_height="fill_parent" android:text="@string/main_calday_sa" />
+            <TextView android:gravity="center" android:layout_height="fill_parent" android:text="@string/main_calday_su" android:textStyle="bold" />
+            <TextView android:gravity="center" android:layout_height="fill_parent" android:text="@string/main_calday_mo" android:textStyle="bold" />
+            <TextView android:gravity="center" android:layout_height="fill_parent" android:text="@string/main_calday_tu" android:textStyle="bold" />
+            <TextView android:gravity="center" android:layout_height="fill_parent" android:text="@string/main_calday_we" android:textStyle="bold" />
+            <TextView android:gravity="center" android:layout_height="fill_parent" android:text="@string/main_calday_th" android:textStyle="bold" />
+            <TextView android:gravity="center" android:layout_height="fill_parent" android:text="@string/main_calday_fr" android:textStyle="bold" />
+            <TextView android:gravity="center" android:layout_height="fill_parent" android:text="@string/main_calday_sa" android:textStyle="bold" />
         </TableRow>
 
         <TableRow
@@ -169,13 +170,13 @@ android:layout_below="@+id/monthselector"
             android:layout_weight="0.6"
             android:orientation="horizontal" >
 
-            <TextView android:gravity="center" android:layout_height="fill_parent" android:text="@string/main_calday_su" />
-            <TextView android:gravity="center" android:layout_height="fill_parent" android:text="@string/main_calday_mo" />
-            <TextView android:gravity="center" android:layout_height="fill_parent" android:text="@string/main_calday_tu" />
-            <TextView android:gravity="center" android:layout_height="fill_parent" android:text="@string/main_calday_we" />
-            <TextView android:gravity="center" android:layout_height="fill_parent" android:text="@string/main_calday_th" />
-            <TextView android:gravity="center" android:layout_height="fill_parent" android:text="@string/main_calday_fr" />
-            <TextView android:gravity="center" android:layout_height="fill_parent" android:text="@string/main_calday_sa" />
+            <TextView android:gravity="center" android:layout_height="fill_parent" android:text="@string/main_calday_su" android:textStyle="bold" />
+            <TextView android:gravity="center" android:layout_height="fill_parent" android:text="@string/main_calday_mo" android:textStyle="bold" />
+            <TextView android:gravity="center" android:layout_height="fill_parent" android:text="@string/main_calday_tu" android:textStyle="bold" />
+            <TextView android:gravity="center" android:layout_height="fill_parent" android:text="@string/main_calday_we" android:textStyle="bold" />
+            <TextView android:gravity="center" android:layout_height="fill_parent" android:text="@string/main_calday_th" android:textStyle="bold" />
+            <TextView android:gravity="center" android:layout_height="fill_parent" android:text="@string/main_calday_fr" android:textStyle="bold" />
+            <TextView android:gravity="center" android:layout_height="fill_parent" android:text="@string/main_calday_sa" android:textStyle="bold" />
         </TableRow>
 
         <TableRow

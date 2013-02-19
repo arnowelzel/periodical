@@ -4,6 +4,13 @@ Added GPL text to "about" dialog.
 
 Added new separate dialog for help text.
 
+Changed color scheme from red, green, white to red, blue, yellow according the chain of
+Maria Hengstberger.
+
+Updated french translation.
+
+Modified layout to display text in calendar view more readable. 
+
 0.8
 
 Added French as supported language, some spelling fixes in the English version.
