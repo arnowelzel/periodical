@@ -37,7 +37,7 @@ public final class R {
         public static final int text_calendar_start=0x7f020017;
     }
     public static final class id {
-        public static final int about=0x7f060071;
+        public static final int about=0x7f060073;
         public static final int buttonnext=0x7f060008;
         public static final int buttonprev=0x7f060007;
         public static final int cal01=0x7f06000d;
@@ -126,7 +126,7 @@ public final class R {
         public static final int cal42_2=0x7f06006d;
         public static final int calendar=0x7f06000a;
         public static final int calendar_2=0x7f06003c;
-        public static final int copy=0x7f060072;
+        public static final int copy=0x7f060071;
         public static final int current=0x7f06006e;
         public static final int custom_dialog=0x7f060000;
         public static final int displaydate=0x7f060006;
@@ -137,7 +137,7 @@ public final class R {
         public static final int mainwidget=0x7f060009;
         public static final int monthselector=0x7f060005;
         public static final int ok=0x7f060003;
-        public static final int restore=0x7f060073;
+        public static final int restore=0x7f060072;
         public static final int rowcal0107=0x7f06000c;
         public static final int rowcal0107_2=0x7f06003e;
         public static final int rowcal0814=0x7f060014;
