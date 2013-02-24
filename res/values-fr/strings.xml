@@ -18,7 +18,7 @@
     <string name="main_calday_fr">VE</string>
     <string name="main_calday_sa">SA</string>
     <string name="about_title">À propos</string>
-    <string name="about_text">Periodical 0.9\n\nCalcul de la fertilité par référence à Knaus&#8211;Ogino\nCopyright © 2012&#8211;2013 Arno Welzel</string>
+    <string name="about_text">Periodical 0.10\n\nCalcul de la fertilité par référence à Knaus&#8211;Ogino\nCopyright © 2012&#8211;2013 Arno Welzel</string>
     <string name="about_details">Ce programme est un logiciel libre: vous pouvez le redistribuer et/ou modifier selon les termes de la licence GNU General Public License que publiée par la Free Software Foundation, soit la version 3 de cette licence, ou (à votre choix) toute version ultérieure.\n\nCe programme est distribué dans l\'espoir qu\'il sera utile, mais SANS AUCUNE GARANTIE, sans même la garantie implicite de COMMERCIALISATION ou D\'ADAPTATION A UN USAGE PARTICULIER. Voir de la GNU General Public License pour plus de détails.\n\nVous devriez avoir reçu une copie de la licence GNU General Public avec ce programme. Sinon, voir &lt;http://www.gnu.org/licenses/&gt;.</string>
     <string name="about_ok">OK</string>
     <string name="help_title">Aider</string>
