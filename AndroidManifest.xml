@@ -12,7 +12,7 @@
     <application
 		android:label="@string/app_name"
 		android:icon="@drawable/periodical"
-		android:allowBackup="false">
+		android:allowBackup="true">
 		
         <activity android:name=".MainActivity" android:label="@string/app_name"
 			android:icon="@drawable/periodical">
@@ -25,5 +25,7 @@
         <activity android:name=".ListActivity" android:label="@string/app_name">
         </activity>
         
+        <meta-data android:name="com.google.android.backup.api_key"
+            android:value="AEdPqrEAAAAIC54Akxjv9DZ71SEaObLVvtC_2t4sBM0GPgC8Fg" />
     </application>
 </manifest> 

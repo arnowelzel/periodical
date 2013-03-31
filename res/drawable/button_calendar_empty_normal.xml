@@ -15,5 +15,5 @@
         </shape>
     </item>
 
-    <item android:drawable="@drawable/layer_white_normal" />
+    <item android:drawable="@drawable/layer_empty_normal" />
 </selector>

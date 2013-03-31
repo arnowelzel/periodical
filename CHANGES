@@ -1,6 +1,10 @@
 0.10
 
-Modified colour scheme to make the blue color more visible. 
+Modified colour scheme to make the blue color more visible.
+
+Added app icons with nicer "round" corners for different resolutions (ldpi, mdpi, hdpi).
+
+Changed manifest, so backups using a full system backup are possible. 
 
 0.9
 

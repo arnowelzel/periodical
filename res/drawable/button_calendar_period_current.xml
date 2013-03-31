@@ -15,5 +15,5 @@
         </shape>
     </item>
 
-    <item android:drawable="@drawable/layer_red_current" />
+    <item android:drawable="@drawable/layer_period_current" />
 </selector>

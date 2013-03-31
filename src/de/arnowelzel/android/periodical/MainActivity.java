@@ -319,12 +319,12 @@ public class MainActivity extends Activity {
 						calButton
 								.setBackgroundDrawable(getResources()
 										.getDrawable(
-												R.drawable.button_calendar_start_current));
+												R.drawable.button_calendar_periodstart_current));
 					} else {
 						calButton
 								.setBackgroundDrawable(getResources()
 										.getDrawable(
-												R.drawable.button_calendar_start_normal));
+												R.drawable.button_calendar_periodstart_normal));
 					}
 					calButton.setTypeface(null, 0);
 					calButton.setTextColor(getResources().getColor(
@@ -336,11 +336,11 @@ public class MainActivity extends Activity {
 						calButton
 								.setBackgroundDrawable(getResources()
 										.getDrawable(
-												R.drawable.button_calendar_red_current));
+												R.drawable.button_calendar_period_current));
 					} else {
 						calButton.setBackgroundDrawable(getResources()
 								.getDrawable(
-										R.drawable.button_calendar_red_normal));
+										R.drawable.button_calendar_period_normal));
 					}
 					calButton.setTextColor(getResources().getColor(
 							R.drawable.text_calendar));
@@ -351,12 +351,12 @@ public class MainActivity extends Activity {
 						calButton
 								.setBackgroundDrawable(getResources()
 										.getDrawable(
-												R.drawable.button_calendar_lightred_current));
+												R.drawable.button_calendar_periodcalc_current));
 					} else {
 						calButton
 								.setBackgroundDrawable(getResources()
 										.getDrawable(
-												R.drawable.button_calendar_lightred_normal));
+												R.drawable.button_calendar_periodcalc_normal));
 
 					}
 					calButton.setTextColor(getResources().getColor(
@@ -368,12 +368,12 @@ public class MainActivity extends Activity {
 						calButton
 								.setBackgroundDrawable(getResources()
 										.getDrawable(
-												R.drawable.button_calendar_green_current));
+												R.drawable.button_calendar_fertile_current));
 					} else {
 						calButton
 								.setBackgroundDrawable(getResources()
 										.getDrawable(
-												R.drawable.button_calendar_green_normal));
+												R.drawable.button_calendar_fertile_normal));
 					}
 
 					calButton.setTextColor(getResources().getColor(
@@ -385,12 +385,12 @@ public class MainActivity extends Activity {
 						calButton
 								.setBackgroundDrawable(getResources()
 										.getDrawable(
-												R.drawable.button_calendar_white_current));
+												R.drawable.button_calendar_empty_current));
 					} else {
 						calButton
 								.setBackgroundDrawable(getResources()
 										.getDrawable(
-												R.drawable.button_calendar_white_normal));
+												R.drawable.button_calendar_empty_normal));
 					}
 					calButton.setTextColor(getResources().getColor(
 							R.drawable.text_calendar));
