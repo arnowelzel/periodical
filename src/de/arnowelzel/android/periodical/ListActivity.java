@@ -17,17 +17,21 @@
  * Periodical Activity
  */
 
- package de.arnowelzel.android.periodical;
+package de.arnowelzel.android.periodical;
 
+import java.util.Calendar;
 import java.util.Iterator;
 
 import de.arnowelzel.android.periodical.PeriodicalDatabase.DayEntry;
 
 import android.annotation.SuppressLint;
 import android.app.ActionBar;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.ListView;
 
 public class ListActivity extends android.app.ListActivity {
 	/* Database for calendar data */
@@ -82,9 +86,7 @@ public class ListActivity extends android.app.ListActivity {
 		if (pos > 0) {
 			entries[pos - 1] += "\n" + getString(R.string.event_periodfirst);
 		}
-		dbMain.close();
 
-		// Set up view
 		setListAdapter(new ArrayAdapter<String>(this, R.layout.listitem,
 				entries));
 
@@ -104,6 +106,9 @@ public class ListActivity extends android.app.ListActivity {
 	/* Called when the activity is destroyed */
 	@Override
 	protected void onDestroy() {
+		// Close database
+		dbMain.close();
+
 		super.onDestroy();
 	}
 
@@ -117,6 +122,26 @@ public class ListActivity extends android.app.ListActivity {
 			return true;
 		default:
 			return super.onOptionsItemSelected(item);
+		}
+	}
+
+	/* Handler for selecting a list item */
+	@Override
+	protected void onListItemClick(ListView l, View v, int position, long id) {
+		// Determine date of clicked item
+		if (dbMain != null && position >= 0
+				&& position < dbMain.dayEntries.size()) {
+			DayEntry selectedEntry = dbMain.dayEntries.get(position);
+
+			Integer month = selectedEntry.date.get(Calendar.MONTH);
+			Integer year = selectedEntry.date.get(Calendar.YEAR);
+
+			Intent intent = this.getIntent();
+			intent.putExtra("month", month.toString());
+			intent.putExtra("year", year.toString());
+
+			setResult(RESULT_OK, intent);
+			finish();
 		}
 	}
 }

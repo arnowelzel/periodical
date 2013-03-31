@@ -60,9 +60,9 @@ public class PeriodicalDatabase {
 
 	/* Reference to database */
 	private SQLiteDatabase db;
-	
+
 	/* Dirty flag to signal changes for the backup manager */
-	private boolean isDirty; 
+	private boolean isDirty;
 
 	/* Local helper to manage calculated calendar entries */
 	public class DayEntry {
@@ -115,7 +115,7 @@ public class PeriodicalDatabase {
 				"insert into data (eventtype, eventdate) values (1, '%s')",
 				String.format("%04d%02d%02d", year, month, day));
 		db.execSQL(statement);
-		
+
 		isDirty = true;
 	}
 
@@ -126,7 +126,7 @@ public class PeriodicalDatabase {
 		statement = String.format("delete from data where eventdate='%s'",
 				String.format("%04d%02d%02d", year, month, day));
 		db.execSQL(statement);
-		
+
 		isDirty = true;
 	}
 
@@ -155,7 +155,7 @@ public class PeriodicalDatabase {
 			int eventday = Integer.parseInt(dbdate.substring(6, 8), 10);
 			GregorianCalendar eventdate = new GregorianCalendar(eventyear,
 					eventmonth - 1, eventday);
-			
+
 			if (isFirst) {
 				isFirst = false;
 
@@ -165,26 +165,28 @@ public class PeriodicalDatabase {
 				this.dayEntries.add(entryPrevious);
 			} else {
 				count++;
-				
+
 				// Create new day entry
 				entry = new DayEntry(eventtype, eventdate);
 				int length = entryPrevious.date.diffDayPeriods(entry.date);
 
-				// Update values which are used to calculate the fertility window
+				// Update values which are used to calculate the fertility
+				// window
 				if (count == 1) {
 					// If we have at least one period the shortest and
 					// and longest value is automatically the current length
 					this.shortest = length;
 					this.longest = length;
 				} else {
-					// We have more than two values, then update longest/shortest
+					// We have more than two values, then update
+					// longest/shortest
 					// values
 					if (length < this.shortest)
 						this.shortest = length;
 					if (length > this.longest)
 						this.longest = length;
 				}
-				
+
 				// Calculate days from the last event until now
 				GregorianCalendar datePrevious = new GregorianCalendar();
 				datePrevious.setTime(entryPrevious.date.getTime());
@@ -268,6 +270,7 @@ public class PeriodicalDatabase {
 			entry = new DayEntry(eventtype, eventdate);
 			dayEntries.add(entry);
 		}
+		result.close();
 
 		System.gc();
 	}
@@ -372,7 +375,7 @@ public class PeriodicalDatabase {
 
 		// Open the DB again
 		open(context);
-		
+
 		return ok;
 	}
 
@@ -383,7 +386,7 @@ public class PeriodicalDatabase {
 	String getPath() {
 		return db.getPath();
 	}
-	
+
 	/*
 	 * Getter/setter for dirty flag
 	 */

@@ -94,6 +94,9 @@ public class MainActivity extends Activity {
 	/* Database for calendar data */
 	private PeriodicalDatabase dbMain;
 
+	/* Request code for date selection in details list */
+	static final int PICK_DATE = 1;
+
 	/* Called when activity starts */
 	@SuppressWarnings("deprecation")
 	@Override
@@ -181,7 +184,7 @@ public class MainActivity extends Activity {
 		case R.id.help:
 			showHelp();
 			return true;
-			
+
 		case R.id.about:
 			showAbout();
 			return true;
@@ -223,7 +226,7 @@ public class MainActivity extends Activity {
 				}
 			});
 			break;
-			
+
 		case DLG_ABOUT:
 			dialog = new Dialog(this);
 			dialog.setContentView(R.layout.dialog_about);
@@ -251,7 +254,7 @@ public class MainActivity extends Activity {
 	void showHelp() {
 		showDialog(DLG_HELP);
 	}
-	
+
 	/* Handler for "About" menu action */
 	@SuppressWarnings("deprecation")
 	void showAbout() {
@@ -260,8 +263,8 @@ public class MainActivity extends Activity {
 
 	/* Handler for "List" menu action */
 	void showList() {
-		Intent listIntent = new Intent(MainActivity.this, ListActivity.class);
-		startActivity(listIntent);
+		startActivityForResult(
+				new Intent(MainActivity.this, ListActivity.class), PICK_DATE);
 	}
 
 	/* Update calendar data and view */
@@ -338,9 +341,10 @@ public class MainActivity extends Activity {
 										.getDrawable(
 												R.drawable.button_calendar_period_current));
 					} else {
-						calButton.setBackgroundDrawable(getResources()
-								.getDrawable(
-										R.drawable.button_calendar_period_normal));
+						calButton
+								.setBackgroundDrawable(getResources()
+										.getDrawable(
+												R.drawable.button_calendar_period_normal));
 					}
 					calButton.setTextColor(getResources().getColor(
 							R.drawable.text_calendar));
@@ -517,7 +521,7 @@ public class MainActivity extends Activity {
 					@Override
 					public void onClick(DialogInterface dialog, int which) {
 						boolean ok = dbMain.restore(getApplicationContext());
-						
+
 						handleDatabaseEdit();
 
 						// Show toast depending on result of operation
@@ -529,8 +533,8 @@ public class MainActivity extends Activity {
 							text = getResources().getString(
 									R.string.restore_failed);
 						}
-						Toast toast = Toast.makeText(getApplicationContext(), text,
-								Toast.LENGTH_SHORT);
+						Toast toast = Toast.makeText(getApplicationContext(),
+								text, Toast.LENGTH_SHORT);
 						toast.show();
 					}
 				});
@@ -629,6 +633,21 @@ public class MainActivity extends Activity {
 		// Notify backup agent about the change and mark DB as clean
 		BackupManager bm = new BackupManager(this);
 		bm.dataChanged();
+	}
+
+	/* Handler of detail list item selection */
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+		if (requestCode == PICK_DATE) {
+			if (resultCode == RESULT_OK) {
+				Bundle extras = data.getExtras();
+				if (extras != null) {
+					monthCurrent = Integer.parseInt(extras.getString("month")) + 1;
+					yearCurrent = Integer.parseInt(extras.getString("year"));
+					calendarUpdate();
+				}
+
+			}
+		}
 	}
 
 	// Gesture detector to handle swipes
