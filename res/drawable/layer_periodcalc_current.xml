@@ -10,7 +10,7 @@
     <item>        
         <shape android:shape="oval">
             <solid android:color="#00000000" />
-            <stroke android:width="2dp" android:color="#ffffff" />
+            <stroke android:width="2dp" android:color="#000000" />
         </shape>
     </item>
 </layer-list>
