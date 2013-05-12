@@ -384,6 +384,23 @@ public class MainActivity extends Activity {
 							R.drawable.text_calendar));
 					break;
 
+				case DayEntry.OVULATION_PREDICTED: // Calculated day of ovulation
+					if (current) {
+						calButton
+								.setBackgroundDrawable(getResources()
+										.getDrawable(
+												R.drawable.button_calendar_ovulation_current));
+					} else {
+						calButton
+								.setBackgroundDrawable(getResources()
+										.getDrawable(
+												R.drawable.button_calendar_ovulation_normal));
+					}
+
+					calButton.setTextColor(getResources().getColor(
+							R.drawable.text_calendar));
+					break;
+				
 				default:
 					if (current) {
 						calButton
