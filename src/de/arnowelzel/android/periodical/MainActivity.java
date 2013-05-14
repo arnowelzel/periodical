@@ -43,7 +43,6 @@ import android.widget.ViewFlipper;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
-import de.arnowelzel.android.periodical.PeriodicalDatabase.DayEntry;
 import de.arnowelzel.android.periodical.R;
 
 public class MainActivity extends Activity {
@@ -270,11 +269,11 @@ public class MainActivity extends Activity {
 	/* Update calendar data and view */
 	void calendarUpdate() {
 		// Initialize control ids for the target view to be used
-		int calButtonIds[];
+		int calendarCells[];
 		if (this.viewCurrent == R.id.calendar) {
-			calButtonIds = this.calButtonIds;
+			calendarCells = this.calButtonIds;
 		} else {
-			calButtonIds = this.calButtonIds_2;
+			calendarCells = this.calButtonIds_2;
 		}
 
 		// Output current year/month
@@ -294,129 +293,33 @@ public class MainActivity extends Activity {
 
 		// Adjust calendar elements
 		for (int i = 1; i <= 42; i++) {
-			Button calButton = (Button) findViewById(calButtonIds[i - 1]);
+			CalendarCell cell = (CalendarCell) findViewById(calendarCells[i - 1]);
 			if (i < firstDay || i >= firstDay + daysCount) {
-				calButton.setVisibility(android.view.View.INVISIBLE);
+				cell.setVisibility(android.view.View.INVISIBLE);
 				// TODO Display days of previous/next month as "disabled"
 				// buttons
 			} else {
+				// This cell is part of the current month,
+				// label text is the day of the month
 				int day = i - firstDay + 1;
-				calButton.setText(String.format("%d", day));
-				calButton.setVisibility(android.view.View.VISIBLE);
+				cell.setText(String.format("%d", day));
+				cell.setVisibility(android.view.View.VISIBLE);
 				int type = dbMain.getEntry(yearCurrent, monthCurrent, day);
 				boolean current = false;
 
 				if (this.yearCurrent == calToday.get(Calendar.YEAR)
 						&& this.monthCurrent == calToday.get(Calendar.MONTH) + 1
 						&& day == calToday.get(Calendar.DAY_OF_MONTH)) {
-					calButton.setTypeface(null, 1);
+					cell.setTypeface(null, 1);
 					current = true;
 
 				} else {
-					calButton.setTypeface(null, 0);
+					cell.setTypeface(null, 0);
 				}
-
-				switch (type) {
-				case DayEntry.PERIOD_START: // Start of period
-					if (current) {
-						calButton
-								.setBackgroundDrawable(getResources()
-										.getDrawable(
-												R.drawable.button_calendar_periodstart_current));
-					} else {
-						calButton
-								.setBackgroundDrawable(getResources()
-										.getDrawable(
-												R.drawable.button_calendar_periodstart_normal));
-					}
-					calButton.setTypeface(null, 0);
-					calButton.setTextColor(getResources().getColor(
-							R.drawable.text_calendar_start));
-					break;
-
-				case DayEntry.PERIOD_CONFIRMED: // Confirmed period day
-					if (current) {
-						calButton
-								.setBackgroundDrawable(getResources()
-										.getDrawable(
-												R.drawable.button_calendar_period_current));
-					} else {
-						calButton
-								.setBackgroundDrawable(getResources()
-										.getDrawable(
-												R.drawable.button_calendar_period_normal));
-					}
-					calButton.setTextColor(getResources().getColor(
-							R.drawable.text_calendar));
-					break;
-
-				case DayEntry.PERIOD_PREDICTED: // Predicted period day
-					if (current) {
-						calButton
-								.setBackgroundDrawable(getResources()
-										.getDrawable(
-												R.drawable.button_calendar_periodcalc_current));
-					} else {
-						calButton
-								.setBackgroundDrawable(getResources()
-										.getDrawable(
-												R.drawable.button_calendar_periodcalc_normal));
-
-					}
-					calButton.setTextColor(getResources().getColor(
-							R.drawable.text_calendar));
-					break;
-
-				case DayEntry.FERTILITY_PREDICTED: // Calculated fertile day
-					if (current) {
-						calButton
-								.setBackgroundDrawable(getResources()
-										.getDrawable(
-												R.drawable.button_calendar_fertile_current));
-					} else {
-						calButton
-								.setBackgroundDrawable(getResources()
-										.getDrawable(
-												R.drawable.button_calendar_fertile_normal));
-					}
-
-					calButton.setTextColor(getResources().getColor(
-							R.drawable.text_calendar));
-					break;
-
-				case DayEntry.OVULATION_PREDICTED: // Calculated day of ovulation
-					if (current) {
-						calButton
-								.setBackgroundDrawable(getResources()
-										.getDrawable(
-												R.drawable.button_calendar_ovulation_current));
-					} else {
-						calButton
-								.setBackgroundDrawable(getResources()
-										.getDrawable(
-												R.drawable.button_calendar_ovulation_normal));
-					}
-
-					calButton.setTextColor(getResources().getColor(
-							R.drawable.text_calendar));
-					break;
 				
-				default:
-					if (current) {
-						calButton
-								.setBackgroundDrawable(getResources()
-										.getDrawable(
-												R.drawable.button_calendar_empty_current));
-					} else {
-						calButton
-								.setBackgroundDrawable(getResources()
-										.getDrawable(
-												R.drawable.button_calendar_empty_normal));
-					}
-					calButton.setTextColor(getResources().getColor(
-							R.drawable.text_calendar));
-					break;
-				}
+				// Set other button attributes
+				cell.setType(type);
+				cell.setCurrent(current);
 			}
 		}
 	}

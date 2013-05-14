@@ -1,3 +1,8 @@
+0.12
+
+The calendar is now  a bit "nicer" with rounded corners, nicer "today" marker and symbols
+for the first day of the period and the day of ovulation.
+
 0.11
 
 The possible day of ovulation is now being calculated and displayed in the calendar.
