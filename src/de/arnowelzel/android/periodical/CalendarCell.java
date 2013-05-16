@@ -34,6 +34,9 @@ import android.graphics.Rect;
 import android.graphics.RectF;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
+import android.view.Display;
+import android.view.Surface;
+import android.view.WindowManager;
 import android.widget.Button;
 
 public class CalendarCell extends Button {
@@ -51,6 +54,7 @@ public class CalendarCell extends Button {
 	protected RectF rectOval1;
 	protected RectF rectOval2;
 	protected Rect rectLabel;
+	protected int orientation;
 
 	public CalendarCell(Context context, AttributeSet attrs) {
 		super(context, attrs);
@@ -75,6 +79,11 @@ public class CalendarCell extends Button {
 		rectOval1 = new RectF();
 		rectOval2 = new RectF();
 		rectLabel = new Rect();
+		
+		// Get current screen orientation
+		Display display = ((WindowManager)context.getSystemService(Context.WINDOW_SERVICE)).
+				getDefaultDisplay();
+		orientation = display.getRotation();
 	}
 
 	protected void onSizeChanged(int w, int h, int oldw, int oldh) {
@@ -119,10 +128,6 @@ public class CalendarCell extends Button {
 				colorLabel = 0xffffffff;
 				break;
 			case DayEntry.OVULATION_PREDICTED: // Calculated day of ovulation
-				/*
-				colorBackgroundStart = 0xffffffff;
-				colorBackgroundEnd = 0xffaaaaaa;
-				*/
 				colorBackgroundStart = 0xff00c3ff;
 				colorBackgroundEnd = 0xff007da3;
 				colorLabel = 0xffffffff;
@@ -139,8 +144,13 @@ public class CalendarCell extends Button {
 			paintBackground.setStyle(Style.FILL);
 			paintBackground.setAntiAlias(true);
 			
-			// canvas.drawRect(rectCanvas, paintBackground);
 			canvas.drawRoundRect(rectCanvas, 3*metrics.density, 3*metrics.density, paintBackground);
+			
+			// Adjust overlay size depending on orientation
+			int overlaysize = 18;
+			if(orientation == Surface.ROTATION_90 || orientation == Surface.ROTATION_270) {
+				overlaysize = 14;
+			}
 
 			// Draw overlay markers depending on type
 			if (type == DayEntry.PERIOD_START) {
@@ -154,11 +164,12 @@ public class CalendarCell extends Button {
 
 				bitmapDrop = BitmapFactory.decodeResource(getResources(),
 						R.drawable.ic_start);
-
+				
+				
 				rectDest = new Rect();
 				rectDest.set((int) (2 * metrics.density), (int)rectCanvas.height()
-						- (int) (18 * metrics.density),
-						(int) (18 * metrics.density), (int)rectCanvas.height()
+						- (int) (overlaysize * metrics.density),
+						(int) (overlaysize * metrics.density), (int)rectCanvas.height()
 								- (int) (2 * metrics.density));
 
 				canvas.drawBitmap(bitmapDrop, null, rectDest, paintBitmap);
@@ -177,8 +188,8 @@ public class CalendarCell extends Button {
 
 				rectDest = new Rect();
 				rectDest.set((int) (2 * metrics.density), (int)rectCanvas.height()
-						- (int) (18 * metrics.density),
-						(int) (18 * metrics.density), (int)rectCanvas.height()
+						- (int) (overlaysize * metrics.density),
+						(int) (overlaysize * metrics.density), (int)rectCanvas.height()
 								- (int) (2 * metrics.density));
 
 				canvas.drawBitmap(bitmapDrop, null, rectDest, paintBitmap);
