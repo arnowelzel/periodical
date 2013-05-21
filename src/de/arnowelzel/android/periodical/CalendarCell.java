@@ -81,9 +81,11 @@ public class CalendarCell extends Button {
 		rectLabel = new Rect();
 		
 		// Get current screen orientation
-		Display display = ((WindowManager)context.getSystemService(Context.WINDOW_SERVICE)).
-				getDefaultDisplay();
-		orientation = display.getRotation();
+		if(!isInEditMode()) { // Don't try this in layout editor
+			Display display = ((WindowManager)context.getSystemService(Context.WINDOW_SERVICE)).
+					getDefaultDisplay();
+			orientation = display.getRotation();
+		}
 	}
 
 	protected void onSizeChanged(int w, int h, int oldw, int oldh) {
