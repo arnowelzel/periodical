@@ -18,7 +18,7 @@
     <string name="main_calday_fr">FR</string>
     <string name="main_calday_sa">SA</string>
     <string name="about_title">Über</string>
-    <string name="about_text">Periodical 0.13\n\nBerechnung der Fruchtbarkeit nach Knaus&#8211;Ogino\nCopyright © 2012&#8211;2013 Arno Welzel</string>
+    <string name="about_text">Periodical 0.14\n\nBerechnung der Fruchtbarkeit nach Knaus&#8211;Ogino\nCopyright © 2012&#8211;2013 Arno Welzel</string>
     <string name="about_details">Dieses Programm ist freie Software: Sie können es unter den Bedingungen der GNU General Public License, wie von der Free Software Foundation, Version 3 der Lizenz oder (nach Ihrer Option) jeder späteren veröffentlichten Version, weiterverbreiten und/oder modifizieren.\n\nDieses Programm wird in der Hoffnung, dass es nützlich sein wird, aber OHNE JEDE GEWÄHRLEISTUNG, bereitgestellt; sogar ohne die implizite Gewährleistung der MARKTFÄHIGKEIT oder EIGNUNG FÜR EINEN BESTIMMTEN ZWECK. Siehe die GNU General Public License für weitere Details.\n\nSie sollten eine Kopie der GNU General Public License zusammen mit diesem Programm erhalten haben. Wenn nicht, siehe &lt;http://www.gnu.org/licenses/&gt;.</string>
     <string name="about_ok">OK</string>
     <string name="help_title">Hilfe</string>

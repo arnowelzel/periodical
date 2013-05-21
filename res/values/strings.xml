@@ -18,7 +18,7 @@
     <string name="main_calday_fr">FR</string>
     <string name="main_calday_sa">SA</string>
     <string name="about_title">About</string>
-    <string name="about_text">Periodical 0.13\n\nCalculation of fertility according to Knaus&#8211;Ogino\nCopyright © 2012&#8211;2013 Arno Welzel</string>
+    <string name="about_text">Periodical 0.14\n\nCalculation of fertility according to Knaus&#8211;Ogino\nCopyright © 2012&#8211;2013 Arno Welzel</string>
     <string name="about_details">This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.\n\nThis program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more details.\n\nYou should have received a copy of the GNU General Public License along with this program.  If not, see &lt;http://www.gnu.org/licenses/&gt;.</string>
     <string name="about_ok">OK</string>
     <string name="help_title">Help</string>
