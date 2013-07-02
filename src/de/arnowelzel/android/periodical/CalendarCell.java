@@ -125,13 +125,15 @@ public class CalendarCell extends Button {
 				colorBackgroundEnd = 0xffc04040;
 				break;
 			case DayEntry.FERTILITY_PREDICTED: // Calculated fertile day
+			case DayEntry.OVULATION_PREDICTED: // Calculated day of ovulation
 				colorBackgroundStart = 0xff00c3ff;
 				colorBackgroundEnd = 0xff007da3;
 				colorLabel = 0xffffffff;
 				break;
-			case DayEntry.OVULATION_PREDICTED: // Calculated day of ovulation
-				colorBackgroundStart = 0xff00c3ff;
-				colorBackgroundEnd = 0xff007da3;
+			case DayEntry.FERTILITY_PREDICTED_FUTURE: // Calculated fertile day in the future
+			case DayEntry.OVULATION_PREDICTED_FUTURE: // Calculated day of ovulation in the future
+				colorBackgroundStart = 0xff66dbff;
+				colorBackgroundEnd = 0xff408ba0;
 				colorLabel = 0xffffffff;
 				break;
 			}
@@ -176,7 +178,8 @@ public class CalendarCell extends Button {
 
 				canvas.drawBitmap(bitmapDrop, null, rectDest, paintBitmap);
 			}
-			if (type == DayEntry.OVULATION_PREDICTED) {
+			if (type == DayEntry.OVULATION_PREDICTED ||
+					type == DayEntry.OVULATION_PREDICTED_FUTURE) {
 				Rect rectDest;
 				Paint paintBitmap;
 				Bitmap bitmapDrop;

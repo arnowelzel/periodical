@@ -24,7 +24,8 @@ import java.util.GregorianCalendar;
 
 public class GregorianCalendarExt extends GregorianCalendar {
 	private static final long serialVersionUID = 7320228290550179309L;
-
+	
+	/* Calculate the difference between this calendar date and a given date in days */
 	public int diffDayPeriods(Calendar date) {
 		long endL = date.getTimeInMillis() + date.getTimeZone().getOffset( date.getTimeInMillis() );
 		long startL = this.getTimeInMillis() + this.getTimeZone().getOffset( this.getTimeInMillis() );

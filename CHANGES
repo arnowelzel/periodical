@@ -1,6 +1,11 @@
 0.14
 
+Modified color scheme to display calculated fertile days for future periods
+a bit lighter.
 
+The shortest and longest period are now being determined for the last 12 entries only
+and not the whole list to avoid the fertile period getting longer but never shorter
+again.
 
 0.13
 

@@ -22,20 +22,24 @@
         android:id="@+id/copy"
         android:icon="@android:drawable/ic_menu_save"
         android:title="@string/menuitem_copy"
+        android:showAsAction="ifRoom|withText"
     />
     <item
         android:id="@+id/restore"
         android:icon="@android:drawable/ic_menu_revert"
         android:title="@string/menuitem_restore"
+        android:showAsAction="ifRoom|withText"
     />
     <item
         android:id="@+id/about"
         android:icon="@android:drawable/ic_menu_info_details"
         android:title="@string/menuitem_about"
+        android:showAsAction="ifRoom|withText"
     />
     <item
         android:id="@+id/exit"
         android:icon="@android:drawable/ic_menu_close_clear_cancel"
         android:title="@string/menuitem_exit"
+        android:showAsAction="ifRoom|withText"
     />
 </menu>

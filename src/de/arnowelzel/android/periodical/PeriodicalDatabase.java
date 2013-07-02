@@ -37,24 +37,31 @@ public class PeriodicalDatabase {
 	/* Helper to create or open database */
 	private class PeriodicalDataOpenHelper extends SQLiteOpenHelper {
 		final static String DATABASE_NAME = "main.db";
-		final static int DATABASE_VERSION = 1;
-		final static String DATA_TABLE_NAME = "data";
-		final static String DATA_TABLE_CREATE = "CREATE TABLE "
-				+ DATA_TABLE_NAME + " (_id integer primary key autoincrement,"
-				+ "   eventtype integer(3)," + "   eventdate varchar(8))" + ";";
-
+		final static int DATABASE_VERSION = 2;
+		final static String CREATE_DATA = "create table data ("+
+				"_id integer primary key autoincrement, "+
+				"eventtype integer(3), "+
+				"eventdate varchar(8), "+
+				"eventcvx integer(3), "+
+				"eventtemp real "+
+				");"; 
+		
 		PeriodicalDataOpenHelper(Context context) {
 			super(context, DATABASE_NAME, null, DATABASE_VERSION);
 		}
 
 		@Override
 		public void onCreate(SQLiteDatabase db) {
-			db.execSQL(DATA_TABLE_CREATE);
+			db.execSQL(CREATE_DATA);
 		}
-
+		
 		@Override
 		public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-			// TODO Auto-generated method stub
+			if(oldVersion < 2 && newVersion >= 2) {
+				// Version 2 introduces additional data columns
+				db.execSQL("alter table data add column eventcvx integer(3)");
+				db.execSQL("alter table data add column eventtemp real");
+			}
 		}
 	}
 
@@ -71,6 +78,8 @@ public class PeriodicalDatabase {
 		final static int PERIOD_PREDICTED = 3;
 		final static int FERTILITY_PREDICTED = 4;
 		final static int OVULATION_PREDICTED = 5;
+		final static int FERTILITY_PREDICTED_FUTURE = 6;
+		final static int OVULATION_PREDICTED_FUTURE = 7;
 		int type;
 		GregorianCalendarExt date;
 
@@ -137,16 +146,29 @@ public class PeriodicalDatabase {
 		DayEntry entryPrevious = null;
 		boolean isFirst = true;
 		int count = 0;
+		int countlimit = 1;
 		this.average = 0;
 		this.longest = 28;
 		this.shortest = 28;
 		int ovulationday = 0;
-
+		Cursor result;
+				
 		// Clean up existing data
 		dayEntries.removeAllElements();
 
+		// Determine minimum entry count for
+		// shortest/longest period calculation
+		result = db.rawQuery("select count(*) from data", null);
+		if(result.moveToNext()) {
+			countlimit = result.getInt(0);
+			countlimit-=13;
+			if(countlimit < 1) countlimit = 1;
+		}
+		result.close();
+		
+		
 		// Get all entries from the database
-		Cursor result = db.rawQuery(
+		result = db.rawQuery(
 				"select eventtype, eventdate from data order by eventdate",
 				null);
 		while (result.moveToNext()) {
@@ -157,7 +179,7 @@ public class PeriodicalDatabase {
 			int eventday = Integer.parseInt(dbdate.substring(6, 8), 10);
 			GregorianCalendar eventdate = new GregorianCalendar(eventyear,
 					eventmonth - 1, eventday);
-
+			
 			if (isFirst) {
 				isFirst = false;
 
@@ -167,19 +189,19 @@ public class PeriodicalDatabase {
 				this.dayEntries.add(entryPrevious);
 			} else {
 				count++;
-
+				
 				// Create new day entry
 				entry = new DayEntry(eventtype, eventdate);
 				int length = entryPrevious.date.diffDayPeriods(entry.date);
 				
 				// Update values which are used to calculate the fertility
-				// window
-				if (count == 1) {
+				// window for the last 12 entries
+				if (count == countlimit) {
 					// If we have at least one period the shortest and
 					// and longest value is automatically the current length
 					this.shortest = length;
 					this.longest = length;
-				} else {
+				} else if(count > countlimit){
 					// We have more than two values, then update
 					// longest/shortest
 					// values
@@ -189,8 +211,9 @@ public class PeriodicalDatabase {
 						this.longest = length;
 				}
 
-				// Update global average sum
+				// Update average sum
 				this.average += length;
+	
 				
 				// Calculate a predicted ovulation date
 				int average = this.average;
@@ -218,7 +241,7 @@ public class PeriodicalDatabase {
 						dayEntries.add(entryCalculated);
 					}
 				}
-
+				
 				// Finally add current day
 				entryPrevious = new DayEntry(entry.type, entry.date);
 				this.dayEntries.add(entry);
@@ -240,16 +263,21 @@ public class PeriodicalDatabase {
 					if (day <= 4) {
 						// Predicted days of period
 						DayEntry entryCalculated = new DayEntry(
-								(cycles == 0 ? DayEntry.PERIOD_CONFIRMED : DayEntry.PERIOD_PREDICTED), datePredicted);
+								(cycles == 0 ? DayEntry.PERIOD_CONFIRMED : DayEntry.PERIOD_PREDICTED),
+								datePredicted);
 						dayEntries.add(entryCalculated);
 					} else if(day == ovulationday) {
 						// Day of ovulation
-						DayEntry entryCalculated = new DayEntry(DayEntry.OVULATION_PREDICTED, datePredicted);
+						DayEntry entryCalculated = new DayEntry(
+								cycles == 0 ? DayEntry.OVULATION_PREDICTED : DayEntry.OVULATION_PREDICTED_FUTURE,
+								datePredicted);
 						dayEntries.add(entryCalculated);
 					} else if (day >= this.shortest - 18
 							&& day <= this.longest - 11) {
 						// Fertile days
-						DayEntry entryCalculated = new DayEntry(DayEntry.FERTILITY_PREDICTED, datePredicted);
+						DayEntry entryCalculated = new DayEntry(
+								cycles == 0 ? DayEntry.FERTILITY_PREDICTED : DayEntry.FERTILITY_PREDICTED_FUTURE,
+								datePredicted);
 						dayEntries.add(entryCalculated);
 					}
 				}
