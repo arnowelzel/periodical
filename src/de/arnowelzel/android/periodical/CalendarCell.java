@@ -204,7 +204,7 @@ public class CalendarCell extends Button {
 			if (isCurrent) {
 				paintOval.setStyle(Style.STROKE);
 				paintOval.setAntiAlias(true);
-
+				
 				rectOval1.set(10 * metrics.density,
 						4 * metrics.density,
 						rectCanvas.right - 4 * metrics.density,
@@ -213,6 +213,21 @@ public class CalendarCell extends Button {
 						rectOval1.top-1, rectOval1.right,
 						rectOval1.bottom);
 				
+				// Center oval rectangle as a square
+				float delta = (rectOval1.height()-rectOval1.width())/2;
+				if(delta>0) {
+					rectOval1.top += delta;
+					rectOval1.bottom -= delta;
+					rectOval2.top += delta;
+					rectOval2.bottom -= delta;
+				} else if (delta<0) {
+					rectOval1.left -= delta;
+					rectOval1.right += delta;
+					rectOval2.left -= delta;
+					rectOval2.right += delta;
+				}
+				
+				// Draw oval
 				paintOval.setColor(0xff000000);
 				paintOval.setStrokeWidth(3 * metrics.density);
 				canvas.drawArc(rectOval1, 200, 160, false, paintOval);
