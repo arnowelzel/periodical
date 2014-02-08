@@ -1,7 +1,7 @@
-Periodical 0.14
+# Periodical
 A calendar to calculate the fertile days according to Knaus-Ogino
 
-Copyright (C) 2012-2013 Arno Welzel
+Copyright (C) 2012-2014 Arno Welzel
 
 
 This program is free software: you can redistribute it and/or modify
@@ -24,19 +24,19 @@ Knaus-Ogino originally developed by Arno Welzel.
 WARNING: It is not recommended to use this calendar to avoid pregnancy!
 There are more accurate methods, like measuring the basal body temperature. 
 
-Source:
-<http://arnowelzel.de/svn/Periodical>
+Source:  
+https://github.com/arnowelzel/periodical
 
-Download latest version at Google Play:
-<https://play.google.com/store/apps/details?id=de.arnowelzel.android.periodical>
+Download latest version at Google Play:  
+https://play.google.com/store/apps/details?id=de.arnowelzel.android.periodical
 
-Download latest version as APK:
-<http://arnowelzel.de/download/Periodical.apk>
+Download latest version as APK:  
+http://arnowelzel.de/download/Periodical.apk
 
 Tools to used to build this project:
 
-Eclipse 3.7.2 "Indigo"
-<http://www.eclipse.org/platform/>
+Eclipse 3.7.2 "Indigo"  
+http://www.eclipse.org/platform/
 
-Android Development Toolkit
-<http://developer.android.com/tools/sdk/eclipse-adt.html>
+Android Development Toolkit  
+http://developer.android.com/tools/sdk/eclipse-adt.html
