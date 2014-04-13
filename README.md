@@ -35,7 +35,7 @@ http://arnowelzel.de/download/Periodical.apk
 
 **Tools to used to build this project:**
 
-IntelliJ IDEA Community Edition
+IntelliJ IDEA Community Edition  
 http://www.jetbrains.com/idea/
 
 Android Development Toolkit  
