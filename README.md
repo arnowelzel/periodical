@@ -35,8 +35,8 @@ http://arnowelzel.de/download/Periodical.apk
 
 Tools to used to build this project:
 
-Eclipse 3.7.2 "Indigo"  
-http://www.eclipse.org/platform/
+IntelliJ IDEA Community Edition
+http://www.jetbrains.com/idea/
 
 Android Development Toolkit  
 http://developer.android.com/tools/sdk/eclipse-adt.html
