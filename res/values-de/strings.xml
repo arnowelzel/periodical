@@ -7,6 +7,7 @@
     <string name="menuitem_list">Liste</string>
     <string name="menuitem_copy">Sichern</string>
     <string name="menuitem_restore">Wiederherstellen</string>
+    <string name="menuitem_options">Einstellungen</string>
     <string name="menuitem_exit">Beenden</string>
     <string name="main_button_prev">&lt;</string>
     <string name="main_button_next">&gt;</string>
@@ -44,4 +45,10 @@
     <string name="calendaraction_remove">Kennzeichnung \"Periode hat begonnen\" für diesen Tag entfernen?</string>
     <string name="calendaraction_ok">Ja</string>
     <string name="calendaraction_cancel">Nein</string>
+	<string name="page_options">Einstellungen</string>
+    <string name="calculation_method">Berechnungsmethode</string>
+    <string name="method_knausogino">Knaus-Ogino</string>
+    <string name="method_standarddays">Standardtage</string>
+    <string name="options_ok">OK</string>
+    <string name="options_cancel">Abbrechen</string>
 </resources>

@@ -7,6 +7,7 @@
     <string name="menuitem_list">List</string>
     <string name="menuitem_copy">Backup</string>
     <string name="menuitem_restore">Restore</string>
+    <string name="menuitem_options">Options</string>
     <string name="menuitem_exit">Exit</string>
     <string name="main_button_prev">&lt;</string>
     <string name="main_button_next">&gt;</string>
@@ -44,4 +45,10 @@
     <string name="calendaraction_remove">Remove the \"Period has started\" mark for this day?</string>
     <string name="calendaraction_ok">Yes</string>
     <string name="calendaraction_cancel">No</string>
+	<string name="page_options">Options</string>
+    <string name="calculation_method">Calculation method</string>
+    <string name="method_knausogino">Knaus-Ogino</string>
+    <string name="method_standarddays">Standard days</string>
+    <string name="options_ok">OK</string>
+    <string name="options_cancel">Cancel</string>
 </resources>

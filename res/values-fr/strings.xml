@@ -7,6 +7,7 @@
     <string name="menuitem_list">Tableau</string>
     <string name="menuitem_copy">Sauvegarder</string>
     <string name="menuitem_restore">Restaurer</string>
+    <string name="menuitem_options">Paramètres</string>
     <string name="menuitem_exit">Terminer</string>
     <string name="main_button_prev">&lt;</string>
     <string name="main_button_next">&gt;</string>
@@ -44,4 +45,10 @@
     <string name="calendaraction_remove">Retirer la marque \"Début des règles\" pour ce jour ?</string>
     <string name="calendaraction_ok">Oui</string>
     <string name="calendaraction_cancel">Non</string>
+	<string name="page_options">Paramètres</string>
+    <string name="calculation_method">Méthode de calcul</string>
+    <string name="method_knausogino">Knaus-Ogino</string>
+    <string name="method_standarddays">Jours standard</string>
+    <string name="options_ok">OK</string>
+    <string name="options_cancel">Annuler</string>
 </resources>

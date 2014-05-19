@@ -31,6 +31,12 @@
         android:showAsAction="ifRoom|withText"
     />
     <item
+            android:id="@+id/options"
+            android:icon="@android:drawable/ic_menu_preferences"
+            android:title="@string/menuitem_options"
+            android:showAsAction="ifRoom|withText"
+            />
+    <item
         android:id="@+id/about"
         android:icon="@android:drawable/ic_menu_info_details"
         android:title="@string/menuitem_about"

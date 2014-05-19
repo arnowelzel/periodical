@@ -1,6 +1,6 @@
 /**
  * Periodical database class
- * Copyright (C) 2012-2013 Arno Welzel
+ * Copyright (C) 2012-2014 Arno Welzel
  * 
  * This code is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -19,7 +19,9 @@
 
 package de.arnowelzel.android.periodical;
 
+import android.content.ContentValues;
 import android.content.Context;
+
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
@@ -37,7 +39,7 @@ public class PeriodicalDatabase {
 	/* Helper to create or open database */
 	private class PeriodicalDataOpenHelper extends SQLiteOpenHelper {
 		final static String DATABASE_NAME = "main.db";
-		final static int DATABASE_VERSION = 2;
+		final static int DATABASE_VERSION = 3;
 		final static String CREATE_DATA = "create table data ("+
 				"_id integer primary key autoincrement, "+
 				"eventtype integer(3), "+
@@ -61,7 +63,13 @@ public class PeriodicalDatabase {
 				// Version 2 introduces additional data columns
 				db.execSQL("alter table data add column eventcvx integer(3)");
 				db.execSQL("alter table data add column eventtemp real");
-			}
+			} else if(oldVersion < 3 && newVersion >= 3) {
+                // Version 3 introduces options
+                db.execSQL("create table options ("+
+                    "name varchar(100), "+
+                    "value varchar(500)"+
+                    ");");
+            }
 		}
 	}
 
@@ -124,7 +132,10 @@ public class PeriodicalDatabase {
 		statement = String.format(
 				"insert into data (eventtype, eventdate) values (1, '%s')",
 				String.format("%04d%02d%02d", year, month, day));
+        db.beginTransaction();
 		db.execSQL(statement);
+        db.setTransactionSuccessful();
+        db.endTransaction();
 
 		isDirty = true;
 	}
@@ -135,7 +146,10 @@ public class PeriodicalDatabase {
 
 		statement = String.format("delete from data where eventdate='%s'",
 				String.format("%04d%02d%02d", year, month, day));
+        db.beginTransaction();
 		db.execSQL(statement);
+        db.setTransactionSuccessful();
+        db.endTransaction();
 
 		isDirty = true;
 	}
@@ -333,7 +347,39 @@ public class PeriodicalDatabase {
 		// Fall back if month was not found, then return "empty" as type
 		return 0;
 	}
+    
+    /* Get a named option from the options table */
+    public String getOption(String name) {
+        String value = "";
+        
+        String statement = "select value from options where name = ?";
+        Cursor result = db.rawQuery(statement, new String[] { name });
+        if(result.moveToNext()) {
+            value = result.getString(0);
+        }
+        result.close();
+        
+        return value;
+    }
 
+    /* Set a named option to be stored in the options table */
+    public void setOption(String name, String value) {
+        String statement;
+        
+        db.beginTransaction();
+        
+        // Delete existing value
+        statement = "delete from options where name = ?";
+        db.execSQL(statement, new String[]{name});
+        
+        // Save option
+        statement = "insert into options (name, value) values (?, ?)";
+        db.execSQL(statement, new String[]{name, value});
+        
+        db.setTransactionSuccessful();
+        db.endTransaction();
+    }
+    
 	/*
 	 * Helper to backup the database on the SD card if possible or restore it
 	 * from there

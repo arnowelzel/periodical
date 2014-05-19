@@ -1,6 +1,10 @@
 0.15
 
-Changed from Eclipse to IntelliJ IDEA
+Changed from Eclipse to IntelliJ IDEA.
+
+Extended database to store application options.
+
+Added activity to change the options.
 
 0.14
 

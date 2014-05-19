@@ -1,6 +1,6 @@
 /**
  * Periodical main activity 
- * Copyright (C) 2012-2013 Arno Welzel
+ * Copyright (C) 2012-2014 Arno Welzel
  * 
  * This code is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -95,6 +95,9 @@ public class MainActivity extends Activity {
 
 	/* Request code for date selection in details list */
 	static final int PICK_DATE = 1;
+
+    /* Request code for options update */
+    static final int SET_OPTIONS = 2;
 
 	/* Called when activity starts */
 	@SuppressWarnings("deprecation")
@@ -195,6 +198,10 @@ public class MainActivity extends Activity {
 		case R.id.restore:
 			doRestore();
 			return true;
+        
+        case R.id.options:
+            showOptions();
+            return true;    
 
 		case R.id.exit:
 			finish();
@@ -206,6 +213,7 @@ public class MainActivity extends Activity {
 	}
 
 	/* Called when a dialog box is created */
+    @SuppressWarnings("deprecation")
 	@Override
 	public Dialog onCreateDialog(int id) {
 		Dialog dialog;
@@ -266,6 +274,12 @@ public class MainActivity extends Activity {
 				new Intent(MainActivity.this, ListActivity.class), PICK_DATE);
 	}
 
+    /* Handler for "Options" menu action */
+    void showOptions() {
+        startActivityForResult(
+                new Intent(MainActivity.this, OptionsActivity.class), SET_OPTIONS);
+    }
+    
 	/* Update calendar data and view */
 	void calendarUpdate() {
 		// Initialize control ids for the target view to be used
@@ -555,18 +569,29 @@ public class MainActivity extends Activity {
 		bm.dataChanged();
 	}
 
-	/* Handler of detail list item selection */
+	/* Handler of activity results (detail list, options) */
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-		if (requestCode == PICK_DATE) {
-			if (resultCode == RESULT_OK) {
-				Bundle extras = data.getExtras();
-				if (extras != null) {
-					monthCurrent = Integer.parseInt(extras.getString("month")) + 1;
-					yearCurrent = Integer.parseInt(extras.getString("year"));
-					calendarUpdate();
-				}
-
-			}
+		switch (requestCode) {
+            // Specific date in detail list selected
+            case PICK_DATE:
+                if (resultCode == RESULT_OK) {
+                    Bundle extras = data.getExtras();
+                    if (extras != null) {
+                        monthCurrent = Integer.parseInt(extras.getString("month")) + 1;
+                        yearCurrent = Integer.parseInt(extras.getString("year"));
+                        calendarUpdate();
+                    }
+    
+                }
+                break;
+            
+            // Options modified
+            case SET_OPTIONS:
+                if (resultCode == RESULT_OK) {
+                    handleDatabaseEdit();
+                    calendarUpdate();
+                }
+                break;
 		}
 	}
 
