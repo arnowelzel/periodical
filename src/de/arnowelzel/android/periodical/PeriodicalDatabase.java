@@ -22,16 +22,19 @@ package de.arnowelzel.android.periodical;
 import android.content.ContentValues;
 import android.content.Context;
 
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.os.Environment;
+import android.preference.PreferenceManager;
 
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.GregorianCalendar;
+import java.util.Map;
 import java.util.Vector;
 
 public class PeriodicalDatabase {
@@ -155,7 +158,7 @@ public class PeriodicalDatabase {
 	}
 
 	/* Update the calculation based on the entries in the database */
-	void loadCalculatedData() {
+	void loadCalculatedData(Context context) {
 		DayEntry entry = null;
 		DayEntry entryPrevious = null;
 		boolean isFirst = true;
@@ -166,7 +169,16 @@ public class PeriodicalDatabase {
 		this.shortest = 28;
 		int ovulationday = 0;
 		Cursor result;
-				
+        int periodlength = 4;
+        
+        // Get default values from preferences
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
+        try {
+            periodlength = Integer.parseInt(preferences.getString("period_length", "4"));
+        } catch(NumberFormatException e) {
+            periodlength = 4;
+        }
+        				
 		// Clean up existing data
 		dayEntries.removeAllElements();
 
@@ -240,7 +252,7 @@ public class PeriodicalDatabase {
 				for (int day = 2; day <= length; day++) {
 					datePrevious.add(GregorianCalendar.DATE, 1);
 
-					if (day <= 4) {
+					if (day <= periodlength) {
 						// First days of period
 						DayEntry entryCalculated = new DayEntry(DayEntry.PERIOD_CONFIRMED, datePrevious);
 						dayEntries.add(entryCalculated);
@@ -274,7 +286,7 @@ public class PeriodicalDatabase {
 				for (int day = (cycles == 0 ? 2 : 1); day <= average; day++) {
 					datePredicted.add(GregorianCalendar.DATE, 1);
 
-					if (day <= 4) {
+					if (day <= periodlength) {
 						// Predicted days of period
 						DayEntry entryCalculated = new DayEntry(
 								(cycles == 0 ? DayEntry.PERIOD_CONFIRMED : DayEntry.PERIOD_PREDICTED),
@@ -404,7 +416,7 @@ public class PeriodicalDatabase {
 
 		// Get source of DB and path for external storage
 		if (backup) {
-			sourceFile = new File(db.getPath());
+            sourceFile = new File(db.getPath());
 			destDir = new File(Environment.getExternalStorageDirectory()
 					.getAbsolutePath() + "/" + context.getPackageName());
 			destFile = new File(destDir.getAbsolutePath() + "/"
@@ -467,7 +479,30 @@ public class PeriodicalDatabase {
 		return ok;
 	}
 
-	/*
+    /*
+     * Save application preferences to the database
+     * (Just a hack for now - in the future we might want to get rid of shared preferences)
+     */
+    void savePreferences(Context context) {
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
+        setOption("period_length", preferences.getString("period_length", "4"));
+    }
+
+    /*
+     * Restore application preferences from the database
+     * (Just a hack for now - in the future we might want to get rid of shared preferences)
+     */
+    void restorePreferences(Context context) {
+        String period_length = getOption("period_length");
+        if(period_length.equals("")) period_length = "4";
+
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.putString("period_length", period_length);
+        editor.commit();
+    }
+
+    /*
 	 * Get the path of the currently used database file, needed for external
 	 * backups
 	 */

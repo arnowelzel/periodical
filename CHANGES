@@ -2,9 +2,10 @@
 
 Changed from Eclipse to IntelliJ IDEA.
 
-Extended database to store application options.
+Added application preferences.
 
-Added activity to change the options.
+Extended database to store application preferences, so they get can get
+backed up/restored.
 
 0.14
 

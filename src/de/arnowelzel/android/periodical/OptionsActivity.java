@@ -20,54 +20,46 @@
 package de.arnowelzel.android.periodical;
 
 import android.app.ActionBar;
-import android.app.Activity;
-import android.content.Intent;
-import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.preference.*;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.RadioButton;
+import android.content.SharedPreferences;
+import android.widget.Toast;
 
-/**
- * Created by Arno on 2014-05-19.
- */
-public class OptionsActivity extends Activity {
-    /* Database for calendar data */
-    private PeriodicalDatabase dbMain;
+public class OptionsActivity extends PreferenceActivity implements SharedPreferences.OnSharedPreferenceChangeListener {
     
-    /* Controls interfaces */
-    RadioButton method_knausogino;
-    RadioButton method_standarddays;
-
     /* Called when activity starts */
+    @SuppressWarnings("deprecation")
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         
-        // Set up database
-        dbMain = new PeriodicalDatabase(getApplicationContext());
+        addPreferencesFromResource(R.xml.preferences);
+        initSummary(getPreferenceScreen());
         
-        // Set up view
-        setContentView(R.layout.page_options);
+        // Add validation for period length
+        findPreference("period_length").setOnPreferenceChangeListener(
+            new Preference.OnPreferenceChangeListener() {
 
-        method_knausogino = (RadioButton) findViewById(R.id.method_knausogino);
-        method_standarddays = (RadioButton) findViewById(R.id.method_standarddays);
+                @Override
+                public boolean onPreferenceChange(Preference preference, Object newValue) {
+                    int value;
+                    try {
+                        value = Integer.parseInt(newValue.toString());
+                    } catch (NumberFormatException e) {
+                        value = 0;
+                    }
+
+                    if (value < 1 || value > 14) {
+                        Toast.makeText(getApplicationContext(),
+                                getResources().getString(R.string.invalid_period_length),
+                                Toast.LENGTH_SHORT).show();
+                        return false;
+                    }
+                    
+                    return true;
+                }
+            });
         
-        // Get current options
-        int method = 0;
-        try {
-            method = Integer.parseInt(dbMain.getOption("CalculationMethod"));
-        } catch(NumberFormatException e) {
-        }
-        switch(method) {
-            case 1:
-                method_standarddays.setChecked(true);
-                break;
-            default:
-                method_knausogino.setChecked(true);
-                break;
-        }
-
         // Activate "back button" in Action Bar if possible
         if (android.os.Build.VERSION.SDK_INT >= 11) {
             ActionBar actionBar = getActionBar();
@@ -75,21 +67,71 @@ public class OptionsActivity extends Activity {
         }
     }
 
-    /* Called to save the current instance state */
+    /* Called when the activity starts interacting with the user */
     @Override
-    protected void onSaveInstanceState(Bundle outState) {
-        super.onSaveInstanceState(outState);
+    @SuppressWarnings("deprecation")
+    protected void onResume() {
+        super.onResume();
+        
+        // Set up a listener whenever a key changes
+        getPreferenceScreen().getSharedPreferences()
+                .registerOnSharedPreferenceChangeListener(this);
     }
 
-    /* Called when the activity is destroyed */
+    /* Called when activity pauses */
     @Override
-    protected void onDestroy() {
-        // Close database
-        dbMain.close();
+    @SuppressWarnings("deprecation")
+    protected void onPause() {
+        super.onPause();
+        
+        // Unregister the listener whenever a key changes
+        getPreferenceScreen().getSharedPreferences()
+                .unregisterOnSharedPreferenceChangeListener(this);
+    }    
+    
+    /* Update summary of changed preferences */
+    @SuppressWarnings("deprecation")
+    public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
+        Preference pref = findPreference(key);
 
-        super.onDestroy();
+        if (pref instanceof EditTextPreference) {
+            pref.setSummary(((EditTextPreference) pref).getText());
+        }
     }
 
+    /* Set initial summary texts */
+    private void initSummary(Preference p) {
+        if (p instanceof PreferenceGroup) {
+            PreferenceGroup pGrp = (PreferenceGroup) p;
+            for (int i = 0; i < pGrp.getPreferenceCount(); i++) {
+                initSummary(pGrp.getPreference(i));
+            }
+        } else {
+            updatePrefSummary(p);
+        }
+    }
+    
+    /* Update summary text for a preference */
+    private void updatePrefSummary(Preference p) {
+        if (p instanceof ListPreference) {
+            ListPreference listPref = (ListPreference) p;
+            p.setSummary(listPref.getEntry());
+        }
+        if (p instanceof EditTextPreference) {
+            EditTextPreference editTextPref = (EditTextPreference) p;
+            if (p.getTitle().toString().contains("assword"))
+            {
+                p.setSummary("******");
+            } else {
+                p.setSummary(editTextPref.getText());
+            }
+        }
+        if (p instanceof MultiSelectListPreference) {
+            EditTextPreference editTextPref = (EditTextPreference) p;
+            p.setSummary(editTextPref.getText());
+        }
+    }
+    
     /* Handler for ICS "home" button */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -100,28 +142,6 @@ public class OptionsActivity extends Activity {
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
-        }
-    }
-
-    /* Handler for "Cancel" button to leave without saving the options */
-    public void onOptionsCancelClick(View view) {
-        Intent intent = this.getIntent();
-        setResult(RESULT_CANCELED, intent);
-        finish();
-    }
-    
-    /* Handler for "OK" button to save the options */
-    public void onOptionsOkClick(View view) {
-        // Save options and return result to main view
-        if (dbMain != null ) {
-            Integer method = 0;
-
-            if(method_standarddays.isChecked()) method = 1;
-            dbMain.setOption("CalculationMethod", method.toString());
-
-            Intent intent = this.getIntent();
-            setResult(RESULT_OK, intent);
-            finish();
         }
     }
 }

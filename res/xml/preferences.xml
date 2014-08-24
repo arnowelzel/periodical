@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <EditTextPreference
+            android:title="@string/pref_periodlength"
+            android:defaultValue="4"
+            android:key="period_length"
+            android:inputType="number" />
+</PreferenceScreen>

@@ -110,7 +110,7 @@ public class MainActivity extends Activity {
 
 		// Set up view
 		setContentView(R.layout.main);
-
+        
 		// Set gesture handling
 		gestureDetector = new GestureDetector(new CalendarGestureDetector());
 		gestureListener = new View.OnTouchListener() {
@@ -132,7 +132,7 @@ public class MainActivity extends Activity {
 		}
 
 		// Update calculated values
-		dbMain.loadCalculatedData();
+		dbMain.loadCalculatedData(getApplicationContext());
 	}
 
 	/* Called when the activity starts interacting with the user */
@@ -456,11 +456,11 @@ public class MainActivity extends Activity {
 					public void onClick(DialogInterface dialog, int which) {
 						boolean ok = dbMain.restore(getApplicationContext());
 
-						handleDatabaseEdit();
-
 						// Show toast depending on result of operation
 						String text;
 						if (ok) {
+                            dbMain.restorePreferences(getApplicationContext());
+                            handleDatabaseEdit();
 							text = getResources().getString(
 									R.string.restore_finished);
 						} else {
@@ -561,7 +561,7 @@ public class MainActivity extends Activity {
 	/* Helper to update view after database modification */
 	private void handleDatabaseEdit() {
 		// Update calculated values
-		dbMain.loadCalculatedData();
+		dbMain.loadCalculatedData(getApplicationContext());
 		calendarUpdate();
 
 		// Notify backup agent about the change and mark DB as clean
@@ -587,10 +587,9 @@ public class MainActivity extends Activity {
             
             // Options modified
             case SET_OPTIONS:
-                if (resultCode == RESULT_OK) {
-                    handleDatabaseEdit();
-                    calendarUpdate();
-                }
+                dbMain.savePreferences(getApplicationContext());
+                handleDatabaseEdit();
+                calendarUpdate();
                 break;
 		}
 	}
