@@ -7,6 +7,9 @@ Added application preferences.
 Extended database to store application preferences, so they get can get
 backed up/restored.
 
+"About" and "Help" are now separate activities to display HTML content and no dialog
+boxes any longer.
+
 0.14
 
 Modified color scheme to display calculated fertile days for future periods
