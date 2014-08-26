@@ -18,13 +18,10 @@
     <string name="main_calday_th">jeu</string>
     <string name="main_calday_fr">ven</string>
     <string name="main_calday_sa">sam</string>
+    <string name="list_title">Tableau</string>
     <string name="about_title">À propos</string>
-    <string name="about_text">Periodical 0.15\n\nCalcul de la fertilité selon la méthode Knaus&#8211;Ogino\nCopyright © 2012&#8211;2014 Arno Welzel</string>
-    <string name="about_details">Ce programme est un logiciel libre: vous pouvez le partager et/ou le modifier selon les termes de la licence GNU General Public License que publiée par la Free Software Foundation, soit la version 3 de cette licence, ou (à votre choix) toute version ultérieure.\n\nCe programme est distribué dans dans un souci d\'utilité, mais SANS AUCUNE GARANTIE, sans même la garantie implicite de COMMERCIALISATION ou D\'ADAPTATION A UN USAGE PARTICULIER. Voir les détails de la GNU General Public License pour plus d\'informations.\n\nSi vous n\'avez pas reçu la licence GNU General Public avec ce programme, rendez-vous sur le site &lt;http://www.gnu.org/licenses/&gt;.</string>
     <string name="about_ok">OK</string>
     <string name="help_title">Aide</string>
-    <string name="help_text">ATTENTION: Il est déconseillé d\'utiliser ce calendrier pour éviter une grossesse ! Il existe des méthodes plus précises, comme la mesure de la température basale du corps.\n\nVous pouvez changer le mois avec les touches ou en balayant l\'écran de droite à gauche avec le doigt.\n\nPour indiquer le premier jour de la période, appuyez simplement sur le jour du calendrier correspondant. Pour supprimer l\'entrée, appuyez à nouveau sur cette touche.\n\nLes couleurs indiquent la signification de la journée:\n\nRouges &#8211; Jours de la règles.\n\nBleu &#8211; Jours fertiles.\n\nJaune &#8211; Jours infertiles.\n\nLe jour de l\'ovulation calculée est marqué avec d\'un O. Le jour courant est entouré d\'un cercle.\n\nLe calcul est effectué pour deux cycles à l\'avance.\n\nSi vous appuyez sur une entrée dans la liste, le mois correspondant s\'affiche dans le calendrier.\n\nPour utiliser la sauvegarde des données, une carte mémoire ou un disque dur interne doit être présent.</string>
-    <string name="help_ok">OK</string>
     <string name="backup_title">Sauvegarder les données</string>
     <string name="backup_text">Voulez-vous sauvegarder les données actuelles ? Cela remplacera la dernière sauvegarde !</string>
     <string name="backup_ok">OK</string>

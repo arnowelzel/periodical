@@ -21,7 +21,6 @@ package de.arnowelzel.android.periodical;
 
 import android.app.Activity;
 import android.app.AlertDialog;
-import android.app.Dialog;
 import android.app.backup.BackupManager;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
@@ -35,7 +34,6 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
-import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ViewFlipper;
@@ -46,11 +44,6 @@ import java.util.GregorianCalendar;
 import de.arnowelzel.android.periodical.R;
 
 public class MainActivity extends Activity {
-
-	/* Constants for dialog boxes */
-	final int DLG_ABOUT = 1;
-	final int DLG_HELP = 2;
-
 	/* Array for calendar button IDs */
 	final int calButtonIds[] = { R.id.cal01, R.id.cal02, R.id.cal03,
 			R.id.cal04, R.id.cal05, R.id.cal06, R.id.cal07, R.id.cal08,
@@ -93,14 +86,13 @@ public class MainActivity extends Activity {
 	/* Database for calendar data */
 	private PeriodicalDatabase dbMain;
 
-	/* Request code for date selection in details list */
-	static final int PICK_DATE = 1;
-
-    /* Request code for options update */
-    static final int SET_OPTIONS = 2;
+    /* Request codes for other activities */
+    static final int PICK_DATE = 1;    // Detail list: Date selected in detail list
+    static final int SET_OPTIONS = 2;  // Preferences: Options changed
+    static final int HELP_CLOSED = 3;  // Help: closed
+    static final int ABOUT_CLOSED = 4;  // About: closed
 
 	/* Called when activity starts */
-	@SuppressWarnings("deprecation")
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -112,7 +104,7 @@ public class MainActivity extends Activity {
 		setContentView(R.layout.main);
         
 		// Set gesture handling
-		gestureDetector = new GestureDetector(new CalendarGestureDetector());
+		gestureDetector = new GestureDetector(getApplicationContext(), new CalendarGestureDetector());
 		gestureListener = new View.OnTouchListener() {
 			public boolean onTouch(View v, MotionEvent event) {
 				if (gestureDetector.onTouchEvent(event)) {
@@ -212,60 +204,16 @@ public class MainActivity extends Activity {
 		}
 	}
 
-	/* Called when a dialog box is created */
-    @SuppressWarnings("deprecation")
-	@Override
-	public Dialog onCreateDialog(int id) {
-		Dialog dialog;
-		Button buttonOk;
-
-		switch (id) {
-		case DLG_HELP:
-			dialog = new Dialog(this);
-			dialog.setContentView(R.layout.dialog_help);
-			dialog.setTitle(R.string.help_title);
-			buttonOk = (Button) dialog.findViewById(R.id.ok);
-			buttonOk.setOnClickListener(new View.OnClickListener() {
-
-				@SuppressWarnings("deprecation")
-				public void onClick(View view) {
-					dismissDialog(DLG_HELP);
-				}
-			});
-			break;
-
-		case DLG_ABOUT:
-			dialog = new Dialog(this);
-			dialog.setContentView(R.layout.dialog_about);
-			dialog.setTitle(R.string.about_title);
-			buttonOk = (Button) dialog.findViewById(R.id.ok);
-			buttonOk.setOnClickListener(new View.OnClickListener() {
-
-				@SuppressWarnings("deprecation")
-				public void onClick(View view) {
-					dismissDialog(DLG_ABOUT);
-				}
-			});
-			break;
-
-		default:
-			dialog = null;
-			break;
-		}
-
-		return dialog;
-	}
-
 	/* Handler for "Help" menu action */
-	@SuppressWarnings("deprecation")
 	void showHelp() {
-		showDialog(DLG_HELP);
+        startActivityForResult(
+                new Intent(MainActivity.this, HelpActivity.class), HELP_CLOSED);
 	}
 
 	/* Handler for "About" menu action */
-	@SuppressWarnings("deprecation")
 	void showAbout() {
-		showDialog(DLG_ABOUT);
+        startActivityForResult(
+                new Intent(MainActivity.this, AboutActivity.class), ABOUT_CLOSED);
 	}
 
 	/* Handler for "List" menu action */
