@@ -1,3 +1,9 @@
+0.16
+
+Fixed a crash when opening the preferences in Android 2.
+
+Updated French translation.
+
 0.15
 
 Changed from Eclipse to IntelliJ IDEA.

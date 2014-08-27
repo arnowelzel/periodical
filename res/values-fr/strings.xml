@@ -7,7 +7,7 @@
     <string name="menuitem_list">Tableau</string>
     <string name="menuitem_copy">Sauvegarder</string>
     <string name="menuitem_restore">Restaurer</string>
-    <string name="menuitem_options">Préférences</string>
+    <string name="menuitem_options">Paramètre</string>
     <string name="menuitem_exit">Terminer</string>
     <string name="main_button_prev">&lt;</string>
     <string name="main_button_next">&gt;</string>
@@ -42,7 +42,7 @@
     <string name="calendaraction_remove">Retirer la marque \"Début des règles\" pour ce jour ?</string>
     <string name="calendaraction_ok">Oui</string>
     <string name="calendaraction_cancel">Non</string>
-    <string name="options_title">Préférences</string>
+    <string name="options_title">Paramètre</string>
     <string name="pref_periodlength">Longueur par défaut de la règles (journées)</string>
     <string name="invalid_period_length">La longueur standard de la période doit être 1-14!</string>
 </resources>

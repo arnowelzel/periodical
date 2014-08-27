@@ -125,10 +125,6 @@ public class OptionsActivity extends PreferenceActivity implements SharedPrefere
                 p.setSummary(editTextPref.getText());
             }
         }
-        if (p instanceof MultiSelectListPreference) {
-            EditTextPreference editTextPref = (EditTextPreference) p;
-            p.setSummary(editTextPref.getText());
-        }
     }
     
     /* Handler for ICS "home" button */
