@@ -63,7 +63,6 @@ public class PeriodicalDatabase {
                     "name varchar(100), " +
                     "value varchar(500)" +
                     ");");
-*/
         }
 
         @Override
