@@ -32,6 +32,8 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.sql.SQLDataException;
+import java.sql.SQLException;
 import java.util.GregorianCalendar;
 import java.util.Map;
 import java.util.Vector;
@@ -56,10 +58,12 @@ public class PeriodicalDatabase {
                     "eventcvx integer(3), " +
                     "eventtemp real " +
                     ");");
+            /* Due to a bug in release 0.16 this was missing - see open() for the workaround */   
             db.execSQL("create table options (" +
                     "name varchar(100), " +
                     "value varchar(500)" +
                     ");");
+*/
         }
 
         @Override
@@ -122,6 +126,24 @@ public class PeriodicalDatabase {
         dataOpenHelper = new PeriodicalDataOpenHelper(context);
         db = dataOpenHelper.getWritableDatabase();
         isDirty = false;
+        
+        // Workaround for a bug introduced in release 0.16:
+        // 1) Creating a new database did not create the "options" table
+        // 2) Opening a restored database may result in an old version missing the "options" table
+
+        // Check if table "options" exist
+        Cursor result;
+        boolean options_missing = false;
+        result = db.rawQuery("select DISTINCT tbl_name from sqlite_master where tbl_name = 'options'", null);
+        if (!result.moveToNext()) {
+            options_missing = true;
+        }
+        if (options_missing) {
+            db.execSQL("create table options (" +
+                    "name varchar(100), " +
+                    "value varchar(500)" +
+                    ");");
+        }
     }
 
     /* Close the database */
