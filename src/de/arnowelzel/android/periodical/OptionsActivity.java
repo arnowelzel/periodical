@@ -92,10 +92,8 @@ public class OptionsActivity extends PreferenceActivity implements SharedPrefere
     @SuppressWarnings("deprecation")
     public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
         Preference pref = findPreference(key);
-
-        if (pref instanceof EditTextPreference) {
-            pref.setSummary(((EditTextPreference) pref).getText());
-        }
+        
+        updatePrefSummary(pref);
     }
 
     /* Set initial summary texts */

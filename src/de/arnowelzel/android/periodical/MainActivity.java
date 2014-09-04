@@ -24,7 +24,9 @@ import android.app.backup.BackupManager;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.text.format.DateUtils;
 import android.view.GestureDetector;
 import android.view.GestureDetector.SimpleOnGestureListener;
@@ -33,6 +35,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.TableRow;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ViewFlipper;
@@ -236,8 +239,19 @@ public class MainActivity extends Activity {
 		} else {
 			calendarCells = this.calButtonIds_2;
 		}
-
-		// Output current year/month
+        
+        // Set weekday labels depending on selected start of week
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+        int startofweek = Integer.parseInt(preferences.getString("startofweek", "0"));
+        if(startofweek == 0) {
+            ((TableRow)findViewById(R.id.rowcaldays0)).setVisibility(View.VISIBLE);
+            ((TableRow)findViewById(R.id.rowcaldays1)).setVisibility(View.GONE);
+        } else {
+            ((TableRow)findViewById(R.id.rowcaldays0)).setVisibility(View.GONE);
+            ((TableRow)findViewById(R.id.rowcaldays1)).setVisibility(View.VISIBLE);
+        }
+        
+        // Output current year/month
 		TextView displayDate = (TextView) findViewById(R.id.displaydate);
 		displayDate.setText(String.format("%s %d\nØ%d ↓%d ↑%d", DateUtils
 				.getMonthString(this.monthCurrent - 1, DateUtils.LENGTH_LONG),
@@ -245,11 +259,17 @@ public class MainActivity extends Activity {
 				dbMain.longest));
 
 		// Calculate first week day of month
-		GregorianCalendar cal = new GregorianCalendar(yearCurrent,
-				monthCurrent - 1, 1);
+		GregorianCalendar cal = new GregorianCalendar(yearCurrent, monthCurrent - 1, 1);
 		firstDay = cal.get(Calendar.DAY_OF_WEEK);
 		daysCount = cal.getActualMaximum(Calendar.DAY_OF_MONTH);
 
+        // If the week should start on monday, adjust the first day of the month,
+        // so every day moves one position to the left and sunday gets to the end
+        if(startofweek == 1) {
+            firstDay--;
+            if(firstDay == 0) firstDay = 7;
+        }
+        
 		GregorianCalendar calToday = new GregorianCalendar();
 
 		// Adjust calendar elements
@@ -257,8 +277,7 @@ public class MainActivity extends Activity {
 			CalendarCell cell = (CalendarCell) findViewById(calendarCells[i - 1]);
 			if (i < firstDay || i >= firstDay + daysCount) {
 				cell.setVisibility(android.view.View.INVISIBLE);
-				// TODO Display days of previous/next month as "disabled"
-				// buttons
+				// TODO Display days of previous/next month as "disabled" buttons
 			} else {
 				// This cell is part of the current month,
 				// label text is the day of the month

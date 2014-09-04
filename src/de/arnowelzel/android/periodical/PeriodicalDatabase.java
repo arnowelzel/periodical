@@ -384,8 +384,8 @@ public class PeriodicalDatabase {
     }
 
     /* Get a named option from the options table */
-    public String getOption(String name) {
-        String value = "";
+    public String getOption(String name, String defaultvalue) {
+        String value = defaultvalue;
 
         String statement = "select value from options where name = ?";
         Cursor result = db.rawQuery(statement, new String[]{name});
@@ -509,6 +509,7 @@ public class PeriodicalDatabase {
     void savePreferences(Context context) {
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
         setOption("period_length", preferences.getString("period_length", "4"));
+        setOption("startofweek", preferences.getString("startofweek", "0"));
     }
 
     /*
@@ -516,12 +517,13 @@ public class PeriodicalDatabase {
      * (Just a hack for now - in the future we might want to get rid of shared preferences)
      */
     void restorePreferences(Context context) {
-        String period_length = getOption("period_length");
-        if (period_length.equals("")) period_length = "4";
-
+        String period_length = getOption("period_length", "4");
+        String startofweek = getOption("startofweek", "0");
+                
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
         SharedPreferences.Editor editor = preferences.edit();
         editor.putString("period_length", period_length);
+        editor.putString("startofweek", startofweek);
         editor.commit();
     }
 

@@ -5,4 +5,10 @@
             android:defaultValue="4"
             android:key="period_length"
             android:inputType="number" />
+    <ListPreference
+            android:title="@string/pref_startofweek"
+            android:defaultValue="0"
+            android:key="startofweek"
+            android:entries="@array/list_startofweek"
+            android:entryValues="@array/values_startofweek"/>
 </PreferenceScreen>
