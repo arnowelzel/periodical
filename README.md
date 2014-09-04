@@ -38,5 +38,5 @@ http://arnowelzel.de/download/Periodical.apk
 IntelliJ IDEA Community Edition  
 http://www.jetbrains.com/idea/
 
-Android Development Toolkit  
-http://developer.android.com/tools/sdk/eclipse-adt.html
+Android SDK
+http://developer.android.com/sdk/index.html
