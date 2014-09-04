@@ -3,6 +3,10 @@ A calendar to calculate the fertile days according to Knaus-Ogino
 
 Copyright (C) 2012-2014 Arno Welzel
 
+Translations:
+
+French - Sébastien Gravier  
+Itailan - Valerio Bozzolan
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
