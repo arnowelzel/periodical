@@ -245,10 +245,14 @@ public class MainActivity extends Activity {
         int startofweek = Integer.parseInt(preferences.getString("startofweek", "0"));
         if(startofweek == 0) {
             ((TableRow)findViewById(R.id.rowcaldays0)).setVisibility(View.VISIBLE);
+            ((TableRow)findViewById(R.id.rowcaldays0_2)).setVisibility(View.VISIBLE);
             ((TableRow)findViewById(R.id.rowcaldays1)).setVisibility(View.GONE);
+            ((TableRow)findViewById(R.id.rowcaldays1_2)).setVisibility(View.GONE);
         } else {
             ((TableRow)findViewById(R.id.rowcaldays0)).setVisibility(View.GONE);
+            ((TableRow)findViewById(R.id.rowcaldays0_2)).setVisibility(View.GONE);
             ((TableRow)findViewById(R.id.rowcaldays1)).setVisibility(View.VISIBLE);
+            ((TableRow)findViewById(R.id.rowcaldays1_2)).setVisibility(View.VISIBLE);
         }
         
         // Output current year/month

@@ -184,7 +184,7 @@ android:layout_below="@+id/monthselector"
     >
 
         <TableRow
-            android:id="@+id/rowcaldays_2"
+            android:id="@+id/rowcaldays0_2"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
             android:layout_weight="0.6"
@@ -199,6 +199,23 @@ android:layout_below="@+id/monthselector"
             <TextView android:gravity="center" android:layout_height="fill_parent" android:text="@string/main_calday_sa" android:textStyle="bold" />
         </TableRow>
 
+        <TableRow
+                android:id="@+id/rowcaldays1_2"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_weight="0.6"
+                android:orientation="horizontal"
+                android:visibility="gone">
+
+            <TextView android:gravity="center" android:layout_height="fill_parent" android:text="@string/main_calday_mo" android:textStyle="bold" />
+            <TextView android:gravity="center" android:layout_height="fill_parent" android:text="@string/main_calday_tu" android:textStyle="bold" />
+            <TextView android:gravity="center" android:layout_height="fill_parent" android:text="@string/main_calday_we" android:textStyle="bold" />
+            <TextView android:gravity="center" android:layout_height="fill_parent" android:text="@string/main_calday_th" android:textStyle="bold" />
+            <TextView android:gravity="center" android:layout_height="fill_parent" android:text="@string/main_calday_fr" android:textStyle="bold" />
+            <TextView android:gravity="center" android:layout_height="fill_parent" android:text="@string/main_calday_sa" android:textStyle="bold" />
+            <TextView android:gravity="center" android:layout_height="fill_parent" android:text="@string/main_calday_su" android:textStyle="bold" />
+        </TableRow>
+        
         <TableRow
             android:id="@+id/rowcal0107_2"
             android:layout_width="fill_parent"
