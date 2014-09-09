@@ -21,6 +21,7 @@ package de.arnowelzel.android.periodical;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.backup.BackupManager;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
@@ -109,11 +110,8 @@ public class MainActivity extends Activity {
 		gestureDetector = new GestureDetector(getApplicationContext(), new CalendarGestureDetector());
 		gestureListener = new View.OnTouchListener() {
 			public boolean onTouch(View v, MotionEvent event) {
-				if (gestureDetector.onTouchEvent(event)) {
-					return true;
-				}
-				return false;
-			}
+                return gestureDetector.onTouchEvent(event);
+            }
 		};
 
 		// If savedInstanceState exists, restore the last
@@ -241,7 +239,9 @@ public class MainActivity extends Activity {
 		}
         
         // Set weekday labels depending on selected start of week
-        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+        Context context = getApplicationContext();
+        assert context != null;
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
         int startofweek = Integer.parseInt(preferences.getString("startofweek", "0"));
         if(startofweek == 0) {
             ((TableRow)findViewById(R.id.rowcaldays0)).setVisibility(View.VISIBLE);
@@ -371,6 +371,8 @@ public class MainActivity extends Activity {
 
 	/* Handler for "backup" menu action */
 	private void doBackup() {
+        final Context context = getApplicationContext();
+        assert context != null;
 		final AlertDialog.Builder builder = new AlertDialog.Builder(this);
 		builder.setTitle(getResources().getString(R.string.backup_title));
 		builder.setMessage(getResources().getString(R.string.backup_text));
@@ -381,20 +383,17 @@ public class MainActivity extends Activity {
 
 					@Override
 					public void onClick(DialogInterface dialog, int which) {
-						boolean ok = dbMain.backup(getApplicationContext());
+						boolean ok = dbMain.backup(context);
 
 						// Show toast depending on result of operation
 						String text;
 						if (ok) {
-							text = getResources().getString(
-									R.string.backup_finished);
+							text = getResources().getString(R.string.backup_finished);
 						} else {
-							text = getResources().getString(
-									R.string.backup_failed);
+							text = getResources().getString(R.string.backup_failed);
 						}
 
-						Toast toast = Toast.makeText(getApplicationContext(),
-								text, Toast.LENGTH_SHORT);
+						Toast toast = Toast.makeText(context, text, Toast.LENGTH_SHORT);
 						toast.show();
 					}
 				});
@@ -413,6 +412,8 @@ public class MainActivity extends Activity {
 
 	/* Handler for "restore" menu action */
 	private void doRestore() {
+        final Context context = getApplicationContext();
+        assert context != null;
 		final AlertDialog.Builder builder = new AlertDialog.Builder(this);
 		builder.setTitle(getResources().getString(R.string.restore_title));
 		builder.setMessage(getResources().getString(R.string.restore_text));
@@ -424,21 +425,18 @@ public class MainActivity extends Activity {
 
 					@Override
 					public void onClick(DialogInterface dialog, int which) {
-						boolean ok = dbMain.restore(getApplicationContext());
+						boolean ok = dbMain.restore(context);
 
 						// Show toast depending on result of operation
 						String text;
 						if (ok) {
-                            dbMain.restorePreferences(getApplicationContext());
+                            dbMain.restorePreferences(context);
                             handleDatabaseEdit();
-							text = getResources().getString(
-									R.string.restore_finished);
+							text = getResources().getString(R.string.restore_finished);
 						} else {
-							text = getResources().getString(
-									R.string.restore_failed);
+							text = getResources().getString(R.string.restore_failed);
 						}
-						Toast toast = Toast.makeText(getApplicationContext(),
-								text, Toast.LENGTH_SHORT);
+						Toast toast = Toast.makeText(context, text, Toast.LENGTH_SHORT);
 						toast.show();
 					}
 				});

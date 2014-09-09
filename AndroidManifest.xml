@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
       package="de.arnowelzel.android.periodical"
-      android:versionCode="19"
-      android:versionName="0.19"
+      android:versionCode="20"
+      android:versionName="0.20"
       android:installLocation="auto">
           
-    <uses-sdk android:minSdkVersion="8" android:targetSdkVersion="17" />
+    <uses-sdk android:minSdkVersion="8" android:targetSdkVersion="20" />
     
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     

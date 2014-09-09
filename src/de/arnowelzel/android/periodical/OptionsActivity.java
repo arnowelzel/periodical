@@ -19,6 +19,7 @@
 package de.arnowelzel.android.periodical;
 
 import android.app.ActionBar;
+import android.content.Context;
 import android.os.Bundle;
 import android.preference.*;
 import android.view.MenuItem;
@@ -31,6 +32,9 @@ public class OptionsActivity extends PreferenceActivity implements SharedPrefere
     @SuppressWarnings("deprecation")
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        
+        final Context context = getApplicationContext();
+        assert context != null;
         
         addPreferencesFromResource(R.xml.preferences);
         initSummary(getPreferenceScreen());
@@ -49,7 +53,7 @@ public class OptionsActivity extends PreferenceActivity implements SharedPrefere
                     }
 
                     if (value < 1 || value > 14) {
-                        Toast.makeText(getApplicationContext(),
+                        Toast.makeText(context,
                                 getResources().getString(R.string.invalid_period_length),
                                 Toast.LENGTH_SHORT).show();
                         return false;
@@ -62,6 +66,7 @@ public class OptionsActivity extends PreferenceActivity implements SharedPrefere
         // Activate "back button" in Action Bar if possible
         if (android.os.Build.VERSION.SDK_INT >= 11) {
             ActionBar actionBar = getActionBar();
+            assert actionBar != null;
             actionBar.setDisplayHomeAsUpEnabled(true);
         }
     }

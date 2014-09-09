@@ -21,8 +21,7 @@ package de.arnowelzel.android.periodical;
 import java.util.Calendar;
 import java.util.Iterator;
 
-import de.arnowelzel.android.periodical.PeriodicalDatabase.DayEntry;
-
+import android.content.Context;
 import android.annotation.SuppressLint;
 import android.app.ActionBar;
 import android.content.Intent;
@@ -32,6 +31,8 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import de.arnowelzel.android.periodical.PeriodicalDatabase.DayEntry;
+
 public class ListActivity extends android.app.ListActivity {
 	/* Database for calendar data */
 	private PeriodicalDatabase dbMain;
@@ -40,15 +41,17 @@ public class ListActivity extends android.app.ListActivity {
 	@SuppressLint("NewApi")
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
+        final Context context = getApplicationContext();
+        assert context != null;
 		super.onCreate(savedInstanceState);
 
 		// Set up database and string array for the list
-		dbMain = new PeriodicalDatabase(getApplicationContext());
-		dbMain.loadRawData(false);
+		dbMain = new PeriodicalDatabase(context);
+		dbMain.loadRawData();
 
 		String[] entries = new String[dbMain.dayEntries.size()];
 		java.text.DateFormat dateFormat = android.text.format.DateFormat
-				.getDateFormat(getApplicationContext());
+				.getDateFormat(context);
 		Iterator<DayEntry> dayIterator = dbMain.dayEntries.iterator();
 		int pos = 0;
 		DayEntry dayPrevious = null;
@@ -92,17 +95,12 @@ public class ListActivity extends android.app.ListActivity {
 		// Activate "back button" in Action Bar if possible
 		if (android.os.Build.VERSION.SDK_INT >= 11) {
 			ActionBar actionBar = getActionBar();
-			actionBar.setDisplayHomeAsUpEnabled(true);
+            assert actionBar != null;
+            actionBar.setDisplayHomeAsUpEnabled(true);
 		}
 	}
 
-	/* Called to save the current instance state */
-	@Override
-	protected void onSaveInstanceState(Bundle outState) {
-		super.onSaveInstanceState(outState);
-	}
-
-	/* Called when the activity is destroyed */
+    /* Called when the activity is destroyed */
 	@Override
 	protected void onDestroy() {
 		// Close database

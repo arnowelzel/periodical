@@ -18,7 +18,6 @@
 
 package de.arnowelzel.android.periodical;
 
-import android.content.ContentValues;
 import android.content.Context;
 
 import android.content.SharedPreferences;
@@ -32,10 +31,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.sql.SQLDataException;
-import java.sql.SQLException;
 import java.util.GregorianCalendar;
-import java.util.Map;
 import java.util.Vector;
 
 public class PeriodicalDatabase {
@@ -84,9 +80,6 @@ public class PeriodicalDatabase {
     /* Reference to database */
     private SQLiteDatabase db;
 
-    /* Dirty flag to signal changes for the backup manager */
-    private boolean isDirty;
-
     /* Local helper to manage calculated calendar entries */
     public class DayEntry {
         final static int PERIOD_START = 1;
@@ -96,6 +89,8 @@ public class PeriodicalDatabase {
         final static int OVULATION_PREDICTED = 5;
         final static int FERTILITY_PREDICTED_FUTURE = 6;
         final static int OVULATION_PREDICTED_FUTURE = 7;
+        final static int INFERTILE = 8;
+        final static int INFERTILE_FUTURE = 9;
         int type;
         GregorianCalendarExt date;
 
@@ -124,7 +119,7 @@ public class PeriodicalDatabase {
         PeriodicalDataOpenHelper dataOpenHelper;
         dataOpenHelper = new PeriodicalDataOpenHelper(context);
         db = dataOpenHelper.getWritableDatabase();
-        isDirty = false;
+        assert db != null;
         
         // Workaround for a bug introduced in release 0.16:
         // 1) Creating a new database did not create the "options" table
@@ -162,8 +157,6 @@ public class PeriodicalDatabase {
         db.execSQL(statement);
         db.setTransactionSuccessful();
         db.endTransaction();
-
-        isDirty = true;
     }
 
     /* Remove an entry for a specific day into the database */
@@ -176,8 +169,6 @@ public class PeriodicalDatabase {
         db.execSQL(statement);
         db.setTransactionSuccessful();
         db.endTransaction();
-
-        isDirty = true;
     }
 
     /* Update the calculation based on the entries in the database */
@@ -192,7 +183,7 @@ public class PeriodicalDatabase {
         this.shortest = 28;
         int ovulationday = 0;
         Cursor result;
-        int periodlength = 4;
+        int periodlength;
 
         // Get default values from preferences
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
@@ -288,6 +279,10 @@ public class PeriodicalDatabase {
                         // Fertile days
                         DayEntry entryCalculated = new DayEntry(DayEntry.FERTILITY_PREDICTED, datePrevious);
                         dayEntries.add(entryCalculated);
+                    } else {
+                        // Infertile days
+                        DayEntry entryCalculated = new DayEntry(DayEntry.INFERTILE, datePrevious);
+                        dayEntries.add(entryCalculated);
                     }
                 }
 
@@ -328,6 +323,10 @@ public class PeriodicalDatabase {
                                 cycles == 0 ? DayEntry.FERTILITY_PREDICTED : DayEntry.FERTILITY_PREDICTED_FUTURE,
                                 datePredicted);
                         dayEntries.add(entryCalculated);
+                    } else {
+                        // Infertile days
+                        DayEntry entryCalculated = new DayEntry(DayEntry.INFERTILE_FUTURE, datePredicted);
+                        dayEntries.add(entryCalculated);
                     }
                 }
             }
@@ -337,7 +336,7 @@ public class PeriodicalDatabase {
     }
 
     /* Load data without calculating anything */
-    void loadRawData(boolean sortAscending) {
+    void loadRawData() {
         DayEntry entry;
 
         // Clean up existing data
@@ -345,12 +344,11 @@ public class PeriodicalDatabase {
 
         // Get all entries from the database
         String statement = "select eventtype, eventdate from data order by eventdate";
-        if (!sortAscending)
-            statement += " desc";
         Cursor result = db.rawQuery(statement, null);
         while (result.moveToNext()) {
             int eventtype = result.getInt(0);
             String dbdate = result.getString(1);
+            assert dbdate != null;
             int eventyear = Integer.parseInt(dbdate.substring(0, 4), 10);
             int eventmonth = Integer.parseInt(dbdate.substring(4, 6), 10);
             int eventday = Integer.parseInt(dbdate.substring(6, 8), 10);
@@ -368,9 +366,7 @@ public class PeriodicalDatabase {
 
     /* Get entry type from cache for a specific day in month */
     int getEntry(int year, int month, int day) {
-        for (int dayPos = 0; dayPos < this.dayEntries.size(); dayPos++) {
-            DayEntry entry = dayEntries.get(dayPos);
-
+        for (DayEntry entry : dayEntries) {
             // If entry was found, then return type
             if (entry.date.get(GregorianCalendar.YEAR) == year
                     && entry.date.get(GregorianCalendar.MONTH) == month - 1
@@ -433,9 +429,9 @@ public class PeriodicalDatabase {
                 android.os.Environment.MEDIA_UNMOUNTED))
             return false;
 
-        File sourceFile = null;
-        File destDir = null;
-        File destFile = null;
+        File sourceFile;
+        File destDir;
+        File destFile;
 
         // Get source of DB and path for external storage
         if (backup) {
@@ -445,6 +441,7 @@ public class PeriodicalDatabase {
             destFile = new File(destDir.getAbsolutePath() + "/"
                     + sourceFile.getName());
         } else {
+            destDir = null; // If we restore, the directory is already there
             destFile = new File(db.getPath());
             sourceFile = new File(Environment.getExternalStorageDirectory()
                     .getAbsolutePath()
@@ -465,8 +462,7 @@ public class PeriodicalDatabase {
 
         // If everything is ok, then copy source to destination
         if (ok) {
-            if (backup && destDir != null)
-                destDir.mkdirs();
+            if (backup) destDir.mkdirs();
             FileInputStream in = null;
             FileOutputStream out = null;
             try {
@@ -485,10 +481,8 @@ public class PeriodicalDatabase {
                     while ((bytesRead = in.read(buffer)) != -1)
                         out.write(buffer, 0, bytesRead);
 
-                    if (in != null)
-                        in.close();
-                    if (out != null)
-                        out.close();
+                    in.close();
+                    out.close();
                 } catch (IOException e) {
                     e.printStackTrace();
                     ok = false;
@@ -525,24 +519,5 @@ public class PeriodicalDatabase {
         editor.putString("period_length", period_length);
         editor.putString("startofweek", startofweek);
         editor.commit();
-    }
-
-    /*
-     * Get the path of the currently used database file, needed for external
-     * backups
-     */
-    String getPath() {
-        return db.getPath();
-    }
-
-    /*
-     * Getter/setter for dirty flag
-     */
-    boolean getDirty() {
-        return this.isDirty;
-    }
-
-    void setDirty(boolean isDirty) {
-        this.isDirty = isDirty;
     }
 }

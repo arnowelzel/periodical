@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-  <string name="app_name">Ciclo</string>
+  <string name="app_name">Periodical</string>
   <string name="menuitem_help">Aiuto</string>
   <string name="menuitem_about">Info</string>
   <string name="menuitem_current">Attuale</string>

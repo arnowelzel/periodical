@@ -40,6 +40,7 @@ public class HelpActivity extends Activity {
         // Activate "back button" in Action Bar if possible
         if (android.os.Build.VERSION.SDK_INT >= 11) {
             ActionBar actionBar = getActionBar();
+            assert actionBar != null;
             actionBar.setDisplayHomeAsUpEnabled(true);
         }
     }

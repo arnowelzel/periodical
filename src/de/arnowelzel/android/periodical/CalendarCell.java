@@ -19,7 +19,6 @@
 package de.arnowelzel.android.periodical;
 
 import de.arnowelzel.android.periodical.PeriodicalDatabase.DayEntry;
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -48,21 +47,32 @@ public class CalendarCell extends Button {
 	protected Paint paintLabel;
 	protected Paint paintBackground;
 	protected Paint paintFocus;
-	protected Paint paintBorder;
 	protected Paint paintOval;
 	protected RectF rectOval1;
 	protected RectF rectOval2;
 	protected Rect rectLabel;
-	protected int orientation;
+    protected LinearGradient gradientPeriodConfirmed;
+    protected LinearGradient gradientPeriodPredicted;
+    protected LinearGradient gradientFertilityPredicted;
+    protected LinearGradient gradientFertilityFuture;
+    protected LinearGradient gradientInfertile;
+    protected LinearGradient gradientEmpty;
+    protected Rect rectDestination;
+    protected Bitmap bitmapPeriod;
+    protected Bitmap bitmapOvulation;
+    protected Paint paintBitmap;
+
+    protected int orientation;
 
 	public CalendarCell(Context context, AttributeSet attrs) {
 		super(context, attrs);
 
-		metrics = getContext().getResources().getDisplayMetrics();
+        //noinspection ConstantConditions
+        metrics = getContext().getResources().getDisplayMetrics();
 
 		// Get current size of the canvas
 		rectCanvas = new RectF();
-
+        
 		// Create resources needed for drawing
 		paintLabel = new Paint();
 		paintLabel.setAntiAlias(true);
@@ -71,33 +81,52 @@ public class CalendarCell extends Button {
 		paintLabel.setTextSize(16 * metrics.scaledDensity);
 		paintLabel.setTextAlign(Align.LEFT);
 		paintBackground = new Paint();
-		paintBorder = new Paint();
 		paintOval = new Paint();
 		paintFocus = new Paint();
 		paintFocus.setAntiAlias(true);
 		rectOval1 = new RectF();
 		rectOval2 = new RectF();
 		rectLabel = new Rect();
-		
-		// Get current screen orientation
+        gradientPeriodConfirmed = makeCellGradient(0xffff0000, 0xffaa0000);
+        gradientPeriodPredicted = makeCellGradient(0xffffc0c0, 0xffc04040);
+        gradientFertilityPredicted = makeCellGradient(0xff00c3ff, 0xff007da3);
+        gradientFertilityFuture = makeCellGradient(0xff66dbff, 0xff408ba0);
+        gradientInfertile = makeCellGradient(0xffffff00, 0xffaaaa00);
+        gradientEmpty = makeCellGradient(0xff808080, 0xff808080);
+
+        // Overlays
+        rectDestination = new Rect();
+        paintBitmap = new Paint();
+        paintBitmap.setStyle(Style.FILL);
+        paintBitmap.setFilterBitmap(true);
+        bitmapPeriod = BitmapFactory.decodeResource(getResources(),
+                R.drawable.ic_start);
+        bitmapOvulation = BitmapFactory.decodeResource(getResources(),
+                R.drawable.ic_ovulation);
+
+
+        // Get current screen orientation
 		if(!isInEditMode()) { // Don't try this in layout editor
 			Display display = ((WindowManager)context.getSystemService(Context.WINDOW_SERVICE)).
 					getDefaultDisplay();
 			orientation = display.getRotation();
 		}
 	}
-
+    
 	protected void onSizeChanged(int w, int h, int oldw, int oldh) {
 		super.onSizeChanged(w, h, oldw, oldh);
 		rectCanvas.set(0, 0, w, h);
-	}
+        gradientPeriodConfirmed = makeCellGradient(0xffff0000, 0xffaa0000);
+        gradientPeriodPredicted = makeCellGradient(0xffffc0c0, 0xffc04040);
+        gradientFertilityPredicted = makeCellGradient(0xff00c3ff, 0xff007da3);
+        gradientFertilityFuture = makeCellGradient(0xff66dbff, 0xff408ba0);
+        gradientInfertile = makeCellGradient(0xffffff00, 0xffaaaa00);
+    }
 	
-	@SuppressLint("DrawAllocation")
 	protected void onDraw(Canvas canvas) {
-		int colorBackgroundStart = 0xffffff00;
-		int colorBackgroundEnd = 0xffaaaa00;
-		int colorLabel = 0xff000000;
-
+        LinearGradient gradient = gradientEmpty;
+		int colorLabel = 0xffffffff;
+        
 		// Draw background, depending on state
 		if (isPressed()) {
 			// If cell is pressed, then fill with solid color
@@ -110,38 +139,32 @@ public class CalendarCell extends Button {
 
 			switch (type) {
 			case DayEntry.PERIOD_START: // Start of period
-				colorBackgroundStart = 0xffff0000;
-				colorBackgroundEnd = 0xffaa0000;
+            case DayEntry.PERIOD_CONFIRMED: // Confirmed period day
+                gradient = gradientPeriodConfirmed;
 				colorLabel = 0xffffffff;
-				break;
-			case DayEntry.PERIOD_CONFIRMED: // Confirmed period day
-				colorBackgroundStart = 0xffff0000;
-				colorBackgroundEnd = 0xffaa0000;
-				colorLabel = 0xffffffff;
-				break;
+                break;
 			case DayEntry.PERIOD_PREDICTED: // Predicted period day
-				colorBackgroundStart = 0xffffc0c0;
-				colorBackgroundEnd = 0xffc04040;
+                gradient = gradientPeriodPredicted;
+                colorLabel = 0xff000000;
 				break;
 			case DayEntry.FERTILITY_PREDICTED: // Calculated fertile day
 			case DayEntry.OVULATION_PREDICTED: // Calculated day of ovulation
-				colorBackgroundStart = 0xff00c3ff;
-				colorBackgroundEnd = 0xff007da3;
+                gradient = gradientFertilityPredicted;
 				colorLabel = 0xffffffff;
 				break;
 			case DayEntry.FERTILITY_PREDICTED_FUTURE: // Calculated fertile day in the future
 			case DayEntry.OVULATION_PREDICTED_FUTURE: // Calculated day of ovulation in the future
-				colorBackgroundStart = 0xff66dbff;
-				colorBackgroundEnd = 0xff408ba0;
-				colorLabel = 0xffffffff;
+                gradient = gradientFertilityFuture;
+                colorLabel = 0xff000000;
 				break;
+            case DayEntry.INFERTILE:        // Calculated infertile day
+            case DayEntry.INFERTILE_FUTURE: // Calculated infertile day in the future
+                gradient = gradientInfertile;
+                colorLabel = 0xff000000;
+                break;
 			}
 
 			// Draw background
-			LinearGradient gradient = new LinearGradient(0, 0,
-					rectCanvas.width(), rectCanvas.height(),
-					colorBackgroundStart, colorBackgroundEnd,
-					android.graphics.Shader.TileMode.CLAMP);
 			paintBackground.setDither(true);
 			paintBackground.setShader(gradient);
 			paintBackground.setStyle(Style.FILL);
@@ -157,46 +180,19 @@ public class CalendarCell extends Button {
 
 			// Draw overlay markers depending on type
 			if (type == DayEntry.PERIOD_START) {
-				Rect rectDest;
-				Paint paintBitmap;
-				Bitmap bitmapDrop;
-
-				paintBitmap = new Paint();
-				paintBitmap.setStyle(Style.FILL);
-				paintBitmap.setFilterBitmap(true);
-
-				bitmapDrop = BitmapFactory.decodeResource(getResources(),
-						R.drawable.ic_start);
-				
-				
-				rectDest = new Rect();
-				rectDest.set((int) (2 * metrics.density), (int)rectCanvas.height()
-						- (int) (overlaysize * metrics.density),
-						(int) (overlaysize * metrics.density), (int)rectCanvas.height()
-								- (int) (2 * metrics.density));
-
-				canvas.drawBitmap(bitmapDrop, null, rectDest, paintBitmap);
+				rectDestination.set((int) (2 * metrics.density), (int) rectCanvas.height()
+                                - (int) (overlaysize * metrics.density),
+                        (int) (overlaysize * metrics.density), (int) rectCanvas.height()
+                                - (int) (2 * metrics.density));
+				canvas.drawBitmap(bitmapPeriod, null, rectDestination, paintBitmap);
 			}
 			if (type == DayEntry.OVULATION_PREDICTED ||
 					type == DayEntry.OVULATION_PREDICTED_FUTURE) {
-				Rect rectDest;
-				Paint paintBitmap;
-				Bitmap bitmapDrop;
-
-				paintBitmap = new Paint();
-				paintBitmap.setStyle(Style.FILL);
-				paintBitmap.setFilterBitmap(true);
-
-				bitmapDrop = BitmapFactory.decodeResource(getResources(),
-						R.drawable.ic_ovulation);
-
-				rectDest = new Rect();
-				rectDest.set((int) (2 * metrics.density), (int)rectCanvas.height()
-						- (int) (overlaysize * metrics.density),
-						(int) (overlaysize * metrics.density), (int)rectCanvas.height()
-								- (int) (2 * metrics.density));
-
-				canvas.drawBitmap(bitmapDrop, null, rectDest, paintBitmap);
+				rectDestination.set((int) (2 * metrics.density), (int) rectCanvas.height()
+                                - (int) (overlaysize * metrics.density),
+                        (int) (overlaysize * metrics.density), (int) rectCanvas.height()
+                                - (int) (2 * metrics.density));
+				canvas.drawBitmap(bitmapOvulation, null, rectDestination, paintBitmap);
 			}
 
 			// Draw the "current day" mark, if needed
@@ -204,13 +200,10 @@ public class CalendarCell extends Button {
 				paintOval.setStyle(Style.STROKE);
 				paintOval.setAntiAlias(true);
 				
-				rectOval1.set(10 * metrics.density,
-						4 * metrics.density,
-						rectCanvas.right - 4 * metrics.density,
-						rectCanvas.bottom - 4 * metrics.density);
-				rectOval2.set(rectOval1.left-6*metrics.density,
-						rectOval1.top-1, rectOval1.right,
-						rectOval1.bottom);
+				rectOval1.set(10 * metrics.density, 4 * metrics.density,
+						rectCanvas.right - 4 * metrics.density, rectCanvas.bottom - 4 * metrics.density);
+				rectOval2.set(rectOval1.left-6*metrics.density, rectOval1.top-1,
+                        rectOval1.right, rectOval1.bottom);
 				
 				// Center oval rectangle as a square
 				float delta = (rectOval1.height()-rectOval1.width())/2;
@@ -240,13 +233,12 @@ public class CalendarCell extends Button {
 		}
 
 		// Draw main label
-		String label = this.getText().toString();
+		@SuppressWarnings("ConstantConditions") String label = this.getText().toString();
 		paintLabel.setColor(colorLabel);
 		paintLabel.getTextBounds(label, 0, label.length(), rectLabel);
 
 		canvas.drawText(label, (this.getWidth() - rectLabel.width()) / 2,
-				rectLabel.height() + (this.getHeight() - rectLabel.height())
-						/ 2, this.paintLabel);
+				rectLabel.height() + (this.getHeight() - rectLabel.height()) / 2, this.paintLabel);
 
 		// Draw focused or pressed state, if the button is focused
 		if (isFocused()) {
@@ -256,8 +248,16 @@ public class CalendarCell extends Button {
 			canvas.drawRoundRect(rectCanvas, 3*metrics.density, 3*metrics.density, paintFocus);
 		}
 	}
-
-	// Getter/setter
+    
+    // Helper to create a new linear gradient
+    protected LinearGradient makeCellGradient(int colorStart, int colorEnd) {
+        return new LinearGradient(0, 0,
+                rectCanvas.width(), rectCanvas.height(),
+                colorStart, colorEnd,
+                android.graphics.Shader.TileMode.CLAMP);
+    }
+    
+    // Getter/setter
 	public void setCurrent(boolean current) {
 		this.isCurrent = current;
 	}
