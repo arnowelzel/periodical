@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Periodical</string>
+    <string name="menuitem_help">Ayuda</string>
+    <string name="menuitem_about">Acerca de...</string>
+    <string name="menuitem_current">Actual</string>
+    <string name="menuitem_list">Listado</string>
+    <string name="menuitem_copy">Copia de seguridad</string>
+    <string name="menuitem_restore">Restaurar</string>
+    <string name="menuitem_options">Preferencias</string>
+    <string name="menuitem_exit">Salir</string>
+    <string name="main_button_prev">&lt;</string>
+    <string name="main_button_next">&gt;</string>
+    <string name="main_calday_su">DO</string>
+    <string name="main_calday_mo">LU</string>
+    <string name="main_calday_tu">MA</string>
+    <string name="main_calday_we">MI</string>
+    <string name="main_calday_th">JU</string>
+    <string name="main_calday_fr">VI</string>
+    <string name="main_calday_sa">SÁ</string>
+    <string name="list_title">Lista</string>
+    <string name="about_title">Acerca de...</string>
+    <string name="help_title">Ayuda</string>
+    <string name="backup_title">Copia de seguridad</string>
+    <string name="backup_text">¿Quiere hacer copia de seguridad de los datos actuales?\n¡Esto reemplazará la última copia!</string>
+    <string name="backup_ok">Aceptar</string>
+    <string name="backup_cancel">Cancelar</string>
+    <string name="backup_finished">Copia de seguridad realizada</string>
+    <string name="backup_failed">¡Falló la copia de seguridad!</string>
+    <string name="restore_title">Restaurar datos</string>
+    <string name="restore_text">¿Quiere restaurar la última copia de seguridad?\n¡Esto reemplazará los datos actuales!</string>
+    <string name="restore_ok">Aceptar</string>
+    <string name="restore_cancel">Cancelar</string>
+    <string name="restore_finished">Restauración realizada</string>
+    <string name="restore_failed">¡Falló la restauración!</string>
+    <string name="event_periodstart">Inicio del periodo</string>
+    <string name="event_periodlength">El último ciclo fue de %s días</string>
+    <string name="event_periodfirst">Primera entrada</string>
+    <string name="calendaraction_title">Editar entrada de calendario</string>
+    <string name="calendaraction_add">¿Marcar este día como \"Inicio del periodo\"?</string>
+    <string name="calendaraction_remove">¿Quitar la marca de \"Inicio del periodo\" de este día?</string>
+    <string name="calendaraction_ok">Sí</string>
+    <string name="calendaraction_cancel">No</string>
+    <string name="options_title">Preferencias</string>
+    <string name="pref_periodlength">Duración predeterminada del periodo (días)</string>
+    <string name="invalid_period_length">¡La duración predeterminada del periodo debe ser entre 1 y 14!</string>
+    <string name="pref_startofweek">Inicio de la semana</string>
+    <string-array name="list_startofweek">
+        <item>Domingo</item>
+        <item>Lunes</item>
+    </string-array>
+    <string-array name="values_startofweek">
+        <item>0</item>
+        <item>1</item>
+    </string-array>
+</resources>
