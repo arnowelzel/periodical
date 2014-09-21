@@ -336,7 +336,7 @@ public class PeriodicalDatabase {
     }
 
     /* Load data without calculating anything */
-    void loadRawData() {
+    void loadRawData(boolean sortAscending) {
         DayEntry entry;
 
         // Clean up existing data
@@ -344,6 +344,7 @@ public class PeriodicalDatabase {
 
         // Get all entries from the database
         String statement = "select eventtype, eventdate from data order by eventdate";
+        if (!sortAscending) statement += " desc";        
         Cursor result = db.rawQuery(statement, null);
         while (result.moveToNext()) {
             int eventtype = result.getInt(0);
