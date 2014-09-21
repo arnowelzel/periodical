@@ -2,7 +2,7 @@
 <resources>
     <string name="app_name">Periodical</string>
     <string name="menuitem_help">Help</string>
-    <string name="menuitem_about">About</string>
+    <string name="menuitem_about">About …</string>
     <string name="menuitem_current">Current</string>
     <string name="menuitem_list">List</string>
     <string name="menuitem_copy">Backup</string>
@@ -19,7 +19,7 @@
     <string name="main_calday_fr">FR</string>
     <string name="main_calday_sa">SA</string>
     <string name="list_title">List</string>
-    <string name="about_title">About</string>
+    <string name="about_title">About …</string>
     <string name="help_title">Help</string>
     <string name="backup_title">Backup data</string>
     <string name="backup_text">Do you want to backup the current data?\nThis will replace the last backup!</string>

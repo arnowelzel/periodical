@@ -2,7 +2,7 @@
 <resources>
   <string name="app_name">Periodical</string>
   <string name="menuitem_help">Aiuto</string>
-  <string name="menuitem_about">Info</string>
+  <string name="menuitem_about">A proposito …</string>
   <string name="menuitem_current">Attuale</string>
   <string name="menuitem_list">Lista</string>
   <string name="menuitem_copy">Esporta</string>
@@ -19,7 +19,7 @@
   <string name="main_calday_fr">VE</string>
   <string name="main_calday_sa">SA</string>
   <string name="list_title">Lista</string>
-  <string name="about_title">Info</string>
+  <string name="about_title">A proposito …</string>
   <string name="help_title">Aiuto</string>
   <string name="backup_title">Esporta dati</string>
   <string name="backup_text">Sei certo di voler eseguire il backup sovrascrivendo quello precedente?</string>

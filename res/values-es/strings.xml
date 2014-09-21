@@ -2,7 +2,7 @@
 <resources>
     <string name="app_name">Periodical</string>
     <string name="menuitem_help">Ayuda</string>
-    <string name="menuitem_about">Acerca de...</string>
+    <string name="menuitem_about">Acerca de …</string>
     <string name="menuitem_current">Actual</string>
     <string name="menuitem_list">Listado</string>
     <string name="menuitem_copy">Copia de seguridad</string>
@@ -19,7 +19,7 @@
     <string name="main_calday_fr">VI</string>
     <string name="main_calday_sa">SÁ</string>
     <string name="list_title">Lista</string>
-    <string name="about_title">Acerca de...</string>
+    <string name="about_title">Acerca de …</string>
     <string name="help_title">Ayuda</string>
     <string name="backup_title">Copia de seguridad</string>
     <string name="backup_text">¿Quiere hacer copia de seguridad de los datos actuales?\n¡Esto reemplazará la última copia!</string>

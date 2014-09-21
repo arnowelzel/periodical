@@ -22,12 +22,12 @@ import java.util.Calendar;
 import java.util.GregorianCalendar;
 
 public class GregorianCalendarExt extends GregorianCalendar {
-	private static final long serialVersionUID = 7320228290550179309L;
-	
-	/* Calculate the difference between this calendar date and a given date in days */
-	public int diffDayPeriods(Calendar date) {
-		long endL = date.getTimeInMillis() + date.getTimeZone().getOffset( date.getTimeInMillis() );
-		long startL = this.getTimeInMillis() + this.getTimeZone().getOffset( this.getTimeInMillis() );
-		return (int) ((endL-startL) / (1000*60*60*24)); 		
-	}
+    private static final long serialVersionUID = 7320228290550179309L;
+    
+    /* Calculate the difference between this calendar date and a given date in days */
+    public int diffDayPeriods(Calendar date) {
+        long endL = date.getTimeInMillis() + date.getTimeZone().getOffset( date.getTimeInMillis() );
+        long startL = this.getTimeInMillis() + this.getTimeZone().getOffset( this.getTimeInMillis() );
+        return (int) ((endL-startL) / (1000*60*60*24));         
+    }
 }

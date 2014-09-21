@@ -2,7 +2,7 @@
 <resources>
     <string name="app_name">Periodical</string>
     <string name="menuitem_help">Hilfe</string>
-    <string name="menuitem_about">Über</string>
+    <string name="menuitem_about">Über …</string>
     <string name="menuitem_current">Aktuell</string>
     <string name="menuitem_list">Liste</string>
     <string name="menuitem_copy">Sichern</string>
@@ -19,7 +19,7 @@
     <string name="main_calday_fr">FR</string>
     <string name="main_calday_sa">SA</string>
     <string name="list_title">Liste</string>
-    <string name="about_title">Über</string>
+    <string name="about_title">Über …</string>
     <string name="help_title">Hilfe</string>
     <string name="backup_title">Daten sichern</string>
     <string name="backup_text">Möchten Sie die aktuellen Daten sichern?\nDies wird die letzte Sicherung ersetzen!</string>
