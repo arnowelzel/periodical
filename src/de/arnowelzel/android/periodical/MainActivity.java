@@ -294,11 +294,7 @@ public class MainActivity extends Activity {
                 if (this.yearCurrent == calToday.get(Calendar.YEAR)
                         && this.monthCurrent == calToday.get(Calendar.MONTH) + 1
                         && day == calToday.get(Calendar.DAY_OF_MONTH)) {
-                    cell.setTypeface(null, 1);
                     current = true;
-
-                } else {
-                    cell.setTypeface(null, 0);
                 }
                 
                 // Set other button attributes
