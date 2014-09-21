@@ -6,7 +6,8 @@ Copyright (C) 2012-2014 Arno Welzel
 Translations:
 
 French - Sébastien Gravier  
-Italian - Valerio Bozzolan
+Italian - Valerio Bozzolan  
+Spanish - Laura Arjona Reina
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
