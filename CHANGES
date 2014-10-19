@@ -1,3 +1,8 @@
+0.22
+
+Improved accessibility support: All elements now provide a meaningful content
+description, so the app can also be used by blind people with TalkBack.
+
 0.21
 
 Reverted database sort option so the details list will be displayed properly again.
