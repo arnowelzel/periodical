@@ -27,6 +27,7 @@ android:layout_height="fill_parent" >
          android:layout_height="wrap_content"
          android:text="@string/main_button_prev"
          android:onClick="goPrev"
+         android:contentDescription="@string/previous_month"
          />
          <Button
          android:id="@+id/buttonnext"
@@ -34,6 +35,7 @@ android:layout_height="fill_parent" >
          android:layout_height="wrap_content"
          android:text="@string/main_button_next"
          android:onClick="goNext"
+         android:contentDescription="@string/next_month"
          />
     </LinearLayout>
 <ViewFlipper
@@ -57,13 +59,13 @@ android:layout_below="@+id/monthselector"
             android:layout_weight="0.6"
             android:orientation="horizontal" >
 
-            <TextView android:gravity="center" android:layout_height="fill_parent" android:text="@string/main_calday_su" android:textStyle="bold" />
-            <TextView android:gravity="center" android:layout_height="fill_parent" android:text="@string/main_calday_mo" android:textStyle="bold" />
-            <TextView android:gravity="center" android:layout_height="fill_parent" android:text="@string/main_calday_tu" android:textStyle="bold" />
-            <TextView android:gravity="center" android:layout_height="fill_parent" android:text="@string/main_calday_we" android:textStyle="bold" />
-            <TextView android:gravity="center" android:layout_height="fill_parent" android:text="@string/main_calday_th" android:textStyle="bold" />
-            <TextView android:gravity="center" android:layout_height="fill_parent" android:text="@string/main_calday_fr" android:textStyle="bold" />
-            <TextView android:gravity="center" android:layout_height="fill_parent" android:text="@string/main_calday_sa" android:textStyle="bold" />
+            <TextView android:gravity="center" android:layout_height="fill_parent" android:text="@string/main_calday_su" android:contentDescription="@string/main_calday_su_description" android:textStyle="bold" />
+            <TextView android:gravity="center" android:layout_height="fill_parent" android:text="@string/main_calday_mo" android:contentDescription="@string/main_calday_mo_description" android:textStyle="bold" />
+            <TextView android:gravity="center" android:layout_height="fill_parent" android:text="@string/main_calday_tu" android:contentDescription="@string/main_calday_tu_description" android:textStyle="bold" />
+            <TextView android:gravity="center" android:layout_height="fill_parent" android:text="@string/main_calday_we" android:contentDescription="@string/main_calday_we_description" android:textStyle="bold" />
+            <TextView android:gravity="center" android:layout_height="fill_parent" android:text="@string/main_calday_th" android:contentDescription="@string/main_calday_th_description" android:textStyle="bold" />
+            <TextView android:gravity="center" android:layout_height="fill_parent" android:text="@string/main_calday_fr" android:contentDescription="@string/main_calday_fr_description" android:textStyle="bold" />
+            <TextView android:gravity="center" android:layout_height="fill_parent" android:text="@string/main_calday_sa" android:contentDescription="@string/main_calday_sa_description" android:textStyle="bold" />
         </TableRow>
 
         <TableRow
@@ -74,13 +76,13 @@ android:layout_below="@+id/monthselector"
                 android:orientation="horizontal"
                 android:visibility="gone">
 
-            <TextView android:gravity="center" android:layout_height="fill_parent" android:text="@string/main_calday_mo" android:textStyle="bold" />
-            <TextView android:gravity="center" android:layout_height="fill_parent" android:text="@string/main_calday_tu" android:textStyle="bold" />
-            <TextView android:gravity="center" android:layout_height="fill_parent" android:text="@string/main_calday_we" android:textStyle="bold" />
-            <TextView android:gravity="center" android:layout_height="fill_parent" android:text="@string/main_calday_th" android:textStyle="bold" />
-            <TextView android:gravity="center" android:layout_height="fill_parent" android:text="@string/main_calday_fr" android:textStyle="bold" />
-            <TextView android:gravity="center" android:layout_height="fill_parent" android:text="@string/main_calday_sa" android:textStyle="bold" />
-            <TextView android:gravity="center" android:layout_height="fill_parent" android:text="@string/main_calday_su" android:textStyle="bold" />
+            <TextView android:gravity="center" android:layout_height="fill_parent" android:text="@string/main_calday_mo" android:contentDescription="@string/main_calday_mo_description" android:textStyle="bold" />
+            <TextView android:gravity="center" android:layout_height="fill_parent" android:text="@string/main_calday_tu" android:contentDescription="@string/main_calday_tu_description" android:textStyle="bold" />
+            <TextView android:gravity="center" android:layout_height="fill_parent" android:text="@string/main_calday_we" android:contentDescription="@string/main_calday_we_description" android:textStyle="bold" />
+            <TextView android:gravity="center" android:layout_height="fill_parent" android:text="@string/main_calday_th" android:contentDescription="@string/main_calday_th_description" android:textStyle="bold" />
+            <TextView android:gravity="center" android:layout_height="fill_parent" android:text="@string/main_calday_fr" android:contentDescription="@string/main_calday_fr_description" android:textStyle="bold" />
+            <TextView android:gravity="center" android:layout_height="fill_parent" android:text="@string/main_calday_sa" android:contentDescription="@string/main_calday_sa_description" android:textStyle="bold" />
+            <TextView android:gravity="center" android:layout_height="fill_parent" android:text="@string/main_calday_su" android:contentDescription="@string/main_calday_su_description" android:textStyle="bold" />
         </TableRow>
         
         <TableRow

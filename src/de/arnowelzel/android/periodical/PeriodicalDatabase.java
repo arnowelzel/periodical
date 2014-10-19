@@ -82,6 +82,7 @@ public class PeriodicalDatabase {
 
     /* Local helper to manage calculated calendar entries */
     public class DayEntry {
+        final static int EMPTY = 0;
         final static int PERIOD_START = 1;
         final static int PERIOD_CONFIRMED = 2;
         final static int PERIOD_PREDICTED = 3;

@@ -18,6 +18,13 @@
     <string name="main_calday_th">JU</string>
     <string name="main_calday_fr">VI</string>
     <string name="main_calday_sa">SÁ</string>
+    <string name="main_calday_su_description">Domingo</string>
+    <string name="main_calday_mo_description">Lunes</string>
+    <string name="main_calday_tu_description">Martes</string>
+    <string name="main_calday_we_description">Miércoles</string>
+    <string name="main_calday_th_description">Jueves</string>
+    <string name="main_calday_fr_description">Viernes</string>
+    <string name="main_calday_sa_description">Sábado</string>
     <string name="list_title">Lista</string>
     <string name="about_title">Acerca de …</string>
     <string name="help_title">Ayuda</string>
@@ -53,4 +60,16 @@
         <item>0</item>
         <item>1</item>
     </string-array>
+    <string name="previous_month">Mes anterior</string>
+    <string name="next_month">Siguiente mes</string>
+    <string name="label_average_period">Ciclo medio</string>
+    <string name="label_shortest_period">Ciclo más corto</string>
+    <string name="label_longest_period">Ciclo más largo</string>
+    <string name="label_day">Día</string>
+    <string name="label_infertile">infértil</string>
+    <string name="label_fertile">fértil</string>
+    <string name="label_period_started">Periodo ha comenzado</string>
+    <string name="label_period">Periodo</string>
+    <string name="label_period_predicted">Periodo pronosticado</string>
+    <string name="label_ovulation">Ovulación</string>
 </resources>

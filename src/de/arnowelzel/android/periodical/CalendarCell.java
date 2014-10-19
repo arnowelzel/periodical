@@ -18,6 +18,7 @@
 
 package de.arnowelzel.android.periodical;
 
+import android.text.format.DateUtils;
 import de.arnowelzel.android.periodical.PeriodicalDatabase.DayEntry;
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -41,6 +42,8 @@ public class CalendarCell extends Button {
     protected boolean isCurrent;
     protected int type;
     protected int day;
+    protected int month;
+    protected int year;
 
     protected DisplayMetrics metrics;
     protected RectF rectCanvas;
@@ -67,7 +70,12 @@ public class CalendarCell extends Button {
 
     public CalendarCell(Context context, AttributeSet attrs) {
         super(context, attrs);
-
+        
+        type = DayEntry.EMPTY;
+        day = 1;
+        month = 1;
+        year = 1;
+        
         //noinspection ConstantConditions
         metrics = getContext().getResources().getDisplayMetrics();
 
@@ -241,12 +249,12 @@ public class CalendarCell extends Button {
         }
 
         // Draw main label
-        @SuppressWarnings("ConstantConditions") String label = this.getText().toString();
+        @SuppressWarnings("ConstantConditions") String label = getText().toString();
         paintLabel.setColor(colorLabel);
         paintLabel.getTextBounds(label, 0, label.length(), rectLabel);
 
-        canvas.drawText(label, (this.getWidth() - rectLabel.width()) / 2,
-                rectLabel.height() + (this.getHeight() - rectLabel.height()) / 2, this.paintLabel);
+        canvas.drawText(label, (getWidth() - rectLabel.width()) / 2,
+                rectLabel.height() + (getHeight() - rectLabel.height()) / 2, paintLabel);
 
         // Draw focused or pressed state, if the button is focused
         if (isFocused()) {
@@ -265,13 +273,50 @@ public class CalendarCell extends Button {
                 android.graphics.Shader.TileMode.CLAMP);
     }
     
+    // Helper to update content description based on current cell values
+    public void updateContentDescription()
+    {
+        String contentDescription = "";
+        contentDescription += DateUtils.getMonthString(getMonth() - 1, DateUtils.LENGTH_LONG);
+        contentDescription += String.valueOf(getYear());
+        contentDescription += " - ";
+        contentDescription += getResources().getString(R.string.label_day);
+        contentDescription += " ";
+        contentDescription += String.valueOf(getDay());
+        switch(type)
+        {
+        case DayEntry.PERIOD_START:
+            contentDescription += " - "+getResources().getString(R.string.label_period_started);
+            break;
+        case DayEntry.PERIOD_CONFIRMED:
+            contentDescription += " - "+getResources().getString(R.string.label_period);
+            break;
+        case DayEntry.PERIOD_PREDICTED:
+            contentDescription += " - "+getResources().getString(R.string.label_period_predicted);
+            break;
+        case DayEntry.FERTILITY_PREDICTED:
+        case DayEntry.FERTILITY_PREDICTED_FUTURE:
+            contentDescription += " - "+getResources().getString(R.string.label_fertile);
+            break;
+        case DayEntry.OVULATION_PREDICTED:
+        case DayEntry.OVULATION_PREDICTED_FUTURE:
+            contentDescription += " - "+getResources().getString(R.string.label_ovulation);
+            break;
+        case DayEntry.INFERTILE:
+        case DayEntry.INFERTILE_FUTURE:
+            contentDescription += " - "+getResources().getString(R.string.label_infertile);
+            break;
+        }
+        setContentDescription(contentDescription);
+    }
+    
     // Getter/setter
     public void setCurrent(boolean current) {
-        this.isCurrent = current;
+        isCurrent = current;
     }
 
     public boolean getCurrent() {
-        return this.isCurrent;
+        return isCurrent;
     }
 
     public void setType(int type) {
@@ -279,14 +324,22 @@ public class CalendarCell extends Button {
     }
 
     public int getType() {
-        return this.type;
+        return type;
     }
 
     public void setDay(int day) {
         this.day = day;
     }
 
-    public int getDay() {
-        return this.day;
+    public int getDay() { return day; }
+
+    public void setMonth(int month) { this.month = month; }
+
+    public int getMonth() {
+        return month;
     }
+
+    public void setYear(int year) { this.year = year; }
+
+    public int getYear() { return year; }
 }

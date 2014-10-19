@@ -18,6 +18,13 @@
     <string name="main_calday_th">jeu</string>
     <string name="main_calday_fr">ven</string>
     <string name="main_calday_sa">sam</string>
+    <string name="main_calday_su_description">dimanche</string>
+    <string name="main_calday_mo_description">lundi</string>
+    <string name="main_calday_tu_description">mardi</string>
+    <string name="main_calday_we_description">mercredi</string>
+    <string name="main_calday_th_description">jeudi</string>
+    <string name="main_calday_fr_description">vendredi</string>
+    <string name="main_calday_sa_description">samedi</string>
     <string name="list_title">Tableau</string>
     <string name="about_title">À propos …</string>
     <string name="help_title">Aide</string>
@@ -53,4 +60,16 @@
         <item>0</item>
         <item>1</item>
     </string-array>
+    <string name="previous_month">Mois précédent</string>
+    <string name="next_month">Mois prochain</string>
+    <string name="label_average_period">Cycle moyen</string>
+    <string name="label_shortest_period">Cycle le plus court</string>
+    <string name="label_longest_period">Cycle le plus long</string>
+    <string name="label_day">Jour</string>
+    <string name="label_infertile">infertile</string>
+    <string name="label_fertile">fertile</string>
+    <string name="label_period_started">Début des règle</string>
+    <string name="label_period">Règle</string>
+    <string name="label_period_predicted">Règle prévue</string>
+    <string name="label_ovulation">Ovulation</string>
 </resources>

@@ -232,10 +232,10 @@ public class MainActivity extends Activity {
     void calendarUpdate() {
         // Initialize control ids for the target view to be used
         int calendarCells[];
-        if (this.viewCurrent == R.id.calendar) {
-            calendarCells = this.calButtonIds;
+        if (viewCurrent == R.id.calendar) {
+            calendarCells = calButtonIds;
         } else {
-            calendarCells = this.calButtonIds_2;
+            calendarCells = calButtonIds_2;
         }
         
         // Set weekday labels depending on selected start of week
@@ -257,10 +257,17 @@ public class MainActivity extends Activity {
         
         // Output current year/month
         TextView displayDate = (TextView) findViewById(R.id.displaydate);
-        displayDate.setText(String.format("%s %d\nØ%d ↓%d ↑%d", DateUtils
-                .getMonthString(this.monthCurrent - 1, DateUtils.LENGTH_LONG),
-                this.yearCurrent, dbMain.average, dbMain.shortest,
+        displayDate.setText(String.format("%s %d\nØ%d ↓%d ↑%d",
+                DateUtils.getMonthString(monthCurrent - 1, DateUtils.LENGTH_LONG),
+                yearCurrent, dbMain.average, dbMain.shortest,
                 dbMain.longest));
+
+        displayDate.setContentDescription(String.format("%s %d - %s %d - %s %d - %s %d",
+                DateUtils.getMonthString(monthCurrent - 1, DateUtils.LENGTH_LONG),
+                yearCurrent,
+                getResources().getString(R.string.label_average_period), dbMain.average,
+                getResources().getString(R.string.label_shortest_period), dbMain.shortest,
+                getResources().getString(R.string.label_longest_period), dbMain.longest));
 
         // Calculate first week day of month
         GregorianCalendar cal = new GregorianCalendar(yearCurrent, monthCurrent - 1, 1);
@@ -291,15 +298,21 @@ public class MainActivity extends Activity {
                 int type = dbMain.getEntry(yearCurrent, monthCurrent, day);
                 boolean current = false;
 
-                if (this.yearCurrent == calToday.get(Calendar.YEAR)
-                        && this.monthCurrent == calToday.get(Calendar.MONTH) + 1
+                if (yearCurrent == calToday.get(Calendar.YEAR)
+                        && monthCurrent == calToday.get(Calendar.MONTH) + 1
                         && day == calToday.get(Calendar.DAY_OF_MONTH)) {
                     current = true;
                 }
                 
                 // Set other button attributes
+                cell.setYear(yearCurrent);
+                cell.setMonth(monthCurrent);
+                cell.setDay(day);
                 cell.setType(type);
                 cell.setCurrent(current);
+                
+                // Set content description for TalkBack
+                cell.updateContentDescription();
             }
         }
     }
@@ -313,10 +326,10 @@ public class MainActivity extends Activity {
             yearCurrent--;
         }
 
-        if (this.viewCurrent == R.id.calendar) {
-            this.viewCurrent = R.id.calendar_2;
+        if (viewCurrent == R.id.calendar) {
+            viewCurrent = R.id.calendar_2;
         } else {
-            this.viewCurrent = R.id.calendar;
+            viewCurrent = R.id.calendar;
         }
 
         calendarUpdate();
@@ -337,10 +350,10 @@ public class MainActivity extends Activity {
             yearCurrent++;
         }
 
-        if (this.viewCurrent == R.id.calendar) {
-            this.viewCurrent = R.id.calendar_2;
+        if (viewCurrent == R.id.calendar) {
+            viewCurrent = R.id.calendar_2;
         } else {
-            this.viewCurrent = R.id.calendar;
+            viewCurrent = R.id.calendar;
         }
 
         calendarUpdate();
@@ -456,10 +469,10 @@ public class MainActivity extends Activity {
         int nButtonClicked = 0;
 
         int calButtonIds[];
-        if (this.viewCurrent == R.id.calendar) {
+        if (viewCurrent == R.id.calendar) {
             calButtonIds = this.calButtonIds;
         } else {
-            calButtonIds = this.calButtonIds_2;
+            calButtonIds = calButtonIds_2;
         }
 
         while (nButtonClicked < 42) {

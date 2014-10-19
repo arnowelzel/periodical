@@ -133,7 +133,7 @@ public class ListActivity extends android.app.ListActivity {
             Integer month = selectedEntry.date.get(Calendar.MONTH);
             Integer year = selectedEntry.date.get(Calendar.YEAR);
 
-            Intent intent = this.getIntent();
+            Intent intent = getIntent();
             intent.putExtra("month", month.toString());
             intent.putExtra("year", year.toString());
 
