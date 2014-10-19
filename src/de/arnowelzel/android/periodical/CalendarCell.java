@@ -18,6 +18,8 @@
 
 package de.arnowelzel.android.periodical;
 
+import java.text.DateFormat;
+
 import android.text.format.DateUtils;
 import de.arnowelzel.android.periodical.PeriodicalDatabase.DayEntry;
 import android.content.Context;
@@ -277,12 +279,11 @@ public class CalendarCell extends Button {
     public void updateContentDescription()
     {
         String contentDescription = "";
-        contentDescription += DateUtils.getMonthString(getMonth() - 1, DateUtils.LENGTH_LONG);
-        contentDescription += String.valueOf(getYear());
-        contentDescription += " - ";
-        contentDescription += getResources().getString(R.string.label_day);
-        contentDescription += " ";
-        contentDescription += String.valueOf(getDay());
+        GregorianCalendarExt cal= new GregorianCalendarExt();
+        cal.set(getYear(), getMonth(), getDay());
+                
+        contentDescription = DateUtils.formatDateTime(getContext(), cal.getTimeInMillis(),
+                DateUtils.FORMAT_SHOW_DATE|DateUtils.FORMAT_SHOW_YEAR);
         switch(type)
         {
         case DayEntry.PERIOD_START:
