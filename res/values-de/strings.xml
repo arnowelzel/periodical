@@ -3,7 +3,7 @@
     <string name="app_name">Periodical</string>
     <string name="menuitem_help">Hilfe</string>
     <string name="menuitem_about">Über …</string>
-    <string name="menuitem_current">Aktuell</string>
+    <string name="menuitem_current">Aktueller Tag</string>
     <string name="menuitem_list">Liste</string>
     <string name="menuitem_copy">Sichern</string>
     <string name="menuitem_restore">Wiederherstellen</string>
