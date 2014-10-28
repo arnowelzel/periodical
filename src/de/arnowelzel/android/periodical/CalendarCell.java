@@ -280,7 +280,7 @@ public class CalendarCell extends Button {
     {
         String contentDescription = "";
         GregorianCalendarExt cal= new GregorianCalendarExt();
-        cal.set(getYear(), getMonth(), getDay());
+        cal.set(getYear(), getMonth()-1, getDay());
                 
         contentDescription = DateUtils.formatDateTime(getContext(), cal.getTimeInMillis(),
                 DateUtils.FORMAT_SHOW_DATE|DateUtils.FORMAT_SHOW_YEAR);
