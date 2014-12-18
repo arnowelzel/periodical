@@ -41,7 +41,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ViewFlipper;
 
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.GregorianCalendar;
 
 import de.arnowelzel.android.periodical.R;
@@ -254,23 +256,24 @@ public class MainActivity extends Activity {
             ((TableRow)findViewById(R.id.rowcaldays1)).setVisibility(View.VISIBLE);
             ((TableRow)findViewById(R.id.rowcaldays1_2)).setVisibility(View.VISIBLE);
         }
-        
+
+        // Create calendar object for current month
+        GregorianCalendar cal = new GregorianCalendar(yearCurrent, monthCurrent - 1, 1);
+
         // Output current year/month
         TextView displayDate = (TextView) findViewById(R.id.displaydate);
-        displayDate.setText(String.format("%s %d\nØ%d ↓%d ↑%d",
-                DateUtils.getMonthString(monthCurrent - 1, DateUtils.LENGTH_LONG),
-                yearCurrent, dbMain.average, dbMain.shortest,
+        SimpleDateFormat dateFormat = new SimpleDateFormat("MMMM yyyy");
+        displayDate.setText(String.format("%s\nØ%d ↓%d ↑%d",
+                dateFormat.format(cal.getTime()),
+                dbMain.average, dbMain.shortest,
                 dbMain.longest));
-
-        displayDate.setContentDescription(String.format("%s %d - %s %d - %s %d - %s %d",
-                DateUtils.getMonthString(monthCurrent - 1, DateUtils.LENGTH_LONG),
-                yearCurrent,
+        displayDate.setContentDescription(String.format("%s - %s %d - %s %d - %s %d",
+                dateFormat.format(cal.getTime()),
                 getResources().getString(R.string.label_average_period), dbMain.average,
                 getResources().getString(R.string.label_shortest_period), dbMain.shortest,
                 getResources().getString(R.string.label_longest_period), dbMain.longest));
 
         // Calculate first week day of month
-        GregorianCalendar cal = new GregorianCalendar(yearCurrent, monthCurrent - 1, 1);
         firstDay = cal.get(Calendar.DAY_OF_WEEK);
         daysCount = cal.getActualMaximum(Calendar.DAY_OF_MONTH);
 
