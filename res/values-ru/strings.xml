@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Periodical</string>
+    <string name="menuitem_help">Помощь</string>
+    <string name="menuitem_about">О программе …</string>
+    <string name="menuitem_current">Текущий день</string>
+    <string name="menuitem_list">Список</string>
+    <string name="menuitem_copy">Резервирование</string>
+    <string name="menuitem_restore">Восстановление</string>
+    <string name="menuitem_options">Настройки</string>
+    <string name="menuitem_exit">Выход</string>
+    <string name="main_button_prev">&lt;</string>
+    <string name="main_button_next">&gt;</string>
+    <string name="main_calday_su">ВС</string>
+    <string name="main_calday_mo">ПН</string>
+    <string name="main_calday_tu">ВТ</string>
+    <string name="main_calday_we">СР</string>
+    <string name="main_calday_th">ЧТ</string>
+    <string name="main_calday_fr">ПТ</string>
+    <string name="main_calday_sa">СБ</string>
+    <string name="main_calday_su_description">воскресенье</string>
+    <string name="main_calday_mo_description">понедельник</string>
+    <string name="main_calday_tu_description">вторник</string>
+    <string name="main_calday_we_description">среда</string>
+    <string name="main_calday_th_description">четверг</string>
+    <string name="main_calday_fr_description">пятница</string>
+    <string name="main_calday_sa_description">суббота</string>
+    <string name="list_title">Список</string>
+    <string name="about_title">О программе …</string>
+    <string name="help_title">Помощь</string>
+    <string name="backup_title">Резервирование данных</string>
+    <string name="backup_text">Вы действительно хотите сохранить текущие данные?\nРезервная копия будет перезаписана!</string>
+    <string name="backup_ok">ОК</string>
+    <string name="backup_cancel">Отмена</string>
+    <string name="backup_finished">Создание резервной копии закончено</string>
+    <string name="backup_failed">Ошибка резервирования данных!</string>
+    <string name="restore_title">Восстановление данных</string>
+    <string name="restore_text">Вы действительно хотите восстановить данные из резервной копии?\nТекущие данные будут утеряны!</string>
+    <string name="restore_ok">ОК</string>
+    <string name="restore_cancel">Отмена</string>
+    <string name="restore_finished">Восстановление закончено</string>
+    <string name="restore_failed">Ошибка восстановления!</string>
+    <string name="event_periodstart">Начало периода</string>
+    <string name="event_periodlength">Длительность последнего цикла %s дней</string>
+    <string name="event_periodfirst">Первая запись</string>
+    <string name="calendaraction_title">Правка элемента календаря</string>
+    <string name="calendaraction_add">Пометить день как \"Начало периода\"?</string>
+    <string name="calendaraction_remove">Удалить метку \"Начало периода\"?</string>
+    <string name="calendaraction_ok">Да</string>
+    <string name="calendaraction_cancel">Нет</string>
+    <string name="options_title">Настройки</string>
+    <string name="pref_periodlength">Длительность периода по умолчанию (дней)</string>
+    <string name="invalid_period_length">Длительность периода по умолчанию должна быть между 1 и 14!</string>
+    <string name="pref_startofweek">Начало недели</string>
+    <string-array name="list_startofweek">
+        <item>Воскресенье</item>
+        <item>Понедельник</item>
+    </string-array>
+    <string-array name="values_startofweek">
+        <item>0</item>
+        <item>1</item>
+    </string-array>
+    <string name="previous_month">Предыдущий месяц</string>
+    <string name="next_month">Следующий месяц</string>
+    <string name="label_average_period">средний цикл</string>
+    <string name="label_shortest_period">самый короткий цикл</string>
+    <string name="label_longest_period">самый длинный цикл</string>
+    <string name="label_day">День</string>
+    <string name="label_infertile">нефертильный</string>
+    <string name="label_fertile">фертильный</string>
+    <string name="label_period_started">начало периода</string>
+    <string name="label_period">период</string>
+    <string name="label_period_predicted">прогнозируемый период</string>
+    <string name="label_ovulation">овуляция</string>
+</resources>
