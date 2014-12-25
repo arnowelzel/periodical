@@ -36,7 +36,7 @@ https://github.com/arnowelzel/periodical
 Download latest version at Google Play:  
 https://play.google.com/store/apps/details?id=de.arnowelzel.android.periodical
 
-Download latest version on F-Droid:  
+Download latest version at F-Droid:  
 https://f-droid.org/repository/browse/?fdid=de.arnowelzel.android.periodical
 
 Download latest version as APK:  
