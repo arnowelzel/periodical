@@ -1,3 +1,13 @@
+0.23
+
+Added Russian translation (thanks to Wjatscheslaw Stoljarski).
+
+Replaced deprecated DateUtils with SimpleDateFormat.
+
+Added some missing content description for some week day labels.
+
+Updated project target API to level 20 (Android 4.4).
+
 0.22
 
 Improved accessibility support: All elements now provide a meaningful content
