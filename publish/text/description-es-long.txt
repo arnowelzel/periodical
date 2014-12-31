@@ -1,0 +1,11 @@
+Cálculo de fertilidad de acuerdo a Knaus-Ogino
+
+AVISO: ¡No se recomienda usar este calendario para evitar el embarazo! Hay métodos más precisos, como medir la temperatura basal del cuerpo.
+
+Los datos se pueden copiar en una tarjeta de memoria o la memoria "interna", si está presente.
+
+Si tiene alguna duda o quieres ayudarme con traducciones en otros idiomas, por favor póngase en contacto conmigo a través de correo electrónico - gracias.
+
+Este programa es software libre: puede redistribuirlo y/o modificarlo bajo los términos de la Licencia Pública General de GNU tal como está publicada por la Free Software Foundation, bien de la versión 3 de dicha Licencia o bien (según su elección) de cualquier versión posterior.
+
+Usted puede obtener la fuente en mi sitio web.

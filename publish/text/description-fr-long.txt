@@ -1,0 +1,11 @@
+Cette application calcule la fertilité selon la méthode Knaus-Ogino.
+
+ATTENTION: Il est déconseillé d'utiliser ce calendrier pour éviter une grossesse! Il existe des méthodes plus précises, comme la mesure de la température basale du corps.
+
+Les données peuvent être sauvegardées sur une carte mémoire ou un disque dur interne selon la disponibilité.
+
+Si vous avez des questions ou si vous voulez m'aider avec des traductions en d'autres langues, s'il vous plaît contactez-moi par e-mail - merci!
+
+Ce programme est un logiciel libre: vous pouvez le redistribuer et/ou modifier selon les termes de la licence GNU General Public License que publiée par la Free Software Foundation, soit la version 3 de cette licence, ou (à votre choix) toute version ultérieure.
+
+Vous pouvez obtenir le code source sur mon site.

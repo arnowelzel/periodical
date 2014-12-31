@@ -1,0 +1,1 @@
+Calcolo della fertilità in base a Knaus–Ogino.

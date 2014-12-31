@@ -1,0 +1,11 @@
+This application calculates the fertile days according to Knaus-Ogino.
+
+WARNING: It is not recommended to use this calendar to avoid pregnancy! There are more accurate methods, like measuring the basal body temperature.
+
+The data can be backed up on a memory card or "internal" memory, if present.
+
+If you have any further questions or want to help me with translations in other languages, please contact me via e-mail - thank you.
+
+This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
+
+You can obtain the source on my website.

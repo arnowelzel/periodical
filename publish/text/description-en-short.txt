@@ -1,0 +1,1 @@
+This application calculates the fertile days according to Knaus-Ogino.
