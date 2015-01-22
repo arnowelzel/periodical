@@ -1,6 +1,6 @@
 /**
  * Periodical calendar cell class
- * Copyright (C) 2012-2014 Arno Welzel
+ * Copyright (C) 2012-2015 Arno Welzel
  * 
  * This code is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -17,8 +17,6 @@
  */
 
 package de.arnowelzel.android.periodical;
-
-import java.text.DateFormat;
 
 import android.text.format.DateUtils;
 import de.arnowelzel.android.periodical.PeriodicalDatabase.DayEntry;
@@ -138,7 +136,13 @@ public class CalendarCell extends Button {
     protected void onDraw(Canvas canvas) {
         LinearGradient gradient = gradientEmpty;
         int colorLabel = 0xffffffff;
-        
+
+        // Adjust overlay size depending on orientation
+        int overlaysize = 18;
+        if(orientation == Surface.ROTATION_90 || orientation == Surface.ROTATION_270) {
+            overlaysize = 14;
+        }
+
         // Draw background, depending on state
         if (isPressed()) {
             // If cell is pressed, then fill with solid color
@@ -184,32 +188,18 @@ public class CalendarCell extends Button {
             
             canvas.drawRoundRect(rectCanvas, 3*metrics.density, 3*metrics.density, paintBackground);
             
-            // Adjust overlay size depending on orientation
-            int overlaysize = 18;
-            if(orientation == Surface.ROTATION_90 || orientation == Surface.ROTATION_270) {
-                overlaysize = 14;
-            }
-
             // Draw overlay markers depending on type
+            rectDestination.set((int) (2 * metrics.density),
+                    (int) rectCanvas.height() - (int) (overlaysize * metrics.density),
+                    (int) (overlaysize * metrics.density),
+                    (int) rectCanvas.height() - (int) (2 * metrics.density));
             if (type == DayEntry.PERIOD_START) {
-                rectDestination.set((int) (2 * metrics.density), (int) rectCanvas.height()
-                                - (int) (overlaysize * metrics.density),
-                        (int) (overlaysize * metrics.density), (int) rectCanvas.height()
-                                - (int) (2 * metrics.density));
                 canvas.drawBitmap(bitmapPeriod, null, rectDestination, paintBitmap);
             }
             if (type == DayEntry.OVULATION_PREDICTED) {
-                rectDestination.set((int) (2 * metrics.density), (int) rectCanvas.height()
-                                - (int) (overlaysize * metrics.density),
-                        (int) (overlaysize * metrics.density), (int) rectCanvas.height()
-                                - (int) (2 * metrics.density));
                 canvas.drawBitmap(bitmapOvulation, null, rectDestination, paintBitmap);
             }
             if (type == DayEntry.OVULATION_PREDICTED_FUTURE) {
-                rectDestination.set((int) (2 * metrics.density), (int) rectCanvas.height()
-                                - (int) (overlaysize * metrics.density),
-                        (int) (overlaysize * metrics.density), (int) rectCanvas.height()
-                                - (int) (2 * metrics.density));
                 canvas.drawBitmap(bitmapOvulationPredicted, null, rectDestination, paintBitmap);
             }
 
@@ -278,12 +268,11 @@ public class CalendarCell extends Button {
     // Helper to update content description based on current cell values
     public void updateContentDescription()
     {
-        String contentDescription = "";
         GregorianCalendarExt cal= new GregorianCalendarExt();
         cal.set(getYear(), getMonth()-1, getDay());
-                
-        contentDescription = DateUtils.formatDateTime(getContext(), cal.getTimeInMillis(),
+        String contentDescription = DateUtils.formatDateTime(getContext(), cal.getTimeInMillis(),
                 DateUtils.FORMAT_SHOW_DATE|DateUtils.FORMAT_SHOW_YEAR);
+
         switch(type)
         {
         case DayEntry.PERIOD_START:
@@ -316,9 +305,11 @@ public class CalendarCell extends Button {
         isCurrent = current;
     }
 
+    /*
     public boolean getCurrent() {
         return isCurrent;
     }
+    */
 
     public void setType(int type) {
         this.type = type;

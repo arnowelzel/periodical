@@ -1,6 +1,6 @@
 /**
  * Periodical database class
- * Copyright (C) 2012-2014 Arno Welzel
+ * Copyright (C) 2012-2015 Arno Welzel
  *
  * This code is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -94,11 +94,13 @@ public class PeriodicalDatabase {
         final static int INFERTILE_FUTURE = 9;
         int type;
         GregorianCalendarExt date;
+        int dayofcycle;
 
-        public DayEntry(int type, GregorianCalendar date) {
+        public DayEntry(int type, GregorianCalendar date, int dayofcycle) {
             this.type = type;
             this.date = new GregorianCalendarExt();
             this.date.setTime(date.getTime());
+            this.dayofcycle = dayofcycle;
         }
     }
 
@@ -185,6 +187,7 @@ public class PeriodicalDatabase {
         int ovulationday = 0;
         Cursor result;
         int periodlength;
+        int dayofcycle;
 
         // Get default values from preferences
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
@@ -207,7 +210,6 @@ public class PeriodicalDatabase {
         }
         result.close();
 
-
         // Get all entries from the database
         result = db.rawQuery(
                 "select eventtype, eventdate from data order by eventdate",
@@ -225,14 +227,14 @@ public class PeriodicalDatabase {
                 isFirst = false;
 
                 // First event at all - just create an initial start entry
-                entryPrevious = new DayEntry(eventtype, eventdate);
+                entryPrevious = new DayEntry(eventtype, eventdate, 1);
 
                 this.dayEntries.add(entryPrevious);
             } else {
                 count++;
 
                 // Create new day entry
-                entry = new DayEntry(eventtype, eventdate);
+                entry = new DayEntry(eventtype, eventdate, 1);
                 int length = entryPrevious.date.diffDayPeriods(entry.date);
 
                 // Update values which are used to calculate the fertility
@@ -255,7 +257,6 @@ public class PeriodicalDatabase {
                 // Update average sum
                 this.average += length;
 
-
                 // Calculate a predicted ovulation date
                 int average = this.average;
                 if (count > 0) average /= count;
@@ -264,31 +265,35 @@ public class PeriodicalDatabase {
                 // Calculate days from the last event until now
                 GregorianCalendar datePrevious = new GregorianCalendar();
                 datePrevious.setTime(entryPrevious.date.getTime());
+                dayofcycle = 2;
                 for (int day = 2; day <= length; day++) {
                     datePrevious.add(GregorianCalendar.DATE, 1);
 
+                    int type;
+
                     if (day <= periodlength) {
                         // First days of period
-                        DayEntry entryCalculated = new DayEntry(DayEntry.PERIOD_CONFIRMED, datePrevious);
-                        dayEntries.add(entryCalculated);
+                        type = DayEntry.PERIOD_CONFIRMED;
+                        dayofcycle = 1;
                     } else if (day == ovulationday) {
                         // Day of ovulation
-                        DayEntry entryCalculated = new DayEntry(DayEntry.OVULATION_PREDICTED, datePrevious);
-                        dayEntries.add(entryCalculated);
+                        type = DayEntry.OVULATION_PREDICTED;
                     } else if (day >= this.shortest - 18
                             && day <= this.longest - 11) {
                         // Fertile days
-                        DayEntry entryCalculated = new DayEntry(DayEntry.FERTILITY_PREDICTED, datePrevious);
-                        dayEntries.add(entryCalculated);
+                        type = DayEntry.FERTILITY_PREDICTED;
                     } else {
                         // Infertile days
-                        DayEntry entryCalculated = new DayEntry(DayEntry.INFERTILE, datePrevious);
-                        dayEntries.add(entryCalculated);
+                        type = DayEntry.INFERTILE;
                     }
+
+                    DayEntry entryCalculated = new DayEntry(type, datePrevious, dayofcycle);
+                    dayEntries.add(entryCalculated);
+                    dayofcycle++;
                 }
 
                 // Finally add current day
-                entryPrevious = new DayEntry(entry.type, entry.date);
+                entryPrevious = new DayEntry(entry.type, entry.date, dayofcycle);
                 this.dayEntries.add(entry);
             }
         }
@@ -302,33 +307,31 @@ public class PeriodicalDatabase {
             datePredicted.setTime(entry.date.getTime());
 
             for (int cycles = 0; cycles < 3; cycles++) {
+                dayofcycle = 1;
                 for (int day = (cycles == 0 ? 2 : 1); day <= average; day++) {
                     datePredicted.add(GregorianCalendar.DATE, 1);
 
+                    int type;
+
                     if (day <= periodlength) {
                         // Predicted days of period
-                        DayEntry entryCalculated = new DayEntry(
-                                (cycles == 0 ? DayEntry.PERIOD_CONFIRMED : DayEntry.PERIOD_PREDICTED),
-                                datePredicted);
-                        dayEntries.add(entryCalculated);
+                        type = (cycles == 0 ? DayEntry.PERIOD_CONFIRMED : DayEntry.PERIOD_PREDICTED);
                     } else if (day == ovulationday) {
                         // Day of ovulation
-                        DayEntry entryCalculated = new DayEntry(
-                                cycles == 0 ? DayEntry.OVULATION_PREDICTED : DayEntry.OVULATION_PREDICTED_FUTURE,
-                                datePredicted);
-                        dayEntries.add(entryCalculated);
+                        type = (cycles == 0 ? DayEntry.OVULATION_PREDICTED : DayEntry.OVULATION_PREDICTED_FUTURE);
                     } else if (day >= this.shortest - 18
                             && day <= this.longest - 11) {
                         // Fertile days
-                        DayEntry entryCalculated = new DayEntry(
-                                cycles == 0 ? DayEntry.FERTILITY_PREDICTED : DayEntry.FERTILITY_PREDICTED_FUTURE,
-                                datePredicted);
-                        dayEntries.add(entryCalculated);
+                        type = (cycles == 0 ? DayEntry.FERTILITY_PREDICTED : DayEntry.FERTILITY_PREDICTED_FUTURE);
                     } else {
                         // Infertile days
-                        DayEntry entryCalculated = new DayEntry(DayEntry.INFERTILE_FUTURE, datePredicted);
-                        dayEntries.add(entryCalculated);
+                        type = DayEntry.INFERTILE_FUTURE;
                     }
+
+                    DayEntry entryCalculated = new DayEntry(type, datePredicted, dayofcycle);
+                    dayEntries.add(entryCalculated);
+
+                    dayofcycle++;
                 }
             }
         }
@@ -358,7 +361,7 @@ public class PeriodicalDatabase {
                     eventmonth - 1, eventday);
 
             // Create new day entry
-            entry = new DayEntry(eventtype, eventdate);
+            entry = new DayEntry(eventtype, eventdate, 0);
             dayEntries.add(entry);
         }
         result.close();
@@ -464,31 +467,35 @@ public class PeriodicalDatabase {
 
         // If everything is ok, then copy source to destination
         if (ok) {
-            if (backup) destDir.mkdirs();
-            FileInputStream in = null;
-            FileOutputStream out = null;
-            try {
-                in = new FileInputStream(sourceFile);
-                out = new FileOutputStream(destFile);
-            } catch (IOException e) {
-                ok = false;
-                e.printStackTrace();
-            }
+            if (backup) {
+                if(destDir.mkdirs()) {
+                    FileInputStream in = null;
+                    FileOutputStream out = null;
+                    try {
+                        in = new FileInputStream(sourceFile);
+                        out = new FileOutputStream(destFile);
+                    } catch (IOException e) {
+                        ok = false;
+                        e.printStackTrace();
+                    }
 
-            if (ok) {
-                byte[] buffer = new byte[4096];
-                int bytesRead;
+                    if (ok) {
+                        byte[] buffer = new byte[4096];
+                        int bytesRead;
 
-                try {
-                    while ((bytesRead = in.read(buffer)) != -1)
-                        out.write(buffer, 0, bytesRead);
+                        try {
+                            while ((bytesRead = in.read(buffer)) != -1)
+                                out.write(buffer, 0, bytesRead);
 
-                    in.close();
-                    out.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                    ok = false;
+                            in.close();
+                            out.close();
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                            ok = false;
+                        }
+                    }
                 }
+                else ok = false;
             }
         }
 
