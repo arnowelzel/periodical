@@ -10,5 +10,5 @@
             android:defaultValue="0"
             android:key="startofweek"
             android:entries="@array/list_startofweek"
-            android:entryValues="@array/values_startofweek"/>
+            android:entryValues="@array/values_startofweek" />
 </PreferenceScreen>

@@ -91,7 +91,10 @@ public class ListActivity extends android.app.ListActivity {
 
         setListAdapter(new ArrayAdapter<String>(this, R.layout.listitem,
                 entries));
-        
+
+        // Set custom view
+        setContentView(R.layout.listview);
+
         // Activate "back button" in Action Bar if possible
         if (android.os.Build.VERSION.SDK_INT >= 11) {
             ActionBar actionBar = getActionBar();
