@@ -1,6 +1,6 @@
 0.24
 
-Updated project target API to level 21 (Android 5).
+Updated project target API to level 22 (Android 5.1).
 
 Main activity and list now uses a black background.
 
