@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
-xmlns:android="http://schemas.android.com/apk/res/android"
-xmlns:tools="http://schemas.android.com/tools"
-tools:ignore="TooManyViews"
-android:id="@+id/mainview"
-android:layout_width="fill_parent"
-android:layout_height="fill_parent"
-android:baselineAligned="false">
-
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:ignore="TooManyViews"
+    android:id="@+id/mainview"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:baselineAligned="false"
+    android:background="#ff000000">
 <ViewFlipper
     android:id="@+id/mainwidget"
     android:layout_width="fill_parent"
