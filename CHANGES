@@ -1,6 +1,8 @@
 0.24
 
-Updated project target API to level 22 (Android 5.1).
+Changed build system to Gradle.
+
+Updated project target API to level 23 (Android 6.0).
 
 Main activity and list now uses a black background.
 
