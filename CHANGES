@@ -6,6 +6,8 @@ Updated project target API to level 23 (Android 6.0).
 
 Main activity and list now uses a black background.
 
+Added some missing content description translations.
+
 0.23
 
 Added Russian translation (thanks to Wjatscheslaw Stoljarski).
