@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Periodical</string>
+    <string name="menuitem_help">Nápověda</string>
+    <string name="menuitem_about">O Periodical</string>
+    <string name="menuitem_current">Dnes</string>
+    <string name="menuitem_list">Seznam</string>
+    <string name="menuitem_copy">Záloha</string>
+    <string name="menuitem_restore">Obnova</string>
+    <string name="menuitem_options">Nastavení</string>
+    <string name="menuitem_exit">Ukončit</string>
+    <string name="main_button_prev">&lt;</string>
+    <string name="main_button_next">&gt;</string>
+    <string name="main_calday_su">Ne</string>
+    <string name="main_calday_mo">Po</string>
+    <string name="main_calday_tu">Út</string>
+    <string name="main_calday_we">St</string>
+    <string name="main_calday_th">Čt</string>
+    <string name="main_calday_fr">Pá</string>
+    <string name="main_calday_sa">So</string>
+    <string name="main_calday_su_description">neděle</string>
+    <string name="main_calday_mo_description">pondělí</string>
+    <string name="main_calday_tu_description">úterý</string>
+    <string name="main_calday_we_description">středa</string>
+    <string name="main_calday_th_description">čtvrtek</string>
+    <string name="main_calday_fr_description">pátek</string>
+    <string name="main_calday_sa_description">sobota</string>
+    <string name="list_title">Seznam</string>
+    <string name="about_title">O Periodical</string>
+    <string name="help_title">Nápověda</string>
+    <string name="backup_title">Záloha</string>
+    <string name="backup_text">CHcete zálohovat současná data?\nTím bude nahrazena minulá záloha!</string>
+    <string name="backup_ok">OK</string>
+    <string name="backup_cancel">Zrušit</string>
+    <string name="backup_finished">Záloha uložena</string>
+    <string name="backup_failed">Záloha selhala!</string>
+    <string name="restore_title">Obnovit data</string>
+    <string name="restore_text">Chcete obnovit data z poslední zálohy?\nTím budou nahrazena současná data!</string>
+    <string name="restore_ok">OK</string>
+    <string name="restore_cancel">Zrušit</string>
+    <string name="restore_finished">Obnova dokončena</string>
+    <string name="restore_failed">Obnova selhala!</string>
+    <string name="event_periodstart">Začátek periody</string>
+    <string name="event_periodlength">Poslední cyklus měl %s dní</string>
+    <string name="event_periodfirst">První data</string>
+    <string name="calendaraction_title">Upravit data kalendáře</string>
+    <string name="calendaraction_add">Označit tento den jako \"Začátek periody\"?</string>
+    <string name="calendaraction_remove">Pro tento den odebrat značku \"Začátek periody\"?</string>
+    <string name="calendaraction_ok">Ano</string>
+    <string name="calendaraction_cancel">Ne</string>
+    <string name="options_title">Nastavení</string>
+    <string name="pref_periodlength">Základní délka periody (dny)</string>
+    <string name="invalid_period_length">Základní délka periody musí být mezi 1 a 14!</string>
+    <string name="pref_startofweek">Začátek týdne</string>
+    <string-array name="list_startofweek">
+        <item>Neděle</item>
+        <item>Pondělí</item>
+    </string-array>
+    <string-array name="values_startofweek">
+        <item>0</item>
+        <item>1</item>
+    </string-array>
+    <string name="previous_month">Minulý měsíc</string>
+    <string name="next_month">Další měsíc</string>
+    <string name="label_average_period">průměrný cyklus</string>
+    <string name="label_shortest_period">nejkratší cyklus</string>
+    <string name="label_longest_period">nejdelší cyklus</string>
+    <string name="label_day">Den</string>
+    <string name="label_infertile">neplodné</string>
+    <string name="label_fertile">plodné</string>
+    <string name="label_period_started">začátek periody</string>
+    <string name="label_period">perioda</string>
+    <string name="label_period_predicted">předpověď periody</string>
+    <string name="label_ovulation">ovulace</string>
+    <string name="asset_about">cs/about.html</string>
+    <string name="asset_help">cs/help.html</string>
+</resources>
