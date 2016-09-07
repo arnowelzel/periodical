@@ -2,7 +2,7 @@
 <resources>
     <string name="app_name">Periodical</string>
     <string name="menuitem_help">Help</string>
-    <string name="menuitem_about">Over …</string>
+    <string name="menuitem_about">Over â€¦</string>
     <string name="menuitem_current">Huidige dag</string>
     <string name="menuitem_list">Lijst</string>
     <string name="menuitem_copy">Backup</string>
@@ -26,17 +26,17 @@
     <string name="main_calday_fr_description">vrijdag</string>
     <string name="main_calday_sa_description">zaterdag</string>
     <string name="list_title">Lijst</string>
-    <string name="about_title">Over …</string>
+    <string name="about_title">Over â€¦</string>
     <string name="help_title">Help</string>
     <string name="backup_title">Backup data</string>
     <string name="backup_text">Wil je een backup maken van de huidige data?\nDit overschrijft de laatste backup!</string>
-    <string name="backup_ok">Oké</string>
+    <string name="backup_ok">OK</string>
     <string name="backup_cancel">Annuleer</string>
     <string name="backup_finished">Backup is klaar</string>
     <string name="backup_failed">Backup faalde!</string>
     <string name="restore_title">Herstel data</string>
     <string name="restore_text">Wil je de laatste backup herstellen?\nDit overschrijft de huidige data!</string>
-    <string name="restore_ok">Oké</string>
+    <string name="restore_ok">OK</string>
     <string name="restore_cancel">Annuleer</string>
     <string name="restore_finished">Herstel is klaar</string>
     <string name="restore_failed">Herstel faalde!</string>
