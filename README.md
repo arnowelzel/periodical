@@ -8,6 +8,7 @@ Translations:
 French - Sébastien Gravier  
 Italian - Valerio Bozzolan  
 Spanish - Laura Arjona Reina  
+Dutch - Pander  
 Russian - Wjatscheslaw Stoljarski
 
 This program is free software: you can redistribute it and/or modify
