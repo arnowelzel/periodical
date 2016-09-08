@@ -18,6 +18,7 @@
 
 package de.arnowelzel.android.periodical;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.backup.BackupManager;
@@ -28,7 +29,6 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
-import android.text.format.DateUtils;
 import android.view.GestureDetector;
 import android.view.GestureDetector.SimpleOnGestureListener;
 import android.view.Menu;
@@ -36,17 +36,13 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
-import android.widget.TableRow;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ViewFlipper;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.GregorianCalendar;
-
-import de.arnowelzel.android.periodical.R;
 
 public class MainActivity extends Activity {
     /* Array for calendar button IDs */
@@ -231,6 +227,7 @@ public class MainActivity extends Activity {
     }
     
     /* Update calendar data and view */
+    @SuppressLint("DefaultLocale")
     void calendarUpdate() {
         // Initialize control ids for the target view to be used
         int calendarCells[];
@@ -262,16 +259,16 @@ public class MainActivity extends Activity {
 
         // Output current year/month
         TextView displayDate = (TextView) findViewById(R.id.displaydate);
-        SimpleDateFormat dateFormat = new SimpleDateFormat("MMMM yyyy");
+        @SuppressLint("SimpleDateFormat") SimpleDateFormat dateFormat = new SimpleDateFormat("MMMM yyyy");
         displayDate.setText(String.format("%s\nØ%d ↓%d ↑%d",
                 dateFormat.format(cal.getTime()),
                 dbMain.average, dbMain.shortest,
                 dbMain.longest));
         displayDate.setContentDescription(String.format("%s - %s %d - %s %d - %s %d",
                 dateFormat.format(cal.getTime()),
-                getResources().getString(R.string.label_average_period), dbMain.average,
-                getResources().getString(R.string.label_shortest_period), dbMain.shortest,
-                getResources().getString(R.string.label_longest_period), dbMain.longest));
+                getResources().getString(R.string.label_average_cycle), dbMain.average,
+                getResources().getString(R.string.label_shortest_cycle), dbMain.shortest,
+                getResources().getString(R.string.label_longest_cycle), dbMain.longest));
 
         // Calculate first week day of month
         firstDay = cal.get(Calendar.DAY_OF_WEEK);

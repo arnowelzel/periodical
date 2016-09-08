@@ -62,9 +62,9 @@
     </string-array>
     <string name="previous_month">Mese precedente</string>
     <string name="next_month">Mese successivo</string>
-    <string name="label_average_period">Ciclo medio</string>
-    <string name="label_shortest_period">Ciclo più breve</string>
-    <string name="label_longest_period">Ciclo più lungo</string>
+    <string name="label_average_cycle">Ciclo medio</string>
+    <string name="label_shortest_cycle">Ciclo più breve</string>
+    <string name="label_longest_cycle">Ciclo più lungo</string>
     <string name="label_day">Giorno</string>
     <string name="label_infertile">infertile</string>
     <string name="label_fertile">fertile</string>

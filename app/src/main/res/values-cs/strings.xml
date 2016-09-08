@@ -62,9 +62,9 @@
     </string-array>
     <string name="previous_month">Minulý měsíc</string>
     <string name="next_month">Další měsíc</string>
-    <string name="label_average_period">průměrný cyklus</string>
-    <string name="label_shortest_period">nejkratší cyklus</string>
-    <string name="label_longest_period">nejdelší cyklus</string>
+    <string name="label_average_cycle">průměrný cyklus</string>
+    <string name="label_shortest_cycle">nejkratší cyklus</string>
+    <string name="label_longest_cycle">nejdelší cyklus</string>
     <string name="label_day">Den</string>
     <string name="label_infertile">neplodné</string>
     <string name="label_fertile">plodné</string>

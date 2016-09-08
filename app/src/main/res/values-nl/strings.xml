@@ -62,9 +62,9 @@
     </string-array>
     <string name="previous_month">Vorige maand</string>
     <string name="next_month">Volgende maand</string>
-    <string name="label_average_period">gemiddelde cyclus</string>
-    <string name="label_shortest_period">kortste cyclus</string>
-    <string name="label_longest_period">langste cyclus</string>
+    <string name="label_average_cycle">gemiddelde cyclus</string>
+    <string name="label_shortest_cycle">kortste cyclus</string>
+    <string name="label_longest_cycle">langste cyclus</string>
     <string name="label_day">Dag</string>
     <string name="label_infertile">onvruchtbaar</string>
     <string name="label_fertile">vruchtbaar</string>
