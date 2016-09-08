@@ -40,17 +40,17 @@
     <string name="restore_cancel">Annuleer</string>
     <string name="restore_finished">Herstel is klaar</string>
     <string name="restore_failed">Herstel faalde!</string>
-    <string name="event_periodstart">Periode is begonnen</string>
+    <string name="event_periodstart">Menstruatie is begonnen</string>
     <string name="event_periodlength">Laatste cyclus duurde %s dagen</string>
     <string name="event_periodfirst">Eerste invoer</string>
     <string name="calendaraction_title">Bewerk kalenderinvoer</string>
-    <string name="calendaraction_add">Markeer deze dag als \"Period is begonnen\"?</string>
+    <string name="calendaraction_add">Markeer deze dag als \"Menstruatie is begonnen\"?</string>
     <string name="calendaraction_remove">Verwijder de \"Periode is begonnen\" markering voor deze dag?</string>
     <string name="calendaraction_ok">Ja</string>
     <string name="calendaraction_cancel">Nee</string>
     <string name="options_title">Instellingen</string>
-    <string name="pref_periodlength">Standaardlengte van periode (dagen)</string>
-    <string name="invalid_period_length">De standaardlengte van een periode is tussen 1 en 14!</string>
+    <string name="pref_periodlength">Standaardduur van menstruatie (dagen)</string>
+    <string name="invalid_period_length">De standaardduur van een menstruatie is tussen 1 en 14!</string>
     <string name="pref_startofweek">Begin van de week</string>
     <string-array name="list_startofweek">
         <item>Zondag</item>
@@ -68,9 +68,9 @@
     <string name="label_day">Dag</string>
     <string name="label_infertile">onvruchtbaar</string>
     <string name="label_fertile">vruchtbaar</string>
-    <string name="label_period_started">periode is begonnen</string>
-    <string name="label_period">periode</string>
-    <string name="label_period_predicted">periode voorspeld</string>
+    <string name="label_period_started">menstruatie is begonnen</string>
+    <string name="label_period">menstruatie</string>
+    <string name="label_period_predicted">menstruatie voorspeld</string>
     <string name="label_ovulation">ovulatie</string>
     <string name="asset_about">nl/about.html</string>
     <string name="asset_help">nl/help.html</string>
