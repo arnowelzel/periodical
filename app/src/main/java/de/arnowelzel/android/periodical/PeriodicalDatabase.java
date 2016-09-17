@@ -320,14 +320,14 @@ public class PeriodicalDatabase {
                         type = (cycles == 0 ? DayEntry.PERIOD_CONFIRMED : DayEntry.PERIOD_PREDICTED);
                     } else if (day == ovulationday) {
                         // Day of ovulation
-                        type = DayEntry.OVULATION_PREDICTED_FUTURE;
+                        type = (cycles == 0 ? DayEntry.OVULATION_PREDICTED : DayEntry.OVULATION_PREDICTED_FUTURE);
                     } else if (day >= this.shortest - 18
                             && day <= this.longest - 11) {
                         // Fertile days
-                        type = DayEntry.FERTILITY_PREDICTED_FUTURE;
+                        type = (cycles == 0 ? DayEntry.FERTILITY_PREDICTED : DayEntry.FERTILITY_PREDICTED_FUTURE);
                     } else {
                         // Infertile days
-                        type = DayEntry.INFERTILE_FUTURE;
+                        type = (cycles == 0 ? DayEntry.INFERTILE : DayEntry.INFERTILE_FUTURE);
                     }
 
                     DayEntry entryCalculated = new DayEntry(type, datePredicted, dayofcycle);
@@ -469,34 +469,33 @@ public class PeriodicalDatabase {
         // If everything is ok, then copy source to destination
         if (ok) {
             if (backup) {
-                if(destDir.mkdirs()) {
-                    FileInputStream in = null;
-                    FileOutputStream out = null;
+                destDir.mkdirs();
+
+                FileInputStream in = null;
+                FileOutputStream out = null;
+                try {
+                    in = new FileInputStream(sourceFile);
+                    out = new FileOutputStream(destFile);
+                } catch (IOException e) {
+                    ok = false;
+                    e.printStackTrace();
+                }
+
+                if (ok) {
+                    byte[] buffer = new byte[4096];
+                    int bytesRead;
+
                     try {
-                        in = new FileInputStream(sourceFile);
-                        out = new FileOutputStream(destFile);
+                        while ((bytesRead = in.read(buffer)) != -1)
+                            out.write(buffer, 0, bytesRead);
+
+                        in.close();
+                        out.close();
                     } catch (IOException e) {
-                        ok = false;
                         e.printStackTrace();
-                    }
-
-                    if (ok) {
-                        byte[] buffer = new byte[4096];
-                        int bytesRead;
-
-                        try {
-                            while ((bytesRead = in.read(buffer)) != -1)
-                                out.write(buffer, 0, bytesRead);
-
-                            in.close();
-                            out.close();
-                        } catch (IOException e) {
-                            e.printStackTrace();
-                            ok = false;
-                        }
+                        ok = false;
                     }
                 }
-                else ok = false;
             }
         }
 
