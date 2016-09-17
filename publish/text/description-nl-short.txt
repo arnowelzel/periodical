@@ -1,0 +1,1 @@
+Deze applicatie berekent de vruchtbare dagen volgens Knaus-Ogino.

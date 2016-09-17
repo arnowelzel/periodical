@@ -1,0 +1,11 @@
+Deze applicatie berekent de vruchtbare dagen volgens Knaus-Ogino.
+
+WAARSCHUWING: Het is niet aanbevolen om deze kalender te gebruiken om zwangerschap te voorkomen! Er bestaan meer nauwkeurige methodes, zoals het meten van de basale lichaamstemperatuur.
+
+De gegevens kunnen worden opgeslagen op een geheugenkaart of 'intern' geheugen, indien beschikbaar.
+
+Als u vragen of wilt u mij te helpen met vertalingen in andere talen, neem dan contact met mij opnemen via e-mail - Thanks!
+
+Deze applicatie is gedistribueerd in de hoop dat deze nuttig zal zijn, maar ZONDER ENIGE GARANTIE; zelf zonder de implicite garantie van VERKOOPBAARHEID of GESCHIKTHEID VOOR EEN BEPAALD DOEL. Zie de GNU General Public License voor meer details.
+
+U kunt de broncode te krijgen op mijn website.
