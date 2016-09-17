@@ -97,12 +97,12 @@ public class CalendarCell extends Button {
         rectOval1 = new RectF();
         rectOval2 = new RectF();
         rectLabel = new Rect();
-        gradientPeriodConfirmed = makeCellGradient(0xfff44336, 0xffc62828);
-        gradientPeriodPredicted = makeCellGradient(0xffef9a9a, 0xffef5350);
-        gradientFertilityPredicted = makeCellGradient(0xff42a5f5, 0xff1565c0);
-        gradientFertilityFuture = makeCellGradient(0xff90caf9, 0xff42a5f5);
-        gradientInfertile = makeCellGradient(0xffffee58, 0xfff9a825);
-        gradientInfertileFuture = makeCellGradient(0xfffff59d, 0xffffee58);
+        gradientPeriodConfirmed = makeCellGradient(0xfff44336, 0xfff44336);
+        gradientPeriodPredicted = makeCellGradient(0xffef9a9a, 0xffef9a9a);
+        gradientFertilityPredicted = makeCellGradient(0xff2196F3, 0xff2196F3);
+        gradientFertilityFuture = makeCellGradient(0xff90CAF9, 0xff90CAF9);
+        gradientInfertile = makeCellGradient(0xffffee58, 0xffffee58);
+        gradientInfertileFuture = makeCellGradient(0xfffff59d, 0xfffff59d);
         gradientEmpty = makeCellGradient(0xff757575, 0xff757575);
 
         // Overlays
@@ -128,12 +128,12 @@ public class CalendarCell extends Button {
     protected void onSizeChanged(int w, int h, int oldw, int oldh) {
         super.onSizeChanged(w, h, oldw, oldh);
         rectCanvas.set(0, 0, w, h);
-        gradientPeriodConfirmed = makeCellGradient(0xfff44336, 0xffc62828);
-        gradientPeriodPredicted = makeCellGradient(0xffef9a9a, 0xffef5350);
-        gradientFertilityPredicted = makeCellGradient(0xff42a5f5, 0xff1565c0);
-        gradientFertilityFuture = makeCellGradient(0xff90caf9, 0xff42a5f5);
-        gradientInfertile = makeCellGradient(0xffffee58, 0xfff9a825);
-        gradientInfertileFuture = makeCellGradient(0xfffff59d, 0xffffee58);
+        gradientPeriodConfirmed = makeCellGradient(0xfff44336, 0xfff44336);
+        gradientPeriodPredicted = makeCellGradient(0xffef9a9a, 0xffef9a9a);
+        gradientFertilityPredicted = makeCellGradient(0xff2196F3, 0xff2196F3);
+        gradientFertilityFuture = makeCellGradient(0xff90CAF9, 0xff90CAF9);
+        gradientInfertile = makeCellGradient(0xffffee58, 0xffffee58);
+        gradientInfertileFuture = makeCellGradient(0xfffff59d, 0xfffff59d);
     }
     
     protected void onDraw(Canvas canvas) {
@@ -152,6 +152,7 @@ public class CalendarCell extends Button {
             paintFocus.setStyle(Style.FILL);
             paintFocus.setColor(0xffff9e08);
             canvas.drawRoundRect(rectCanvas, 3*metrics.density, 3*metrics.density, paintFocus);
+            colorLabel = 0xde000000;
         } else {
             // normal state (or focused), then draw color
             // depending on entry type
@@ -174,7 +175,7 @@ public class CalendarCell extends Button {
             case DayEntry.FERTILITY_PREDICTED_FUTURE: // Calculated fertile day in the future
             case DayEntry.OVULATION_PREDICTED_FUTURE: // Calculated day of ovulation in the future
                 gradient = gradientFertilityFuture;
-                colorLabel = 0xff000000;
+                colorLabel = 0xde000000;
                 break;
             case DayEntry.INFERTILE:        // Calculated infertile day
                 gradient = gradientInfertile;
