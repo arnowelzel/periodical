@@ -1,0 +1,1 @@
+Tato aplikace vypočítá plodné dny podle Knaus-Ogino.

@@ -1,0 +1,11 @@
+Tato aplikace vypočítá plodné dny podle Knaus-Ogino.
+
+POZOR: Nedoporučuje se používat tento kalendář, aby se zabránilo těhotenství! K dispozici jsou přesnější metody, jako je měření bazální tělesné teploty.
+
+Data lze zálohovat na paměťovou kartu nebo "vnitřní" paměti, pokud jsou přítomny.
+
+Máte-li jakékoli další dotazy nebo chcete, aby mi pomohl s překlady v jiných jazycích, prosím, kontaktujte mě e-mailem - děkuji.
+
+Tento program je svobodný software: můžete jej šířit a / nebo modifikovat podle podmínek GNU General Public License, vydávané Free Software Foundation, a to buď verze 3 této licence, nebo (podle vlastního uvážení) kterékoli pozdější verze.
+
+Můžete získat zdroje na mých webových stránkách.
