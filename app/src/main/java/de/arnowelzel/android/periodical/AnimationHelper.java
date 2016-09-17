@@ -24,7 +24,7 @@ import android.view.animation.TranslateAnimation;
 
 /* Helper methods for view animation */
 
-public class AnimationHelper
+class AnimationHelper
 {
     public static Animation inFromRightAnimation() {
 

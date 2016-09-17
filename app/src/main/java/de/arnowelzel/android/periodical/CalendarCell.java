@@ -59,6 +59,7 @@ public class CalendarCell extends Button {
     protected LinearGradient gradientFertilityPredicted;
     protected LinearGradient gradientFertilityFuture;
     protected LinearGradient gradientInfertile;
+    protected LinearGradient gradientInfertileFuture;
     protected LinearGradient gradientEmpty;
     protected Rect rectDestination;
     protected Bitmap bitmapPeriod;
@@ -96,12 +97,13 @@ public class CalendarCell extends Button {
         rectOval1 = new RectF();
         rectOval2 = new RectF();
         rectLabel = new Rect();
-        gradientPeriodConfirmed = makeCellGradient(0xffff0000, 0xffaa0000);
-        gradientPeriodPredicted = makeCellGradient(0xffffc0c0, 0xffc04040);
-        gradientFertilityPredicted = makeCellGradient(0xff00c3ff, 0xff007da3);
-        gradientFertilityFuture = makeCellGradient(0xff66dbff, 0xff408ba0);
-        gradientInfertile = makeCellGradient(0xffffff00, 0xffaaaa00);
-        gradientEmpty = makeCellGradient(0xff808080, 0xff808080);
+        gradientPeriodConfirmed = makeCellGradient(0xfff44336, 0xffc62828);
+        gradientPeriodPredicted = makeCellGradient(0xffef9a9a, 0xffef5350);
+        gradientFertilityPredicted = makeCellGradient(0xff42a5f5, 0xff1565c0);
+        gradientFertilityFuture = makeCellGradient(0xff90caf9, 0xff42a5f5);
+        gradientInfertile = makeCellGradient(0xffffee58, 0xfff9a825);
+        gradientInfertileFuture = makeCellGradient(0xfffff59d, 0xffffee58);
+        gradientEmpty = makeCellGradient(0xff757575, 0xff757575);
 
         // Overlays
         rectDestination = new Rect();
@@ -126,11 +128,12 @@ public class CalendarCell extends Button {
     protected void onSizeChanged(int w, int h, int oldw, int oldh) {
         super.onSizeChanged(w, h, oldw, oldh);
         rectCanvas.set(0, 0, w, h);
-        gradientPeriodConfirmed = makeCellGradient(0xffff0000, 0xffaa0000);
-        gradientPeriodPredicted = makeCellGradient(0xffffc0c0, 0xffc04040);
-        gradientFertilityPredicted = makeCellGradient(0xff00c3ff, 0xff007da3);
-        gradientFertilityFuture = makeCellGradient(0xff66dbff, 0xff408ba0);
-        gradientInfertile = makeCellGradient(0xffffff00, 0xffaaaa00);
+        gradientPeriodConfirmed = makeCellGradient(0xfff44336, 0xffc62828);
+        gradientPeriodPredicted = makeCellGradient(0xffef9a9a, 0xffef5350);
+        gradientFertilityPredicted = makeCellGradient(0xff42a5f5, 0xff1565c0);
+        gradientFertilityFuture = makeCellGradient(0xff90caf9, 0xff42a5f5);
+        gradientInfertile = makeCellGradient(0xffffee58, 0xfff9a825);
+        gradientInfertileFuture = makeCellGradient(0xfffff59d, 0xffffee58);
     }
     
     protected void onDraw(Canvas canvas) {
@@ -161,7 +164,7 @@ public class CalendarCell extends Button {
                 break;
             case DayEntry.PERIOD_PREDICTED: // Predicted period day
                 gradient = gradientPeriodPredicted;
-                colorLabel = 0xff000000;
+                colorLabel = 0xde000000;
                 break;
             case DayEntry.FERTILITY_PREDICTED: // Calculated fertile day
             case DayEntry.OVULATION_PREDICTED: // Calculated day of ovulation
@@ -174,9 +177,12 @@ public class CalendarCell extends Button {
                 colorLabel = 0xff000000;
                 break;
             case DayEntry.INFERTILE:        // Calculated infertile day
-            case DayEntry.INFERTILE_FUTURE: // Calculated infertile day in the future
                 gradient = gradientInfertile;
-                colorLabel = 0xff000000;
+                colorLabel = 0xde000000;
+                break;
+            case DayEntry.INFERTILE_FUTURE: // Calculated infertile day in the future
+                gradient = gradientInfertileFuture;
+                colorLabel = 0xde000000;
                 break;
             }
 
@@ -228,7 +234,7 @@ public class CalendarCell extends Button {
                 }
                 
                 // Draw oval
-                paintOval.setColor(0xff000000);
+                paintOval.setColor(0xde000000);
                 paintOval.setStrokeWidth(3 * metrics.density);
                 canvas.drawArc(rectOval1, 200, 160, false, paintOval);
                 canvas.drawArc(rectOval2, 0, 240, false, paintOval);

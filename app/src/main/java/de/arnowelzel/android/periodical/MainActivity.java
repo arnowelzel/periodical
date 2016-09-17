@@ -81,8 +81,8 @@ public class MainActivity extends Activity {
     /* Current month year */
     private int monthCurrent, yearCurrent;
 
-    /* First day of week (0=Sunday) and number of days on current month */
-    private int firstDay, daysCount;
+    /* First day of week (0=Sunday) */
+    private int firstDay;
 
     /* Database for calendar data */
     private PeriodicalDatabase dbMain;
@@ -272,7 +272,7 @@ public class MainActivity extends Activity {
 
         // Calculate first week day of month
         firstDay = cal.get(Calendar.DAY_OF_WEEK);
-        daysCount = cal.getActualMaximum(Calendar.DAY_OF_MONTH);
+        int daysCount = cal.getActualMaximum(Calendar.DAY_OF_MONTH);
 
         // If the week should start on monday, adjust the first day of the month,
         // so every day moves one position to the left and sunday gets to the end

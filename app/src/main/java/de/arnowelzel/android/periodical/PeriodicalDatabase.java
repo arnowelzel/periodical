@@ -18,6 +18,7 @@
 
 package de.arnowelzel.android.periodical;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 
 import android.content.SharedPreferences;
@@ -118,6 +119,7 @@ public class PeriodicalDatabase {
     }
 
     /* Open the database */
+    @SuppressLint("Recycle")
     void open(Context context) {
         PeriodicalDataOpenHelper dataOpenHelper;
         dataOpenHelper = new PeriodicalDataOpenHelper(context);
@@ -340,7 +342,7 @@ public class PeriodicalDatabase {
     }
 
     /* Load data without calculating anything */
-    void loadRawData(boolean sortAscending) {
+    void loadRawData() {
         DayEntry entry;
 
         // Clean up existing data
@@ -348,7 +350,6 @@ public class PeriodicalDatabase {
 
         // Get all entries from the database
         String statement = "select eventtype, eventdate from data order by eventdate";
-        if (!sortAscending) statement += " desc";        
         Cursor result = db.rawQuery(statement, null);
         while (result.moveToNext()) {
             int eventtype = result.getInt(0);

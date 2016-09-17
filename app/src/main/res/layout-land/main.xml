@@ -285,7 +285,7 @@
     android:layout_height="wrap_content"
     android:orientation="horizontal"
     android:layout_weight="1"
-    android:gravity="right">
+    android:gravity="end">
     <LinearLayout android:id="@+id/monthbuttons"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content">

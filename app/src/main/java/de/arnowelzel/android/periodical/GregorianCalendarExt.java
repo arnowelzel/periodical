@@ -21,7 +21,7 @@ package de.arnowelzel.android.periodical;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
-public class GregorianCalendarExt extends GregorianCalendar {
+class GregorianCalendarExt extends GregorianCalendar {
     private static final long serialVersionUID = 7320228290550179309L;
     
     /* Calculate the difference between this calendar date and a given date in days */
