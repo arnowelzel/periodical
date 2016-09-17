@@ -320,11 +320,11 @@ public class PeriodicalDatabase {
                         type = (cycles == 0 ? DayEntry.PERIOD_CONFIRMED : DayEntry.PERIOD_PREDICTED);
                     } else if (day == ovulationday) {
                         // Day of ovulation
-                        type = (cycles == 0 ? DayEntry.OVULATION_PREDICTED : DayEntry.OVULATION_PREDICTED_FUTURE);
+                        type = DayEntry.OVULATION_PREDICTED_FUTURE;
                     } else if (day >= this.shortest - 18
                             && day <= this.longest - 11) {
                         // Fertile days
-                        type = (cycles == 0 ? DayEntry.FERTILITY_PREDICTED : DayEntry.FERTILITY_PREDICTED_FUTURE);
+                        type = DayEntry.FERTILITY_PREDICTED_FUTURE;
                     } else {
                         // Infertile days
                         type = DayEntry.INFERTILE_FUTURE;
