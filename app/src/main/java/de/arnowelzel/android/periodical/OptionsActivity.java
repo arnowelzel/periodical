@@ -26,9 +26,14 @@ import android.view.MenuItem;
 import android.content.SharedPreferences;
 import android.widget.Toast;
 
+/**
+ * Activity to handle the "Preferences" command
+ */
 public class OptionsActivity extends PreferenceActivity implements SharedPreferences.OnSharedPreferenceChangeListener {
     
-    /* Called when activity starts */
+    /**
+     * Called when activity starts
+     */
     @SuppressWarnings("deprecation")
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -71,7 +76,9 @@ public class OptionsActivity extends PreferenceActivity implements SharedPrefere
         }
     }
 
-    /* Called when the activity starts interacting with the user */
+    /**
+     * Called when the activity starts interacting with the user
+     */
     @Override
     @SuppressWarnings("deprecation")
     protected void onResume() {
@@ -82,7 +89,9 @@ public class OptionsActivity extends PreferenceActivity implements SharedPrefere
                 .registerOnSharedPreferenceChangeListener(this);
     }
 
-    /* Called when activity pauses */
+    /**
+     * Called when activity pauses
+     */
     @Override
     @SuppressWarnings("deprecation")
     protected void onPause() {
@@ -93,7 +102,9 @@ public class OptionsActivity extends PreferenceActivity implements SharedPrefere
                 .unregisterOnSharedPreferenceChangeListener(this);
     }    
     
-    /* Update summary of changed preferences */
+    /**
+     * Update summary of changed preferences
+     */
     @SuppressWarnings("deprecation")
     public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
         Preference pref = findPreference(key);
@@ -101,7 +112,9 @@ public class OptionsActivity extends PreferenceActivity implements SharedPrefere
         updatePrefSummary(pref);
     }
 
-    /* Set initial summary texts */
+    /**
+     * Set initial summary texts
+     */
     private void initSummary(Preference p) {
         if (p instanceof PreferenceGroup) {
             PreferenceGroup pGrp = (PreferenceGroup) p;
@@ -113,7 +126,9 @@ public class OptionsActivity extends PreferenceActivity implements SharedPrefere
         }
     }
     
-    /* Update summary text for a preference */
+    /**
+     * Update summary text for a preference
+     */
     private void updatePrefSummary(Preference p) {
         if (p instanceof ListPreference) {
             ListPreference listPref = (ListPreference) p;
@@ -130,7 +145,9 @@ public class OptionsActivity extends PreferenceActivity implements SharedPrefere
         }
     }
     
-    /* Handler for ICS "home" button */
+    /**
+     * Handler for ICS "home" button
+     */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {

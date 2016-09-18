@@ -22,10 +22,17 @@ import android.view.animation.AccelerateInterpolator;
 import android.view.animation.Animation;
 import android.view.animation.TranslateAnimation;
 
-/* Helper methods for view animation */
-
+/**
+ * Helper for view animations
+ */
 class AnimationHelper
 {
+    /**
+     * Create an animation in from the right
+     *
+     * @return
+     * Animation into the view from the right
+     */
     public static Animation inFromRightAnimation() {
 
         Animation inFromRight = new TranslateAnimation(
@@ -38,6 +45,12 @@ class AnimationHelper
         return inFromRight;
     }
 
+    /**
+     * Create an animation out to the left
+     *
+     * @return
+     * Animation out of the view to the left
+     */
     public static Animation outToLeftAnimation() {
         Animation outtoLeft = new TranslateAnimation(
                 Animation.RELATIVE_TO_PARENT, 0.0f,
@@ -49,7 +62,12 @@ class AnimationHelper
         return outtoLeft;
     }
 
-    // for the next movement
+    /**
+     * Create an animation in from the left
+     *
+     * @return
+     * Animation into the view from the left
+     */
     public static Animation inFromLeftAnimation() {
         Animation inFromLeft = new TranslateAnimation(
                 Animation.RELATIVE_TO_PARENT, -1.0f,
@@ -61,6 +79,12 @@ class AnimationHelper
         return inFromLeft;
     }
 
+    /**
+     * Create an animation out to the right
+     *
+     * @return
+     * Animation out of the view to the right
+     */
     public static Animation outToRightAnimation() {
         Animation outtoRight = new TranslateAnimation(
                 Animation.RELATIVE_TO_PARENT, 0.0f,

@@ -44,8 +44,10 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
+/**
+ * The main activity of the app
+ */
 public class MainActivity extends Activity {
-    /* Array for calendar button IDs */
     final int calButtonIds[] = { R.id.cal01, R.id.cal02, R.id.cal03,
             R.id.cal04, R.id.cal05, R.id.cal06, R.id.cal07, R.id.cal08,
             R.id.cal09, R.id.cal10, R.id.cal11, R.id.cal12, R.id.cal13,
@@ -67,24 +69,19 @@ public class MainActivity extends Activity {
             R.id.cal36_2, R.id.cal37_2, R.id.cal38_2, R.id.cal39_2,
             R.id.cal40_2, R.id.cal41_2, R.id.cal42_2 };
 
-    /* Bundle entries */
     final String STATE_MONTH = "month";
     final String STATE_YEAR = "year";
 
-    /* Swipe handler */
     GestureDetector gestureDetector;
     View.OnTouchListener gestureListener;
 
-    /* Current view which has to be updated */
     private int viewCurrent = R.id.calendar;
 
-    /* Current month year */
     private int monthCurrent, yearCurrent;
 
-    /* First day of week (0=Sunday) */
-    private int firstDay;
+    /* First day of the week (0 = sunday) */
+    private int firstDayOfWeek;
 
-    /* Database for calendar data */
     private PeriodicalDatabase dbMain;
 
     /* Request codes for other activities */
@@ -93,7 +90,9 @@ public class MainActivity extends Activity {
     static final int HELP_CLOSED = 3;  // Help: closed
     static final int ABOUT_CLOSED = 4;  // About: closed
 
-    /* Called when activity starts */
+    /**
+     * Called when activity starts
+     */
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -125,7 +124,9 @@ public class MainActivity extends Activity {
         dbMain.loadCalculatedData(getApplicationContext());
     }
 
-    /* Called when the activity starts interacting with the user */
+    /**
+     * Called when the activity starts interacting with the user
+     */
     @Override
     protected void onResume() {
         super.onResume();
@@ -134,7 +135,12 @@ public class MainActivity extends Activity {
         calendarUpdate();
     }
 
-    /* Called to save the current instance state */
+    /**
+     * Called to save the current instance state
+     *
+     * @param outState
+     * Bundle to place the saved state
+     */
     @Override
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
@@ -143,7 +149,9 @@ public class MainActivity extends Activity {
         outState.putInt(STATE_YEAR, yearCurrent);
     }
 
-    /* Called when the activity is destroyed */
+    /**
+     * Called when the activity is destroyed
+     */
     @Override
     protected void onDestroy() {
         super.onDestroy();
@@ -152,7 +160,9 @@ public class MainActivity extends Activity {
             dbMain.close();
     }
 
-    /* Called when the use selects the menu button */
+    /**
+     * Called when the use selects the menu button
+     */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
@@ -160,7 +170,9 @@ public class MainActivity extends Activity {
         return true;
     }
 
-    /* Called when a menu item was selected */
+    /**
+     * Called when a menu item was selected
+     */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle item selection
@@ -202,31 +214,41 @@ public class MainActivity extends Activity {
         }
     }
 
-    /* Handler for "Help" menu action */
+    /**
+     * Handler for "Help" menu action
+     */
     void showHelp() {
         startActivityForResult(
                 new Intent(MainActivity.this, HelpActivity.class), HELP_CLOSED);
     }
 
-    /* Handler for "About" menu action */
+    /**
+     * Handler for "About" menu action
+     */
     void showAbout() {
         startActivityForResult(
                 new Intent(MainActivity.this, AboutActivity.class), ABOUT_CLOSED);
     }
 
-    /* Handler for "List" menu action */
+    /**
+     * Handler for "List" menu action
+     */
     void showList() {
         startActivityForResult(
                 new Intent(MainActivity.this, ListActivity.class), PICK_DATE);
     }
 
-    /* Handler for "Options" menu action */
+    /**
+     * Handler for "Options" menu action
+     */
     void showOptions() {
         startActivityForResult(
                 new Intent(MainActivity.this, OptionsActivity.class), SET_OPTIONS);
     }
     
-    /* Update calendar data and view */
+    /**
+     * Update calendar data and view
+     */
     @SuppressLint("DefaultLocale")
     void calendarUpdate() {
         // Initialize control ids for the target view to be used
@@ -262,23 +284,23 @@ public class MainActivity extends Activity {
         @SuppressLint("SimpleDateFormat") SimpleDateFormat dateFormat = new SimpleDateFormat("MMMM yyyy");
         displayDate.setText(String.format("%s\nØ%d ↓%d ↑%d",
                 dateFormat.format(cal.getTime()),
-                dbMain.average, dbMain.shortest,
-                dbMain.longest));
+                dbMain.cycleAverage, dbMain.cycleShortest,
+                dbMain.cycleLongest));
         displayDate.setContentDescription(String.format("%s - %s %d - %s %d - %s %d",
                 dateFormat.format(cal.getTime()),
-                getResources().getString(R.string.label_average_cycle), dbMain.average,
-                getResources().getString(R.string.label_shortest_cycle), dbMain.shortest,
-                getResources().getString(R.string.label_longest_cycle), dbMain.longest));
+                getResources().getString(R.string.label_average_cycle), dbMain.cycleAverage,
+                getResources().getString(R.string.label_shortest_cycle), dbMain.cycleShortest,
+                getResources().getString(R.string.label_longest_cycle), dbMain.cycleLongest));
 
         // Calculate first week day of month
-        firstDay = cal.get(Calendar.DAY_OF_WEEK);
+        firstDayOfWeek = cal.get(Calendar.DAY_OF_WEEK);
         int daysCount = cal.getActualMaximum(Calendar.DAY_OF_MONTH);
 
         // If the week should start on monday, adjust the first day of the month,
         // so every day moves one position to the left and sunday gets to the end
         if(startofweek == 1) {
-            firstDay--;
-            if(firstDay == 0) firstDay = 7;
+            firstDayOfWeek--;
+            if(firstDayOfWeek == 0) firstDayOfWeek = 7;
         }
         
         GregorianCalendar calToday = new GregorianCalendar();
@@ -286,13 +308,13 @@ public class MainActivity extends Activity {
         // Adjust calendar elements
         for (int i = 1; i <= 42; i++) {
             CalendarCell cell = (CalendarCell) findViewById(calendarCells[i - 1]);
-            if (i < firstDay || i >= firstDay + daysCount) {
+            if (i < firstDayOfWeek || i >= firstDayOfWeek + daysCount) {
                 cell.setVisibility(android.view.View.INVISIBLE);
                 // TODO Display days of previous/next month as "disabled" buttons
             } else {
                 // This cell is part of the current month,
                 // label text is the day of the month
-                int day = i - firstDay + 1;
+                int day = i - firstDayOfWeek + 1;
                 cell.setText(String.format("%d", day));
                 cell.setVisibility(android.view.View.VISIBLE);
                 int type = dbMain.getEntry(yearCurrent, monthCurrent, day);
@@ -317,7 +339,9 @@ public class MainActivity extends Activity {
         }
     }
 
-    /* Handler for "previous month" button in main view */
+    /**
+     * Handler for "previous month" button in main view
+     */
     public void goPrev(View v) {
         // Update calendar
         monthCurrent--;
@@ -341,7 +365,9 @@ public class MainActivity extends Activity {
         flipper.showNext();
     }
 
-    /* Handler for "next month" button in main view */
+    /**
+     * Handler for "next month" button in main view
+     */
     public void goNext(View v) {
         // Update calendar
         monthCurrent++;
@@ -365,20 +391,26 @@ public class MainActivity extends Activity {
         flipper.showPrevious();
     }
 
-    /* Change to current month */
+    /**
+     * Change to current month
+     */
     private void initMonth() {
         Calendar cal = new GregorianCalendar();
         monthCurrent = cal.get(Calendar.MONTH) + 1;
         yearCurrent = cal.get(Calendar.YEAR);
     }
 
-    /* Handler for "current month" menu action */
+    /**
+     * Handler for "current month" menu action
+     */
     private void goCurrent() {
         initMonth();
         calendarUpdate();
     }
 
-    /* Handler for "backup" menu action */
+    /**
+     * Handler for "backup" menu action
+     */
     private void doBackup() {
         final Context context = getApplicationContext();
         assert context != null;
@@ -419,7 +451,9 @@ public class MainActivity extends Activity {
         builder.show();
     }
 
-    /* Handler for "restore" menu action */
+    /**
+     * Handler for "restore" menu action
+     */
     private void doRestore() {
         final Context context = getApplicationContext();
         assert context != null;
@@ -462,7 +496,9 @@ public class MainActivity extends Activity {
         builder.show();
     }
 
-    /* Handler for the selection of one day in the calendar */
+    /**
+     * Handler for the selection of one day in the calendar
+     */
     public void handleCalendarButton(View v) {
         // Determine selected date
         int idButton = v.getId();
@@ -480,7 +516,7 @@ public class MainActivity extends Activity {
                 break;
             nButtonClicked++;
         }
-        final int day = nButtonClicked - firstDay + 2;
+        final int day = nButtonClicked - firstDayOfWeek + 2;
 
         // Set or remove entry with confirmation
         final AlertDialog.Builder builder = new AlertDialog.Builder(this);
@@ -535,7 +571,9 @@ public class MainActivity extends Activity {
         builder.show();
     }
 
-    /* Helper to update view after database modification */
+    /**
+     * Helper to update view after database modification
+     */
     private void handleDatabaseEdit() {
         // Update calculated values
         dbMain.loadCalculatedData(getApplicationContext());
@@ -546,7 +584,9 @@ public class MainActivity extends Activity {
         bm.dataChanged();
     }
 
-    /* Handler of activity results (detail list, options) */
+    /**
+     * Handler of activity results (detail list, options)
+     */
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         switch (requestCode) {
             // Specific date in detail list selected
@@ -571,7 +611,14 @@ public class MainActivity extends Activity {
         }
     }
 
-    // Gesture detector to handle swipes
+    /**
+     * Touch dispatcher to pass events to the gesture detector to detect swipes on the UI
+     *
+     * @param e
+     * The motion event to be dispatched
+     *
+     * @return
+     */
 
     @Override
     public boolean dispatchTouchEvent(MotionEvent e) {
@@ -579,11 +626,22 @@ public class MainActivity extends Activity {
         return gestureDetector.onTouchEvent(e);
     }
 
+    /**
+     * Touch handler to pass events to the gesture detector to detect swipes on the UI
+     *
+     * @param event
+     * The motion event to be dispatched
+     *
+     * @return
+     */
     @Override
     public boolean onTouchEvent(MotionEvent event) {
         return gestureDetector.onTouchEvent(event);
     }
 
+    /**
+     * Gesture detector to handle swipes on the UI
+     */
     class CalendarGestureDetector extends SimpleOnGestureListener {
         private static final int SWIPE_MIN_DISTANCE = 120;
         private static final int SWIPE_MAX_OFF_PATH = 250;

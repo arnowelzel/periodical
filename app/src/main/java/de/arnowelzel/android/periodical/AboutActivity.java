@@ -24,9 +24,14 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.webkit.WebView;
 
+/**
+ * Activity to handle the "About" command
+ */
 public class AboutActivity extends Activity {
 
-    /* Called when activity starts */
+    /**
+     * Called when the activity starts
+     */
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,7 +50,9 @@ public class AboutActivity extends Activity {
         }
     }
     
-    /* Handler for ICS "home" button */
+    /**
+     * Handler for ICS "home" button
+     */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {

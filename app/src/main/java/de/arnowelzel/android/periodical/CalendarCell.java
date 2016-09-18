@@ -38,37 +38,76 @@ import android.view.Surface;
 import android.view.WindowManager;
 import android.widget.Button;
 
+/**
+ * Custom button class to display the calendar cells
+ */
 public class CalendarCell extends Button {
+    /** flag for "is current day" */
     protected boolean isCurrent;
+    /** entry type as in database */
     protected int type;
+    /** displayed day of month (1-31) */
     protected int day;
+    /** month (1-12) */
     protected int month;
+    /** year including century */
     protected int year;
 
+    /** Display metrics */
     protected DisplayMetrics metrics;
+    /** Rectangle of the cell canvas */
     protected RectF rectCanvas;
+    /** Paint for the label (day of month) */
     protected Paint paintLabel;
+    /** Background paint for the cell */
     protected Paint paintBackground;
+    /** Paint for the cell if it focused */
     protected Paint paintFocus;
+    /** Paint for the "is current day" oval marker */
     protected Paint paintOval;
+    /** First rectangle for the "is current day" oval marker */
     protected RectF rectOval1;
+    /** Second rectangle for the "is current day" oval marker */
     protected RectF rectOval2;
+    /** Rectangle for the label (day of month) */
     protected Rect rectLabel;
+    /** Gradient for entries of type "confirmed period" */
     protected LinearGradient gradientPeriodConfirmed;
+    /** Gradient for entries of type "predicted period" */
     protected LinearGradient gradientPeriodPredicted;
+    /** Gradient for entries of type "predicted fertility" and "ovulation" */
     protected LinearGradient gradientFertilityPredicted;
+    /** Gradient for entries of type "predicted fertility in the future" and "ovulation in the future */
     protected LinearGradient gradientFertilityFuture;
-    protected LinearGradient gradientInfertile;
+    /** Gradient for entries of type "infertile day predicted" */
+    protected LinearGradient gradientInfertilePredicted;
+    /** Gradient for entries of type "infertile day predicted in the future" */
     protected LinearGradient gradientInfertileFuture;
+    /** Gradient for empty entries */
     protected LinearGradient gradientEmpty;
-    protected Rect rectDestination;
+    /** Rectangle for overlays */
+    protected Rect rectOverlay;
+    /** Bitmap for entries of type "period"  and "predicted period" */
     protected Bitmap bitmapPeriod;
+    /** Bitmap for entries of type "ovulation" */
     protected Bitmap bitmapOvulation;
-    protected Bitmap bitmapOvulationPredicted;
+    /** Bitmap for entries of type "ovulation in the future" */
+    protected Bitmap bitmapOvulationFuture;
+    /** Paint for bitmaps */
     protected Paint paintBitmap;
 
+    /* Current view orientation (portrait, landscape) */
     protected int orientation;
 
+    /**
+     * Constructor
+     *
+     * @param context
+     * Application context
+     *
+     * @param attrs
+     * Resource attributes
+     */
     public CalendarCell(Context context, AttributeSet attrs) {
         super(context, attrs);
         
@@ -101,12 +140,12 @@ public class CalendarCell extends Button {
         gradientPeriodPredicted = makeCellGradient(0xffef9a9a, 0xffef9a9a);
         gradientFertilityPredicted = makeCellGradient(0xff2196F3, 0xff2196F3);
         gradientFertilityFuture = makeCellGradient(0xff90CAF9, 0xff90CAF9);
-        gradientInfertile = makeCellGradient(0xffffee58, 0xffffee58);
+        gradientInfertilePredicted = makeCellGradient(0xffffee58, 0xffffee58);
         gradientInfertileFuture = makeCellGradient(0xfffff59d, 0xfffff59d);
         gradientEmpty = makeCellGradient(0xff757575, 0xff757575);
 
         // Overlays
-        rectDestination = new Rect();
+        rectOverlay = new Rect();
         paintBitmap = new Paint();
         paintBitmap.setStyle(Style.FILL);
         paintBitmap.setFilterBitmap(true);
@@ -114,7 +153,7 @@ public class CalendarCell extends Button {
                 R.drawable.ic_start);
         bitmapOvulation = BitmapFactory.decodeResource(getResources(),
                 R.drawable.ic_ovulation);
-        bitmapOvulationPredicted = BitmapFactory.decodeResource(getResources(),
+        bitmapOvulationFuture = BitmapFactory.decodeResource(getResources(),
                 R.drawable.ic_ovulation_predicted);
 
         // Get current screen orientation
@@ -124,7 +163,22 @@ public class CalendarCell extends Button {
             orientation = display.getRotation();
         }
     }
-    
+
+    /**
+     * Handle size changes to adapt size specific elements
+     *
+     * @param w
+     * Current width
+     *
+     * @param h
+     * Current height
+     *
+     * @param oldw
+     * Old width
+     *
+     * @param oldh
+     * Old height
+     */
     protected void onSizeChanged(int w, int h, int oldw, int oldh) {
         super.onSizeChanged(w, h, oldw, oldh);
         rectCanvas.set(0, 0, w, h);
@@ -132,10 +186,16 @@ public class CalendarCell extends Button {
         gradientPeriodPredicted = makeCellGradient(0xffef9a9a, 0xffef9a9a);
         gradientFertilityPredicted = makeCellGradient(0xff2196F3, 0xff2196F3);
         gradientFertilityFuture = makeCellGradient(0xff90CAF9, 0xff90CAF9);
-        gradientInfertile = makeCellGradient(0xffffee58, 0xffffee58);
+        gradientInfertilePredicted = makeCellGradient(0xffffee58, 0xffffee58);
         gradientInfertileFuture = makeCellGradient(0xfffff59d, 0xfffff59d);
     }
-    
+
+    /**
+     * Custom draw
+     *
+     * @param canvas
+     * The canvas to draw on
+     */
     protected void onDraw(Canvas canvas) {
         LinearGradient gradient = gradientEmpty;
         int colorLabel = 0xffffffff;
@@ -172,13 +232,13 @@ public class CalendarCell extends Button {
                 gradient = gradientFertilityPredicted;
                 colorLabel = 0xffffffff;
                 break;
-            case DayEntry.FERTILITY_PREDICTED_FUTURE: // Calculated fertile day in the future
-            case DayEntry.OVULATION_PREDICTED_FUTURE: // Calculated day of ovulation in the future
+            case DayEntry.FERTILITY_FUTURE: // Calculated fertile day in the future
+            case DayEntry.OVULATION_FUTURE: // Calculated day of ovulation in the future
                 gradient = gradientFertilityFuture;
                 colorLabel = 0xde000000;
                 break;
-            case DayEntry.INFERTILE:        // Calculated infertile day
-                gradient = gradientInfertile;
+            case DayEntry.INFERTILE_PREDICTED:        // Calculated infertile day
+                gradient = gradientInfertilePredicted;
                 colorLabel = 0xde000000;
                 break;
             case DayEntry.INFERTILE_FUTURE: // Calculated infertile day in the future
@@ -196,18 +256,18 @@ public class CalendarCell extends Button {
             canvas.drawRoundRect(rectCanvas, 3*metrics.density, 3*metrics.density, paintBackground);
             
             // Draw overlay markers depending on type
-            rectDestination.set((int) (2 * metrics.density),
+            rectOverlay.set((int) (2 * metrics.density),
                     (int) rectCanvas.height() - (int) (overlaysize * metrics.density),
                     (int) (overlaysize * metrics.density),
                     (int) rectCanvas.height() - (int) (2 * metrics.density));
             if (type == DayEntry.PERIOD_START) {
-                canvas.drawBitmap(bitmapPeriod, null, rectDestination, paintBitmap);
+                canvas.drawBitmap(bitmapPeriod, null, rectOverlay, paintBitmap);
             }
             if (type == DayEntry.OVULATION_PREDICTED) {
-                canvas.drawBitmap(bitmapOvulation, null, rectDestination, paintBitmap);
+                canvas.drawBitmap(bitmapOvulation, null, rectOverlay, paintBitmap);
             }
-            if (type == DayEntry.OVULATION_PREDICTED_FUTURE) {
-                canvas.drawBitmap(bitmapOvulationPredicted, null, rectDestination, paintBitmap);
+            if (type == DayEntry.OVULATION_FUTURE) {
+                canvas.drawBitmap(bitmapOvulationFuture, null, rectOverlay, paintBitmap);
             }
 
             // Draw the "current day" mark, if needed
@@ -263,16 +323,29 @@ public class CalendarCell extends Button {
             canvas.drawRoundRect(rectCanvas, 3*metrics.density, 3*metrics.density, paintFocus);
         }
     }
-    
-    // Helper to create a new linear gradient
+
+    /**
+     * Helper to create a linear gradient
+     *
+     * @param colorStart
+     * Color to start with
+     *
+     * @param colorEnd
+     * Color to end with
+     *
+     * @return
+     * A LinearGradient with the given colors at a 45 degree angle
+     */
     protected LinearGradient makeCellGradient(int colorStart, int colorEnd) {
         return new LinearGradient(0, 0,
                 rectCanvas.width(), rectCanvas.height(),
                 colorStart, colorEnd,
                 android.graphics.Shader.TileMode.CLAMP);
     }
-    
-    // Helper to update content description based on current cell values
+
+    /**
+     * Helper to update content description on all calendar cells
+     */
     public void updateContentDescription()
     {
         GregorianCalendarExt cal= new GregorianCalendarExt();
@@ -292,22 +365,27 @@ public class CalendarCell extends Button {
             contentDescription += " - "+getResources().getString(R.string.label_period_predicted);
             break;
         case DayEntry.FERTILITY_PREDICTED:
-        case DayEntry.FERTILITY_PREDICTED_FUTURE:
+        case DayEntry.FERTILITY_FUTURE:
             contentDescription += " - "+getResources().getString(R.string.label_fertile);
             break;
         case DayEntry.OVULATION_PREDICTED:
-        case DayEntry.OVULATION_PREDICTED_FUTURE:
+        case DayEntry.OVULATION_FUTURE:
             contentDescription += " - "+getResources().getString(R.string.label_ovulation);
             break;
-        case DayEntry.INFERTILE:
+        case DayEntry.INFERTILE_PREDICTED:
         case DayEntry.INFERTILE_FUTURE:
             contentDescription += " - "+getResources().getString(R.string.label_infertile);
             break;
         }
         setContentDescription(contentDescription);
     }
-    
-    // Getter/setter
+
+    /**
+     * Set "is current day" flag
+     *
+     * @param current
+     * true if this is the current day, false otherwise
+     */
     public void setCurrent(boolean current) {
         isCurrent = current;
     }
@@ -318,27 +396,75 @@ public class CalendarCell extends Button {
     }
     */
 
+    /**
+     * Set current cell type
+     *
+     * @param type
+     * The type as stored in the database to define the look of the cell
+     */
     public void setType(int type) {
         this.type = type;
     }
 
+    /**
+     * Get the current cell type
+     *
+     * @return
+     * The type as stored in the database to define the look of the cell
+     */
     public int getType() {
         return type;
     }
 
+    /**
+     * Set the day to be displayed
+     *
+     * @param day
+     * The day of the month (1-31)
+     */
     public void setDay(int day) {
         this.day = day;
     }
 
+    /**
+     * Get the displayed day
+     *
+     * @return
+     * The day of the month (1-31)
+     */
     public int getDay() { return day; }
 
+    /**
+     * Set the month
+     *
+     * @param month
+     * The month (1-12)
+     */
     public void setMonth(int month) { this.month = month; }
 
+    /**
+     * Get the month
+     *
+     * @return
+     * The month (1-12)
+     */
     public int getMonth() {
         return month;
     }
 
+    /**
+     * Set the year
+     *
+     * @param year
+     * The year
+     */
     public void setYear(int year) { this.year = year; }
 
+    /**
+     * Get the year
+     *
+     * @return
+     * The year
+     */
     public int getYear() { return year; }
 }

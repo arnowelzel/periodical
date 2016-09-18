@@ -24,9 +24,14 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.webkit.WebView;
 
+/**
+ * Activity to handle the "Help" command
+ */
 public class HelpActivity extends Activity {
 
-    /* Called when activity starts */
+    /**
+     *  Called when the activity starts
+     */
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,8 +49,10 @@ public class HelpActivity extends Activity {
             actionBar.setDisplayHomeAsUpEnabled(true);
         }
     }
-    
-    /* Handler for ICS "home" button */
+
+    /**
+     * Handler for ICS "home" button
+     */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {

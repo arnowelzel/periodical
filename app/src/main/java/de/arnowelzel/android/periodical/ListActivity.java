@@ -33,11 +33,18 @@ import android.widget.ListView;
 
 import de.arnowelzel.android.periodical.PeriodicalDatabase.DayEntry;
 
+/**
+ * Activity to handle the "List" command
+ */
 public class ListActivity extends android.app.ListActivity {
-    /* Database for calendar data */
+    /**
+     * Database for calendar data
+     */
     private PeriodicalDatabase dbMain;
 
-    /* Called when activity starts */
+    /**
+     * Called when activity starts
+     */
     @SuppressLint("NewApi")
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -103,7 +110,9 @@ public class ListActivity extends android.app.ListActivity {
         }
     }
 
-    /* Called when the activity is destroyed */
+    /**
+     * Called when the activity is destroyed
+     */
     @Override
     protected void onDestroy() {
         // Close database
@@ -112,7 +121,9 @@ public class ListActivity extends android.app.ListActivity {
         super.onDestroy();
     }
 
-    /* Handler for ICS "home" button */
+    /**
+     *  Handler for ICS "home" button
+     */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
@@ -125,7 +136,21 @@ public class ListActivity extends android.app.ListActivity {
         }
     }
 
-    /* Handler for selecting a list item */
+    /**
+     * Handler for opening a list item which will return to the main view
+     *
+     * @param l
+     * The ListView where the click happened
+     *
+     * @param v
+     * The view that was clicked within the ListView
+     *
+     * @param position
+     * The position of the view in the list
+     *
+     * @param id
+     * The row id of the item that was clicked
+     */
     @Override
     protected void onListItemClick(ListView l, View v, int position, long id) {
         // Determine date of clicked item

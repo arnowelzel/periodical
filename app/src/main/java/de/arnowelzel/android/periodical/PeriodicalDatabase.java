@@ -35,17 +35,36 @@ import java.io.IOException;
 import java.util.GregorianCalendar;
 import java.util.Vector;
 
+/**
+ * Database of the app
+ */
 public class PeriodicalDatabase {
 
-    /* Helper to create or open database */
+    /**
+     * Helper to create or open database
+     */
     private class PeriodicalDataOpenHelper extends SQLiteOpenHelper {
+        /** File name for the database */
         final static String DATABASE_NAME = "main.db";
+        /** Version of the database */
         final static int DATABASE_VERSION = 3;
 
+        /**
+         * Create a new database for the app
+         *
+         * @param context
+         * Application context
+         */
         PeriodicalDataOpenHelper(Context context) {
             super(context, DATABASE_NAME, null, DATABASE_VERSION);
         }
 
+        /**
+         * Create tables if needed
+         *
+         * @param db
+         * The database
+         */
         @Override
         public void onCreate(SQLiteDatabase db) {
             db.execSQL("create table data (" +
@@ -62,6 +81,18 @@ public class PeriodicalDatabase {
                     ");");
         }
 
+        /**
+         * Execute schema updates if needed
+         *
+         * @param db
+         * The database
+         *
+         * @param oldVersion
+         * The old version which is being updated
+         *
+         * @param newVersion
+         * The new version to update to
+         */
         @Override
         public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
             if (oldVersion < 2 && newVersion >= 2) {
@@ -81,7 +112,9 @@ public class PeriodicalDatabase {
     /* Reference to database */
     private SQLiteDatabase db;
 
-    /* Local helper to manage calculated calendar entries */
+    /**
+     * Local helper to manage calculated calendar entries
+     */
     public class DayEntry {
         final static int EMPTY = 0;
         final static int PERIOD_START = 1;
@@ -89,14 +122,26 @@ public class PeriodicalDatabase {
         final static int PERIOD_PREDICTED = 3;
         final static int FERTILITY_PREDICTED = 4;
         final static int OVULATION_PREDICTED = 5;
-        final static int FERTILITY_PREDICTED_FUTURE = 6;
-        final static int OVULATION_PREDICTED_FUTURE = 7;
-        final static int INFERTILE = 8;
+        final static int FERTILITY_FUTURE = 6;
+        final static int OVULATION_FUTURE = 7;
+        final static int INFERTILE_PREDICTED = 8;
         final static int INFERTILE_FUTURE = 9;
         int type;
         GregorianCalendarExt date;
         int dayofcycle;
 
+        /**
+         * Construct a new day entry
+         *
+         * @param type
+         * Entry type (DayEntry.EMPTY, DayEntry.PERIOD_START, DayEntry.PERIOD_CONFIRMED, ...)
+         *
+         * @param date
+         * Entry date
+         *
+         * @param dayofcycle
+         * Day within current cycle (beginning with 1)
+         */
         public DayEntry(int type, GregorianCalendar date, int dayofcycle) {
             this.type = type;
             this.date = new GregorianCalendarExt();
@@ -105,20 +150,33 @@ public class PeriodicalDatabase {
         }
     }
 
-    /* Calculated data */
+    /** Calculated day entries */
     Vector<DayEntry> dayEntries;
-    int average;
-    int longest;
-    int shortest;
+    /** Calculated average cycle length */
+    int cycleAverage;
+    /** Calculated longest cycle length */
+    int cycleLongest;
+    /** Calculated shortest cycle length */
+    int cycleShortest;
 
-    /* Constructor, will try to create/open a writable database */
+    /**
+     * Constructor, will try to create/open a writable database
+     *
+     * @param context
+     * Application context
+     */
     PeriodicalDatabase(Context context) {
         open(context);
 
         dayEntries = new Vector<>();
     }
 
-    /* Open the database */
+    /**
+     * Open the database
+     *
+     * @param context
+     * Application context
+     */
     @SuppressLint("Recycle")
     void open(Context context) {
         PeriodicalDataOpenHelper dataOpenHelper;
@@ -145,13 +203,26 @@ public class PeriodicalDatabase {
         }
     }
 
-    /* Close the database */
+    /**
+     * Close the database
+     */
     void close() {
         if (db != null)
             db.close();
     }
 
-    /* Store an entry for a specific day into the database */
+    /**
+     * Store an entry for a specific day into the database
+     *
+     * @param year
+     * Year including century
+     *
+     * @param month
+     * Month (1-12)
+     *
+     * @param day
+     * Day of the month (1-31)
+     */
     void add(int year, int month, int day) {
         String statement;
 
@@ -164,7 +235,18 @@ public class PeriodicalDatabase {
         db.endTransaction();
     }
 
-    /* Remove an entry for a specific day into the database */
+    /**
+     * Remove an entry for a specific day into the database
+     *
+     * @param year
+     * Year including century
+     *
+     * @param month
+     * Month (1-12)
+     *
+     * @param day
+     * Day of the month (1-31)
+     */
     void remove(int year, int month, int day) {
         String statement;
 
@@ -176,16 +258,21 @@ public class PeriodicalDatabase {
         db.endTransaction();
     }
 
-    /* Update the calculation based on the entries in the database */
+    /**
+     * Update the calculation based on the entries in the database
+     *
+     * @param context
+     * Application context
+     */
     void loadCalculatedData(Context context) {
         DayEntry entry = null;
         DayEntry entryPrevious = null;
         boolean isFirst = true;
         int count = 0;
         int countlimit = 1;
-        this.average = 0;
-        this.longest = 28;
-        this.shortest = 28;
+        this.cycleAverage = 0;
+        this.cycleLongest = 28;
+        this.cycleShortest = 28;
         int ovulationday = 0;
         Cursor result;
         int periodlength;
@@ -244,23 +331,23 @@ public class PeriodicalDatabase {
                 if (count == countlimit) {
                     // If we have at least one period the shortest and
                     // and longest value is automatically the current length
-                    this.shortest = length;
-                    this.longest = length;
+                    this.cycleShortest = length;
+                    this.cycleLongest = length;
                 } else if (count > countlimit) {
                     // We have more than two values, then update
                     // longest/shortest
                     // values
-                    if (length < this.shortest)
-                        this.shortest = length;
-                    if (length > this.longest)
-                        this.longest = length;
+                    if (length < this.cycleShortest)
+                        this.cycleShortest = length;
+                    if (length > this.cycleLongest)
+                        this.cycleLongest = length;
                 }
 
                 // Update average sum
-                this.average += length;
+                this.cycleAverage += length;
 
                 // Calculate a predicted ovulation date
-                int average = this.average;
+                int average = this.cycleAverage;
                 if (count > 0) average /= count;
                 ovulationday = average - 14;
 
@@ -280,13 +367,13 @@ public class PeriodicalDatabase {
                     } else if (day == ovulationday) {
                         // Day of ovulation
                         type = DayEntry.OVULATION_PREDICTED;
-                    } else if (day >= this.shortest - 18
-                            && day <= this.longest - 11) {
+                    } else if (day >= this.cycleShortest - 18
+                            && day <= this.cycleLongest - 11) {
                         // Fertile days
                         type = DayEntry.FERTILITY_PREDICTED;
                     } else {
                         // Infertile days
-                        type = DayEntry.INFERTILE;
+                        type = DayEntry.INFERTILE_PREDICTED;
                     }
 
                     DayEntry entryCalculated = new DayEntry(type, datePrevious, dayofcycle);
@@ -303,14 +390,14 @@ public class PeriodicalDatabase {
 
         // Calculate global average and prediction if possible
         if (count > 0) {
-            this.average /= count;
+            this.cycleAverage /= count;
 
             GregorianCalendar datePredicted = new GregorianCalendar();
             datePredicted.setTime(entry.date.getTime());
 
             for (int cycles = 0; cycles < 3; cycles++) {
                 dayofcycle = 1;
-                for (int day = (cycles == 0 ? 2 : 1); day <= average; day++) {
+                for (int day = (cycles == 0 ? 2 : 1); day <= cycleAverage; day++) {
                     datePredicted.add(GregorianCalendar.DATE, 1);
 
                     int type;
@@ -320,14 +407,14 @@ public class PeriodicalDatabase {
                         type = (cycles == 0 ? DayEntry.PERIOD_CONFIRMED : DayEntry.PERIOD_PREDICTED);
                     } else if (day == ovulationday) {
                         // Day of ovulation
-                        type = (cycles == 0 ? DayEntry.OVULATION_PREDICTED : DayEntry.OVULATION_PREDICTED_FUTURE);
-                    } else if (day >= this.shortest - 18
-                            && day <= this.longest - 11) {
+                        type = (cycles == 0 ? DayEntry.OVULATION_PREDICTED : DayEntry.OVULATION_FUTURE);
+                    } else if (day >= this.cycleShortest - 18
+                            && day <= this.cycleLongest - 11) {
                         // Fertile days
-                        type = (cycles == 0 ? DayEntry.FERTILITY_PREDICTED : DayEntry.FERTILITY_PREDICTED_FUTURE);
+                        type = (cycles == 0 ? DayEntry.FERTILITY_PREDICTED : DayEntry.FERTILITY_FUTURE);
                     } else {
                         // Infertile days
-                        type = (cycles == 0 ? DayEntry.INFERTILE : DayEntry.INFERTILE_FUTURE);
+                        type = (cycles == 0 ? DayEntry.INFERTILE_PREDICTED : DayEntry.INFERTILE_FUTURE);
                     }
 
                     DayEntry entryCalculated = new DayEntry(type, datePredicted, dayofcycle);
@@ -341,7 +428,9 @@ public class PeriodicalDatabase {
         System.gc();
     }
 
-    /* Load data without calculating anything */
+    /**
+     * Load data without calculating anything.
+     */
     void loadRawData() {
         DayEntry entry;
 
@@ -370,7 +459,18 @@ public class PeriodicalDatabase {
         System.gc();
     }
 
-    /* Get entry type from cache for a specific day in month */
+    /**
+     * Get entry type from cache for a specific day in month
+     *
+     * @param year
+     * Year including century
+     *
+     * @param month
+     * Month (1-12)
+     *
+     * @param day
+     * Day of the month (1-31)
+     */
     int getEntry(int year, int month, int day) {
         for (DayEntry entry : dayEntries) {
             // If entry was found, then return type
@@ -385,7 +485,15 @@ public class PeriodicalDatabase {
         return 0;
     }
 
-    /* Get a named option from the options table */
+    /**
+     * Get a named option from the options table
+     *
+     * @param name
+     * Name of the option to retrieve
+     *
+     * @param defaultvalue
+     * Default value to be used if the option is not stored yet
+     */
     public String getOption(String name, String defaultvalue) {
         String value = defaultvalue;
 
@@ -399,7 +507,15 @@ public class PeriodicalDatabase {
         return value;
     }
 
-    /* Set a named option to be stored in the options table */
+    /**
+     * Set a named option to be stored in the options table
+     *
+     * @param name
+     * Name of the option to store
+     *
+     * @param value
+     * Value of the option to store
+     */
     public void setOption(String name, String value) {
         String statement;
 
@@ -417,29 +533,45 @@ public class PeriodicalDatabase {
         db.endTransaction();
     }
 
-    /*
-     * Helper to backup the database on the SD card if possible or restore it
-     * from there
+    /**
+     * Backup the database
      */
     public boolean backup(Context context) {
         return backupRestore(context, true);
     }
 
+    /**
+     * Restore the database
+     */
     public boolean restore(Context context) {
         return backupRestore(context, false);
     }
 
+    /**
+     * Helper to handle backup and restore operations
+     *
+     * @param context
+     * Application context
+     *
+     * @param backup
+     * true for doing a backup, false for a restore
+     */
+
     public boolean backupRestore(Context context, boolean backup) {
+        boolean ok = true;
+
         // Check if SD card is mounted
         if (Environment.getExternalStorageState().equals(
                 android.os.Environment.MEDIA_UNMOUNTED))
             return false;
 
         File sourceFile;
+        File sourceFileJournal;
         File destDir;
         File destFile;
 
         // Get source of DB and path for external storage
+        sourceFileJournal = new File(db.getPath()+"-journal");
         if (backup) {
             sourceFile = new File(db.getPath());
             destDir = new File(Environment.getExternalStorageDirectory()
@@ -460,41 +592,24 @@ public class PeriodicalDatabase {
         // Before we can copy anything, close the DB
         db.close();
 
-        boolean ok = true;
+        // Depending on the Android version there may also be a journal file which we
+        // have to clean up first
+        if(sourceFileJournal.exists()) ok = sourceFileJournal.delete();
 
         // Check, if destination exists and delete first
-        if (destFile.exists())
-            ok = destFile.delete();
+        if(destFile.exists() && ok == true) ok = destFile.delete();
 
         // If everything is ok, then copy source to destination
         if (ok) {
             if (backup) {
                 destDir.mkdirs();
 
-                FileInputStream in = null;
-                FileOutputStream out = null;
                 try {
-                    in = new FileInputStream(sourceFile);
-                    out = new FileOutputStream(destFile);
+                    FileUtils.copyFile(new FileInputStream(sourceFile),
+                            new FileOutputStream(destFile));
                 } catch (IOException e) {
                     ok = false;
                     e.printStackTrace();
-                }
-
-                if (ok) {
-                    byte[] buffer = new byte[4096];
-                    int bytesRead;
-
-                    try {
-                        while ((bytesRead = in.read(buffer)) != -1)
-                            out.write(buffer, 0, bytesRead);
-
-                        in.close();
-                        out.close();
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                        ok = false;
-                    }
                 }
             }
         }
@@ -505,9 +620,13 @@ public class PeriodicalDatabase {
         return ok;
     }
 
-    /*
+    /**
      * Save application preferences to the database
-     * (Just a hack for now - in the future we might want to get rid of shared preferences)
+     *
+     * <br><br><i>(Just a hack for now - in the future we might want to get rid of shared preferences)</i>
+     *
+     * @param context
+     * Application context
      */
     void savePreferences(Context context) {
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
@@ -515,9 +634,13 @@ public class PeriodicalDatabase {
         setOption("startofweek", preferences.getString("startofweek", "0"));
     }
 
-    /*
+    /**
      * Restore application preferences from the database
-     * (Just a hack for now - in the future we might want to get rid of shared preferences)
+     *
+     * <br><br><i>(Just a hack for now - in the future we might want to get rid of shared preferences)</i>
+     *
+     * @param context
+     * Application context
      */
     void restorePreferences(Context context) {
         String period_length = getOption("period_length", "4");

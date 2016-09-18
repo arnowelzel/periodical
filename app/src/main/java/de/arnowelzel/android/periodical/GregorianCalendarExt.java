@@ -21,10 +21,19 @@ package de.arnowelzel.android.periodical;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
+/**
+ * Helper to deal with calendar dates
+ */
 class GregorianCalendarExt extends GregorianCalendar {
-    private static final long serialVersionUID = 7320228290550179309L;
-    
-    /* Calculate the difference between this calendar date and a given date in days */
+    /**
+     *  Calculate the difference between this calendar date and a given date in days
+     *
+     *  @param date
+     *  The date to which the difference should be calculated
+     *
+     *  @return
+     *  The number of days between the calendar date and the given date
+     */
     public int diffDayPeriods(Calendar date) {
         long endL = date.getTimeInMillis() + date.getTimeZone().getOffset( date.getTimeInMillis() );
         long startL = this.getTimeInMillis() + getTimeZone().getOffset( getTimeInMillis() );
