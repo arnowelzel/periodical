@@ -67,6 +67,7 @@ public class PeriodicalDatabase {
          */
         @Override
         public void onCreate(SQLiteDatabase db) {
+            db.beginTransaction();
             db.execSQL("create table data (" +
                     "_id integer primary key autoincrement, " +
                     "eventtype integer(3), " +
@@ -79,6 +80,8 @@ public class PeriodicalDatabase {
                     "name varchar(100), " +
                     "value varchar(500)" +
                     ");");
+            db.setTransactionSuccessful();
+            db.endTransaction();
         }
 
         /**
@@ -97,14 +100,20 @@ public class PeriodicalDatabase {
         public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
             if (oldVersion < 2 && newVersion >= 2) {
                 // Version 2 introduces additional data columns
+                db.beginTransaction();
                 db.execSQL("alter table data add column eventcvx integer(3)");
                 db.execSQL("alter table data add column eventtemp real");
+                db.setTransactionSuccessful();
+                db.endTransaction();
             } else if (oldVersion < 3 && newVersion >= 3) {
                 // Version 3 introduces options
+                db.beginTransaction();
                 db.execSQL("create table options (" +
                         "name varchar(100), " +
                         "value varchar(500)" +
                         ");");
+                db.setTransactionSuccessful();
+                db.endTransaction();
             }
         }
     }
@@ -196,10 +205,13 @@ public class PeriodicalDatabase {
             options_missing = true;
         }
         if (options_missing) {
+            db.beginTransaction();
             db.execSQL("create table options (" +
                     "name varchar(100), " +
                     "value varchar(500)" +
                     ");");
+            db.setTransactionSuccessful();
+            db.endTransaction();
         }
     }
 
@@ -569,48 +581,53 @@ public class PeriodicalDatabase {
         File sourceFileJournal;
         File destDir;
         File destFile;
+        File destFileJournal;
 
         // Get source of DB and path for external storage
-        sourceFileJournal = new File(db.getPath()+"-journal");
         if (backup) {
             sourceFile = new File(db.getPath());
+            sourceFileJournal = new File(db.getPath()+"-journal");
             destDir = new File(Environment.getExternalStorageDirectory()
                     .getAbsolutePath() + "/" + context.getPackageName());
             destFile = new File(destDir.getAbsolutePath() + "/"
                     + sourceFile.getName());
+            destFileJournal = new File(destFile.getPath() + "-journal");
         } else {
             destDir = null; // If we restore, the directory is already there
             destFile = new File(db.getPath());
+            destFileJournal = new File(db.getPath()+"-journal");
             sourceFile = new File(Environment.getExternalStorageDirectory()
                     .getAbsolutePath()
                     + "/"
                     + context.getPackageName()
                     + "/"
                     + destFile.getName());
+            sourceFileJournal = new File(sourceFile.getPath() + "-journal");
         }
 
         // Before we can copy anything, close the DB
         db.close();
 
-        // Depending on the Android version there may also be a journal file which we
-        // have to clean up first
-        if(sourceFileJournal.exists()) ok = sourceFileJournal.delete();
-
-        // Check, if destination exists and delete first
+        // Check, if destination files exists and delete first
         if(destFile.exists() && ok == true) ok = destFile.delete();
+        if(destFileJournal.exists() && ok == true) ok = destFileJournal.delete();
 
         // If everything is ok, then copy source to destination
         if (ok) {
             if (backup) {
                 destDir.mkdirs();
+            }
 
-                try {
-                    FileUtils.copyFile(new FileInputStream(sourceFile),
-                            new FileOutputStream(destFile));
-                } catch (IOException e) {
-                    ok = false;
-                    e.printStackTrace();
-                }
+            try {
+                FileUtils.copyFile(new FileInputStream(sourceFile),
+                        new FileOutputStream(destFile));
+                // Try to copy journal only if it exists
+                if(sourceFileJournal.exists())
+                    FileUtils.copyFile(new FileInputStream(sourceFileJournal),
+                            new FileOutputStream(destFileJournal));
+            } catch (IOException e) {
+                ok = false;
+                e.printStackTrace();
             }
         }
 
