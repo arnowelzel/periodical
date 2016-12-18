@@ -19,8 +19,8 @@
 package de.arnowelzel.android.periodical;
 
 import android.annotation.SuppressLint;
-import android.content.Context;
 
+import android.content.Context;
 import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -489,6 +489,7 @@ public class PeriodicalDatabase {
      * @param day
      * Day of the month (1-31)
      */
+    @SuppressWarnings("WrongConstant")
     int getEntry(int year, int month, int day) {
         for (DayEntry entry : dayEntries) {
             // If entry was found, then return type

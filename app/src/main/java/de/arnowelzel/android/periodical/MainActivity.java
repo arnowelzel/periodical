@@ -18,6 +18,7 @@
 
 package de.arnowelzel.android.periodical;
 
+import android.Manifest;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -27,8 +28,11 @@ import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.view.GestureDetector;
 import android.view.GestureDetector.SimpleOnGestureListener;
 import android.view.Menu;
@@ -71,6 +75,8 @@ public class MainActivity extends Activity {
 
     final String STATE_MONTH = "month";
     final String STATE_YEAR = "year";
+
+    private static final int MY_PERMISSIONS_WRITE_EXTERNAL_STORAGE = 1;
 
     GestureDetector gestureDetector;
     View.OnTouchListener gestureListener;
@@ -249,6 +255,7 @@ public class MainActivity extends Activity {
     /**
      * Update calendar data and view
      */
+    @SuppressWarnings("WrongConstant")
     @SuppressLint("DefaultLocale")
     void calendarUpdate() {
         // Initialize control ids for the target view to be used
@@ -409,11 +416,44 @@ public class MainActivity extends Activity {
     }
 
     /**
+     * Helper to request the required permissions for backups if needed
+     */
+    private boolean checkBackupStoragePermissions() {
+        final Activity activity = this;
+
+        if(ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+            final AlertDialog.Builder builder = new AlertDialog.Builder(activity);
+            // builder.setTitle(getResources().getString(R.string.app_name));
+            builder.setMessage(getResources().getString(R.string.permissions_needed));
+            // builder.setIcon(android.R.drawable.ic_dialog_alert);
+
+            builder.setPositiveButton(getResources().getString(R.string.permissions_needed_ok),
+                    new OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            ActivityCompat.requestPermissions(activity,
+                                    new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},
+                                    MY_PERMISSIONS_WRITE_EXTERNAL_STORAGE);
+                        }
+                    });
+
+            builder.show();
+
+            return false;
+        } else {
+            return true;
+        }
+    }
+
+    /**
      * Handler for "backup" menu action
      */
     private void doBackup() {
         final Context context = getApplicationContext();
         assert context != null;
+
+        if(!checkBackupStoragePermissions()) return;
+
         final AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle(getResources().getString(R.string.backup_title));
         builder.setMessage(getResources().getString(R.string.backup_text));
@@ -457,6 +497,9 @@ public class MainActivity extends Activity {
     private void doRestore() {
         final Context context = getApplicationContext();
         assert context != null;
+
+        if(!checkBackupStoragePermissions()) return;
+
         final AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle(getResources().getString(R.string.restore_title));
         builder.setMessage(getResources().getString(R.string.restore_text));
@@ -613,11 +656,6 @@ public class MainActivity extends Activity {
 
     /**
      * Touch dispatcher to pass events to the gesture detector to detect swipes on the UI
-     *
-     * @param e
-     * The motion event to be dispatched
-     *
-     * @return
      */
 
     @Override
@@ -628,11 +666,6 @@ public class MainActivity extends Activity {
 
     /**
      * Touch handler to pass events to the gesture detector to detect swipes on the UI
-     *
-     * @param event
-     * The motion event to be dispatched
-     *
-     * @return
      */
     @Override
     public boolean onTouchEvent(MotionEvent event) {

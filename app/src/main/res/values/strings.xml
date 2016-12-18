@@ -40,6 +40,8 @@
     <string name="restore_cancel">Cancel</string>
     <string name="restore_finished">Restore done</string>
     <string name="restore_failed">Restore failed!</string>
+    <string name="permissions_needed">To create or restore backups, Periodical needs permission to access file storage. Please confirm the permission and then try again.</string>
+    <string name="permissions_needed_ok">OK</string>
     <string name="event_periodstart">Period has started</string>
     <string name="event_periodlength">Last cycle had %s days</string>
     <string name="event_periodfirst">First entry</string>
