@@ -51,6 +51,8 @@
     <string name="options_title">Настройки</string>
     <string name="pref_periodlength">Длительность периода по умолчанию (дней)</string>
     <string name="invalid_period_length">Длительность периода по умолчанию должна быть между 1 и 14!</string>
+    <string name="pref_luteallength">Лютеиновой фазы длина (дней)</string>
+    <string name="invalid_luteal_length">Лютеиновой длина должна быть не менее 1!</string>
     <string name="pref_startofweek">Начало недели</string>
     <string-array name="list_startofweek">
         <item>Воскресенье</item>

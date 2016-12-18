@@ -50,8 +50,8 @@
     <string name="calendaraction_cancel">No</string>
     <string name="options_title">Preferences</string>
     <string name="pref_periodlength">Default length of period (days)</string>
-    <string name="pref_luteallength">Luteal phase length (days)</string>
     <string name="invalid_period_length">The default period length must be between 1 and 14!</string>
+    <string name="pref_luteallength">Luteal phase length (days)</string>
     <string name="invalid_luteal_length">The luteal length must be at least 1!</string>
     <string name="pref_startofweek">Start of the week</string>
     <string-array name="list_startofweek">

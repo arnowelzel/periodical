@@ -51,6 +51,8 @@
     <string name="options_title">Nastavení</string>
     <string name="pref_periodlength">Základní délka periody (dny)</string>
     <string name="invalid_period_length">Základní délka periody musí být mezi 1 a 14!</string>
+    <string name="pref_luteallength">Luteální fáze délka (dny)</string>
+    <string name="invalid_luteal_length">Luteální délka musí být alespoň 1!</string>
     <string name="pref_startofweek">Začátek týdne</string>
     <string-array name="list_startofweek">
         <item>Neděle</item>
