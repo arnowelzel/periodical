@@ -5,6 +5,11 @@
             android:defaultValue="4"
             android:key="period_length"
             android:inputType="number" />
+    <EditTextPreference
+            android:title="@string/pref_luteallength"
+            android:defaultValue="14"
+            android:key="luteal_length"
+            android:inputType="number" />
     <ListPreference
             android:title="@string/pref_startofweek"
             android:defaultValue="0"
