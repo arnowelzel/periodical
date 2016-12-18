@@ -67,7 +67,31 @@ public class OptionsActivity extends PreferenceActivity implements SharedPrefere
                     return true;
                 }
             });
-        
+
+        // Add validation for luteal length
+        findPreference("luteal_length").setOnPreferenceChangeListener(
+            new Preference.OnPreferenceChangeListener() {
+
+                @Override
+                public boolean onPreferenceChange(Preference preference, Object newValue) {
+                    int value;
+                    try {
+                        value = Integer.parseInt(newValue.toString());
+                    } catch (NumberFormatException e) {
+                        value = 0;
+                    }
+
+                    if (value < 1) {
+                        Toast.makeText(context,
+                                getResources().getString(R.string.invalid_luteal_length),
+                                Toast.LENGTH_SHORT).show();
+                        return false;
+                    }
+
+                    return true;
+                }
+            });
+
         // Activate "back button" in Action Bar if possible
         if (android.os.Build.VERSION.SDK_INT >= 11) {
             ActionBar actionBar = getActionBar();

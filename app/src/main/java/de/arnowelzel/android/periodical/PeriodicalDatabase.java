@@ -288,6 +288,7 @@ public class PeriodicalDatabase {
         int ovulationday = 0;
         Cursor result;
         int periodlength;
+        int luteallength;
         int dayofcycle;
 
         // Get default values from preferences
@@ -296,6 +297,11 @@ public class PeriodicalDatabase {
             periodlength = Integer.parseInt(preferences.getString("period_length", "4"));
         } catch (NumberFormatException e) {
             periodlength = 4;
+        }
+        try {
+            luteallength = Integer.parseInt(preferences.getString("luteal_length", "14"));
+        } catch (NumberFormatException e) {
+            luteallength = 14;
         }
 
         // Clean up existing data
@@ -361,7 +367,7 @@ public class PeriodicalDatabase {
                 // Calculate a predicted ovulation date
                 int average = this.cycleAverage;
                 if (count > 0) average /= count;
-                ovulationday = average - 14;
+                ovulationday = average - luteallength;
 
                 // Calculate days from the last event until now
                 GregorianCalendar datePrevious = new GregorianCalendar();
@@ -379,8 +385,8 @@ public class PeriodicalDatabase {
                     } else if (day == ovulationday) {
                         // Day of ovulation
                         type = DayEntry.OVULATION_PREDICTED;
-                    } else if (day >= this.cycleShortest - 18
-                            && day <= this.cycleLongest - 11) {
+                    } else if (day >= this.cycleShortest - luteallength - 4
+                            && day <= this.cycleLongest - luteallength + 3) {
                         // Fertile days
                         type = DayEntry.FERTILITY_PREDICTED;
                     } else {
@@ -420,8 +426,8 @@ public class PeriodicalDatabase {
                     } else if (day == ovulationday) {
                         // Day of ovulation
                         type = (cycles == 0 ? DayEntry.OVULATION_PREDICTED : DayEntry.OVULATION_FUTURE);
-                    } else if (day >= this.cycleShortest - 18
-                            && day <= this.cycleLongest - 11) {
+                    } else if (day >= this.cycleShortest - luteallength - 4
+                            && day <= this.cycleLongest - luteallength + 3) {
                         // Fertile days
                         type = (cycles == 0 ? DayEntry.FERTILITY_PREDICTED : DayEntry.FERTILITY_FUTURE);
                     } else {
