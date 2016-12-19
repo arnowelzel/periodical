@@ -76,7 +76,8 @@ public class MainActivity extends Activity {
     final String STATE_MONTH = "month";
     final String STATE_YEAR = "year";
 
-    private static final int MY_PERMISSIONS_WRITE_EXTERNAL_STORAGE = 1;
+    private static final int PERMISSION_CONFIRM_BACKUP = 1;
+    private static final int PERMISSION_CONFIRM_RESTORE = 2;
 
     GestureDetector gestureDetector;
     View.OnTouchListener gestureListener;
@@ -418,7 +419,7 @@ public class MainActivity extends Activity {
     /**
      * Helper to request the required permissions for backups if needed
      */
-    private boolean checkBackupStoragePermissions() {
+    private boolean checkBackupStoragePermissions(final int requestCode) {
         final Activity activity = this;
 
         if(ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
@@ -433,7 +434,8 @@ public class MainActivity extends Activity {
                         public void onClick(DialogInterface dialog, int which) {
                             ActivityCompat.requestPermissions(activity,
                                     new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},
-                                    MY_PERMISSIONS_WRITE_EXTERNAL_STORAGE);
+                                    requestCode
+                                    );
                         }
                     });
 
@@ -450,9 +452,8 @@ public class MainActivity extends Activity {
      */
     private void doBackup() {
         final Context context = getApplicationContext();
-        assert context != null;
 
-        if(!checkBackupStoragePermissions()) return;
+        if(!checkBackupStoragePermissions(PERMISSION_CONFIRM_BACKUP)) return;
 
         final AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle(getResources().getString(R.string.backup_title));
@@ -464,18 +465,7 @@ public class MainActivity extends Activity {
 
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        boolean ok = dbMain.backup(context);
-
-                        // Show toast depending on result of operation
-                        String text;
-                        if (ok) {
-                            text = getResources().getString(R.string.backup_finished);
-                        } else {
-                            text = getResources().getString(R.string.backup_failed);
-                        }
-
-                        Toast toast = Toast.makeText(context, text, Toast.LENGTH_SHORT);
-                        toast.show();
+                        runBackup(context);
                     }
                 });
 
@@ -492,13 +482,31 @@ public class MainActivity extends Activity {
     }
 
     /**
+     * Run database backup and show a toast for the result
+     */
+    private void runBackup(Context context) {
+        boolean ok = dbMain.backup(context);
+
+        // Show toast depending on result of operation
+        String text;
+        if (ok) {
+            text = getResources().getString(R.string.backup_finished);
+        } else {
+            text = getResources().getString(R.string.backup_failed);
+        }
+
+        Toast toast = Toast.makeText(context, text, Toast.LENGTH_SHORT);
+        toast.show();
+    }
+
+    /**
      * Handler for "restore" menu action
      */
     private void doRestore() {
         final Context context = getApplicationContext();
         assert context != null;
 
-        if(!checkBackupStoragePermissions()) return;
+        if(!checkBackupStoragePermissions(PERMISSION_CONFIRM_RESTORE)) return;
 
         final AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle(getResources().getString(R.string.restore_title));
@@ -511,19 +519,7 @@ public class MainActivity extends Activity {
 
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        boolean ok = dbMain.restore(context);
-
-                        // Show toast depending on result of operation
-                        String text;
-                        if (ok) {
-                            dbMain.restorePreferences(context);
-                            handleDatabaseEdit();
-                            text = getResources().getString(R.string.restore_finished);
-                        } else {
-                            text = getResources().getString(R.string.restore_failed);
-                        }
-                        Toast toast = Toast.makeText(context, text, Toast.LENGTH_SHORT);
-                        toast.show();
+                        runRestore(context);
                     }
                 });
 
@@ -537,6 +533,25 @@ public class MainActivity extends Activity {
                 });
 
         builder.show();
+    }
+
+    /**
+     * Run database restore and show a toast for the result
+     */
+    private void runRestore(Context context) {
+        boolean ok = dbMain.restore(context);
+
+        // Show toast depending on result of operation
+        String text;
+        if (ok) {
+            dbMain.restorePreferences(context);
+            handleDatabaseEdit();
+            text = getResources().getString(R.string.restore_finished);
+        } else {
+            text = getResources().getString(R.string.restore_failed);
+        }
+        Toast toast = Toast.makeText(context, text, Toast.LENGTH_SHORT);
+        toast.show();
     }
 
     /**

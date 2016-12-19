@@ -456,7 +456,7 @@ public class PeriodicalDatabase {
         dayEntries.removeAllElements();
 
         // Get all entries from the database
-        String statement = "select eventtype, eventdate from data order by eventdate";
+        String statement = "select eventtype, eventdate from data order by eventdate desc";
         Cursor result = db.rawQuery(statement, null);
         while (result.moveToNext()) {
             int eventtype = result.getInt(0);
