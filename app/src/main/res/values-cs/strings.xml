@@ -40,6 +40,8 @@
     <string name="restore_cancel">Zrušit</string>
     <string name="restore_finished">Obnova dokončena</string>
     <string name="restore_failed">Obnova selhala!</string>
+    <string name="permissions_needed">Chcete-li vytvořit nebo obnovit zálohy, Periodical potřebuje oprávnění pro přístup k ukládání souborů.</string>
+    <string name="permissions_needed_ok">Ano</string>
     <string name="event_periodstart">Začátek periody</string>
     <string name="event_periodlength">Poslední cyklus měl %s dní</string>
     <string name="event_periodfirst">První data</string>

@@ -40,6 +40,8 @@
     <string name="restore_cancel">Cancelar</string>
     <string name="restore_finished">Restauración realizada</string>
     <string name="restore_failed">¡Falló la restauración!</string>
+    <string name="permissions_needed">Para crear o restaurar copias de seguridad, Periodical necesita permiso para acceder al almacenamiento de archivos.</string>
+    <string name="permissions_needed_ok">Aceptar</string>
     <string name="event_periodstart">Inicio del periodo</string>
     <string name="event_periodlength">El último ciclo fue de %s días</string>
     <string name="event_periodfirst">Primera entrada</string>

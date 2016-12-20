@@ -40,6 +40,8 @@
     <string name="restore_cancel">Отмена</string>
     <string name="restore_finished">Восстановление закончено</string>
     <string name="restore_failed">Ошибка восстановления!</string>
+    <string name="permissions_needed">Для создания или восстановления резервных копий, Periodical необходимо разрешение на доступ для хранения файлов.</string>
+    <string name="permissions_needed_ok">Да</string>
     <string name="event_periodstart">Начало периода</string>
     <string name="event_periodlength">Длительность последнего цикла %s дней</string>
     <string name="event_periodfirst">Первая запись</string>

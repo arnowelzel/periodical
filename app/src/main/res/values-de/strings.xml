@@ -40,7 +40,7 @@
     <string name="restore_cancel">Abbrechen</string>
     <string name="restore_finished">Wiederherstellung ausgeführt</string>
     <string name="restore_failed">Wiederherstellung fehlgeschlagen!</string>
-    <string name="permissions_needed">Zur Sicherung oder Wiederherstellung von Daten benötigt Periodical das Recht, auf die Dateiablage zuzugreifen. Bitte bestätigen Sie die Berechtigung und versuchen Sie es dann noch einmal.</string>
+    <string name="permissions_needed">Zur Sicherung oder Wiederherstellung von Daten benötigt Periodical das Recht, auf die Dateiablage zuzugreifen.</string>
     <string name="permissions_needed_ok">OK</string>
     <string name="event_periodstart">Periode hat begonnen</string>
     <string name="event_periodlength">Letzter Zyklus hatte %s Tage</string>

@@ -422,11 +422,10 @@ public class MainActivity extends Activity {
     private boolean checkBackupStoragePermissions(final int requestCode) {
         final Activity activity = this;
 
+        // Check if we have the permission to access storage
         if(ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
             final AlertDialog.Builder builder = new AlertDialog.Builder(activity);
-            // builder.setTitle(getResources().getString(R.string.app_name));
             builder.setMessage(getResources().getString(R.string.permissions_needed));
-            // builder.setIcon(android.R.drawable.ic_dialog_alert);
 
             builder.setPositiveButton(getResources().getString(R.string.permissions_needed_ok),
                     new OnClickListener() {
@@ -448,12 +447,31 @@ public class MainActivity extends Activity {
     }
 
     /**
+     * Handle permission request
+     */
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+        final Context context = getApplicationContext();
+
+        // If the requested permission was granted by the user,
+        // run the operation which requested the permission
+        if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+            switch (requestCode) {
+                case PERMISSION_CONFIRM_BACKUP:
+                    runBackup(context);
+                    break;
+                case PERMISSION_CONFIRM_RESTORE:
+                    runRestore(context);
+                    break;
+            }
+        }
+    }
+
+    /**
      * Handler for "backup" menu action
      */
     private void doBackup() {
         final Context context = getApplicationContext();
-
-        if(!checkBackupStoragePermissions(PERMISSION_CONFIRM_BACKUP)) return;
 
         final AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle(getResources().getString(R.string.backup_title));
@@ -465,7 +483,9 @@ public class MainActivity extends Activity {
 
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        runBackup(context);
+                        if(checkBackupStoragePermissions(PERMISSION_CONFIRM_BACKUP)) {
+                            runBackup(context);
+                        }
                     }
                 });
 
@@ -506,8 +526,6 @@ public class MainActivity extends Activity {
         final Context context = getApplicationContext();
         assert context != null;
 
-        if(!checkBackupStoragePermissions(PERMISSION_CONFIRM_RESTORE)) return;
-
         final AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle(getResources().getString(R.string.restore_title));
         builder.setMessage(getResources().getString(R.string.restore_text));
@@ -519,7 +537,9 @@ public class MainActivity extends Activity {
 
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        runRestore(context);
+                        if(checkBackupStoragePermissions(PERMISSION_CONFIRM_RESTORE)) {
+                            runRestore(context);
+                        }
                     }
                 });
 
