@@ -45,5 +45,5 @@ http://arnowelzel.de/download/Periodical.apk
 
 **Tools to used to build this project:**
 
-Android Studio
+Android Studio  
 http://developer.android.com/tools/studio/index.html
