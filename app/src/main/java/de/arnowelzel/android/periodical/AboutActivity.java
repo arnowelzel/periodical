@@ -18,11 +18,13 @@
 
 package de.arnowelzel.android.periodical;
 
+import android.annotation.SuppressLint;
 import android.app.ActionBar;
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.webkit.WebView;
+import android.webkit.WebViewClient;
 
 /**
  * Activity to handle the "About" command
@@ -32,6 +34,7 @@ public class AboutActivity extends Activity {
     /**
      * Called when the activity starts
      */
+    @SuppressLint("SetJavaScriptEnabled")
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,6 +43,15 @@ public class AboutActivity extends Activity {
         setContentView(R.layout.webview);
 
         WebView view = (WebView) findViewById(R.id.webView);
+        view.getSettings().setJavaScriptEnabled(true);
+        view.setWebViewClient(new WebViewClient() {
+            @Override
+            public void onPageFinished(WebView view, String url) {
+                super.onPageFinished(view, url);
+                view.loadUrl("javascript:replace('version', '"+BuildConfig.VERSION_NAME+"')");
+                view.loadUrl("javascript:replace('year', '"+BuildConfig.VERSION_YEAR+"')");
+            }
+        });
         view.loadUrl("file:///android_asset/"+getString(R.string.asset_about));
 
         // Activate "back button" in Action Bar if possible

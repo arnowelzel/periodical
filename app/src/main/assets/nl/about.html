@@ -3,12 +3,18 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <title>Over</title>
+<script type="text/javascript">
+function replace(id, newContent)
+{
+    document.getElementById(id).innerHTML = newContent;
+}
+</script>
 </head>
 <body>
-<h1>Periodical 0.30</h1>
+<h1>Periodical <span id="version"></span></h1>
 
 <h2>Berekening van vruchtbaarheid volgens Knaus&#8211;Ogino<br />
-Copyright © 2012-2016 Arno Welzel</h2>
+Copyright © 2012-<span id="year"></span> Arno Welzel</h2>
 
 <p>Vertaling:</p>
 
