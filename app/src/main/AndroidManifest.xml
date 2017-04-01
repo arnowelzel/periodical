@@ -9,8 +9,9 @@
 		android:label="@string/app_name"
 		android:icon="@drawable/periodical"
 		android:allowBackup="true"
-        android:fullBackupContent="true">
-		
+        android:fullBackupContent="true"
+		android:theme="@style/Theme.AppCompat">
+
         <activity android:name=".MainActivity" android:label="@string/app_name"
 			android:icon="@drawable/periodical">
             <intent-filter>

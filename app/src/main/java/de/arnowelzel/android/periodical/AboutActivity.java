@@ -1,5 +1,5 @@
 /**
- * Periodical "about" activity 
+ * Periodical "about" activity
  * Copyright (C) 2012-2015 Arno Welzel
  *
  * This code is free software: you can redistribute it and/or modify
@@ -19,9 +19,9 @@
 package de.arnowelzel.android.periodical;
 
 import android.annotation.SuppressLint;
-import android.app.ActionBar;
-import android.app.Activity;
 import android.os.Bundle;
+import android.support.v7.app.ActionBar;
+import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
@@ -29,7 +29,7 @@ import android.webkit.WebViewClient;
 /**
  * Activity to handle the "About" command
  */
-public class AboutActivity extends Activity {
+public class AboutActivity extends AppCompatActivity {
 
     /**
      * Called when the activity starts
@@ -55,13 +55,11 @@ public class AboutActivity extends Activity {
         view.loadUrl("file:///android_asset/"+getString(R.string.asset_about));
 
         // Activate "back button" in Action Bar if possible
-        if (android.os.Build.VERSION.SDK_INT >= 11) {
-            ActionBar actionBar = getActionBar();
-            assert actionBar != null;
-            actionBar.setDisplayHomeAsUpEnabled(true);
-        }
+        ActionBar actionBar = getSupportActionBar();
+        assert actionBar != null;
+        actionBar.setDisplayHomeAsUpEnabled(true);
     }
-    
+
     /**
      * Handler for ICS "home" button
      */

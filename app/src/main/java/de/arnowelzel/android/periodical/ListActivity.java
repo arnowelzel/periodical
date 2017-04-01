@@ -1,42 +1,44 @@
 /**
- * Periodical list activity 
+ * Periodical list activity
  * Copyright (C) 2012-2015 Arno Welzel
- * 
+ *
  * This code is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
- * 
+ *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
- * 
+ *
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
 package de.arnowelzel.android.periodical;
 
-import java.util.Calendar;
-import java.util.Iterator;
-
-import android.content.Context;
 import android.annotation.SuppressLint;
-import android.app.ActionBar;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.ActionBar;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.ListViewCompat;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.ListView;
+
+import java.util.Calendar;
+import java.util.Iterator;
 
 import de.arnowelzel.android.periodical.PeriodicalDatabase.DayEntry;
 
 /**
  * Activity to handle the "List" command
  */
-public class ListActivity extends android.app.ListActivity {
+public class ListActivity extends AppCompatActivity implements AdapterView.OnItemClickListener {
     /**
      * Database for calendar data
      */
@@ -96,18 +98,19 @@ public class ListActivity extends android.app.ListActivity {
             entries[pos - 1] += "\n" + getString(R.string.event_periodfirst);
         }
 
-        setListAdapter(new ArrayAdapter<>(this, R.layout.listitem,
-                entries));
 
         // Set custom view
         setContentView(R.layout.listview);
 
+		ListViewCompat listView = (ListViewCompat) findViewById(R.id.listview);
+		listView.setAdapter(new ArrayAdapter<>(this, R.layout.listitem,
+				entries));
+		listView.setOnItemClickListener(this);
+
         // Activate "back button" in Action Bar if possible
-        if (android.os.Build.VERSION.SDK_INT >= 11) {
-            ActionBar actionBar = getActionBar();
-            assert actionBar != null;
-            actionBar.setDisplayHomeAsUpEnabled(true);
-        }
+        ActionBar actionBar = getSupportActionBar();
+        assert actionBar != null;
+        actionBar.setDisplayHomeAsUpEnabled(true);
     }
 
     /**
@@ -139,7 +142,7 @@ public class ListActivity extends android.app.ListActivity {
     /**
      * Handler for opening a list item which will return to the main view
      *
-     * @param l
+     * @param adapterView
      * The ListView where the click happened
      *
      * @param v
@@ -152,7 +155,7 @@ public class ListActivity extends android.app.ListActivity {
      * The row id of the item that was clicked
      */
     @Override
-    protected void onListItemClick(ListView l, View v, int position, long id) {
+    public void onItemClick(AdapterView<?> adapterView, View v, int position, long id) {
         // Determine date of clicked item
         if (dbMain != null && position >= 0
                 && position < dbMain.dayEntries.size()) {
