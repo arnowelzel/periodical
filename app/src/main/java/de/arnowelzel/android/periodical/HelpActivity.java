@@ -18,16 +18,16 @@
 
 package de.arnowelzel.android.periodical;
 
-import android.app.ActionBar;
-import android.app.Activity;
 import android.os.Bundle;
+import android.support.v7.app.ActionBar;
+import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.webkit.WebView;
 
 /**
  * Activity to handle the "Help" command
  */
-public class HelpActivity extends Activity {
+public class HelpActivity extends AppCompatActivity {
 
     /**
      *  Called when the activity starts
@@ -43,11 +43,9 @@ public class HelpActivity extends Activity {
         view.loadUrl("file:///android_asset/"+getString(R.string.asset_help));
 
         // Activate "back button" in Action Bar if possible
-        if (android.os.Build.VERSION.SDK_INT >= 11) {
-            ActionBar actionBar = getActionBar();
-            assert actionBar != null;
-            actionBar.setDisplayHomeAsUpEnabled(true);
-        }
+        ActionBar actionBar = getSupportActionBar();
+        assert actionBar != null;
+        actionBar.setDisplayHomeAsUpEnabled(true);
     }
 
     /**

@@ -1,5 +1,5 @@
 /**
- * Periodical options activity 
+ * Periodical options activity
  * Copyright (C) 2012-2015 Arno Welzel
  *
  * This code is free software: you can redistribute it and/or modify
@@ -18,18 +18,23 @@
 
 package de.arnowelzel.android.periodical;
 
-import android.app.ActionBar;
 import android.content.Context;
-import android.os.Bundle;
-import android.preference.*;
-import android.view.MenuItem;
 import android.content.SharedPreferences;
+import android.os.Bundle;
+import android.preference.EditTextPreference;
+import android.preference.ListPreference;
+import android.preference.Preference;
+import android.preference.PreferenceGroup;
+import android.support.v7.app.ActionBar;
+import android.view.MenuItem;
 import android.widget.Toast;
+
+import com.example.android.supportv7.app.AppCompatPreferenceActivity;
 
 /**
  * Activity to handle the "Preferences" command
  */
-public class OptionsActivity extends PreferenceActivity implements SharedPreferences.OnSharedPreferenceChangeListener {
+public class OptionsActivity extends AppCompatPreferenceActivity implements SharedPreferences.OnSharedPreferenceChangeListener {
     
     /**
      * Called when activity starts
@@ -93,11 +98,9 @@ public class OptionsActivity extends PreferenceActivity implements SharedPrefere
             });
 
         // Activate "back button" in Action Bar if possible
-        if (android.os.Build.VERSION.SDK_INT >= 11) {
-            ActionBar actionBar = getActionBar();
-            assert actionBar != null;
-            actionBar.setDisplayHomeAsUpEnabled(true);
-        }
+        ActionBar actionBar = getSupportActionBar();
+        assert actionBar != null;
+        actionBar.setDisplayHomeAsUpEnabled(true);
     }
 
     /**

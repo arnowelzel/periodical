@@ -18,6 +18,7 @@
 
 package de.arnowelzel.android.periodical;
 
+import android.annotation.SuppressLint;
 import android.text.format.DateUtils;
 import de.arnowelzel.android.periodical.PeriodicalDatabase.DayEntry;
 import android.content.Context;
@@ -41,6 +42,7 @@ import android.widget.Button;
 /**
  * Custom button class to display the calendar cells
  */
+@SuppressLint("AppCompatCustomView")
 public class CalendarCell extends Button {
     /** flag for "is current day" */
     protected boolean isCurrent;

@@ -31,8 +31,10 @@ import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
+import android.support.v7.app.AppCompatActivity;
 import android.view.GestureDetector;
 import android.view.GestureDetector.SimpleOnGestureListener;
 import android.view.Menu;
@@ -43,7 +45,6 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ViewFlipper;
-import android.support.annotation.NonNull;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -52,7 +53,7 @@ import java.util.GregorianCalendar;
 /**
  * The main activity of the app
  */
-public class MainActivity extends Activity {
+public class MainActivity extends AppCompatActivity {
     final int calButtonIds[] = { R.id.cal01, R.id.cal02, R.id.cal03,
             R.id.cal04, R.id.cal05, R.id.cal06, R.id.cal07, R.id.cal08,
             R.id.cal09, R.id.cal10, R.id.cal11, R.id.cal12, R.id.cal13,
