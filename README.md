@@ -1,7 +1,7 @@
 # Periodical
 A calendar to calculate the fertile days according to Knaus-Ogino
 
-Copyright (C) 2012-2016 Arno Welzel
+Copyright (C) 2012-2017 Arno Welzel
 
 Translations:
 
