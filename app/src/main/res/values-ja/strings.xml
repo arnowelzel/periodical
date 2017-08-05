@@ -69,7 +69,6 @@
     <string name="label_average_cycle">平均サイクル</string>
     <string name="label_shortest_cycle">最短サイクル</string>
     <string name="label_longest_cycle">最長サイクル</string>
-    <string name="label_day">日</string>
     <string name="label_infertile">不妊期</string>
     <string name="label_fertile">受胎期</string>
     <string name="label_period_started">月経期の始まり</string>

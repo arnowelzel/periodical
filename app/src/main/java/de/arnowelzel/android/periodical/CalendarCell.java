@@ -1,6 +1,6 @@
-/**
+/*
  * Periodical calendar cell class
- * Copyright (C) 2012-2015 Arno Welzel
+ * Copyright (C) 2012-2017 Arno Welzel
  * 
  * This code is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -45,61 +45,61 @@ import android.widget.Button;
 @SuppressLint("AppCompatCustomView")
 public class CalendarCell extends Button {
     /** flag for "is current day" */
-    protected boolean isCurrent;
+    private boolean isCurrent;
     /** entry type as in database */
-    protected int type;
+    private int type;
     /** displayed day of month (1-31) */
-    protected int day;
+    private int day;
     /** month (1-12) */
-    protected int month;
+    private int month;
     /** year including century */
-    protected int year;
+    private int year;
 
     /** Display metrics */
-    protected DisplayMetrics metrics;
+    private final DisplayMetrics metrics;
     /** Rectangle of the cell canvas */
-    protected RectF rectCanvas;
+    private final RectF rectCanvas;
     /** Paint for the label (day of month) */
-    protected Paint paintLabel;
+    private final Paint paintLabel;
     /** Background paint for the cell */
-    protected Paint paintBackground;
+    private final Paint paintBackground;
     /** Paint for the cell if it focused */
-    protected Paint paintFocus;
+    private final Paint paintFocus;
     /** Paint for the "is current day" oval marker */
-    protected Paint paintOval;
+    private final Paint paintOval;
     /** First rectangle for the "is current day" oval marker */
-    protected RectF rectOval1;
+    private final RectF rectOval1;
     /** Second rectangle for the "is current day" oval marker */
-    protected RectF rectOval2;
+    private final RectF rectOval2;
     /** Rectangle for the label (day of month) */
-    protected Rect rectLabel;
+    private final Rect rectLabel;
     /** Gradient for entries of type "confirmed period" */
-    protected LinearGradient gradientPeriodConfirmed;
+    private LinearGradient gradientPeriodConfirmed;
     /** Gradient for entries of type "predicted period" */
-    protected LinearGradient gradientPeriodPredicted;
+    private LinearGradient gradientPeriodPredicted;
     /** Gradient for entries of type "predicted fertility" and "ovulation" */
-    protected LinearGradient gradientFertilityPredicted;
+    private LinearGradient gradientFertilityPredicted;
     /** Gradient for entries of type "predicted fertility in the future" and "ovulation in the future */
-    protected LinearGradient gradientFertilityFuture;
+    private LinearGradient gradientFertilityFuture;
     /** Gradient for entries of type "infertile day predicted" */
-    protected LinearGradient gradientInfertilePredicted;
+    private LinearGradient gradientInfertilePredicted;
     /** Gradient for entries of type "infertile day predicted in the future" */
-    protected LinearGradient gradientInfertileFuture;
+    private LinearGradient gradientInfertileFuture;
     /** Gradient for empty entries */
-    protected LinearGradient gradientEmpty;
+    private final LinearGradient gradientEmpty;
     /** Rectangle for overlays */
-    protected Rect rectOverlay;
+    private final Rect rectOverlay;
     /** Bitmap for entries of type "period"  and "predicted period" */
-    protected Bitmap bitmapPeriod;
+    private final Bitmap bitmapPeriod;
     /** Bitmap for entries of type "ovulation" */
-    protected Bitmap bitmapOvulation;
+    private final Bitmap bitmapOvulation;
     /** Bitmap for entries of type "ovulation in the future" */
-    protected Bitmap bitmapOvulationFuture;
+    private final Bitmap bitmapOvulationFuture;
     /** Paint for bitmaps */
-    protected Paint paintBitmap;
+    private final Paint paintBitmap;
 
     /* Current view orientation (portrait, landscape) */
-    protected int orientation;
+    private int orientation;
 
     /**
      * Constructor
@@ -338,7 +338,7 @@ public class CalendarCell extends Button {
      * @return
      * A LinearGradient with the given colors at a 45 degree angle
      */
-    protected LinearGradient makeCellGradient(int colorStart, int colorEnd) {
+    private LinearGradient makeCellGradient(int colorStart, int colorEnd) {
         return new LinearGradient(0, 0,
                 rectCanvas.width(), rectCanvas.height(),
                 colorStart, colorEnd,
@@ -408,15 +408,15 @@ public class CalendarCell extends Button {
         this.type = type;
     }
 
-    /**
-     * Get the current cell type
-     *
-     * @return
-     * The type as stored in the database to define the look of the cell
-     */
-    public int getType() {
-        return type;
-    }
+//    /**
+//     * Get the current cell type
+//     *
+//     * @return
+//     * The type as stored in the database to define the look of the cell
+//     */
+//    public int getType() {
+//        return type;
+//    }
 
     /**
      * Set the day to be displayed
@@ -434,7 +434,7 @@ public class CalendarCell extends Button {
      * @return
      * The day of the month (1-31)
      */
-    public int getDay() { return day; }
+    private int getDay() { return day; }
 
     /**
      * Set the month
@@ -450,7 +450,7 @@ public class CalendarCell extends Button {
      * @return
      * The month (1-12)
      */
-    public int getMonth() {
+    private int getMonth() {
         return month;
     }
 
@@ -468,5 +468,5 @@ public class CalendarCell extends Button {
      * @return
      * The year
      */
-    public int getYear() { return year; }
+    private int getYear() { return year; }
 }

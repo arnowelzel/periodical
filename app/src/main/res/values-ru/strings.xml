@@ -69,7 +69,6 @@
     <string name="label_average_cycle">средний цикл</string>
     <string name="label_shortest_cycle">самый короткий цикл</string>
     <string name="label_longest_cycle">самый длинный цикл</string>
-    <string name="label_day">День</string>
     <string name="label_infertile">нефертильный</string>
     <string name="label_fertile">фертильный</string>
     <string name="label_period_started">начало периода</string>

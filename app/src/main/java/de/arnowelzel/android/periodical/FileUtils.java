@@ -1,3 +1,21 @@
+/*
+ * File utilities
+ * Copyright (C) 2012-2017 Arno Welzel
+ *
+ * This code is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
 package de.arnowelzel.android.periodical;
 
 import java.nio.channels.FileChannel;
@@ -8,7 +26,7 @@ import java.io.IOException;
 /**
  * Helper for file operations
  */
-public class FileUtils {
+class FileUtils {
     /**
      * Creates the specified destination file as a byte for byte copy of the
      * source file. If the destination file already exists, then it will be
@@ -22,7 +40,7 @@ public class FileUtils {
      * @param toFile
      * The output stream for the file to copy to.
      */
-    public static void copyFile(FileInputStream fromFile, FileOutputStream toFile) throws IOException {
+    static void copyFile(FileInputStream fromFile, FileOutputStream toFile) throws IOException {
         FileChannel fromChannel = null;
         FileChannel toChannel = null;
         try {

@@ -1,6 +1,6 @@
-/**
+/*
  * Periodical database class
- * Copyright (C) 2012-2015 Arno Welzel
+ * Copyright (C) 2012-2017 Arno Welzel
  *
  * This code is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -33,12 +33,13 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.GregorianCalendar;
+import java.util.Locale;
 import java.util.Vector;
 
 /**
  * Database of the app
  */
-public class PeriodicalDatabase {
+class PeriodicalDatabase {
 
     /**
      * Helper to create or open database
@@ -135,9 +136,9 @@ public class PeriodicalDatabase {
         final static int OVULATION_FUTURE = 7;
         final static int INFERTILE_PREDICTED = 8;
         final static int INFERTILE_FUTURE = 9;
-        int type;
-        GregorianCalendarExt date;
-        int dayofcycle;
+        final int type;
+        final GregorianCalendarExt date;
+        final int dayofcycle;
 
         /**
          * Construct a new day entry
@@ -151,7 +152,7 @@ public class PeriodicalDatabase {
          * @param dayofcycle
          * Day within current cycle (beginning with 1)
          */
-        public DayEntry(int type, GregorianCalendar date, int dayofcycle) {
+        private DayEntry(int type, GregorianCalendar date, int dayofcycle) {
             this.type = type;
             this.date = new GregorianCalendarExt();
             this.date.setTime(date.getTime());
@@ -160,7 +161,7 @@ public class PeriodicalDatabase {
     }
 
     /** Calculated day entries */
-    Vector<DayEntry> dayEntries;
+    final Vector<DayEntry> dayEntries;
     /** Calculated average cycle length */
     int cycleAverage;
     /** Calculated longest cycle length */
@@ -187,7 +188,7 @@ public class PeriodicalDatabase {
      * Application context
      */
     @SuppressLint("Recycle")
-    void open(Context context) {
+    private void open(Context context) {
         PeriodicalDataOpenHelper dataOpenHelper;
         dataOpenHelper = new PeriodicalDataOpenHelper(context);
         db = dataOpenHelper.getWritableDatabase();
@@ -240,7 +241,7 @@ public class PeriodicalDatabase {
 
         statement = String.format(
                 "insert into data (eventtype, eventdate) values (1, '%s')",
-                String.format("%04d%02d%02d", year, month, day));
+                String.format(Locale.getDefault(), "%04d%02d%02d", year, month, day));
         db.beginTransaction();
         db.execSQL(statement);
         db.setTransactionSuccessful();
@@ -263,7 +264,7 @@ public class PeriodicalDatabase {
         String statement;
 
         statement = String.format("delete from data where eventdate='%s'",
-                String.format("%04d%02d%02d", year, month, day));
+                String.format(Locale.getDefault(), "%04d%02d%02d", year, month, day));
         db.beginTransaction();
         db.execSQL(statement);
         db.setTransactionSuccessful();
@@ -513,7 +514,7 @@ public class PeriodicalDatabase {
      * @param defaultvalue
      * Default value to be used if the option is not stored yet
      */
-    public String getOption(String name, String defaultvalue) {
+    private String getOption(String name, String defaultvalue) {
         String value = defaultvalue;
 
         String statement = "select value from options where name = ?";
@@ -535,7 +536,7 @@ public class PeriodicalDatabase {
      * @param value
      * Value of the option to store
      */
-    public void setOption(String name, String value) {
+    private void setOption(String name, String value) {
         String statement;
 
         db.beginTransaction();
@@ -555,14 +556,14 @@ public class PeriodicalDatabase {
     /**
      * Backup the database
      */
-    public boolean backup(Context context) {
+    boolean backup(Context context) {
         return backupRestore(context, true);
     }
 
     /**
      * Restore the database
      */
-    public boolean restore(Context context) {
+    boolean restore(Context context) {
         return backupRestore(context, false);
     }
 
@@ -576,7 +577,7 @@ public class PeriodicalDatabase {
      * true for doing a backup, false for a restore
      */
 
-    public boolean backupRestore(Context context, boolean backup) {
+    private boolean backupRestore(Context context, boolean backup) {
         boolean ok = true;
 
         // Check if SD card is mounted
@@ -616,12 +617,13 @@ public class PeriodicalDatabase {
         db.close();
 
         // Check, if destination files exists and delete first
-        if(destFile.exists() && ok == true) ok = destFile.delete();
-        if(destFileJournal.exists() && ok == true) ok = destFileJournal.delete();
+        if(destFile.exists()) ok = destFile.delete();
+        if(destFileJournal.exists() && ok) ok = destFileJournal.delete();
 
         // If everything is ok, then copy source to destination
         if (ok) {
             if (backup) {
+                //noinspection ResultOfMethodCallIgnored
                 destDir.mkdirs();
             }
 
@@ -674,6 +676,6 @@ public class PeriodicalDatabase {
         SharedPreferences.Editor editor = preferences.edit();
         editor.putString("period_length", period_length);
         editor.putString("startofweek", startofweek);
-        editor.commit();
+        editor.apply();
     }
 }

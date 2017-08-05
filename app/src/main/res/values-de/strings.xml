@@ -69,7 +69,6 @@
     <string name="label_average_cycle">Durchschnittlicher Zyklus</string>
     <string name="label_shortest_cycle">Kürzester Zyklus</string>
     <string name="label_longest_cycle">Längster Zyklus</string>
-    <string name="label_day">Tag</string>
     <string name="label_infertile">unfruchtbar</string>
     <string name="label_fertile">fruchtbar</string>
     <string name="label_period_started">Periode hat begonnen</string>

@@ -1,6 +1,6 @@
-/**
+/*
  * Helper to create an animated calendar view
- * Copyright (C) 2012-2015 Arno Welzel
+ * Copyright (C) 2012-2017 Arno Welzel
  * 
  * This code is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -33,7 +33,7 @@ class AnimationHelper
      * @return
      * Animation into the view from the right
      */
-    public static Animation inFromRightAnimation() {
+    static Animation inFromRightAnimation() {
 
         Animation inFromRight = new TranslateAnimation(
                 Animation.RELATIVE_TO_PARENT, +1.0f,
@@ -51,7 +51,7 @@ class AnimationHelper
      * @return
      * Animation out of the view to the left
      */
-    public static Animation outToLeftAnimation() {
+    static Animation outToLeftAnimation() {
         Animation outtoLeft = new TranslateAnimation(
                 Animation.RELATIVE_TO_PARENT, 0.0f,
                 Animation.RELATIVE_TO_PARENT, -1.0f,
@@ -68,7 +68,7 @@ class AnimationHelper
      * @return
      * Animation into the view from the left
      */
-    public static Animation inFromLeftAnimation() {
+    static Animation inFromLeftAnimation() {
         Animation inFromLeft = new TranslateAnimation(
                 Animation.RELATIVE_TO_PARENT, -1.0f,
                 Animation.RELATIVE_TO_PARENT, 0.0f,
@@ -85,7 +85,7 @@ class AnimationHelper
      * @return
      * Animation out of the view to the right
      */
-    public static Animation outToRightAnimation() {
+    static Animation outToRightAnimation() {
         Animation outtoRight = new TranslateAnimation(
                 Animation.RELATIVE_TO_PARENT, 0.0f,
                 Animation.RELATIVE_TO_PARENT, +1.0f,

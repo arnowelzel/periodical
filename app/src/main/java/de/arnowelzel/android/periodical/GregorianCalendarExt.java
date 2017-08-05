@@ -1,6 +1,6 @@
-/**
+/*
  * Extended calendar class to provide correct date difference calculation
- * Copyright (C) 2012-2015 Arno Welzel
+ * Copyright (C) 2012-2017 Arno Welzel
  * 
  * This code is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -34,7 +34,7 @@ class GregorianCalendarExt extends GregorianCalendar {
      *  @return
      *  The number of days between the calendar date and the given date
      */
-    public int diffDayPeriods(Calendar date) {
+    int diffDayPeriods(Calendar date) {
         long endL = date.getTimeInMillis() + date.getTimeZone().getOffset( date.getTimeInMillis() );
         long startL = this.getTimeInMillis() + getTimeZone().getOffset( getTimeInMillis() );
         return (int) ((endL-startL) / (1000*60*60*24));         

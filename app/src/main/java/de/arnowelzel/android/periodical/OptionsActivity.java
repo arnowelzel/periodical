@@ -1,6 +1,6 @@
-/**
+/*
  * Periodical options activity
- * Copyright (C) 2012-2015 Arno Welzel
+ * Copyright (C) 2012-2017 Arno Welzel
  *
  * This code is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -28,8 +28,6 @@ import android.preference.PreferenceGroup;
 import android.support.v7.app.ActionBar;
 import android.view.MenuItem;
 import android.widget.Toast;
-
-import com.example.android.supportv7.app.AppCompatPreferenceActivity;
 
 /**
  * Activity to handle the "Preferences" command

@@ -69,7 +69,6 @@
     <string name="label_average_cycle">gemiddelde cyclus</string>
     <string name="label_shortest_cycle">kortste cyclus</string>
     <string name="label_longest_cycle">langste cyclus</string>
-    <string name="label_day">Dag</string>
     <string name="label_infertile">onvruchtbaar</string>
     <string name="label_fertile">vruchtbaar</string>
     <string name="label_period_started">menstruatie is begonnen</string>

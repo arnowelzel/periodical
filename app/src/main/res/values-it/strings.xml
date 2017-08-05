@@ -69,7 +69,6 @@
     <string name="label_average_cycle">Ciclo medio</string>
     <string name="label_shortest_cycle">Ciclo più breve</string>
     <string name="label_longest_cycle">Ciclo più lungo</string>
-    <string name="label_day">Giorno</string>
     <string name="label_infertile">infertile</string>
     <string name="label_fertile">fertile</string>
     <string name="label_period_started">Ciclo è iniziato</string>

@@ -69,7 +69,6 @@
     <string name="label_average_cycle">průměrný cyklus</string>
     <string name="label_shortest_cycle">nejkratší cyklus</string>
     <string name="label_longest_cycle">nejdelší cyklus</string>
-    <string name="label_day">Den</string>
     <string name="label_infertile">neplodné</string>
     <string name="label_fertile">plodné</string>
     <string name="label_period_started">začátek periody</string>

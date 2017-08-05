@@ -1,6 +1,6 @@
-/**
+/*
  * Periodical main activity 
- * Copyright (C) 2012-2015 Arno Welzel
+ * Copyright (C) 2012-2017 Arno Welzel
  * 
  * This code is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -54,7 +54,7 @@ import java.util.GregorianCalendar;
  * The main activity of the app
  */
 public class MainActivity extends AppCompatActivity {
-    final int calButtonIds[] = { R.id.cal01, R.id.cal02, R.id.cal03,
+    private final int[] calButtonIds = { R.id.cal01, R.id.cal02, R.id.cal03,
             R.id.cal04, R.id.cal05, R.id.cal06, R.id.cal07, R.id.cal08,
             R.id.cal09, R.id.cal10, R.id.cal11, R.id.cal12, R.id.cal13,
             R.id.cal14, R.id.cal15, R.id.cal16, R.id.cal17, R.id.cal18,
@@ -63,7 +63,7 @@ public class MainActivity extends AppCompatActivity {
             R.id.cal29, R.id.cal30, R.id.cal31, R.id.cal32, R.id.cal33,
             R.id.cal34, R.id.cal35, R.id.cal36, R.id.cal37, R.id.cal38,
             R.id.cal39, R.id.cal40, R.id.cal41, R.id.cal42 };
-    final int calButtonIds_2[] = { R.id.cal01_2, R.id.cal02_2, R.id.cal03_2,
+    private final int[] calButtonIds_2 = { R.id.cal01_2, R.id.cal02_2, R.id.cal03_2,
             R.id.cal04_2, R.id.cal05_2, R.id.cal06_2, R.id.cal07_2,
             R.id.cal08_2, R.id.cal09_2, R.id.cal10_2, R.id.cal11_2,
             R.id.cal12_2, R.id.cal13_2, R.id.cal14_2, R.id.cal15_2,
@@ -75,14 +75,13 @@ public class MainActivity extends AppCompatActivity {
             R.id.cal36_2, R.id.cal37_2, R.id.cal38_2, R.id.cal39_2,
             R.id.cal40_2, R.id.cal41_2, R.id.cal42_2 };
 
-    final String STATE_MONTH = "month";
-    final String STATE_YEAR = "year";
+    private final String STATE_MONTH = "month";
+    private final String STATE_YEAR = "year";
 
     private static final int PERMISSION_CONFIRM_BACKUP = 1;
     private static final int PERMISSION_CONFIRM_RESTORE = 2;
 
-    GestureDetector gestureDetector;
-    View.OnTouchListener gestureListener;
+    private GestureDetector gestureDetector;
 
     private int viewCurrent = R.id.calendar;
 
@@ -94,10 +93,10 @@ public class MainActivity extends AppCompatActivity {
     private PeriodicalDatabase dbMain;
 
     /* Request codes for other activities */
-    static final int PICK_DATE = 1;    // Detail list: Date selected in detail list
-    static final int SET_OPTIONS = 2;  // Preferences: Options changed
-    static final int HELP_CLOSED = 3;  // Help: closed
-    static final int ABOUT_CLOSED = 4;  // About: closed
+    private static final int PICK_DATE = 1;    // Detail list: Date selected in detail list
+    private static final int SET_OPTIONS = 2;  // Preferences: Options changed
+    private static final int HELP_CLOSED = 3;  // Help: closed
+    private static final int ABOUT_CLOSED = 4;  // About: closed
 
     /**
      * Called when activity starts
@@ -114,7 +113,7 @@ public class MainActivity extends AppCompatActivity {
         
         // Set gesture handling
         gestureDetector = new GestureDetector(getApplicationContext(), new CalendarGestureDetector());
-        gestureListener = new View.OnTouchListener() {
+        @SuppressWarnings("UnusedAssignment") View.OnTouchListener gestureListener = new View.OnTouchListener() {
             public boolean onTouch(View v, MotionEvent event) {
                 return gestureDetector.onTouchEvent(event);
             }
@@ -226,7 +225,7 @@ public class MainActivity extends AppCompatActivity {
     /**
      * Handler for "Help" menu action
      */
-    void showHelp() {
+    private void showHelp() {
         startActivityForResult(
                 new Intent(MainActivity.this, HelpActivity.class), HELP_CLOSED);
     }
@@ -234,7 +233,7 @@ public class MainActivity extends AppCompatActivity {
     /**
      * Handler for "About" menu action
      */
-    void showAbout() {
+    private void showAbout() {
         startActivityForResult(
                 new Intent(MainActivity.this, AboutActivity.class), ABOUT_CLOSED);
     }
@@ -242,7 +241,7 @@ public class MainActivity extends AppCompatActivity {
     /**
      * Handler for "List" menu action
      */
-    void showList() {
+    private void showList() {
         startActivityForResult(
                 new Intent(MainActivity.this, ListActivity.class), PICK_DATE);
     }
@@ -250,7 +249,7 @@ public class MainActivity extends AppCompatActivity {
     /**
      * Handler for "Options" menu action
      */
-    void showOptions() {
+    private void showOptions() {
         startActivityForResult(
                 new Intent(MainActivity.this, OptionsActivity.class), SET_OPTIONS);
     }
@@ -260,7 +259,7 @@ public class MainActivity extends AppCompatActivity {
      */
     @SuppressWarnings("WrongConstant")
     @SuppressLint("DefaultLocale")
-    void calendarUpdate() {
+    private void calendarUpdate() {
         // Initialize control ids for the target view to be used
         int calendarCells[];
         if (viewCurrent == R.id.calendar) {
@@ -352,6 +351,7 @@ public class MainActivity extends AppCompatActivity {
     /**
      * Handler for "previous month" button in main view
      */
+    @SuppressWarnings({"UnusedParameters", "SameParameterValue"})
     public void goPrev(View v) {
         // Update calendar
         monthCurrent--;
@@ -378,6 +378,7 @@ public class MainActivity extends AppCompatActivity {
     /**
      * Handler for "next month" button in main view
      */
+    @SuppressWarnings({"UnusedParameters", "SameParameterValue"})
     public void goNext(View v) {
         // Update calendar
         monthCurrent++;
@@ -712,7 +713,7 @@ public class MainActivity extends AppCompatActivity {
     /**
      * Gesture detector to handle swipes on the UI
      */
-    class CalendarGestureDetector extends SimpleOnGestureListener {
+    private class CalendarGestureDetector extends SimpleOnGestureListener {
         private static final int SWIPE_MIN_DISTANCE = 120;
         private static final int SWIPE_MAX_OFF_PATH = 250;
         private static final int SWIPE_THRESHOLD_VELOCITY = 200;
