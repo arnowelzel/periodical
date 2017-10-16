@@ -7,7 +7,7 @@
     <string name="menuitem_list">Tableau</string>
     <string name="menuitem_copy">Sauvegarder</string>
     <string name="menuitem_restore">Restaurer</string>
-    <string name="menuitem_options">Paramètre</string>
+    <string name="menuitem_options">Paramètres</string>
     <string name="menuitem_exit">Terminer</string>
     <string name="main_button_prev">&lt;</string>
     <string name="main_button_next">&gt;</string>
@@ -26,7 +26,7 @@
     <string name="main_calday_fr_description">vendredi</string>
     <string name="main_calday_sa_description">samedi</string>
     <string name="list_title">Tableau</string>
-    <string name="about_title">À propos …</string>
+    <string name="about_title">À propos…</string>
     <string name="help_title">Aide</string>
     <string name="backup_title">Sauvegarder les données</string>
     <string name="backup_text">Voulez-vous sauvegarder les données actuelles ? Cela remplacera la dernière sauvegarde !</string>
@@ -35,7 +35,7 @@
     <string name="backup_finished">Sauvegarde effectuée</string>
     <string name="backup_failed">Échec de la sauvegarde !</string>
     <string name="restore_title">Restaurer les données</string>
-    <string name="restore_text">Voulez-vous restaurer la dernière sauvegarde ?\nCette remplacera les données actuelles !</string>
+    <string name="restore_text">Voulez-vous restaurer la dernière sauvegarde ?\nCela remplacera les données actuelles !</string>
     <string name="restore_ok">Oui</string>
     <string name="restore_cancel">Annuler</string>
     <string name="restore_finished">Restauration effectuée</string>
@@ -43,19 +43,19 @@
     <string name="permissions_needed">Pour créer ou restaurer des sauvegardes, Periodical a besoin d\'une autorisation pour accéder au stockage des fichiers.</string>
     <string name="permissions_needed_ok">Oui</string>
     <string name="event_periodstart">Début des règles</string>
-    <string name="event_periodlength">Dernier cycle passé %s jours</string>
+    <string name="event_periodlength">Dernier cycle avait %s jours</string>
     <string name="event_periodfirst">Première entrée</string>
     <string name="calendaraction_title">Modifier une entrée du calendrier</string>
-    <string name="calendaraction_add">Marquez ce jour comme \"Début des règles\" ?</string>
+    <string name="calendaraction_add">Marquer ce jour comme \"Début des règles\" ?</string>
     <string name="calendaraction_remove">Retirer la marque \"Début des règles\" pour ce jour ?</string>
     <string name="calendaraction_ok">Oui</string>
     <string name="calendaraction_cancel">Non</string>
-    <string name="options_title">Paramètre</string>
-    <string name="pref_periodlength">Longueur par défaut de la règles (journées)</string>
-    <string name="invalid_period_length">La longueur standard de la période doit être 1 et 14!</string>
-    <string name="pref_luteallength">Longueur de la phase lutéale (journées)</string>
-    <string name="invalid_luteal_length">La longueur lutéale doit être d\'au moins 1!</string>
-    <string name="pref_startofweek">Lancer de la semaine</string>
+    <string name="options_title">Paramètres</string>
+    <string name="pref_periodlength">Durée par défaut des règles (jours)</string>
+    <string name="invalid_period_length">La durée standard de la période doit être entre 1 et 14 !</string>
+    <string name="pref_luteallength">Durée de la phase lutéale (jours)</string>
+    <string name="invalid_luteal_length">La durée lutéale doit être d\'au moins 1 !</string>
+    <string name="pref_startofweek">Début de la semaine</string>
     <string-array name="list_startofweek">
         <item>dimanche</item>
         <item>lundi</item>
