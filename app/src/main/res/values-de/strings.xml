@@ -44,6 +44,7 @@
     <string name="permissions_needed_ok">OK</string>
     <string name="event_periodstart">Periode hat begonnen</string>
     <string name="event_periodlength">Letzter Zyklus hatte %s Tage</string>
+    <string name="event_ignored">Zykluslänge ignoriert</string>
     <string name="event_periodfirst">Erster Eintrag</string>
     <string name="calendaraction_title">Kalendereintrag bearbeiten</string>
     <string name="calendaraction_add">Diesen Tag als \"Periode hat begonnen\" kennzeichnen?</string>
@@ -64,6 +65,8 @@
         <item>0</item>
         <item>1</item>
     </string-array>
+    <string name="pref_maximum_cycle_length">Maximale Zykluslänge</string>
+    <string name="invalid_maximum_cycle_length">Die maximale Zykluslänge muss mindestens 1 sein!</string>
     <string name="previous_month">Vorheriger Monat</string>
     <string name="next_month">Nächster Monat</string>
     <string name="label_average_cycle">Durchschnittlicher Zyklus</string>

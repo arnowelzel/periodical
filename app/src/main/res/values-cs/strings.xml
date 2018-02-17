@@ -44,6 +44,7 @@
     <string name="permissions_needed_ok">Ano</string>
     <string name="event_periodstart">Začátek periody</string>
     <string name="event_periodlength">Poslední cyklus měl %s dní</string>
+    <string name="event_ignored">Délka cyklu byla ignorována</string>
     <string name="event_periodfirst">První data</string>
     <string name="calendaraction_title">Upravit data kalendáře</string>
     <string name="calendaraction_add">Označit tento den jako \"Začátek periody\"?</string>
@@ -64,6 +65,8 @@
         <item>0</item>
         <item>1</item>
     </string-array>
+    <string name="pref_maximum_cycle_length">Maximální délka cyklu</string>
+    <string name="invalid_maximum_cycle_length">Maximální délka cyklu musí být nejméně 1!</string>
     <string name="previous_month">Minulý měsíc</string>
     <string name="next_month">Další měsíc</string>
     <string name="label_average_cycle">průměrný cyklus</string>

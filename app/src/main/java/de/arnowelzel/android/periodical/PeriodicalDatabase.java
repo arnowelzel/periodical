@@ -290,6 +290,7 @@ class PeriodicalDatabase {
         Cursor result;
         int periodlength;
         int luteallength;
+        int maximumcyclelength;
         int dayofcycle;
 
         // Get default values from preferences
@@ -303,6 +304,11 @@ class PeriodicalDatabase {
             luteallength = Integer.parseInt(preferences.getString("luteal_length", "14"));
         } catch (NumberFormatException e) {
             luteallength = 14;
+        }
+        try {
+            maximumcyclelength = Integer.parseInt(preferences.getString("maximum_cycle_length", "183"));
+        } catch (NumberFormatException e) {
+            maximumcyclelength = 183;
         }
 
         // Clean up existing data
@@ -336,7 +342,6 @@ class PeriodicalDatabase {
 
                 // First event at all - just create an initial start entry
                 entryPrevious = new DayEntry(eventtype, eventdate, 1);
-
                 this.dayEntries.add(entryPrevious);
             } else {
                 count++;
@@ -362,47 +367,55 @@ class PeriodicalDatabase {
                         this.cycleLongest = length;
                 }
 
-                // Update average sum
-                this.cycleAverage += length;
+                // Add calculated values only, if the period has not unusual lengths
+                // (e.g. after a longer pause because of pregnancy etc.)
+                if(length <= maximumcyclelength) {
+                    // Update average sum
+                    this.cycleAverage += length;
 
-                // Calculate a predicted ovulation date
-                int average = this.cycleAverage;
-                if (count > 0) average /= count;
-                ovulationday = average - luteallength;
+                    // Calculate a predicted ovulation date
+                    int average = this.cycleAverage;
+                    if (count > 0) average /= count;
+                    ovulationday = average - luteallength;
 
-                // Calculate days from the last event until now
-                GregorianCalendar datePrevious = new GregorianCalendar();
-                datePrevious.setTime(entryPrevious.date.getTime());
-                dayofcycle = 2;
-                for (int day = 2; day <= length; day++) {
-                    datePrevious.add(GregorianCalendar.DATE, 1);
+                    // Calculate days from the last event until now
+                    GregorianCalendar datePrevious = new GregorianCalendar();
+                    datePrevious.setTime(entryPrevious.date.getTime());
+                    dayofcycle = 2;
+                    for (int day = 2; day <= length; day++) {
+                        datePrevious.add(GregorianCalendar.DATE, 1);
 
-                    int type;
+                        int type;
 
-                    if (day <= periodlength) {
-                        // First days of period
-                        type = DayEntry.PERIOD_CONFIRMED;
-                        dayofcycle = 1;
-                    } else if (day == ovulationday) {
-                        // Day of ovulation
-                        type = DayEntry.OVULATION_PREDICTED;
-                    } else if (day >= this.cycleShortest - luteallength - 4
-                            && day <= this.cycleLongest - luteallength + 3) {
-                        // Fertile days
-                        type = DayEntry.FERTILITY_PREDICTED;
-                    } else {
-                        // Infertile days
-                        type = DayEntry.INFERTILE_PREDICTED;
+                        if (day <= periodlength) {
+                            // First days of period
+                            type = DayEntry.PERIOD_CONFIRMED;
+                            dayofcycle = 1;
+                        } else if (day == ovulationday) {
+                            // Day of ovulation
+                            type = DayEntry.OVULATION_PREDICTED;
+                        } else if (day >= this.cycleShortest - luteallength - 4
+                                && day <= this.cycleLongest - luteallength + 3) {
+                            // Fertile days
+                            type = DayEntry.FERTILITY_PREDICTED;
+                        } else {
+                            // Infertile days
+                            type = DayEntry.INFERTILE_PREDICTED;
+                        }
+
+                        DayEntry entryCalculated = new DayEntry(type, datePrevious, dayofcycle);
+                        dayEntries.add(entryCalculated);
+                        dayofcycle++;
                     }
 
-                    DayEntry entryCalculated = new DayEntry(type, datePrevious, dayofcycle);
-                    dayEntries.add(entryCalculated);
-                    dayofcycle++;
+                    // Finally add current day
+                    entryPrevious = new DayEntry(entry.type, entry.date, dayofcycle);
+                    this.dayEntries.add(entry);
+                } else {
+                    // The last day was too far away, so treat this day as if it was the first one
+                    entryPrevious = new DayEntry(eventtype, eventdate, 1);
+                    this.dayEntries.add(entryPrevious);
                 }
-
-                // Finally add current day
-                entryPrevious = new DayEntry(entry.type, entry.date, dayofcycle);
-                this.dayEntries.add(entry);
             }
         }
         result.close();
@@ -658,6 +671,7 @@ class PeriodicalDatabase {
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
         setOption("period_length", preferences.getString("period_length", "4"));
         setOption("startofweek", preferences.getString("startofweek", "0"));
+        setOption("maximum_cycle_length", preferences.getString("period_length", "183"));
     }
 
     /**
@@ -671,11 +685,13 @@ class PeriodicalDatabase {
     void restorePreferences(Context context) {
         String period_length = getOption("period_length", "4");
         String startofweek = getOption("startofweek", "0");
+        String maximum_cycle_length = getOption("maximum_cycle_length", "183");
                 
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
         SharedPreferences.Editor editor = preferences.edit();
         editor.putString("period_length", period_length);
         editor.putString("startofweek", startofweek);
+        editor.putString("maximum_cycle_length", maximum_cycle_length);
         editor.apply();
     }
 }

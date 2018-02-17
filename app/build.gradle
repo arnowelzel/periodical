@@ -8,9 +8,9 @@ android {
         applicationId "de.arnowelzel.android.periodical"
         minSdkVersion 9
         targetSdkVersion 25
-        versionCode 33
-        versionName "0.33"
-        buildConfigField "String", "VERSION_YEAR", "\"2017\""
+        versionCode 34
+        versionName "0.34"
+        buildConfigField "String", "VERSION_YEAR", "\"2018\""
 
         return void
     }
@@ -33,5 +33,5 @@ android {
 dependencies {
     implementation 'com.android.support:appcompat-v7:25.4.0'
     implementation 'com.android.support:support-v4:25.4.0'
-    implementation 'com.android.support:support-annotations:27.0.1'
+    implementation 'com.android.support:support-annotations:27.0.2'
 }

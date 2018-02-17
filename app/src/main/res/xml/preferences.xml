@@ -16,4 +16,9 @@
             android:key="startofweek"
             android:entries="@array/list_startofweek"
             android:entryValues="@array/values_startofweek" />
+    <EditTextPreference
+        android:title="@string/pref_maximum_cycle_length"
+        android:defaultValue="183"
+        android:key="maximum_cycle_length"
+        android:inputType="number" />
 </PreferenceScreen>

@@ -95,6 +95,30 @@ public class OptionsActivity extends AppCompatPreferenceActivity implements Shar
                 }
             });
 
+        // Add validation for cycle length filter
+        findPreference("maximum_cycle_length").setOnPreferenceChangeListener(
+            new Preference.OnPreferenceChangeListener() {
+
+                @Override
+                public boolean onPreferenceChange(Preference preference, Object newValue) {
+                    int value;
+                    try {
+                        value = Integer.parseInt(newValue.toString());
+                    } catch (NumberFormatException e) {
+                        value = 0;
+                    }
+
+                    if (value < 1) {
+                        Toast.makeText(context,
+                                getResources().getString(R.string.invalid_maximum_cycle_length),
+                                Toast.LENGTH_SHORT).show();
+                        return false;
+                    }
+
+                    return true;
+                }
+            });
+
         // Activate "back button" in Action Bar if possible
         ActionBar actionBar = getSupportActionBar();
         assert actionBar != null;

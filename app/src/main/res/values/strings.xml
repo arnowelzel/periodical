@@ -44,6 +44,7 @@
     <string name="permissions_needed_ok">OK</string>
     <string name="event_periodstart">Period has started</string>
     <string name="event_periodlength">Last cycle had %s days</string>
+    <string name="event_ignored">Cycle length ignored</string>
     <string name="event_periodfirst">First entry</string>
     <string name="calendaraction_title">Edit calendar entry</string>
     <string name="calendaraction_add">Mark this day as \"Period has started\"?</string>
@@ -64,6 +65,8 @@
         <item>0</item>
         <item>1</item>
     </string-array>
+    <string name="pref_maximum_cycle_length">Maximum cycle length</string>
+    <string name="invalid_maximum_cycle_length">The maximum cycle length must be at least 1!</string>
     <string name="previous_month">Previous month</string>
     <string name="next_month">Next month</string>
     <string name="label_average_cycle">average cycle</string>

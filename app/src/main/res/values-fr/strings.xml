@@ -44,6 +44,7 @@
     <string name="permissions_needed_ok">Oui</string>
     <string name="event_periodstart">Début des règles</string>
     <string name="event_periodlength">Dernier cycle avait %s jours</string>
+    <string name="event_ignored">La durée du cycle est ignorée</string>
     <string name="event_periodfirst">Première entrée</string>
     <string name="calendaraction_title">Modifier une entrée du calendrier</string>
     <string name="calendaraction_add">Marquer ce jour comme \"Début des règles\" ?</string>
@@ -64,6 +65,8 @@
         <item>0</item>
         <item>1</item>
     </string-array>
+    <string name="pref_maximum_cycle_length">Durée maximale du cycle</string>
+    <string name="invalid_maximum_cycle_length">La longueur maximale du cycle doit être d\'au moins 1!</string>
     <string name="previous_month">Mois précédent</string>
     <string name="next_month">Mois prochain</string>
     <string name="label_average_cycle">Cycle moyen</string>

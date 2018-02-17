@@ -44,6 +44,7 @@
     <string name="permissions_needed_ok">Ja</string>
     <string name="event_periodstart">Menstruatie is begonnen</string>
     <string name="event_periodlength">Laatste cyclus duurde %s dagen</string>
+    <string name="event_ignored">Cycluslengte genegeerd</string>
     <string name="event_periodfirst">Eerste invoer</string>
     <string name="calendaraction_title">Bewerk kalenderinvoer</string>
     <string name="calendaraction_add">Markeer deze dag als \"Menstruatie is begonnen\"?</string>
@@ -64,6 +65,8 @@
         <item>0</item>
         <item>1</item>
     </string-array>
+    <string name="pref_maximum_cycle_length">Maximale cycluslengte</string>
+    <string name="invalid_maximum_cycle_length">De maximale cycluslengte moet minimaal 1 zijn!</string>
     <string name="previous_month">Vorige maand</string>
     <string name="next_month">Volgende maand</string>
     <string name="label_average_cycle">gemiddelde cyclus</string>

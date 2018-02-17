@@ -21,6 +21,7 @@ package de.arnowelzel.android.periodical;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
@@ -29,6 +30,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.preference.PreferenceManager;
 
 import java.util.Calendar;
 import java.util.Iterator;
@@ -53,6 +55,15 @@ public class ListActivity extends AppCompatActivity implements AdapterView.OnIte
         final Context context = getApplicationContext();
         assert context != null;
         super.onCreate(savedInstanceState);
+
+        int maximumcyclelength;
+
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
+        try {
+            maximumcyclelength = Integer.parseInt(preferences.getString("maximum_cycle_length", "183"));
+        } catch (NumberFormatException e) {
+            maximumcyclelength = 183;
+        }
 
         // Set up database and string array for the list
         dbMain = new PeriodicalDatabase(context);
@@ -83,10 +94,15 @@ public class ListActivity extends AppCompatActivity implements AdapterView.OnIte
                     // If we have a previous day, then update the previous
                     // days length description
                     Integer length = day.date.diffDayPeriods(dayPrevious.date);
-                    entries[pos - 1] += "\n"
+                    if(length <= maximumcyclelength) {
+                        entries[pos - 1] += "\n"
                             + String.format(
-                                    getString(R.string.event_periodlength),
-                                    length.toString());
+                            getString(R.string.event_periodlength),
+                            length.toString());
+                    } else {
+                        entries[pos - 1] +=
+                                String.format("\n%s", getString(R.string.event_ignored));
+                    }
                 }
                 break;
             }

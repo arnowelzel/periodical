@@ -44,6 +44,7 @@
     <string name="permissions_needed_ok">Sí</string>
     <string name="event_periodstart">Il ciclo è iniziato</string>
     <string name="event_periodlength">L\'ultimo ciclo è stato di %s giorni</string>
+    <string name="event_ignored">Lunghezza del ciclo ignorata</string>
     <string name="event_periodfirst">Prima voce</string>
     <string name="calendaraction_title">Modifica voce del calendario</string>
     <string name="calendaraction_add">Segnare questo giorno come \"Il ciclo è iniziato\"?</string>
@@ -64,6 +65,8 @@
         <item>0</item>
         <item>1</item>
     </string-array>
+    <string name="pref_maximum_cycle_length">Lunghezza massima del ciclo</string>
+    <string name="invalid_maximum_cycle_length">La lunghezza massima del ciclo deve essere almeno 1!</string>
     <string name="previous_month">Mese precedente</string>
     <string name="next_month">Mese successivo</string>
     <string name="label_average_cycle">Ciclo medio</string>

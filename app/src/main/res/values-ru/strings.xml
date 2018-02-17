@@ -44,6 +44,7 @@
     <string name="permissions_needed_ok">Да</string>
     <string name="event_periodstart">Начало периода</string>
     <string name="event_periodlength">Длительность последнего цикла %s дней</string>
+    <string name="event_ignored">Длина цикла игнорируется</string>
     <string name="event_periodfirst">Первая запись</string>
     <string name="calendaraction_title">Правка элемента календаря</string>
     <string name="calendaraction_add">Пометить день как \"Начало периода\"?</string>
@@ -64,6 +65,8 @@
         <item>0</item>
         <item>1</item>
     </string-array>
+    <string name="pref_maximum_cycle_length">Максимальная длина цикла</string>
+    <string name="invalid_maximum_cycle_length">Максимальная длина цикла должна быть не менее 1!</string>
     <string name="previous_month">Предыдущий месяц</string>
     <string name="next_month">Следующий месяц</string>
     <string name="label_average_cycle">средний цикл</string>
