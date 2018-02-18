@@ -350,26 +350,26 @@ class PeriodicalDatabase {
                 entry = new DayEntry(eventtype, eventdate, 1);
                 int length = entryPrevious.date.diffDayPeriods(entry.date);
 
-                // Update values which are used to calculate the fertility
-                // window for the last 12 entries
-                if (count == countlimit) {
-                    // If we have at least one period the shortest and
-                    // and longest value is automatically the current length
-                    this.cycleShortest = length;
-                    this.cycleLongest = length;
-                } else if (count > countlimit) {
-                    // We have more than two values, then update
-                    // longest/shortest
-                    // values
-                    if (length < this.cycleShortest)
-                        this.cycleShortest = length;
-                    if (length > this.cycleLongest)
-                        this.cycleLongest = length;
-                }
-
                 // Add calculated values only, if the period has not unusual lengths
                 // (e.g. after a longer pause because of pregnancy etc.)
                 if(length <= maximumcyclelength) {
+                    // Update values which are used to calculate the fertility
+                    // window for the last 12 entries
+                    if (count == countlimit) {
+                        // If we have at least one period the shortest and
+                        // and longest value is automatically the current length
+                        this.cycleShortest = length;
+                        this.cycleLongest = length;
+                    } else if (count > countlimit) {
+                        // We have more than two values, then update
+                        // longest/shortest
+                        // values
+                        if (length < this.cycleShortest)
+                            this.cycleShortest = length;
+                        if (length > this.cycleLongest)
+                            this.cycleLongest = length;
+                    }
+
                     // Update average sum
                     this.cycleAverage += length;
 
@@ -415,6 +415,10 @@ class PeriodicalDatabase {
                     // The last day was too far away, so treat this day as if it was the first one
                     entryPrevious = new DayEntry(eventtype, eventdate, 1);
                     this.dayEntries.add(entryPrevious);
+                    count = 1;
+                    this.cycleShortest = 28;
+                    this.cycleLongest = 28;
+                    this.cycleAverage = 28;
                 }
             }
         }
