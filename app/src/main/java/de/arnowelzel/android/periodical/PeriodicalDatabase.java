@@ -1,6 +1,6 @@
 /*
  * Periodical database class
- * Copyright (C) 2012-2017 Arno Welzel
+ * Copyright (C) 2012-2018 Arno Welzel
  *
  * This code is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -125,7 +125,7 @@ class PeriodicalDatabase {
     /**
      * Local helper to manage calculated calendar entries
      */
-    public class DayEntry {
+    public static class DayEntry {
         final static int EMPTY = 0;
         final static int PERIOD_START = 1;
         final static int PERIOD_CONFIRMED = 2;
@@ -136,7 +136,7 @@ class PeriodicalDatabase {
         final static int OVULATION_FUTURE = 7;
         final static int INFERTILE_PREDICTED = 8;
         final static int INFERTILE_FUTURE = 9;
-        final int type;
+        int type;
         final GregorianCalendarExt date;
         final int dayofcycle;
 
@@ -152,7 +152,7 @@ class PeriodicalDatabase {
          * @param dayofcycle
          * Day within current cycle (beginning with 1)
          */
-        private DayEntry(int type, GregorianCalendar date, int dayofcycle) {
+        DayEntry(int type, GregorianCalendar date, int dayofcycle) {
             this.type = type;
             this.date = new GregorianCalendarExt();
             this.date.setTime(date.getTime());
@@ -169,6 +169,9 @@ class PeriodicalDatabase {
     /** Calculated shortest cycle length */
     int cycleShortest;
 
+    /** Private reference to application context */
+    private Context context;
+
     /**
      * Constructor, will try to create/open a writable database
      *
@@ -176,19 +179,17 @@ class PeriodicalDatabase {
      * Application context
      */
     PeriodicalDatabase(Context context) {
-        open(context);
+        this.context = context;
+        open();
 
         dayEntries = new Vector<>();
     }
 
     /**
      * Open the database
-     *
-     * @param context
-     * Application context
      */
     @SuppressLint("Recycle")
-    private void open(Context context) {
+    private void open() {
         PeriodicalDataOpenHelper dataOpenHelper;
         dataOpenHelper = new PeriodicalDataOpenHelper(context);
         db = dataOpenHelper.getWritableDatabase();
@@ -273,11 +274,8 @@ class PeriodicalDatabase {
 
     /**
      * Update the calculation based on the entries in the database
-     *
-     * @param context
-     * Application context
      */
-    void loadCalculatedData(Context context) {
+    void loadCalculatedData() {
         DayEntry entry = null;
         DayEntry entryPrevious = null;
         boolean isFirst = true;
@@ -508,7 +506,7 @@ class PeriodicalDatabase {
      * Day of the month (1-31)
      */
     @SuppressWarnings("WrongConstant")
-    int getEntry(int year, int month, int day) {
+    int getEntryType(int year, int month, int day) {
         for (DayEntry entry : dayEntries) {
             // If entry was found, then return type
             if (entry.date.get(GregorianCalendar.YEAR) == year
@@ -520,6 +518,33 @@ class PeriodicalDatabase {
 
         // Fall back if month was not found, then return "empty" as type
         return 0;
+    }
+
+    /**
+     * Get entry for a specific day in month
+     *
+     * @param year
+     * Year including century
+     *
+     * @param month
+     * Month (1-12)
+     *
+     * @param day
+     * Day of the month (1-31)
+     */
+    @SuppressWarnings("WrongConstant")
+    DayEntry getEntry(int year, int month, int day) {
+        for (DayEntry entry : dayEntries) {
+            // If entry was found, then return type
+            if (entry.date.get(GregorianCalendar.YEAR) == year
+                    && entry.date.get(GregorianCalendar.MONTH) == month - 1
+                    && entry.date.get(GregorianCalendar.DATE) == day) {
+                return entry;
+            }
+        }
+
+        // No entry was found
+        return null;
     }
 
     /**
@@ -538,6 +563,19 @@ class PeriodicalDatabase {
         Cursor result = db.rawQuery(statement, new String[]{name});
         if (result.moveToNext()) {
             value = result.getString(0);
+        }
+        result.close();
+
+        return value;
+    }
+
+    private boolean getOption(String name, boolean defaultvalue) {
+        boolean value = defaultvalue;
+
+        String statement = "select value from options where name = ?";
+        Cursor result = db.rawQuery(statement, new String[]{name});
+        if (result.moveToNext()) {
+            value = result.getString(0).equals("1")?true:false;
         }
         result.close();
 
@@ -570,6 +608,22 @@ class PeriodicalDatabase {
         db.endTransaction();
     }
 
+    private void setOption(String name, boolean value) {
+        String statement;
+
+        db.beginTransaction();
+
+        // Delete existing value
+        statement = "delete from options where name = ?";
+        db.execSQL(statement, new String[]{name});
+
+        // Save option
+        statement = "insert into options (name, value) values (?, ?)";
+        db.execSQL(statement, new String[]{name, value?"1":"0"});
+
+        db.setTransactionSuccessful();
+        db.endTransaction();
+    }
     /**
      * Backup the database
      */
@@ -658,7 +712,7 @@ class PeriodicalDatabase {
         }
 
         // Open the DB again
-        open(context);
+        open();
 
         return ok;
     }
@@ -667,35 +721,32 @@ class PeriodicalDatabase {
      * Save application preferences to the database
      *
      * <br><br><i>(Just a hack for now - in the future we might want to get rid of shared preferences)</i>
-     *
-     * @param context
-     * Application context
      */
-    void savePreferences(Context context) {
+    void savePreferences() {
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
         setOption("period_length", preferences.getString("period_length", "4"));
         setOption("startofweek", preferences.getString("startofweek", "0"));
         setOption("maximum_cycle_length", preferences.getString("period_length", "183"));
+        setOption("direct_details", preferences.getBoolean("pref_direct_details", false));
     }
 
     /**
      * Restore application preferences from the database
      *
      * <br><br><i>(Just a hack for now - in the future we might want to get rid of shared preferences)</i>
-     *
-     * @param context
-     * Application context
      */
-    void restorePreferences(Context context) {
+    void restorePreferences() {
         String period_length = getOption("period_length", "4");
         String startofweek = getOption("startofweek", "0");
         String maximum_cycle_length = getOption("maximum_cycle_length", "183");
+        boolean direct_details = getOption("direct_details", false);
                 
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
         SharedPreferences.Editor editor = preferences.edit();
         editor.putString("period_length", period_length);
         editor.putString("startofweek", startofweek);
         editor.putString("maximum_cycle_length", maximum_cycle_length);
+        editor.putBoolean("direct_details", direct_details);
         editor.apply();
     }
 }

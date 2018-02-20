@@ -93,10 +93,11 @@ public class MainActivity extends AppCompatActivity {
     private PeriodicalDatabase dbMain;
 
     /* Request codes for other activities */
-    private static final int PICK_DATE = 1;    // Detail list: Date selected in detail list
-    private static final int SET_OPTIONS = 2;  // Preferences: Options changed
-    private static final int HELP_CLOSED = 3;  // Help: closed
-    private static final int ABOUT_CLOSED = 4;  // About: closed
+    private static final int PICK_DATE = 1;       // Detail list: Date selected in detail list
+    private static final int SET_OPTIONS = 2;     // Preferences: Options changed
+    private static final int HELP_CLOSED = 3;     // Help: closed
+    private static final int ABOUT_CLOSED = 4;    // About: closed
+    private static final int DETAILS_CLOSED = 5;  // Details: closed
 
     /**
      * Called when activity starts
@@ -104,15 +105,17 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        final Context context = getApplicationContext();
+        assert context != null;
 
         // Set up database
-        dbMain = new PeriodicalDatabase(getApplicationContext());
+        dbMain = new PeriodicalDatabase(context);
 
         // Set up view
         setContentView(R.layout.main);
-        
+
         // Set gesture handling
-        gestureDetector = new GestureDetector(getApplicationContext(), new CalendarGestureDetector());
+        gestureDetector = new GestureDetector(context, new CalendarGestureDetector());
         @SuppressWarnings("UnusedAssignment") View.OnTouchListener gestureListener = new View.OnTouchListener() {
             public boolean onTouch(View v, MotionEvent event) {
                 return gestureDetector.onTouchEvent(event);
@@ -129,7 +132,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
         // Update calculated values
-        dbMain.loadCalculatedData(getApplicationContext());
+        dbMain.loadCalculatedData();
     }
 
     /**
@@ -169,7 +172,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /**
-     * Called when the use selects the menu button
+     * Called when the user selects the menu button
      */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -253,13 +256,16 @@ public class MainActivity extends AppCompatActivity {
         startActivityForResult(
                 new Intent(MainActivity.this, OptionsActivity.class), SET_OPTIONS);
     }
-    
+
     /**
      * Update calendar data and view
      */
     @SuppressWarnings("WrongConstant")
     @SuppressLint("DefaultLocale")
     private void calendarUpdate() {
+        final Context context = getApplicationContext();
+        assert context != null;
+
         // Initialize control ids for the target view to be used
         int calendarCells[];
         if (viewCurrent == R.id.calendar) {
@@ -269,8 +275,6 @@ public class MainActivity extends AppCompatActivity {
         }
         
         // Set weekday labels depending on selected start of week
-        Context context = getApplicationContext();
-        assert context != null;
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
         int startofweek = Integer.parseInt(preferences.getString("startofweek", "0"));
         if(startofweek == 0) {
@@ -326,7 +330,7 @@ public class MainActivity extends AppCompatActivity {
                 int day = i - firstDayOfWeek + 1;
                 cell.setText(String.format("%d", day));
                 cell.setVisibility(android.view.View.VISIBLE);
-                int type = dbMain.getEntry(yearCurrent, monthCurrent, day);
+                int type = dbMain.getEntryType(yearCurrent, monthCurrent, day);
                 boolean current = false;
 
                 if (yearCurrent == calToday.get(Calendar.YEAR)
@@ -455,6 +459,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public void onRequestPermissionsResult(int requestCode,  @NonNull String[] permissions, @NonNull int[] grantResults) {
         final Context context = getApplicationContext();
+        assert context != null;
 
         // If the requested permission was granted by the user,
         // run the operation which requested the permission
@@ -475,6 +480,7 @@ public class MainActivity extends AppCompatActivity {
      */
     private void doBackup() {
         final Context context = getApplicationContext();
+        assert context != null;
 
         final AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle(getResources().getString(R.string.backup_title));
@@ -567,7 +573,7 @@ public class MainActivity extends AppCompatActivity {
         // Show toast depending on result of operation
         String text;
         if (ok) {
-            dbMain.restorePreferences(context);
+            dbMain.restorePreferences();
             handleDatabaseEdit();
             text = getResources().getString(R.string.restore_finished);
         } else {
@@ -581,6 +587,9 @@ public class MainActivity extends AppCompatActivity {
      * Handler for the selection of one day in the calendar
      */
     public void handleCalendarButton(View v) {
+        final Context context = getApplicationContext();
+        assert context != null;
+
         // Determine selected date
         int idButton = v.getId();
         int nButtonClicked = 0;
@@ -599,57 +608,94 @@ public class MainActivity extends AppCompatActivity {
         }
         final int day = nButtonClicked - firstDayOfWeek + 2;
 
-        // Set or remove entry with confirmation
-        final AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle(getResources()
-                .getString(R.string.calendaraction_title));
-
-        if (dbMain.getEntry(yearCurrent, monthCurrent, day) != 1) {
-            builder.setMessage(getResources().getString(
-                    R.string.calendaraction_add));
-            builder.setPositiveButton(
-                    getResources().getString(R.string.calendaraction_ok),
-                    new OnClickListener() {
-
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            dbMain.add(yearCurrent, monthCurrent, day);
-                            handleDatabaseEdit();
-                        }
-                    });
-
-            builder.setNegativeButton(
-                    getResources().getString(R.string.calendaraction_cancel),
-                    new OnClickListener() {
-
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                        }
-                    });
+        // If "direct details" is set by the user, just open the details
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
+        if(preferences.getBoolean("direct_details", false)) {
+            showDetailsActivity(yearCurrent, monthCurrent, day);
         } else {
-            builder.setMessage(getResources().getString(
-                    R.string.calendaraction_remove));
-            builder.setPositiveButton(
-                    getResources().getString(R.string.calendaraction_ok),
-                    new OnClickListener() {
+            // Set or remove entry with confirmation
+            final AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setTitle(getResources()
+                    .getString(R.string.calendaraction_title));
 
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            dbMain.remove(yearCurrent, monthCurrent, day);
-                            handleDatabaseEdit();
-                        }
-                    });
+            if (dbMain.getEntryType(yearCurrent, monthCurrent, day) != 1) {
+                builder.setMessage(getResources().getString(
+                        R.string.calendaraction_add));
+                builder.setPositiveButton(
+                        getResources().getString(R.string.calendaraction_ok),
+                        new OnClickListener() {
 
-            builder.setNegativeButton(
-                    getResources().getString(R.string.calendaraction_cancel),
-                    new OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                dbMain.add(yearCurrent, monthCurrent, day);
+                                handleDatabaseEdit();
+                            }
+                        });
 
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                        }
-                    });
+                builder.setNegativeButton(
+                        getResources().getString(R.string.calendaraction_cancel),
+                        new OnClickListener() {
+
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                            }
+                        });
+
+                builder.setNeutralButton(
+                        getResources().getString(R.string.calendaraction_details),
+                        new OnClickListener() {
+
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                showDetailsActivity(yearCurrent, monthCurrent, day);
+                            }
+                        });
+            } else {
+                builder.setMessage(getResources().getString(
+                        R.string.calendaraction_remove));
+                builder.setPositiveButton(
+                        getResources().getString(R.string.calendaraction_ok),
+                        new OnClickListener() {
+
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                dbMain.remove(yearCurrent, monthCurrent, day);
+                                handleDatabaseEdit();
+                            }
+                        });
+
+                builder.setNegativeButton(
+                        getResources().getString(R.string.calendaraction_cancel),
+                        new OnClickListener() {
+
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                            }
+                        });
+
+                builder.setNeutralButton(
+                        getResources().getString(R.string.calendaraction_details),
+                        new OnClickListener() {
+
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                showDetailsActivity(yearCurrent, monthCurrent, day);
+                            }
+                        });
+            }
+            builder.show();
         }
-        builder.show();
+    }
+
+    /**
+     * Helper to show the details activity for a specific day
+     */
+    private void showDetailsActivity(int year, int month, int day) {
+        Intent details = new Intent(MainActivity.this, DetailsActivity.class);
+        details.putExtra("year", year);
+        details.putExtra("month", month);
+        details.putExtra("day", day);
+        startActivityForResult(details, DETAILS_CLOSED);
     }
 
     /**
@@ -657,7 +703,7 @@ public class MainActivity extends AppCompatActivity {
      */
     private void handleDatabaseEdit() {
         // Update calculated values
-        dbMain.loadCalculatedData(getApplicationContext());
+        dbMain.loadCalculatedData();
         calendarUpdate();
 
         // Notify backup agent about the change and mark DB as clean
@@ -685,7 +731,7 @@ public class MainActivity extends AppCompatActivity {
             
             // Options modified
             case SET_OPTIONS:
-                dbMain.savePreferences(getApplicationContext());
+                dbMain.savePreferences();
                 handleDatabaseEdit();
                 calendarUpdate();
                 break;
@@ -741,3 +787,4 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 }
+

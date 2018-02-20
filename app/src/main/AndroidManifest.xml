@@ -20,7 +20,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        
+
+        <activity android:name=".DetailsActivity" android:label="@string/details_title" />
+
         <activity android:name=".ListActivity" android:label="@string/list_title" />
     		
         <activity android:name=".OptionsActivity" android:label="@string/options_title"/>

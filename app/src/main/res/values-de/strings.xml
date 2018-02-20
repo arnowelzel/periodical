@@ -25,6 +25,7 @@
     <string name="main_calday_th_description">Donnerstag</string>
     <string name="main_calday_fr_description">Freitag</string>
     <string name="main_calday_sa_description">Samstag</string>
+    <string name="details_title">Details</string>
     <string name="list_title">Liste</string>
     <string name="about_title">Über …</string>
     <string name="help_title">Hilfe</string>
@@ -51,6 +52,7 @@
     <string name="calendaraction_remove">Kennzeichnung \"Periode hat begonnen\" für diesen Tag entfernen?</string>
     <string name="calendaraction_ok">Ja</string>
     <string name="calendaraction_cancel">Nein</string>
+    <string name="calendaraction_details">Details bearbeiten</string>
     <string name="options_title">Einstellungen</string>
     <string name="pref_periodlength">Standardlänge der Periode (Tage)</string>
     <string name="invalid_period_length">Die Standardlänge der Periode muss zwischen 1 und 14 sein!</string>
@@ -67,6 +69,9 @@
     </string-array>
     <string name="pref_maximum_cycle_length">Maximale Zykluslänge</string>
     <string name="invalid_maximum_cycle_length">Die maximale Zykluslänge muss mindestens 1 sein!</string>
+    <string name="pref_direct_details">Direkt zu den Details gehen</string>
+    <string name="summary_direct_details_off">Einen Tag zur Periode hinzügen/entfernen oder zu den Details für diesen Tag gehen.</string>
+    <string name="summary_direct_details_on">Direkt zu den Details für diesen Tag gehen.</string>
     <string name="previous_month">Vorheriger Monat</string>
     <string name="next_month">Nächster Monat</string>
     <string name="label_average_cycle">Durchschnittlicher Zyklus</string>
@@ -80,4 +85,30 @@
     <string name="label_ovulation">Eisprung</string>
     <string name="asset_about">de/about.html</string>
     <string name="asset_help">de/help.html</string>
+    <string name="label_details_period">Periode</string>
+    <string name="label_details_yes">Ja</string>
+    <string name="label_details_no">Nein</string>
+    <string name="label_details_intensity">Intensität</string>
+    <string name="label_details_intensity1">1</string>
+    <string name="label_details_intensity2">2</string>
+    <string name="label_details_intensity3">3</string>
+    <string name="label_details_intensity4">4 (stark)</string>
+    <string name="label_details_notes">Notizen</string>
+    <string name="label_details_events">Ereignisse/Symptome</string>
+    <string name="label_details_ev1">Geschlechtsverkehr</string>
+    <string name="label_details_ev2">Krämpfe</string>
+    <string name="label_details_ev3">Rückenschmerzen</string>
+    <string name="label_details_ev4">Mittelschmerz links</string>
+    <string name="label_details_ev5">Mittelschmerz rechts</string>
+    <string name="label_details_ev6">Brustschmerzen/ziehen</string>
+    <string name="label_details_ev7">Blähungen</string>
+    <string name="label_details_ev8">Ohnmacht</string>
+    <string name="label_details_ev9">Reizbarkeit</string>
+    <string name="label_details_ev10">Mürrisch</string>
+    <string name="label_details_ev11">Übelkeit</string>
+    <string name="label_details_ev12">Heißhunger</string>
+    <string name="label_details_ev13">Temperaturschwankungen</string>
+    <string name="label_details_ev14">Pickel</string>
+    <string name="label_details_ev15">Pilzbelag</string>
+    <string name="label_details_ev16">Ausfluss</string>
 </resources>

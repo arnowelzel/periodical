@@ -22,6 +22,7 @@
          android:layout_weight="1"
          android:textStyle="bold"
          android:textColor="#ffffffff"
+         android:textSize="18dp"
          />
          <Button
          android:id="@+id/buttonprev"

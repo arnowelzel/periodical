@@ -21,4 +21,10 @@
         android:defaultValue="183"
         android:key="maximum_cycle_length"
         android:inputType="number" />
+    <CheckBoxPreference
+        android:title="@string/pref_direct_details"
+        android:defaultValue="false"
+        android:key="direct_details"
+        android:summaryOff="@string/summary_direct_details_off"
+        android:summaryOn="@string/summary_direct_details_on" />
 </PreferenceScreen>

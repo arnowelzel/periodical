@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/detailsview"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+
+        <!-- Header -->
+
+        <TextView
+            android:id="@+id/labelDetailsHeader"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginBottom="8dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginTop="16dp"
+            android:text="2002"
+            android:textSize="24dp" />
+
+        <!-- Period yes/no -->
+
+        <TextView
+            android:id="@+id/labelPeriod"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="4dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginTop="16dp"
+            android:text="@string/label_details_period"
+            android:textSize="18dp"/>
+
+        <RadioGroup
+            android:id="@+id/periodOptions"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="12dp"
+            android:layout_marginRight="12dp"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/periodYes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/label_details_yes"
+                android:textSize="18dp" />
+
+            <RadioButton
+                android:id="@+id/periodNo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/label_details_no"
+                android:textSize="18dp" />
+        </RadioGroup>
+
+        <!-- Period intensity -->
+
+        <TextView
+            android:id="@+id/labelPeriod"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="4dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginTop="16dp"
+            android:text="@string/label_details_intensity"
+            android:textSize="18dp" />
+
+        <RadioGroup
+            android:id="@+id/periodOptions"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="12dp"
+            android:layout_marginRight="12dp"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/periodIntensity1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/label_details_intensity1"
+                android:textSize="18dp" />
+
+            <RadioButton
+                android:id="@+id/periodIntensity2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/label_details_intensity2"
+                android:textSize="18dp" />
+
+            <RadioButton
+                android:id="@+id/periodIntensity3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/label_details_intensity3"
+                android:textSize="18dp" />
+            <RadioButton
+                android:id="@+id/periodIntensity4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/label_details_intensity4"
+                android:textSize="18dp"
+                android:nextFocusRight="@+id/editNotes"
+                android:nextFocusDown="@+id/editNotes"
+                />
+        </RadioGroup>
+
+        <!-- Notes -->
+
+        <TextView
+            android:id="@+id/labelNotes"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="4dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginTop="16dp"
+            android:text="@string/label_details_notes"
+            android:textSize="18dp" />
+        <!-- Hack to avoid initial focus on edit widget -->
+        <LinearLayout
+            android:layout_width="0px"
+            android:layout_height="0px"
+            android:focusable="true"
+            android:focusableInTouchMode="true" />
+
+        <MultiAutoCompleteTextView
+            android:id="@+id/editNotes"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="12dp"
+            android:layout_marginRight="12dp"
+            android:nextFocusLeft="@+id/periodIntensity4"
+            android:nextFocusUp="@+id/periodIntensity4"
+            android:text="" />
+
+        <!-- Events -->
+
+        <TextView
+            android:id="@+id/labelEvents"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="4dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginTop="16dp"
+            android:text="@string/label_details_events"
+            android:textSize="18dp" />
+        <LinearLayout
+            android:id="@+id/groupEvents"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>

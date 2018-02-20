@@ -25,6 +25,7 @@
     <string name="main_calday_th_description">thursday</string>
     <string name="main_calday_fr_description">friday</string>
     <string name="main_calday_sa_description">saturday</string>
+    <string name="details_title">Details</string>
     <string name="list_title">List</string>
     <string name="about_title">About …</string>
     <string name="help_title">Help</string>
@@ -51,6 +52,7 @@
     <string name="calendaraction_remove">Remove the \"Period has started\" mark for this day?</string>
     <string name="calendaraction_ok">Yes</string>
     <string name="calendaraction_cancel">No</string>
+    <string name="calendaraction_details">Edit details</string>
     <string name="options_title">Preferences</string>
     <string name="pref_periodlength">Default length of period (days)</string>
     <string name="invalid_period_length">The default period length must be between 1 and 14!</string>
@@ -67,6 +69,9 @@
     </string-array>
     <string name="pref_maximum_cycle_length">Maximum cycle length</string>
     <string name="invalid_maximum_cycle_length">The maximum cycle length must be at least 1!</string>
+    <string name="pref_direct_details">Go directly to the details</string>
+    <string name="summary_direct_details_off">Add/remove a day to the period or go to the details for that day.</string>
+    <string name="summary_direct_details_on">Go directly to the details for that day.</string>
     <string name="previous_month">Previous month</string>
     <string name="next_month">Next month</string>
     <string name="label_average_cycle">average cycle</string>
@@ -80,4 +85,30 @@
     <string name="label_ovulation">ovulation</string>
     <string name="asset_about">en/about.html</string>
     <string name="asset_help">en/help.html</string>
+    <string name="label_details_period">Period</string>
+    <string name="label_details_yes">Yes</string>
+    <string name="label_details_no">No</string>
+    <string name="label_details_intensity">Intensity</string>
+    <string name="label_details_intensity1">1</string>
+    <string name="label_details_intensity2">2</string>
+    <string name="label_details_intensity3">3</string>
+    <string name="label_details_intensity4">4 (strong)</string>
+    <string name="label_details_notes">Notes</string>
+    <string name="label_details_events">Events/Symptoms</string>
+    <string name="label_details_ev1">Sexual intercourse</string>
+    <string name="label_details_ev2">Cramps</string>
+    <string name="label_details_ev3">Back pain</string>
+    <string name="label_details_ev4">Middle pain left</string>
+    <string name="label_details_ev5">Middle pain right</string>
+    <string name="label_details_ev6">Breast pain/dragging pain</string>
+    <string name="label_details_ev7">Bloating</string>
+    <string name="label_details_ev8">Fainting</string>
+    <string name="label_details_ev9">Irritability</string>
+    <string name="label_details_ev10">Grumpiness</string>
+    <string name="label_details_ev11">Nausea</string>
+    <string name="label_details_ev12">Cravings</string>
+    <string name="label_details_ev13">Temperature fluctuations</string>
+    <string name="label_details_ev14">Pimples</string>
+    <string name="label_details_ev15">Thrush</string>
+    <string name="label_details_ev16">Discharge</string>
 </resources>
