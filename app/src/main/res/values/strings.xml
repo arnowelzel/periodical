@@ -48,8 +48,9 @@
     <string name="event_ignored">Cycle length ignored</string>
     <string name="event_periodfirst">First entry</string>
     <string name="calendaraction_title">Edit calendar entry</string>
-    <string name="calendaraction_add">Mark this day as \"Period has started\"?</string>
-    <string name="calendaraction_remove">Remove the \"Period has started\" mark for this day?</string>
+    <string name="calendaraction_add">Mark this day as \"Period\"?</string>
+    <string name="calendaraction_remove">Remove the \"Period\" mark for this day?</string>
+    <string name="calendaraction_removeperiod">Remove this Period?</string>
     <string name="calendaraction_ok">Yes</string>
     <string name="calendaraction_cancel">No</string>
     <string name="calendaraction_details">Edit details</string>
@@ -111,4 +112,5 @@
     <string name="label_details_ev14">Pimples</string>
     <string name="label_details_ev15">Thrush</string>
     <string name="label_details_ev16">Discharge</string>
+    <string name="label_details_ev17">Very intense bleeding</string>
 </resources>

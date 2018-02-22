@@ -18,6 +18,7 @@
 
 package de.arnowelzel.android.periodical;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
@@ -42,15 +43,14 @@ import static de.arnowelzel.android.periodical.PeriodicalDatabase.DayEntry.PERIO
  * Activity to handle the "Help" command
  */
 public class DetailsActivity extends AppCompatActivity {
-
-    private PeriodicalDatabase dbMain;
-    private PeriodicalDatabase.DayEntry entry;
-
     /**
      *  Called when the activity starts
      */
     @Override
     public void onCreate(Bundle savedInstanceState) {
+        PeriodicalDatabase dbMain;
+        PeriodicalDatabase.DayEntry entry;
+
         final Context context = getApplicationContext();
         assert context != null;
         super.onCreate(savedInstanceState);
@@ -103,18 +103,24 @@ public class DetailsActivity extends AppCompatActivity {
                 LinearLayout.LayoutParams.WRAP_CONTENT);
         DisplayMetrics displaymetrics = new DisplayMetrics();
         int marginLeft = (int)(12 * Resources.getSystem().getDisplayMetrics().density);
-        int marginRight = (int)(12 * Resources.getSystem().getDisplayMetrics().density);;
+        int marginRight = (int)(12 * Resources.getSystem().getDisplayMetrics().density);
         layoutParams.setMargins(marginLeft,0, marginRight, 0);
 
-        for(int i=1; i<15; ++i) {
-            String resName = String.format("label_details_ev%d",i);
+        int num = 1;
+        while(true) {
+            @SuppressLint("DefaultLocale") String resName = String.format("label_details_ev%d",num);
             int resId = getResources().getIdentifier(resName, "string", packageName);
-            CheckBox option = new CheckBox(this);
-            option.setLayoutParams(layoutParams);
-            option.setText(resId);
-            option.setId(resId);
-            option.setTextSize(18);
-            groupEvents.addView(option);
+            if(resId != 0) {
+                CheckBox option = new CheckBox(this);
+                option.setLayoutParams(layoutParams);
+                option.setText(resId);
+                option.setId(resId);
+                option.setTextSize(18);
+                groupEvents.addView(option);
+                num++;
+            } else {
+                break;
+            }
         }
     }
 

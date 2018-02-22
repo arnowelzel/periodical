@@ -48,7 +48,7 @@ class PeriodicalDatabase {
         /** File name for the database */
         final static String DATABASE_NAME = "main.db";
         /** Version of the database */
-        final static int DATABASE_VERSION = 3;
+        final static int DATABASE_VERSION = 4;
 
         /**
          * Create a new database for the app
@@ -81,7 +81,10 @@ class PeriodicalDatabase {
                     "name varchar(100), " +
                     "value varchar(500)" +
                     ");");
-            db.setTransactionSuccessful();
+            db.execSQL("create table notes (" +
+                    "eventdate varchar(8), " +
+                    "content text" +
+                    ");");
             db.endTransaction();
         }
 
@@ -97,6 +100,7 @@ class PeriodicalDatabase {
          * @param newVersion
          * The new version to update to
          */
+        @SuppressLint("DefaultLocale")
         @Override
         public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
             if (oldVersion < 2 && newVersion >= 2) {
@@ -115,6 +119,57 @@ class PeriodicalDatabase {
                         ");");
                 db.setTransactionSuccessful();
                 db.endTransaction();
+            } else if (oldVersion < 4 && newVersion >= 4) {
+                // Version 4 introduces notes and stores periods in a different way
+                db.execSQL("create table notes (" +
+                        "eventdate varchar(8), " +
+                        "content text" +
+                        ");");
+
+
+                SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
+                int periodlength;
+                try {
+                    periodlength = Integer.parseInt(preferences.getString("period_length", "4"));
+                } catch (NumberFormatException e) {
+                    periodlength = 4;
+                }
+
+                String statement = "select eventtype, eventdate from data order by eventdate desc";
+                Cursor result = db.rawQuery(statement, null);
+                DayEntry entry;
+                while (result.moveToNext()) {
+                    int eventtype = result.getInt(0);
+                    String dbdate = result.getString(1);
+                    assert dbdate != null;
+                    int eventyear = Integer.parseInt(dbdate.substring(0, 4), 10);
+                    int eventmonth = Integer.parseInt(dbdate.substring(4, 6), 10);
+                    int eventday = Integer.parseInt(dbdate.substring(6, 8), 10);
+                    GregorianCalendar eventdate = new GregorianCalendar(eventyear,
+                            eventmonth - 1, eventday);
+
+                    // Add additional entries for each day of the period
+                    if(eventtype == DayEntry.PERIOD_START) {
+                        eventtype = DayEntry.PERIOD_CONFIRMED;
+
+                        for(int day = 2; day <= periodlength; day++) {
+                            eventdate.add(GregorianCalendar.DATE, 1);
+
+                            statement = String.format(
+                                    "insert into data (eventtype, eventdate) values (%d, '%s')",
+                                    eventtype,
+                                    String.format(Locale.getDefault(), "%04d%02d%02d",
+                                            eventdate.get(GregorianCalendar.YEAR),
+                                            eventdate.get(GregorianCalendar.MONTH) + 1,
+                                            eventdate.get(GregorianCalendar.DAY_OF_MONTH)));
+                            db.beginTransaction();
+                            db.execSQL(statement);
+                            db.setTransactionSuccessful();
+                            db.endTransaction();
+                        }
+                    }
+                }
+                result.close();
             }
         }
     }
@@ -228,46 +283,125 @@ class PeriodicalDatabase {
     /**
      * Store an entry for a specific day into the database
      *
-     * @param year
-     * Year including century
-     *
-     * @param month
-     * Month (1-12)
-     *
-     * @param day
-     * Day of the month (1-31)
+     * @param date
+     * Date of the entry
      */
-    void add(int year, int month, int day) {
+    @SuppressLint("DefaultLocale")
+    void addPeriod(GregorianCalendar date) {
         String statement;
 
-        statement = String.format(
-                "insert into data (eventtype, eventdate) values (1, '%s')",
-                String.format(Locale.getDefault(), "%04d%02d%02d", year, month, day));
-        db.beginTransaction();
-        db.execSQL(statement);
-        db.setTransactionSuccessful();
-        db.endTransaction();
+        GregorianCalendar dateLocal = new GregorianCalendar();
+        dateLocal.setTime(date.getTime());
+        dateLocal.add(GregorianCalendar.DATE, -1);
+        int type = getEntryType(dateLocal);
+        if(type == DayEntry.PERIOD_START || type == DayEntry.PERIOD_CONFIRMED) {
+            // Continue existing period to the future
+            type = DayEntry.PERIOD_CONFIRMED;
+            db.beginTransaction();
+            statement = String.format(
+                    "insert into data (eventtype, eventdate) values (%d, '%s')",
+                    type,
+                    String.format(Locale.getDefault(), "%04d%02d%02d",
+                            date.get(GregorianCalendar.YEAR),
+                            date.get(GregorianCalendar.MONTH) +1,
+                            date.get(GregorianCalendar.DAY_OF_MONTH)));
+            db.execSQL(statement);
+            db.setTransactionSuccessful();
+            db.endTransaction();
+        } else {
+            dateLocal.add(GregorianCalendar.DATE, +2);
+            type = getEntryType(dateLocal);
+            if(type == DayEntry.PERIOD_START) {
+                // Continue existing period to the past
+                db.beginTransaction();
+
+                statement = String.format(
+                        "insert into data (eventtype, eventdate) values (%d, '%s')",
+                        type,
+                        String.format(Locale.getDefault(), "%04d%02d%02d",
+                                date.get(GregorianCalendar.YEAR),
+                                date.get(GregorianCalendar.MONTH) +1,
+                                date.get(GregorianCalendar.DAY_OF_MONTH)));
+                db.execSQL(statement);
+
+                statement = String.format(
+                        "update data set eventtype=%d where eventdate = '%s'",
+                        DayEntry.PERIOD_CONFIRMED,
+                        String.format(Locale.getDefault(), "%04d%02d%02d",
+                                dateLocal.get(GregorianCalendar.YEAR),
+                                dateLocal.get(GregorianCalendar.MONTH) +1,
+                                dateLocal.get(GregorianCalendar.DAY_OF_MONTH)));
+                db.execSQL(statement);
+
+                db.setTransactionSuccessful();
+                db.endTransaction();
+            } else {
+                // This day is a regular new period
+                int periodlength;
+
+                SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
+                try {
+                    periodlength = Integer.parseInt(preferences.getString("period_length", "4"));
+                } catch (NumberFormatException e) {
+                    periodlength = 4;
+                }
+
+                type = DayEntry.PERIOD_START;
+                dateLocal.setTime(date.getTime());
+
+                db.beginTransaction();
+                for(int day = 0; day < periodlength; day++) {
+                    statement = String.format(
+                            "insert into data (eventtype, eventdate) values (%d, '%s')",
+                            type,
+                            String.format(Locale.getDefault(), "%04d%02d%02d",
+                                    dateLocal.get(GregorianCalendar.YEAR),
+                                    dateLocal.get(GregorianCalendar.MONTH) +1,
+                                    dateLocal.get(GregorianCalendar.DAY_OF_MONTH)));
+                    db.execSQL(statement);
+
+                    type = DayEntry.PERIOD_CONFIRMED;
+                    dateLocal.add(GregorianCalendar.DATE, 1);
+                }
+                db.setTransactionSuccessful();
+                db.endTransaction();
+            }
+        }
+        date.add(GregorianCalendar.DATE, 1);
+
+        // Add the selected date
     }
 
     /**
      * Remove an entry for a specific day into the database
      *
-     * @param year
-     * Year including century
-     *
-     * @param month
-     * Month (1-12)
-     *
-     * @param day
-     * Day of the month (1-31)
+     * @param date
+     * Date of the entry
      */
-    void remove(int year, int month, int day) {
+    void removePeriod(GregorianCalendar date) {
         String statement;
 
-        statement = String.format("delete from data where eventdate='%s'",
-                String.format(Locale.getDefault(), "%04d%02d%02d", year, month, day));
+        GregorianCalendar dateLocal = new GregorianCalendar();
+        dateLocal.setTime(date.getTime());
+
         db.beginTransaction();
-        db.execSQL(statement);
+
+        // Remove selected day and all following entries
+        while(true) {
+            int type = getEntryType(dateLocal);
+            if(type == DayEntry.PERIOD_START || type == DayEntry.PERIOD_CONFIRMED) {
+                statement = String.format("delete from data where eventdate='%s'",
+                        String.format(Locale.getDefault(), "%04d%02d%02d",
+                                dateLocal.get(GregorianCalendar.YEAR),
+                                dateLocal.get(GregorianCalendar.MONTH) +1,
+                                dateLocal.get(GregorianCalendar.DAY_OF_MONTH)));
+                db.execSQL(statement);
+                dateLocal.add(GregorianCalendar.DATE, 1);
+            } else {
+                break;
+            }
+        }
+
         db.setTransactionSuccessful();
         db.endTransaction();
     }
@@ -278,6 +412,7 @@ class PeriodicalDatabase {
     void loadCalculatedData() {
         DayEntry entry = null;
         DayEntry entryPrevious = null;
+        DayEntry entryPreviousStart = null;
         boolean isFirst = true;
         int count = 0;
         int countlimit = 1;
@@ -289,7 +424,7 @@ class PeriodicalDatabase {
         int periodlength;
         int luteallength;
         int maximumcyclelength;
-        int dayofcycle;
+        int dayofcycle = 1;
 
         // Get default values from preferences
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
@@ -335,89 +470,95 @@ class PeriodicalDatabase {
             GregorianCalendar eventdate = new GregorianCalendar(eventyear,
                     eventmonth - 1, eventday);
 
-            if (isFirst) {
-                isFirst = false;
+            switch(eventtype)
+            {
+            case DayEntry.PERIOD_START:
+                if (isFirst) {
+                    // First event at all - just create an initial start entry
+                    dayofcycle = 1;
+                    entryPrevious = new DayEntry(eventtype, eventdate, 1);
+                    entryPreviousStart = entryPrevious;
+                    this.dayEntries.add(entryPrevious);
+                    isFirst = false;
+                }
+                else {
+                    // Create new day entry
+                    entry = new DayEntry(eventtype, eventdate, 1);
+                    int length = entryPreviousStart.date.diffDayPeriods(entry.date);
 
-                // First event at all - just create an initial start entry
-                entryPrevious = new DayEntry(eventtype, eventdate, 1);
-                this.dayEntries.add(entryPrevious);
-            } else {
-                count++;
+                    // Add calculated values from the last date to this day, if the period has not
+                    // unusual lengths (e.g. after a longer pause because of pregnancy etc.)
+                    if (length <= maximumcyclelength) {
+                        count++;
 
-                // Create new day entry
-                entry = new DayEntry(eventtype, eventdate, 1);
-                int length = entryPrevious.date.diffDayPeriods(entry.date);
-
-                // Add calculated values only, if the period has not unusual lengths
-                // (e.g. after a longer pause because of pregnancy etc.)
-                if(length <= maximumcyclelength) {
-                    // Update values which are used to calculate the fertility
-                    // window for the last 12 entries
-                    if (count == countlimit) {
-                        // If we have at least one period the shortest and
-                        // and longest value is automatically the current length
-                        this.cycleShortest = length;
-                        this.cycleLongest = length;
-                    } else if (count > countlimit) {
-                        // We have more than two values, then update
-                        // longest/shortest
-                        // values
-                        if (length < this.cycleShortest)
+                        // Update values which are used to calculate the fertility
+                        // window for the last 12 entries
+                        if (count == countlimit) {
+                            // If we have at least one period the shortest and
+                            // and longest value is automatically the current length
                             this.cycleShortest = length;
-                        if (length > this.cycleLongest)
                             this.cycleLongest = length;
-                    }
-
-                    // Update average sum
-                    this.cycleAverage += length;
-
-                    // Calculate a predicted ovulation date
-                    int average = this.cycleAverage;
-                    if (count > 0) average /= count;
-                    ovulationday = average - luteallength;
-
-                    // Calculate days from the last event until now
-                    GregorianCalendar datePrevious = new GregorianCalendar();
-                    datePrevious.setTime(entryPrevious.date.getTime());
-                    dayofcycle = 2;
-                    for (int day = 2; day <= length; day++) {
-                        datePrevious.add(GregorianCalendar.DATE, 1);
-
-                        int type;
-
-                        if (day <= periodlength) {
-                            // First days of period
-                            type = DayEntry.PERIOD_CONFIRMED;
-                            dayofcycle = 1;
-                        } else if (day == ovulationday) {
-                            // Day of ovulation
-                            type = DayEntry.OVULATION_PREDICTED;
-                        } else if (day >= this.cycleShortest - luteallength - 4
-                                && day <= this.cycleLongest - luteallength + 3) {
-                            // Fertile days
-                            type = DayEntry.FERTILITY_PREDICTED;
-                        } else {
-                            // Infertile days
-                            type = DayEntry.INFERTILE_PREDICTED;
+                        } else if (count > countlimit) {
+                            // We have more than two values, then update
+                            // longest/shortest
+                            // values
+                            if (length < this.cycleShortest)
+                                this.cycleShortest = length;
+                            if (length > this.cycleLongest)
+                                this.cycleLongest = length;
                         }
 
-                        DayEntry entryCalculated = new DayEntry(type, datePrevious, dayofcycle);
-                        dayEntries.add(entryCalculated);
-                        dayofcycle++;
+                        // Update average sum
+                        this.cycleAverage += length;
+
+                        // Calculate a predicted ovulation date
+                        int average = this.cycleAverage;
+                        if (count > 0) average /= count;
+                        ovulationday = average - luteallength;
+
+                        // Calculate days from the last event until now
+                        GregorianCalendar datePrevious = new GregorianCalendar();
+                        datePrevious.setTime(entryPrevious.date.getTime());
+                        for (int day = dayofcycle; day < length; day++) {
+                            datePrevious.add(GregorianCalendar.DATE, 1);
+
+                            int type;
+
+                            if (day == ovulationday) {
+                                // Day of ovulation
+                                type = DayEntry.OVULATION_PREDICTED;
+                            } else if (day >= this.cycleShortest - luteallength - 4
+                                    && day <= this.cycleLongest - luteallength + 3) {
+                                // Fertile days
+                                type = DayEntry.FERTILITY_PREDICTED;
+                            } else {
+                                // Infertile days
+                                type = DayEntry.INFERTILE_PREDICTED;
+                            }
+
+                            DayEntry entryCalculated = new DayEntry(type, datePrevious, dayofcycle);
+                            dayEntries.add(entryCalculated);
+                            dayofcycle++;
+                        }
+                    } else {
+                        // Last period was too long ago, so just treat this as a new start
+                        count = 0;
                     }
 
-                    // Finally add current day
-                    entryPrevious = new DayEntry(entry.type, entry.date, dayofcycle);
+                    // Finally add the entry
+                    dayofcycle = 1;
+                    entryPrevious = entry;
+                    entryPreviousStart = entry;
                     this.dayEntries.add(entry);
-                } else {
-                    // The last day was too far away, so treat this day as if it was the first one
-                    entryPrevious = new DayEntry(eventtype, eventdate, 1);
-                    this.dayEntries.add(entryPrevious);
-                    count = 1;
-                    this.cycleShortest = 28;
-                    this.cycleLongest = 28;
-                    this.cycleAverage = 28;
                 }
+                break;
+
+            case DayEntry.PERIOD_CONFIRMED:
+                entry = new DayEntry(eventtype, eventdate, dayofcycle);
+                dayofcycle = entryPreviousStart.date.diffDayPeriods(entry.date) + 1;
+                this.dayEntries.add(entry);
+                entryPrevious = entry;
+                break;
             }
         }
         result.close();
@@ -429,26 +570,26 @@ class PeriodicalDatabase {
             GregorianCalendar datePredicted = new GregorianCalendar();
             datePredicted.setTime(entry.date.getTime());
 
+            dayofcycle++;
             for (int cycles = 0; cycles < 3; cycles++) {
-                dayofcycle = 1;
-                for (int day = (cycles == 0 ? 2 : 1); day <= cycleAverage; day++) {
+                for (int day = (cycles == 0 ? dayofcycle : 1); day <= cycleAverage; day++) {
                     datePredicted.add(GregorianCalendar.DATE, 1);
 
                     int type;
 
                     if (day <= periodlength) {
                         // Predicted days of period
-                        type = (cycles == 0 ? DayEntry.PERIOD_CONFIRMED : DayEntry.PERIOD_PREDICTED);
+                        type = DayEntry.PERIOD_PREDICTED;
                     } else if (day == ovulationday) {
                         // Day of ovulation
-                        type = (cycles == 0 ? DayEntry.OVULATION_PREDICTED : DayEntry.OVULATION_FUTURE);
+                        type = DayEntry.OVULATION_FUTURE;
                     } else if (day >= this.cycleShortest - luteallength - 4
                             && day <= this.cycleLongest - luteallength + 3) {
                         // Fertile days
-                        type = (cycles == 0 ? DayEntry.FERTILITY_PREDICTED : DayEntry.FERTILITY_FUTURE);
+                        type = DayEntry.FERTILITY_FUTURE;
                     } else {
                         // Infertile days
-                        type = (cycles == 0 ? DayEntry.INFERTILE_PREDICTED : DayEntry.INFERTILE_FUTURE);
+                        type = DayEntry.INFERTILE_FUTURE;
                     }
 
                     DayEntry entryCalculated = new DayEntry(type, datePredicted, dayofcycle);
@@ -465,14 +606,17 @@ class PeriodicalDatabase {
     /**
      * Load data without calculating anything.
      */
-    void loadRawData() {
+    @SuppressLint("DefaultLocale")
+    void loadRawData(boolean periodsOnly) {
         DayEntry entry;
 
         // Clean up existing data
         dayEntries.removeAllElements();
 
         // Get all entries from the database
-        String statement = "select eventtype, eventdate from data order by eventdate desc";
+        String statement = "select eventtype, eventdate from data";
+        if(periodsOnly) statement += String.format(" where eventtype=%d", DayEntry.PERIOD_START);
+        statement += " order by eventdate desc";
         Cursor result = db.rawQuery(statement, null);
         while (result.moveToNext()) {
             int eventtype = result.getInt(0);
@@ -494,24 +638,16 @@ class PeriodicalDatabase {
     }
 
     /**
-     * Get entry type from cache for a specific day in month
+     * Get entry type from cache for a specific day
      *
-     * @param year
-     * Year including century
-     *
-     * @param month
-     * Month (1-12)
-     *
-     * @param day
-     * Day of the month (1-31)
+     * @param date
+     * Date of the entry
      */
     @SuppressWarnings("WrongConstant")
-    int getEntryType(int year, int month, int day) {
+    int getEntryType(GregorianCalendar date) {
         for (DayEntry entry : dayEntries) {
             // If entry was found, then return type
-            if (entry.date.get(GregorianCalendar.YEAR) == year
-                    && entry.date.get(GregorianCalendar.MONTH) == month - 1
-                    && entry.date.get(GregorianCalendar.DATE) == day) {
+            if (entry.date.equals(date)) {
                 return entry.type;
             }
         }
@@ -575,7 +711,7 @@ class PeriodicalDatabase {
         String statement = "select value from options where name = ?";
         Cursor result = db.rawQuery(statement, new String[]{name});
         if (result.moveToNext()) {
-            value = result.getString(0).equals("1")?true:false;
+            value = result.getString(0).equals("1");
         }
         result.close();
 

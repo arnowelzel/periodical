@@ -67,7 +67,7 @@ public class ListActivity extends AppCompatActivity implements AdapterView.OnIte
 
         // Set up database and string array for the list
         dbMain = new PeriodicalDatabase(context);
-        dbMain.loadRawData();
+        dbMain.loadRawData(true);
 
         String[] entries = new String[dbMain.dayEntries.size()];
         java.text.DateFormat dateFormat = android.text.format.DateFormat

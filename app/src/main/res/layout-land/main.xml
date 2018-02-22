@@ -35,7 +35,8 @@
                     android:gravity="center"
                     android:text="@string/main_calday_su"
                     android:textColor="#ffffffff"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    android:textSize="18sp" />
 
                 <TextView
                     android:layout_height="fill_parent"
@@ -43,7 +44,8 @@
                     android:gravity="center"
                     android:text="@string/main_calday_mo"
                     android:textColor="#ffffffff"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    android:textSize="18sp" />
 
                 <TextView
                     android:layout_height="fill_parent"
@@ -51,7 +53,8 @@
                     android:gravity="center"
                     android:text="@string/main_calday_tu"
                     android:textColor="#ffffffff"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    android:textSize="18sp" />
 
                 <TextView
                     android:layout_height="fill_parent"
@@ -59,7 +62,8 @@
                     android:gravity="center"
                     android:text="@string/main_calday_we"
                     android:textColor="#ffffffff"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    android:textSize="18sp" />
 
                 <TextView
                     android:layout_height="fill_parent"
@@ -67,7 +71,8 @@
                     android:gravity="center"
                     android:text="@string/main_calday_th"
                     android:textColor="#ffffffff"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    android:textSize="18sp" />
 
                 <TextView
                     android:layout_height="fill_parent"
@@ -75,7 +80,8 @@
                     android:gravity="center"
                     android:text="@string/main_calday_fr"
                     android:textColor="#ffffffff"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    android:textSize="18sp" />
 
                 <TextView
                     android:layout_height="fill_parent"
@@ -83,7 +89,8 @@
                     android:gravity="center"
                     android:text="@string/main_calday_sa"
                     android:textColor="#ffffffff"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    android:textSize="18sp" />
             </TableRow>
 
             <TableRow
@@ -100,7 +107,8 @@
                     android:gravity="center"
                     android:text="@string/main_calday_mo"
                     android:textColor="#ffffffff"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    android:textSize="18sp" />
 
                 <TextView
                     android:layout_height="fill_parent"
@@ -108,7 +116,8 @@
                     android:gravity="center"
                     android:text="@string/main_calday_tu"
                     android:textColor="#ffffffff"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    android:textSize="18sp" />
 
                 <TextView
                     android:layout_height="fill_parent"
@@ -116,7 +125,8 @@
                     android:gravity="center"
                     android:text="@string/main_calday_we"
                     android:textColor="#ffffffff"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    android:textSize="18sp" />
 
                 <TextView
                     android:layout_height="fill_parent"
@@ -124,7 +134,8 @@
                     android:gravity="center"
                     android:text="@string/main_calday_th"
                     android:textColor="#ffffffff"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    android:textSize="18sp" />
 
                 <TextView
                     android:layout_height="fill_parent"
@@ -132,7 +143,8 @@
                     android:gravity="center"
                     android:text="@string/main_calday_fr"
                     android:textColor="#ffffffff"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    android:textSize="18sp" />
 
                 <TextView
                     android:layout_height="fill_parent"
@@ -140,7 +152,8 @@
                     android:gravity="center"
                     android:text="@string/main_calday_sa"
                     android:textColor="#ffffffff"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    android:textSize="18sp" />
 
                 <TextView
                     android:layout_height="fill_parent"
@@ -148,7 +161,8 @@
                     android:gravity="center"
                     android:text="@string/main_calday_su"
                     android:textColor="#ffffffff"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    android:textSize="18sp" />
             </TableRow>
 
             <TableRow
@@ -597,49 +611,56 @@
                     android:gravity="center"
                     android:text="@string/main_calday_su"
                     android:textColor="#ffffffff"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    android:textSize="18sp" />
 
                 <TextView
                     android:layout_height="fill_parent"
                     android:gravity="center"
                     android:text="@string/main_calday_mo"
                     android:textColor="#ffffffff"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    android:textSize="18sp" />
 
                 <TextView
                     android:layout_height="fill_parent"
                     android:gravity="center"
                     android:text="@string/main_calday_tu"
                     android:textColor="#ffffffff"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    android:textSize="18sp" />
 
                 <TextView
                     android:layout_height="fill_parent"
                     android:gravity="center"
                     android:text="@string/main_calday_we"
                     android:textColor="#ffffffff"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    android:textSize="18sp" />
 
                 <TextView
                     android:layout_height="fill_parent"
                     android:gravity="center"
                     android:text="@string/main_calday_th"
                     android:textColor="#ffffffff"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    android:textSize="18sp" />
 
                 <TextView
                     android:layout_height="fill_parent"
                     android:gravity="center"
                     android:text="@string/main_calday_fr"
                     android:textColor="#ffffffff"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    android:textSize="18sp" />
 
                 <TextView
                     android:layout_height="fill_parent"
                     android:gravity="center"
                     android:text="@string/main_calday_sa"
                     android:textColor="#ffffffff"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    android:textSize="18sp" />
             </TableRow>
 
             <TableRow
@@ -655,49 +676,56 @@
                     android:gravity="center"
                     android:text="@string/main_calday_mo"
                     android:textColor="#ffffffff"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    android:textSize="18sp" />
 
                 <TextView
                     android:layout_height="fill_parent"
                     android:gravity="center"
                     android:text="@string/main_calday_tu"
                     android:textColor="#ffffffff"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    android:textSize="18sp" />
 
                 <TextView
                     android:layout_height="fill_parent"
                     android:gravity="center"
                     android:text="@string/main_calday_we"
                     android:textColor="#ffffffff"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    android:textSize="18sp" />
 
                 <TextView
                     android:layout_height="fill_parent"
                     android:gravity="center"
                     android:text="@string/main_calday_th"
                     android:textColor="#ffffffff"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    android:textSize="18sp" />
 
                 <TextView
                     android:layout_height="fill_parent"
                     android:gravity="center"
                     android:text="@string/main_calday_fr"
                     android:textColor="#ffffffff"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    android:textSize="18sp" />
 
                 <TextView
                     android:layout_height="fill_parent"
                     android:gravity="center"
                     android:text="@string/main_calday_sa"
                     android:textColor="#ffffffff"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    android:textSize="18sp" />
 
                 <TextView
                     android:layout_height="fill_parent"
                     android:gravity="center"
                     android:text="@string/main_calday_su"
                     android:textColor="#ffffffff"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    android:textSize="18sp" />
             </TableRow>
 
             <TableRow
@@ -1146,6 +1174,7 @@
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:textSize="18sp"
                 android:onClick="goPrev"
                 android:text="@string/main_button_prev" />
 
@@ -1154,6 +1183,7 @@
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:textSize="18sp"
                 android:onClick="goNext"
                 android:text="@string/main_button_next" />
         </LinearLayout>
@@ -1167,6 +1197,6 @@
             android:text=""
             android:textColor="#ffffffff"
             android:textStyle="bold"
-            android:textSize="18dp"/>
+            android:textSize="18sp"/>
     </RelativeLayout>
 </LinearLayout>

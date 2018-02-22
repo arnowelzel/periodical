@@ -160,9 +160,11 @@ public class CalendarCell extends Button {
 
         // Get current screen orientation
         if(!isInEditMode()) { // Don't try this in layout editor
-            Display display = ((WindowManager)context.getSystemService(Context.WINDOW_SERVICE)).
-                    getDefaultDisplay();
-            orientation = display.getRotation();
+            WindowManager wm = (WindowManager)context.getSystemService(Context.WINDOW_SERVICE);
+            if(wm != null) {
+                Display display = wm.getDefaultDisplay();
+                if(display != null) orientation = display.getRotation();
+            }
         }
     }
 

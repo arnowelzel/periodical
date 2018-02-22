@@ -50,6 +50,9 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
+import static de.arnowelzel.android.periodical.PeriodicalDatabase.DayEntry.PERIOD_CONFIRMED;
+import static de.arnowelzel.android.periodical.PeriodicalDatabase.DayEntry.PERIOD_START;
+
 /**
  * The main activity of the app
  */
@@ -116,9 +119,20 @@ public class MainActivity extends AppCompatActivity {
 
         // Set gesture handling
         gestureDetector = new GestureDetector(context, new CalendarGestureDetector());
-        @SuppressWarnings("UnusedAssignment") View.OnTouchListener gestureListener = new View.OnTouchListener() {
+        View.OnTouchListener gestureListener = new View.OnTouchListener() {
+            @SuppressLint("ClickableViewAccessibility")
             public boolean onTouch(View v, MotionEvent event) {
-                return gestureDetector.onTouchEvent(event);
+                switch (event.getAction()) {
+                    case MotionEvent.ACTION_DOWN:
+                        gestureDetector.onTouchEvent(event);
+                        break;
+                    case MotionEvent.ACTION_UP:
+                        v.performClick();
+                        break;
+                    default:
+                        break;
+                }
+                return true;
             }
         };
 
@@ -317,6 +331,7 @@ public class MainActivity extends AppCompatActivity {
         }
         
         GregorianCalendar calToday = new GregorianCalendar();
+        int dayToday = calToday.get(GregorianCalendar.DATE);
 
         // Adjust calendar elements
         for (int i = 1; i <= 42; i++) {
@@ -330,12 +345,10 @@ public class MainActivity extends AppCompatActivity {
                 int day = i - firstDayOfWeek + 1;
                 cell.setText(String.format("%d", day));
                 cell.setVisibility(android.view.View.VISIBLE);
-                int type = dbMain.getEntryType(yearCurrent, monthCurrent, day);
+                int type = dbMain.getEntryType(cal);
                 boolean current = false;
 
-                if (yearCurrent == calToday.get(Calendar.YEAR)
-                        && monthCurrent == calToday.get(Calendar.MONTH) + 1
-                        && day == calToday.get(Calendar.DAY_OF_MONTH)) {
+                if (day == dayToday) {
                     current = true;
                 }
                 
@@ -348,6 +361,8 @@ public class MainActivity extends AppCompatActivity {
                 
                 // Set content description for TalkBack
                 cell.updateContentDescription();
+
+                cal.add(GregorianCalendar.DATE, 1);
             }
         }
     }
@@ -618,7 +633,9 @@ public class MainActivity extends AppCompatActivity {
             builder.setTitle(getResources()
                     .getString(R.string.calendaraction_title));
 
-            if (dbMain.getEntryType(yearCurrent, monthCurrent, day) != 1) {
+            final GregorianCalendar date = new GregorianCalendar(yearCurrent, monthCurrent -1 , day);
+            int type = dbMain.getEntryType(date);
+            if (type != PERIOD_START && type != PERIOD_CONFIRMED) {
                 builder.setMessage(getResources().getString(
                         R.string.calendaraction_add));
                 builder.setPositiveButton(
@@ -627,7 +644,7 @@ public class MainActivity extends AppCompatActivity {
 
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
-                                dbMain.add(yearCurrent, monthCurrent, day);
+                                dbMain.addPeriod(date);
                                 handleDatabaseEdit();
                             }
                         });
@@ -651,15 +668,15 @@ public class MainActivity extends AppCompatActivity {
                             }
                         });
             } else {
-                builder.setMessage(getResources().getString(
-                        R.string.calendaraction_remove));
+                if(type == PERIOD_START) builder.setMessage(getResources().getString(R.string.calendaraction_removeperiod));
+                else builder.setMessage(getResources().getString(R.string.calendaraction_remove));
                 builder.setPositiveButton(
                         getResources().getString(R.string.calendaraction_ok),
                         new OnClickListener() {
 
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
-                                dbMain.remove(yearCurrent, monthCurrent, day);
+                                dbMain.removePeriod(date);
                                 handleDatabaseEdit();
                             }
                         });

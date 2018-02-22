@@ -48,8 +48,9 @@
     <string name="event_ignored">Zykluslänge ignoriert</string>
     <string name="event_periodfirst">Erster Eintrag</string>
     <string name="calendaraction_title">Kalendereintrag bearbeiten</string>
-    <string name="calendaraction_add">Diesen Tag als \"Periode hat begonnen\" kennzeichnen?</string>
-    <string name="calendaraction_remove">Kennzeichnung \"Periode hat begonnen\" für diesen Tag entfernen?</string>
+    <string name="calendaraction_add">Diesen Tag als \"Periode \" kennzeichnen?</string>
+    <string name="calendaraction_remove">Kennzeichnung \"Periode\" für diesen Tag entfernen?</string>
+    <string name="calendaraction_removeperiod">Diese Periode entfernen?</string>
     <string name="calendaraction_ok">Ja</string>
     <string name="calendaraction_cancel">Nein</string>
     <string name="calendaraction_details">Details bearbeiten</string>
@@ -109,6 +110,7 @@
     <string name="label_details_ev12">Heißhunger</string>
     <string name="label_details_ev13">Temperaturschwankungen</string>
     <string name="label_details_ev14">Pickel</string>
-    <string name="label_details_ev15">Pilzbelag</string>
+    <string name="label_details_ev15">Belag</string>
     <string name="label_details_ev16">Ausfluss</string>
+    <string name="label_details_ev17">Sehr starke Blutung</string>
 </resources>
