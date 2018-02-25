@@ -752,6 +752,12 @@ public class MainActivity extends AppCompatActivity {
                 handleDatabaseEdit();
                 calendarUpdate();
                 break;
+
+            // Details closed
+            case DETAILS_CLOSED:
+                dbMain.loadCalculatedData();
+                calendarUpdate();
+                break;
         }
     }
 

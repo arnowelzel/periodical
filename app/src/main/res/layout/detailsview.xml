@@ -143,7 +143,9 @@
             android:layout_marginRight="12dp"
             android:nextFocusLeft="@+id/periodIntensity4"
             android:nextFocusUp="@+id/periodIntensity4"
-            android:text="" />
+            android:text=""
+            android:enabled="false"
+            />
 
         <!-- Events -->
 

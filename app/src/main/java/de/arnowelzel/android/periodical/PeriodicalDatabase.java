@@ -32,7 +32,9 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.GregorianCalendar;
+import java.util.List;
 import java.util.Locale;
 import java.util.Vector;
 
@@ -83,7 +85,12 @@ class PeriodicalDatabase {
                     ");");
             db.execSQL("create table notes (" +
                     "eventdate varchar(8), " +
+                    "intensity integer(3), " +
                     "content text" +
+                    ");");
+            db.execSQL("create table symptoms (" +
+                    "eventdate varchar(8), " +
+                    "symptom integer(3)" +
                     ");");
             db.endTransaction();
         }
@@ -120,12 +127,16 @@ class PeriodicalDatabase {
                 db.setTransactionSuccessful();
                 db.endTransaction();
             } else if (oldVersion < 4 && newVersion >= 4) {
-                // Version 4 introduces notes and stores periods in a different way
+                // Version 4 introduces details and stores periods in a different way
                 db.execSQL("create table notes (" +
                         "eventdate varchar(8), " +
+                        "intensity integer(3), " +
                         "content text" +
                         ");");
-
+                db.execSQL("create table symptoms (" +
+                        "eventdate varchar(8), " +
+                        "symptom integer(3)" +
+                        ");");
 
                 SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
                 int periodlength;
@@ -212,6 +223,30 @@ class PeriodicalDatabase {
             this.date = new GregorianCalendarExt();
             this.date.setTime(date.getTime());
             this.dayofcycle = dayofcycle;
+        }
+    }
+
+    /**
+     * Local helper to manage details
+     */
+    public static class DayDetails {
+        final GregorianCalendarExt date;
+        int intensity;
+        String notes;
+        List<Integer> symptoms;
+
+        /**
+         * Construct a new day entry
+         *
+         * @param date
+         * Entry date
+         */
+        DayDetails(GregorianCalendar date, int intensity, String notes, List<Integer> symptoms) {
+            this.date = new GregorianCalendarExt();
+            this.date.setTime(date.getTime());
+            this.intensity = intensity;
+            this.notes = notes;
+            this.symptoms = symptoms;
         }
     }
 
@@ -638,7 +673,7 @@ class PeriodicalDatabase {
     }
 
     /**
-     * Get entry type from cache for a specific day
+     * Get entry type for a specific day
      *
      * @param date
      * Date of the entry
@@ -657,7 +692,7 @@ class PeriodicalDatabase {
     }
 
     /**
-     * Get entry for a specific day in month
+     * Get entry for a specific day
      *
      * @param year
      * Year including century
@@ -681,6 +716,133 @@ class PeriodicalDatabase {
 
         // No entry was found
         return null;
+    }
+
+    /**
+     * Get details for a specific day
+     *
+     * @param year
+     * Year including century
+     *
+     * @param month
+     * Month (1-12)
+     *
+     * @param day
+     * Day of the month (1-31)
+     */
+    DayDetails getDetailsEntry(int year, int month, int day) {
+        DayDetails details = null;
+
+        String statementNotes = String.format(
+                "select intensity, content from notes where eventdate = '%04d%02d%02d'",
+                year, month, day);
+        Cursor resultNotes = db.rawQuery(statementNotes, null);
+
+        String statementSymptoms = String.format(
+                "select symptom from symptoms where eventdate = '%04d%02d%02d'",
+                year, month, day);
+        Cursor resultSymptoms = db.rawQuery(statementSymptoms, null);
+
+        if (resultNotes.moveToNext()) {
+            GregorianCalendar date = new GregorianCalendar(year, month - 1, day);
+            List<Integer> symptoms = new ArrayList<Integer>();
+
+            while(resultSymptoms.moveToNext()) {
+                symptoms.add(resultSymptoms.getInt(0) + 1);
+            }
+
+            details = new DayDetails(date,
+                    resultNotes.getInt(0),
+                    resultNotes.getString(1),
+                    symptoms);
+        }
+
+        resultNotes.close();
+        resultSymptoms.close();
+
+        return details;
+    }
+
+    /**
+     * Store details for a specific day
+     *
+     * @param details
+     * The details to be stored
+     */
+    @SuppressLint("DefaultLocale")
+    void addDetailsEntry(DayDetails details) {
+        String statement;
+
+        db.beginTransaction();
+
+
+        statement = String.format(
+                "delete from notes where eventdate = '%04d%02d%02d'",
+                details.date.get(GregorianCalendar.YEAR),
+                details.date.get(GregorianCalendar.MONTH) +1,
+                details.date.get(GregorianCalendar.DAY_OF_MONTH));
+        db.execSQL(statement);
+
+        statement = String.format(
+                "delete from symptoms where eventdate = '%04d%02d%02d'",
+                details.date.get(GregorianCalendar.YEAR),
+                details.date.get(GregorianCalendar.MONTH) +1,
+                details.date.get(GregorianCalendar.DAY_OF_MONTH));
+        db.execSQL(statement);
+
+        statement = String.format(
+                "insert into notes (eventdate, intensity, content) values ('%04d%02d%02d', %d, ?)",
+                details.date.get(GregorianCalendar.YEAR),
+                details.date.get(GregorianCalendar.MONTH) +1,
+                details.date.get(GregorianCalendar.DAY_OF_MONTH),
+                details.intensity);
+        db.execSQL(statement, new String[]{ details.notes });
+
+        int count=0;
+        while (count < details.symptoms.size()) {
+            statement = String.format(
+                    "insert into symptoms (eventdate, symptom) values ('%04d%02d%02d', %d)",
+                    details.date.get(GregorianCalendar.YEAR),
+                    details.date.get(GregorianCalendar.MONTH) +1,
+                    details.date.get(GregorianCalendar.DAY_OF_MONTH),
+                    details.symptoms.get(count) - 1);
+            db.execSQL(statement);
+            count++;
+        }
+
+        db.setTransactionSuccessful();
+        db.endTransaction();
+    }
+
+    /**
+     * Delete details for a specific day
+     *
+     * @param year
+     * Year including century
+     *
+     * @param month
+     * Month (1-12)
+     *
+     * @param day
+     * Day of the month (1-31)
+     */
+    void removeDetailsEntry(int year, int month, int day) {
+        String statement;
+
+        db.beginTransaction();
+
+        statement = String.format(
+                "delete from notes where eventdate = '%04d%02d%02d'",
+                year, month, day);
+        db.execSQL(statement);
+
+        statement = String.format(
+                "delete from symptoms where eventdate = '%04d%02d%02d'",
+                year, month, day);
+        db.execSQL(statement);
+
+        db.setTransactionSuccessful();
+        db.endTransaction();
     }
 
     /**
