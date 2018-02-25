@@ -26,11 +26,14 @@ import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.DisplayMetrics;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.LinearLayout;
+import android.widget.MultiAutoCompleteTextView;
 import android.widget.RadioButton;
 import android.widget.TextView;
 
@@ -45,7 +48,7 @@ import static de.arnowelzel.android.periodical.PeriodicalDatabase.DayEntry.PERIO
 /**
  * Activity to handle the "Help" command
  */
-public class DetailsActivity extends AppCompatActivity implements View.OnClickListener {
+public class DetailsActivity extends AppCompatActivity implements View.OnClickListener, TextWatcher {
     private PeriodicalDatabase dbMain;
     private PeriodicalDatabase.DayEntry entry;
     private PeriodicalDatabase.DayDetails details;
@@ -136,6 +139,11 @@ public class DetailsActivity extends AppCompatActivity implements View.OnClickLi
         buttonPeriodIntensity2.setOnClickListener(this);
         buttonPeriodIntensity3.setOnClickListener(this);
         buttonPeriodIntensity4.setOnClickListener(this);
+
+        // Transfer notes
+        MultiAutoCompleteTextView editNotes = ((MultiAutoCompleteTextView)findViewById(R.id.editNotes));
+        editNotes.setText(details.notes);
+        editNotes.addTextChangedListener(this);
 
         // Build list of events/symptoms
         LinearLayout groupEvents = (LinearLayout)findViewById(R.id.groupEvents);
@@ -241,10 +249,33 @@ public class DetailsActivity extends AppCompatActivity implements View.OnClickLi
                     }
                 }
                 dbMain.addDetailsEntry(details);
+                databaseChanged();
                 break;
         }
+    }
 
-        // Notify backup agent about the change and mark DB as clean
+    /**
+     * Handler for text changes in edit fields
+     */
+    @Override
+    public void beforeTextChanged(CharSequence s, int start, int before, int count) {
+    }
+
+    @Override
+    public void onTextChanged(CharSequence s, int start, int before, int count) {
+    }
+
+    @Override
+    public void afterTextChanged(Editable editable) {
+        details.notes = ((MultiAutoCompleteTextView)findViewById(R.id.editNotes)).getText().toString();
+        dbMain.addDetailsEntry(details);
+        databaseChanged();
+    }
+
+    /**
+     * Helper to notify backup agent about database changes
+     */
+    private void databaseChanged() {
         BackupManager bm = new BackupManager(this);
         bm.dataChanged();
     }

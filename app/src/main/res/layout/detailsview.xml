@@ -144,7 +144,6 @@
             android:nextFocusLeft="@+id/periodIntensity4"
             android:nextFocusUp="@+id/periodIntensity4"
             android:text=""
-            android:enabled="false"
             />
 
         <!-- Events -->
