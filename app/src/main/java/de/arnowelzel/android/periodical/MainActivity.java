@@ -529,7 +529,7 @@ public class MainActivity extends AppCompatActivity {
      * Run database backup and show a toast for the result
      */
     private void runBackup(Context context) {
-        boolean ok = dbMain.backup(context);
+        boolean ok = dbMain.backup();
 
         // Show toast depending on result of operation
         String text;
@@ -583,7 +583,7 @@ public class MainActivity extends AppCompatActivity {
      * Run database restore and show a toast for the result
      */
     private void runRestore(Context context) {
-        boolean ok = dbMain.restore(context);
+        boolean ok = dbMain.restore();
 
         // Show toast depending on result of operation
         String text;
