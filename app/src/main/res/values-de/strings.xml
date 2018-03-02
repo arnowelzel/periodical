@@ -103,15 +103,14 @@
     <string name="label_details_ev4">Mittelschmerz links</string>
     <string name="label_details_ev5">Mittelschmerz rechts</string>
     <string name="label_details_ev6">Brustschmerzen/ziehen</string>
-    <string name="label_details_ev7">Blähungen</string>
-    <string name="label_details_ev8">Ohnmacht</string>
-    <string name="label_details_ev9">Reizbarkeit</string>
-    <string name="label_details_ev10">Mürrisch</string>
-    <string name="label_details_ev11">Übelkeit</string>
-    <string name="label_details_ev12">Heißhunger</string>
-    <string name="label_details_ev13">Temperaturschwankungen</string>
-    <string name="label_details_ev14">Pickel</string>
-    <string name="label_details_ev15">Belag</string>
-    <string name="label_details_ev16">Ausfluss</string>
-    <string name="label_details_ev17">Sehr starke Blutung</string>
+    <string name="label_details_ev7">Belag</string>
+    <string name="label_details_ev8">Ausfluss</string>
+    <string name="label_details_ev9">Sehr starke Blutung</string>
+    <string name="label_details_ev10">Temperaturschwankungen</string>
+    <string name="label_details_ev11">Pickel</string>
+    <string name="label_details_ev12">Blähungen</string>
+    <string name="label_details_ev13">Ohnmacht</string>
+    <string name="label_details_ev14">Mürrisch</string>
+    <string name="label_details_ev15">Übelkeit</string>
+    <string name="label_details_ev16">Heißhunger</string>
 </resources>
