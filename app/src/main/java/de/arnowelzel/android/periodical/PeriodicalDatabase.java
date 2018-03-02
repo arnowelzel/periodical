@@ -72,7 +72,6 @@ class PeriodicalDatabase {
         public void onCreate(SQLiteDatabase db) {
             db.beginTransaction();
             db.execSQL("create table data (" +
-                    "_id integer primary key autoincrement, " +
                     "eventtype integer(3), " +
                     "eventdate varchar(8), " +
                     "eventcvx integer(3), " +
@@ -138,6 +137,20 @@ class PeriodicalDatabase {
                         "symptom integer(3)" +
                         ");");
 
+                // We don't need a primary ID column
+                db.execSQL("alter table data rename to data_old;");
+                db.execSQL("create table data (" +
+                        "eventtype integer(3), " +
+                        "eventdate varchar(8), " +
+                        "eventcvx integer(3), " +
+                        "eventtemp real " +
+                        ");");
+                db.execSQL("insert into data (eventtype, eventdate) " +
+                        "select eventtype, eventdate from data_old;");
+                db.execSQL("drop table data_old;");
+
+                // Create records for existing confirmed period entries
+                // based on the global period length setting
                 SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
                 int periodlength;
                 try {
@@ -1031,7 +1044,7 @@ class PeriodicalDatabase {
         String startofweek = getOption("startofweek", "0");
         String maximum_cycle_length = getOption("maximum_cycle_length", "183");
         boolean direct_details = getOption("direct_details", false);
-        boolean show_cycle = getOption("direct_details", true);
+        boolean show_cycle = getOption("show_cycle", true);
                 
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
         SharedPreferences.Editor editor = preferences.edit();
