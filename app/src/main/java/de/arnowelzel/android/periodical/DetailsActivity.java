@@ -51,7 +51,6 @@ import static de.arnowelzel.android.periodical.PeriodicalDatabase.DayEntry.PERIO
 public class DetailsActivity extends AppCompatActivity implements View.OnClickListener, TextWatcher {
     private PeriodicalDatabase dbMain;
     private PeriodicalDatabase.DayEntry entry;
-    private PeriodicalDatabase.DayDetails details;
     private RadioButton buttonPeriodIntensity1;
     private RadioButton buttonPeriodIntensity2;
     private RadioButton buttonPeriodIntensity3;
@@ -84,14 +83,9 @@ public class DetailsActivity extends AppCompatActivity implements View.OnClickLi
         dbMain = new PeriodicalDatabase(context);
         dbMain.loadCalculatedData();
 
-        entry = dbMain.getEntry(year, month, day);
+        entry = dbMain.getEntryEntryWithDetails(year, month, day);
         if(entry == null) {
             entry = new PeriodicalDatabase.DayEntry(EMPTY, new GregorianCalendar(year, month - 1, day), 0);
-        }
-
-        details = dbMain.getDetailsEntry(year, month, day);
-        if(details == null) {
-            details = new PeriodicalDatabase.DayDetails(new GregorianCalendar(year, month - 1, day), 0, "", new ArrayList<Integer>());
         }
 
         // Set header using the entry date
@@ -124,7 +118,7 @@ public class DetailsActivity extends AppCompatActivity implements View.OnClickLi
         buttonPeriodIntensity3 = ((RadioButton)findViewById(R.id.periodIntensity3));
         buttonPeriodIntensity4 = ((RadioButton)findViewById(R.id.periodIntensity4));
 
-        switch(details.intensity) {
+        switch(entry.intensity) {
             case 0: buttonPeriodIntensity1.setChecked(true);break;
             case 1: buttonPeriodIntensity2.setChecked(true);break;
             case 2: buttonPeriodIntensity3.setChecked(true);break;
@@ -142,7 +136,7 @@ public class DetailsActivity extends AppCompatActivity implements View.OnClickLi
 
         // Transfer notes
         MultiAutoCompleteTextView editNotes = ((MultiAutoCompleteTextView)findViewById(R.id.editNotes));
-        editNotes.setText(details.notes);
+        editNotes.setText(entry.notes);
         editNotes.addTextChangedListener(this);
 
         // Build list of events/symptoms
@@ -166,7 +160,7 @@ public class DetailsActivity extends AppCompatActivity implements View.OnClickLi
                 option.setText(resId);
                 option.setId(resId);
                 option.setTextSize(18);
-                if(details.symptoms.contains(new Integer(num))) option.setChecked(true);
+                if(entry.symptoms.contains(new Integer(num))) option.setChecked(true);
                 option.setOnClickListener(this);
                 groupEvents.addView(option);
                 num++;
@@ -214,41 +208,41 @@ public class DetailsActivity extends AppCompatActivity implements View.OnClickLi
                 buttonPeriodIntensity4.setEnabled(false);
                 break;
             case R.id.periodIntensity1:
-                details.intensity = 0;
-                dbMain.addDetailsEntry(details);
+                entry.intensity = 0;
+                dbMain.addEntryDetails(entry);
                 break;
             case R.id.periodIntensity2:
-                details.intensity = 1;
-                dbMain.addDetailsEntry(details);
+                entry.intensity = 1;
+                dbMain.addEntryDetails(entry);
                 break;
             case R.id.periodIntensity3:
-                details.intensity = 2;
-                dbMain.addDetailsEntry(details);
+                entry.intensity = 2;
+                dbMain.addEntryDetails(entry);
                 break;
             case R.id.periodIntensity4:
-                details.intensity = 3;
-                dbMain.addDetailsEntry(details);
+                entry.intensity = 3;
+                dbMain.addEntryDetails(entry);
                 break;
             default:
                 String packageName = getPackageName();
                 int resId = getResources().getIdentifier("label_details_ev1", "string", packageName);
                 int symptom = id - resId;
                 if(symptom >= 0 && symptom < maxSymptomNum) {
-                    details.symptoms.clear();
+                    entry.symptoms.clear();
                     int num = 1;
                     while(true) {
                         @SuppressLint("DefaultLocale") String resName = String.format("label_details_ev%d",num);
                         resId = getResources().getIdentifier(resName, "string", packageName);
                         if(resId != 0) {
                             CheckBox option = (CheckBox) findViewById(resId);
-                            if(option.isChecked()) details.symptoms.add(num);
+                            if(option.isChecked()) entry.symptoms.add(num);
                             num++;
                         } else {
                             break;
                         }
                     }
                 }
-                dbMain.addDetailsEntry(details);
+                dbMain.addEntryDetails(entry);
                 databaseChanged();
                 break;
         }
@@ -267,8 +261,8 @@ public class DetailsActivity extends AppCompatActivity implements View.OnClickLi
 
     @Override
     public void afterTextChanged(Editable editable) {
-        details.notes = ((MultiAutoCompleteTextView)findViewById(R.id.editNotes)).getText().toString();
-        dbMain.addDetailsEntry(details);
+        entry.notes = ((MultiAutoCompleteTextView)findViewById(R.id.editNotes)).getText().toString();
+        dbMain.addEntryDetails(entry);
         databaseChanged();
     }
 
