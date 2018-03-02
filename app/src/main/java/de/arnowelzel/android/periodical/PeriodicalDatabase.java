@@ -463,7 +463,7 @@ class PeriodicalDatabase {
 
         // Determine minimum entry count for
         // shortest/longest period calculation
-        result = db.rawQuery("select count(*) from data", null);
+        result = db.rawQuery(String.format("select count(*) from data where eventtype = %d", DayEntry.PERIOD_START), null);
         if (result.moveToNext()) {
             countlimit = result.getInt(0);
             countlimit -= 13;
@@ -554,9 +554,6 @@ class PeriodicalDatabase {
                             dayEntries.add(entryCalculated);
                             dayofcycle++;
                         }
-                    } else {
-                        // Last period was too long ago, so just treat this as a new start
-                        count = 0;
                     }
 
                     // Finally add the entry
@@ -568,8 +565,8 @@ class PeriodicalDatabase {
                 break;
 
             case DayEntry.PERIOD_CONFIRMED:
+                dayofcycle++;
                 entry = new DayEntry(eventtype, eventdate, dayofcycle);
-                dayofcycle = entryPreviousStart.date.diffDayPeriods(entry.date) + 1;
                 this.dayEntries.add(entry);
                 entryPrevious = entry;
                 break;
@@ -611,6 +608,7 @@ class PeriodicalDatabase {
 
                     dayofcycle++;
                 }
+                dayofcycle = 1;
             }
         }
 
@@ -685,10 +683,28 @@ class PeriodicalDatabase {
     @SuppressWarnings("WrongConstant")
     DayEntry getEntry(int year, int month, int day) {
         for (DayEntry entry : dayEntries) {
-            // If entry was found, then return type
+            // If entry was found, then return entry
             if (entry.date.get(GregorianCalendar.YEAR) == year
                     && entry.date.get(GregorianCalendar.MONTH) == month - 1
                     && entry.date.get(GregorianCalendar.DATE) == day) {
+                return entry;
+            }
+        }
+
+        // No entry was found
+        return null;
+    }
+
+    /**
+     * Get entry for a specific day
+     *
+     * @param date
+     * Date of the entry
+     */
+    DayEntry getEntry(GregorianCalendar date) {
+        for (DayEntry entry : dayEntries) {
+            // If entry was found, then return entry
+            if (entry.date.equals(date)) {
                 return entry;
             }
         }
@@ -1002,6 +1018,7 @@ class PeriodicalDatabase {
         setOption("startofweek", preferences.getString("startofweek", "0"));
         setOption("maximum_cycle_length", preferences.getString("period_length", "183"));
         setOption("direct_details", preferences.getBoolean("pref_direct_details", false));
+        setOption("show_cycle", preferences.getBoolean("show_cycle", true));
     }
 
     /**
@@ -1014,6 +1031,7 @@ class PeriodicalDatabase {
         String startofweek = getOption("startofweek", "0");
         String maximum_cycle_length = getOption("maximum_cycle_length", "183");
         boolean direct_details = getOption("direct_details", false);
+        boolean show_cycle = getOption("direct_details", true);
                 
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
         SharedPreferences.Editor editor = preferences.edit();
@@ -1021,6 +1039,7 @@ class PeriodicalDatabase {
         editor.putString("startofweek", startofweek);
         editor.putString("maximum_cycle_length", maximum_cycle_length);
         editor.putBoolean("direct_details", direct_details);
+        editor.putBoolean("show_cycle", show_cycle);
         editor.apply();
     }
 }

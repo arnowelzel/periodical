@@ -303,6 +303,8 @@ public class MainActivity extends AppCompatActivity {
             findViewById(R.id.rowcaldays1_2).setVisibility(View.VISIBLE);
         }
 
+        boolean show_cycle = preferences.getBoolean("show_cycle", true);
+
         // Create calendar object for current month
         GregorianCalendar cal = new GregorianCalendar(yearCurrent, monthCurrent - 1, 1);
 
@@ -345,7 +347,8 @@ public class MainActivity extends AppCompatActivity {
                 int day = i - firstDayOfWeek + 1;
                 cell.setText(String.format("%d", day));
                 cell.setVisibility(android.view.View.VISIBLE);
-                int type = dbMain.getEntryType(cal);
+                PeriodicalDatabase.DayEntry entry = dbMain.getEntry(cal);
+
                 boolean current = false;
 
                 if (day == dayToday) {
@@ -356,9 +359,16 @@ public class MainActivity extends AppCompatActivity {
                 cell.setYear(yearCurrent);
                 cell.setMonth(monthCurrent);
                 cell.setDay(day);
-                cell.setType(type);
                 cell.setCurrent(current);
-                
+
+                if(entry != null) {
+                    cell.setType(entry.type);
+                    cell.setDayofcycle(show_cycle ? entry.dayofcycle : 0);
+                } else {
+                    cell.setType(PeriodicalDatabase.DayEntry.EMPTY);
+                    cell.setDayofcycle(0);
+                }
+
                 // Set content description for TalkBack
                 cell.updateContentDescription();
 

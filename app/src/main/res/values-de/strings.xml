@@ -73,6 +73,7 @@
     <string name="pref_direct_details">Direkt zu den Details gehen</string>
     <string name="summary_direct_details_off">Einen Tag zur Periode hinzügen/entfernen oder zu den Details für diesen Tag gehen.</string>
     <string name="summary_direct_details_on">Direkt zu den Details für diesen Tag gehen.</string>
+    <string name="pref_show_cycle">Tag des Zyklus anzeigen</string>
     <string name="previous_month">Vorheriger Monat</string>
     <string name="next_month">Nächster Monat</string>
     <string name="label_average_cycle">Durchschnittlicher Zyklus</string>

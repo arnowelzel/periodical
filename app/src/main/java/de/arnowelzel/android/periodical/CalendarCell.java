@@ -54,6 +54,8 @@ public class CalendarCell extends Button {
     private int month;
     /** year including century */
     private int year;
+    /** day of cycle (1-n, 0 to hide) */
+    private int dayofcycle;
 
     /** Display metrics */
     private final DisplayMetrics metrics;
@@ -129,7 +131,6 @@ public class CalendarCell extends Button {
         paintLabel.setAntiAlias(true);
         paintLabel.setSubpixelText(true);
         paintLabel.setColor(Color.BLACK);
-        paintLabel.setTextSize(16 * metrics.scaledDensity);
         paintLabel.setTextAlign(Align.LEFT);
         paintBackground = new Paint();
         paintOval = new Paint();
@@ -313,11 +314,25 @@ public class CalendarCell extends Button {
 
         // Draw main label
         @SuppressWarnings("ConstantConditions") String label = getText().toString();
+        paintLabel.setTextSize(16 * metrics.scaledDensity);
         paintLabel.setColor(colorLabel);
         paintLabel.getTextBounds(label, 0, label.length(), rectLabel);
 
         canvas.drawText(label, (getWidth() - rectLabel.width()) / 2,
                 rectLabel.height() + (getHeight() - rectLabel.height()) / 2, paintLabel);
+
+        // Draw day of cycle, if applicable
+        if(!isPressed() && dayofcycle != 0) {
+            label = ((Integer)dayofcycle).toString();
+            paintLabel.setTextSize(12 * metrics.scaledDensity);
+            paintLabel.setColor(colorLabel);
+            paintLabel.getTextBounds(label, 0, label.length(), rectLabel);
+
+            canvas.drawText(label,
+                    rectCanvas.width() - rectLabel.width() - 4 * metrics.density,
+                    rectCanvas.height() - rectLabel.height()/2 - 1 * metrics.density,
+                    paintLabel);
+        }
 
         // Draw focused or pressed state, if the button is focused
         if (isFocused()) {
@@ -394,12 +409,6 @@ public class CalendarCell extends Button {
         isCurrent = current;
     }
 
-    /*
-    public boolean getCurrent() {
-        return isCurrent;
-    }
-    */
-
     /**
      * Set current cell type
      *
@@ -410,15 +419,15 @@ public class CalendarCell extends Button {
         this.type = type;
     }
 
-//    /**
-//     * Get the current cell type
-//     *
-//     * @return
-//     * The type as stored in the database to define the look of the cell
-//     */
-//    public int getType() {
-//        return type;
-//    }
+    /**
+     * Set day of cycle
+     *
+     * @param dayofcycle
+     * The type as stored in the database to define the look of the cell
+     */
+    public void setDayofcycle(int dayofcycle) {
+        this.dayofcycle = dayofcycle;
+    }
 
     /**
      * Set the day to be displayed
