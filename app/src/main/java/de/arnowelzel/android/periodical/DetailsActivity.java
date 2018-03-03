@@ -119,10 +119,10 @@ public class DetailsActivity extends AppCompatActivity implements View.OnClickLi
         buttonPeriodIntensity4 = ((RadioButton)findViewById(R.id.periodIntensity4));
 
         switch(entry.intensity) {
-            case 0: buttonPeriodIntensity1.setChecked(true);break;
-            case 1: buttonPeriodIntensity2.setChecked(true);break;
-            case 2: buttonPeriodIntensity3.setChecked(true);break;
-            case 3: buttonPeriodIntensity4.setChecked(true);break;
+            case 1: buttonPeriodIntensity1.setChecked(true);break;
+            case 2: buttonPeriodIntensity2.setChecked(true);break;
+            case 3: buttonPeriodIntensity3.setChecked(true);break;
+            case 4: buttonPeriodIntensity4.setChecked(true);break;
         }
 
         buttonPeriodIntensity1.setEnabled(intensityEnabled);
@@ -142,6 +142,7 @@ public class DetailsActivity extends AppCompatActivity implements View.OnClickLi
         // Build list of events/symptoms
         LinearLayout groupEvents = (LinearLayout)findViewById(R.id.groupEvents);
         String packageName = getPackageName();
+        Resources resources = getResources();
         LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(
                 LinearLayout.LayoutParams.WRAP_CONTENT,
                 LinearLayout.LayoutParams.WRAP_CONTENT);
@@ -153,7 +154,7 @@ public class DetailsActivity extends AppCompatActivity implements View.OnClickLi
         int num = 1;
         while(true) {
             @SuppressLint("DefaultLocale") String resName = String.format("label_details_ev%d",num);
-            int resId = getResources().getIdentifier(resName, "string", packageName);
+            int resId = resources.getIdentifier(resName, "string", packageName);
             if(resId != 0) {
                 CheckBox option = new CheckBox(this);
                 option.setLayoutParams(layoutParams);
@@ -208,19 +209,19 @@ public class DetailsActivity extends AppCompatActivity implements View.OnClickLi
                 buttonPeriodIntensity4.setEnabled(false);
                 break;
             case R.id.periodIntensity1:
-                entry.intensity = 0;
-                dbMain.addEntryDetails(entry);
-                break;
-            case R.id.periodIntensity2:
                 entry.intensity = 1;
                 dbMain.addEntryDetails(entry);
                 break;
-            case R.id.periodIntensity3:
+            case R.id.periodIntensity2:
                 entry.intensity = 2;
                 dbMain.addEntryDetails(entry);
                 break;
-            case R.id.periodIntensity4:
+            case R.id.periodIntensity3:
                 entry.intensity = 3;
+                dbMain.addEntryDetails(entry);
+                break;
+            case R.id.periodIntensity4:
+                entry.intensity = 4;
                 dbMain.addEntryDetails(entry);
                 break;
             default:

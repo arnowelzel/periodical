@@ -239,7 +239,7 @@ class PeriodicalDatabase {
             this.date = new GregorianCalendarExt();
             this.date.setTime(date.getTime());
             this.dayofcycle = dayofcycle;
-            this.intensity = 0;
+            this.intensity = 1;
             this.notes = "";
             this.symptoms = new ArrayList<Integer>();
         }
@@ -251,7 +251,7 @@ class PeriodicalDatabase {
             this.type = EMPTY;
             this.date = new GregorianCalendarExt();
             this.dayofcycle = 0;
-            this.intensity = 0;
+            this.intensity = 1;
             this.notes = "";
             this.symptoms = new ArrayList<Integer>();
         }
@@ -627,43 +627,67 @@ class PeriodicalDatabase {
      */
     @SuppressLint("DefaultLocale")
     void loadRawDataWithDetails() {
-        DayEntry entry;
-
         // Clean up existing data
         dayEntries.removeAllElements();
 
-        // Get all entries from the database
+        // Get all entries with details from the database
         /*
-        Complete data:
-
-        select data.eventdate, eventtype, intensity, content, symptom
-        from
-        data
-        left outer join notes on data.eventdate=notes.eventdate
-        left outer join symptoms on data.eventdate=symptoms.eventdate
-        order by data.eventdate desc
-        */
-
-
         String statement = String.format(
                 "select eventtype, eventdate from data where eventtype=%d order by eventdate desc",
                 DayEntry.PERIOD_START);
-        Cursor result = db.rawQuery(statement, null);
-        while (result.moveToNext()) {
-            int eventtype = result.getInt(0);
-            String dbdate = result.getString(1);
-            assert dbdate != null;
-            int eventyear = Integer.parseInt(dbdate.substring(0, 4), 10);
-            int eventmonth = Integer.parseInt(dbdate.substring(4, 6), 10);
-            int eventday = Integer.parseInt(dbdate.substring(6, 8), 10);
-            GregorianCalendar eventdate = new GregorianCalendar(eventyear,
-                    eventmonth - 1, eventday);
+         */
 
-            // Create new day entry
-            entry = new DayEntry(eventtype, eventdate, 0);
-            dayEntries.add(entry);
+        String statement = String.format(
+                "select data.eventdate, eventtype, intensity, content, symptom from "+
+                "data " +
+                "left outer join notes on data.eventdate=notes.eventdate " +
+                "left outer join symptoms on data.eventdate=symptoms.eventdate " +
+                "where eventtype=%d " +
+                "order by data.eventdate desc", DayEntry.PERIOD_START);
+        Cursor result = db.rawQuery(statement, null);
+        DayEntry entry = null;
+        String dbdate = "";
+        List <Integer> symptoms = new ArrayList<Integer>();
+
+        while (result.moveToNext()) {
+            // New day?
+            if(!dbdate.equals(result.getString(0))) {
+                // Store pending entry
+                if(entry != null) {
+                    entry.symptoms = symptoms;
+                    dayEntries.add(entry);
+                }
+
+                dbdate = result.getString(0);
+                assert dbdate != null;
+                int eventtype = result.getInt(1);
+                int eventyear = Integer.parseInt(dbdate.substring(0, 4), 10);
+                int eventmonth = Integer.parseInt(dbdate.substring(4, 6), 10);
+                int eventday = Integer.parseInt(dbdate.substring(6, 8), 10);
+                GregorianCalendar eventdate = new GregorianCalendar(eventyear, eventmonth - 1, eventday);
+                int intensity = result.getInt(2);
+                String notes = result.getString(3);
+
+                entry = new DayEntry();
+                entry.type = eventtype;
+                entry.date.setTime(eventdate.getTime());
+                entry.intensity = intensity>0 ? intensity : 1;
+                entry.notes = notes;
+
+                symptoms = new ArrayList<Integer>();
+
+                if(result.getInt(4) != 0) {
+                    symptoms.add(result.getInt(4));
+                }
+            } else {
+                symptoms.add(result.getInt(4));
+            }
         }
         result.close();
+
+        if(entry != null) {
+            dayEntries.add(entry);
+        }
 
         System.gc();
     }
@@ -756,30 +780,31 @@ class PeriodicalDatabase {
             entry = new DayEntry();
         }
 
+        GregorianCalendar date = new GregorianCalendar(year, month - 1, day);
+
+
         String statementNotes = String.format(
                 "select intensity, content from notes where eventdate = '%04d%02d%02d'",
                 year, month, day);
         Cursor resultNotes = db.rawQuery(statementNotes, null);
+
+        if (resultNotes.moveToNext()) {
+            entry.intensity = resultNotes.getInt(0);
+            entry.notes = resultNotes.getString(1);
+        }
+        resultNotes.close();
 
         String statementSymptoms = String.format(
                 "select symptom from symptoms where eventdate = '%04d%02d%02d'",
                 year, month, day);
         Cursor resultSymptoms = db.rawQuery(statementSymptoms, null);
 
-        if (resultNotes.moveToNext()) {
-            GregorianCalendar date = new GregorianCalendar(year, month - 1, day);
-            List<Integer> symptoms = new ArrayList<Integer>();
-
-            while(resultSymptoms.moveToNext()) {
-                symptoms.add(resultSymptoms.getInt(0) + 1);
-            }
-
-            entry.intensity = resultNotes.getInt(0);
-            entry.notes = resultNotes.getString(1);
-            entry.symptoms = symptoms;
+        List<Integer> symptoms = new ArrayList<Integer>();
+        while(resultSymptoms.moveToNext()) {
+            symptoms.add(resultSymptoms.getInt(0));
         }
+        entry.symptoms = symptoms;
 
-        resultNotes.close();
         resultSymptoms.close();
 
         return entry;
@@ -827,7 +852,7 @@ class PeriodicalDatabase {
                     entry.date.get(GregorianCalendar.YEAR),
                     entry.date.get(GregorianCalendar.MONTH) +1,
                     entry.date.get(GregorianCalendar.DAY_OF_MONTH),
-                    entry.symptoms.get(count) - 1);
+                    entry.symptoms.get(count));
             db.execSQL(statement);
             count++;
         }

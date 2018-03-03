@@ -22,6 +22,7 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
@@ -31,6 +32,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.preference.PreferenceManager;
+import android.widget.CheckBox;
 
 import java.util.Calendar;
 import java.util.Iterator;
@@ -65,6 +67,9 @@ public class ListActivity extends AppCompatActivity implements AdapterView.OnIte
             maximumcyclelength = 183;
         }
 
+        String packageName = getPackageName();
+        Resources resources = getResources();
+
         // Set up database and string array for the list
         dbMain = new PeriodicalDatabase(context);
         dbMain.loadRawDataWithDetails();
@@ -86,26 +91,51 @@ public class ListActivity extends AppCompatActivity implements AdapterView.OnIte
             day = dayIterator.next();
 
             entries[pos] = dateFormat.format(day.date.getTime());
-            switch (day.type) {
-            case DayEntry.PERIOD_START:
-                entries[pos] = entries[pos] + " ("
-                        + getString(R.string.event_periodstart) + ")";
-                if (dayPrevious != null) {
-                    // If we have a previous day, then update the previous
-                    // days length description
-                    Integer length = day.date.diffDayPeriods(dayPrevious.date);
-                    if(length <= maximumcyclelength) {
-                        entries[pos - 1] += "\n"
-                            + String.format(
-                            getString(R.string.event_periodlength),
-                            length.toString());
-                    } else {
-                        entries[pos - 1] +=
-                                String.format("\n%s", getString(R.string.event_ignored));
-                    }
-                }
-                break;
+            entries[pos] += " ("
+                    + getString(R.string.event_periodstart) + ")";
+
+            entries[pos] += String.format("\n%s: %d", resources.getString(R.string.label_details_intensity), day.intensity);
+
+            if(day.notes != null && !day.notes.isEmpty()) {
+                entries[pos] += String.format("\n%s:\n%s", resources.getString(R.string.label_details_notes), day.notes);
             }
+
+            boolean hassymptoms = false;
+
+            int num = 1;
+            while(true) {
+                @SuppressLint("DefaultLocale") String resName = String.format("label_details_ev%d",num);
+                int resId = resources.getIdentifier(resName, "string", packageName);
+                if(resId != 0) {
+                    if(day.symptoms.contains(new Integer(num))) {
+                        if(!hassymptoms) {
+                            entries[pos] += String.format("\n%s:", resources.getString(R.string.label_details_events));
+                            hassymptoms = true;
+                        }
+                        entries[pos] += "\n- " + resources.getString(resId);
+                        resources.getString(resId);
+                    }
+                    num++;
+                } else {
+                    break;
+                }
+            }
+
+            // If we have a previous day, then update the previous
+            // days length description
+            if (dayPrevious != null) {
+                Integer length = day.date.diffDayPeriods(dayPrevious.date);
+                if(length <= maximumcyclelength) {
+                    entries[pos - 1] += "\n"
+                        + String.format(
+                        getString(R.string.event_periodlength),
+                        length.toString());
+                } else {
+                    entries[pos - 1] +=
+                            String.format("\n%s", getString(R.string.event_ignored));
+                }
+            }
+
             pos++;
         }
         // If we have at least one entry, update the last days length
