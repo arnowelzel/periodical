@@ -57,7 +57,7 @@ public class CalendarCell extends Button {
     /** day of cycle (1-n, 0 to hide) */
     private int dayofcycle;
     /** intensity during period (1-4) */
-    int intensity;
+    private int intensity;
 
     /** Display metrics */
     private final DisplayMetrics metrics;

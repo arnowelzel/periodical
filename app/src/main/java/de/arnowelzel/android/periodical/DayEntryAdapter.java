@@ -32,14 +32,16 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
 
+import static java.lang.String.*;
+
 /**
  * Custom adapter to populate calendar entry list items
  */
-public class DayEntryAdapter extends ArrayAdapter<PeriodicalDatabase.DayEntry> {
-    private Context context;
+class DayEntryAdapter extends ArrayAdapter<PeriodicalDatabase.DayEntry> {
+    private final Context context;
     private List<PeriodicalDatabase.DayEntry> entryList = new ArrayList<>();
-    private String packageName;
-    private Resources resources;
+    private final String packageName;
+    private final Resources resources;
 
     /**
      * Constructor
@@ -75,9 +77,12 @@ public class DayEntryAdapter extends ArrayAdapter<PeriodicalDatabase.DayEntry> {
      * Existing view to use (if null, a new one will be created)
      *
      * @param parent
+     * Group in which this view is inserted
      *
      * @return
+     * View to be used for the item
      */
+    @SuppressLint({"DefaultLocale", "SetTextI18n"})
     @NonNull
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
@@ -87,17 +92,13 @@ public class DayEntryAdapter extends ArrayAdapter<PeriodicalDatabase.DayEntry> {
 
         PeriodicalDatabase.DayEntry currentEntry = entryList.get(position);
 
-        Integer length = 0;
-
-        if(position > 0) length = currentEntry.date.diffDayPeriods(entryList.get(position -1).date);
-
         String textSymptoms = "";
         int num = 1;
         while(true) {
-            @SuppressLint("DefaultLocale") String resName = String.format("label_details_ev%d",num);
+            String resName = format("label_details_ev%d",num);
             int resId = resources.getIdentifier(resName, "string", packageName);
             if(resId != 0) {
-                if(currentEntry.symptoms.contains(new Integer(num))) {
+                if(currentEntry.symptoms.contains(num)) {
                     if(!textSymptoms.isEmpty()) textSymptoms += "\n";
                     textSymptoms += "\u2022 " + resources.getString(resId);
                 }
@@ -121,7 +122,7 @@ public class DayEntryAdapter extends ArrayAdapter<PeriodicalDatabase.DayEntry> {
             case PeriodicalDatabase.DayEntry.PERIOD_CONFIRMED:
                 view.setText(
                         dateFormat.format(currentEntry.date.getTime()) + " \u2014 " +
-                                String.format(
+                                format(
                                         resources.getString(R.string.label_period_day),
                                         currentEntry.dayofcycle));
                 break;
@@ -133,7 +134,7 @@ public class DayEntryAdapter extends ArrayAdapter<PeriodicalDatabase.DayEntry> {
         view = (TextView) listItem.findViewById(R.id.item_intensity);
         if(currentEntry.type == PeriodicalDatabase.DayEntry.PERIOD_START ||
                 currentEntry.type == PeriodicalDatabase.DayEntry.PERIOD_CONFIRMED) {
-            view.setText(String.format("%d", currentEntry.intensity));
+            view.setText(format("%d", currentEntry.intensity));
         } else {
             view.setText("\u2014");
         }

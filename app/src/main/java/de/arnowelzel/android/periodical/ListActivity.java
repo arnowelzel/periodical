@@ -21,8 +21,6 @@ package de.arnowelzel.android.periodical;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
-import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
@@ -30,9 +28,6 @@ import android.support.v7.widget.ListViewCompat;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.preference.PreferenceManager;
-import android.widget.CheckBox;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -59,25 +54,13 @@ public class ListActivity extends AppCompatActivity implements AdapterView.OnIte
         assert context != null;
         super.onCreate(savedInstanceState);
 
-        int maximumcyclelength;
-
-        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
-        try {
-            maximumcyclelength = Integer.parseInt(preferences.getString("maximum_cycle_length", "183"));
-        } catch (NumberFormatException e) {
-            maximumcyclelength = 183;
-        }
-
         // Set up database and string array for the list
         dbMain = new PeriodicalDatabase(context);
         dbMain.loadRawDataWithDetails();
 
-        ArrayList<DayEntry> dayList = new ArrayList<DayEntry>();
-        java.text.DateFormat dateFormat = android.text.format.DateFormat.getDateFormat(context);
+        ArrayList<DayEntry> dayList = new ArrayList<>();
         Iterator<DayEntry> dayIterator = dbMain.dayEntries.iterator();
-        int pos = 0;
-        DayEntry dayPrevious = null;
-        DayEntry day = null;
+        DayEntry day;
         while (dayIterator.hasNext()) {
             day = dayIterator.next();
             dayList.add(0, day);

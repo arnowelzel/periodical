@@ -29,7 +29,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.AppCompatCheckBox;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.DisplayMetrics;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.CheckBox;
@@ -146,7 +145,6 @@ public class DetailsActivity extends AppCompatActivity implements View.OnClickLi
         LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(
                 LinearLayout.LayoutParams.WRAP_CONTENT,
                 LinearLayout.LayoutParams.WRAP_CONTENT);
-        DisplayMetrics displaymetrics = new DisplayMetrics();
         int marginLeft = (int)(12 * Resources.getSystem().getDisplayMetrics().density);
         int marginRight = (int)(12 * Resources.getSystem().getDisplayMetrics().density);
         layoutParams.setMargins(marginLeft,0, marginRight, 0);
@@ -168,7 +166,7 @@ public class DetailsActivity extends AppCompatActivity implements View.OnClickLi
                 option.setTextSize(18);
                 option.setText(resId);
                 option.setId(resId);
-                if(entry.symptoms.contains(new Integer(num))) option.setChecked(true);
+                if(entry.symptoms.contains(num)) option.setChecked(true);
                 option.setOnClickListener(this);
                 groupEvents.addView(option);
                 num++;

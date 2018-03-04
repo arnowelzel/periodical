@@ -105,6 +105,7 @@ public class MainActivity extends AppCompatActivity {
     /**
      * Called when activity starts
      */
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -117,6 +118,7 @@ public class MainActivity extends AppCompatActivity {
 
         // Set gesture handling
         gestureDetector = new GestureDetector(context, new CalendarGestureDetector());
+        @SuppressWarnings("unused")
         View.OnTouchListener gestureListener = new View.OnTouchListener() {
             @SuppressLint("ClickableViewAccessibility")
             public boolean onTouch(View v, MotionEvent event) {

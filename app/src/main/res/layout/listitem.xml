@@ -8,7 +8,6 @@
         android:id="@+id/item_date"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="-"
         android:textStyle="bold"
         android:textSize="18sp"
         android:layout_marginLeft="16dp"
@@ -27,7 +26,6 @@
         android:id="@+id/item_intensity"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="-"
         android:textSize="18sp"
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp" />
@@ -44,7 +42,6 @@
         android:id="@+id/item_notes"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="-"
         android:textSize="18sp"
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp" />
@@ -62,7 +59,6 @@
         android:id="@+id/item_symptom"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="-"
         android:textSize="18sp"
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp" />
