@@ -332,6 +332,8 @@ public class MainActivity extends AppCompatActivity {
         
         GregorianCalendar calToday = new GregorianCalendar();
         int dayToday = calToday.get(GregorianCalendar.DATE);
+        int monthToday = calToday.get(GregorianCalendar.MONTH) + 1;
+        int yearToday = calToday.get(GregorianCalendar.YEAR);
 
         // Adjust calendar elements
         for (int i = 1; i <= 42; i++) {
@@ -349,7 +351,7 @@ public class MainActivity extends AppCompatActivity {
 
                 boolean current = false;
 
-                if (day == dayToday) {
+                if (day == dayToday && monthCurrent == monthToday && yearCurrent == yearToday) {
                     current = true;
                 }
                 
