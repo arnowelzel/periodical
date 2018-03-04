@@ -654,7 +654,7 @@ public class MainActivity extends AppCompatActivity {
 
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
-                                dbMain.addPeriod(date);
+                                dbMain.addData(date);
                                 handleDatabaseEdit();
                             }
                         });
@@ -686,7 +686,7 @@ public class MainActivity extends AppCompatActivity {
 
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
-                                dbMain.removePeriod(date);
+                                dbMain.removeData(date);
                                 handleDatabaseEdit();
                             }
                         });

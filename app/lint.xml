@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<lint>
+    <issue id="IconDipSize">
+        <ignore path="src/main/res/drawable-hdpi/ic_ovulation.png" />
+        <ignore path="src/main/res/drawable-hdpi/ic_ovulation_predicted.png" />
+        <ignore path="src/main/res/drawable-hdpi/ic_start.png" />
+        <ignore path="src/main/res/drawable-ldpi/ic_ovulation.png" />
+        <ignore path="src/main/res/drawable-ldpi/ic_ovulation_predicted.png" />
+        <ignore path="src/main/res/drawable-ldpi/ic_start.png" />
+        <ignore path="src/main/res/drawable-mdpi/ic_ovulation.png" />
+        <ignore path="src/main/res/drawable-mdpi/ic_ovulation_predicted.png" />
+        <ignore path="src/main/res/drawable-mdpi/ic_start.png" />
+        <ignore path="src/main/res/drawable-xhdpi/ic_ovulation.png" />
+        <ignore path="src/main/res/drawable-xhdpi/ic_ovulation_predicted.png" />
+        <ignore path="src/main/res/drawable-xhdpi/ic_start.png" />
+    </issue>
+    <issue id="IconDuplicatesConfig">
+        <ignore path="src/main/res/drawable-ldpi/ic_ovulation.png" />
+        <ignore path="src/main/res/drawable-ldpi/ic_ovulation_predicted.png" />
+        <ignore path="src/main/res/drawable-ldpi/ic_start.png" />
+        <ignore path="src/main/res/drawable-mdpi/ic_menu_database.png" />
+        <ignore path="src/main/res/drawable-mdpi/ic_ovulation.png" />
+        <ignore path="src/main/res/drawable-mdpi/ic_ovulation_predicted.png" />
+        <ignore path="src/main/res/drawable-mdpi/ic_start.png" />
+        <ignore path="src/main/res/drawable-mdpi/periodical.png" />
+        <ignore path="src/main/res/drawable-xhdpi/ic_ovulation.png" />
+        <ignore path="src/main/res/drawable-xhdpi/ic_ovulation_predicted.png" />
+        <ignore path="src/main/res/drawable-xhdpi/ic_start.png" />
+        <ignore path="src/main/res/drawable/ic_menu_database.png" />
+        <ignore path="src/main/res/drawable/ic_ovulation.png" />
+        <ignore path="src/main/res/drawable/ic_ovulation_predicted.png" />
+        <ignore path="src/main/res/drawable/ic_start.png" />
+        <ignore path="src/main/res/drawable/periodical.png" />
+    </issue>
+    <issue id="IconLocation">
+        <ignore path="src/main/res/drawable/ic_menu_database.png" />
+        <ignore path="src/main/res/drawable/ic_ovulation.png" />
+        <ignore path="src/main/res/drawable/ic_ovulation_predicted.png" />
+        <ignore path="src/main/res/drawable/ic_start.png" />
+        <ignore path="src/main/res/drawable/periodical.png" />
+    </issue>
+</lint>

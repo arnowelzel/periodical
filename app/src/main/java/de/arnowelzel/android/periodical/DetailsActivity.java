@@ -38,7 +38,6 @@ import android.widget.RadioButton;
 import android.widget.TextView;
 
 import java.text.DateFormat;
-import java.util.ArrayList;
 import java.util.GregorianCalendar;
 
 import static de.arnowelzel.android.periodical.PeriodicalDatabase.DayEntry.EMPTY;
@@ -83,7 +82,7 @@ public class DetailsActivity extends AppCompatActivity implements View.OnClickLi
         dbMain = new PeriodicalDatabase(context);
         dbMain.loadCalculatedData();
 
-        entry = dbMain.getEntryEntryWithDetails(year, month, day);
+        entry = dbMain.getEntryWithDetails(year, month, day);
         if(entry == null) {
             entry = new PeriodicalDatabase.DayEntry(EMPTY, new GregorianCalendar(year, month - 1, day), 0);
         }
@@ -195,14 +194,14 @@ public class DetailsActivity extends AppCompatActivity implements View.OnClickLi
         int id = v.getId();
         switch(id) {
             case R.id.periodYes:
-                dbMain.addPeriod(entry.date);
+                dbMain.addData(entry.date);
                 buttonPeriodIntensity1.setEnabled(true);
                 buttonPeriodIntensity2.setEnabled(true);
                 buttonPeriodIntensity3.setEnabled(true);
                 buttonPeriodIntensity4.setEnabled(true);
                 break;
             case R.id.periodNo:
-                dbMain.removePeriod(entry.date);
+                dbMain.removeData(entry.date);
                 buttonPeriodIntensity1.setEnabled(false);
                 buttonPeriodIntensity2.setEnabled(false);
                 buttonPeriodIntensity3.setEnabled(false);

@@ -34,6 +34,7 @@ import android.widget.ArrayAdapter;
 import android.preference.PreferenceManager;
 import android.widget.CheckBox;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Iterator;
 
@@ -67,90 +68,28 @@ public class ListActivity extends AppCompatActivity implements AdapterView.OnIte
             maximumcyclelength = 183;
         }
 
-        String packageName = getPackageName();
-        Resources resources = getResources();
-
         // Set up database and string array for the list
         dbMain = new PeriodicalDatabase(context);
         dbMain.loadRawDataWithDetails();
 
-        String[] entries = new String[dbMain.dayEntries.size()];
-        java.text.DateFormat dateFormat = android.text.format.DateFormat
-                .getDateFormat(context);
+        // String[] entries = new String[dbMain.dayEntries.size()];
+        ArrayList<DayEntry> dayList = new ArrayList<DayEntry>();
+        java.text.DateFormat dateFormat = android.text.format.DateFormat.getDateFormat(context);
         Iterator<DayEntry> dayIterator = dbMain.dayEntries.iterator();
         int pos = 0;
         DayEntry dayPrevious = null;
         DayEntry day = null;
         boolean isFirst = true;
         while (dayIterator.hasNext()) {
-            if (isFirst) {
-                isFirst = false;
-            } else {
-                dayPrevious = day;
-            }
             day = dayIterator.next();
-
-            entries[pos] = dateFormat.format(day.date.getTime());
-            entries[pos] += " ("
-                    + getString(R.string.event_periodstart) + ")";
-
-            entries[pos] += String.format("\n%s: %d", resources.getString(R.string.label_details_intensity), day.intensity);
-
-            if(day.notes != null && !day.notes.isEmpty()) {
-                entries[pos] += String.format("\n%s:\n%s", resources.getString(R.string.label_details_notes), day.notes);
-            }
-
-            boolean hassymptoms = false;
-
-            int num = 1;
-            while(true) {
-                @SuppressLint("DefaultLocale") String resName = String.format("label_details_ev%d",num);
-                int resId = resources.getIdentifier(resName, "string", packageName);
-                if(resId != 0) {
-                    if(day.symptoms.contains(new Integer(num))) {
-                        if(!hassymptoms) {
-                            entries[pos] += String.format("\n%s:", resources.getString(R.string.label_details_events));
-                            hassymptoms = true;
-                        }
-                        entries[pos] += "\n- " + resources.getString(resId);
-                        resources.getString(resId);
-                    }
-                    num++;
-                } else {
-                    break;
-                }
-            }
-
-            // If we have a previous day, then update the previous
-            // days length description
-            if (dayPrevious != null) {
-                Integer length = day.date.diffDayPeriods(dayPrevious.date);
-                if(length <= maximumcyclelength) {
-                    entries[pos - 1] += "\n"
-                        + String.format(
-                        getString(R.string.event_periodlength),
-                        length.toString());
-                } else {
-                    entries[pos - 1] +=
-                            String.format("\n%s", getString(R.string.event_ignored));
-                }
-            }
-
-            pos++;
+            dayList.add(day);
         }
-        // If we have at least one entry, update the last days length
-        // description to "first entry"
-        if (pos > 0) {
-            entries[pos - 1] += "\n" + getString(R.string.event_periodfirst);
-        }
-
 
         // Set custom view
         setContentView(R.layout.listview);
 
 		ListViewCompat listView = (ListViewCompat) findViewById(R.id.listview);
-		listView.setAdapter(new ArrayAdapter<>(this, R.layout.listitem,
-				entries));
+        listView.setAdapter(new DayEntryAdapter(this, dayList, getPackageName(), getResources()));
 		listView.setOnItemClickListener(this);
 
         // Activate "back button" in Action Bar if possible
