@@ -113,5 +113,5 @@
     <string name="label_details_ev14">Grumpiness</string>
     <string name="label_details_ev15">Nausea</string>
     <string name="label_details_ev16">Cravings</string>
-    <string name="dash">—</string>
+    <string name="label_period_day">Period, day %d</string>
 </resources>

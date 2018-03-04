@@ -111,11 +111,9 @@ public class MainActivity extends AppCompatActivity {
         final Context context = getApplicationContext();
         assert context != null;
 
-        // Set up database
-        dbMain = new PeriodicalDatabase(context);
-
-        // Set up view
         setContentView(R.layout.main);
+
+        dbMain = new PeriodicalDatabase(context);
 
         // Set gesture handling
         gestureDetector = new GestureDetector(context, new CalendarGestureDetector());
@@ -364,6 +362,7 @@ public class MainActivity extends AppCompatActivity {
                 if(entry != null) {
                     cell.setType(entry.type);
                     cell.setDayofcycle(show_cycle ? entry.dayofcycle : 0);
+                    cell.setIntensity(entry.intensity);
                 } else {
                     cell.setType(PeriodicalDatabase.DayEntry.EMPTY);
                     cell.setDayofcycle(0);
@@ -654,7 +653,7 @@ public class MainActivity extends AppCompatActivity {
 
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
-                                dbMain.addData(date);
+                                dbMain.addPeriod(date);
                                 handleDatabaseEdit();
                             }
                         });

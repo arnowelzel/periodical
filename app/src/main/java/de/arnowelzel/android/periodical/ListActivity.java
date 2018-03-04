@@ -72,17 +72,15 @@ public class ListActivity extends AppCompatActivity implements AdapterView.OnIte
         dbMain = new PeriodicalDatabase(context);
         dbMain.loadRawDataWithDetails();
 
-        // String[] entries = new String[dbMain.dayEntries.size()];
         ArrayList<DayEntry> dayList = new ArrayList<DayEntry>();
         java.text.DateFormat dateFormat = android.text.format.DateFormat.getDateFormat(context);
         Iterator<DayEntry> dayIterator = dbMain.dayEntries.iterator();
         int pos = 0;
         DayEntry dayPrevious = null;
         DayEntry day = null;
-        boolean isFirst = true;
         while (dayIterator.hasNext()) {
             day = dayIterator.next();
-            dayList.add(day);
+            dayList.add(0, day);
         }
 
         // Set custom view
@@ -142,9 +140,9 @@ public class ListActivity extends AppCompatActivity implements AdapterView.OnIte
     @Override
     public void onItemClick(AdapterView<?> adapterView, View v, int position, long id) {
         // Determine date of clicked item
-        if (dbMain != null && position >= 0
-                && position < dbMain.dayEntries.size()) {
-            DayEntry selectedEntry = dbMain.dayEntries.get(position);
+        int listsize = dbMain.dayEntries.size();
+        if (dbMain != null && position >= 0 && position < listsize) {
+            DayEntry selectedEntry = dbMain.dayEntries.get(listsize - position - 1);
 
             Integer month = selectedEntry.date.get(Calendar.MONTH);
             Integer year = selectedEntry.date.get(Calendar.YEAR);

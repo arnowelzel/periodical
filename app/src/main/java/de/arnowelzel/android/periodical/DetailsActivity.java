@@ -26,6 +26,7 @@ import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.AppCompatCheckBox;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.DisplayMetrics;
@@ -84,7 +85,7 @@ public class DetailsActivity extends AppCompatActivity implements View.OnClickLi
 
         entry = dbMain.getEntryWithDetails(year, month, day);
         if(entry == null) {
-            entry = new PeriodicalDatabase.DayEntry(EMPTY, new GregorianCalendar(year, month - 1, day), 0);
+            entry = new PeriodicalDatabase.DayEntry(EMPTY, new GregorianCalendar(year, month - 1, day), 0, 1);
         }
 
         // Set header using the entry date
@@ -155,11 +156,18 @@ public class DetailsActivity extends AppCompatActivity implements View.OnClickLi
             @SuppressLint("DefaultLocale") String resName = String.format("label_details_ev%d",num);
             int resId = resources.getIdentifier(resName, "string", packageName);
             if(resId != 0) {
-                CheckBox option = new CheckBox(this);
+                /* This is not the fastest way, but it ensures, that the correct drawable is used */
+                /*
+                LinearLayout container = ((LinearLayout)getLayoutInflater().inflate(
+                        R.layout.detailsoptions, groupEvents, false));
+                CheckBox option = (CheckBox)container.findViewById(R.id.optionCheckbox);
+                container.removeView(option);
+                */
+                AppCompatCheckBox option = new AppCompatCheckBox(this);
                 option.setLayoutParams(layoutParams);
+                option.setTextSize(18);
                 option.setText(resId);
                 option.setId(resId);
-                option.setTextSize(18);
                 if(entry.symptoms.contains(new Integer(num))) option.setChecked(true);
                 option.setOnClickListener(this);
                 groupEvents.addView(option);
@@ -194,7 +202,7 @@ public class DetailsActivity extends AppCompatActivity implements View.OnClickLi
         int id = v.getId();
         switch(id) {
             case R.id.periodYes:
-                dbMain.addData(entry.date);
+                dbMain.addPeriod(entry.date);
                 buttonPeriodIntensity1.setEnabled(true);
                 buttonPeriodIntensity2.setEnabled(true);
                 buttonPeriodIntensity3.setEnabled(true);

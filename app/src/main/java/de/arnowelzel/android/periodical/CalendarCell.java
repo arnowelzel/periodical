@@ -56,6 +56,8 @@ public class CalendarCell extends Button {
     private int year;
     /** day of cycle (1-n, 0 to hide) */
     private int dayofcycle;
+    /** intensity during period (1-4) */
+    int intensity;
 
     /** Display metrics */
     private final DisplayMetrics metrics;
@@ -63,6 +65,8 @@ public class CalendarCell extends Button {
     private final RectF rectCanvas;
     /** Paint for the label (day of month) */
     private final Paint paintLabel;
+    /** Paint for the intensity markers */
+    private final Paint paintIntensity;
     /** Background paint for the cell */
     private final Paint paintBackground;
     /** Paint for the cell if it focused */
@@ -132,6 +136,9 @@ public class CalendarCell extends Button {
         paintLabel.setSubpixelText(true);
         paintLabel.setColor(Color.BLACK);
         paintLabel.setTextAlign(Align.LEFT);
+        paintIntensity = new Paint();
+        paintIntensity.setStyle(Style.FILL);
+        paintIntensity.setColor(0xffffffff);
         paintBackground = new Paint();
         paintOval = new Paint();
         paintFocus = new Paint();
@@ -204,6 +211,7 @@ public class CalendarCell extends Button {
     protected void onDraw(Canvas canvas) {
         LinearGradient gradient = gradientEmpty;
         int colorLabel = 0xffffffff;
+        String label;
 
         // Adjust overlay size depending on orientation
         int overlaysize = 18;
@@ -275,45 +283,17 @@ public class CalendarCell extends Button {
                 canvas.drawBitmap(bitmapOvulationFuture, null, rectOverlay, paintBitmap);
             }
 
-            // Draw the "current day" mark, if needed
-            if (isCurrent) {
-                paintOval.setStyle(Style.STROKE);
-                paintOval.setAntiAlias(true);
-                
-                rectOval1.set(10 * metrics.density, 4 * metrics.density,
-                        rectCanvas.right - 4 * metrics.density, rectCanvas.bottom - 4 * metrics.density);
-                rectOval2.set(rectOval1.left-6*metrics.density, rectOval1.top-1,
-                        rectOval1.right, rectOval1.bottom);
-                
-                // Center oval rectangle as a square
-                float delta = (rectOval1.height()-rectOval1.width())/2;
-                if(delta>0) {
-                    rectOval1.top += delta;
-                    rectOval1.bottom -= delta;
-                    rectOval2.top += delta;
-                    rectOval2.bottom -= delta;
-                } else if (delta<0) {
-                    rectOval1.left -= delta;
-                    rectOval1.right += delta;
-                    rectOval2.left -= delta;
-                    rectOval2.right += delta;
+            // Draw intensity indicator
+            if(type == DayEntry.PERIOD_START || type== DayEntry.PERIOD_CONFIRMED) {
+                for (int i = 0; i < intensity && i < 4; i++) {
+                    canvas.drawCircle((8 + i*8) * metrics.density, 8 * metrics.density,
+                            2*metrics.density, paintIntensity);
                 }
-                
-                // Draw oval
-                paintOval.setColor(0xde000000);
-                paintOval.setStrokeWidth(3 * metrics.density);
-                canvas.drawArc(rectOval1, 200, 160, false, paintOval);
-                canvas.drawArc(rectOval2, 0, 240, false, paintOval);
-                
-                paintOval.setColor(0xffffffff);
-                paintOval.setStrokeWidth(2 * metrics.density);
-                canvas.drawArc(rectOval1, 200, 160, false, paintOval);
-                canvas.drawArc(rectOval2, 0, 240, false, paintOval);
             }
         }
 
         // Draw main label
-        @SuppressWarnings("ConstantConditions") String label = getText().toString();
+        label = getText().toString();
         paintLabel.setTextSize(16 * metrics.scaledDensity);
         paintLabel.setColor(colorLabel);
         paintLabel.getTextBounds(label, 0, label.length(), rectLabel);
@@ -332,6 +312,44 @@ public class CalendarCell extends Button {
                     rectCanvas.width() - rectLabel.width() - 4 * metrics.density,
                     rectCanvas.height() - rectLabel.height()/2 - 1 * metrics.density,
                     paintLabel);
+        }
+
+        if(!isPressed()) {
+            // Draw the "current day" mark, if needed
+            if (isCurrent) {
+                paintOval.setStyle(Style.STROKE);
+                paintOval.setAntiAlias(true);
+
+                rectOval1.set(10 * metrics.density, 4 * metrics.density,
+                        rectCanvas.right - 4 * metrics.density, rectCanvas.bottom - 4 * metrics.density);
+                rectOval2.set(rectOval1.left - 6 * metrics.density, rectOval1.top - 1,
+                        rectOval1.right, rectOval1.bottom);
+
+                // Center oval rectangle as a square
+                float delta = (rectOval1.height() - rectOval1.width()) / 2;
+                if (delta > 0) {
+                    rectOval1.top += delta;
+                    rectOval1.bottom -= delta;
+                    rectOval2.top += delta;
+                    rectOval2.bottom -= delta;
+                } else if (delta < 0) {
+                    rectOval1.left -= delta;
+                    rectOval1.right += delta;
+                    rectOval2.left -= delta;
+                    rectOval2.right += delta;
+                }
+
+                // Draw oval
+                paintOval.setColor(0xde000000);
+                paintOval.setStrokeWidth(3 * metrics.density);
+                canvas.drawArc(rectOval1, 200, 160, false, paintOval);
+                canvas.drawArc(rectOval2, 0, 240, false, paintOval);
+
+                paintOval.setColor(0xffffffff);
+                paintOval.setStrokeWidth(2 * metrics.density);
+                canvas.drawArc(rectOval1, 200, 160, false, paintOval);
+                canvas.drawArc(rectOval2, 0, 240, false, paintOval);
+            }
         }
 
         // Draw focused or pressed state, if the button is focused
@@ -428,6 +446,14 @@ public class CalendarCell extends Button {
     public void setDayofcycle(int dayofcycle) {
         this.dayofcycle = dayofcycle;
     }
+
+    /**
+     * Set intensity
+     *
+     * @param intensity
+     * Intensity of this day (1-4)
+     */
+    public void setIntensity(int intensity) { this.intensity = intensity; }
 
     /**
      * Set the day to be displayed

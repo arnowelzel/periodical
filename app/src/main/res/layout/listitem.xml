@@ -57,6 +57,7 @@
         android:textSize="14sp"
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp" />
+
     <TextView
         android:id="@+id/item_symptom"
         android:layout_width="match_parent"

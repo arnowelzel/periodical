@@ -99,7 +99,7 @@ public class DayEntryAdapter extends ArrayAdapter<PeriodicalDatabase.DayEntry> {
             if(resId != 0) {
                 if(currentEntry.symptoms.contains(new Integer(num))) {
                     if(!textSymptoms.isEmpty()) textSymptoms += "\n";
-                    textSymptoms += resources.getString(resId);
+                    textSymptoms += "\u2022 " + resources.getString(resId);
                 }
                 num++;
             } else {
@@ -115,15 +115,15 @@ public class DayEntryAdapter extends ArrayAdapter<PeriodicalDatabase.DayEntry> {
         switch(currentEntry.type) {
             case PeriodicalDatabase.DayEntry.PERIOD_START:
                 view.setText(
-                        dateFormat.format(currentEntry.date.getTime()) + " " +
-                        resources.getString(R.string.dash) + " " +
+                        dateFormat.format(currentEntry.date.getTime()) + " \u2014 " +
                         resources.getString(R.string.event_periodstart));
                 break;
             case PeriodicalDatabase.DayEntry.PERIOD_CONFIRMED:
                 view.setText(
-                        dateFormat.format(currentEntry.date.getTime()) + " " +
-                        resources.getString(R.string.dash) + " " +
-                        resources.getString(R.string.label_details_period));
+                        dateFormat.format(currentEntry.date.getTime()) + " \u2014 " +
+                                String.format(
+                                        resources.getString(R.string.label_period_day),
+                                        currentEntry.dayofcycle));
                 break;
             default:
                 view.setText(dateFormat.format(currentEntry.date.getTime()));
@@ -135,15 +135,15 @@ public class DayEntryAdapter extends ArrayAdapter<PeriodicalDatabase.DayEntry> {
                 currentEntry.type == PeriodicalDatabase.DayEntry.PERIOD_CONFIRMED) {
             view.setText(String.format("%d", currentEntry.intensity));
         } else {
-            view.setText(R.string.dash);
+            view.setText("\u2014");
         }
 
         view = (TextView) listItem.findViewById(R.id.item_notes);
-        if(currentEntry.notes.isEmpty()) view.setText(R.string.dash);
+        if(currentEntry.notes.isEmpty()) view.setText("\u2014");
         else view.setText(currentEntry.notes);
 
         view = (TextView) listItem.findViewById(R.id.item_symptom);
-        if(textSymptoms.isEmpty()) view.setText(R.string.dash);
+        if(textSymptoms.isEmpty()) view.setText("\u2014");
         else view.setText(textSymptoms);
 
         return listItem;

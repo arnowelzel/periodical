@@ -75,7 +75,8 @@ class PeriodicalDatabase {
                     "eventtype integer(3), " +
                     "eventdate varchar(8), " +
                     "eventcvx integer(3), " +
-                    "eventtemp real " +
+                    "eventtemp real, " +
+                    "intensity integer(3)" +
                     ");");
             db.execSQL("create table options (" +
                     "name varchar(100), " +
@@ -83,7 +84,6 @@ class PeriodicalDatabase {
                     ");");
             db.execSQL("create table notes (" +
                     "eventdate varchar(8), " +
-                    "intensity integer(3), " +
                     "content text" +
                     ");");
             db.execSQL("create table symptoms (" +
@@ -127,9 +127,9 @@ class PeriodicalDatabase {
                 db.endTransaction();
             } else if (oldVersion < 4 && newVersion >= 4) {
                 // Version 4 introduces details and stores periods in a different way
+                db.beginTransaction();
                 db.execSQL("create table notes (" +
                         "eventdate varchar(8), " +
-                        "intensity integer(3), " +
                         "content text" +
                         ");");
                 db.execSQL("create table symptoms (" +
@@ -137,13 +137,14 @@ class PeriodicalDatabase {
                         "symptom integer(3)" +
                         ");");
 
-                // We don't need a primary ID column
+                // We don't need a primary ID column any longer but add intensity as property
                 db.execSQL("alter table data rename to data_old;");
                 db.execSQL("create table data (" +
                         "eventtype integer(3), " +
                         "eventdate varchar(8), " +
                         "eventcvx integer(3), " +
-                        "eventtemp real " +
+                        "eventtemp real, " +
+                        "intensity integer(3) " +
                         ");");
                 db.execSQL("insert into data (eventtype, eventdate) " +
                         "select eventtype, eventdate from data_old;");
@@ -172,28 +173,41 @@ class PeriodicalDatabase {
                     GregorianCalendar eventdate = new GregorianCalendar(eventyear,
                             eventmonth - 1, eventday);
 
+                    // Add default intensity for existing period
+                    int intensity = 4;
+                    statement = String.format(
+                            "update data set intensity=%d where eventdate='%s'",
+                            intensity,
+                            String.format(Locale.getDefault(), "%04d%02d%02d",
+                                    eventdate.get(GregorianCalendar.YEAR),
+                                    eventdate.get(GregorianCalendar.MONTH) + 1,
+                                    eventdate.get(GregorianCalendar.DAY_OF_MONTH)));
+                    db.execSQL(statement);
+
                     // Add additional entries for each day of the period
                     if(eventtype == DayEntry.PERIOD_START) {
                         eventtype = DayEntry.PERIOD_CONFIRMED;
 
                         for(int day = 2; day <= periodlength; day++) {
                             eventdate.add(GregorianCalendar.DATE, 1);
+                            if(intensity > 1) intensity--;
 
                             statement = String.format(
-                                    "insert into data (eventtype, eventdate) values (%d, '%s')",
-                                    eventtype,
+                                    "insert into data (eventdate, eventtype, intensity) values ('%s', %d, %d)",
                                     String.format(Locale.getDefault(), "%04d%02d%02d",
                                             eventdate.get(GregorianCalendar.YEAR),
                                             eventdate.get(GregorianCalendar.MONTH) + 1,
-                                            eventdate.get(GregorianCalendar.DAY_OF_MONTH)));
-                            db.beginTransaction();
+                                            eventdate.get(GregorianCalendar.DAY_OF_MONTH)),
+                                    eventtype,
+                                    intensity);
                             db.execSQL(statement);
-                            db.setTransactionSuccessful();
-                            db.endTransaction();
                         }
                     }
                 }
                 result.close();
+
+                db.setTransactionSuccessful();
+                db.endTransaction();
             }
         }
     }
@@ -216,14 +230,14 @@ class PeriodicalDatabase {
         final static int INFERTILE_PREDICTED = 8;
         final static int INFERTILE_FUTURE = 9;
         int type;
-        final GregorianCalendarExt date;
-        final int dayofcycle;
+        GregorianCalendarExt date;
+        int dayofcycle;
         int intensity;
         String notes;
         List<Integer> symptoms;
 
         /**
-         * Construct a new day entry
+         * Construct a new day entry with parameters
          *
          * @param type
          * Entry type (DayEntry.EMPTY, DayEntry.PERIOD_START, DayEntry.PERIOD_CONFIRMED, ...)
@@ -233,13 +247,16 @@ class PeriodicalDatabase {
          *
          * @param dayofcycle
          * Day within current cycle (beginning with 1)
+         *
+         * @param intensity
+         * Intensity of the period (1-4)
          */
-        DayEntry(int type, GregorianCalendar date, int dayofcycle) {
+        DayEntry(int type, GregorianCalendar date, int dayofcycle, int intensity) {
             this.type = type;
             this.date = new GregorianCalendarExt();
             this.date.setTime(date.getTime());
             this.dayofcycle = dayofcycle;
-            this.intensity = 1;
+            this.intensity = intensity;
             this.notes = "";
             this.symptoms = new ArrayList<Integer>();
         }
@@ -302,14 +319,18 @@ class PeriodicalDatabase {
     }
 
     /**
-     * Add an entry for a specific day to the database
+     * Add a period entry for a specific day to the database
      *
      * @param date
      * Date of the entry
      */
     @SuppressLint("DefaultLocale")
-    void addData(GregorianCalendar date) {
+    void addPeriod(GregorianCalendar date) {
         String statement;
+        String datestring = String.format(Locale.getDefault(), "%04d%02d%02d",
+                date.get(GregorianCalendar.YEAR),
+                date.get(GregorianCalendar.MONTH) +1,
+                date.get(GregorianCalendar.DAY_OF_MONTH));
 
         GregorianCalendar dateLocal = new GregorianCalendar();
         dateLocal.setTime(date.getTime());
@@ -320,19 +341,13 @@ class PeriodicalDatabase {
             type = DayEntry.PERIOD_CONFIRMED;
             db.beginTransaction();
             statement = String.format(
-                    "delete from data where eventdate = '%s')",
-                    String.format(Locale.getDefault(), "%04d%02d%02d",
-                            date.get(GregorianCalendar.YEAR),
-                            date.get(GregorianCalendar.MONTH) +1,
-                            date.get(GregorianCalendar.DAY_OF_MONTH)));
+                    "delete from data where eventdate = '%s'",
+                    datestring);
             db.execSQL(statement);
             statement = String.format(
-                    "insert into data (eventtype, eventdate) values (%d, '%s')",
-                    type,
-                    String.format(Locale.getDefault(), "%04d%02d%02d",
-                            date.get(GregorianCalendar.YEAR),
-                            date.get(GregorianCalendar.MONTH) +1,
-                            date.get(GregorianCalendar.DAY_OF_MONTH)));
+                    "insert into data (eventdate, eventtype, intensity) values ('%s', %d, 1)",
+                    datestring,
+                    type);
             db.execSQL(statement);
             db.setTransactionSuccessful();
             db.endTransaction();
@@ -344,19 +359,13 @@ class PeriodicalDatabase {
                 db.beginTransaction();
 
                 statement = String.format(
-                        "delete from data where eventdate = '%s')",
-                        String.format(Locale.getDefault(), "%04d%02d%02d",
-                                date.get(GregorianCalendar.YEAR),
-                                date.get(GregorianCalendar.MONTH) +1,
-                                date.get(GregorianCalendar.DAY_OF_MONTH)));
+                        "delete from data where eventdate = '%s'",
+                        datestring);
                 db.execSQL(statement);
                 statement = String.format(
-                        "insert into data (eventtype, eventdate) values (%d, '%s')",
-                        type,
-                        String.format(Locale.getDefault(), "%04d%02d%02d",
-                                date.get(GregorianCalendar.YEAR),
-                                date.get(GregorianCalendar.MONTH) +1,
-                                date.get(GregorianCalendar.DAY_OF_MONTH)));
+                        "insert into data (eventdate, eventtype, intensity) values ('%s', %d, 4)",
+                        datestring,
+                        type);
                 db.execSQL(statement);
 
                 statement = String.format(
@@ -383,19 +392,24 @@ class PeriodicalDatabase {
 
                 type = DayEntry.PERIOD_START;
                 dateLocal.setTime(date.getTime());
+                int intensity = 4;
 
                 db.beginTransaction();
                 for(int day = 0; day < periodlength; day++) {
+                    String datestringlocal = String.format(Locale.getDefault(), "%04d%02d%02d",
+                            dateLocal.get(GregorianCalendar.YEAR),
+                            dateLocal.get(GregorianCalendar.MONTH) +1,
+                            dateLocal.get(GregorianCalendar.DAY_OF_MONTH));
+
                     statement = String.format(
-                            "insert into data (eventtype, eventdate) values (%d, '%s')",
+                            "insert into data (eventdate, eventtype, intensity) values ('%s', %d, %d)",
+                            datestringlocal,
                             type,
-                            String.format(Locale.getDefault(), "%04d%02d%02d",
-                                    dateLocal.get(GregorianCalendar.YEAR),
-                                    dateLocal.get(GregorianCalendar.MONTH) +1,
-                                    dateLocal.get(GregorianCalendar.DAY_OF_MONTH)));
+                            intensity);
                     db.execSQL(statement);
 
                     type = DayEntry.PERIOD_CONFIRMED;
+                    if(intensity > 1) intensity--;
                     dateLocal.add(GregorianCalendar.DATE, 1);
                 }
                 db.setTransactionSuccessful();
@@ -492,13 +506,17 @@ class PeriodicalDatabase {
         }
         result.close();
 
-        // Get all entries from the database
+        // Get all period related entries from the database to fill the calendar
         result = db.rawQuery(
-                "select eventtype, eventdate from data order by eventdate",
+                String.format("select eventdate, eventtype, intensity from data " +
+                                "where " +
+                                "eventtype = %d or eventtype = %d order by eventdate",
+                                DayEntry.PERIOD_START, DayEntry.PERIOD_CONFIRMED),
                 null);
         while (result.moveToNext()) {
-            int eventtype = result.getInt(0);
-            String dbdate = result.getString(1);
+            String dbdate = result.getString(0);
+            int eventtype = result.getInt(1);
+            int intensity = result.getInt(2);
             int eventyear = Integer.parseInt(dbdate.substring(0, 4), 10);
             int eventmonth = Integer.parseInt(dbdate.substring(4, 6), 10);
             int eventday = Integer.parseInt(dbdate.substring(6, 8), 10);
@@ -511,14 +529,14 @@ class PeriodicalDatabase {
                 if (isFirst) {
                     // First event at all - just create an initial start entry
                     dayofcycle = 1;
-                    entryPrevious = new DayEntry(eventtype, eventdate, 1);
+                    entryPrevious = new DayEntry(eventtype, eventdate, 1, intensity);
                     entryPreviousStart = entryPrevious;
                     this.dayEntries.add(entryPrevious);
                     isFirst = false;
                 }
                 else {
                     // Create new day entry
-                    entry = new DayEntry(eventtype, eventdate, 1);
+                    entry = new DayEntry(eventtype, eventdate, 1, intensity);
                     int length = entryPreviousStart.date.diffDayPeriods(entry.date);
 
                     // Add calculated values from the last date to this day, if the period has not
@@ -571,7 +589,7 @@ class PeriodicalDatabase {
                                 type = DayEntry.INFERTILE_PREDICTED;
                             }
 
-                            DayEntry entryCalculated = new DayEntry(type, datePrevious, dayofcycle);
+                            DayEntry entryCalculated = new DayEntry(type, datePrevious, dayofcycle, 1);
                             dayEntries.add(entryCalculated);
                             dayofcycle++;
                         }
@@ -587,7 +605,7 @@ class PeriodicalDatabase {
 
             case DayEntry.PERIOD_CONFIRMED:
                 dayofcycle++;
-                entry = new DayEntry(eventtype, eventdate, dayofcycle);
+                entry = new DayEntry(eventtype, eventdate, dayofcycle, intensity);
                 this.dayEntries.add(entry);
                 entryPrevious = entry;
                 break;
@@ -624,7 +642,7 @@ class PeriodicalDatabase {
                         type = DayEntry.INFERTILE_FUTURE;
                     }
 
-                    DayEntry entryCalculated = new DayEntry(type, datePredicted, dayofcycle);
+                    DayEntry entryCalculated = new DayEntry(type, datePredicted, dayofcycle, 1);
                     dayEntries.add(entryCalculated);
 
                     dayofcycle++;
@@ -650,17 +668,19 @@ class PeriodicalDatabase {
                 "data " +
                 "left outer join notes on data.eventdate=notes.eventdate " +
                 "left outer join symptoms on data.eventdate=symptoms.eventdate " +
-                "order by data.eventdate desc");
+                "order by data.eventdate");
         Cursor result = db.rawQuery(statement, null);
         DayEntry entry = null;
         String dbdate = "";
         List <Integer> symptoms = new ArrayList<Integer>();
+        int dayofcycle = 1;
 
         while (result.moveToNext()) {
             // New day?
             if(!dbdate.equals(result.getString(0))) {
                 // Store pending entry if it is not a total empty day
                 if(entry != null) {
+                    entry.dayofcycle = dayofcycle;
                     entry.symptoms = symptoms;
                     if(entry.type != DayEntry.EMPTY || !entry.notes.isEmpty() || entry.symptoms.size() > 0) {
                         dayEntries.add(entry);
@@ -689,6 +709,9 @@ class PeriodicalDatabase {
                 if(result.getInt(4) != 0) {
                     symptoms.add(result.getInt(4));
                 }
+
+                if(eventtype == DayEntry.PERIOD_START) dayofcycle = 1;
+                else dayofcycle++;
             } else {
                 symptoms.add(result.getInt(4));
             }
@@ -697,6 +720,7 @@ class PeriodicalDatabase {
 
         if(entry != null) {
             entry.symptoms = symptoms;
+            entry.dayofcycle = dayofcycle;
             if(entry.type != DayEntry.EMPTY || !entry.notes.isEmpty() || entry.symptoms.size() > 0) {
                 dayEntries.add(entry);
             }
@@ -796,13 +820,12 @@ class PeriodicalDatabase {
         GregorianCalendar date = new GregorianCalendar(year, month - 1, day);
 
         String statementNotes = String.format(
-                "select intensity, content from notes where eventdate = '%04d%02d%02d'",
+                "select content from notes where eventdate = '%04d%02d%02d'",
                 year, month, day);
         Cursor resultNotes = db.rawQuery(statementNotes, null);
 
         if (resultNotes.moveToNext()) {
-            entry.intensity = resultNotes.getInt(0);
-            entry.notes = resultNotes.getString(1);
+            entry.notes = resultNotes.getString(0);
         }
         resultNotes.close();
 
@@ -831,7 +854,7 @@ class PeriodicalDatabase {
     @SuppressLint("DefaultLocale")
     void addEntryDetails(DayEntry entry) {
         String statement;
-        String date = String.format(Locale.getDefault(), "%04d%02d%02d",
+        String datestring = String.format(Locale.getDefault(), "%04d%02d%02d",
                 entry.date.get(GregorianCalendar.YEAR),
                 entry.date.get(GregorianCalendar.MONTH) + 1,
                 entry.date.get(GregorianCalendar.DAY_OF_MONTH));
@@ -841,42 +864,41 @@ class PeriodicalDatabase {
         // Delete existing details, if any
         statement = String.format(
                 "delete from notes where eventdate = '%s'",
-                date);
+                datestring);
         db.execSQL(statement);
 
         statement = String.format(
                 "delete from symptoms where eventdate = '%s'",
-                date);
+                datestring);
         db.execSQL(statement);
 
         // If there is no calendar entry for this day yet, then add one first
         boolean addNew = false;
         statement = String.format(
                 "select eventtype from data where eventdate='%s'",
-                date);
+                datestring);
         Cursor result = db.rawQuery(statement, null);
         if (!result.moveToNext()) addNew = true;
         result.close();
         if(addNew) {
             statement = String.format(
-                    "insert into data (eventtype, eventdate) values (%d, '%s')",
-                    DayEntry.EMPTY,
-                    date);
+                    "insert into data (eventdate, eventtype) values ('%s', %d)",
+                    datestring,
+                    DayEntry.EMPTY);
             db.execSQL(statement);
         }
 
         // Store new details
         statement = String.format(
-                "insert into notes (eventdate, intensity, content) values ('%s', %d, ?)",
-                date,
-                entry.intensity);
+                "insert into notes (eventdate, content) values ('%s', ?)",
+                datestring);
         db.execSQL(statement, new String[]{ entry.notes });
 
         int count=0;
         while (count < entry.symptoms.size()) {
             statement = String.format(
                     "insert into symptoms (eventdate, symptom) values ('%s', %d)",
-                    date,
+                    datestring,
                     entry.symptoms.get(count));
             db.execSQL(statement);
             count++;
