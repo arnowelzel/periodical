@@ -176,7 +176,7 @@ class PeriodicalDatabase {
                             eventmonth - 1, eventday);
 
                     // Add default intensity for existing period
-                    int intensity = 4;
+                    int intensity = 2;
                     statement = format(
                             "update data set intensity=%d where eventdate='%s'",
                             intensity,
@@ -189,6 +189,9 @@ class PeriodicalDatabase {
                     // Add additional entries for each day of the period
                     if(eventtype == DayEntry.PERIOD_START) {
                         eventtype = DayEntry.PERIOD_CONFIRMED;
+
+                        // Start second day with higher intensity which will be reduced every day
+                        intensity = 4;
 
                         for(int day = 2; day <= periodlength; day++) {
                             eventdate.add(GregorianCalendar.DATE, 1);
@@ -365,7 +368,7 @@ class PeriodicalDatabase {
                         datestring);
                 db.execSQL(statement);
                 statement = format(
-                        "insert into data (eventdate, eventtype, intensity) values ('%s', %d, 4)",
+                        "insert into data (eventdate, eventtype, intensity) values ('%s', %d, 2)",
                         datestring,
                         type);
                 db.execSQL(statement);
@@ -394,7 +397,7 @@ class PeriodicalDatabase {
 
                 type = DayEntry.PERIOD_START;
                 dateLocal.setTime(date.getTime());
-                int intensity = 4;
+                int intensity = 2;
 
                 db.beginTransaction();
                 for(int day = 0; day < periodlength; day++) {
@@ -411,7 +414,12 @@ class PeriodicalDatabase {
                     db.execSQL(statement);
 
                     type = DayEntry.PERIOD_CONFIRMED;
-                    if(intensity > 1) intensity--;
+
+                    // Second day gets a higher intensity, the following ones decrease it every day
+                    if(day == 0) intensity = 4;
+                    else {
+                        if (intensity > 1) intensity--;
+                    }
                     dateLocal.add(GregorianCalendar.DATE, 1);
                 }
                 db.setTransactionSuccessful();
