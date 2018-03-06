@@ -1,3 +1,30 @@
+1.0
+
+Single days in a period can be added or removed individually.
+
+For every day you can enter period intensity, notes and events/symptoms.
+
+Calendar view will show intensity and day of cycle.
+
+List view will show intensity, notes and events/symptoms for every day of the period or
+if the day is outside a period, but contains notes or events/symptoms.
+
+0.34-0.35
+
+Added option to set maximum cycle length which will be used for the calculation.
+
+0.33
+
+Updated French translation
+
+0.32
+
+Added Japanese translation.
+
+0.31
+
+Integrated AppCompact.
+
 0.30
 
 Added option to change luteal phase length.
@@ -12,7 +39,7 @@ Fixed handling of backups in newer Android versions.
 
 0.24-0.27
 
-Added translations for Czech and Dutch (thanks to the Github user „Pander“) ergänzt.
+Added translations for Czech and Dutch (thanks to the Github user „Pander“).
 
 Adjusted color scheme to Material Design.
 
