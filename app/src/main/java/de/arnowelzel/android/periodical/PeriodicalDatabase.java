@@ -195,7 +195,6 @@ class PeriodicalDatabase {
 
                         for(int day = 2; day <= periodlength; day++) {
                             eventdate.add(GregorianCalendar.DATE, 1);
-                            if(intensity > 1) intensity--;
 
                             statement = format(
                                     "insert into data (eventdate, eventtype, intensity) values ('%s', %d, %d)",
@@ -206,6 +205,8 @@ class PeriodicalDatabase {
                                     eventtype,
                                     intensity);
                             db.execSQL(statement);
+
+                            if(intensity > 1) intensity--;
                         }
                     }
                 }
