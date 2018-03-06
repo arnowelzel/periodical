@@ -134,7 +134,15 @@ class DayEntryAdapter extends ArrayAdapter<PeriodicalDatabase.DayEntry> {
         view = (TextView) listItem.findViewById(R.id.item_intensity);
         if(currentEntry.type == PeriodicalDatabase.DayEntry.PERIOD_START ||
                 currentEntry.type == PeriodicalDatabase.DayEntry.PERIOD_CONFIRMED) {
-            view.setText(format("%d", currentEntry.intensity));
+            String intensity = "?";
+            switch(currentEntry.intensity)
+            {
+                case 1: intensity = resources.getString(R.string.label_details_intensity1);break;
+                case 2: intensity = resources.getString(R.string.label_details_intensity2);break;
+                case 3: intensity = resources.getString(R.string.label_details_intensity3);break;
+                case 4: intensity = resources.getString(R.string.label_details_intensity4);break;
+            }
+            view.setText(intensity);
         } else {
             view.setText("\u2014");
         }
