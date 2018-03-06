@@ -894,6 +894,12 @@ class PeriodicalDatabase {
 
         // Store new details
         statement = format(
+                "update data set intensity = %d where eventdate='%s'",
+                entry.intensity,
+                datestring);
+        db.execSQL(statement);
+
+        statement = format(
                 "insert into notes (eventdate, content) values ('%s', ?)",
                 datestring);
         db.execSQL(statement, new String[]{ entry.notes });
