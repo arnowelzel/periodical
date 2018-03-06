@@ -69,7 +69,7 @@
         <item>1</item>
     </string-array>
     <string name="pref_maximum_cycle_length">最大周期長</string>
-    <string name="invalid_maximum_cycle_length">最大周期長は少なくとも1でなければなりません！</string>
+    <string name="invalid_maximum_cycle_length">最大周期長は少なくとも60でなければなりません！</string>
     <string name="pref_direct_details">詳細に直接移動</string>
     <string name="summary_direct_details_off">周期の日を追加/削除、またはその日の詳細に移動します。</string>
     <string name="summary_direct_details_on">その日の詳細に直接移動します。</string>

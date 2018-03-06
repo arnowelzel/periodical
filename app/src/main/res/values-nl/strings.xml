@@ -66,7 +66,7 @@
         <item>1</item>
     </string-array>
     <string name="pref_maximum_cycle_length">Maximale cycluslengte</string>
-    <string name="invalid_maximum_cycle_length">De maximale cycluslengte moet minimaal 1 zijn!</string>
+    <string name="invalid_maximum_cycle_length">De maximale cycluslengte moet minimaal 60 zijn!</string>
     <string name="previous_month">Vorige maand</string>
     <string name="next_month">Volgende maand</string>
     <string name="label_average_cycle">gemiddelde cyclus</string>

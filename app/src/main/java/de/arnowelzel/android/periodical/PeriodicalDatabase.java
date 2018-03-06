@@ -505,6 +505,9 @@ class PeriodicalDatabase {
             maximumcyclelength = 183;
         }
 
+        // Just a safety measure: limit maximum cycle lengths to the allowed minimum value
+        if(maximumcyclelength < 60) maximumcyclelength = 60;
+
         // Clean up existing data
         dayEntries.removeAllElements();
 

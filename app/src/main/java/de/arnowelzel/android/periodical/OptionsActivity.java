@@ -108,7 +108,7 @@ public class OptionsActivity extends AppCompatPreferenceActivity implements Shar
                         value = 0;
                     }
 
-                    if (value < 1) {
+                    if (value < 60) {
                         Toast.makeText(context,
                                 getResources().getString(R.string.invalid_maximum_cycle_length),
                                 Toast.LENGTH_SHORT).show();
