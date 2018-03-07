@@ -40,7 +40,7 @@
     <string name="restore_cancel">Annuleer</string>
     <string name="restore_finished">Herstel is klaar</string>
     <string name="restore_failed">Herstel faalde!</string>
-    <string name="permissions_needed">Voor het maken of herstellen van back-ups, Periodical moet toestemming om toegang te krijgen tot de opslag van bestanden.</string>
+    <string name="permissions_needed">Voor back-up en terug zetten van gegevens moet Periodical permissie hebben het bestandsopslag te gebruiken.</string>
     <string name="permissions_needed_ok">Ja</string>
     <string name="event_periodstart">Menstruatie is begonnen</string>
     <string name="event_periodlength">Laatste cyclus duurde %s dagen</string>
@@ -84,8 +84,6 @@
     <string name="calendaraction_removeperiod">Deze periode verwijderen?</string>
     <string name="calendaraction_details">Details bewerken</string>
     <string name="pref_direct_details">Ga direct naar de details</string>
-    <string name="summary_direct_details_off">Voeg/verwijder een dag toe aan de periode of ga naar de details voor die dag.</string>
-    <string name="summary_direct_details_on">Ga direct naar de details voor die dag.</string>
     <string name="pref_show_cycle">Toon de dag van de cyclus</string>
     <string name="label_details_period">Periode</string>
     <string name="label_details_yes">Ja</string>
@@ -99,12 +97,12 @@
     <string name="label_details_events">Events/Symptomen</string>
     <string name="label_details_ev1">Gemeenschap</string>
     <string name="label_details_ev2">Krampen</string>
-    <string name="label_details_ev3">Blozen</string>
-    <string name="label_details_ev4">Middenpijn over</string>
-    <string name="label_details_ev5">Middenpijn goed</string>
+    <string name="label_details_ev3">Rugpijn</string>
+    <string name="label_details_ev4">Mittelschmerz links</string>
+    <string name="label_details_ev5">Mittelschmerz rechts</string>
     <string name="label_details_ev6">Borstpijn/slepende pijn</string>
-    <string name="label_details_ev7">Lijster/candida</string>
-    <string name="label_details_ev8">Ontsla</string>
+    <string name="label_details_ev7">Vaginale candidainfectie</string>
+    <string name="label_details_ev8">Afscheiding</string>
     <string name="label_details_ev9">Intens bloeden</string>
     <string name="label_details_ev10">Temperatuurschommelingen</string>
     <string name="label_details_ev11">Puistjes</string>

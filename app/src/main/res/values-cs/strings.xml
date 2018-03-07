@@ -84,8 +84,6 @@
     <string name="calendaraction_removeperiod">Odstranit toto období?</string>
     <string name="calendaraction_details">Upravit detaily</string>
     <string name="pref_direct_details">Přejděte přímo na detaily</string>
-    <string name="summary_direct_details_off">Přidejte/odstraňte den do období nebo přejděte na podrobnosti daného dne.</string>
-    <string name="summary_direct_details_on">Přejděte přímo na údaje o daném dni.</string>
     <string name="pref_show_cycle">Zobrazit den cyklu</string>
     <string name="label_details_period">Doba</string>
     <string name="label_details_yes">Ano</string>

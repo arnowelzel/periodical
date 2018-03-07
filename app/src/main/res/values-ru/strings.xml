@@ -84,8 +84,6 @@
     <string name="calendaraction_removeperiod">Удалить этот период?</string>
     <string name="calendaraction_details">Редактировать сведения</string>
     <string name="pref_direct_details">Перейти к сведениям</string>
-    <string name="summary_direct_details_off">Добавить/удалить день периода или перейти к сведениям за этот день.</string>
-    <string name="summary_direct_details_on">Перейти к сведениям за этот день.</string>
     <string name="pref_show_cycle">Показать день цикла</string>
     <string name="label_details_period">Период</string>
     <string name="label_details_yes">Да</string>

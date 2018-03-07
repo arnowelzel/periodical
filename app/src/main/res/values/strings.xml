@@ -71,8 +71,6 @@
     <string name="pref_maximum_cycle_length">Maximum cycle length</string>
     <string name="invalid_maximum_cycle_length">The maximum cycle length must be at least 60!</string>
     <string name="pref_direct_details">Go directly to the details</string>
-    <string name="summary_direct_details_off">Add/remove a day to the period or go to the details for that day.</string>
-    <string name="summary_direct_details_on">Go directly to the details for that day.</string>
     <string name="pref_show_cycle">Show day of cycle</string>
     <string name="previous_month">Previous month</string>
     <string name="next_month">Next month</string>

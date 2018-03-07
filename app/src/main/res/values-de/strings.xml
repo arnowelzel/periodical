@@ -71,8 +71,6 @@
     <string name="pref_maximum_cycle_length">Maximale Zykluslänge</string>
     <string name="invalid_maximum_cycle_length">Die maximale Zykluslänge muss mindestens 60 sein!</string>
     <string name="pref_direct_details">Direkt zu den Details gehen</string>
-    <string name="summary_direct_details_off">Einen Tag zur Periode hinzügen/entfernen oder zu den Details für diesen Tag gehen.</string>
-    <string name="summary_direct_details_on">Direkt zu den Details für diesen Tag gehen.</string>
     <string name="pref_show_cycle">Tag des Zyklus anzeigen</string>
     <string name="previous_month">Vorheriger Monat</string>
     <string name="next_month">Nächster Monat</string>

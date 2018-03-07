@@ -24,9 +24,7 @@
     <CheckBoxPreference
         android:title="@string/pref_direct_details"
         android:defaultValue="false"
-        android:key="direct_details"
-        android:summaryOff="@string/summary_direct_details_off"
-        android:summaryOn="@string/summary_direct_details_on" />
+        android:key="direct_details" />
     <CheckBoxPreference
         android:title="@string/pref_show_cycle"
         android:defaultValue="true"

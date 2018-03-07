@@ -84,8 +84,6 @@
     <string name="calendaraction_removeperiod">Supprimer cette période?</string>
     <string name="calendaraction_details">Modifier les détails</string>
     <string name="pref_direct_details">Aller directement aux détails</string>
-    <string name="summary_direct_details_off">Ajouter/supprimer un jour à la période ou aller aux détails de ce jour.</string>
-    <string name="summary_direct_details_on">Aller directement aux détails de ce jour.</string>
     <string name="pref_show_cycle">Afficher le jour du cycle</string>
     <string name="label_details_period">Période</string>
     <string name="label_details_yes">Oui</string>
