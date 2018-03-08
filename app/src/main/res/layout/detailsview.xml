@@ -24,8 +24,7 @@
             android:layout_marginLeft="16dp"
             android:layout_marginRight="16dp"
             android:layout_marginTop="16dp"
-            android:text=""
-            android:textSize="24sp" />
+            android:textSize="22sp" />
 
         <!-- Period yes/no -->
 
@@ -143,7 +142,7 @@
             android:layout_marginRight="12dp"
             android:nextFocusLeft="@+id/periodIntensity4"
             android:nextFocusUp="@+id/periodIntensity4"
-            android:text=""
+            android:textSize="18sp"
             />
 
         <!-- Events -->
