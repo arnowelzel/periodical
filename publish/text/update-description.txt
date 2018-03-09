@@ -1,0 +1,95 @@
+<en-US>
+Individual period length.
+
+Period intensity for every day.
+
+Notes and symptoms for every day.
+
+Calendar display with intensity and day of cycle.
+
+List view with intensity, notes and symptoms.
+</en-US>
+
+<cs-CZ>
+Individuální délka období.
+
+Intenzita období pro každý den.
+
+Poznámky a příznaky pro každý den.
+
+Zobrazení kalendáře s intenzitou a dnem cyklu.
+
+Zobrazte seznam s intenzitou, poznámkami a příznaky.
+</cs-CZ>
+
+<de-DE>
+Individuelle Periodenlänge
+
+Periodenintensität für jeden Tag.
+
+Hinweise und Symptome für jeden Tag.
+
+Kalenderanzeige mit Intensität und Tag des Zyklus.
+
+Listenansicht mit Intensität, Notizen und Symptomen.
+</de-DE>
+
+<es-ES>
+Longitud del período individual
+
+Periodo de intensidad para todos los días.
+
+Notas y síntomas para todos los días.
+
+Visualización del calendario con intensidad y día del ciclo.
+
+Vista de lista con intensidad, notas y síntomas.
+</es-ES>
+
+<fr-FR>
+Durée de la période individuelle
+
+Intensité de la période pour chaque jour.
+
+Notes et symptômes pour tous les jours.
+
+Affichage du calendrier avec intensité et jour du cycle.
+
+Vue de liste avec intensité, notes et symptômes.
+</fr-FR>
+
+<it-IT>
+Durata del periodo individuale.
+
+Intensità del periodo per ogni giorno.
+
+Note e sintomi per ogni giorno.
+
+Visualizzazione del calendario con intensità e giorno del ciclo.
+
+Visualizzazione elenco con intensità, note e sintomi.
+</it-IT>
+
+<nl-NL>
+Individuele periode lengte.
+
+Periode-intensiteit voor elke dag.
+
+Aantekeningen en symptomen voor elke dag.
+
+Kalenderweergave met intensiteit en dag van de cyclus.
+
+Lijstweergave met intensiteit, opmerkingen en symptomen.
+</nl-NL>
+
+<ru-RU>
+Индивидуальная длина периода.
+
+Интенсивность периода для каждого дня.
+
+Примечания и симптомы на каждый день.
+
+Отображение календаря с интенсивностью и днем цикла.
+
+Просмотр списка с интенсивностью, примечаниями и симптомами.
+</ru-RU>
