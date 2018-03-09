@@ -163,7 +163,21 @@ class PeriodicalDatabase {
                     periodlength = 4;
                 }
 
-                String statement = "select eventtype, eventdate from data order by eventdate desc";
+                String statement;
+
+                // Workaround for a bug introduced in release 0.35 which stored the
+                // maximum cycle as "period length", so it is not usable at all :-(
+                String option = "maximum_cycle_length";
+                SharedPreferences.Editor editor = preferences.edit();
+                editor.putInt(option, 183);
+                editor.apply();
+                statement = "delete from options where name = ?";
+                db.execSQL(statement, new String[]{option});
+                statement = "insert into options (name, value) values (?, ?)";
+                db.execSQL(statement, new String[]{option, "183"});
+
+                // Fill database with additional entries for the period days
+                statement = "select eventtype, eventdate from data order by eventdate desc";
                 Cursor result = db.rawQuery(statement, null);
                 while (result.moveToNext()) {
                     int eventtype = result.getInt(0);
