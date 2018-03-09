@@ -141,6 +141,7 @@ class PeriodicalDatabase {
                         ");");
 
                 // We don't need a primary ID column any longer but add intensity as property
+                db.execSQL("alter table data add column intensity integer(3)");
                 db.execSQL("alter table data rename to data_old;");
                 db.execSQL("create table data (" +
                         "eventtype integer(3), " +
@@ -159,7 +160,7 @@ class PeriodicalDatabase {
                 int periodlength;
                 try {
                     periodlength = Integer.parseInt(preferences.getString("period_length", "4"));
-                } catch (NumberFormatException e) {
+                } catch (Exception e) {
                     periodlength = 4;
                 }
 
@@ -406,7 +407,7 @@ class PeriodicalDatabase {
                 SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
                 try {
                     periodlength = Integer.parseInt(preferences.getString("period_length", "4"));
-                } catch (NumberFormatException e) {
+                } catch (Exception e) {
                     periodlength = 4;
                 }
 
@@ -506,17 +507,17 @@ class PeriodicalDatabase {
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
         try {
             periodlength = Integer.parseInt(preferences.getString("period_length", "4"));
-        } catch (NumberFormatException e) {
+        } catch (Exception e) {
             periodlength = 4;
         }
         try {
             luteallength = Integer.parseInt(preferences.getString("luteal_length", "14"));
-        } catch (NumberFormatException e) {
+        } catch (Exception e) {
             luteallength = 14;
         }
         try {
             maximumcyclelength = Integer.parseInt(preferences.getString("maximum_cycle_length", "183"));
-        } catch (NumberFormatException e) {
+        } catch (Exception e) {
             maximumcyclelength = 183;
         }
 
@@ -541,7 +542,7 @@ class PeriodicalDatabase {
                 format("select eventdate, eventtype, intensity from data " +
                                 "where " +
                                 "eventtype = %d or eventtype = %d order by eventdate",
-                                DayEntry.PERIOD_START, DayEntry.PERIOD_CONFIRMED),
+                        DayEntry.PERIOD_START, DayEntry.PERIOD_CONFIRMED),
                 null);
         while (result.moveToNext()) {
             String dbdate = result.getString(0);
