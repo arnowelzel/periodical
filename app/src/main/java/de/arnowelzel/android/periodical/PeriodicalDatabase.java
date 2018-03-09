@@ -1098,7 +1098,7 @@ class PeriodicalDatabase {
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
         setOption("period_length", preferences.getString("period_length", "4"));
         setOption("startofweek", preferences.getString("startofweek", "0"));
-        setOption("maximum_cycle_length", preferences.getString("period_length", "183"));
+        setOption("maximum_cycle_length", preferences.getString("maximum_cycle_length", "183"));
         setOption("direct_details", preferences.getBoolean("pref_direct_details", false));
         setOption("show_cycle", preferences.getBoolean("show_cycle", true));
     }
