@@ -605,6 +605,7 @@ class PeriodicalDatabase {
                         datePrevious.setTime(entryPrevious.date.getTime());
                         for (int day = dayofcycle; day < length; day++) {
                             datePrevious.add(GregorianCalendar.DATE, 1);
+                            dayofcycle++;
 
                             int type;
 
@@ -622,7 +623,6 @@ class PeriodicalDatabase {
 
                             DayEntry entryCalculated = new DayEntry(type, datePrevious, dayofcycle, 1);
                             dayEntries.add(entryCalculated);
-                            dayofcycle++;
                         }
                     }
 
