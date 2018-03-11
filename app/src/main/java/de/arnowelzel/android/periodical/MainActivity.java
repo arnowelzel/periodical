@@ -27,10 +27,8 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
@@ -288,9 +286,10 @@ public class MainActivity extends AppCompatActivity {
             calendarCells = calButtonIds_2;
         }
         
+        PreferenceUtils preferences = new PreferenceUtils(context);
+
         // Set weekday labels depending on selected start of week
-        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
-        int startofweek = Integer.parseInt(preferences.getString("startofweek", "0"));
+        int startofweek = preferences.getInt("startofweek", 0);
         if(startofweek == 0) {
             findViewById(R.id.rowcaldays0).setVisibility(View.VISIBLE);
             findViewById(R.id.rowcaldays0_2).setVisibility(View.VISIBLE);
@@ -303,6 +302,7 @@ public class MainActivity extends AppCompatActivity {
             findViewById(R.id.rowcaldays1_2).setVisibility(View.VISIBLE);
         }
 
+        // Show day of cycle?
         boolean show_cycle = preferences.getBoolean("show_cycle", true);
 
         // Create calendar object for current month
@@ -637,7 +637,8 @@ public class MainActivity extends AppCompatActivity {
         final int day = nButtonClicked - firstDayOfWeek + 2;
 
         // If "direct details" is set by the user, just open the details
-        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
+        PreferenceUtils preferences = new PreferenceUtils(context);
+
         if(preferences.getBoolean("direct_details", false)) {
             showDetailsActivity(yearCurrent, monthCurrent, day);
         } else {

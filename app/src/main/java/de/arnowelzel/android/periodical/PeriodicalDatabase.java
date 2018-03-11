@@ -156,13 +156,9 @@ class PeriodicalDatabase {
 
                 // Create records for existing confirmed period entries
                 // based on the global period length setting
-                SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
+                PreferenceUtils preferences = new PreferenceUtils(context);
                 int periodlength;
-                try {
-                    periodlength = Integer.parseInt(preferences.getString("period_length", "4"));
-                } catch (Exception e) {
-                    periodlength = 4;
-                }
+                periodlength = preferences.getInt("period_length", 4);
 
                 String statement;
 
@@ -404,12 +400,8 @@ class PeriodicalDatabase {
                 // This day is a regular new period
                 int periodlength;
 
-                SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
-                try {
-                    periodlength = Integer.parseInt(preferences.getString("period_length", "4"));
-                } catch (Exception e) {
-                    periodlength = 4;
-                }
+                PreferenceUtils preferences = new PreferenceUtils(context);
+                periodlength = preferences.getInt("period_length", 4);
 
                 type = DayEntry.PERIOD_START;
                 dateLocal.setTime(date.getTime());
@@ -504,22 +496,10 @@ class PeriodicalDatabase {
         int dayofcycle = 1;
 
         // Get default values from preferences
-        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
-        try {
-            periodlength = Integer.parseInt(preferences.getString("period_length", "4"));
-        } catch (Exception e) {
-            periodlength = 4;
-        }
-        try {
-            luteallength = Integer.parseInt(preferences.getString("luteal_length", "14"));
-        } catch (Exception e) {
-            luteallength = 14;
-        }
-        try {
-            maximumcyclelength = Integer.parseInt(preferences.getString("maximum_cycle_length", "183"));
-        } catch (Exception e) {
-            maximumcyclelength = 183;
-        }
+        PreferenceUtils preferences = new PreferenceUtils(context);
+        periodlength = preferences.getInt("period_length", 4);
+        luteallength = preferences.getInt("luteal_length", 14);
+        maximumcyclelength = preferences.getInt("maximum_cycle_length", 183);
 
         // Just a safety measure: limit maximum cycle lengths to the allowed minimum value
         if(maximumcyclelength < 60) maximumcyclelength = 60;
@@ -1110,7 +1090,7 @@ class PeriodicalDatabase {
      * <br><br><i>(Just a hack for now - in the future we might want to get rid of shared preferences)</i>
      */
     void savePreferences() {
-        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
+        PreferenceUtils preferences = new PreferenceUtils(context);
         setOption("period_length", preferences.getString("period_length", "4"));
         setOption("startofweek", preferences.getString("startofweek", "0"));
         setOption("maximum_cycle_length", preferences.getString("maximum_cycle_length", "183"));
@@ -1129,8 +1109,8 @@ class PeriodicalDatabase {
         String maximum_cycle_length = getOption("maximum_cycle_length", "183");
         boolean direct_details = getOption("direct_details", false);
         boolean show_cycle = getOption("show_cycle", true);
-                
-        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
+
+        PreferenceUtils preferences = new PreferenceUtils(context);
         SharedPreferences.Editor editor = preferences.edit();
         editor.putString("period_length", period_length);
         editor.putString("startofweek", startofweek);
