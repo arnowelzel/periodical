@@ -114,6 +114,9 @@ public class MainActivity extends AppCompatActivity {
 
         dbMain = new PeriodicalDatabase(context);
 
+        // Restore peferences from database to make sure, we got the correct datatypes
+        dbMain.restorePreferences();
+
         // Set gesture handling
         gestureDetector = new GestureDetector(context, new CalendarGestureDetector());
         @SuppressWarnings("unused")

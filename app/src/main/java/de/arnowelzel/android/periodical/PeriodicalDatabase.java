@@ -119,7 +119,9 @@ class PeriodicalDatabase {
                 db.execSQL("alter table data add column eventtemp real");
                 db.setTransactionSuccessful();
                 db.endTransaction();
-            } else if (oldVersion < 3 && newVersion >= 3) {
+            }
+
+            if (oldVersion < 3 && newVersion >= 3) {
                 // Version 3 introduces options
                 db.beginTransaction();
                 db.execSQL("create table options (" +
@@ -128,7 +130,9 @@ class PeriodicalDatabase {
                         ");");
                 db.setTransactionSuccessful();
                 db.endTransaction();
-            } else if (oldVersion < 4 && newVersion >= 4) {
+            }
+
+            if (oldVersion < 4 && newVersion >= 4) {
                 // Version 4 introduces details and stores periods in a different way
                 db.beginTransaction();
                 db.execSQL("create table notes (" +
@@ -939,6 +943,19 @@ class PeriodicalDatabase {
         return value;
     }
 
+    private int getOption(String name, int defaultvalue) {
+        int value = defaultvalue;
+
+        String statement = "select value from options where name = ?";
+        Cursor result = db.rawQuery(statement, new String[]{name});
+        if (result.moveToNext()) {
+            value = result.getInt(0);
+        }
+        result.close();
+
+        return value;
+    }
+
     private boolean getOption(String name, boolean defaultvalue) {
         boolean value = defaultvalue;
 
@@ -973,6 +990,25 @@ class PeriodicalDatabase {
         // Save option
         statement = "insert into options (name, value) values (?, ?)";
         db.execSQL(statement, new String[]{name, value});
+
+        db.setTransactionSuccessful();
+        db.endTransaction();
+    }
+
+    private void setOption(String name, Integer value) {
+        String statement;
+        String valueStr;
+
+        db.beginTransaction();
+
+        // Delete existing value
+        statement = "delete from options where name = ?";
+        db.execSQL(statement, new String[]{name});
+
+        // Save option
+        valueStr = value.toString();
+        statement = "insert into options (name, value) values (?, ?)";
+        db.execSQL(statement, new String[]{name, valueStr});
 
         db.setTransactionSuccessful();
         db.endTransaction();
@@ -1091,9 +1127,9 @@ class PeriodicalDatabase {
      */
     void savePreferences() {
         PreferenceUtils preferences = new PreferenceUtils(context);
-        setOption("period_length", preferences.getString("period_length", "4"));
-        setOption("startofweek", preferences.getString("startofweek", "0"));
-        setOption("maximum_cycle_length", preferences.getString("maximum_cycle_length", "183"));
+        setOption("period_length", preferences.getInt("period_length", 4));
+        setOption("startofweek", preferences.getInt("startofweek", 0));
+        setOption("maximum_cycle_length", preferences.getInt("maximum_cycle_length", 183));
         setOption("direct_details", preferences.getBoolean("pref_direct_details", false));
         setOption("show_cycle", preferences.getBoolean("show_cycle", true));
     }
@@ -1104,19 +1140,30 @@ class PeriodicalDatabase {
      * <br><br><i>(Just a hack for now - in the future we might want to get rid of shared preferences)</i>
      */
     void restorePreferences() {
-        String period_length = getOption("period_length", "4");
-        String startofweek = getOption("startofweek", "0");
-        String maximum_cycle_length = getOption("maximum_cycle_length", "183");
+        Integer period_length = getOption("period_length", 4);
+        Integer startofweek = getOption("startofweek", 0);
+        if(startofweek != 0 && startofweek != 1) startofweek = 0;
+        Integer maximum_cycle_length = getOption("maximum_cycle_length", 183);
         boolean direct_details = getOption("direct_details", false);
         boolean show_cycle = getOption("show_cycle", true);
 
         PreferenceUtils preferences = new PreferenceUtils(context);
         SharedPreferences.Editor editor = preferences.edit();
-        editor.putString("period_length", period_length);
-        editor.putString("startofweek", startofweek);
-        editor.putString("maximum_cycle_length", maximum_cycle_length);
+
+        // Make sure, there are no existing values which may cause problems
+        editor.remove("period_length");
+        editor.remove("startofweek");
+        editor.remove("maximum_cycle_length");
+        editor.remove("direct_details");
+        editor.remove("show_cycle");
+
+        // Store values
+        editor.putString("period_length", period_length.toString());
+        editor.putString("startofweek", startofweek.toString());
+        editor.putString("maximum_cycle_length", maximum_cycle_length.toString());
         editor.putBoolean("direct_details", direct_details);
         editor.putBoolean("show_cycle", show_cycle);
+
         editor.apply();
     }
 }

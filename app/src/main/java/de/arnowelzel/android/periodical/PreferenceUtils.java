@@ -55,13 +55,13 @@ public class PreferenceUtils {
      * @return
      * The preference
      */
-    public int getInt(String key, int defValue) {
+    public int getInt(String key, Integer defValue) {
         int result = defValue;
 
         try {
-            result = preferences.getInt("period_length", defValue);
+            result = Integer.parseInt(preferences.getString(key, defValue.toString()));
         } catch (ClassCastException e) {
-            result = defValue;
+        } catch (NumberFormatException e) {
         }
 
         return result;
@@ -83,7 +83,7 @@ public class PreferenceUtils {
         String result = defValue;
 
         try {
-            result = preferences.getString("period_length", defValue);
+            result = preferences.getString(key, defValue);
         } catch (ClassCastException e) {
             result = defValue;
         }
@@ -107,7 +107,7 @@ public class PreferenceUtils {
         boolean result = defValue;
 
         try {
-            result = preferences.getBoolean("period_length", defValue);
+            result = preferences.getBoolean(key, defValue);
         } catch (ClassCastException e) {
             result = defValue;
         }
