@@ -1,4 +1,4 @@
-This application calculates the fertile days according to Knaus-Ogino.
+This application calculates the fertile days according to Knaus-Ogino and can track menstrual symptoms.
 
 WARNING: It is not recommended to use this calendar to avoid pregnancy! There are more accurate methods, like measuring the basal body temperature.
 

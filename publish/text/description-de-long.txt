@@ -1,4 +1,4 @@
-Diese Applikation berechnet die fruchtbaren Tage nach Knaus-Ogino.
+Diese Applikation berechnet die fruchtbaren Tage nach Knaus-Ogino und kann die Symptome der Periode aufzeichnen.
 
 WARNUNG: Es wird nicht empfohlen, diesen Kalender zur Empfängnisverhütung einzusetzen! Es gibt genauere Methoden, wie die Messung der Basaltemperatur.
 
