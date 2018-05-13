@@ -1,0 +1,1 @@
+Este aplicativo calcula os dias férteis de acordo com o sistema Knaus-Ogino.

@@ -1,0 +1,11 @@
+Este aplicativo calcula os dias férteis de acordo com o sistema de Knaus-Ogino.
+
+AVISO: Não é recomendado o uso deste calendário para evitar gravidez! Existem métodos mais precisos, como medição da temperatura basal.
+
+Os dados podem ser guardados em um cartão de memória ou na memória "interna", se disponível.
+
+Se você tem dúvidas ou deseja ajudar com a tradução para outros idiomas, por favor mande-me um email - obrigado.
+
+Este programa é software livre: você pode redistribuí-lo ou modificá-lo sob os termos da GNU General Public License como publicado pela Free Software Foundation, da versão 3 da licença ou mais atual (à sua escolha).
+
+O código fonte pode ser obtido no meu website.
