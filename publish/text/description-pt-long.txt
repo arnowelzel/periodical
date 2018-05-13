@@ -1,4 +1,4 @@
-Este aplicativo calcula osdias férteis de acordo com o sistema de Knaus-Ogino.
+Este aplicativo calcula os dias férteis de acordo com o sistema de Knaus-Ogino.
 
 AVISO: Não é recomendado o uso deste calendário para evitar gravidez! Existem métodos mais precisos, como medição da temperatura basal.
 
