@@ -2,7 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$USER_HOME$/Documents/ElectronicsAndElectrical/Computer/ProgramAndWebDev/android-dev/AndroidStudio/Projects/periodical/app/app.iml" filepath="$USER_HOME$/Documents/ElectronicsAndElectrical/Computer/ProgramAndWebDev/android-dev/AndroidStudio/Projects/periodical/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/periodical.iml" filepath="$PROJECT_DIR$/.idea/periodical.iml" />
       <module fileurl="file://$PROJECT_DIR$/source.iml" filepath="$PROJECT_DIR$/source.iml" />
     </modules>
   </component>
