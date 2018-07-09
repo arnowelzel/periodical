@@ -1,0 +1,11 @@
+Hierdie program bereken die dae van vrugbaarheid volgens Knaus-Ogino en kan rekord hou van menstruele simptome.
+
+WAARSKUWING: Dit word nie voorgestel om hierdie program te gebruik om verwagting te vermy nie! Daar is beter metodes, soos om basale temperatuur te meet.
+
+Jou inligting kan ge-backup word na 'n memory kaart of interne memory as daar beskikbaar is.
+
+As jy vrae het of hulp nodig het kontak my gerus per epos - dankie.
+
+Hierdie program is gratis sagteware: jy mag dit publiseer en dit wysig onder die voorwaardes van die GNU General Public License soos dit gepubliseer deur die Free Software Foundation, of weergawe 3 van hierdie lisensie of ( as jy wil ) enige later weergawe.
+
+Die oorsprong kode is op my webtuiste beskikbaar.

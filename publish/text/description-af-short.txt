@@ -1,0 +1,1 @@
+Hierdie program bereken die dae van vrugbaarheid volgens Knaus-Ogino en kan record hou van menstruele simptome.
