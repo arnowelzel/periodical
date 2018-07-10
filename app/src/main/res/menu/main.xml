@@ -1,52 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
     <item
         android:id="@+id/current"
-        android:icon="@android:drawable/ic_menu_today"
+        android:icon="@drawable/ic_event_black_24dp"
         android:title="@string/menuitem_current"
-        app:showAsAction="ifRoom|withText"
-    />
+        />
     <item
         android:id="@+id/list"
-        android:icon="@drawable/ic_menu_database"
+        android:icon="@drawable/ic_list_black_24dp"
         android:title="@string/menuitem_list"
-        app:showAsAction="ifRoom|withText"
-    />
+        />
     <item
         android:id="@+id/help"
-        android:icon="@android:drawable/ic_menu_help"
+        android:icon="@drawable/ic_help_outline_black_24dp"
         android:title="@string/menuitem_help"
-        app:showAsAction="ifRoom|withText"
-    />
+        />
     <item
         android:id="@+id/copy"
-        android:icon="@android:drawable/ic_menu_save"
+        android:icon="@drawable/ic_save_black_24dp"
         android:title="@string/menuitem_copy"
-        app:showAsAction="ifRoom|withText"
-    />
+        />
     <item
         android:id="@+id/restore"
-        android:icon="@android:drawable/ic_menu_revert"
+        android:icon="@drawable/ic_settings_backup_restore_black_24dp"
         android:title="@string/menuitem_restore"
-        app:showAsAction="ifRoom|withText"
-    />
+        />
     <item
-            android:id="@+id/options"
-            android:icon="@android:drawable/ic_menu_preferences"
-            android:title="@string/menuitem_options"
-            app:showAsAction="ifRoom|withText"
-            />
+        android:id="@+id/options"
+        android:icon="@drawable/ic_settings_black_24dp"
+        android:title="@string/menuitem_options"
+        />
     <item
         android:id="@+id/about"
-        android:icon="@android:drawable/ic_menu_info_details"
+        android:icon="@drawable/ic_info_outline_black_24dp"
         android:title="@string/menuitem_about"
-        app:showAsAction="ifRoom|withText"
-    />
+        />
     <item
         android:id="@+id/exit"
-        android:icon="@android:drawable/ic_menu_close_clear_cancel"
+        android:icon="@drawable/ic_close_black_24dp"
         android:title="@string/menuitem_exit"
-        app:showAsAction="ifRoom|withText"
-    />
+        />
 </menu>

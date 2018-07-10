@@ -68,9 +68,8 @@ public class DetailsActivity extends AppCompatActivity implements View.OnClickLi
         // Set up view
         setContentView(R.layout.detailsview);
 
-        // Activate "back button" in Action Bar if possible
+        // Activate "back button" in Action Bar
         ActionBar actionBar = getSupportActionBar();
-        assert actionBar != null;
         actionBar.setDisplayHomeAsUpEnabled(true);
 
         // Get details

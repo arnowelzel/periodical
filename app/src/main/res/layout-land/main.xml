@@ -1,4 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context=".MainActivity"
+    tools:showIn="@layout/app_bar_main">
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mainview"
@@ -1158,7 +1166,7 @@
 
     <RelativeLayout
         android:id="@+id/monthselector"
-        android:layout_width="fill_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:gravity="end"
@@ -1166,26 +1174,30 @@
 
         <LinearLayout
             android:id="@+id/monthbuttons"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content">
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true">
 
             <Button
                 android:id="@+id/buttonprev"
-                android:layout_width="fill_parent"
+                android:layout_width="60dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:textSize="18sp"
+                android:layout_centerHorizontal="true"
+                android:layout_alignParentTop="true"
+                android:contentDescription="@string/previous_month"
                 android:onClick="goPrev"
-                android:text="@string/main_button_prev" />
+                android:gravity="center"
+                android:drawableLeft="@drawable/ic_arrow_back_black_32dp" />
 
             <Button
                 android:id="@+id/buttonnext"
-                android:layout_width="fill_parent"
+                android:layout_width="60dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:textSize="18sp"
+                android:layout_centerHorizontal="true"
+                android:layout_alignParentTop="true"
+                android:contentDescription="@string/next_month"
                 android:onClick="goNext"
-                android:text="@string/main_button_next" />
+                android:drawableLeft="@drawable/ic_arrow_forward_black_32dp" />
         </LinearLayout>
 
         <TextView
@@ -1200,3 +1212,4 @@
             android:textSize="18sp"/>
     </RelativeLayout>
 </LinearLayout>
+</android.support.constraint.ConstraintLayout>

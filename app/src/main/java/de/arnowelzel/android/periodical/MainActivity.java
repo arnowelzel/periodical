@@ -30,13 +30,16 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.design.widget.NavigationView;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
+import android.support.v4.view.GravityCompat;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.GestureDetector;
 import android.view.GestureDetector.SimpleOnGestureListener;
-import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
@@ -54,7 +57,8 @@ import static de.arnowelzel.android.periodical.PeriodicalDatabase.DayEntry.PERIO
 /**
  * The main activity of the app
  */
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity
+        implements NavigationView.OnNavigationItemSelectedListener {
     private final int[] calButtonIds = { R.id.cal01, R.id.cal02, R.id.cal03,
             R.id.cal04, R.id.cal05, R.id.cal06, R.id.cal07, R.id.cal08,
             R.id.cal09, R.id.cal10, R.id.cal11, R.id.cal12, R.id.cal13,
@@ -100,6 +104,9 @@ public class MainActivity extends AppCompatActivity {
     private static final int ABOUT_CLOSED = 4;    // About: closed
     private static final int DETAILS_CLOSED = 5;  // Details: closed
 
+    /* Status of the main navigartion drawer */
+    private boolean navigationDrawerActive = false;
+
     /**
      * Called when activity starts
      */
@@ -110,14 +117,47 @@ public class MainActivity extends AppCompatActivity {
         final Context context = getApplicationContext();
         assert context != null;
 
-        setContentView(R.layout.main);
+        // setContentView(R.layout.main);
 
-        dbMain = new PeriodicalDatabase(context);
+        // Setup main view with navigation drawer
+        setContentView(R.layout.activity_main);
 
-        // Restore peferences from database to make sure, we got the correct datatypes
-        dbMain.restorePreferences();
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
 
-        // Set gesture handling
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
+                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        drawer.addDrawerListener(toggle);
+        toggle.syncState();
+
+        // Listener to detect when the navigation drawer is opening, so we
+        // avoid the main view to handle the swipe of the navigation drawer
+        drawer.addDrawerListener(new DrawerLayout.DrawerListener() {
+                 @Override
+                 public void onDrawerSlide(View drawerView, float slideOffset) {
+                     navigationDrawerActive = true;
+                 }
+
+                 @Override
+                 public void onDrawerOpened(View drawerView) {
+                     navigationDrawerActive = true;
+                 }
+
+                 @Override
+                 public void onDrawerClosed(View drawerView) {
+                     navigationDrawerActive = false;
+                 }
+
+                 @Override
+                 public void onDrawerStateChanged(int newState) {
+                 }
+             });
+
+        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        navigationView.setNavigationItemSelectedListener(this);
+
+        // Setup gesture handling
         gestureDetector = new GestureDetector(context, new CalendarGestureDetector());
         @SuppressWarnings("unused")
         View.OnTouchListener gestureListener = new View.OnTouchListener() {
@@ -136,6 +176,12 @@ public class MainActivity extends AppCompatActivity {
                 return true;
             }
         };
+
+        // Setup database
+        dbMain = new PeriodicalDatabase(context);
+
+        // Restore preferences from database to make sure, we got the correct datatypes
+        dbMain.restorePreferences();
 
         // If savedInstanceState exists, restore the last
         // instance state, otherwise use current month as start value
@@ -186,22 +232,84 @@ public class MainActivity extends AppCompatActivity {
             dbMain.close();
     }
 
+
+    /**
+     * Close draw when pressing "back"
+     */
+    @Override
+    public void onBackPressed() {
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        if (drawer.isDrawerOpen(GravityCompat.START)) {
+            drawer.closeDrawer(GravityCompat.START);
+        } else {
+            super.onBackPressed();
+        }
+    }
+
+    /**
+     * Called when the user selects an item in the navigation drawr
+     */
+    @Override
+    public boolean onNavigationItemSelected(MenuItem item) {
+        int id = item.getItemId();
+
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        drawer.closeDrawer(GravityCompat.START);
+
+        switch (item.getItemId()) {
+            case R.id.current:
+                goCurrent();
+                return true;
+
+            case R.id.list:
+                showList();
+                return true;
+
+            case R.id.help:
+                showHelp();
+                return true;
+
+            case R.id.about:
+                showAbout();
+                return true;
+
+            case R.id.copy:
+                doBackup();
+                return true;
+
+            case R.id.restore:
+                doRestore();
+                return true;
+
+            case R.id.options:
+                showOptions();
+                return true;
+
+            case R.id.exit:
+                finish();
+                return true;
+        }
+
+        return true;
+    }
+
     /**
      * Called when the user selects the menu button
      */
+/*
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.main, menu);
         return true;
     }
+*/
 
     /**
      * Called when a menu item was selected
      */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle item selection
         switch (item.getItemId()) {
         case R.id.current:
             goCurrent();
@@ -234,10 +342,9 @@ public class MainActivity extends AppCompatActivity {
         case R.id.exit:
             finish();
             return true;
-
-        default:
-            return super.onOptionsItemSelected(item);
         }
+
+        return true;
     }
 
     /**
@@ -516,7 +623,7 @@ public class MainActivity extends AppCompatActivity {
         final AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle(getResources().getString(R.string.backup_title));
         builder.setMessage(getResources().getString(R.string.backup_text));
-        builder.setIcon(android.R.drawable.ic_dialog_alert);
+        builder.setIcon(R.drawable.ic_warning_black_40dp);
 
         builder.setPositiveButton(getResources().getString(R.string.backup_ok),
                 new OnClickListener() {
@@ -569,7 +676,7 @@ public class MainActivity extends AppCompatActivity {
         final AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle(getResources().getString(R.string.restore_title));
         builder.setMessage(getResources().getString(R.string.restore_text));
-        builder.setIcon(android.R.drawable.ic_dialog_alert);
+        builder.setIcon(R.drawable.ic_warning_black_40dp);
 
         builder.setPositiveButton(
                 getResources().getString(R.string.restore_ok),
@@ -784,16 +891,15 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean dispatchTouchEvent(MotionEvent e) {
-        super.dispatchTouchEvent(e);
-        return gestureDetector.onTouchEvent(e);
-    }
+        boolean result = super.dispatchTouchEvent(e);
 
-    /**
-     * Touch handler to pass events to the gesture detector to detect swipes on the UI
-     */
-    @Override
-    public boolean onTouchEvent(MotionEvent event) {
-        return gestureDetector.onTouchEvent(event);
+        // Only dispatch touch event to gesture detector,
+        // if the navigation drawer is not active (opening, closing etc.)
+        if(!navigationDrawerActive) {
+            return gestureDetector.onTouchEvent(e);
+        }
+
+        return true;
     }
 
     /**
@@ -806,7 +912,7 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX,
-                float velocityY) {
+                               float velocityY) {
             try {
                 // if swipe is not straight enough then ignore
                 if (Math.abs(e1.getY() - e2.getY()) > SWIPE_MAX_OFF_PATH) {

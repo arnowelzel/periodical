@@ -24,10 +24,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.ListViewCompat;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ListView;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -69,14 +69,13 @@ public class ListActivity extends AppCompatActivity implements AdapterView.OnIte
         // Set custom view
         setContentView(R.layout.listview);
 
-		ListViewCompat listView = (ListViewCompat) findViewById(R.id.listview);
+        // Activate "back button" in Action Bar
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setDisplayHomeAsUpEnabled(true);
+
+		ListView listView = (ListView) findViewById(R.id.listview);
         listView.setAdapter(new DayEntryAdapter(this, dayList, getPackageName(), getResources()));
 		listView.setOnItemClickListener(this);
-
-        // Activate "back button" in Action Bar if possible
-        ActionBar actionBar = getSupportActionBar();
-        assert actionBar != null;
-        actionBar.setDisplayHomeAsUpEnabled(true);
     }
 
     /**

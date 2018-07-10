@@ -119,9 +119,8 @@ public class OptionsActivity extends AppCompatPreferenceActivity implements Shar
                 }
             });
 
-        // Activate "back button" in Action Bar if possible
+        // Activate "back button" in Action Bar
         ActionBar actionBar = getSupportActionBar();
-        assert actionBar != null;
         actionBar.setDisplayHomeAsUpEnabled(true);
     }
 
