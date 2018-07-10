@@ -67,7 +67,7 @@ public class ListActivity extends AppCompatActivity implements AdapterView.OnIte
         }
 
         // Set custom view
-        setContentView(R.layout.listview);
+        setContentView(R.layout.activity_list);
 
         // Activate "back button" in Action Bar
         ActionBar actionBar = getSupportActionBar();
