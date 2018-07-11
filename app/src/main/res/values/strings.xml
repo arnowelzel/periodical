@@ -1,19 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Periodical</string>
-    <string name="navigation_drawer_open">Open navigation drawer</string>
-    <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="menuitem_help">Help</string>
     <string name="menuitem_about">About …</string>
-    <string name="menuitem_current">Current day</string>
+    <string name="current_day">Current day</string>
     <string name="menuitem_list">List</string>
     <string name="menuitem_copy">Backup</string>
     <string name="menuitem_restore">Restore</string>
     <string name="menuitem_options">Preferences</string>
     <string name="menuitem_changelog">Changelog</string>
     <string name="menuitem_exit">Exit</string>
-    <string name="main_button_prev">&lt;</string>
-    <string name="main_button_next">&gt;</string>
     <string name="main_calday_su">SU</string>
     <string name="main_calday_mo">MO</string>
     <string name="main_calday_tu">TU</string>
@@ -115,4 +111,6 @@
     <string name="label_details_ev15">Nausea</string>
     <string name="label_details_ev16">Cravings</string>
     <string name="label_period_day">Period, day %d</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
 </resources>

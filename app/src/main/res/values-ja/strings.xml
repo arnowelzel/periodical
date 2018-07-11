@@ -3,14 +3,12 @@
     <string name="app_name">Periodical</string>
     <string name="menuitem_help">ヘルプ</string>
     <string name="menuitem_about">アプリについて …</string>
-    <string name="menuitem_current">今日</string>
+    <string name="current_day">今日</string>
     <string name="menuitem_list">一覧</string>
     <string name="menuitem_copy">バックアップ</string>
     <string name="menuitem_restore">復元</string>
     <string name="menuitem_options">設定</string>
     <string name="menuitem_exit">終了</string>
-    <string name="main_button_prev">&lt;</string>
-    <string name="main_button_next">&gt;</string>
     <string name="main_calday_su">日</string>
     <string name="main_calday_mo">月</string>
     <string name="main_calday_tu">火</string>

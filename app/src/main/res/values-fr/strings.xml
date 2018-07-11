@@ -3,14 +3,12 @@
     <string name="app_name">Periodical</string>
     <string name="menuitem_help">Aide</string>
     <string name="menuitem_about">À propos …</string>
-    <string name="menuitem_current">Jour actuel</string>
+    <string name="current_day">Jour actuel</string>
     <string name="menuitem_list">Tableau</string>
     <string name="menuitem_copy">Sauvegarder</string>
     <string name="menuitem_restore">Restaurer</string>
     <string name="menuitem_options">Paramètres</string>
     <string name="menuitem_exit">Terminer</string>
-    <string name="main_button_prev">&lt;</string>
-    <string name="main_button_next">&gt;</string>
     <string name="main_calday_su">dim</string>
     <string name="main_calday_mo">lun</string>
     <string name="main_calday_tu">mar</string>

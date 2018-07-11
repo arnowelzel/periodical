@@ -32,7 +32,7 @@
 
             <Button
                 android:id="@+id/buttonprev"
-                android:layout_width="60dp"
+                android:layout_width="54dp"
                 android:layout_height="wrap_content"
                 android:contentDescription="@string/previous_month"
                 android:onClick="goPrev"
@@ -41,16 +41,16 @@
 
             <Button
                 android:id="@+id/buttontoday"
-                android:layout_width="60dp"
+                android:layout_width="54dp"
                 android:layout_height="wrap_content"
-                android:contentDescription="@string/menuitem_current"
+                android:contentDescription="@string/current_day"
                 android:onClick="goCurrent"
                 android:gravity="center"
                 android:drawableLeft="@drawable/ic_today_black_32dp" />
 
             <Button
                 android:id="@+id/buttonnext"
-                android:layout_width="60dp"
+                android:layout_width="54dp"
                 android:layout_height="wrap_content"
                 android:contentDescription="@string/next_month"
                 android:onClick="goNext"

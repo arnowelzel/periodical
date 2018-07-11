@@ -3,14 +3,12 @@
     <string name="app_name">Periodical</string>
     <string name="menuitem_help">Nápověda</string>
     <string name="menuitem_about">O Periodical</string>
-    <string name="menuitem_current">Dnes</string>
+    <string name="current_day">Dnes</string>
     <string name="menuitem_list">Seznam</string>
     <string name="menuitem_copy">Záloha</string>
     <string name="menuitem_restore">Obnova</string>
     <string name="menuitem_options">Nastavení</string>
     <string name="menuitem_exit">Ukončit</string>
-    <string name="main_button_prev">&lt;</string>
-    <string name="main_button_next">&gt;</string>
     <string name="main_calday_su">Ne</string>
     <string name="main_calday_mo">Po</string>
     <string name="main_calday_tu">Út</string>

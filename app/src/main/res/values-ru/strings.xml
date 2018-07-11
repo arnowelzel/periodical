@@ -3,14 +3,12 @@
     <string name="app_name">Periodical</string>
     <string name="menuitem_help">Помощь</string>
     <string name="menuitem_about">О программе …</string>
-    <string name="menuitem_current">Текущий день</string>
+    <string name="current_day">Текущий день</string>
     <string name="menuitem_list">Список</string>
     <string name="menuitem_copy">Резервирование</string>
     <string name="menuitem_restore">Восстановление</string>
     <string name="menuitem_options">Настройки</string>
     <string name="menuitem_exit">Выход</string>
-    <string name="main_button_prev">&lt;</string>
-    <string name="main_button_next">&gt;</string>
     <string name="main_calday_su">ВС</string>
     <string name="main_calday_mo">ПН</string>
     <string name="main_calday_tu">ВТ</string>

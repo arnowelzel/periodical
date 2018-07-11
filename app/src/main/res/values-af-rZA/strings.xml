@@ -3,13 +3,12 @@
     <string name="app_name">Periodical</string>
     <string name="menuitem_help">Help</string>
     <string name="menuitem_about">Omtrent</string>
-    <string name="menuitem_current">Huidige dag</string>
+    <string name="current_day">Huidige dag</string>
     <string name="menuitem_list">Lys</string>
     <string name="menuitem_copy">Backup</string>
     <string name="menuitem_restore">Restore</string>
     <string name="menuitem_options">Opsies</string>
     <string name="menuitem_exit">Exit</string>
-    <string name="main_button_next">&gt;</string>
     <string name="main_calday_su">SO</string>
     <string name="main_calday_mo">MA</string>
     <string name="main_calday_tu">DI</string>
@@ -61,7 +60,6 @@
     <string name="pref_startofweek">Begin van week</string>
     <string name="pref_maximum_cycle_length">Maksimum periode siklus lengte</string>
     <string name="invalid_maximum_cycle_length">Die maksimum siklus moet ten minste 60 wees!</string>
-    <string name="main_button_prev">&lt;</string>
     <string name="pref_direct_details">Gaan direk na die besonderhede</string>
     <string name="pref_show_cycle">Wys dag van siklus</string>
     <string name="previous_month">Vorige maand</string>

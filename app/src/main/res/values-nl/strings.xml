@@ -3,14 +3,12 @@
     <string name="app_name">Periodical</string>
     <string name="menuitem_help">Help</string>
     <string name="menuitem_about">Over …</string>
-    <string name="menuitem_current">Huidige dag</string>
+    <string name="current_day">Huidige dag</string>
     <string name="menuitem_list">Lijst</string>
     <string name="menuitem_copy">Backup</string>
     <string name="menuitem_restore">Herstel</string>
     <string name="menuitem_options">Instellingen</string>
     <string name="menuitem_exit">Sluit af</string>
-    <string name="main_button_prev">&lt;</string>
-    <string name="main_button_next">&gt;</string>
     <string name="main_calday_su">ZO</string>
     <string name="main_calday_mo">MA</string>
     <string name="main_calday_tu">DI</string>
