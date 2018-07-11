@@ -10,7 +10,7 @@ Italian - Valerio Bozzolan
 Spanish - Laura Arjona Reina  
 Dutch - Pander  
 Russian - Wjatscheslaw Stoljarski  
-Japanese - Naofumi Fukue
+Japanese - Naofumi Fukue  
 Brazilian Portuguese - Ingrid E. Spangler
 
 This program is free software: you can redistribute it and/or modify
