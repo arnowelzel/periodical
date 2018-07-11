@@ -5,13 +5,14 @@ Copyright (C) 2012-2018 Arno Welzel
 
 Translations:
 
+Afrikaans - Albert Kannemeyer  
+Brazilian Portuguese - Ingrid E. Spangler  
+Dutch - Pander  
 French - Sébastien Gravier  
 Italian - Valerio Bozzolan  
-Spanish - Laura Arjona Reina  
-Dutch - Pander  
-Russian - Wjatscheslaw Stoljarski  
 Japanese - Naofumi Fukue  
-Brazilian Portuguese - Ingrid E. Spangler
+Russian - Wjatscheslaw Stoljarski  
+Spanish - Laura Arjona Reina
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
