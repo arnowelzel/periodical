@@ -33,6 +33,17 @@
             android:drawableLeft="@drawable/ic_arrow_back_black_32dp" />
 
         <Button
+            android:id="@+id/buttontoday"
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_alignParentTop="true"
+            android:contentDescription="@string/menuitem_current"
+            android:onClick="goCurrent"
+            android:gravity="center"
+            android:drawableLeft="@drawable/ic_today_black_32dp" />
+
+        <Button
             android:id="@+id/buttonnext"
             android:layout_width="60dp"
             android:layout_height="wrap_content"

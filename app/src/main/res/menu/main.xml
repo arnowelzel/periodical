@@ -3,11 +3,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:showIn="navigation_view">
     <item
-        android:id="@+id/current"
-        android:icon="@drawable/ic_event_black_24dp"
-        android:title="@string/menuitem_current"
-        />
-    <item
         android:id="@+id/list"
         android:icon="@drawable/ic_list_black_24dp"
         android:title="@string/menuitem_list"

@@ -257,10 +257,6 @@ public class MainActivity extends AppCompatActivity
         drawer.closeDrawer(GravityCompat.START);
 
         switch (item.getItemId()) {
-            case R.id.current:
-                goCurrent();
-                return true;
-
             case R.id.list:
                 showList();
                 return true;
@@ -288,60 +284,6 @@ public class MainActivity extends AppCompatActivity
             case R.id.exit:
                 finish();
                 return true;
-        }
-
-        return true;
-    }
-
-    /**
-     * Called when the user selects the menu button
-     */
-/*
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.main, menu);
-        return true;
-    }
-*/
-
-    /**
-     * Called when a menu item was selected
-     */
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-        case R.id.current:
-            goCurrent();
-            return true;
-
-        case R.id.list:
-            showList();
-            return true;
-
-        case R.id.help:
-            showHelp();
-            return true;
-
-        case R.id.about:
-            showAbout();
-            return true;
-
-        case R.id.copy:
-            doBackup();
-            return true;
-
-        case R.id.restore:
-            doRestore();
-            return true;
-        
-        case R.id.options:
-            showOptions();
-            return true;    
-
-        case R.id.exit:
-            finish();
-            return true;
         }
 
         return true;
@@ -542,6 +484,15 @@ public class MainActivity extends AppCompatActivity
         flipper.setInAnimation(AnimationHelper.inFromRightAnimation());
         flipper.setOutAnimation(AnimationHelper.outToLeftAnimation());
         flipper.showPrevious();
+    }
+
+    /**
+     * Handler for "current" button in main view
+     */
+    @SuppressWarnings({"UnusedParameters", "SameParameterValue"})
+    public void goCurrent(View v) {
+        initMonth();
+        calendarUpdate();
     }
 
     /**
