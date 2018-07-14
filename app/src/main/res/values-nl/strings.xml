@@ -5,6 +5,7 @@
     <string name="menuitem_about">Over …</string>
     <string name="current_day">Huidige dag</string>
     <string name="menuitem_list">Lijst</string>
+    <string name="menuitem_listdetails">Lijst met details</string>
     <string name="menuitem_copy">Backup</string>
     <string name="menuitem_restore">Herstel</string>
     <string name="menuitem_options">Instellingen</string>
@@ -24,6 +25,7 @@
     <string name="main_calday_fr_description">vrijdag</string>
     <string name="main_calday_sa_description">zaterdag</string>
     <string name="list_title">Lijst</string>
+    <string name="list_details_title">Lijst met details</string>
     <string name="about_title">Over …</string>
     <string name="help_title">Help</string>
     <string name="backup_title">Backup data</string>
@@ -110,4 +112,6 @@
     <string name="label_details_ev15">Misselijkheid</string>
     <string name="label_details_ev16">Hunkeren</string>
     <string name="label_period_day">Periode, dag %d</string>
+    <string name="navigation_drawer_open">Open de navigatielade</string>
+    <string name="navigation_drawer_close">Sluit de navigatiebalk</string>
 </resources>

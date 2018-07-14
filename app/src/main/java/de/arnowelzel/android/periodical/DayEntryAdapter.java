@@ -88,7 +88,7 @@ class DayEntryAdapter extends ArrayAdapter<PeriodicalDatabase.DayEntry> {
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
         View listItem = convertView;
         if(listItem == null)
-            listItem = LayoutInflater.from(context).inflate(R.layout.listitem,parent,false);
+            listItem = LayoutInflater.from(context).inflate(R.layout.listdetailsitem,parent,false);
 
         PeriodicalDatabase.DayEntry currentEntry = entryList.get(position);
 

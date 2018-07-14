@@ -5,6 +5,7 @@
     <string name="menuitem_about">O Periodical</string>
     <string name="current_day">Dnes</string>
     <string name="menuitem_list">Seznam</string>
+    <string name="menuitem_listdetails">Seznam s podrobnostmi</string>
     <string name="menuitem_copy">Záloha</string>
     <string name="menuitem_restore">Obnova</string>
     <string name="menuitem_options">Nastavení</string>
@@ -24,6 +25,7 @@
     <string name="main_calday_fr_description">pátek</string>
     <string name="main_calday_sa_description">sobota</string>
     <string name="list_title">Seznam</string>
+    <string name="list_details_title">Seznam s podrobnostmi</string>
     <string name="about_title">O Periodical</string>
     <string name="help_title">Nápověda</string>
     <string name="backup_title">Záloha</string>
@@ -110,4 +112,6 @@
     <string name="label_details_ev15">Nevolnost</string>
     <string name="label_details_ev16">Chutě</string>
     <string name="label_period_day">Období, den %d</string>
+    <string name="navigation_drawer_open">Otevřete navigační zásuvku</string>
+    <string name="navigation_drawer_close">Zavřete navigační panel</string>
 </resources>

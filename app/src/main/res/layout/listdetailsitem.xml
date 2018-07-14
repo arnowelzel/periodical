@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/item_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:textSize="18sp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="8dp" />
+    <TextView
+        android:id="@+id/label_item_intensity"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="8dp"
+        android:text="@string/label_details_intensity"
+        android:textSize="14sp" />
+    <TextView
+        android:id="@+id/item_intensity"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="18sp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp" />
+    <TextView
+        android:id="@+id/label_item_notes"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="@string/label_details_notes"
+        android:textSize="14sp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp" />
+    <TextView
+        android:id="@+id/item_notes"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="18sp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp" />
+    <TextView
+        android:id="@+id/label_item_symptoms"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="@string/label_details_events"
+        android:textSize="14sp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp" />
+
+    <TextView
+        android:id="@+id/item_symptom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="18sp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@android:drawable/divider_horizontal_dark"
+        android:layout_marginTop="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp" />
+</LinearLayout>
+

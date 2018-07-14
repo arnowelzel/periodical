@@ -669,8 +669,41 @@ class PeriodicalDatabase {
         System.gc();
     }
 
+
     /**
-     * Load data without calculating anything.
+     * Load data for statistics and overview without calculating anything.
+     */
+    void loadRawData() {
+        DayEntry entry;
+
+        // Clean up existing data
+        dayEntries.removeAllElements();
+
+        // Get all entries from the database
+        String statement = "select eventtype, eventdate from data where eventtype="+
+                String.format("%d", DayEntry.PERIOD_START)+
+                " order by eventdate desc";
+        Cursor result = db.rawQuery(statement, null);
+        while (result.moveToNext()) {
+            String dbdate = result.getString(1);
+            assert dbdate != null;
+            int eventyear = Integer.parseInt(dbdate.substring(0, 4), 10);
+            int eventmonth = Integer.parseInt(dbdate.substring(4, 6), 10);
+            int eventday = Integer.parseInt(dbdate.substring(6, 8), 10);
+            GregorianCalendar eventdate = new GregorianCalendar(eventyear,
+                    eventmonth - 1, eventday);
+
+            // Create new day entry
+            entry = new DayEntry(DayEntry.PERIOD_START, eventdate, 1, 0);
+            dayEntries.add(entry);
+        }
+        result.close();
+
+        System.gc();
+    }
+
+    /**
+     * Load data and details without calculating anything.
      */
     @SuppressLint("DefaultLocale")
     void loadRawDataWithDetails() {

@@ -261,6 +261,10 @@ public class MainActivity extends AppCompatActivity
                 showList();
                 return true;
 
+            case R.id.listdetails:
+                showListDetails();
+                return true;
+
             case R.id.help:
                 showHelp();
                 return true;
@@ -311,6 +315,14 @@ public class MainActivity extends AppCompatActivity
     private void showList() {
         startActivityForResult(
                 new Intent(MainActivity.this, ListActivity.class), PICK_DATE);
+    }
+
+    /**
+     * Handler for "List, details" menu action
+     */
+    private void showListDetails() {
+        startActivityForResult(
+                new Intent(MainActivity.this, ListDetailsActivity.class), PICK_DATE);
     }
 
     /**

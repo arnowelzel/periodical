@@ -1,4 +1,14 @@
-1.0
+1.10
+
+Code and UI cleanup.
+
+New UI with navigation drawer and vector icons.
+
+Added simple list with period lengths again.
+
+Added Afrikaans translation.
+
+1.0-1.06
 
 Single days in a period can be added or removed individually.
 
@@ -15,7 +25,7 @@ Added option to set maximum cycle length which will be used for the calculation.
 
 0.33
 
-Updated French translation
+Updated French translation.
 
 0.32
 

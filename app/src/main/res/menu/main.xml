@@ -8,6 +8,11 @@
         android:title="@string/menuitem_list"
         />
     <item
+        android:id="@+id/listdetails"
+        android:icon="@drawable/ic_view_list_black_24dp"
+        android:title="@string/menuitem_listdetails"
+        />
+    <item
         android:id="@+id/help"
         android:icon="@drawable/ic_help_outline_black_24dp"
         android:title="@string/menuitem_help"

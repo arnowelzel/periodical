@@ -5,6 +5,7 @@
     <string name="menuitem_about">Über …</string>
     <string name="current_day">Aktueller Tag</string>
     <string name="menuitem_list">Liste</string>
+    <string name="menuitem_listdetails">Liste mit Details</string>
     <string name="menuitem_copy">Sichern</string>
     <string name="menuitem_restore">Wiederherstellen</string>
     <string name="menuitem_options">Einstellungen</string>
@@ -25,6 +26,7 @@
     <string name="main_calday_sa_description">Samstag</string>
     <string name="details_title">Details</string>
     <string name="list_title">Liste</string>
+    <string name="list_details_title">Liste mit Details</string>
     <string name="about_title">Über …</string>
     <string name="help_title">Hilfe</string>
     <string name="backup_title">Daten sichern</string>
@@ -110,4 +112,6 @@
     <string name="label_details_ev15">Übelkeit</string>
     <string name="label_details_ev16">Heißhunger</string>
     <string name="label_period_day">Periode, Tag %d</string>
+    <string name="navigation_drawer_open">Navigationsleiste öffnen</string>
+    <string name="navigation_drawer_close">Navigationsleiste schließen</string>
 </resources>

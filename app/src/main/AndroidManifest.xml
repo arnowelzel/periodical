@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-      package="de.arnowelzel.android.periodical"
-      android:installLocation="auto">
+      package="de.arnowelzel.android.periodical">
           
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     
@@ -26,6 +25,8 @@
         <activity android:name=".DetailsActivity" android:label="@string/details_title" />
 
         <activity android:name=".ListActivity" android:label="@string/list_title" />
+
+        <activity android:name=".ListDetailsActivity" android:label="@string/list_details_title" />
     		
         <activity android:name=".OptionsActivity" android:label="@string/options_title"/>
         

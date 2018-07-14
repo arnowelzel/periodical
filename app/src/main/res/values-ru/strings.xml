@@ -5,6 +5,7 @@
     <string name="menuitem_about">О программе …</string>
     <string name="current_day">Текущий день</string>
     <string name="menuitem_list">Список</string>
+    <string name="menuitem_listdetails">Список с подробностями</string>
     <string name="menuitem_copy">Резервирование</string>
     <string name="menuitem_restore">Восстановление</string>
     <string name="menuitem_options">Настройки</string>
@@ -24,6 +25,7 @@
     <string name="main_calday_fr_description">пятница</string>
     <string name="main_calday_sa_description">суббота</string>
     <string name="list_title">Список</string>
+    <string name="list_details_title">Список с подробностями</string>
     <string name="about_title">О программе …</string>
     <string name="help_title">Помощь</string>
     <string name="backup_title">Резервирование данных</string>
@@ -110,4 +112,6 @@
     <string name="label_details_ev15">Тошнота</string>
     <string name="label_period_day">Период, день %d</string>
     <string name="label_details_ev16">Неутолимый голод</string>
+    <string name="navigation_drawer_open">Открыть навигационную панель</string>
+    <string name="navigation_drawer_close">Закрыть навигационную панель</string>
 </resources>

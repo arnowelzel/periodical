@@ -5,10 +5,10 @@
     <string name="menuitem_about">About …</string>
     <string name="current_day">Current day</string>
     <string name="menuitem_list">List</string>
+    <string name="menuitem_listdetails">List with details</string>
     <string name="menuitem_copy">Backup</string>
     <string name="menuitem_restore">Restore</string>
     <string name="menuitem_options">Preferences</string>
-    <string name="menuitem_changelog">Changelog</string>
     <string name="menuitem_exit">Exit</string>
     <string name="main_calday_su">SU</string>
     <string name="main_calday_mo">MO</string>
@@ -26,6 +26,7 @@
     <string name="main_calday_sa_description">saturday</string>
     <string name="details_title">Details</string>
     <string name="list_title">List</string>
+    <string name="list_details_title">List with details</string>
     <string name="about_title">About …</string>
     <string name="help_title">Help</string>
     <string name="backup_title">Backup data</string>

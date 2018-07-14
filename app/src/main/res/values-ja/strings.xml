@@ -5,6 +5,7 @@
     <string name="menuitem_about">アプリについて …</string>
     <string name="current_day">今日</string>
     <string name="menuitem_list">一覧</string>
+    <string name="menuitem_listdetails">詳細のリスト</string>
     <string name="menuitem_copy">バックアップ</string>
     <string name="menuitem_restore">復元</string>
     <string name="menuitem_options">設定</string>
@@ -25,6 +26,7 @@
     <string name="main_calday_sa_description">土曜日</string>
     <string name="details_title">詳細</string>
     <string name="list_title">一覧</string>
+    <string name="list_details_title">詳細のリスト</string>
     <string name="about_title">アプリについて …</string>
     <string name="help_title">ヘルプ</string>
     <string name="backup_title">データをバックアップ</string>
@@ -110,4 +112,6 @@
     <string name="label_details_ev15">吐き気</string>
     <string name="label_details_ev16">欲求</string>
     <string name="label_period_day">月経期, 日 %d</string>
+    <string name="navigation_drawer_open">ナビゲーションバーを開く</string>
+    <string name="navigation_drawer_close">ナビゲーションバーを閉じる</string>
 </resources>
