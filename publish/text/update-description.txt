@@ -46,8 +46,14 @@ Eenvoudig lijstoverzicht met opnieuw toegevoegde cycluslengten.
 Простой просмотр списка с продолжительностью цикла добавляется снова.
 </ru-RU>
 
-<af-ZA>
+<af>
 Herontwerp met navigasie balk.
 
 Eenvoudige lys aansig met sikluslengtes bygevoeg.
-</af-ZA>
+</af>
+
+<pt-BR>
+Redesenhar com gaveta de navegação.
+
+Visualização de lista simples com comprimentos de ciclo adicionados novamente.
+</pt-BR>
