@@ -5,7 +5,7 @@
     <string name="menuitem_about">À propos …</string>
     <string name="current_day">Jour actuel</string>
     <string name="menuitem_list">Tableau</string>
-    <string name="menuitem_listdetails">Liste avec détails</string>
+    <string name="menuitem_listdetails">Tableau avec détails</string>
     <string name="menuitem_copy">Sauvegarder</string>
     <string name="menuitem_restore">Restaurer</string>
     <string name="menuitem_options">Paramètres</string>
@@ -25,7 +25,7 @@
     <string name="main_calday_fr_description">vendredi</string>
     <string name="main_calday_sa_description">samedi</string>
     <string name="list_title">Tableau</string>
-    <string name="list_details_title">Liste avec détails</string>
+    <string name="list_details_title">Tableau avec détails</string>
     <string name="about_title">À propos…</string>
     <string name="help_title">Aide</string>
     <string name="backup_title">Sauvegarder les données</string>

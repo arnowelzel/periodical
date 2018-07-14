@@ -1,95 +1,53 @@
 <en-US>
-Individual period length.
+Redesign with navigation drawer.
 
-Period intensity for every day.
-
-Notes and symptoms for every day.
-
-Calendar display with intensity and day of cycle.
-
-List view with intensity, notes and symptoms.
+Simple list view with cycle lengths added again.
 </en-US>
 
 <cs-CZ>
-Individuální délka období.
+Redizajn s navigačním panelem.
 
-Intenzita období pro každý den.
-
-Poznámky a příznaky pro každý den.
-
-Zobrazení kalendáře s intenzitou a dnem cyklu.
-
-Zobrazte seznam s intenzitou, poznámkami a příznaky.
+Jednoduché zobrazení seznamu s opakovanými délkami cyklu.
 </cs-CZ>
 
 <de-DE>
-Individuelle Periodenlänge
+Redesign mit Navigationsleiste.
 
-Periodenintensität für jeden Tag.
-
-Hinweise und Symptome für jeden Tag.
-
-Kalenderanzeige mit Intensität und Tag des Zyklus.
-
-Listenansicht mit Intensität, Notizen und Symptomen.
+Einfache Listenansicht mit Zykluslängen wieder hinzugefügt.
 </de-DE>
 
 <es-ES>
-Longitud del período individual
+Rediseño con barra de navegación.
 
-Periodo de intensidad para todos los días.
-
-Notas y síntomas para todos los días.
-
-Visualización del calendario con intensidad y día del ciclo.
-
-Vista de lista con intensidad, notas y síntomas.
+Vista de lista simple con longitudes de ciclo agregadas de nuevo.
 </es-ES>
 
 <fr-FR>
-Durée de la période individuelle
+Refonte avec la barre de navigation.
 
-Intensité de la période pour chaque jour.
-
-Notes et symptômes pour tous les jours.
-
-Affichage du calendrier avec intensité et jour du cycle.
-
-Vue de liste avec intensité, notes et symptômes.
+Vue de liste simple avec des longueurs de cycle ajoutées à nouveau.
 </fr-FR>
 
 <it-IT>
-Durata del periodo individuale.
+Ridisegnare con la barra di navigazione.
 
-Intensità del periodo per ogni giorno.
-
-Note e sintomi per ogni giorno.
-
-Visualizzazione del calendario con intensità e giorno del ciclo.
-
-Visualizzazione elenco con intensità, note e sintomi.
+Vista elenco semplice con le lunghezze dei cicli aggiunte di nuovo.
 </it-IT>
 
 <nl-NL>
-Individuele periode lengte.
+Herontwerp met navigatiebalk.
 
-Periode-intensiteit voor elke dag.
-
-Aantekeningen en symptomen voor elke dag.
-
-Kalenderweergave met intensiteit en dag van de cyclus.
-
-Lijstweergave met intensiteit, opmerkingen en symptomen.
+Eenvoudig lijstoverzicht met opnieuw toegevoegde cycluslengten.
 </nl-NL>
 
 <ru-RU>
-Индивидуальная длина периода.
+Редизайн с панелью навигации.
 
-Интенсивность периода для каждого дня.
-
-Примечания и симптомы на каждый день.
-
-Отображение календаря с интенсивностью и днем цикла.
-
-Просмотр списка с интенсивностью, примечаниями и симптомами.
+Простой просмотр списка с продолжительностью цикла добавляется снова.
 </ru-RU>
+
+<af-ZA>
+Herontwerp met navigasie balk.
+
+Eenvoudige lys aansig met sikluslengtes bygevoeg.
+</af-ZA>
