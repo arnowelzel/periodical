@@ -83,8 +83,8 @@
     <string name="label_period">menstruação</string>
     <string name="label_period_predicted">menstruação prevista</string>
     <string name="label_ovulation">ovulação</string>
-    <string name="asset_about">br/about.html</string>
-    <string name="asset_help">br/help.html</string>
+    <string name="asset_about">pt-rBR/about.html</string>
+    <string name="asset_help">pt-rBR/help.html</string>
     <string name="label_details_period">Menstruação</string>
     <string name="label_details_yes">Sim</string>
     <string name="label_details_no">Não</string>
