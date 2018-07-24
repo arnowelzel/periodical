@@ -1,59 +1,39 @@
 <en-US>
-Redesign with navigation drawer.
-
-Simple list view with cycle lengths added again.
+New symptom: headache/migraine.
 </en-US>
 
 <cs-CZ>
-Redizajn s navigačním panelem.
-
-Jednoduché zobrazení seznamu s opakovanými délkami cyklu.
+Nový příznak: bolesti hlavy/migréna.
 </cs-CZ>
 
 <de-DE>
-Redesign mit Navigationsleiste.
-
-Einfache Listenansicht mit Zykluslängen wieder hinzugefügt.
+Neues Symptom: Kopfschmerzen/Migräne
 </de-DE>
 
 <es-ES>
-Rediseño con barra de navegación.
-
-Vista de lista simple con longitudes de ciclo agregadas de nuevo.
+Nuevo síntoma: dolor de cabeza/migraña.
 </es-ES>
 
 <fr-FR>
-Refonte avec la barre de navigation.
-
-Vue de liste simple avec des longueurs de cycle ajoutées à nouveau.
+Nouveau symptôme: mal de tête/migraine.
 </fr-FR>
 
 <it-IT>
-Ridisegnare con la barra di navigazione.
-
-Vista elenco semplice con le lunghezze dei cicli aggiunte di nuovo.
+Nuovo sintomo: mal di testa/emicrania.
 </it-IT>
 
 <nl-NL>
-Herontwerp met navigatiebalk.
-
-Eenvoudig lijstoverzicht met opnieuw toegevoegde cycluslengten.
+Nieuw symptoom: hoofdpijn/migraine.
 </nl-NL>
 
 <ru-RU>
-Редизайн с панелью навигации.
-
-Простой просмотр списка с продолжительностью цикла добавляется снова.
+Новый симптом: головная боль/мигрень.
 </ru-RU>
 
 <af>
-Herontwerp met navigasie balk.
-
-Eenvoudige lys aansig met sikluslengtes bygevoeg.
+Nuwe simptoom: hoofpyn/migraine.
 </af>
 
 <pt-BR>
-Redesenhar com gaveta de navegação.
-
-Visualização de lista simples com comprimentos de ciclo adicionados novamente.
+Novo sintoma: dor de cabeça/enxaqueca.
 </pt-BR>
