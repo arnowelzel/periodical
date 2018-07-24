@@ -7,7 +7,7 @@ Translations:
 
 Afrikaans - Albert Kannemeyer  
 Brazilian Portuguese - Ingrid E. Spangler  
-Czech - ?  
+Czech - JuliaJ999  
 Dutch - Pander  
 French - Sébastien Gravier  
 German - Arno Welzel  
