@@ -7,12 +7,18 @@ Translations:
 
 Afrikaans - Albert Kannemeyer  
 Brazilian Portuguese - Ingrid E. Spangler  
+Czech - ?  
 Dutch - Pander  
 French - Sébastien Gravier  
+German - Arno Welzel  
 Italian - Valerio Bozzolan  
 Japanese - Naofumi Fukue  
 Russian - Wjatscheslaw Stoljarski  
 Spanish - Laura Arjona Reina
+
+If you want to help with the translation, you can join the project on Crowdin:
+
+https://crwd.in/periodical
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -28,8 +34,8 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 
-"Periodical" is a calendar to calculate the fertile days according to
-Knaus-Ogino originally developed by Arno Welzel.
+"Periodical" is a menstruation calendar with calculation of the fertile days
+according to Knaus-Ogino originally developed by Arno Welzel.
 
 WARNING: It is not recommended to use this calendar to avoid pregnancy!
 There are more accurate methods, like measuring the basal body temperature. 
