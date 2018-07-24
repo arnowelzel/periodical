@@ -84,8 +84,8 @@
   <string name="label_period">Periodo</string>
   <string name="label_period_predicted">Periodo pronosticado</string>
   <string name="label_ovulation">Ovulación</string>
-  <string name="asset_about">es/about.html</string>
-  <string name="asset_help">es/help.html</string>
+  <string name="asset_about">es-rES/about.html</string>
+  <string name="asset_help">es-rES/help.html</string>
   <string name="label_details_period">Período</string>
   <string name="label_details_yes">Sí</string>
   <string name="label_details_no">No</string>

@@ -1,1 +1,1 @@
-Cálculo de fertilidad de acuerdo a Knaus-Ogino
+Un calendario menstrual con cálculo de días fértiles según Ogino Knaus.

@@ -1,4 +1,4 @@
-Cálculo de fertilidad de acuerdo a Knaus-Ogino
+Cálculo de fertilidad de acuerdo a Knaus-Ogino y puede seguir los síntomas menstruales.
 
 AVISO: ¡No se recomienda usar este calendario para evitar el embarazo! Hay métodos más precisos, como medir la temperatura basal del cuerpo.
 

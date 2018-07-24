@@ -4,7 +4,7 @@ ATTENTION: Il est déconseillé d'utiliser ce calendrier pour éviter une grosse
 
 Les données peuvent être sauvegardées sur une carte mémoire ou un disque dur interne selon la disponibilité.
 
-Si vous avez des questions ou si vous voulez m'aider avec des traductions en d'autres langues, s'il vous plaît contactez-moi par e-mail - merci!
+Si vous avez des questions ou si vous voulez m'aider avec des traductions en d'autres langues, s'il vous plaît contactez-moi par e-mail - merci.
 
 Ce programme est un logiciel libre: vous pouvez le redistribuer et/ou modifier selon les termes de la licence GNU General Public License que publiée par la Free Software Foundation, soit la version 3 de cette licence, ou (à votre choix) toute version ultérieure.
 

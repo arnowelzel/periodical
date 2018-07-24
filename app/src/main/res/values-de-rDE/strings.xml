@@ -84,8 +84,8 @@
   <string name="label_period">Periode</string>
   <string name="label_period_predicted">Periode vorhergesagt</string>
   <string name="label_ovulation">Eisprung</string>
-  <string name="asset_about">de/about.html</string>
-  <string name="asset_help">de/help.html</string>
+  <string name="asset_about">de-rDE/about.html</string>
+  <string name="asset_help">de-rDE/help.html</string>
   <string name="label_details_period">Periode</string>
   <string name="label_details_yes">Ja</string>
   <string name="label_details_no">Nein</string>

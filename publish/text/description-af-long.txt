@@ -6,6 +6,6 @@ Jou inligting kan ge-backup word na 'n memory kaart of interne memory as daar be
 
 As jy vrae het of hulp nodig het kontak my gerus per epos - dankie.
 
-Hierdie program is gratis sagteware: jy mag dit publiseer en dit wysig onder die voorwaardes van die GNU General Public License soos dit gepubliseer deur die Free Software Foundation, of weergawe 3 van hierdie lisensie of ( as jy wil ) enige later weergawe.
+Sig onder die voorwaardes van die GNU General Public License soos dit gepubliseer deur die Free Software Foundation, of weergawe 3 van hierdie lisensie of (as jy wil) enige later weergawe.
 
 Die oorsprong kode is op my webtuiste beskikbaar.

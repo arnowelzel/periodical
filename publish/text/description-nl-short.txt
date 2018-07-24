@@ -1,1 +1,1 @@
-Deze applicatie berekent de vruchtbare dagen volgens Knaus-Ogino.
+Een menstruatie kalender met berekening van de vruchtbare dagen volgens Knaus-Ogino.

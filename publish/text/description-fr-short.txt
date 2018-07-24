@@ -1,1 +1,1 @@
-Cette application calcule la fertilité selon la méthode Knaus-Ogino.
+Un calendrier menstruel avec calcul des jours fertiles selon Ogino-Knaus.

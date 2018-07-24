@@ -84,8 +84,8 @@
   <string name="label_period">月経期</string>
   <string name="label_period_predicted">予測月経期</string>
   <string name="label_ovulation">排卵</string>
-  <string name="asset_about">ja/about.html</string>
-  <string name="asset_help">ja/help.html</string>
+  <string name="asset_about">ja-rJP/about.html</string>
+  <string name="asset_help">ja-rJP/help.html</string>
   <string name="label_details_period">月経期</string>
   <string name="label_details_yes">はい</string>
   <string name="label_details_no">いいえ</string>

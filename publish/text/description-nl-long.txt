@@ -4,8 +4,8 @@ WAARSCHUWING: Het is niet aanbevolen om deze kalender te gebruiken om zwangersch
 
 De gegevens kunnen worden opgeslagen op een geheugenkaart of 'intern' geheugen, indien beschikbaar.
 
-Als u vragen of wilt u mij te helpen met vertalingen in andere talen, neem dan contact met mij opnemen via e-mail - Thanks!
+Als u vragen of wilt u mij te helpen met vertalingen in andere talen, neem dan contact met mij opnemen via e-mail - Thanks.
 
-Deze applicatie is gedistribueerd in de hoop dat deze nuttig zal zijn, maar ZONDER ENIGE GARANTIE; zelf zonder de implicite garantie van VERKOOPBAARHEID of GESCHIKTHEID VOOR EEN BEPAALD DOEL. Zie de GNU General Public License voor meer details.
+Dit programma is gratis software: u kunt het herdistribueren en / of wijzigen onder de voorwaarden van de GNU General Public License zoals gepubliceerd door de Free Software Foundation, of (naar uw keuze) elke latere versie.
 
 U kunt de broncode te krijgen op mijn website.

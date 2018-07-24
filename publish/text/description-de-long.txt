@@ -4,7 +4,7 @@ WARNUNG: Es wird nicht empfohlen, diesen Kalender zur Empfängnisverhütung einz
 
 Die Daten können auf einer Speicherkarte oder "internem" Speicher gesichert werden, wenn vorhanden.
 
-Wenn Sie weitere Fragen haben oder mir bei Übersetzungen in andere Sprachen helfen möchten, kontaktieren Sie mich bitte über E-Mail - Danke!
+Wenn Sie weitere Fragen haben oder mir bei Übersetzungen in andere Sprachen helfen möchten, kontaktieren Sie mich bitte über E-Mail - Danke.
 
 Dieses Programm ist freie Software: Sie können es unter den Bedingungen der GNU General Public License, wie von der Free Software Foundation, Version 3 der Lizenz oder (nach Ihrer Option) jeder späteren veröffentlichten Version, weiterverbreiten und/oder modifizieren.
 

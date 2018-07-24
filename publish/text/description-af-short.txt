@@ -1,1 +1,1 @@
-Hierdie program bereken die dae van vrugbaarheid volgens Knaus-Ogino.
+'N menstruele kalender met berekening van vrugbare dae volgens Knaus-Ogino.

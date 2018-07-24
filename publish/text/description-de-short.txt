@@ -1,1 +1,1 @@
-Diese Applikation berechnet die fruchtbaren Tage nach Knaus-Ogino und kann die Symptome der Periode aufzeichnen.
+Menstruationskalender mit Berechnung der fruchtbaren Tage nach Knaus-Ogino.

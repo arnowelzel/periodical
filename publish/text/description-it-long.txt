@@ -2,8 +2,10 @@ Calcolo della fertilità in base a Knaus–Ogino.
 
 ATTENZIONE: Non è consigliabile usare questo calendario per evitare la gravidanza! Ci sono metodi molto più accurati, come misurare la temperatura corporea basale.
 
-Questo programma è un software libero: puoi redistribuirlo e/o modificarlo sotto i termini della GNU General Public License come pubblicato dalla Free Software Foundation, sia la versione 3 della Licenza, o (a tuo avviso) altre versioni successive.
+I dati possono essere salvati su una memory card o su una memoria "interna", se presente.
 
-Questo programma è distribuito nella speranza che sia utile, ma con NESSUNA GARANZIA; compresa l'implicita garanzia di COMMERCIABILITÀ o ADATTABILITÀ AD UN CERTO SCOPO. Leggi la GNU General Public License per ulteriori dettagli.
+Se avete altre domande, vi prego di contattarmi via e-mail - grazie.
+
+Questo programma è un software libero: puoi redistribuirlo e/o modificarlo sotto i termini della GNU General Public License come pubblicato dalla Free Software Foundation, sia la versione 3 della Licenza, o (a tuo avviso) altre versioni successive.
 
 È possibile ottenere il codice sorgente sul mio sito web.
