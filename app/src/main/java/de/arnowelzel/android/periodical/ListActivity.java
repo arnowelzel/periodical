@@ -117,7 +117,7 @@ public class ListActivity extends AppCompatActivity implements AdapterView.OnIte
         // Set custom view
         setContentView(R.layout.activity_list);
 
-        ListView listView = (ListView) findViewById(R.id.listview);
+        ListView listView = findViewById(R.id.listview);
         listView.setAdapter(new ArrayAdapter<>(this, R.layout.listitem,
                 entries));
         listView.setOnItemClickListener(this);

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name">Periodical</string>
     <string name="menuitem_help">Help</string>
     <string name="menuitem_about">About …</string>
@@ -95,22 +95,23 @@
     <string name="label_details_intensity4">4 (strong)</string>
     <string name="label_details_notes">Notes</string>
     <string name="label_details_events">Events/Symptoms</string>
-    <string name="label_details_ev1">Intercourse</string>
-    <string name="label_details_ev2">Cramps</string>
-    <string name="label_details_ev3">Back pain</string>
-    <string name="label_details_ev4">Middle pain left</string>
-    <string name="label_details_ev5">Middle pain right</string>
-    <string name="label_details_ev6">Breast pain/dragging pain</string>
-    <string name="label_details_ev7">Thrush/candida</string>
-    <string name="label_details_ev8">Discharge</string>
-    <string name="label_details_ev9">Intense bleeding</string>
-    <string name="label_details_ev10">Temperature fluctuations</string>
-    <string name="label_details_ev11">Pimples</string>
-    <string name="label_details_ev12">Bloating</string>
-    <string name="label_details_ev13">Fainting</string>
-    <string name="label_details_ev14">Grumpiness</string>
-    <string name="label_details_ev15">Nausea</string>
-    <string name="label_details_ev16">Cravings</string>
+    <string name="label_details_ev1" tools:keep="@string/label_details_ev1">Intercourse</string>
+    <string name="label_details_ev2" tools:keep="@string/label_details_ev2">Cramps</string>
+    <string name="label_details_ev3" tools:keep="@string/label_details_ev3">Back pain</string>
+    <string name="label_details_ev4" tools:keep="@string/label_details_ev4">Middle pain left</string>
+    <string name="label_details_ev5" tools:keep="@string/label_details_ev5">Middle pain right</string>
+    <string name="label_details_ev6" tools:keep="@string/label_details_ev6">Breast pain/dragging pain</string>
+    <string name="label_details_ev7" tools:keep="@string/label_details_ev7">Thrush/candida</string>
+    <string name="label_details_ev8" tools:keep="@string/label_details_ev8">Discharge</string>
+    <string name="label_details_ev9" tools:keep="@string/label_details_ev9">Intense bleeding</string>
+    <string name="label_details_ev10" tools:keep="@string/label_details_ev10">Temperature fluctuations</string>
+    <string name="label_details_ev11" tools:keep="@string/label_details_ev11">Pimples</string>
+    <string name="label_details_ev12" tools:keep="@string/label_details_ev12">Bloating</string>
+    <string name="label_details_ev13" tools:keep="@string/label_details_ev13">Fainting</string>
+    <string name="label_details_ev14" tools:keep="@string/label_details_ev14">Grumpiness</string>
+    <string name="label_details_ev15" tools:keep="@string/label_details_ev15">Nausea</string>
+    <string name="label_details_ev16" tools:keep="@string/label_details_ev16">Cravings</string>
+    <string name="label_details_ev17" tools:keep="@string/label_details_ev17">Headache/migraine</string>
     <string name="label_period_day">Period, day %d</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>

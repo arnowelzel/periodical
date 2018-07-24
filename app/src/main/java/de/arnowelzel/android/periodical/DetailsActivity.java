@@ -70,6 +70,7 @@ public class DetailsActivity extends AppCompatActivity implements View.OnClickLi
 
         // Activate "back button" in Action Bar
         ActionBar actionBar = getSupportActionBar();
+        assert actionBar != null;
         actionBar.setDisplayHomeAsUpEnabled(true);
 
         // Get details
@@ -92,8 +93,8 @@ public class DetailsActivity extends AppCompatActivity implements View.OnClickLi
                 String.format("%s", dateFormat.format(entry.date.getTime())));
 
         // Set period status
-        RadioButton buttonPeriodYes = ((RadioButton)findViewById(R.id.periodYes));
-        RadioButton buttonPeriodNo = ((RadioButton)findViewById(R.id.periodNo));
+        RadioButton buttonPeriodYes = findViewById(R.id.periodYes);
+        RadioButton buttonPeriodNo = findViewById(R.id.periodNo);
         boolean intensityEnabled = false;
 
         switch(entry.type) {
@@ -111,10 +112,10 @@ public class DetailsActivity extends AppCompatActivity implements View.OnClickLi
         buttonPeriodNo.setOnClickListener(this);
 
         // Set period intensity
-        buttonPeriodIntensity1 = ((RadioButton)findViewById(R.id.periodIntensity1));
-        buttonPeriodIntensity2 = ((RadioButton)findViewById(R.id.periodIntensity2));
-        buttonPeriodIntensity3 = ((RadioButton)findViewById(R.id.periodIntensity3));
-        buttonPeriodIntensity4 = ((RadioButton)findViewById(R.id.periodIntensity4));
+        buttonPeriodIntensity1 = findViewById(R.id.periodIntensity1);
+        buttonPeriodIntensity2 = findViewById(R.id.periodIntensity2);
+        buttonPeriodIntensity3 = findViewById(R.id.periodIntensity3);
+        buttonPeriodIntensity4 = findViewById(R.id.periodIntensity4);
 
         switch(entry.intensity) {
             case 1: buttonPeriodIntensity1.setChecked(true);break;
@@ -133,12 +134,12 @@ public class DetailsActivity extends AppCompatActivity implements View.OnClickLi
         buttonPeriodIntensity4.setOnClickListener(this);
 
         // Transfer notes
-        MultiAutoCompleteTextView editNotes = ((MultiAutoCompleteTextView)findViewById(R.id.editNotes));
+        MultiAutoCompleteTextView editNotes = findViewById(R.id.editNotes);
         editNotes.setText(entry.notes);
         editNotes.addTextChangedListener(this);
 
         // Build list of events/symptoms
-        LinearLayout groupEvents = (LinearLayout)findViewById(R.id.groupEvents);
+        LinearLayout groupEvents = findViewById(R.id.groupEvents);
         String packageName = getPackageName();
         Resources resources = getResources();
         LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(
@@ -153,13 +154,6 @@ public class DetailsActivity extends AppCompatActivity implements View.OnClickLi
             @SuppressLint("DefaultLocale") String resName = String.format("label_details_ev%d",num);
             int resId = resources.getIdentifier(resName, "string", packageName);
             if(resId != 0) {
-                /* This is not the fastest way, but it ensures, that the correct drawable is used */
-                /*
-                LinearLayout container = ((LinearLayout)getLayoutInflater().inflate(
-                        R.layout.detailsoptions, groupEvents, false));
-                CheckBox option = (CheckBox)container.findViewById(R.id.optionCheckbox);
-                container.removeView(option);
-                */
                 AppCompatCheckBox option = new AppCompatCheckBox(this);
                 option.setLayoutParams(layoutParams);
                 option.setTextSize(18);
@@ -239,7 +233,7 @@ public class DetailsActivity extends AppCompatActivity implements View.OnClickLi
                         @SuppressLint("DefaultLocale") String resName = String.format("label_details_ev%d",num);
                         resId = getResources().getIdentifier(resName, "string", packageName);
                         if(resId != 0) {
-                            CheckBox option = (CheckBox) findViewById(resId);
+                            CheckBox option = findViewById(resId);
                             if(option.isChecked()) entry.symptoms.add(num);
                             num++;
                         } else {

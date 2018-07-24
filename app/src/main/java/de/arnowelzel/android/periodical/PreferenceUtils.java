@@ -25,12 +25,10 @@ import android.preference.PreferenceManager;
 /**
  * Preference utilities
  */
-public class PreferenceUtils {
-    /** Private reference to application context */
-    private final Context context;
+class PreferenceUtils {
 
     /** Private reference to shared preferences */
-    private SharedPreferences preferences;
+    private final SharedPreferences preferences;
 
     /**
      * Constructor, will try to create/open a writable database
@@ -39,7 +37,7 @@ public class PreferenceUtils {
      * Application context
      */
     PreferenceUtils(Context context) {
-        this.context = context;
+        /* Private reference to application context */
         this.preferences =  PreferenceManager.getDefaultSharedPreferences(context);
     }
 
@@ -56,12 +54,12 @@ public class PreferenceUtils {
      * The preference
      */
     public int getInt(String key, Integer defValue) {
-        int result = defValue;
+        int result;
 
         try {
             result = Integer.parseInt(preferences.getString(key, defValue.toString()));
-        } catch (ClassCastException e) {
-        } catch (NumberFormatException e) {
+        } catch (NumberFormatException|ClassCastException e) {
+            result = defValue;
         }
 
         return result;
@@ -80,7 +78,7 @@ public class PreferenceUtils {
      * The preference
      */
     public String getString(String key, String defValue) {
-        String result = defValue;
+        String result;
 
         try {
             result = preferences.getString(key, defValue);
@@ -104,7 +102,7 @@ public class PreferenceUtils {
      * The preference
      */
     public boolean getBoolean(String key, boolean defValue) {
-        boolean result = defValue;
+        boolean result;
 
         try {
             result = preferences.getBoolean(key, defValue);

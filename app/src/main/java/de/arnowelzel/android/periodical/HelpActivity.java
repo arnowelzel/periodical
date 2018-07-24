@@ -41,9 +41,10 @@ public class HelpActivity extends AppCompatActivity {
 
         // Activate "back button" in Action Bar
         ActionBar actionBar = getSupportActionBar();
+        assert actionBar != null;
         actionBar.setDisplayHomeAsUpEnabled(true);
 
-        WebView view = (WebView) findViewById(R.id.webView);
+        WebView view = findViewById(R.id.webView);
         view.loadUrl("file:///android_asset/"+getString(R.string.asset_help));
     }
 

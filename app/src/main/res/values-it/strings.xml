@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name">Periodical</string>
     <string name="menuitem_help">Aiuto</string>
     <string name="menuitem_about">Info …</string>
@@ -95,22 +95,23 @@
     <string name="label_details_intensity4">4 (forte)</string>
     <string name="label_details_notes">Appunti</string>
     <string name="label_details_events">Eventi/Sintomi</string>
-    <string name="label_details_ev1">Rapporto</string>
-    <string name="label_details_ev2">Spasmi</string>
-    <string name="label_details_ev3">Dolore alla schiena</string>
-    <string name="label_details_ev4">Dolore medio a sinistra</string>
-    <string name="label_details_ev5">Dolore medio giusto</string>
-    <string name="label_details_ev6">Dolore al seno/dolore trascinante</string>
-    <string name="label_details_ev7">Candida</string>
-    <string name="label_details_ev8">Deflusso</string>
-    <string name="label_details_ev9">Sanguinamento intenso</string>
-    <string name="label_details_ev10">Fluttuazioni di temperatura</string>
-    <string name="label_details_ev11">Brufoli</string>
-    <string name="label_details_ev12">Gonfiore</string>
-    <string name="label_details_ev13">Svenimento</string>
-    <string name="label_details_ev14">Burbero</string>
-    <string name="label_details_ev15">Nausea</string>
-    <string name="label_details_ev16">Voglie</string>
+    <string name="label_details_ev1" tools:keep="@string/label_details_ev1">Rapporto</string>
+    <string name="label_details_ev2" tools:keep="@string/label_details_ev2">Spasmi</string>
+    <string name="label_details_ev3" tools:keep="@string/label_details_ev3">Dolore alla schiena</string>
+    <string name="label_details_ev4" tools:keep="@string/label_details_ev4">Dolore medio a sinistra</string>
+    <string name="label_details_ev5" tools:keep="@string/label_details_ev5">Dolore medio giusto</string>
+    <string name="label_details_ev6" tools:keep="@string/label_details_ev6">Dolore al seno/dolore trascinante</string>
+    <string name="label_details_ev7" tools:keep="@string/label_details_ev7">Candida</string>
+    <string name="label_details_ev8" tools:keep="@string/label_details_ev8">Deflusso</string>
+    <string name="label_details_ev9" tools:keep="@string/label_details_ev9">Sanguinamento intenso</string>
+    <string name="label_details_ev10" tools:keep="@string/label_details_ev10">Fluttuazioni di temperatura</string>
+    <string name="label_details_ev11" tools:keep="@string/label_details_ev11">Brufoli</string>
+    <string name="label_details_ev12" tools:keep="@string/label_details_ev12">Gonfiore</string>
+    <string name="label_details_ev13" tools:keep="@string/label_details_ev13">Svenimento</string>
+    <string name="label_details_ev14" tools:keep="@string/label_details_ev14">Burbero</string>
+    <string name="label_details_ev15" tools:keep="@string/label_details_ev15">Nausea</string>
+    <string name="label_details_ev16" tools:keep="@string/label_details_ev16">Voglie</string>
+    <string name="label_details_ev17" tools:keep="@string/label_details_ev17">Cefalea/emicrania</string>
     <string name="label_period_day">Ciclo, giorno %d</string>
     <string name="navigation_drawer_open">Apri la barra di navigazione</string>
     <string name="navigation_drawer_close">Chiudi la barra di navigazione</string>

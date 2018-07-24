@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name">Periodical</string>
     <string name="menuitem_help">Help</string>
     <string name="menuitem_about">Over …</string>
@@ -95,22 +95,23 @@
     <string name="label_details_intensity4">4 (sterk)</string>
     <string name="label_details_notes">Notes</string>
     <string name="label_details_events">Events/Symptomen</string>
-    <string name="label_details_ev1">Gemeenschap</string>
-    <string name="label_details_ev2">Krampen</string>
-    <string name="label_details_ev3">Rugpijn</string>
-    <string name="label_details_ev4">Mittelschmerz links</string>
-    <string name="label_details_ev5">Mittelschmerz rechts</string>
-    <string name="label_details_ev6">Borstpijn/slepende pijn</string>
-    <string name="label_details_ev7">Vaginale candidainfectie</string>
-    <string name="label_details_ev8">Afscheiding</string>
-    <string name="label_details_ev9">Intens bloeden</string>
-    <string name="label_details_ev10">Temperatuurschommelingen</string>
-    <string name="label_details_ev11">Puistjes</string>
-    <string name="label_details_ev12">Opgeblazen gevoel</string>
-    <string name="label_details_ev13">Flauwte</string>
-    <string name="label_details_ev14">Nors</string>
-    <string name="label_details_ev15">Misselijkheid</string>
-    <string name="label_details_ev16">Hunkeren</string>
+    <string name="label_details_ev1" tools:keep="@string/label_details_ev1">Gemeenschap</string>
+    <string name="label_details_ev2" tools:keep="@string/label_details_ev2">Krampen</string>
+    <string name="label_details_ev3" tools:keep="@string/label_details_ev3">Rugpijn</string>
+    <string name="label_details_ev4" tools:keep="@string/label_details_ev4">Mittelschmerz links</string>
+    <string name="label_details_ev5" tools:keep="@string/label_details_ev5">Mittelschmerz rechts</string>
+    <string name="label_details_ev6" tools:keep="@string/label_details_ev6">Borstpijn/slepende pijn</string>
+    <string name="label_details_ev7" tools:keep="@string/label_details_ev7">Vaginale candidainfectie</string>
+    <string name="label_details_ev8" tools:keep="@string/label_details_ev8">Afscheiding</string>
+    <string name="label_details_ev9" tools:keep="@string/label_details_ev9">Intens bloeden</string>
+    <string name="label_details_ev10" tools:keep="@string/label_details_ev10">Temperatuurschommelingen</string>
+    <string name="label_details_ev11" tools:keep="@string/label_details_ev11">Puistjes</string>
+    <string name="label_details_ev12" tools:keep="@string/label_details_ev12">Opgeblazen gevoel</string>
+    <string name="label_details_ev13" tools:keep="@string/label_details_ev13">Flauwte</string>
+    <string name="label_details_ev14" tools:keep="@string/label_details_ev14">Nors</string>
+    <string name="label_details_ev15" tools:keep="@string/label_details_ev15">Misselijkheid</string>
+    <string name="label_details_ev16" tools:keep="@string/label_details_ev16">Hunkeren</string>
+    <string name="label_details_ev17" tools:keep="@string/label_details_ev17">Hoofdpijn/migraine</string>
     <string name="label_period_day">Periode, dag %d</string>
     <string name="navigation_drawer_open">Open de navigatielade</string>
     <string name="navigation_drawer_close">Sluit de navigatiebalk</string>

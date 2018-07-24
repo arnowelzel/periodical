@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name">Periodical</string>
     <string name="menuitem_help">Nápověda</string>
     <string name="menuitem_about">O Periodical</string>
@@ -95,22 +95,23 @@
     <string name="label_details_intensity4">4 (silný)</string>
     <string name="label_details_notes">Poznámky</string>
     <string name="label_details_events">Události/příznaky</string>
-    <string name="label_details_ev1">Soulož</string>
-    <string name="label_details_ev2">Křeče</string>
-    <string name="label_details_ev3">Bolesti zad</string>
-    <string name="label_details_ev4">Střední bolest odešla</string>
-    <string name="label_details_ev5">Střední bolesti správně</string>
-    <string name="label_details_ev6">Bolest prsu / tahání bolesti</string>
-    <string name="label_details_ev7">Drozd/candida</string>
-    <string name="label_details_ev8">Výtok</string>
-    <string name="label_details_ev9">Intenzivní krvácení</string>
-    <string name="label_details_ev10">Kolísání teplot</string>
-    <string name="label_details_ev11">Pupínek</string>
-    <string name="label_details_ev12">Nadýmání</string>
-    <string name="label_details_ev13">Mdloby</string>
-    <string name="label_details_ev14">Nevrlost</string>
-    <string name="label_details_ev15">Nevolnost</string>
-    <string name="label_details_ev16">Chutě</string>
+    <string name="label_details_ev1" tools:keep="@string/label_details_ev1">Soulož</string>
+    <string name="label_details_ev2" tools:keep="@string/label_details_ev2">Křeče</string>
+    <string name="label_details_ev3" tools:keep="@string/label_details_ev3">Bolesti zad</string>
+    <string name="label_details_ev4" tools:keep="@string/label_details_ev4">Střední bolest odešla</string>
+    <string name="label_details_ev5" tools:keep="@string/label_details_ev5">Střední bolesti správně</string>
+    <string name="label_details_ev6" tools:keep="@string/label_details_ev6">Bolest prsu / tahání bolesti</string>
+    <string name="label_details_ev7" tools:keep="@string/label_details_ev7">Drozd/candida</string>
+    <string name="label_details_ev8" tools:keep="@string/label_details_ev8">Výtok</string>
+    <string name="label_details_ev9" tools:keep="@string/label_details_ev9">Intenzivní krvácení</string>
+    <string name="label_details_ev10" tools:keep="@string/label_details_ev10">Kolísání teplot</string>
+    <string name="label_details_ev11" tools:keep="@string/label_details_ev11">Pupínek</string>
+    <string name="label_details_ev12" tools:keep="@string/label_details_ev12">Nadýmání</string>
+    <string name="label_details_ev13" tools:keep="@string/label_details_ev13">Mdloby</string>
+    <string name="label_details_ev14" tools:keep="@string/label_details_ev14">Nevrlost</string>
+    <string name="label_details_ev15" tools:keep="@string/label_details_ev15">Nevolnost</string>
+    <string name="label_details_ev16" tools:keep="@string/label_details_ev16">Chutě</string>
+    <string name="label_details_ev17" tools:keep="@string/label_details_ev17">Bolest hlavy/migréna</string>
     <string name="label_period_day">Období, den %d</string>
     <string name="navigation_drawer_open">Otevřete navigační zásuvku</string>
     <string name="navigation_drawer_close">Zavřete navigační panel</string>

@@ -122,10 +122,10 @@ public class MainActivity extends AppCompatActivity
         // Setup main view with navigation drawer
         setContentView(R.layout.activity_main);
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        DrawerLayout drawer = findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
@@ -135,17 +135,17 @@ public class MainActivity extends AppCompatActivity
         // avoid the main view to handle the swipe of the navigation drawer
         drawer.addDrawerListener(new DrawerLayout.DrawerListener() {
                  @Override
-                 public void onDrawerSlide(View drawerView, float slideOffset) {
+                 public void onDrawerSlide(@NonNull View drawerView, float slideOffset) {
                      navigationDrawerActive = true;
                  }
 
                  @Override
-                 public void onDrawerOpened(View drawerView) {
+                 public void onDrawerOpened(@NonNull View drawerView) {
                      navigationDrawerActive = true;
                  }
 
                  @Override
-                 public void onDrawerClosed(View drawerView) {
+                 public void onDrawerClosed(@NonNull View drawerView) {
                      navigationDrawerActive = false;
                  }
 
@@ -154,7 +154,7 @@ public class MainActivity extends AppCompatActivity
                  }
              });
 
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
         // Setup gesture handling
@@ -238,7 +238,7 @@ public class MainActivity extends AppCompatActivity
      */
     @Override
     public void onBackPressed() {
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        DrawerLayout drawer = findViewById(R.id.drawer_layout);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
@@ -250,10 +250,8 @@ public class MainActivity extends AppCompatActivity
      * Called when the user selects an item in the navigation drawr
      */
     @Override
-    public boolean onNavigationItemSelected(MenuItem item) {
-        int id = item.getItemId();
-
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        DrawerLayout drawer = findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
 
         switch (item.getItemId()) {
@@ -330,7 +328,7 @@ public class MainActivity extends AppCompatActivity
      */
     private void showOptions() {
         startActivityForResult(
-                new Intent(MainActivity.this, OptionsActivity.class), SET_OPTIONS);
+                new Intent(MainActivity.this, PreferenceActivity.class), SET_OPTIONS);
     }
 
     /**
@@ -373,7 +371,7 @@ public class MainActivity extends AppCompatActivity
         GregorianCalendar cal = new GregorianCalendar(yearCurrent, monthCurrent - 1, 1);
 
         // Output current year/month
-        TextView displayDate = (TextView) findViewById(R.id.displaydate);
+        TextView displayDate = findViewById(R.id.displaydate);
         @SuppressLint("SimpleDateFormat") SimpleDateFormat dateFormat = new SimpleDateFormat("MMMM yyyy");
         displayDate.setText(String.format("%s\nØ%d ↓%d ↑%d",
                 dateFormat.format(cal.getTime()),
@@ -403,7 +401,7 @@ public class MainActivity extends AppCompatActivity
 
         // Adjust calendar elements
         for (int i = 1; i <= 42; i++) {
-            CalendarCell cell = (CalendarCell) findViewById(calendarCells[i - 1]);
+            CalendarCell cell = findViewById(calendarCells[i - 1]);
             if (i < firstDayOfWeek || i >= firstDayOfWeek + daysCount) {
                 cell.setVisibility(android.view.View.INVISIBLE);
                 // TODO Display days of previous/next month as "disabled" buttons
@@ -465,7 +463,7 @@ public class MainActivity extends AppCompatActivity
         calendarUpdate();
 
         // Show slide animation from left to right
-        ViewFlipper flipper = (ViewFlipper) findViewById(R.id.mainwidget);
+        ViewFlipper flipper = findViewById(R.id.mainwidget);
         flipper.setInAnimation(AnimationHelper.inFromLeftAnimation());
         flipper.setOutAnimation(AnimationHelper.outToRightAnimation());
         flipper.showNext();
@@ -492,7 +490,7 @@ public class MainActivity extends AppCompatActivity
         calendarUpdate();
 
         // Show slide animation from right to left
-        ViewFlipper flipper = (ViewFlipper) findViewById(R.id.mainwidget);
+        ViewFlipper flipper = findViewById(R.id.mainwidget);
         flipper.setInAnimation(AnimationHelper.inFromRightAnimation());
         flipper.setOutAnimation(AnimationHelper.outToLeftAnimation());
         flipper.showPrevious();
@@ -514,14 +512,6 @@ public class MainActivity extends AppCompatActivity
         Calendar cal = new GregorianCalendar();
         monthCurrent = cal.get(Calendar.MONTH) + 1;
         yearCurrent = cal.get(Calendar.YEAR);
-    }
-
-    /**
-     * Handler for "current month" menu action
-     */
-    private void goCurrent() {
-        initMonth();
-        calendarUpdate();
     }
 
     /**
@@ -862,7 +852,7 @@ public class MainActivity extends AppCompatActivity
             return gestureDetector.onTouchEvent(e);
         }
 
-        return true;
+        return result;
     }
 
     /**

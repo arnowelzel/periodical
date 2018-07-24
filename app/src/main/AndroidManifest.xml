@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-      package="de.arnowelzel.android.periodical">
+    xmlns:tools="http://schemas.android.com/tools"
+    package="de.arnowelzel.android.periodical">
           
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     
@@ -10,7 +11,8 @@
 		android:allowBackup="true"
         android:fullBackupContent="true"
         android:theme="@style/Theme.AppCompat"
-        android:supportsRtl="false">
+        android:supportsRtl="false"
+        tools:ignore="GoogleAppIndexingWarning">
 
         <activity
             android:name=".MainActivity"
@@ -28,7 +30,7 @@
 
         <activity android:name=".ListDetailsActivity" android:label="@string/list_details_title" />
     		
-        <activity android:name=".OptionsActivity" android:label="@string/options_title"/>
+        <activity android:name=".PreferenceActivity" android:label="@string/options_title"/>
         
         <activity android:name=".HelpActivity" android:label="@string/help_title"/>
 

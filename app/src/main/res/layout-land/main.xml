@@ -37,7 +37,8 @@
                 android:contentDescription="@string/previous_month"
                 android:onClick="goPrev"
                 android:gravity="center"
-                android:drawableLeft="@drawable/ic_arrow_back_black_32dp" />
+                android:drawableLeft="@drawable/ic_arrow_back_black_32dp"
+                tools:ignore="ButtonStyle" />
 
             <Button
                 android:id="@+id/buttontoday"
@@ -46,7 +47,8 @@
                 android:contentDescription="@string/current_day"
                 android:onClick="goCurrent"
                 android:gravity="center"
-                android:drawableLeft="@drawable/ic_today_black_32dp" />
+                android:drawableLeft="@drawable/ic_today_black_32dp"
+                tools:ignore="ButtonStyle" />
 
             <Button
                 android:id="@+id/buttonnext"
@@ -54,7 +56,8 @@
                 android:layout_height="wrap_content"
                 android:contentDescription="@string/next_month"
                 android:onClick="goNext"
-                android:drawableLeft="@drawable/ic_arrow_forward_black_32dp" />
+                android:drawableLeft="@drawable/ic_arrow_forward_black_32dp"
+                tools:ignore="ButtonStyle" />
         </LinearLayout>
 
         <TextView

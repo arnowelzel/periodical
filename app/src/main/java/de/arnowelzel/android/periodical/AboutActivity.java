@@ -22,7 +22,6 @@ import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
@@ -45,9 +44,10 @@ public class AboutActivity extends AppCompatActivity {
 
         // Activate "back button" in Action Bar
         ActionBar actionBar = getSupportActionBar();
+        assert actionBar != null;
         actionBar.setDisplayHomeAsUpEnabled(true);
 
-        WebView view = (WebView) findViewById(R.id.webView);
+        WebView view = findViewById(R.id.webView);
         view.getSettings().setJavaScriptEnabled(true);
         view.setWebViewClient(new WebViewClient() {
             @Override

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name">Periodical</string>
     <string name="menuitem_help">Hilfe</string>
     <string name="menuitem_about">Über …</string>
@@ -95,22 +95,23 @@
     <string name="label_details_intensity4">4 (stark)</string>
     <string name="label_details_notes">Notizen</string>
     <string name="label_details_events">Ereignisse/Symptome</string>
-    <string name="label_details_ev1">Geschlechtsverkehr</string>
-    <string name="label_details_ev2">Krämpfe</string>
-    <string name="label_details_ev3">Rückenschmerzen</string>
-    <string name="label_details_ev4">Mittelschmerz links</string>
-    <string name="label_details_ev5">Mittelschmerz rechts</string>
-    <string name="label_details_ev6">Brustschmerzen/ziehen</string>
-    <string name="label_details_ev7">Candida</string>
-    <string name="label_details_ev8">Ausfluss</string>
-    <string name="label_details_ev9">Starke Blutung</string>
-    <string name="label_details_ev10">Temperaturschwankungen</string>
-    <string name="label_details_ev11">Pickel</string>
-    <string name="label_details_ev12">Blähungen</string>
-    <string name="label_details_ev13">Ohnmacht</string>
-    <string name="label_details_ev14">Mürrisch</string>
-    <string name="label_details_ev15">Übelkeit</string>
-    <string name="label_details_ev16">Heißhunger</string>
+    <string name="label_details_ev1" tools:keep="@string/label_details_ev1">Geschlechtsverkehr</string>
+    <string name="label_details_ev2" tools:keep="@string/label_details_ev2">Krämpfe</string>
+    <string name="label_details_ev3" tools:keep="@string/label_details_ev3">Rückenschmerzen</string>
+    <string name="label_details_ev4" tools:keep="@string/label_details_ev4">Mittelschmerz links</string>
+    <string name="label_details_ev5" tools:keep="@string/label_details_ev5">Mittelschmerz rechts</string>
+    <string name="label_details_ev6" tools:keep="@string/label_details_ev6">Brustschmerzen/ziehen</string>
+    <string name="label_details_ev7" tools:keep="@string/label_details_ev7">Candida</string>
+    <string name="label_details_ev8" tools:keep="@string/label_details_ev8">Ausfluss</string>
+    <string name="label_details_ev9" tools:keep="@string/label_details_ev9">Starke Blutung</string>
+    <string name="label_details_ev10" tools:keep="@string/label_details_ev10">Temperaturschwankungen</string>
+    <string name="label_details_ev11" tools:keep="@string/label_details_ev11">Pickel</string>
+    <string name="label_details_ev12" tools:keep="@string/label_details_ev12">Blähungen</string>
+    <string name="label_details_ev13" tools:keep="@string/label_details_ev13">Ohnmacht</string>
+    <string name="label_details_ev14" tools:keep="@string/label_details_ev14">Mürrisch</string>
+    <string name="label_details_ev15" tools:keep="@string/label_details_ev15">Übelkeit</string>
+    <string name="label_details_ev16" tools:keep="@string/label_details_ev16">Heißhunger</string>
+    <string name="label_details_ev17" tools:keep="@string/label_details_ev17">Kopfschmerzen/Migräne</string>
     <string name="label_period_day">Periode, Tag %d</string>
     <string name="navigation_drawer_open">Navigationsleiste öffnen</string>
     <string name="navigation_drawer_close">Navigationsleiste schließen</string>

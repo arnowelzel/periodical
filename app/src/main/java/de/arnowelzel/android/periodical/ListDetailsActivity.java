@@ -71,9 +71,10 @@ public class ListDetailsActivity extends AppCompatActivity implements AdapterVie
 
         // Activate "back button" in Action Bar
         ActionBar actionBar = getSupportActionBar();
+        assert actionBar != null;
         actionBar.setDisplayHomeAsUpEnabled(true);
 
-		ListView listView = (ListView) findViewById(R.id.listview_details);
+		ListView listView = findViewById(R.id.listview_details);
         listView.setAdapter(new DayEntryAdapter(this, dayList, getPackageName(), getResources()));
 		listView.setOnItemClickListener(this);
     }
@@ -123,7 +124,7 @@ public class ListDetailsActivity extends AppCompatActivity implements AdapterVie
     public void onItemClick(AdapterView<?> adapterView, View v, int position, long id) {
         // Determine date of clicked item
         int listsize = dbMain.dayEntries.size();
-        if (dbMain != null && position >= 0 && position < listsize) {
+        if (position >= 0 && position < listsize) {
             DayEntry selectedEntry = dbMain.dayEntries.get(listsize - position - 1);
 
             Integer month = selectedEntry.date.get(Calendar.MONTH);

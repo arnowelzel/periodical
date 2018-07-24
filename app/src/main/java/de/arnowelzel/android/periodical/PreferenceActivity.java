@@ -32,7 +32,7 @@ import android.widget.Toast;
 /**
  * Activity to handle the "Preferences" command
  */
-public class OptionsActivity extends AppCompatPreferenceActivity implements SharedPreferences.OnSharedPreferenceChangeListener {
+public class PreferenceActivity extends AppCompatPreferenceActivity implements SharedPreferences.OnSharedPreferenceChangeListener {
     
     /**
      * Called when activity starts
@@ -121,6 +121,7 @@ public class OptionsActivity extends AppCompatPreferenceActivity implements Shar
 
         // Activate "back button" in Action Bar
         ActionBar actionBar = getSupportActionBar();
+        assert actionBar != null;
         actionBar.setDisplayHomeAsUpEnabled(true);
     }
 

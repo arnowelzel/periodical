@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name">Periodical</string>
     <string name="menuitem_help">Ajuda</string>
     <string name="menuitem_about">Sobre …</string>
@@ -95,22 +95,23 @@
     <string name="label_details_intensity4">4 (forte)</string>
     <string name="label_details_notes">Notas</string>
     <string name="label_details_events">Eventos/Sintomas</string>
-    <string name="label_details_ev1">Sexo</string>
-    <string name="label_details_ev2">Cólicas</string>
-    <string name="label_details_ev3">Dor nas costas</string>
-    <string name="label_details_ev4">Dor do lado esquerdo</string>
-    <string name="label_details_ev5">Dor do lado direito</string>
-    <string name="label_details_ev6">Dor no peito/dor constante</string>
-    <string name="label_details_ev7">Candida/infecção</string>
-    <string name="label_details_ev8">Descarga vaginal</string>
-    <string name="label_details_ev9">Sangramento intenso</string>
-    <string name="label_details_ev10">Flutuação de temperatura</string>
-    <string name="label_details_ev11">Espinhas</string>
-    <string name="label_details_ev12">Inchaço</string>
-    <string name="label_details_ev13">Desmaio</string>
-    <string name="label_details_ev14">Mau humor</string>
-    <string name="label_details_ev15">Náusea</string>
-    <string name="label_details_ev16">Desejos</string>
+    <string name="label_details_ev1" tools:keep="@string/label_details_ev1">Sexo</string>
+    <string name="label_details_ev2" tools:keep="@string/label_details_ev2">Cólicas</string>
+    <string name="label_details_ev3" tools:keep="@string/label_details_ev3">Dor nas costas</string>
+    <string name="label_details_ev4" tools:keep="@string/label_details_ev4">Dor do lado esquerdo</string>
+    <string name="label_details_ev5" tools:keep="@string/label_details_ev5">Dor do lado direito</string>
+    <string name="label_details_ev6" tools:keep="@string/label_details_ev6">Dor no peito/dor constante</string>
+    <string name="label_details_ev7" tools:keep="@string/label_details_ev7">Candida/infecção</string>
+    <string name="label_details_ev8" tools:keep="@string/label_details_ev8">Descarga vaginal</string>
+    <string name="label_details_ev9" tools:keep="@string/label_details_ev9">Sangramento intenso</string>
+    <string name="label_details_ev10" tools:keep="@string/label_details_ev10">Flutuação de temperatura</string>
+    <string name="label_details_ev11" tools:keep="@string/label_details_ev11">Espinhas</string>
+    <string name="label_details_ev12" tools:keep="@string/label_details_ev12">Inchaço</string>
+    <string name="label_details_ev13" tools:keep="@string/label_details_ev13">Desmaio</string>
+    <string name="label_details_ev14" tools:keep="@string/label_details_ev14">Mau humor</string>
+    <string name="label_details_ev15" tools:keep="@string/label_details_ev15">Náusea</string>
+    <string name="label_details_ev16" tools:keep="@string/label_details_ev16">Desejos</string>
+    <string name="label_details_ev17" tools:keep="@string/label_details_ev17">Dor de cabeça/enxaqueca</string>
     <string name="label_period_day">Menstruação, dia %d</string>
     <string name="navigation_drawer_open">Abrir barra de navegação</string>
     <string name="navigation_drawer_close">Fechar a barra de navegação</string>

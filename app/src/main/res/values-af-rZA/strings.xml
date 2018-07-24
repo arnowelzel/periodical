@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name">Periodical</string>
     <string name="menuitem_help">Help</string>
     <string name="menuitem_about">Omtrent</string>
@@ -30,13 +30,13 @@
     <string name="about_title">Omtrent</string>
     <string name="help_title">Help</string>
     <string name="backup_title">Backup data</string>
-    <string name="backup_text">Wil U die huidige inligting backup ?[...]</string>
+    <string name="backup_text">Wil U die huidige inligting backup?\nDit sal die laaste rugsteun vervang!</string>
     <string name="backup_ok">OK</string>
     <string name="backup_cancel">Kanselleer</string>
     <string name="backup_finished">Backup klaar</string>
     <string name="backup_failed">Backup werk nie!</string>
     <string name="restore_title">Restore data</string>
-    <string name="restore_text">Wil U die laaste backup restoreer ?[..]</string>
+    <string name="restore_text">Wil U die laaste backup restoreer?\nDit sal die huidige data vervang!</string>
     <string name="restore_ok">OK</string>
     <string name="restore_cancel">Kanselleer</string>
     <string name="restore_finished">Restoreer klaar</string>
@@ -95,20 +95,21 @@
     <string name="label_details_events">Gebeure/Simptome</string>
     <string name="label_details_ev1">Omgang</string>
     <string name="label_details_ev2">Krampe</string>
-    <string name="label_details_ev3">Rug pyn</string>
-    <string name="label_details_ev4">Middel pyn links</string>
-    <string name="label_details_ev5">Middel pain regs</string>
-    <string name="label_details_ev6">Bors pyn</string>
-    <string name="label_details_ev7">Omslag/candida</string>
-    <string name="label_details_ev8">Ontslag</string>
-    <string name="label_details_ev9">Intense bloeding</string>
-    <string name="label_details_ev10">Temperature skommelinge</string>
-    <string name="label_details_ev11">Puisies</string>
-    <string name="label_details_ev12">Opgeblase</string>
-    <string name="label_details_ev13">Floute</string>
-    <string name="label_details_ev14">Knorrigheid</string>
-    <string name="label_details_ev15">Naarheid</string>
-    <string name="label_details_ev16">Drange/Luste</string>
+    <string name="label_details_ev3" tools:keep="@string/label_details_ev3">Rug pyn</string>
+    <string name="label_details_ev4" tools:keep="@string/label_details_ev4">Middel pyn links</string>
+    <string name="label_details_ev5" tools:keep="@string/label_details_ev5">Middel pain regs</string>
+    <string name="label_details_ev6" tools:keep="@string/label_details_ev6">Bors pyn</string>
+    <string name="label_details_ev7" tools:keep="@string/label_details_ev7">Omslag/candida</string>
+    <string name="label_details_ev8" tools:keep="@string/label_details_ev8">Ontslag</string>
+    <string name="label_details_ev9" tools:keep="@string/label_details_ev9">Intense bloeding</string>
+    <string name="label_details_ev10" tools:keep="@string/label_details_ev10">Temperature skommelinge</string>
+    <string name="label_details_ev11" tools:keep="@string/label_details_ev11">Puisies</string>
+    <string name="label_details_ev12" tools:keep="@string/label_details_ev12">Opgeblase</string>
+    <string name="label_details_ev13" tools:keep="@string/label_details_ev13">Floute</string>
+    <string name="label_details_ev14" tools:keep="@string/label_details_ev14">Knorrigheid</string>
+    <string name="label_details_ev15" tools:keep="@string/label_details_ev15">Naarheid</string>
+    <string name="label_details_ev16" tools:keep="@string/label_details_ev16">Drange/Luste</string>
+    <string name="label_details_ev17" tools:keep="@string/label_details_ev17">Hoofpyn/migraine</string>
     <string name="label_period_day">Periode, dag %d</string>
     <string name="asset_about">af-rZA/about.html</string>
     <string name="asset_help">af-rZA/help.html</string>

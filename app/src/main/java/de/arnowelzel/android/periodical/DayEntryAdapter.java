@@ -29,7 +29,6 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import static java.lang.String.*;
@@ -39,7 +38,7 @@ import static java.lang.String.*;
  */
 class DayEntryAdapter extends ArrayAdapter<PeriodicalDatabase.DayEntry> {
     private final Context context;
-    private List<PeriodicalDatabase.DayEntry> entryList = new ArrayList<>();
+    private final List<PeriodicalDatabase.DayEntry> entryList;
     private final String packageName;
     private final Resources resources;
 
@@ -112,7 +111,7 @@ class DayEntryAdapter extends ArrayAdapter<PeriodicalDatabase.DayEntry> {
 
         TextView view;
 
-        view = (TextView) listItem.findViewById(R.id.item_date);
+        view = listItem.findViewById(R.id.item_date);
         switch(currentEntry.type) {
             case PeriodicalDatabase.DayEntry.PERIOD_START:
                 view.setText(
@@ -131,7 +130,7 @@ class DayEntryAdapter extends ArrayAdapter<PeriodicalDatabase.DayEntry> {
                 break;
         }
 
-        view = (TextView) listItem.findViewById(R.id.item_intensity);
+        view = listItem.findViewById(R.id.item_intensity);
         if(currentEntry.type == PeriodicalDatabase.DayEntry.PERIOD_START ||
                 currentEntry.type == PeriodicalDatabase.DayEntry.PERIOD_CONFIRMED) {
             String intensity = "?";
@@ -147,11 +146,11 @@ class DayEntryAdapter extends ArrayAdapter<PeriodicalDatabase.DayEntry> {
             view.setText("\u2014");
         }
 
-        view = (TextView) listItem.findViewById(R.id.item_notes);
+        view = listItem.findViewById(R.id.item_notes);
         if(currentEntry.notes.isEmpty()) view.setText("\u2014");
         else view.setText(currentEntry.notes);
 
-        view = (TextView) listItem.findViewById(R.id.item_symptom);
+        view = listItem.findViewById(R.id.item_symptom);
         if(textSymptoms.isEmpty()) view.setText("\u2014");
         else view.setText(textSymptoms);
 

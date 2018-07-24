@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name">Periodical</string>
     <string name="menuitem_help">ヘルプ</string>
     <string name="menuitem_about">アプリについて …</string>
@@ -95,22 +95,23 @@
     <string name="label_details_intensity4">4 (強い)</string>
     <string name="label_details_notes">メモ</string>
     <string name="label_details_events">イベント/症状</string>
-    <string name="label_details_ev1">性交</string>
-    <string name="label_details_ev2">生理痛</string>
-    <string name="label_details_ev3">背中の痛み</string>
-    <string name="label_details_ev4">左内部の痛み</string>
-    <string name="label_details_ev5">右内部の痛み</string>
-    <string name="label_details_ev6">胸の痛み/けん引痛</string>
-    <string name="label_details_ev7">鵞口瘡菌/カンジダ</string>
-    <string name="label_details_ev8">出血</string>
-    <string name="label_details_ev9">激しい出血</string>
-    <string name="label_details_ev10">体温変動</string>
-    <string name="label_details_ev11">吹き出物</string>
-    <string name="label_details_ev12">鼓腸</string>
-    <string name="label_details_ev13">失神</string>
-    <string name="label_details_ev14">イライラ</string>
-    <string name="label_details_ev15">吐き気</string>
-    <string name="label_details_ev16">欲求</string>
+    <string name="label_details_ev1" tools:keep="@string/label_details_ev1">性交</string>
+    <string name="label_details_ev2" tools:keep="@string/label_details_ev2">生理痛</string>
+    <string name="label_details_ev3" tools:keep="@string/label_details_ev3">背中の痛み</string>
+    <string name="label_details_ev4" tools:keep="@string/label_details_ev4">左内部の痛み</string>
+    <string name="label_details_ev5" tools:keep="@string/label_details_ev5">右内部の痛み</string>
+    <string name="label_details_ev6" tools:keep="@string/label_details_ev6">胸の痛み/けん引痛</string>
+    <string name="label_details_ev7" tools:keep="@string/label_details_ev7">鵞口瘡菌/カンジダ</string>
+    <string name="label_details_ev8" tools:keep="@string/label_details_ev8">出血</string>
+    <string name="label_details_ev9" tools:keep="@string/label_details_ev9">激しい出血</string>
+    <string name="label_details_ev10" tools:keep="@string/label_details_ev10">体温変動</string>
+    <string name="label_details_ev11" tools:keep="@string/label_details_ev11">吹き出物</string>
+    <string name="label_details_ev12" tools:keep="@string/label_details_ev12">鼓腸</string>
+    <string name="label_details_ev13" tools:keep="@string/label_details_ev13">失神</string>
+    <string name="label_details_ev14" tools:keep="@string/label_details_ev14">イライラ</string>
+    <string name="label_details_ev15" tools:keep="@string/label_details_ev15">吐き気</string>
+    <string name="label_details_ev16" tools:keep="@string/label_details_ev16">欲求</string>
+    <string name="label_details_ev17" tools:keep="@string/label_details_ev17">頭痛/片頭痛</string>
     <string name="label_period_day">月経期, 日 %d</string>
     <string name="navigation_drawer_open">ナビゲーションバーを開く</string>
     <string name="navigation_drawer_close">ナビゲーションバーを閉じる</string>
