@@ -18,11 +18,14 @@
 
 package de.arnowelzel.android.periodical;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.webkit.WebView;
+import android.webkit.WebViewClient;
 
 /**
  * Activity to handle the "Help" command
@@ -45,6 +48,16 @@ public class HelpActivity extends AppCompatActivity {
         actionBar.setDisplayHomeAsUpEnabled(true);
 
         WebView view = findViewById(R.id.webView);
+        view.setWebViewClient(
+            new WebViewClient() {
+                // Handle URLs always as external links
+                @SuppressWarnings("deprecation") @Override
+                public boolean shouldOverrideUrlLoading(WebView view, String url) {
+                    Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+                    startActivity(intent);
+                    return true;
+                }
+            });
         view.loadUrl("file:///android_asset/"+getString(R.string.asset_help));
     }
 

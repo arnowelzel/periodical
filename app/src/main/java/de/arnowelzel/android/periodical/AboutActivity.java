@@ -19,6 +19,8 @@
 package de.arnowelzel.android.periodical;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
@@ -49,14 +51,24 @@ public class AboutActivity extends AppCompatActivity {
 
         WebView view = findViewById(R.id.webView);
         view.getSettings().setJavaScriptEnabled(true);
-        view.setWebViewClient(new WebViewClient() {
-            @Override
-            public void onPageFinished(WebView view, String url) {
-                super.onPageFinished(view, url);
-                view.loadUrl("javascript:replace('version', '"+BuildConfig.VERSION_NAME+"')");
-                view.loadUrl("javascript:replace('year', '"+BuildConfig.VERSION_YEAR+"')");
-            }
-        });
+        view.setWebViewClient(
+            new WebViewClient() {
+                // Update version and year after loading the document
+                @Override
+                public void onPageFinished(WebView view, String url) {
+                    super.onPageFinished(view, url);
+                    view.loadUrl("javascript:replace('version', '"+BuildConfig.VERSION_NAME+"')");
+                    view.loadUrl("javascript:replace('year', '"+BuildConfig.VERSION_YEAR+"')");
+                }
+
+                // Handle URLs always external links
+                @SuppressWarnings("deprecation") @Override
+                public boolean shouldOverrideUrlLoading(WebView view, String url) {
+                    Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+                    startActivity(intent);
+                    return true;
+                }
+            });
         view.loadUrl("file:///android_asset/"+getString(R.string.asset_about));
     }
 
