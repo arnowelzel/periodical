@@ -32,11 +32,11 @@
   <string name="help_title">Help</string>
   <string name="backup_title">Backup data</string>
   <string name="backup_text">Wil je een backup maken van de huidige data?\nDit overschrijft de laatste backup!</string>
-  <string name="backup_ok">Ja</string>
+  <string name="backup_ok">Oké</string>
   <string name="backup_cancel">Annuleer</string>
   <string name="backup_finished">Backup is klaar</string>
   <string name="backup_failed">Backup faalde!</string>
-  <string name="restore_title">Herstel data</string>
+  <string name="restore_title">Herstel gegevens</string>
   <string name="restore_text">Wil je de laatste backup herstellen?\nDit overschrijft de huidige data!</string>
   <string name="restore_ok">Ja</string>
   <string name="restore_cancel">Annuleer</string>

@@ -103,7 +103,7 @@
   <string name="label_details_ev5" tools:keep="@string/label_details_ev5">右内部の痛み</string>
   <string name="label_details_ev6" tools:keep="@string/label_details_ev6">胸の痛み/けん引痛</string>
   <string name="label_details_ev7" tools:keep="@string/label_details_ev7">鵞口瘡菌/カンジダ</string>
-  <string name="label_details_ev8" tools:keep="@string/label_details_ev8">出血</string>
+  <string name="label_details_ev8" tools:keep="@string/label_details_ev8">おりもの</string>
   <string name="label_details_ev9" tools:keep="@string/label_details_ev9">激しい出血</string>
   <string name="label_details_ev10" tools:keep="@string/label_details_ev10">体温変動</string>
   <string name="label_details_ev11" tools:keep="@string/label_details_ev11">吹き出物</string>
