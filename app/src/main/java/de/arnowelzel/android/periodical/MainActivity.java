@@ -446,7 +446,7 @@ public class MainActivity extends AppCompatActivity
      * Handler for "previous month" button in main view
      */
     @SuppressWarnings({"UnusedParameters", "SameParameterValue"})
-    public void goPrev(View v) {
+    private void goPrev(View v) {
         // Update calendar
         monthCurrent--;
         if (monthCurrent < 1) {
@@ -473,7 +473,7 @@ public class MainActivity extends AppCompatActivity
      * Handler for "next month" button in main view
      */
     @SuppressWarnings({"UnusedParameters", "SameParameterValue"})
-    public void goNext(View v) {
+    private void goNext(View v) {
         // Update calendar
         monthCurrent++;
         if (monthCurrent > 12) {
@@ -825,7 +825,6 @@ public class MainActivity extends AppCompatActivity
             
             // Options modified
             case SET_OPTIONS:
-                dbMain.savePreferences();
                 handleDatabaseEdit();
                 calendarUpdate();
                 break;

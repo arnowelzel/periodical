@@ -44,6 +44,12 @@ import static java.lang.String.*;
  */
 @SuppressLint("DefaultLocale")
 class PeriodicalDatabase {
+    public final Integer DEFAULT_PERIOD_LENGTH = 4;
+    public final Integer DEFAULT_LUTEAL_LENGTH = 14;
+    public final Integer DEFAULT_CYCLE_LENGTH = 183;
+    public final Integer DEFAULT_START_OF_WEEK = 0;
+    public final Boolean DEFAULT_DIRECT_DETAILS = false;
+    public final Boolean DEFAULT_SHOW_CYCLE = true;
 
     /**
      * Helper to create or open database
@@ -161,7 +167,7 @@ class PeriodicalDatabase {
                 // based on the global period length setting
                 PreferenceUtils preferences = new PreferenceUtils(context);
                 int periodlength;
-                periodlength = preferences.getInt("period_length", 4);
+                periodlength = preferences.getInt("period_length", DEFAULT_PERIOD_LENGTH);
 
                 String statement;
 
@@ -169,12 +175,12 @@ class PeriodicalDatabase {
                 // maximum cycle as "period length", so it is not usable at all :-(
                 String option = "maximum_cycle_length";
                 SharedPreferences.Editor editor = preferences.edit();
-                editor.putInt(option, 183);
+                editor.putInt(option, DEFAULT_CYCLE_LENGTH);
                 editor.apply();
                 statement = "delete from options where name = ?";
                 db.execSQL(statement, new String[]{option});
                 statement = "insert into options (name, value) values (?, ?)";
-                db.execSQL(statement, new String[]{option, "183"});
+                db.execSQL(statement, new String[]{option, DEFAULT_CYCLE_LENGTH.toString()});
 
                 // Fill database with additional entries for the period days
                 statement = "select eventtype, eventdate from data order by eventdate desc";
@@ -404,7 +410,7 @@ class PeriodicalDatabase {
                 int periodlength;
 
                 PreferenceUtils preferences = new PreferenceUtils(context);
-                periodlength = preferences.getInt("period_length", 4);
+                periodlength = preferences.getInt("period_length", DEFAULT_PERIOD_LENGTH);
 
                 type = DayEntry.PERIOD_START;
                 dateLocal.setTime(date.getTime());
@@ -500,9 +506,9 @@ class PeriodicalDatabase {
 
         // Get default values from preferences
         PreferenceUtils preferences = new PreferenceUtils(context);
-        periodlength = preferences.getInt("period_length", 4);
-        luteallength = preferences.getInt("luteal_length", 14);
-        maximumcyclelength = preferences.getInt("maximum_cycle_length", 183);
+        periodlength = preferences.getInt("period_length", DEFAULT_PERIOD_LENGTH);
+        luteallength = preferences.getInt("luteal_length", DEFAULT_LUTEAL_LENGTH);
+        maximumcyclelength = preferences.getInt("maximum_cycle_length", DEFAULT_CYCLE_LENGTH);
 
         // Just a safety measure: limit maximum cycle lengths to the allowed minimum value
         if(maximumcyclelength < 60) maximumcyclelength = 60;
@@ -1010,7 +1016,7 @@ class PeriodicalDatabase {
      * @param value
      * Value of the option to store
      */
-    private void setOption(String name, String value) {
+    public void setOption(String name, String value) {
         String statement;
 
         db.beginTransaction();
@@ -1027,7 +1033,7 @@ class PeriodicalDatabase {
         db.endTransaction();
     }
 
-    private void setOption(String name, Integer value) {
+    public void setOption(String name, Integer value) {
         String statement;
         String valueStr;
 
@@ -1046,7 +1052,7 @@ class PeriodicalDatabase {
         db.endTransaction();
     }
 
-    private void setOption(String name, boolean value) {
+    public void setOption(String name, boolean value) {
         String statement;
 
         db.beginTransaction();
@@ -1153,37 +1159,25 @@ class PeriodicalDatabase {
     }
 
     /**
-     * Save application preferences to the database
-     *
-     * <br><br><i>(Just a hack for now - in the future we might want to get rid of shared preferences)</i>
-     */
-    void savePreferences() {
-        PreferenceUtils preferences = new PreferenceUtils(context);
-        setOption("period_length", preferences.getInt("period_length", 4));
-        setOption("startofweek", preferences.getInt("startofweek", 0));
-        setOption("maximum_cycle_length", preferences.getInt("maximum_cycle_length", 183));
-        setOption("direct_details", preferences.getBoolean("pref_direct_details", false));
-        setOption("show_cycle", preferences.getBoolean("show_cycle", true));
-    }
-
-    /**
      * Restore application preferences from the database
      *
      * <br><br><i>(Just a hack for now - in the future we might want to get rid of shared preferences)</i>
      */
     void restorePreferences() {
-        Integer period_length = getOption("period_length", 4);
-        Integer startofweek = getOption("startofweek", 0);
-        if(startofweek != 0 && startofweek != 1) startofweek = 0;
-        Integer maximum_cycle_length = getOption("maximum_cycle_length", 183);
-        boolean direct_details = getOption("direct_details", false);
-        boolean show_cycle = getOption("show_cycle", true);
+        Integer period_length = getOption("period_length", DEFAULT_PERIOD_LENGTH);
+        Integer luteal_length = getOption("luteal_length ", DEFAULT_LUTEAL_LENGTH);
+        Integer startofweek = getOption("startofweek", DEFAULT_START_OF_WEEK);
+        if(startofweek != DEFAULT_START_OF_WEEK && startofweek != 1) startofweek = DEFAULT_START_OF_WEEK;
+        Integer maximum_cycle_length = getOption("maximum_cycle_length", DEFAULT_CYCLE_LENGTH);
+        boolean direct_details = getOption("direct_details", DEFAULT_DIRECT_DETAILS);
+        boolean show_cycle = getOption("show_cycle", DEFAULT_SHOW_CYCLE);
 
         PreferenceUtils preferences = new PreferenceUtils(context);
         SharedPreferences.Editor editor = preferences.edit();
 
         // Make sure, there are no existing values which may cause problems
         editor.remove("period_length");
+        editor.remove("luteal_length");
         editor.remove("startofweek");
         editor.remove("maximum_cycle_length");
         editor.remove("direct_details");
@@ -1191,6 +1185,7 @@ class PeriodicalDatabase {
 
         // Store values
         editor.putString("period_length", period_length.toString());
+        editor.putString("luteal_length", luteal_length.toString());
         editor.putString("startofweek", startofweek.toString());
         editor.putString("maximum_cycle_length", maximum_cycle_length.toString());
         editor.putBoolean("direct_details", direct_details);

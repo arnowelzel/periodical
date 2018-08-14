@@ -33,7 +33,8 @@ import android.widget.Toast;
  * Activity to handle the "Preferences" command
  */
 public class PreferenceActivity extends AppCompatPreferenceActivity implements SharedPreferences.OnSharedPreferenceChangeListener {
-    
+    private PeriodicalDatabase dbMain;
+
     /**
      * Called when activity starts
      */
@@ -43,7 +44,10 @@ public class PreferenceActivity extends AppCompatPreferenceActivity implements S
         
         final Context context = getApplicationContext();
         assert context != null;
-        
+
+        // We get/store preferences in the database
+        dbMain = new PeriodicalDatabase(context);
+
         addPreferencesFromResource(R.xml.preferences);
         initSummary(getPreferenceScreen());
         
@@ -152,13 +156,36 @@ public class PreferenceActivity extends AppCompatPreferenceActivity implements S
     }    
     
     /**
-     * Update summary of changed preferences
+     * Handle preference changes
      */
     @SuppressWarnings("deprecation")
     public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
+        PreferenceUtils preferenceUtils = new PreferenceUtils(sharedPreferences);
         Preference pref = findPreference(key);
         
         updatePrefSummary(pref);
+
+        // Store setting to database
+        switch(key) {
+            case "period_length":
+                dbMain.setOption(key, preferenceUtils.getInt(key, dbMain.DEFAULT_PERIOD_LENGTH));
+                break;
+            case "luteal_length":
+                dbMain.setOption(key, preferenceUtils.getInt(key, dbMain.DEFAULT_LUTEAL_LENGTH));
+                break;
+            case "startofweek":
+                dbMain.setOption(key, preferenceUtils.getInt(key, dbMain.DEFAULT_START_OF_WEEK));
+                break;
+            case "maximum_cycle_length":
+                dbMain.setOption(key, preferenceUtils.getInt(key, dbMain.DEFAULT_CYCLE_LENGTH));
+                break;
+            case "direct_details":
+                dbMain.setOption(key, preferenceUtils.getBoolean(key, dbMain.DEFAULT_DIRECT_DETAILS));
+                break;
+            case "show_cycle":
+                dbMain.setOption(key, preferenceUtils.getBoolean(key, dbMain.DEFAULT_SHOW_CYCLE));
+                break;
+        }
     }
 
     /**

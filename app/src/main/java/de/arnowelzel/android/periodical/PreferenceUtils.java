@@ -37,8 +37,17 @@ class PreferenceUtils {
      * Application context
      */
     PreferenceUtils(Context context) {
-        /* Private reference to application context */
         this.preferences =  PreferenceManager.getDefaultSharedPreferences(context);
+    }
+
+    /**
+     * Constructor, will use an existing shared preference object
+     *
+     * @param sharedPreferences
+     * Shared preferences to be used
+     */
+    PreferenceUtils(SharedPreferences sharedPreferences) {
+        this.preferences =  sharedPreferences;
     }
 
     /**
