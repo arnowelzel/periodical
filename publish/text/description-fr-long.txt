@@ -1,11 +1,11 @@
-Cette application calcule la fertilité selon la méthode Knaus-Ogino.
+Cette application estime les jours de fertilité selon la méthode Knaus-Ogino et permet de suivre les symptômes menstruels.
 
-ATTENTION: Il est déconseillé d'utiliser ce calendrier pour éviter une grossesse! Il existe des méthodes plus précises, comme la mesure de la température basale du corps.
+ATTENTION : Il est déconseillé d'utiliser ce calendrier pour éviter une grossesse ! Il existe des méthodes plus précises, comme la mesure de la température basale du corps.
 
-Les données peuvent être sauvegardées sur une carte mémoire ou un disque dur interne selon la disponibilité.
+Les données peuvent être sauvegardées sur une carte mémoire ou une mémoire de stockage interne.
 
-Si vous avez des questions ou si vous voulez m'aider avec des traductions en d'autres langues, s'il vous plaît contactez-moi par e-mail - merci.
+Si vous avez des questions ou si vous voulez m'aider avec les traductions dans d'autres langues, merci de me contacter par e-mail.
 
-Ce programme est un logiciel libre: vous pouvez le redistribuer et/ou modifier selon les termes de la licence GNU General Public License que publiée par la Free Software Foundation, soit la version 3 de cette licence, ou (à votre choix) toute version ultérieure.
+Ce programme est un logiciel libre : vous pouvez le partager et/ou le modifier selon les termes de la licence publique générale GNU publiée par la Free Software Foundation, soit la version 3 de cette licence soit (à votre convenance) toute version ultérieure.
 
-Vous pouvez obtenir le code source sur mon site.
+Vous pouvez obtenir le code source sur mon site web.
