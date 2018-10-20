@@ -84,8 +84,8 @@
   <string name="label_period">periode</string>
   <string name="label_period_predicted">periode voorspel</string>
   <string name="label_ovulation">ovulasie</string>
-  <string name="asset_about">af-rZA/about.html</string>
-  <string name="asset_help">af-rZA/help.html</string>
+  <string name="asset_about">af/about.html</string>
+  <string name="asset_help">af/help.html</string>
   <string name="label_details_period">Periode</string>
   <string name="label_details_yes">Ja</string>
   <string name="label_details_no">Nee</string>

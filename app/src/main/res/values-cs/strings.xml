@@ -84,8 +84,8 @@
   <string name="label_period">perioda</string>
   <string name="label_period_predicted">předpověď periody</string>
   <string name="label_ovulation">ovulace</string>
-  <string name="asset_about">cs-rCZ/about.html</string>
-  <string name="asset_help">cs-rCZ/help.html</string>
+  <string name="asset_about">cs/about.html</string>
+  <string name="asset_help">cs/help.html</string>
   <string name="label_details_period">Doba</string>
   <string name="label_details_yes">Ano</string>
   <string name="label_details_no">Ne</string>

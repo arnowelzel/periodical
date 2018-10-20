@@ -84,8 +84,8 @@
   <string name="label_period">ciclo</string>
   <string name="label_period_predicted">ciclo previsto</string>
   <string name="label_ovulation">ovulazione</string>
-  <string name="asset_about">it-rIT/about.html</string>
-  <string name="asset_help">it-rIT/help.html</string>
+  <string name="asset_about">it/about.html</string>
+  <string name="asset_help">it/help.html</string>
   <string name="label_details_period">Ciclo</string>
   <string name="label_details_yes">Sì</string>
   <string name="label_details_no">No</string>

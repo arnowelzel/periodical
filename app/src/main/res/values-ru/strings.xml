@@ -84,8 +84,8 @@
   <string name="label_period">Период</string>
   <string name="label_period_predicted">прогнозируемый период</string>
   <string name="label_ovulation">овуляция</string>
-  <string name="asset_about">ru-rRU/about.html</string>
-  <string name="asset_help">ru-rRU/help.html</string>
+  <string name="asset_about">ru/about.html</string>
+  <string name="asset_help">ru/help.html</string>
   <string name="label_details_period">Период</string>
   <string name="label_details_yes">Да</string>
   <string name="label_details_no">Нет</string>

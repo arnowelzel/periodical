@@ -84,8 +84,8 @@
   <string name="label_period">menstruatie</string>
   <string name="label_period_predicted">menstruatie voorspeld</string>
   <string name="label_ovulation">ovulatie</string>
-  <string name="asset_about">nl-rNL/about.html</string>
-  <string name="asset_help">nl-rNL/help.html</string>
+  <string name="asset_about">nl/about.html</string>
+  <string name="asset_help">nl/help.html</string>
   <string name="label_details_period">Periode</string>
   <string name="label_details_yes">Ja</string>
   <string name="label_details_no">Nee</string>
