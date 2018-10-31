@@ -14,7 +14,8 @@ German - Arno Welzel
 Italian - Valerio Bozzolan  
 Japanese - Naofumi Fukue  
 Russian - Wjatscheslaw Stoljarski  
-Spanish - Laura Arjona Reina
+Spanish - Laura Arjona Reina  
+Polish - Tomasz Terka
 
 If you want to help with the translation, you can join the project on Crowdin:
 
