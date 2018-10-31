@@ -38,6 +38,6 @@ Nuwe vertaling: Pools
 Nova tradução: polonês
 </pt-BR>
 
-<pl>
+<pl-PL>
 Nowe tłumaczenie: polski
-</pl>
+</pl-PL>
