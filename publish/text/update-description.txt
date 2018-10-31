@@ -1,39 +1,43 @@
 <en-US>
-New symptom: headache/migraine.
+New translation: Polish
 </en-US>
 
 <cs-CZ>
-Nový příznak: bolesti hlavy/migréna.
+Nový překlad: polsky
 </cs-CZ>
 
 <de-DE>
-Neues Symptom: Kopfschmerzen/Migräne
+Neue Übersetzung: Polnisch
 </de-DE>
 
 <es-ES>
-Nuevo síntoma: dolor de cabeza/migraña.
+Nueva traducción: polaco
 </es-ES>
 
 <fr-FR>
-Nouveau symptôme: mal de tête/migraine.
+Nouvelle traduction: polonais
 </fr-FR>
 
 <it-IT>
-Nuovo sintomo: mal di testa/emicrania.
+Nuova traduzione: polacco
 </it-IT>
 
 <nl-NL>
-Nieuw symptoom: hoofdpijn/migraine.
+Nieuwe vertaling: Pools
 </nl-NL>
 
 <ru-RU>
-Новый симптом: головная боль/мигрень.
+Новый перевод: польский
 </ru-RU>
 
 <af>
-Nuwe simptoom: hoofpyn/migraine.
+Nuwe vertaling: Pools
 </af>
 
 <pt-BR>
-Novo sintoma: dor de cabeça/enxaqueca.
+Nova tradução: polonês
 </pt-BR>
+
+<pl>
+Nowe tłumaczenie: polski
+</pl>

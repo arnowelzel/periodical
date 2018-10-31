@@ -1,0 +1,11 @@
+Ta aplikacja oblicza dni płodne według metody Knaus-Ogino i potrafi śledzić objawy menstruacyjne.
+
+OSTRZEŻENIE: Nie zaleca się używania tego kalendarza żeby uniknąć ciąży! Istnieją bardziej dokładne metody, jak mierzenie podstawowej temperatury ciała.
+
+Dane mogą być zapisane w zapasowej kopii danych na karcie pamięci lub "wewnętrznej" pamięci urządzenia, jeżeli jest obecna.
+
+Jeżeli masz dalsze pytania lub chcesz pomóc mi z tłumaczeniem w innych językach, proszę skontaktuj się ze mną przez e-mail - dziękuję.
+
+Niniejszy program jest wolnym oprogramowaniem; możesz go rozprowadzać dalej i/lub modyfikować na warunkach Powszechnej Licencji Publicznej GNU, wydanej przez Fundację Wolnego Oprogramowania - według wersji 3-giej tej Licencji lub którejś (według uznania) z późniejszych wersji.
+
+Możesz uzyskać kod źródłowy na mojej stronie.
