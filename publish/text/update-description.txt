@@ -1,43 +1,43 @@
 <en-US>
-New translation: Polish
+Added launch screen.
 </en-US>
 
 <cs-CZ>
-Nový překlad: polsky
+Přidáním spouštěcí obrazovky.
 </cs-CZ>
 
 <de-DE>
-Neue Übersetzung: Polnisch
+Startbildschirm hinzugefügt.
 </de-DE>
 
 <es-ES>
-Nueva traducción: polaco
+Pantalla de inicio añadida.
 </es-ES>
 
 <fr-FR>
-Nouvelle traduction: polonais
+Ajout de l'écran de lancement.
 </fr-FR>
 
 <it-IT>
-Nuova traduzione: polacco
+Aggiunto schermo di avvio.
 </it-IT>
 
 <nl-NL>
-Nieuwe vertaling: Pools
+Startscherm toegevoegd.
 </nl-NL>
 
 <ru-RU>
-Новый перевод: польский
+Добавлен экран запуска.
 </ru-RU>
 
 <af>
-Nuwe vertaling: Pools
+Bygevoeg lanseer skerm.
 </af>
 
 <pt-BR>
-Nova tradução: polonês
+Adicionado tela de lançamento.
 </pt-BR>
 
 <pl-PL>
-Nowe tłumaczenie: polski
+Dodano ekran startowy.
 </pl-PL>
