@@ -1,43 +1,43 @@
 <en-US>
-Added launch screen.
+Details can now also be added or opened in empty days.
 </en-US>
 
 <cs-CZ>
-Přidáním spouštěcí obrazovky.
+Podrobnosti lze nyní také přidat nebo otevřít v prázdných dnech.
 </cs-CZ>
 
 <de-DE>
-Startbildschirm hinzugefügt.
+Details können jetzt auch in leeren Tagen hinzugefügt oder geöffnet werden.
 </de-DE>
 
 <es-ES>
-Pantalla de inicio añadida.
+Ahora también se pueden agregar o abrir detalles en días vacíos.
 </es-ES>
 
 <fr-FR>
-Ajout de l'écran de lancement.
+Les détails peuvent maintenant être ajoutés ou ouverts les jours vides.
 </fr-FR>
 
 <it-IT>
-Aggiunto schermo di avvio.
+I dettagli possono ora essere aggiunti o aperti anche in giorni vuoti.
 </it-IT>
 
 <nl-NL>
-Startscherm toegevoegd.
+Details kunnen nu ook in lege dagen worden toegevoegd of geopend.
 </nl-NL>
 
 <ru-RU>
-Добавлен экран запуска.
+Детали теперь также могут быть добавлены или открыты в пустые дни.
 </ru-RU>
 
 <af>
-Bygevoeg lanseer skerm.
+Besonderhede kan nou ook in leë dae bygevoeg of geopen word.
 </af>
 
 <pt-BR>
-Adicionado tela de lançamento.
+Detalhes agora também podem ser adicionados ou abertos em dias vazios.
 </pt-BR>
 
 <pl-PL>
-Dodano ekran startowy.
+Szczegóły można teraz dodawać lub otwierać w dni puste.
 </pl-PL>
