@@ -862,6 +862,10 @@ class PeriodicalDatabase {
 
         if(entry == null) {
             entry = new DayEntry();
+
+            // Set chosen date
+            GregorianCalendar date = new GregorianCalendar(year, month - 1, day);
+            entry.date.setTime(date.getTime());
         }
 
         String statementNotes = format(
