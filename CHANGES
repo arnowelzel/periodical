@@ -1,3 +1,36 @@
+1.23
+
+Adding details for an empty day is now possible (thanks Dace Jansone for the fix).
+
+1.22
+
+Added loading screen.
+
+1.20
+
+New translation: Polish.
+
+1.18
+
+Updated translations.
+
+Reverted language codes back to their generic form to avoid missing translations when a regional language setting is  used.
+
+1.16
+
+Fixed a crash when changing the month using the buttons.
+
+1.15
+
+Changed preferences did not get stored when the app was closed with the preferences opened.
+
+1.13
+
+Updated translations.
+
+Links in the version information will now be opened with the standard browser and not inside
+Periodical (which couldn’t work since Periodical does not request internet access).
+
 1.12
 
 Added symptom "headache/migraine".
