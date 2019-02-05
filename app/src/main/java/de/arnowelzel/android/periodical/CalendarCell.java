@@ -58,6 +58,8 @@ public class CalendarCell extends Button {
     private int dayofcycle;
     /** intensity during period (1-4) */
     private int intensity;
+    /** flag for intercourse */
+    private boolean intercourse;
 
     /** Display metrics */
     private final DisplayMetrics metrics;
@@ -101,6 +103,10 @@ public class CalendarCell extends Button {
     private final Bitmap bitmapOvulation;
     /** Bitmap for entries of type "ovulation in the future" */
     private final Bitmap bitmapOvulationFuture;
+    /** Bitmap for entries of type "intercourse" */
+    private final Bitmap bitmapIntercourse;
+    /** Bitmap for entries of type "intercourse" (black variant) */
+    private final Bitmap bitmapIntercourseBlack;
     /** Paint for bitmaps */
     private final Paint paintBitmap;
 
@@ -123,6 +129,7 @@ public class CalendarCell extends Button {
         day = 1;
         month = 1;
         year = 1;
+        intercourse = false;
         
         //noinspection ConstantConditions
         metrics = getContext().getResources().getDisplayMetrics();
@@ -165,6 +172,10 @@ public class CalendarCell extends Button {
                 R.drawable.ic_ovulation);
         bitmapOvulationFuture = BitmapFactory.decodeResource(getResources(),
                 R.drawable.ic_ovulation_predicted);
+        bitmapIntercourse = BitmapFactory.decodeResource(getResources(),
+                R.drawable.ic_intercourse);
+        bitmapIntercourseBlack = BitmapFactory.decodeResource(getResources(),
+                R.drawable.ic_intercourse_black);
 
         // Get current screen orientation
         if(!isInEditMode()) { // Don't try this in layout editor
@@ -288,6 +299,19 @@ public class CalendarCell extends Button {
                 for (int i = 0; i < intensity && i < 4; i++) {
                     canvas.drawCircle((8 + i*8) * metrics.density, 8 * metrics.density,
                             2*metrics.density, paintIntensity);
+                }
+            }
+
+            // Draw intensity indicator
+            rectOverlay.set((int) rectCanvas.width() - (int) (overlaysize * metrics.density),
+                    (int) (2 * metrics.density),
+                    (int) rectCanvas.width() - (int) (2 * metrics.density),
+                    (int) (overlaysize * metrics.density));
+            if(intercourse) {
+                if (colorLabel == 0xffffffff) {
+                    canvas.drawBitmap(bitmapIntercourse, null, rectOverlay, paintBitmap);
+                } else {
+                    canvas.drawBitmap(bitmapIntercourseBlack, null, rectOverlay, paintBitmap);
                 }
             }
         }
@@ -454,6 +478,14 @@ public class CalendarCell extends Button {
      * Intensity of this day (1-4)
      */
     public void setIntensity(int intensity) { this.intensity = intensity; }
+
+    /**
+     * Set "intercourse" flag
+     *
+     * @param intercourse
+     * true if intercourse, false otherwise
+     */
+    public void setIntercourse(boolean intercourse) { this.intercourse = intercourse; }
 
     /**
      * Set the day to be displayed
