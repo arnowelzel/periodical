@@ -429,6 +429,7 @@ public class MainActivityApp extends AppCompatActivity
                     cell.setType(entry.type);
                     cell.setDayofcycle(show_cycle ? entry.dayofcycle : 0);
                     cell.setIntensity(entry.intensity);
+                    cell.setIntercourse(entry.symptoms.contains(1));
                 } else {
                     cell.setType(PeriodicalDatabase.DayEntry.EMPTY);
                     cell.setDayofcycle(0);
