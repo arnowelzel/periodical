@@ -671,6 +671,42 @@ class PeriodicalDatabase {
             }
         }
 
+        // Fill details for each day
+        if (dayEntries.size()>0) {
+            result = db.rawQuery("select data.eventdate, eventtype, intensity, content, symptom from " +
+                            "data " +
+                            "left outer join notes on data.eventdate=notes.eventdate " +
+                            "left outer join symptoms on data.eventdate=symptoms.eventdate " +
+                            "order by data.eventdate",
+                    null);
+            int index = 0;
+            entry = dayEntries.get(0);
+            while (result.moveToNext()) {
+                String dbdate = result.getString(0);
+                assert dbdate != null;
+                int eventtype = result.getInt(1);
+                int eventyear = Integer.parseInt(dbdate.substring(0, 4), 10);
+                int eventmonth = Integer.parseInt(dbdate.substring(4, 6), 10);
+                int eventday = Integer.parseInt(dbdate.substring(6, 8), 10);
+                GregorianCalendar eventdate = new GregorianCalendar(eventyear, eventmonth - 1, eventday);
+                int intensity = result.getInt(2);
+                String notes = result.getString(3);
+                if (notes == null) notes = "";
+                int symptom = result.getInt(4);
+
+                while (!entry.date.equals(eventdate) && index<dayEntries.size()) {
+                    index++;
+                    entry = dayEntries.get(index);
+                }
+
+                if (entry.date.equals(eventdate)) {
+                    if(symptom != 0) entry.symptoms.add(symptom);
+                    entry.notes = notes;
+                }
+            }
+            result.close();
+        }
+
         System.gc();
     }
 

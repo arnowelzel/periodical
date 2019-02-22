@@ -297,16 +297,16 @@ public class CalendarCell extends Button {
             // Draw intensity indicator
             if(type == DayEntry.PERIOD_START || type== DayEntry.PERIOD_CONFIRMED) {
                 for (int i = 0; i < intensity && i < 4; i++) {
-                    canvas.drawCircle((8 + i*8) * metrics.density, 8 * metrics.density,
+                    canvas.drawCircle((6 + i*6) * metrics.density, 6 * metrics.density,
                             2*metrics.density, paintIntensity);
                 }
             }
 
-            // Draw intensity indicator
+            // Draw intercourse indicator
             rectOverlay.set((int) rectCanvas.width() - (int) (overlaysize * metrics.density),
-                    (int) (2 * metrics.density),
-                    (int) rectCanvas.width() - (int) (2 * metrics.density),
-                    (int) (overlaysize * metrics.density));
+                    (int) (4 * metrics.density),
+                    (int) rectCanvas.width() - (int) (4 * metrics.density),
+                    (int) ((overlaysize) * metrics.density));
             if(intercourse) {
                 if (colorLabel == 0xffffffff) {
                     canvas.drawBitmap(bitmapIntercourse, null, rectOverlay, paintBitmap);
