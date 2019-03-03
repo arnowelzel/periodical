@@ -84,8 +84,8 @@
     <string name="label_period">περίοδος</string>
     <string name="label_period_predicted">προβλεπόμενη περίοδος</string>
     <string name="label_ovulation">ωορρηξία</string>
-    <string name="asset_about">gr/about.html</string>
-    <string name="asset_help">gr/help.html</string>
+    <string name="asset_about">el/about.html</string>
+    <string name="asset_help">el/help.html</string>
     <string name="label_details_period">Περίοδος</string>
     <string name="label_details_yes">Ναι</string>
     <string name="label_details_no">Όχι</string>
