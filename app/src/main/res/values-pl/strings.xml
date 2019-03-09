@@ -95,7 +95,8 @@
     <string name="label_details_intensity3">3</string>
     <string name="label_details_intensity4">4 (silny)</string>
     <string name="label_details_notes">Notatki</string>
-    <string name="label_details_events">Wydarzenia/Objawy</string>
+    <string name="label_details_events">Wydarzenia</string>
+    <string name="label_details_symptoms">Objawy</string>
     <string name="label_details_ev1" tools:keep="@string/label_details_ev1">Stosunek płciowy</string>
     <string name="label_details_ev2" tools:keep="@string/label_details_ev2">Skurcze</string>
     <string name="label_details_ev3" tools:keep="@string/label_details_ev3">Ból pleców</string>
@@ -113,6 +114,7 @@
     <string name="label_details_ev15" tools:keep="@string/label_details_ev15">Nudności</string>
     <string name="label_details_ev16" tools:keep="@string/label_details_ev16">Zachcianki</string>
     <string name="label_details_ev17" tools:keep="@string/label_details_ev17">Ból głowy/migrena</string>
+    <string name="label_details_ev18" tools:keep="@string/label_details_ev18">Tabletka antykoncepcyjna</string>
     <string name="label_period_day">Okres, dzień %d</string>
     <string name="navigation_drawer_open">Otwórz wysuwane menu</string>
     <string name="navigation_drawer_close">Zamknij wysuwane menu</string>
