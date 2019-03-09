@@ -91,20 +91,27 @@ class DayEntryAdapter extends ArrayAdapter<PeriodicalDatabase.DayEntry> {
 
         PeriodicalDatabase.DayEntry currentEntry = entryList.get(position);
 
+        String textEvents = "";
         String textSymptoms = "";
-        int num = 1;
-        while(true) {
-            String resName = format("label_details_ev%d",num);
+
+        // Elements 0-1 are events, 2-17 are symptoms
+        int eventIds[]={ 1, 18, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17 };
+        int num=0;
+        for(int eventId : eventIds) {
+            String resName = format("label_details_ev%d",eventId);
             int resId = resources.getIdentifier(resName, "string", packageName);
             if(resId != 0) {
-                if(currentEntry.symptoms.contains(num)) {
-                    if(!textSymptoms.isEmpty()) textSymptoms += "\n";
-                    textSymptoms += "\u2022 " + resources.getString(resId);
+                if(currentEntry.symptoms.contains(eventId)) {
+                    if(num<2) {
+                        if (!textEvents.isEmpty()) textEvents += "\n";
+                        textEvents += "\u2022 " + resources.getString(resId);
+                    } else {
+                        if (!textSymptoms.isEmpty()) textSymptoms += "\n";
+                        textSymptoms += "\u2022 " + resources.getString(resId);
+                    }
                 }
-                num++;
-            } else {
-                break;
             }
+            num++;
         }
 
         java.text.DateFormat dateFormat = android.text.format.DateFormat.getDateFormat(context);
@@ -149,6 +156,10 @@ class DayEntryAdapter extends ArrayAdapter<PeriodicalDatabase.DayEntry> {
         view = listItem.findViewById(R.id.item_notes);
         if(currentEntry.notes.isEmpty()) view.setText("\u2014");
         else view.setText(currentEntry.notes);
+
+        view = listItem.findViewById(R.id.item_event);
+        if(textEvents.isEmpty()) view.setText("\u2014");
+        else view.setText(textEvents);
 
         view = listItem.findViewById(R.id.item_symptom);
         if(textSymptoms.isEmpty()) view.setText("\u2014");
