@@ -54,7 +54,6 @@ public class DetailsActivity extends AppCompatActivity implements View.OnClickLi
     private RadioButton buttonPeriodIntensity2;
     private RadioButton buttonPeriodIntensity3;
     private RadioButton buttonPeriodIntensity4;
-    private int maxSymptomNum;
 
     /**
      *  Called when the activity starts
@@ -138,8 +137,9 @@ public class DetailsActivity extends AppCompatActivity implements View.OnClickLi
         editNotes.setText(entry.notes);
         editNotes.addTextChangedListener(this);
 
-        // Build list of events/symptoms
+        // Build list of events and symptoms
         LinearLayout groupEvents = findViewById(R.id.groupEvents);
+        LinearLayout groupSymptoms = findViewById(R.id.groupSymptoms);
         String packageName = getPackageName();
         Resources resources = getResources();
         LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(
@@ -149,9 +149,11 @@ public class DetailsActivity extends AppCompatActivity implements View.OnClickLi
         int marginRight = (int)(12 * Resources.getSystem().getDisplayMetrics().density);
         layoutParams.setMargins(marginLeft,0, marginRight, 0);
 
-        int num = 1;
-        while(true) {
-            @SuppressLint("DefaultLocale") String resName = String.format("label_details_ev%d",num);
+        // Elements 0-1 are events, 2-17 are symptoms
+        int eventIds[]={ 1, 18, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17 };
+        int num=0;
+        for(int eventId : eventIds) {
+            @SuppressLint("DefaultLocale") String resName = String.format("label_details_ev%d",eventId);
             int resId = resources.getIdentifier(resName, "string", packageName);
             if(resId != 0) {
                 AppCompatCheckBox option = new AppCompatCheckBox(this);
@@ -159,16 +161,16 @@ public class DetailsActivity extends AppCompatActivity implements View.OnClickLi
                 option.setTextSize(18);
                 option.setText(resId);
                 option.setId(resId);
-                if(entry.symptoms.contains(num)) option.setChecked(true);
+                if(entry.symptoms.contains(eventId)) option.setChecked(true);
                 option.setOnClickListener(this);
-                groupEvents.addView(option);
-                num++;
-            } else {
-                break;
+                if(num<2) {
+                    groupEvents.addView(option);
+                } else {
+                    groupSymptoms.addView(option);
+                }
             }
+            num++;
         }
-        // Store highest possible symptom index for the onClick handler
-        maxSymptomNum = num;
     }
 
     /**
@@ -224,22 +226,17 @@ public class DetailsActivity extends AppCompatActivity implements View.OnClickLi
                 break;
             default:
                 String packageName = getPackageName();
-                int resId = getResources().getIdentifier("label_details_ev1", "string", packageName);
-                int symptom = id - resId;
-                if(symptom >= 0 && symptom < maxSymptomNum) {
-                    entry.symptoms.clear();
-                    int num = 1;
-                    while(true) {
-                        @SuppressLint("DefaultLocale") String resName = String.format("label_details_ev%d",num);
-                        resId = getResources().getIdentifier(resName, "string", packageName);
-                        if(resId != 0) {
-                            CheckBox option = findViewById(resId);
-                            if(option.isChecked()) entry.symptoms.add(num);
-                            num++;
-                        } else {
-                            break;
-                        }
+                int resId;
+                entry.symptoms.clear();
+                int num=1;
+                while(num<19) {
+                    @SuppressLint("DefaultLocale") String resName = String.format("label_details_ev%d",num);
+                    resId = getResources().getIdentifier(resName, "string", packageName);
+                    if(resId != 0) {
+                        CheckBox option = findViewById(resId);
+                        if(option.isChecked()) entry.symptoms.add(num);
                     }
+                    num++;
                 }
                 dbMain.addEntryDetails(entry);
                 databaseChanged();
