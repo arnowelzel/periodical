@@ -232,7 +232,6 @@ public class MainActivityApp extends AppCompatActivity
             dbMain.close();
     }
 
-
     /**
      * Close draw when pressing "back"
      */
@@ -424,12 +423,20 @@ public class MainActivityApp extends AppCompatActivity
                 cell.setMonth(monthCurrent);
                 cell.setDay(day);
                 cell.setCurrent(current);
+                cell.setIntercourse(false);
+                cell.setNotes(false);
 
                 if(entry != null) {
                     cell.setType(entry.type);
                     cell.setDayofcycle(show_cycle ? entry.dayofcycle : 0);
                     cell.setIntensity(entry.intensity);
-                    cell.setIntercourse(entry.symptoms.contains(1));
+
+                    for(int s:entry.symptoms) {
+                        if(s == 1) cell.setIntercourse(true);
+                        else cell.setNotes(true);
+                    }
+
+                    if(!entry.notes.isEmpty()) cell.setNotes(true);
                 } else {
                     cell.setType(PeriodicalDatabase.DayEntry.EMPTY);
                     cell.setDayofcycle(0);
@@ -754,7 +761,7 @@ public class MainActivityApp extends AppCompatActivity
 
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
-                                dbMain.removeData(date);
+                                dbMain.removePeriod(date);
                                 handleDatabaseEdit();
                             }
                         });

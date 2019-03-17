@@ -454,7 +454,7 @@ class PeriodicalDatabase {
      * @param date
      * Date of the entry
      */
-    void removeData(GregorianCalendar date) {
+    void removePeriod(GregorianCalendar date) {
         String statement;
 
         GregorianCalendar dateLocal = new GregorianCalendar();
@@ -462,11 +462,12 @@ class PeriodicalDatabase {
 
         db.beginTransaction();
 
-        // Remove selected day and all following entries
+        // Remove period entry for the selected and all following days
         while(true) {
             int type = getEntryType(dateLocal);
             if(type == DayEntry.PERIOD_START || type == DayEntry.PERIOD_CONFIRMED) {
-                statement = format("delete from data where eventdate='%s'",
+                statement = format("update data set eventtype=%d where eventdate='%s'",
+                        DayEntry.EMPTY,
                         format(Locale.getDefault(), "%04d%02d%02d",
                                 dateLocal.get(GregorianCalendar.YEAR),
                                 dateLocal.get(GregorianCalendar.MONTH) +1,
@@ -530,7 +531,7 @@ class PeriodicalDatabase {
         result = db.rawQuery(
                 format("select eventdate, eventtype, intensity from data " +
                                 "where " +
-                                "eventtype = %d or eventtype = %d order by eventdate",
+                                "eventtype in(%d, %d) order by eventdate",
                         DayEntry.PERIOD_START, DayEntry.PERIOD_CONFIRMED),
                 null);
         while (result.moveToNext()) {
@@ -679,7 +680,6 @@ class PeriodicalDatabase {
                             "left outer join symptoms on data.eventdate=symptoms.eventdate " +
                             "order by data.eventdate",
                     null);
-            int index = 0;
             entry = dayEntries.get(0);
             while (result.moveToNext()) {
                 String dbdate = result.getString(0);
@@ -694,11 +694,11 @@ class PeriodicalDatabase {
                 if (notes == null) notes = "";
                 int symptom = result.getInt(4);
 
-                while (!entry.date.equals(eventdate) && index<dayEntries.size()) {
-                    index++;
+                int index = 0;
+                do {
                     entry = dayEntries.get(index);
-                }
-
+                    index++;
+                } while(!entry.date.equals(eventdate) && index<dayEntries.size());
                 if (entry.date.equals(eventdate)) {
                     if(symptom != 0) entry.symptoms.add(symptom);
                     entry.notes = notes;

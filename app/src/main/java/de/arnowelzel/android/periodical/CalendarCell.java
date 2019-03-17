@@ -60,6 +60,8 @@ public class CalendarCell extends Button {
     private int intensity;
     /** flag for intercourse */
     private boolean intercourse;
+    /** flag for notes */
+    private boolean notes;
 
     /** Display metrics */
     private final DisplayMetrics metrics;
@@ -103,10 +105,14 @@ public class CalendarCell extends Button {
     private final Bitmap bitmapOvulation;
     /** Bitmap for entries of type "ovulation in the future" */
     private final Bitmap bitmapOvulationFuture;
-    /** Bitmap for entries of type "intercourse" */
+    /** Bitmap for entries with flag "intercourse" */
     private final Bitmap bitmapIntercourse;
-    /** Bitmap for entries of type "intercourse" (black variant) */
+    /** Bitmap for entries with flag "intercourse" (black variant) */
     private final Bitmap bitmapIntercourseBlack;
+    /** Bitmap for entries with flag "notes" */
+    private final Bitmap bitmapNotes;
+    /** Bitmap for entries with flag "notes" (black variant) */
+    private final Bitmap bitmapNotesBlack;
     /** Paint for bitmaps */
     private final Paint paintBitmap;
 
@@ -176,6 +182,10 @@ public class CalendarCell extends Button {
                 R.drawable.ic_intercourse);
         bitmapIntercourseBlack = BitmapFactory.decodeResource(getResources(),
                 R.drawable.ic_intercourse_black);
+        bitmapNotes = BitmapFactory.decodeResource(getResources(),
+                R.drawable.ic_notes);
+        bitmapNotesBlack = BitmapFactory.decodeResource(getResources(),
+                R.drawable.ic_notes_black);
 
         // Get current screen orientation
         if(!isInEditMode()) { // Don't try this in layout editor
@@ -279,14 +289,16 @@ public class CalendarCell extends Button {
             
             canvas.drawRoundRect(rectCanvas, 3*metrics.density, 3*metrics.density, paintBackground);
             
-            // Draw overlay markers depending on type
-            rectOverlay.set((int) (2 * metrics.density),
-                    (int) rectCanvas.height() - (int) (overlaysize * metrics.density),
-                    (int) (overlaysize * metrics.density),
-                    (int) rectCanvas.height() - (int) (2 * metrics.density));
+            // Draw period start indicator
+            rectOverlay.set((int) (4 * metrics.density),
+                    (int) rectCanvas.height() - (int) ((2 + overlaysize) * metrics.density),
+                    (int) ((overlaysize + 2) * metrics.density),
+                    (int) rectCanvas.height() - (int) (4 * metrics.density));
             if (type == DayEntry.PERIOD_START) {
                 canvas.drawBitmap(bitmapPeriod, null, rectOverlay, paintBitmap);
             }
+
+            // Draw ovulation indicator
             if (type == DayEntry.OVULATION_PREDICTED) {
                 canvas.drawBitmap(bitmapOvulation, null, rectOverlay, paintBitmap);
             }
@@ -306,12 +318,25 @@ public class CalendarCell extends Button {
             rectOverlay.set((int) rectCanvas.width() - (int) (overlaysize * metrics.density),
                     (int) (4 * metrics.density),
                     (int) rectCanvas.width() - (int) (4 * metrics.density),
-                    (int) ((overlaysize) * metrics.density));
+                    (int) (overlaysize * metrics.density));
             if(intercourse) {
                 if (colorLabel == 0xffffffff) {
                     canvas.drawBitmap(bitmapIntercourse, null, rectOverlay, paintBitmap);
                 } else {
                     canvas.drawBitmap(bitmapIntercourseBlack, null, rectOverlay, paintBitmap);
+                }
+            }
+
+            // Draw notes indicator
+            rectOverlay.set((int) (rectCanvas.width() / 2 - (overlaysize * metrics.density) / 2),
+                    (int) rectCanvas.height() - (int) ((2 + overlaysize) * metrics.density),
+                    (int) (rectCanvas.width() / 2 + (overlaysize * metrics.density) / 2),
+                    (int) rectCanvas.height() - (int) (4 * metrics.density));
+            if(notes) {
+                if (colorLabel == 0xffffffff) {
+                    canvas.drawBitmap(bitmapNotes, null, rectOverlay, paintBitmap);
+                } else {
+                    canvas.drawBitmap(bitmapNotesBlack, null, rectOverlay, paintBitmap);
                 }
             }
         }
@@ -487,6 +512,14 @@ public class CalendarCell extends Button {
      */
     public void setIntercourse(boolean intercourse) { this.intercourse = intercourse; }
 
+    /**
+     * Set "notes" flag
+     *
+     * @param notes
+     * true if notes exist, false otherwise
+     */
+
+    public void setNotes(boolean notes) { this.notes = notes; }
     /**
      * Set the day to be displayed
      *

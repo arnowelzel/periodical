@@ -196,13 +196,15 @@ public class DetailsActivity extends AppCompatActivity implements View.OnClickLi
         switch(id) {
             case R.id.periodYes:
                 dbMain.addPeriod(entry.date);
+                databaseChanged();
                 buttonPeriodIntensity1.setEnabled(true);
                 buttonPeriodIntensity2.setEnabled(true);
                 buttonPeriodIntensity3.setEnabled(true);
                 buttonPeriodIntensity4.setEnabled(true);
                 break;
             case R.id.periodNo:
-                dbMain.removeData(entry.date);
+                dbMain.removePeriod(entry.date);
+                databaseChanged();
                 buttonPeriodIntensity1.setEnabled(false);
                 buttonPeriodIntensity2.setEnabled(false);
                 buttonPeriodIntensity3.setEnabled(false);
@@ -211,18 +213,22 @@ public class DetailsActivity extends AppCompatActivity implements View.OnClickLi
             case R.id.periodIntensity1:
                 entry.intensity = 1;
                 dbMain.addEntryDetails(entry);
+                databaseChanged();
                 break;
             case R.id.periodIntensity2:
                 entry.intensity = 2;
                 dbMain.addEntryDetails(entry);
+                databaseChanged();
                 break;
             case R.id.periodIntensity3:
                 entry.intensity = 3;
                 dbMain.addEntryDetails(entry);
+                databaseChanged();
                 break;
             case R.id.periodIntensity4:
                 entry.intensity = 4;
                 dbMain.addEntryDetails(entry);
+                databaseChanged();
                 break;
             default:
                 String packageName = getPackageName();
@@ -260,6 +266,17 @@ public class DetailsActivity extends AppCompatActivity implements View.OnClickLi
         entry.notes = ((MultiAutoCompleteTextView)findViewById(R.id.editNotes)).getText().toString();
         dbMain.addEntryDetails(entry);
         databaseChanged();
+    }
+
+    /**
+     * Called when the activity is destroyed
+     */
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+
+        if (dbMain != null)
+            dbMain.close();
     }
 
     /**
