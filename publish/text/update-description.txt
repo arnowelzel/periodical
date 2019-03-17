@@ -1,43 +1,87 @@
 <en-US>
-Details can now also be added or opened in empty days.
+Events and symptons are now separate lists in the details.
+
+The calendar view will now indicate if there is an event, symptom or note.
+
+Added Greek translation.
 </en-US>
 
 <cs-CZ>
-Podrobnosti lze nyní také přidat nebo otevřít v prázdných dnech.
+Události a symptomy jsou nyní oddělené seznamy v detailech.
+
+Zobrazení kalendáře nyní zobrazí, zda se jedná o událost, příznak nebo poznámku.
+
+Překlad byl přidán do řečtiny.
 </cs-CZ>
 
 <de-DE>
-Details können jetzt auch in leeren Tagen hinzugefügt oder geöffnet werden.
+Ereignisse und Symptome sind jetzt separate Listen in den Details.
+
+Die Kalenderansicht zeigt nun an, ob ein Ereignis, ein Symptom oder eine Notiz vorliegt.
+
+Übersetzung auf Griechisch ergänzt.
 </de-DE>
 
 <es-ES>
-Ahora también se pueden agregar o abrir detalles en días vacíos.
+Los eventos y los síntomas ahora son listas separadas en los detalles.
+
+La vista de calendario ahora indicará si hay un evento, síntoma o nota.
+
+Añadida traducción griega.
 </es-ES>
 
 <fr-FR>
-Les détails peuvent maintenant être ajoutés ou ouverts les jours vides.
+Les événements et les symptômes sont maintenant des listes séparées dans les détails.
+
+La vue de l'agenda indiquera maintenant s'il y a un événement, un symptôme ou une note.
+
+Ajout de la traduction grecque.
 </fr-FR>
 
 <it-IT>
-I dettagli possono ora essere aggiunti o aperti anche in giorni vuoti.
+Eventi e sintomi sono ora elenchi separati nei dettagli.
+
+La vista del calendario ora indicherà se c'è un evento, un sintomo o una nota.
+
+Aggiunta traduzione greca.
 </it-IT>
 
 <nl-NL>
-Details kunnen nu ook in lege dagen worden toegevoegd of geopend.
+Gebeurtenissen en symptomen zijn nu afzonderlijke lijsten in de details.
+
+De kalenderweergave zal nu aangeven of er een gebeurtenis, symptoom of notitie is.
+
+Griekse vertaling toegevoegd.
 </nl-NL>
 
 <ru-RU>
-Детали теперь также могут быть добавлены или открыты в пустые дни.
+События и симптомы теперь являются отдельными списками в деталях.
+
+Теперь в представлении календаря будет указано, есть ли событие, симптом или примечание.
+
+Добавлен греческий перевод.
 </ru-RU>
 
 <af>
-Besonderhede kan nou ook in leë dae bygevoeg of geopen word.
+Gebeurtenissen en symptomen zijn nu afzonderlijke lijsten in de details.
+
+De kalenderweergave zal nu aangeven of er een gebeurtenis, symptoom of notitie is.
+
+Bygevoeg Griekse vertaling.
 </af>
 
 <pt-BR>
-Detalhes agora também podem ser adicionados ou abertos em dias vazios.
+Eventos e sintomas são agora listas separadas nos detalhes.
+
+A visualização do calendário agora indicará se há um evento, sintoma ou nota.
+
+Adicionado tradução grega.
 </pt-BR>
 
 <pl-PL>
-Szczegóły można teraz dodawać lub otwierać w dni puste.
+Zdarzenia i symptomy są teraz oddzielnymi listami w szczegółach.
+
+Widok kalendarza wskaże teraz, czy wystąpiło zdarzenie, objaw lub notatka.
+
+Dodano tłumaczenie greckie.
 </pl-PL>
