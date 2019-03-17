@@ -673,34 +673,34 @@ class PeriodicalDatabase {
         }
 
         // Fill details for each day
+        int index = 0;
         if (dayEntries.size()>0) {
-            result = db.rawQuery("select data.eventdate, eventtype, intensity, content, symptom from " +
-                            "data " +
-                            "left outer join notes on data.eventdate=notes.eventdate " +
-                            "left outer join symptoms on data.eventdate=symptoms.eventdate " +
-                            "order by data.eventdate",
+            result = db.rawQuery("select notes.eventdate, content, symptom from " +
+                            "notes " +
+                            "left outer join symptoms on notes.eventdate=symptoms.eventdate " +
+                            "order by notes.eventdate",
                     null);
             entry = dayEntries.get(0);
             while (result.moveToNext()) {
                 String dbdate = result.getString(0);
                 assert dbdate != null;
-                int eventtype = result.getInt(1);
                 int eventyear = Integer.parseInt(dbdate.substring(0, 4), 10);
                 int eventmonth = Integer.parseInt(dbdate.substring(4, 6), 10);
                 int eventday = Integer.parseInt(dbdate.substring(6, 8), 10);
                 GregorianCalendar eventdate = new GregorianCalendar(eventyear, eventmonth - 1, eventday);
-                int intensity = result.getInt(2);
-                String notes = result.getString(3);
+                String notes = result.getString(1);
                 if (notes == null) notes = "";
-                int symptom = result.getInt(4);
+                int symptom = result.getInt(2);
 
-                int index = 0;
                 do {
                     entry = dayEntries.get(index);
                     index++;
-                } while(!entry.date.equals(eventdate) && index<dayEntries.size());
+                } while(entry.date.getTimeInMillis()<eventdate.getTimeInMillis() && index<dayEntries.size());
+                index--;
                 if (entry.date.equals(eventdate)) {
-                    if(symptom != 0) entry.symptoms.add(symptom);
+                    if(symptom != 0) {
+                        entry.symptoms.add(symptom);
+                    }
                     entry.notes = notes;
                 }
             }

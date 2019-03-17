@@ -117,8 +117,6 @@ public class MainActivityApp extends AppCompatActivity
         final Context context = getApplicationContext();
         assert context != null;
 
-        // setContentView(R.layout.main);
-
         // Setup main view with navigation drawer
         setContentView(R.layout.activity_main);
 
