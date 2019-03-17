@@ -22,6 +22,7 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
@@ -59,6 +60,7 @@ public class AboutActivity extends AppCompatActivity {
                     super.onPageFinished(view, url);
                     view.loadUrl("javascript:replace('version', '"+BuildConfig.VERSION_NAME+"')");
                     view.loadUrl("javascript:replace('year', '"+BuildConfig.VERSION_YEAR+"')");
+                    view.loadUrl("javascript:replace('backupfolder','"+Environment.getExternalStorageDirectory().getAbsolutePath()+ "/" + getApplicationContext().getPackageName()+"')");
                 }
 
                 // Handle URLs always external links
