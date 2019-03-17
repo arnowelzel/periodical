@@ -85,3 +85,11 @@ Widok kalendarza wskaże teraz, czy wystąpiło zdarzenie, objaw lub notatka.
 
 Dodano tłumaczenie greckie.
 </pl-PL>
+
+<el-GR>
+Τα συμβάντα και τα συμπτώματα είναι τώρα ξεχωριστές λίστες στις λεπτομέρειες.
+
+Η προβολή ημερολογίου θα υποδεικνύει τώρα εάν υπάρχει ένα συμβάν, ένα σύμπτωμα ή μια σημείωση.
+
+Προστέθηκε ελληνική μετάφραση.
+</el-GR>
