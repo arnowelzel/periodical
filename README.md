@@ -1,21 +1,13 @@
 # Periodical
 A calendar to track your menstruation and calculate possible fertile days
 
-Copyright (C) 2012-2018 Arno Welzel
+Copyright (C) 2012-2019 Arno Welzel
 
 Translations:
 
-Afrikaans - Albert Kannemeyer  
-Brazilian Portuguese - Ingrid E. Spangler  
-Czech - JuliaJ999  
-Dutch - Pander  
-French - Sébastien Gravier  
-German - Arno Welzel  
-Italian - Valerio Bozzolan  
-Japanese - Naofumi Fukue  
-Russian - Wjatscheslaw Stoljarski  
-Spanish - Laura Arjona Reina  
-Polish - Tomasz Terka
+Albert Kannemeyer, Sébastien Gravier, Primokorn, Valerio Bozzolan,
+Ingrid Spangler, Wjatscheslaw Stoljarski, Pander, Laura Arjona Reina,
+Naofumi Fukue, Tomasz Terka
 
 If you want to help with the translation, you can join the project on Crowdin:
 
