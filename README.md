@@ -7,7 +7,7 @@ Translations:
 
 Albert Kannemeyer, Sébastien Gravier, Primokorn, Valerio Bozzolan,
 Ingrid Spangler, Wjatscheslaw Stoljarski, Pander, Laura Arjona Reina,
-Naofumi Fukue, Tomasz Terka
+Naofumi Fukue, Tomasz Terka, Yaron Shahrabani
 
 If you want to help with the translation, you can join the project on Crowdin:
 
