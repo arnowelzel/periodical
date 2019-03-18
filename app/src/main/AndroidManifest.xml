@@ -11,7 +11,7 @@
 		android:allowBackup="true"
         android:fullBackupContent="true"
         android:theme="@style/Theme.AppCompat"
-        android:supportsRtl="false"
+        android:supportsRtl="true"
         tools:ignore="GoogleAppIndexingWarning">
 
         <activity

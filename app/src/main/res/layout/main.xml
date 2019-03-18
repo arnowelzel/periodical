@@ -21,34 +21,39 @@
         <LinearLayout
             android:id="@+id/monthselector"
             android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <Button
-                android:id="@+id/buttonprev"
-                android:layout_width="54dp"
+            android:layout_height="wrap_content">
+            <LinearLayout
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:contentDescription="@string/previous_month"
-                android:drawableLeft="@drawable/ic_arrow_back_black_32dp"
-                android:gravity="center"
-                android:onClick="goPrev" />
+                android:layoutDirection="ltr"
+                android:orientation="horizontal">
 
-            <Button
-                android:id="@+id/buttontoday"
-                android:layout_width="54dp"
-                android:layout_height="wrap_content"
-                android:contentDescription="@string/current_day"
-                android:drawableLeft="@drawable/ic_today_black_32dp"
-                android:gravity="center"
-                android:onClick="goCurrent" />
+                <Button
+                    android:id="@+id/buttonprev"
+                    android:layout_width="54dp"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="@string/previous_month"
+                    android:drawableLeft="@drawable/ic_arrow_back_black_32dp"
+                    android:gravity="center"
+                    android:onClick="goPrev" />
 
-            <Button
-                android:id="@+id/buttonnext"
-                android:layout_width="54dp"
-                android:layout_height="wrap_content"
-                android:contentDescription="@string/next_month"
-                android:drawableLeft="@drawable/ic_arrow_forward_black_32dp"
-                android:onClick="goNext" />
+                <Button
+                    android:id="@+id/buttontoday"
+                    android:layout_width="54dp"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="@string/current_day"
+                    android:drawableLeft="@drawable/ic_today_black_32dp"
+                    android:gravity="center"
+                    android:onClick="goCurrent" />
+
+                <Button
+                    android:id="@+id/buttonnext"
+                    android:layout_width="54dp"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="@string/next_month"
+                    android:drawableLeft="@drawable/ic_arrow_forward_black_32dp"
+                    android:onClick="goNext" />
+            </LinearLayout>
 
             <TextView
                 android:id="@+id/displaydate"
