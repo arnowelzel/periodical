@@ -3,7 +3,7 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name">Periodical</string>
     <string name="menuitem_help">Nápověda</string>
-    <string name="menuitem_about">O Periodical</string>
+    <string name="menuitem_about">O Periodical …</string>
     <string name="current_day">Dnes</string>
     <string name="menuitem_list">Seznam</string>
     <string name="menuitem_listdetails">Seznam s podrobnostmi</string>
@@ -28,10 +28,10 @@
     <string name="details_title">Podrobnosti</string>
     <string name="list_title">Seznam</string>
     <string name="list_details_title">Seznam s podrobnostmi</string>
-    <string name="about_title">O Periodical</string>
+    <string name="about_title">O Periodical …</string>
     <string name="help_title">Nápověda</string>
     <string name="backup_title">Záloha</string>
-    <string name="backup_text">CHcete zálohovat současná data?\nTím bude nahrazena minulá záloha!</string>
+    <string name="backup_text">Chcete zálohovat současná data?\nTím bude nahrazena minulá záloha!</string>
     <string name="backup_ok">OK</string>
     <string name="backup_cancel">Zrušit</string>
     <string name="backup_finished">Záloha uložena</string>

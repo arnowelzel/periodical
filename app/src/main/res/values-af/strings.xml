@@ -114,7 +114,7 @@
     <string name="label_details_ev15" tools:keep="@string/label_details_ev15">Naarheid</string>
     <string name="label_details_ev16" tools:keep="@string/label_details_ev16">Drange/Luste</string>
     <string name="label_details_ev17" tools:keep="@string/label_details_ev17">Hoofpyn/migraine</string>
-    <string name="label_details_ev18" tools:keep="@string/label_details_ev18">Kontraseptiewe pil</string>
+    <string name="label_details_ev18" tools:keep="@string/label_details_ev18">Voorbehoeding pil</string>
     <string name="label_period_day">Periode, dag %d</string>
     <string name="navigation_drawer_open">Open navigasie balk</string>
     <string name="navigation_drawer_close">Maak die navigatiebalk toe</string>

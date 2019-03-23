@@ -42,7 +42,7 @@
     <string name="restore_cancel">Άκυρο</string>
     <string name="restore_finished">Επιτυχία επαναφοράς</string>
     <string name="restore_failed">Αποτυχία επαναφοράς!</string>
-    <string name="permissions_needed">Για να δημιουργήσετε ή να επαναφέρετε αρχεία, η Περιοδική χρειάζεται άδεια πρόσβασης στο σύστημα αποθήκευσης.</string>
+    <string name="permissions_needed">Για να δημιουργήσετε ή να επαναφέρετε αρχεία, το Periodical χρειάζεται άδεια πρόσβασης στο σύστημα αποθήκευσης.</string>
     <string name="permissions_needed_ok">ΟΚ</string>
     <string name="event_periodstart">Η περίοδος έχει ξεκινήσει</string>
     <string name="event_periodlength">Ο τελευταίος κύκλος είχε %s ημέρες</string>

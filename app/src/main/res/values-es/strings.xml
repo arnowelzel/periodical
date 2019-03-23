@@ -103,7 +103,7 @@
     <string name="label_details_ev4" tools:keep="@string/label_details_ev4">Dolor medio en lado izquierdo</string>
     <string name="label_details_ev5" tools:keep="@string/label_details_ev5">Dolor medio en lado derecho</string>
     <string name="label_details_ev6" tools:keep="@string/label_details_ev6">Dolor de pecho/Dolor de arrastre</string>
-    <string name="label_details_ev7" tools:keep="@string/label_details_ev7">Zorzal/cándida</string>
+    <string name="label_details_ev7" tools:keep="@string/label_details_ev7">Afta/cándida</string>
     <string name="label_details_ev8" tools:keep="@string/label_details_ev8">Descarga</string>
     <string name="label_details_ev9" tools:keep="@string/label_details_ev9">Sangrado intenso</string>
     <string name="label_details_ev10" tools:keep="@string/label_details_ev10">Fluctuaciones de temperatura</string>

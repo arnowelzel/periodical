@@ -95,8 +95,8 @@
     <string name="label_details_intensity3">3</string>
     <string name="label_details_intensity4">4 (fort)</string>
     <string name="label_details_notes">Remarques</string>
-    <string name="label_details_events">Events</string>
-    <string name="label_details_symptoms">Symptoms</string>
+    <string name="label_details_events">Événements</string>
+    <string name="label_details_symptoms">Symptômes</string>
     <string name="label_details_ev1" tools:keep="@string/label_details_ev1">Rapports sexuels</string>
     <string name="label_details_ev2" tools:keep="@string/label_details_ev2">Crampes</string>
     <string name="label_details_ev3" tools:keep="@string/label_details_ev3">Mal de dos</string>
@@ -114,7 +114,7 @@
     <string name="label_details_ev15" tools:keep="@string/label_details_ev15">Nausées</string>
     <string name="label_details_ev16" tools:keep="@string/label_details_ev16">Envies de nourriture</string>
     <string name="label_details_ev17" tools:keep="@string/label_details_ev17">Maux de tête/migraine</string>
-    <string name="label_details_ev18" tools:keep="@string/label_details_ev18">Contraceptive pill</string>
+    <string name="label_details_ev18" tools:keep="@string/label_details_ev18">Pilule contraceptive</string>
     <string name="label_period_day">Règles, jour %d</string>
     <string name="navigation_drawer_open">Ouvrir le panneau de navigation</string>
     <string name="navigation_drawer_close">Fermer le panneau de navigation</string>

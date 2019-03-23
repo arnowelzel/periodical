@@ -58,12 +58,12 @@
     <string name="options_title">Preferenze</string>
     <string name="pref_periodlength">Durata predefinita del ciclo (giorni)</string>
     <string name="invalid_period_length">La durata predefinita del ciclo deve essere fra 1 e 14 giorni!</string>
-    <string name="pref_luteallength">Durata fase luteale (days)</string>
-    <string name="invalid_luteal_length">La durata luteale deve essere almeno 1!</string>
+    <string name="pref_luteallength">Durata fase di lutteal (giorni)</string>
+    <string name="invalid_luteal_length">La durata massima del ciclo deve essere almeno 1!</string>
     <string name="pref_startofweek">Inizio della settimana</string>
     <string-array name="list_startofweek">
-        <item>domenica</item>
-        <item>lunedi</item>
+        <item>Domenica</item>
+        <item>Lunedi</item>
     </string-array>
     <string-array name="values_startofweek">
         <item>1</item>
