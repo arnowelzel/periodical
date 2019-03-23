@@ -1,1 +1,1 @@
-Een menstruatiekalender met berekening van de vruchtbare dagen volgens Knaus-Ogino.
+Een menstruatiekalender met berekening volgens Knaus-Ogino.

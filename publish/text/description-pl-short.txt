@@ -1,1 +1,1 @@
-Kalendarz menstruacyjny z możliwością obliczania dni płodnych według Knaus-Ogino
+Kalendarz menstruacyjny z możliwością obliczania według Knaus-Ogino.

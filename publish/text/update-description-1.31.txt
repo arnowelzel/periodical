@@ -1,0 +1,55 @@
+<en-US>
+Added Hebrew translation.
+</en-US>
+
+<cs-CZ>
+Přidán hebrejský překlad.
+</cs-CZ>
+
+<de-DE>
+Hebräische Übersetzung hinzugefügt.
+</de-DE>
+
+<es-ES>
+Añadida traducción al hebreo.
+</es-ES>
+
+<fr-FR>
+Ajout de la traduction hébraïque.
+</fr-FR>
+
+<it-IT>
+Aggiunta traduzione ebraica.
+</it-IT>
+
+<nl-NL>
+Hebreeuwse vertaling toegevoegd.
+</nl-NL>
+
+<ru-RU>
+Добавлен перевод на иврит.
+</ru-RU>
+
+<af>
+Hebreeus bygevoeg.
+</af>
+
+<pt-BR>
+Adicionado tradução hebraica.
+</pt-BR>
+
+<pl-PL>
+Dodano tłumaczenie hebrajskie.
+</pl-PL>
+
+<el-GR>
+Προστέθηκε η εβραϊκή μετάφραση.
+</el-GR>
+
+<ja-JP>
+ヘブライ語の翻訳を追加しました。
+</ja-JP>
+
+<iw-IL>
+תרגום עברי נוסף.
+</iw-IL>
