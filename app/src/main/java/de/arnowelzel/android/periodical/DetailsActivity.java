@@ -143,14 +143,36 @@ public class DetailsActivity extends AppCompatActivity implements View.OnClickLi
         String packageName = getPackageName();
         Resources resources = getResources();
         LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(
-                LinearLayout.LayoutParams.WRAP_CONTENT,
-                LinearLayout.LayoutParams.WRAP_CONTENT);
+            LinearLayout.LayoutParams.WRAP_CONTENT,
+            LinearLayout.LayoutParams.WRAP_CONTENT);
         int marginLeft = (int)(12 * Resources.getSystem().getDisplayMetrics().density);
         int marginRight = (int)(12 * Resources.getSystem().getDisplayMetrics().density);
         layoutParams.setMargins(marginLeft,0, marginRight, 0);
 
-        // Elements 0-1 are events, 2-17 are symptoms
-        int eventIds[]={ 1, 18, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17 };
+        // Elements 0-1 are events, 3-20 are symptoms
+        int eventIds[]={
+            1,  // Intercourse
+            18, // Contraceptive pill
+            20, // Tired
+            21, // Energized
+            19, // Spotting
+            9,  // Intense bleeding
+            2,  // Cramps
+            17, // Headeache/migraine
+            3,  // Back pain
+            4,  // Middle pain left
+            5,  // Middle pain right
+            6,  // Breast pain/dragging pain
+            7,  // Thrush/candida
+            8,  // Discharge
+            10, // Temperature fluctuations
+            11, // Pimples
+            12, // Bloating
+            13, // Fainting
+            14, // Grumpiness
+            15, // Nausea
+            16, // Cravings
+        };
         int num=0;
         for(int eventId : eventIds) {
             @SuppressLint("DefaultLocale") String resName = String.format("label_details_ev%d",eventId);
@@ -235,7 +257,7 @@ public class DetailsActivity extends AppCompatActivity implements View.OnClickLi
                 int resId;
                 entry.symptoms.clear();
                 int num=1;
-                while(num<19) {
+                while(num<22) {
                     @SuppressLint("DefaultLocale") String resName = String.format("label_details_ev%d",num);
                     resId = getResources().getIdentifier(resName, "string", packageName);
                     if(resId != 0) {

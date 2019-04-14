@@ -94,8 +94,30 @@ class DayEntryAdapter extends ArrayAdapter<PeriodicalDatabase.DayEntry> {
         String textEvents = "";
         String textSymptoms = "";
 
-        // Elements 0-1 are events, 2-17 are symptoms
-        int eventIds[]={ 1, 18, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17 };
+        // Elements 0-2 are events, 2-17 are symptoms
+        int eventIds[]={
+            1,  // Intercourse
+            18, // Contraceptive pill
+            20, // Tired
+            21, // Energized
+            19, // Spotting
+            9,  // Intense bleeding
+            2,  // Cramps
+            17, // Headeache/migraine
+            3,  // Back pain
+            4,  // Middle pain left
+            5,  // Middle pain right
+            6,  // Breast pain/dragging pain
+            7,  // Thrush/candida
+            8,  // Discharge
+            10, // Temperature fluctuations
+            11, // Pimples
+            12, // Bloating
+            13, // Fainting
+            14, // Grumpiness
+            15, // Nausea
+            16, // Cravings
+        };
         int num=0;
         for(int eventId : eventIds) {
             String resName = format("label_details_ev%d",eventId);
