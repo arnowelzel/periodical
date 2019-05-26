@@ -115,6 +115,9 @@
     <string name="label_details_ev16" tools:keep="@string/label_details_ev16">חשקים</string>
     <string name="label_details_ev17" tools:keep="@string/label_details_ev17">כאבי ראש/מיגרנה</string>
     <string name="label_details_ev18" tools:keep="@string/label_details_ev18">גלולה למניעת הריון</string>
+    <string name="label_details_ev19" tools:keep="@string/label_details_ev19">דימום קל</string>
+    <string name="label_details_ev20" tools:keep="@string/label_details_ev20">עייפות</string>
+    <string name="label_details_ev21" tools:keep="@string/label_details_ev21">מרץ</string>
     <string name="label_period_day">וסת, יום %d</string>
     <string name="navigation_drawer_open">פתיחת מגירת ניווט</string>
     <string name="navigation_drawer_close">סגירת מגירת ניווט</string>

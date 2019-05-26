@@ -115,6 +115,9 @@
     <string name="label_details_ev16" tools:keep="@string/label_details_ev16">Zachcianki</string>
     <string name="label_details_ev17" tools:keep="@string/label_details_ev17">Ból głowy/migrena</string>
     <string name="label_details_ev18" tools:keep="@string/label_details_ev18">Tabletka antykoncepcyjna</string>
+    <string name="label_details_ev19" tools:keep="@string/label_details_ev19">Plamienie</string>
+    <string name="label_details_ev20" tools:keep="@string/label_details_ev20">Zmęczony</string>
+    <string name="label_details_ev21" tools:keep="@string/label_details_ev21">Pełna energii</string>
     <string name="label_period_day">Okres, dzień %d</string>
     <string name="navigation_drawer_open">Otwórz wysuwane menu</string>
     <string name="navigation_drawer_close">Zamknij wysuwane menu</string>

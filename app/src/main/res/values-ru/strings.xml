@@ -115,6 +115,9 @@
     <string name="label_details_ev16" tools:keep="@string/label_details_ev16">Неутолимый голод</string>
     <string name="label_details_ev17" tools:keep="@string/label_details_ev17">Головная боль/мигрень</string>
     <string name="label_details_ev18" tools:keep="@string/label_details_ev18">Противозачаточная таблетка</string>
+    <string name="label_details_ev19" tools:keep="@string/label_details_ev19">Определение местоположения</string>
+    <string name="label_details_ev20" tools:keep="@string/label_details_ev20">Усталость</string>
+    <string name="label_details_ev21" tools:keep="@string/label_details_ev21">Полна сил</string>
     <string name="label_period_day">Период, день %d</string>
     <string name="navigation_drawer_open">Открыть навигационную панель</string>
     <string name="navigation_drawer_close">Закрыть навигационную панель</string>

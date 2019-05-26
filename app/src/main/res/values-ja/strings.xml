@@ -115,6 +115,9 @@
     <string name="label_details_ev16" tools:keep="@string/label_details_ev16">欲求</string>
     <string name="label_details_ev17" tools:keep="@string/label_details_ev17">頭痛/片頭痛</string>
     <string name="label_details_ev18" tools:keep="@string/label_details_ev18">避妊薬</string>
+    <string name="label_details_ev19" tools:keep="@string/label_details_ev19">不正出血</string>
+    <string name="label_details_ev20" tools:keep="@string/label_details_ev20">疲れた</string>
+    <string name="label_details_ev21" tools:keep="@string/label_details_ev21">元気がある</string>
     <string name="label_period_day">月経期, 日 %d</string>
     <string name="navigation_drawer_open">ナビゲーションバーを開く</string>
     <string name="navigation_drawer_close">ナビゲーションバーを閉じる</string>

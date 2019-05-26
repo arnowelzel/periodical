@@ -115,6 +115,9 @@
     <string name="label_details_ev16" tools:keep="@string/label_details_ev16">Antojos</string>
     <string name="label_details_ev17" tools:keep="@string/label_details_ev17">Dolor de cabeza/migraña</string>
     <string name="label_details_ev18" tools:keep="@string/label_details_ev18">Píldora anticonceptiva</string>
+    <string name="label_details_ev19" tools:keep="@string/label_details_ev19">Flujo marrón</string>
+    <string name="label_details_ev20" tools:keep="@string/label_details_ev20">Cansancio</string>
+    <string name="label_details_ev21" tools:keep="@string/label_details_ev21">Energizada</string>
     <string name="label_period_day">Periodo, día %d</string>
     <string name="navigation_drawer_open">Abrir la barra de navegación</string>
     <string name="navigation_drawer_close">Cerrar la barra de navegación</string>

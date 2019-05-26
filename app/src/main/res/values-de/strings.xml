@@ -115,6 +115,9 @@
     <string name="label_details_ev16" tools:keep="@string/label_details_ev16">Heißhunger</string>
     <string name="label_details_ev17" tools:keep="@string/label_details_ev17">Kopfschmerzen/Migräne</string>
     <string name="label_details_ev18" tools:keep="@string/label_details_ev18">Empfängnisverhütende Pille</string>
+    <string name="label_details_ev19" tools:keep="@string/label_details_ev19">Zwischenblutung</string>
+    <string name="label_details_ev20" tools:keep="@string/label_details_ev20">Müde</string>
+    <string name="label_details_ev21" tools:keep="@string/label_details_ev21">Energiegeladen</string>
     <string name="label_period_day">Periode, Tag %d</string>
     <string name="navigation_drawer_open">Navigationsleiste öffnen</string>
     <string name="navigation_drawer_close">Navigationsleiste schließen</string>

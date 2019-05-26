@@ -35,29 +35,29 @@
     <string name="backup_ok">Oké</string>
     <string name="backup_cancel">Annuleer</string>
     <string name="backup_finished">Back-up is klaar</string>
-    <string name="backup_failed">Back-up is gefaald!</string>
+    <string name="backup_failed">Back-up is mislukt!</string>
     <string name="restore_title">Herstel gegevens</string>
     <string name="restore_text">Wil je de laatste back-up herstellen?\nDit overschrijft de huidige gegevens!</string>
-    <string name="restore_ok">Ja</string>
+    <string name="restore_ok">Oké</string>
     <string name="restore_cancel">Annuleer</string>
     <string name="restore_finished">Herstel is klaar</string>
-    <string name="restore_failed">Herstel is gefaald!</string>
-    <string name="permissions_needed">Voor back-up en terug zetten van gegevens moet Periodical toestemming hebben het bestandsopslag te gebruiken.</string>
+    <string name="restore_failed">Herstel is mislukt!</string>
+    <string name="permissions_needed">Voor back-up en het terug zetten van gegevens moet Periodical toestemming hebben het bestandsopslag te gebruiken.</string>
     <string name="permissions_needed_ok">Oké</string>
     <string name="event_periodstart">Menstruatie is begonnen</string>
     <string name="event_periodlength">Laatste cyclus duurde %s dagen</string>
     <string name="event_ignored">Cycluslengte genegeerd</string>
-    <string name="event_periodfirst">Eerste invoer</string>
+    <string name="event_periodfirst">Eerste item</string>
     <string name="calendaraction_title">Bewerk kalenderinvoer</string>
-    <string name="calendaraction_add">Markeer deze dag als \"Menstruatie is begonnen\"?</string>
-    <string name="calendaraction_remove">Verwijder de \"Periode is begonnen\" markering voor deze dag?</string>
-    <string name="calendaraction_removeperiod">Deze periode verwijderen?</string>
+    <string name="calendaraction_add">Markeer deze dag als \"Start van menstruatie\"?</string>
+    <string name="calendaraction_remove">Verwijder de \"Start van menstruatie\" label voor deze dag?</string>
+    <string name="calendaraction_removeperiod">Deze menstruatie verwijderen?</string>
     <string name="calendaraction_ok">Ja</string>
     <string name="calendaraction_cancel">Nee</string>
-    <string name="calendaraction_details">Bewerk details</string>
+    <string name="calendaraction_details">Details bewerken</string>
     <string name="options_title">Voorkeuren</string>
     <string name="pref_periodlength">Standaardduur van menstruatie (dagen)</string>
-    <string name="invalid_period_length">De standaardduur van een menstruatie is tussen 1 en 14!</string>
+    <string name="invalid_period_length">De standaardduur van een menstruatie moet tussen 1 en 14 liggen!</string>
     <string name="pref_luteallength">Luteale fase lengte (dagen)</string>
     <string name="invalid_luteal_length">De luteale lengte moet minstens 1 zijn!</string>
     <string name="pref_startofweek">Begin van de week</string>
@@ -95,13 +95,13 @@
     <string name="label_details_intensity3">3</string>
     <string name="label_details_intensity4">4 (sterk)</string>
     <string name="label_details_notes">Notities</string>
-    <string name="label_details_events">Evenementen</string>
+    <string name="label_details_events">Voorkomens</string>
     <string name="label_details_symptoms">Symptomen</string>
     <string name="label_details_ev1" tools:keep="@string/label_details_ev1">Gemeenschap</string>
     <string name="label_details_ev2" tools:keep="@string/label_details_ev2">Krampen</string>
     <string name="label_details_ev3" tools:keep="@string/label_details_ev3">Rugpijn</string>
-    <string name="label_details_ev4" tools:keep="@string/label_details_ev4">Milde pijn links</string>
-    <string name="label_details_ev5" tools:keep="@string/label_details_ev5">Milde pijn rechts</string>
+    <string name="label_details_ev4" tools:keep="@string/label_details_ev4">Middelpijn links</string>
+    <string name="label_details_ev5" tools:keep="@string/label_details_ev5">Middelpijn rechts</string>
     <string name="label_details_ev6" tools:keep="@string/label_details_ev6">Borstpijn/slepende pijn</string>
     <string name="label_details_ev7" tools:keep="@string/label_details_ev7">Vaginale candidainfectie</string>
     <string name="label_details_ev8" tools:keep="@string/label_details_ev8">Afscheiding</string>
@@ -110,12 +110,15 @@
     <string name="label_details_ev11" tools:keep="@string/label_details_ev11">Puistjes</string>
     <string name="label_details_ev12" tools:keep="@string/label_details_ev12">Opgeblazen gevoel</string>
     <string name="label_details_ev13" tools:keep="@string/label_details_ev13">Flauwte</string>
-    <string name="label_details_ev14" tools:keep="@string/label_details_ev14">Nors</string>
+    <string name="label_details_ev14" tools:keep="@string/label_details_ev14">Norsheid</string>
     <string name="label_details_ev15" tools:keep="@string/label_details_ev15">Misselijkheid</string>
     <string name="label_details_ev16" tools:keep="@string/label_details_ev16">Hunkeringen</string>
     <string name="label_details_ev17" tools:keep="@string/label_details_ev17">Hoofdpijn/migraine</string>
     <string name="label_details_ev18" tools:keep="@string/label_details_ev18">Anticonceptiepil</string>
+    <string name="label_details_ev19" tools:keep="@string/label_details_ev19">Spotten</string>
+    <string name="label_details_ev20" tools:keep="@string/label_details_ev20">Vermoeid</string>
+    <string name="label_details_ev21" tools:keep="@string/label_details_ev21">Energie</string>
     <string name="label_period_day">Menstruatie, dag %d</string>
-    <string name="navigation_drawer_open">Open de navigatielade</string>
+    <string name="navigation_drawer_open">Open de navigatiebalk</string>
     <string name="navigation_drawer_close">Sluit de navigatiebalk</string>
 </resources>

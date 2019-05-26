@@ -115,6 +115,9 @@
     <string name="label_details_ev16" tools:keep="@string/label_details_ev16">Envies de nourriture</string>
     <string name="label_details_ev17" tools:keep="@string/label_details_ev17">Maux de tête/migraine</string>
     <string name="label_details_ev18" tools:keep="@string/label_details_ev18">Pilule contraceptive</string>
+    <string name="label_details_ev19" tools:keep="@string/label_details_ev19">Repérage</string>
+    <string name="label_details_ev20" tools:keep="@string/label_details_ev20">Fatigué</string>
+    <string name="label_details_ev21" tools:keep="@string/label_details_ev21">Énergisé</string>
     <string name="label_period_day">Règles, jour %d</string>
     <string name="navigation_drawer_open">Ouvrir le panneau de navigation</string>
     <string name="navigation_drawer_close">Fermer le panneau de navigation</string>

@@ -115,6 +115,9 @@
     <string name="label_details_ev16" tools:keep="@string/label_details_ev16">Chutě</string>
     <string name="label_details_ev17" tools:keep="@string/label_details_ev17">Bolest hlavy/migréna</string>
     <string name="label_details_ev18" tools:keep="@string/label_details_ev18">Antikoncepční pilulka</string>
+    <string name="label_details_ev19" tools:keep="@string/label_details_ev19">Špinění</string>
+    <string name="label_details_ev20" tools:keep="@string/label_details_ev20">Unavený</string>
+    <string name="label_details_ev21" tools:keep="@string/label_details_ev21">Energanizovaná</string>
     <string name="label_period_day">Období, den %d</string>
     <string name="navigation_drawer_open">Otevřete navigační zásuvku</string>
     <string name="navigation_drawer_close">Zavřete navigační panel</string>

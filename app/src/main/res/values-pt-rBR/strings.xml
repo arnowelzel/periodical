@@ -115,6 +115,9 @@
     <string name="label_details_ev16" tools:keep="@string/label_details_ev16">Desejos</string>
     <string name="label_details_ev17" tools:keep="@string/label_details_ev17">Dor de cabeça/enxaqueca</string>
     <string name="label_details_ev18" tools:keep="@string/label_details_ev18">Pílula anticoncepcional</string>
+    <string name="label_details_ev19" tools:keep="@string/label_details_ev19">Manchas</string>
+    <string name="label_details_ev20" tools:keep="@string/label_details_ev20">Cansado</string>
+    <string name="label_details_ev21" tools:keep="@string/label_details_ev21">Energizar</string>
     <string name="label_period_day">Menstruação, dia %d</string>
     <string name="navigation_drawer_open">Abrir barra de navegação</string>
     <string name="navigation_drawer_close">Fechar a barra de navegação</string>

@@ -115,6 +115,9 @@
     <string name="label_details_ev16" tools:keep="@string/label_details_ev16">Λιγούρες</string>
     <string name="label_details_ev17" tools:keep="@string/label_details_ev17">Πονοκέφαλος/ημικρανία</string>
     <string name="label_details_ev18" tools:keep="@string/label_details_ev18">Αντισυλληπτικό χάπι</string>
+    <string name="label_details_ev19" tools:keep="@string/label_details_ev19">Κηλίδες αίματος</string>
+    <string name="label_details_ev20" tools:keep="@string/label_details_ev20">Κουρασμένη</string>
+    <string name="label_details_ev21" tools:keep="@string/label_details_ev21">Ενεργητική</string>
     <string name="label_period_day">Περιόδος, ημέρα %d</string>
     <string name="navigation_drawer_open">Άνοιγμα μενού πλοήγησης</string>
     <string name="navigation_drawer_close">Κλείσιμο μενού πλοήγησης</string>
