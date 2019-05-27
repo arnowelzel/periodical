@@ -1,0 +1,55 @@
+<en-US>
+Added symptom, updated help text.
+</en-US>
+
+<cs-CZ>
+Přidán příznak, aktualizovaný text nápovědy.
+</cs-CZ>
+
+<de-DE>
+Symptom hinzugefügt, Hilfetext aktualisiert.
+</de-DE>
+
+<es-ES>
+Síntoma agregado, texto de ayuda actualizado.
+</es-ES>
+
+<fr-FR>
+Ajout du symptôme, texte d'aide mis à jour.
+</fr-FR>
+
+<it-IT>
+Aggiunto sintomo, testo della guida aggiornato.
+</it-IT>
+
+<nl-NL>
+Toegevoegd symptoom, bijgewerkte hulptekst.
+</nl-NL>
+
+<ru-RU>
+Добавлен симптом, обновлен текст справки.
+</ru-RU>
+
+<af>
+Bygevoeg simptoom, opgedateerde hulp teks.
+</af>
+
+<pt-BR>
+Adicionado sintoma, texto de ajuda atualizado.
+</pt-BR>
+
+<pl-PL>
+Dodano symptom, zaktualizowany tekst pomocy.
+</pl-PL>
+
+<el-GR>
+Προστέθηκε σύμπτωμα, ενημερωμένο κείμενο βοήθειας.
+</el-GR>
+
+<ja-JP>
+症状を追加し、ヘルプテキストを更新しました。
+</ja-JP>
+
+<iw-IL>
+סימפטום נוסף, טקסט עזרה מעודכן.
+</iw-IL>
