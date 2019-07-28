@@ -7,7 +7,8 @@ Fixed some bugs for editing and detail view.
 <cs-CZ>
 Podrobnosti jsou nyní také uvedeny v prázdných dnech.
 
-Opraveny některé chyby pro úpravy a zobrazení podrobností.</cs-CZ>
+Opraveny některé chyby pro úpravy a zobrazení podrobností.
+</cs-CZ>
 
 <de-DE>
 Details werden jetzt auch in leeren Tagen angezeigt.
