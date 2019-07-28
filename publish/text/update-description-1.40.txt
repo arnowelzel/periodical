@@ -1,0 +1,82 @@
+<en-US>
+Details are now also indicated in empty days.
+
+Fixed some bugs for editing and detail view.
+</en-US>
+
+<cs-CZ>
+Podrobnosti jsou nyní také uvedeny v prázdných dnech.
+
+Opraveny některé chyby pro úpravy a zobrazení podrobností.</cs-CZ>
+
+<de-DE>
+Details werden jetzt auch in leeren Tagen angezeigt.
+
+Einige Fehler bei der Bearbeitung und Detailansicht wurden behoben.
+</de-DE>
+
+<es-ES>
+Los detalles ahora también se indican en días vacíos.
+
+Se corrigieron algunos errores de edición y vista de detalle.
+</es-ES>
+
+<fr-FR>
+Les détails sont maintenant aussi indiqués en jours vides.
+
+Correction de quelques bugs pour l'édition et la vue détaillée.
+</fr-FR>
+
+<it-IT>
+I dettagli sono ora indicati anche in giorni vuoti.
+
+Risolti alcuni bug per la modifica e la visualizzazione dei dettagli.
+</it-IT>
+
+<nl-NL>
+Details worden nu ook in lege dagen weergegeven.
+
+Enkele bugs opgelost voor bewerking en detailweergave.
+</nl-NL>
+
+<ru-RU>
+Подробности теперь также указываются в пустых днях.
+
+Исправлены некоторые ошибки для редактирования и подробного просмотра.
+</ru-RU>
+
+<af>
+Besonderhede word nou ook in leë dae aangedui.
+
+Sommige foute is reggestel vir redigering en detailaansig.
+</af>
+
+<pt-BR>
+Os detalhes agora também são indicados em dias vazios.
+
+Corrigido alguns bugs para edição e visualização de detalhes.
+</pt-BR>
+
+<pl-PL>
+Szczegóły są teraz również wskazywane w puste dni.
+
+Naprawiono kilka błędów do edycji i widoku szczegółów.
+</pl-PL>
+
+<el-GR>
+Οι λεπτομέρειες αναγράφονται τώρα και σε κενές ημέρες.
+
+Διορθώθηκαν ορισμένα σφάλματα για επεξεργασία και λεπτομερή προβολή.
+</el-GR>
+
+<ja-JP>
+詳細は空の日にも表示されます。
+
+編集および詳細表示に関するいくつかのバグを修正しました。
+</ja-JP>
+
+<iw-IL>
+הפרטים צוינו כעת גם בימים ריקים.
+
+תיקנו כמה באגים לעריכה ולתצוגה מפורטת.
+</iw-IL>
