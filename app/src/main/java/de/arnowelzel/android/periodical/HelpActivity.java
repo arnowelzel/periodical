@@ -1,6 +1,6 @@
 /*
- * Periodical "help" activity 
- * Copyright (C) 2012-2018 Arno Welzel
+ * Periodical "help" activity
+ * Copyright (C) 2012-2019 Arno Welzel
  *
  * This code is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -33,7 +33,7 @@ import android.webkit.WebViewClient;
 public class HelpActivity extends AppCompatActivity {
 
     /**
-     *  Called when the activity starts
+     * Called when the activity starts
      */
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -49,16 +49,17 @@ public class HelpActivity extends AppCompatActivity {
 
         WebView view = findViewById(R.id.webView);
         view.setWebViewClient(
-            new WebViewClient() {
-                // Handle URLs always as external links
-                @SuppressWarnings("deprecation") @Override
-                public boolean shouldOverrideUrlLoading(WebView view, String url) {
-                    Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
-                    startActivity(intent);
-                    return true;
-                }
-            });
-        view.loadUrl("file:///android_asset/"+getString(R.string.asset_help));
+                new WebViewClient() {
+                    // Handle URLs always as external links
+                    @SuppressWarnings("deprecation")
+                    @Override
+                    public boolean shouldOverrideUrlLoading(WebView view, String url) {
+                        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+                        startActivity(intent);
+                        return true;
+                    }
+                });
+        view.loadUrl("file:///android_asset/" + getString(R.string.asset_help));
     }
 
     /**

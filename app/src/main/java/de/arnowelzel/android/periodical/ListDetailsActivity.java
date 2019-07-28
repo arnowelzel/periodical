@@ -1,6 +1,6 @@
 /*
  * Periodical list activity
- * Copyright (C) 2012-2018 Arno Welzel
+ * Copyright (C) 2012-2019 Arno Welzel
  *
  * This code is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -74,9 +74,9 @@ public class ListDetailsActivity extends AppCompatActivity implements AdapterVie
         assert actionBar != null;
         actionBar.setDisplayHomeAsUpEnabled(true);
 
-		ListView listView = findViewById(R.id.listview_details);
+        ListView listView = findViewById(R.id.listview_details);
         listView.setAdapter(new DayEntryAdapter(this, dayList, getPackageName(), getResources()));
-		listView.setOnItemClickListener(this);
+        listView.setOnItemClickListener(this);
     }
 
     /**
@@ -91,34 +91,27 @@ public class ListDetailsActivity extends AppCompatActivity implements AdapterVie
     }
 
     /**
-     *  Handler for ICS "home" button
+     * Handler for ICS "home" button
      */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-        case android.R.id.home:
-            // Home icon in action bar clicked, then close activity
-            finish();
-            return true;
-        default:
-            return super.onOptionsItemSelected(item);
+            case android.R.id.home:
+                // Home icon in action bar clicked, then close activity
+                finish();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
         }
     }
 
     /**
      * Handler for opening a list item which will return to the main view
      *
-     * @param adapterView
-     * The ListView where the click happened
-     *
-     * @param v
-     * The view that was clicked within the ListView
-     *
-     * @param position
-     * The position of the view in the list
-     *
-     * @param id
-     * The row id of the item that was clicked
+     * @param adapterView The ListView where the click happened
+     * @param v           The view that was clicked within the ListView
+     * @param position    The position of the view in the list
+     * @param id          The row id of the item that was clicked
      */
     @Override
     public void onItemClick(AdapterView<?> adapterView, View v, int position, long id) {

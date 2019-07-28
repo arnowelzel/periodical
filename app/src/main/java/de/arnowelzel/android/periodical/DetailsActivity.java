@@ -1,6 +1,6 @@
 /*
- * Periodical "help" activity 
- * Copyright (C) 2012-2018 Arno Welzel
+ * Periodical "help" activity
+ * Copyright (C) 2012-2019 Arno Welzel
  *
  * This code is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -56,7 +56,7 @@ public class DetailsActivity extends AppCompatActivity implements View.OnClickLi
     private RadioButton buttonPeriodIntensity4;
 
     /**
-     *  Called when the activity starts
+     * Called when the activity starts
      */
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -82,13 +82,15 @@ public class DetailsActivity extends AppCompatActivity implements View.OnClickLi
         dbMain.loadCalculatedData();
 
         entry = dbMain.getEntryWithDetails(year, month, day);
-        if(entry == null) {
-            entry = new PeriodicalDatabase.DayEntry(EMPTY, new GregorianCalendar(year, month - 1, day), 0, 1);
+        if (entry == null) {
+            entry = new PeriodicalDatabase.DayEntry(EMPTY, new GregorianCalendar(year, month - 1, day), 0, 2);
+        } else if (entry.type != PERIOD_START || entry.type != PERIOD_CONFIRMED) {
+            entry.intensity = 2;
         }
 
         // Set header using the entry date
         DateFormat dateFormat = DateFormat.getDateInstance(DateFormat.LONG);
-        ((TextView)findViewById(R.id.labelDetailsHeader)).setText(
+        ((TextView) findViewById(R.id.labelDetailsHeader)).setText(
                 String.format("%s", dateFormat.format(entry.date.getTime())));
 
         // Set period status
@@ -96,7 +98,7 @@ public class DetailsActivity extends AppCompatActivity implements View.OnClickLi
         RadioButton buttonPeriodNo = findViewById(R.id.periodNo);
         boolean intensityEnabled = false;
 
-        switch(entry.type) {
+        switch (entry.type) {
             case PERIOD_START:
             case PERIOD_CONFIRMED:
                 buttonPeriodYes.setChecked(true);
@@ -116,11 +118,19 @@ public class DetailsActivity extends AppCompatActivity implements View.OnClickLi
         buttonPeriodIntensity3 = findViewById(R.id.periodIntensity3);
         buttonPeriodIntensity4 = findViewById(R.id.periodIntensity4);
 
-        switch(entry.intensity) {
-            case 1: buttonPeriodIntensity1.setChecked(true);break;
-            case 2: buttonPeriodIntensity2.setChecked(true);break;
-            case 3: buttonPeriodIntensity3.setChecked(true);break;
-            case 4: buttonPeriodIntensity4.setChecked(true);break;
+        switch (entry.intensity) {
+            case 1:
+                buttonPeriodIntensity1.setChecked(true);
+                break;
+            case 2:
+                buttonPeriodIntensity2.setChecked(true);
+                break;
+            case 3:
+                buttonPeriodIntensity3.setChecked(true);
+                break;
+            case 4:
+                buttonPeriodIntensity4.setChecked(true);
+                break;
         }
 
         buttonPeriodIntensity1.setEnabled(intensityEnabled);
@@ -143,49 +153,49 @@ public class DetailsActivity extends AppCompatActivity implements View.OnClickLi
         String packageName = getPackageName();
         Resources resources = getResources();
         LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(
-            LinearLayout.LayoutParams.WRAP_CONTENT,
-            LinearLayout.LayoutParams.WRAP_CONTENT);
-        int marginLeft = (int)(12 * Resources.getSystem().getDisplayMetrics().density);
-        int marginRight = (int)(12 * Resources.getSystem().getDisplayMetrics().density);
-        layoutParams.setMargins(marginLeft,0, marginRight, 0);
+                LinearLayout.LayoutParams.WRAP_CONTENT,
+                LinearLayout.LayoutParams.WRAP_CONTENT);
+        int marginLeft = (int) (12 * Resources.getSystem().getDisplayMetrics().density);
+        int marginRight = (int) (12 * Resources.getSystem().getDisplayMetrics().density);
+        layoutParams.setMargins(marginLeft, 0, marginRight, 0);
 
         // Elements 0-1 are events, 3-20 are symptoms
-        int eventIds[]={
-            1,  // Intercourse
-            18, // Contraceptive pill
-            20, // Tired
-            21, // Energized
-            19, // Spotting
-            9,  // Intense bleeding
-            2,  // Cramps
-            17, // Headeache/migraine
-            3,  // Back pain
-            4,  // Middle pain left
-            5,  // Middle pain right
-            6,  // Breast pain/dragging pain
-            7,  // Thrush/candida
-            8,  // Discharge
-            10, // Temperature fluctuations
-            11, // Pimples
-            12, // Bloating
-            13, // Fainting
-            14, // Grumpiness
-            15, // Nausea
-            16, // Cravings
+        int eventIds[] = {
+                1,  // Intercourse
+                18, // Contraceptive pill
+                20, // Tired
+                21, // Energized
+                19, // Spotting
+                9,  // Intense bleeding
+                2,  // Cramps
+                17, // Headache/migraine
+                3,  // Back pain
+                4,  // Middle pain left
+                5,  // Middle pain right
+                6,  // Breast pain/dragging pain
+                7,  // Thrush/candida
+                8,  // Discharge
+                10, // Temperature fluctuations
+                11, // Pimples
+                12, // Bloating
+                13, // Fainting
+                14, // Grumpiness
+                15, // Nausea
+                16, // Cravings
         };
-        int num=0;
-        for(int eventId : eventIds) {
-            @SuppressLint("DefaultLocale") String resName = String.format("label_details_ev%d",eventId);
+        int num = 0;
+        for (int eventId : eventIds) {
+            @SuppressLint("DefaultLocale") String resName = String.format("label_details_ev%d", eventId);
             int resId = resources.getIdentifier(resName, "string", packageName);
-            if(resId != 0) {
+            if (resId != 0) {
                 AppCompatCheckBox option = new AppCompatCheckBox(this);
                 option.setLayoutParams(layoutParams);
                 option.setTextSize(18);
                 option.setText(resId);
                 option.setId(resId);
-                if(entry.symptoms.contains(eventId)) option.setChecked(true);
+                if (entry.symptoms.contains(eventId)) option.setChecked(true);
                 option.setOnClickListener(this);
-                if(num<2) {
+                if (num < 2) {
                     groupEvents.addView(option);
                 } else {
                     groupSymptoms.addView(option);
@@ -215,7 +225,7 @@ public class DetailsActivity extends AppCompatActivity implements View.OnClickLi
      */
     public void onClick(View v) {
         int id = v.getId();
-        switch(id) {
+        switch (id) {
             case R.id.periodYes:
                 dbMain.addPeriod(entry.date);
                 databaseChanged();
@@ -256,13 +266,13 @@ public class DetailsActivity extends AppCompatActivity implements View.OnClickLi
                 String packageName = getPackageName();
                 int resId;
                 entry.symptoms.clear();
-                int num=1;
-                while(num<22) {
-                    @SuppressLint("DefaultLocale") String resName = String.format("label_details_ev%d",num);
+                int num = 1;
+                while (num < 22) {
+                    @SuppressLint("DefaultLocale") String resName = String.format("label_details_ev%d", num);
                     resId = getResources().getIdentifier(resName, "string", packageName);
-                    if(resId != 0) {
+                    if (resId != 0) {
                         CheckBox option = findViewById(resId);
-                        if(option.isChecked()) entry.symptoms.add(num);
+                        if (option.isChecked()) entry.symptoms.add(num);
                     }
                     num++;
                 }
@@ -285,7 +295,7 @@ public class DetailsActivity extends AppCompatActivity implements View.OnClickLi
 
     @Override
     public void afterTextChanged(Editable editable) {
-        entry.notes = ((MultiAutoCompleteTextView)findViewById(R.id.editNotes)).getText().toString();
+        entry.notes = ((MultiAutoCompleteTextView) findViewById(R.id.editNotes)).getText().toString();
         dbMain.addEntryDetails(entry);
         databaseChanged();
     }
@@ -302,9 +312,11 @@ public class DetailsActivity extends AppCompatActivity implements View.OnClickLi
     }
 
     /**
-     * Helper to notify backup agent about database changes
+     * Helper to handle changes in the database
      */
     private void databaseChanged() {
+        dbMain.loadCalculatedData();
+
         BackupManager bm = new BackupManager(this);
         bm.dataChanged();
     }

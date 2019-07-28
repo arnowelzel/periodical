@@ -1,17 +1,17 @@
 /*
  * Helper to create an animated calendar view
- * Copyright (C) 2012-2018 Arno Welzel
- * 
+ * Copyright (C) 2012-2019 Arno Welzel
+ *
  * This code is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
- * 
+ *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
- * 
+ *
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
@@ -25,13 +25,11 @@ import android.view.animation.TranslateAnimation;
 /**
  * Helper for view animations
  */
-class AnimationHelper
-{
+class AnimationHelper {
     /**
      * Create an animation in from the right
      *
-     * @return
-     * Animation into the view from the right
+     * @return Animation into the view from the right
      */
     static Animation inFromRightAnimation() {
 
@@ -48,8 +46,7 @@ class AnimationHelper
     /**
      * Create an animation out to the left
      *
-     * @return
-     * Animation out of the view to the left
+     * @return Animation out of the view to the left
      */
     static Animation outToLeftAnimation() {
         Animation outtoLeft = new TranslateAnimation(
@@ -65,8 +62,7 @@ class AnimationHelper
     /**
      * Create an animation in from the left
      *
-     * @return
-     * Animation into the view from the left
+     * @return Animation into the view from the left
      */
     static Animation inFromLeftAnimation() {
         Animation inFromLeft = new TranslateAnimation(
@@ -82,8 +78,7 @@ class AnimationHelper
     /**
      * Create an animation out to the right
      *
-     * @return
-     * Animation out of the view to the right
+     * @return Animation out of the view to the right
      */
     static Animation outToRightAnimation() {
         Animation outtoRight = new TranslateAnimation(

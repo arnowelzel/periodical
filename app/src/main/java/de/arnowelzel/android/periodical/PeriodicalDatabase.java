@@ -1,6 +1,6 @@
 /*
  * Periodical database class
- * Copyright (C) 2012-2018 Arno Welzel
+ * Copyright (C) 2012-2019 Arno Welzel
  *
  * This code is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -55,16 +55,19 @@ class PeriodicalDatabase {
      * Helper to create or open database
      */
     private class PeriodicalDataOpenHelper extends SQLiteOpenHelper {
-        /** File name for the database */
+        /**
+         * File name for the database
+         */
         final static String DATABASE_NAME = "main.db";
-        /** Version of the database */
+        /**
+         * Version of the database
+         */
         final static int DATABASE_VERSION = 4;
 
         /**
          * Create a new database for the app
          *
-         * @param context
-         * Application context
+         * @param context Application context
          */
         PeriodicalDataOpenHelper(Context context) {
             super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -73,8 +76,7 @@ class PeriodicalDatabase {
         /**
          * Create tables if needed
          *
-         * @param db
-         * The database
+         * @param db The database
          */
         @Override
         public void onCreate(SQLiteDatabase db) {
@@ -105,14 +107,9 @@ class PeriodicalDatabase {
         /**
          * Execute schema updates if needed
          *
-         * @param db
-         * The database
-         *
-         * @param oldVersion
-         * The old version which is being updated
-         *
-         * @param newVersion
-         * The new version to update to
+         * @param db         The database
+         * @param oldVersion The old version which is being updated
+         * @param newVersion The new version to update to
          */
         @SuppressLint("DefaultLocale")
         @Override
@@ -207,13 +204,13 @@ class PeriodicalDatabase {
                     db.execSQL(statement);
 
                     // Add additional entries for each day of the period
-                    if(eventtype == DayEntry.PERIOD_START) {
+                    if (eventtype == DayEntry.PERIOD_START) {
                         eventtype = DayEntry.PERIOD_CONFIRMED;
 
                         // Start second day with higher intensity which will be reduced every day
                         intensity = 4;
 
-                        for(int day = 2; day <= periodlength; day++) {
+                        for (int day = 2; day <= periodlength; day++) {
                             eventdate.add(GregorianCalendar.DATE, 1);
 
                             statement = format(
@@ -226,7 +223,7 @@ class PeriodicalDatabase {
                                     intensity);
                             db.execSQL(statement);
 
-                            if(intensity > 1) intensity--;
+                            if (intensity > 1) intensity--;
                         }
                     }
                 }
@@ -265,17 +262,10 @@ class PeriodicalDatabase {
         /**
          * Construct a new day entry with parameters
          *
-         * @param type
-         * Entry type (DayEntry.EMPTY, DayEntry.PERIOD_START, DayEntry.PERIOD_CONFIRMED, ...)
-         *
-         * @param date
-         * Entry date
-         *
-         * @param dayofcycle
-         * Day within current cycle (beginning with 1)
-         *
-         * @param intensity
-         * Intensity of the period (1-4)
+         * @param type       Entry type (DayEntry.EMPTY, DayEntry.PERIOD_START, DayEntry.PERIOD_CONFIRMED, ...)
+         * @param date       Entry date
+         * @param dayofcycle Day within current cycle (beginning with 1)
+         * @param intensity  Intensity of the period (1-4)
          */
         DayEntry(int type, GregorianCalendar date, int dayofcycle, int intensity) {
             this.type = type;
@@ -300,23 +290,32 @@ class PeriodicalDatabase {
         }
     }
 
-    /** Calculated day entries */
+    /**
+     * Calculated day entries
+     */
     final Vector<DayEntry> dayEntries;
-    /** Calculated average cycle length */
+    /**
+     * Calculated average cycle length
+     */
     int cycleAverage;
-    /** Calculated longest cycle length */
+    /**
+     * Calculated longest cycle length
+     */
     int cycleLongest;
-    /** Calculated shortest cycle length */
+    /**
+     * Calculated shortest cycle length
+     */
     int cycleShortest;
 
-    /** Private reference to application context */
+    /**
+     * Private reference to application context
+     */
     private final Context context;
 
     /**
      * Constructor, will try to create/open a writable database
      *
-     * @param context
-     * Application context
+     * @param context Application context
      */
     PeriodicalDatabase(Context context) {
         this.context = context;
@@ -347,23 +346,23 @@ class PeriodicalDatabase {
     /**
      * Add a period entry for a specific day to the database
      *
-     * @param date
-     * Date of the entry
+     * @param date Date of the entry
      */
     @SuppressLint("DefaultLocale")
     void addPeriod(GregorianCalendar date) {
         String statement;
-        String datestring = format(Locale.getDefault(), "%04d%02d%02d",
-                date.get(GregorianCalendar.YEAR),
-                date.get(GregorianCalendar.MONTH) +1,
-                date.get(GregorianCalendar.DAY_OF_MONTH));
 
         GregorianCalendar dateLocal = new GregorianCalendar();
         dateLocal.setTime(date.getTime());
         dateLocal.add(GregorianCalendar.DATE, -1);
         int type = getEntryType(dateLocal);
-        if(type == DayEntry.PERIOD_START || type == DayEntry.PERIOD_CONFIRMED) {
-            // Continue existing period to the future
+        if (type == DayEntry.PERIOD_START || type == DayEntry.PERIOD_CONFIRMED) {
+            // The day before was a confirmed day of the period, then add the current day
+            String datestring = format(Locale.getDefault(), "%04d%02d%02d",
+                    date.get(GregorianCalendar.YEAR),
+                    date.get(GregorianCalendar.MONTH) + 1,
+                    date.get(GregorianCalendar.DAY_OF_MONTH));
+
             type = DayEntry.PERIOD_CONFIRMED;
             db.beginTransaction();
             statement = format(
@@ -377,29 +376,64 @@ class PeriodicalDatabase {
             db.execSQL(statement);
             db.setTransactionSuccessful();
             db.endTransaction();
-        } else {
-            dateLocal.add(GregorianCalendar.DATE, +2);
-            type = getEntryType(dateLocal);
-            if(type == DayEntry.PERIOD_START) {
-                // Continue existing period to the past
-                db.beginTransaction();
-
+        } else if (type == DayEntry.PERIOD_PREDICTED) {
+            // The day before was a predicted day of the period, then continue to the current day
+            while (type == DayEntry.PERIOD_PREDICTED) {
+                dateLocal.add(GregorianCalendar.DATE, -1);
+                type = getEntryType(dateLocal);
+            }
+            dateLocal.add(GregorianCalendar.DATE, 1);
+            db.beginTransaction();
+            while (dateLocal.getTimeInMillis() <= date.getTimeInMillis()) {
+                String datestring = format(Locale.getDefault(), "%04d%02d%02d",
+                        dateLocal.get(GregorianCalendar.YEAR),
+                        dateLocal.get(GregorianCalendar.MONTH) + 1,
+                        dateLocal.get(GregorianCalendar.DAY_OF_MONTH));
                 statement = format(
                         "delete from data where eventdate = '%s'",
                         datestring);
                 db.execSQL(statement);
                 statement = format(
-                        "insert into data (eventdate, eventtype, intensity) values ('%s', %d, 2)",
+                        "insert into data (eventdate, eventtype, intensity) values ('%s', %d, 1)",
                         datestring,
+                        DayEntry.PERIOD_CONFIRMED);
+                db.execSQL(statement);
+                dateLocal.add(GregorianCalendar.DATE, 1);
+            }
+            db.setTransactionSuccessful();
+            db.endTransaction();
+        } else {
+            // Probably start a new period
+            String dateString = format(Locale.getDefault(), "%04d%02d%02d",
+                    date.get(GregorianCalendar.YEAR),
+                    date.get(GregorianCalendar.MONTH) + 1,
+                    date.get(GregorianCalendar.DAY_OF_MONTH));
+            dateLocal.setTime(date.getTime());
+            dateLocal.add(GregorianCalendar.DATE, 1);
+            type = getEntryType(dateLocal);
+            if (type == DayEntry.PERIOD_START) {
+                // The next day is already marked as new period then move the period start
+                // to this day
+                db.beginTransaction();
+
+                // First insert a new start
+                statement = format(
+                        "delete from data where eventdate = '%s'",
+                        dateString);
+                db.execSQL(statement);
+                statement = format(
+                        "insert into data (eventdate, eventtype, intensity) values ('%s', %d, 2)",
+                        dateString,
                         type);
                 db.execSQL(statement);
 
+                // Update old start to be a confirmed day
                 statement = format(
                         "update data set eventtype=%d where eventdate = '%s'",
                         DayEntry.PERIOD_CONFIRMED,
                         format(Locale.getDefault(), "%04d%02d%02d",
                                 dateLocal.get(GregorianCalendar.YEAR),
-                                dateLocal.get(GregorianCalendar.MONTH) +1,
+                                dateLocal.get(GregorianCalendar.MONTH) + 1,
                                 dateLocal.get(GregorianCalendar.DAY_OF_MONTH)));
                 db.execSQL(statement);
 
@@ -407,20 +441,20 @@ class PeriodicalDatabase {
                 db.endTransaction();
             } else {
                 // This day is a regular new period
-                int periodlength;
+                int periodLength;
 
                 PreferenceUtils preferences = new PreferenceUtils(context);
-                periodlength = preferences.getInt("period_length", DEFAULT_PERIOD_LENGTH);
+                periodLength = preferences.getInt("period_length", DEFAULT_PERIOD_LENGTH);
 
                 type = DayEntry.PERIOD_START;
                 dateLocal.setTime(date.getTime());
                 int intensity = 2;
 
                 db.beginTransaction();
-                for(int day = 0; day < periodlength; day++) {
+                for (int day = 0; day < periodLength; day++) {
                     String datestringlocal = format(Locale.getDefault(), "%04d%02d%02d",
                             dateLocal.get(GregorianCalendar.YEAR),
-                            dateLocal.get(GregorianCalendar.MONTH) +1,
+                            dateLocal.get(GregorianCalendar.MONTH) + 1,
                             dateLocal.get(GregorianCalendar.DAY_OF_MONTH));
 
                     statement = format(
@@ -433,7 +467,7 @@ class PeriodicalDatabase {
                     type = DayEntry.PERIOD_CONFIRMED;
 
                     // Second day gets a higher intensity, the following ones decrease it every day
-                    if(day == 0) intensity = 4;
+                    if (day == 0) intensity = 4;
                     else {
                         if (intensity > 1) intensity--;
                     }
@@ -443,16 +477,12 @@ class PeriodicalDatabase {
                 db.endTransaction();
             }
         }
-        date.add(GregorianCalendar.DATE, 1);
-
-        // Add the selected date
     }
 
     /**
      * Remove an entry for a specific day from the database
      *
-     * @param date
-     * Date of the entry
+     * @param date Date of the entry
      */
     void removePeriod(GregorianCalendar date) {
         String statement;
@@ -463,14 +493,14 @@ class PeriodicalDatabase {
         db.beginTransaction();
 
         // Remove period entry for the selected and all following days
-        while(true) {
+        while (true) {
             int type = getEntryType(dateLocal);
-            if(type == DayEntry.PERIOD_START || type == DayEntry.PERIOD_CONFIRMED) {
-                statement = format("update data set eventtype=%d where eventdate='%s'",
-                        DayEntry.EMPTY,
+            if (type == DayEntry.PERIOD_START || type == DayEntry.PERIOD_CONFIRMED) {
+                statement = format(
+                        "delete from data where eventdate = '%s'",
                         format(Locale.getDefault(), "%04d%02d%02d",
                                 dateLocal.get(GregorianCalendar.YEAR),
-                                dateLocal.get(GregorianCalendar.MONTH) +1,
+                                dateLocal.get(GregorianCalendar.MONTH) + 1,
                                 dateLocal.get(GregorianCalendar.DAY_OF_MONTH)));
                 db.execSQL(statement);
                 dateLocal.add(GregorianCalendar.DATE, 1);
@@ -512,7 +542,7 @@ class PeriodicalDatabase {
         maximumcyclelength = preferences.getInt("maximum_cycle_length", DEFAULT_CYCLE_LENGTH);
 
         // Just a safety measure: limit maximum cycle lengths to the allowed minimum value
-        if(maximumcyclelength < 60) maximumcyclelength = 60;
+        if (maximumcyclelength < 60) maximumcyclelength = 60;
 
         // Clean up existing data
         dayEntries.removeAllElements();
@@ -544,92 +574,90 @@ class PeriodicalDatabase {
             GregorianCalendar eventdate = new GregorianCalendar(eventyear,
                     eventmonth - 1, eventday);
 
-            switch(eventtype)
-            {
-            case DayEntry.PERIOD_START:
-                if (isFirst) {
-                    // First event at all - just create an initial start entry
-                    dayofcycle = 1;
-                    entryPrevious = new DayEntry(eventtype, eventdate, 1, intensity);
-                    entryPreviousStart = entryPrevious;
-                    this.dayEntries.add(entryPrevious);
-                    isFirst = false;
-                }
-                else {
-                    // Create new day entry
-                    entry = new DayEntry(eventtype, eventdate, 1, intensity);
-                    int length = entryPreviousStart.date.diffDayPeriods(entry.date);
+            switch (eventtype) {
+                case DayEntry.PERIOD_START:
+                    if (isFirst) {
+                        // First event at all - just create an initial start entry
+                        dayofcycle = 1;
+                        entryPrevious = new DayEntry(eventtype, eventdate, 1, intensity);
+                        entryPreviousStart = entryPrevious;
+                        this.dayEntries.add(entryPrevious);
+                        isFirst = false;
+                    } else {
+                        // Create new day entry
+                        entry = new DayEntry(eventtype, eventdate, 1, intensity);
+                        int length = entryPreviousStart.date.diffDayPeriods(entry.date);
 
-                    // Add calculated values from the last date to this day, if the period has not
-                    // unusual lengths (e.g. after a longer pause because of pregnancy etc.)
-                    if (length <= maximumcyclelength) {
-                        count++;
+                        // Add calculated values from the last date to this day, if the period has not
+                        // unusual lengths (e.g. after a longer pause because of pregnancy etc.)
+                        if (length <= maximumcyclelength) {
+                            count++;
 
-                        // Update values which are used to calculate the fertility
-                        // window for the last 12 entries
-                        if (count == countlimit) {
-                            // If we have at least one period the shortest and
-                            // and longest value is automatically the current length
-                            this.cycleShortest = length;
-                            this.cycleLongest = length;
-                        } else if (count > countlimit) {
-                            // We have more than two values, then update
-                            // longest/shortest
-                            // values
-                            if (length < this.cycleShortest)
+                            // Update values which are used to calculate the fertility
+                            // window for the last 12 entries
+                            if (count == countlimit) {
+                                // If we have at least one period the shortest and
+                                // and longest value is automatically the current length
                                 this.cycleShortest = length;
-                            if (length > this.cycleLongest)
                                 this.cycleLongest = length;
-                        }
-
-                        // Update average sum
-                        this.cycleAverage += length;
-
-                        // Calculate a predicted ovulation date
-                        int average = this.cycleAverage;
-                        if (count > 0) average /= count;
-                        ovulationday = average - luteallength;
-
-                        // Calculate days from the last event until now
-                        GregorianCalendar datePrevious = new GregorianCalendar();
-                        datePrevious.setTime(entryPrevious.date.getTime());
-                        for (int day = dayofcycle; day < length; day++) {
-                            datePrevious.add(GregorianCalendar.DATE, 1);
-                            dayofcycle++;
-
-                            int type;
-
-                            if (day == ovulationday) {
-                                // Day of ovulation
-                                type = DayEntry.OVULATION_PREDICTED;
-                            } else if (day >= this.cycleShortest - luteallength - 4
-                                    && day <= this.cycleLongest - luteallength + 3) {
-                                // Fertile days
-                                type = DayEntry.FERTILITY_PREDICTED;
-                            } else {
-                                // Infertile days
-                                type = DayEntry.INFERTILE_PREDICTED;
+                            } else if (count > countlimit) {
+                                // We have more than two values, then update
+                                // longest/shortest
+                                // values
+                                if (length < this.cycleShortest)
+                                    this.cycleShortest = length;
+                                if (length > this.cycleLongest)
+                                    this.cycleLongest = length;
                             }
 
-                            DayEntry entryCalculated = new DayEntry(type, datePrevious, dayofcycle, 1);
-                            dayEntries.add(entryCalculated);
+                            // Update average sum
+                            this.cycleAverage += length;
+
+                            // Calculate a predicted ovulation date
+                            int average = this.cycleAverage;
+                            if (count > 0) average /= count;
+                            ovulationday = average - luteallength;
+
+                            // Calculate days from the last event until now
+                            GregorianCalendar datePrevious = new GregorianCalendar();
+                            datePrevious.setTime(entryPrevious.date.getTime());
+                            for (int day = dayofcycle; day < length; day++) {
+                                datePrevious.add(GregorianCalendar.DATE, 1);
+                                dayofcycle++;
+
+                                int type;
+
+                                if (day == ovulationday) {
+                                    // Day of ovulation
+                                    type = DayEntry.OVULATION_PREDICTED;
+                                } else if (day >= this.cycleShortest - luteallength - 4
+                                        && day <= this.cycleLongest - luteallength + 3) {
+                                    // Fertile days
+                                    type = DayEntry.FERTILITY_PREDICTED;
+                                } else {
+                                    // Infertile days
+                                    type = DayEntry.INFERTILE_PREDICTED;
+                                }
+
+                                DayEntry entryCalculated = new DayEntry(type, datePrevious, dayofcycle, 1);
+                                dayEntries.add(entryCalculated);
+                            }
                         }
+
+                        // Finally add the entry
+                        dayofcycle = 1;
+                        entryPrevious = entry;
+                        entryPreviousStart = entry;
+                        this.dayEntries.add(entry);
                     }
+                    break;
 
-                    // Finally add the entry
-                    dayofcycle = 1;
-                    entryPrevious = entry;
-                    entryPreviousStart = entry;
+                case DayEntry.PERIOD_CONFIRMED:
+                    dayofcycle++;
+                    entry = new DayEntry(eventtype, eventdate, dayofcycle, intensity);
                     this.dayEntries.add(entry);
-                }
-                break;
-
-            case DayEntry.PERIOD_CONFIRMED:
-                dayofcycle++;
-                entry = new DayEntry(eventtype, eventdate, dayofcycle, intensity);
-                this.dayEntries.add(entry);
-                entryPrevious = entry;
-                break;
+                    entryPrevious = entry;
+                    break;
             }
         }
         result.close();
@@ -674,38 +702,64 @@ class PeriodicalDatabase {
 
         // Fill details for each day
         int index = 0;
-        if (dayEntries.size()>0) {
-            result = db.rawQuery("select notes.eventdate, content, symptom from " +
-                            "notes " +
-                            "left outer join symptoms on notes.eventdate=symptoms.eventdate " +
-                            "order by notes.eventdate",
-                    null);
-            entry = dayEntries.get(0);
-            while (result.moveToNext()) {
-                String dbdate = result.getString(0);
-                assert dbdate != null;
-                int eventyear = Integer.parseInt(dbdate.substring(0, 4), 10);
-                int eventmonth = Integer.parseInt(dbdate.substring(4, 6), 10);
-                int eventday = Integer.parseInt(dbdate.substring(6, 8), 10);
-                GregorianCalendar eventdate = new GregorianCalendar(eventyear, eventmonth - 1, eventday);
-                String notes = result.getString(1);
-                if (notes == null) notes = "";
-                int symptom = result.getInt(2);
+        DayEntry entryTarget = null;
+        result = db.rawQuery("select notes.eventdate, content, symptom from " +
+                        "notes " +
+                        "left outer join symptoms on notes.eventdate=symptoms.eventdate " +
+                        "order by notes.eventdate",
+                null);
+        while (result.moveToNext()) {
+            String dbdate = result.getString(0);
+            assert dbdate != null;
+            int eventyear = Integer.parseInt(dbdate.substring(0, 4), 10);
+            int eventmonth = Integer.parseInt(dbdate.substring(4, 6), 10);
+            int eventday = Integer.parseInt(dbdate.substring(6, 8), 10);
+            GregorianCalendar eventdate = new GregorianCalendar(eventyear, eventmonth - 1, eventday);
+            String notes = result.getString(1);
+            if (notes == null) notes = "";
+            int symptom = result.getInt(2);
 
-                do {
+            if (dayEntries.size() == 0) {
+                // If we don't have any entries yet, create an empty entry for the details
+                entryTarget = new DayEntry(DayEntry.EMPTY, eventdate, 0, 0);
+                dayEntries.add(entryTarget);
+                index = 0;
+            } else {
+                // We have at least ony entry, but it may be in the future
+                if (dayEntries.size() > index) {
                     entry = dayEntries.get(index);
-                    index++;
-                } while(entry.date.getTimeInMillis()<eventdate.getTimeInMillis() && index<dayEntries.size());
-                index--;
-                if (entry.date.equals(eventdate)) {
-                    if(symptom != 0) {
-                        entry.symptoms.add(symptom);
+                    if (entry.date.getTimeInMillis() > eventdate.getTimeInMillis()) {
+                        // The existing entry is in the future, so create a new blank entry before
+                        // this day to hold the details
+                        entryTarget = new DayEntry(DayEntry.EMPTY, eventdate, 0, 0);
+                        dayEntries.insertElementAt(entryTarget, index);
+                    } else {
+                        // Skip existing entries, until a matching one is found
+                        do {
+                            entry = dayEntries.get(index);
+                            index++;
+                        } while (entry.date.getTimeInMillis() < eventdate.getTimeInMillis() && index < dayEntries.size());
+                        index--;
+                        if (entry.date.equals(eventdate)) {
+                            entryTarget = entry;
+                        } else {
+                            // No matching entry found, so add a new one for this day
+                            entryTarget = new DayEntry(DayEntry.EMPTY, eventdate, 0, 0);
+                            dayEntries.add(entryTarget);
+                        }
                     }
-                    entry.notes = notes;
+                }
+
+                // Add symptom to the current entry
+                if (null != entryTarget) {
+                    if (symptom != 0) {
+                        entryTarget.symptoms.add(symptom);
+                    }
+                    entryTarget.notes = notes;
                 }
             }
-            result.close();
         }
+        result.close();
 
         System.gc();
     }
@@ -721,8 +775,8 @@ class PeriodicalDatabase {
         dayEntries.removeAllElements();
 
         // Get all entries from the database
-        String statement = "select eventtype, eventdate from data where eventtype="+
-                String.format("%d", DayEntry.PERIOD_START)+
+        String statement = "select eventtype, eventdate from data where eventtype=" +
+                String.format("%d", DayEntry.PERIOD_START) +
                 " order by eventdate desc";
         Cursor result = db.rawQuery(statement, null);
         while (result.moveToNext()) {
@@ -752,7 +806,7 @@ class PeriodicalDatabase {
         dayEntries.removeAllElements();
 
         // Get all entries with details from the database
-        String statement = "select data.eventdate, eventtype, intensity, content, symptom from "+
+        String statement = "select data.eventdate, eventtype, intensity, content, symptom from " +
                 "data " +
                 "left outer join notes on data.eventdate=notes.eventdate " +
                 "left outer join symptoms on data.eventdate=symptoms.eventdate " +
@@ -760,17 +814,17 @@ class PeriodicalDatabase {
         Cursor result = db.rawQuery(statement, null);
         DayEntry entry = null;
         String dbdate = "";
-        List <Integer> symptoms = new ArrayList<>();
+        List<Integer> symptoms = new ArrayList<>();
         int dayofcycle = 1;
 
         while (result.moveToNext()) {
             // New day?
-            if(!dbdate.equals(result.getString(0))) {
+            if (!dbdate.equals(result.getString(0))) {
                 // Store pending entry if it is not a total empty day
-                if(entry != null) {
+                if (entry != null) {
                     entry.dayofcycle = dayofcycle;
                     entry.symptoms = symptoms;
-                    if(entry.type != DayEntry.EMPTY || !entry.notes.isEmpty() || entry.symptoms.size() > 0) {
+                    if (entry.type != DayEntry.EMPTY || !entry.notes.isEmpty() || entry.symptoms.size() > 0) {
                         dayEntries.add(entry);
                     }
                 }
@@ -784,21 +838,21 @@ class PeriodicalDatabase {
                 GregorianCalendar eventdate = new GregorianCalendar(eventyear, eventmonth - 1, eventday);
                 int intensity = result.getInt(2);
                 String notes = result.getString(3);
-                if(notes == null) notes = "";
+                if (notes == null) notes = "";
 
                 entry = new DayEntry();
                 entry.type = eventtype;
                 entry.date.setTime(eventdate.getTime());
-                entry.intensity = intensity>0 ? intensity : 1;
+                entry.intensity = intensity > 0 ? intensity : 1;
                 entry.notes = notes;
 
                 symptoms = new ArrayList<>();
 
-                if(result.getInt(4) != 0) {
+                if (result.getInt(4) != 0) {
                     symptoms.add(result.getInt(4));
                 }
 
-                if(eventtype == DayEntry.PERIOD_START) dayofcycle = 1;
+                if (eventtype == DayEntry.PERIOD_START) dayofcycle = 1;
                 else dayofcycle++;
             } else {
                 symptoms.add(result.getInt(4));
@@ -806,10 +860,10 @@ class PeriodicalDatabase {
         }
         result.close();
 
-        if(entry != null) {
+        if (entry != null) {
             entry.symptoms = symptoms;
             entry.dayofcycle = dayofcycle;
-            if(entry.type != DayEntry.EMPTY || !entry.notes.isEmpty() || entry.symptoms.size() > 0) {
+            if (entry.type != DayEntry.EMPTY || !entry.notes.isEmpty() || entry.symptoms.size() > 0) {
                 dayEntries.add(entry);
             }
         }
@@ -820,8 +874,7 @@ class PeriodicalDatabase {
     /**
      * Get entry type for a specific day
      *
-     * @param date
-     * Date of the entry
+     * @param date Date of the entry
      */
     @SuppressWarnings("WrongConstant")
     int getEntryType(GregorianCalendar date) {
@@ -839,14 +892,9 @@ class PeriodicalDatabase {
     /**
      * Get entry for a specific day
      *
-     * @param year
-     * Year including century
-     *
-     * @param month
-     * Month (1-12)
-     *
-     * @param day
-     * Day of the month (1-31)
+     * @param year  Year including century
+     * @param month Month (1-12)
+     * @param day   Day of the month (1-31)
      */
     @SuppressWarnings("WrongConstant")
     private DayEntry getEntry(int year, int month, int day) {
@@ -866,8 +914,7 @@ class PeriodicalDatabase {
     /**
      * Get entry for a specific day
      *
-     * @param date
-     * Date of the entry
+     * @param date Date of the entry
      */
     DayEntry getEntry(GregorianCalendar date) {
         for (DayEntry entry : dayEntries) {
@@ -884,19 +931,14 @@ class PeriodicalDatabase {
     /**
      * Get a specific day including all details
      *
-     * @param year
-     * Year including century
-     *
-     * @param month
-     * Month (1-12)
-     *
-     * @param day
-     * Day of the month (1-31)
+     * @param year  Year including century
+     * @param month Month (1-12)
+     * @param day   Day of the month (1-31)
      */
     DayEntry getEntryWithDetails(int year, int month, int day) {
         DayEntry entry = getEntry(year, month, day);
 
-        if(entry == null) {
+        if (entry == null) {
             entry = new DayEntry();
 
             // Set chosen date
@@ -920,7 +962,7 @@ class PeriodicalDatabase {
         Cursor resultSymptoms = db.rawQuery(statementSymptoms, null);
 
         List<Integer> symptoms = new ArrayList<>();
-        while(resultSymptoms.moveToNext()) {
+        while (resultSymptoms.moveToNext()) {
             symptoms.add(resultSymptoms.getInt(0));
         }
         entry.symptoms = symptoms;
@@ -933,13 +975,12 @@ class PeriodicalDatabase {
     /**
      * Store details for a specific day
      *
-     * @param entry
-     * The details to be stored
+     * @param entry The details to be stored
      */
     @SuppressLint("DefaultLocale")
     void addEntryDetails(DayEntry entry) {
         String statement;
-        String datestring = format(Locale.getDefault(), "%04d%02d%02d",
+        String dateString = format(Locale.getDefault(), "%04d%02d%02d",
                 entry.date.get(GregorianCalendar.YEAR),
                 entry.date.get(GregorianCalendar.MONTH) + 1,
                 entry.date.get(GregorianCalendar.DAY_OF_MONTH));
@@ -949,26 +990,26 @@ class PeriodicalDatabase {
         // Delete existing details, if any
         statement = format(
                 "delete from notes where eventdate = '%s'",
-                datestring);
+                dateString);
         db.execSQL(statement);
 
         statement = format(
                 "delete from symptoms where eventdate = '%s'",
-                datestring);
+                dateString);
         db.execSQL(statement);
 
         // If there is no calendar entry for this day yet, then add one first
         boolean addNew = false;
         statement = format(
                 "select eventtype from data where eventdate='%s'",
-                datestring);
+                dateString);
         Cursor result = db.rawQuery(statement, null);
         if (!result.moveToNext()) addNew = true;
         result.close();
-        if(addNew) {
+        if (addNew) {
             statement = format(
                     "insert into data (eventdate, eventtype) values ('%s', %d)",
-                    datestring,
+                    dateString,
                     DayEntry.EMPTY);
             db.execSQL(statement);
         }
@@ -977,19 +1018,19 @@ class PeriodicalDatabase {
         statement = format(
                 "update data set intensity = %d where eventdate='%s'",
                 entry.intensity,
-                datestring);
+                dateString);
         db.execSQL(statement);
 
         statement = format(
                 "insert into notes (eventdate, content) values ('%s', ?)",
-                datestring);
-        db.execSQL(statement, new String[]{ entry.notes });
+                dateString);
+        db.execSQL(statement, new String[]{entry.notes});
 
-        int count=0;
+        int count = 0;
         while (count < entry.symptoms.size()) {
             statement = format(
                     "insert into symptoms (eventdate, symptom) values ('%s', %d)",
-                    datestring,
+                    dateString,
                     entry.symptoms.get(count));
             db.execSQL(statement);
             count++;
@@ -1002,11 +1043,8 @@ class PeriodicalDatabase {
     /**
      * Get a named option from the options table
      *
-     * @param name
-     * Name of the option to retrieve
-     *
-     * @param defaultvalue
-     * Default value to be used if the option is not stored yet
+     * @param name         Name of the option to retrieve
+     * @param defaultvalue Default value to be used if the option is not stored yet
      */
     private String getOption(String name, String defaultvalue) {
         String value = defaultvalue;
@@ -1050,11 +1088,8 @@ class PeriodicalDatabase {
     /**
      * Set a named option to be stored in the options table
      *
-     * @param name
-     * Name of the option to store
-     *
-     * @param value
-     * Value of the option to store
+     * @param name  Name of the option to store
+     * @param value Value of the option to store
      */
     public void setOption(String name, String value) {
         String statement;
@@ -1103,11 +1138,12 @@ class PeriodicalDatabase {
 
         // Save option
         statement = "insert into options (name, value) values (?, ?)";
-        db.execSQL(statement, new String[]{name, value?"1":"0"});
+        db.execSQL(statement, new String[]{name, value ? "1" : "0"});
 
         db.setTransactionSuccessful();
         db.endTransaction();
     }
+
     /**
      * Backup the database
      */
@@ -1125,8 +1161,7 @@ class PeriodicalDatabase {
     /**
      * Helper to handle backup and restore operations
      *
-     * @param backup
-     * true for doing a backup, false for a restore
+     * @param backup true for doing a backup, false for a restore
      */
 
     private boolean backupRestore(boolean backup) {
@@ -1146,7 +1181,7 @@ class PeriodicalDatabase {
         // Get source of DB and path for external storage
         if (backup) {
             sourceFile = new File(db.getPath());
-            sourceFileJournal = new File(db.getPath()+"-journal");
+            sourceFileJournal = new File(db.getPath() + "-journal");
             destDir = new File(Environment.getExternalStorageDirectory()
                     .getAbsolutePath() + "/" + context.getPackageName());
             destFile = new File(destDir.getAbsolutePath() + "/"
@@ -1155,7 +1190,7 @@ class PeriodicalDatabase {
         } else {
             destDir = null; // If we restore, the directory is already there
             destFile = new File(db.getPath());
-            destFileJournal = new File(db.getPath()+"-journal");
+            destFileJournal = new File(db.getPath() + "-journal");
             sourceFile = new File(Environment.getExternalStorageDirectory()
                     .getAbsolutePath()
                     + "/"
@@ -1169,8 +1204,8 @@ class PeriodicalDatabase {
         db.close();
 
         // Check, if destination files exists and delete first
-        if(destFile.exists()) ok = destFile.delete();
-        if(destFileJournal.exists() && ok) ok = destFileJournal.delete();
+        if (destFile.exists()) ok = destFile.delete();
+        if (destFileJournal.exists() && ok) ok = destFileJournal.delete();
 
         // If everything is ok, then copy source to destination
         if (ok) {
@@ -1183,7 +1218,7 @@ class PeriodicalDatabase {
                 FileUtils.copyFile(new FileInputStream(sourceFile),
                         new FileOutputStream(destFile));
                 // Try to copy journal only if it exists
-                if(sourceFileJournal.exists())
+                if (sourceFileJournal.exists())
                     FileUtils.copyFile(new FileInputStream(sourceFileJournal),
                             new FileOutputStream(destFileJournal));
             } catch (IOException e) {
@@ -1207,7 +1242,8 @@ class PeriodicalDatabase {
         Integer period_length = getOption("period_length", DEFAULT_PERIOD_LENGTH);
         Integer luteal_length = getOption("luteal_length", DEFAULT_LUTEAL_LENGTH);
         Integer startofweek = getOption("startofweek", DEFAULT_START_OF_WEEK);
-        if(startofweek != DEFAULT_START_OF_WEEK && startofweek != 1) startofweek = DEFAULT_START_OF_WEEK;
+        if (startofweek != DEFAULT_START_OF_WEEK && startofweek != 1)
+            startofweek = DEFAULT_START_OF_WEEK;
         Integer maximum_cycle_length = getOption("maximum_cycle_length", DEFAULT_CYCLE_LENGTH);
         boolean direct_details = getOption("direct_details", DEFAULT_DIRECT_DETAILS);
         boolean show_cycle = getOption("show_cycle", DEFAULT_SHOW_CYCLE);

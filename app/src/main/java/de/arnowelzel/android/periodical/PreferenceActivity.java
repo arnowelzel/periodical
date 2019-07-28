@@ -1,6 +1,6 @@
 /*
  * Periodical options activity
- * Copyright (C) 2012-2018 Arno Welzel
+ * Copyright (C) 2012-2019 Arno Welzel
  *
  * This code is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -41,7 +41,7 @@ public class PreferenceActivity extends AppCompatPreferenceActivity implements S
     @SuppressWarnings("deprecation")
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        
+
         final Context context = getApplicationContext();
         assert context != null;
 
@@ -50,78 +50,78 @@ public class PreferenceActivity extends AppCompatPreferenceActivity implements S
 
         addPreferencesFromResource(R.xml.preferences);
         initSummary(getPreferenceScreen());
-        
+
         // Add validation for period length
         findPreference("period_length").setOnPreferenceChangeListener(
-            new Preference.OnPreferenceChangeListener() {
+                new Preference.OnPreferenceChangeListener() {
 
-                @Override
-                public boolean onPreferenceChange(Preference preference, Object newValue) {
-                    int value;
-                    try {
-                        value = Integer.parseInt(newValue.toString());
-                    } catch (NumberFormatException e) {
-                        value = 0;
-                    }
+                    @Override
+                    public boolean onPreferenceChange(Preference preference, Object newValue) {
+                        int value;
+                        try {
+                            value = Integer.parseInt(newValue.toString());
+                        } catch (NumberFormatException e) {
+                            value = 0;
+                        }
 
-                    if (value < 1 || value > 14) {
-                        Toast.makeText(context,
-                                getResources().getString(R.string.invalid_period_length),
-                                Toast.LENGTH_SHORT).show();
-                        return false;
+                        if (value < 1 || value > 14) {
+                            Toast.makeText(context,
+                                    getResources().getString(R.string.invalid_period_length),
+                                    Toast.LENGTH_SHORT).show();
+                            return false;
+                        }
+
+                        return true;
                     }
-                    
-                    return true;
-                }
-            });
+                });
 
         // Add validation for luteal length
         findPreference("luteal_length").setOnPreferenceChangeListener(
-            new Preference.OnPreferenceChangeListener() {
+                new Preference.OnPreferenceChangeListener() {
 
-                @Override
-                public boolean onPreferenceChange(Preference preference, Object newValue) {
-                    int value;
-                    try {
-                        value = Integer.parseInt(newValue.toString());
-                    } catch (NumberFormatException e) {
-                        value = 0;
+                    @Override
+                    public boolean onPreferenceChange(Preference preference, Object newValue) {
+                        int value;
+                        try {
+                            value = Integer.parseInt(newValue.toString());
+                        } catch (NumberFormatException e) {
+                            value = 0;
+                        }
+
+                        if (value < 1) {
+                            Toast.makeText(context,
+                                    getResources().getString(R.string.invalid_luteal_length),
+                                    Toast.LENGTH_SHORT).show();
+                            return false;
+                        }
+
+                        return true;
                     }
-
-                    if (value < 1) {
-                        Toast.makeText(context,
-                                getResources().getString(R.string.invalid_luteal_length),
-                                Toast.LENGTH_SHORT).show();
-                        return false;
-                    }
-
-                    return true;
-                }
-            });
+                });
 
         // Add validation for cycle length filter
         findPreference("maximum_cycle_length").setOnPreferenceChangeListener(
-            new Preference.OnPreferenceChangeListener() {
+                new Preference.OnPreferenceChangeListener() {
 
-                @Override
-                public boolean onPreferenceChange(Preference preference, Object newValue) {
-                    int value;
-                    try {
-                        value = Integer.parseInt(newValue.toString());
-                    } catch (NumberFormatException e) {
-                        value = 0;
+                    @Override
+                    public boolean onPreferenceChange(Preference preference, Object newValue) {
+                        int value;
+                        try {
+                            value = Integer.parseInt(newValue.toString());
+                        } catch (NumberFormatException e) {
+                            value = 0;
+                        }
+
+                        if (value < 60) {
+                            Toast.makeText(context,
+                                    getResources().getString(R.string.invalid_maximum_cycle_length),
+                                    Toast.LENGTH_SHORT).show();
+                            return false;
+                        }
+
+                        return true;
                     }
-
-                    if (value < 60) {
-                        Toast.makeText(context,
-                                getResources().getString(R.string.invalid_maximum_cycle_length),
-                                Toast.LENGTH_SHORT).show();
-                        return false;
-                    }
-
-                    return true;
-                }
-            });
+                });
 
         // Activate "back button" in Action Bar
         ActionBar actionBar = getSupportActionBar();
@@ -136,7 +136,7 @@ public class PreferenceActivity extends AppCompatPreferenceActivity implements S
     @SuppressWarnings("deprecation")
     protected void onResume() {
         super.onResume();
-        
+
         // Set up a listener whenever a key changes
         getPreferenceScreen().getSharedPreferences()
                 .registerOnSharedPreferenceChangeListener(this);
@@ -149,12 +149,12 @@ public class PreferenceActivity extends AppCompatPreferenceActivity implements S
     @SuppressWarnings("deprecation")
     protected void onPause() {
         super.onPause();
-        
+
         // Unregister the listener whenever a key changes
         getPreferenceScreen().getSharedPreferences()
                 .unregisterOnSharedPreferenceChangeListener(this);
-    }    
-    
+    }
+
     /**
      * Handle preference changes
      */
@@ -162,11 +162,11 @@ public class PreferenceActivity extends AppCompatPreferenceActivity implements S
     public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
         PreferenceUtils preferenceUtils = new PreferenceUtils(sharedPreferences);
         Preference pref = findPreference(key);
-        
+
         updatePrefSummary(pref);
 
         // Store setting to database
-        switch(key) {
+        switch (key) {
             case "period_length":
                 dbMain.setOption(key, preferenceUtils.getInt(key, dbMain.DEFAULT_PERIOD_LENGTH));
                 break;
@@ -201,7 +201,7 @@ public class PreferenceActivity extends AppCompatPreferenceActivity implements S
             updatePrefSummary(p);
         }
     }
-    
+
     /**
      * Update summary text for a preference
      */
@@ -212,15 +212,14 @@ public class PreferenceActivity extends AppCompatPreferenceActivity implements S
         }
         if (p instanceof EditTextPreference) {
             EditTextPreference editTextPref = (EditTextPreference) p;
-            if (p.getTitle().toString().contains("assword"))
-            {
+            if (p.getTitle().toString().contains("assword")) {
                 p.setSummary("******");
             } else {
                 p.setSummary(editTextPref.getText());
             }
         }
     }
-    
+
     /**
      * Handler for ICS "home" button
      */

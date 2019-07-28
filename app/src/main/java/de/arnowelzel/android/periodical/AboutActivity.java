@@ -1,6 +1,6 @@
 /*
  * Periodical "about" activity
- * Copyright (C) 2012-2018 Arno Welzel
+ * Copyright (C) 2012-2019 Arno Welzel
  *
  * This code is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -53,25 +53,26 @@ public class AboutActivity extends AppCompatActivity {
         WebView view = findViewById(R.id.webView);
         view.getSettings().setJavaScriptEnabled(true);
         view.setWebViewClient(
-            new WebViewClient() {
-                // Update version and year after loading the document
-                @Override
-                public void onPageFinished(WebView view, String url) {
-                    super.onPageFinished(view, url);
-                    view.loadUrl("javascript:replace('version', '"+BuildConfig.VERSION_NAME+"')");
-                    view.loadUrl("javascript:replace('year', '"+BuildConfig.VERSION_YEAR+"')");
-                    view.loadUrl("javascript:replace('backupfolder','"+Environment.getExternalStorageDirectory().getAbsolutePath()+ "/" + getApplicationContext().getPackageName()+"')");
-                }
+                new WebViewClient() {
+                    // Update version and year after loading the document
+                    @Override
+                    public void onPageFinished(WebView view, String url) {
+                        super.onPageFinished(view, url);
+                        view.loadUrl("javascript:replace('version', '" + BuildConfig.VERSION_NAME + "')");
+                        view.loadUrl("javascript:replace('year', '" + BuildConfig.VERSION_YEAR + "')");
+                        view.loadUrl("javascript:replace('backupfolder','" + Environment.getExternalStorageDirectory().getAbsolutePath() + "/" + getApplicationContext().getPackageName() + "')");
+                    }
 
-                // Handle URLs always external links
-                @SuppressWarnings("deprecation") @Override
-                public boolean shouldOverrideUrlLoading(WebView view, String url) {
-                    Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
-                    startActivity(intent);
-                    return true;
-                }
-            });
-        view.loadUrl("file:///android_asset/"+getString(R.string.asset_about));
+                    // Handle URLs always external links
+                    @SuppressWarnings("deprecation")
+                    @Override
+                    public boolean shouldOverrideUrlLoading(WebView view, String url) {
+                        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+                        startActivity(intent);
+                        return true;
+                    }
+                });
+        view.loadUrl("file:///android_asset/" + getString(R.string.asset_about));
     }
 
     /**

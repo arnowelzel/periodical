@@ -1,6 +1,6 @@
 /*
  * Periodical list activity
- * Copyright (C) 2012-2017 Arno Welzel
+ * Copyright (C) 2012-2019 Arno Welzel
  *
  * This code is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -93,7 +93,7 @@ public class ListActivity extends AppCompatActivity implements AdapterView.OnIte
                         // If we have a previous day, then update the previous
                         // days length description
                         Integer length = day.date.diffDayPeriods(dayPrevious.date);
-                        if(length <= maximumcyclelength) {
+                        if (length <= maximumcyclelength) {
                             entries[pos - 1] += "\n"
                                     + String.format(
                                     getString(R.string.event_periodlength),
@@ -140,7 +140,7 @@ public class ListActivity extends AppCompatActivity implements AdapterView.OnIte
     }
 
     /**
-     *  Handler for ICS "home" button
+     * Handler for ICS "home" button
      */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -157,17 +157,10 @@ public class ListActivity extends AppCompatActivity implements AdapterView.OnIte
     /**
      * Handler for opening a list item which will return to the main view
      *
-     * @param adapterView
-     * The ListView where the click happened
-     *
-     * @param v
-     * The view that was clicked within the ListView
-     *
-     * @param position
-     * The position of the view in the list
-     *
-     * @param id
-     * The row id of the item that was clicked
+     * @param adapterView The ListView where the click happened
+     * @param v           The view that was clicked within the ListView
+     * @param position    The position of the view in the list
+     * @param id          The row id of the item that was clicked
      */
     @Override
     public void onItemClick(AdapterView<?> adapterView, View v, int position, long id) {

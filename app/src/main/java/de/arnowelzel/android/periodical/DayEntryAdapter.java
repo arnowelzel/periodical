@@ -1,6 +1,6 @@
 /*
  * Custom adapter for calendar entry list view
- * Copyright (C) 2012-2018 Arno Welzel
+ * Copyright (C) 2012-2019 Arno Welzel
  *
  * This code is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -45,17 +45,10 @@ class DayEntryAdapter extends ArrayAdapter<PeriodicalDatabase.DayEntry> {
     /**
      * Constructor
      *
-     * @param context
-     * Application content
-     *
-     * @param list
-     * List with all calendar entries including details
-     *
-     * @param packageName
-     * Application package from getPackageName()
-     *
-     * @param resources
-     * Global resources from getResources()
+     * @param context     Application content
+     * @param list        List with all calendar entries including details
+     * @param packageName Application package from getPackageName()
+     * @param resources   Global resources from getResources()
      */
     public DayEntryAdapter(Context context, List<PeriodicalDatabase.DayEntry> list, String packageName, Resources resources) {
         super(context, 0, list);
@@ -69,25 +62,18 @@ class DayEntryAdapter extends ArrayAdapter<PeriodicalDatabase.DayEntry> {
     /**
      * Constructs a single item view
      *
-     * @param position
-     * Position of the item in the list
-     *
-     * @param convertView
-     * Existing view to use (if null, a new one will be created)
-     *
-     * @param parent
-     * Group in which this view is inserted
-     *
-     * @return
-     * View to be used for the item
+     * @param position    Position of the item in the list
+     * @param convertView Existing view to use (if null, a new one will be created)
+     * @param parent      Group in which this view is inserted
+     * @return View to be used for the item
      */
     @SuppressLint({"DefaultLocale", "SetTextI18n"})
     @NonNull
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
         View listItem = convertView;
-        if(listItem == null)
-            listItem = LayoutInflater.from(context).inflate(R.layout.listdetailsitem,parent,false);
+        if (listItem == null)
+            listItem = LayoutInflater.from(context).inflate(R.layout.listdetailsitem, parent, false);
 
         PeriodicalDatabase.DayEntry currentEntry = entryList.get(position);
 
@@ -95,36 +81,36 @@ class DayEntryAdapter extends ArrayAdapter<PeriodicalDatabase.DayEntry> {
         String textSymptoms = "";
 
         // Elements 0-2 are events, 2-17 are symptoms
-        int eventIds[]={
-            1,  // Intercourse
-            18, // Contraceptive pill
-            20, // Tired
-            21, // Energized
-            19, // Spotting
-            9,  // Intense bleeding
-            2,  // Cramps
-            17, // Headeache/migraine
-            3,  // Back pain
-            4,  // Middle pain left
-            5,  // Middle pain right
-            6,  // Breast pain/dragging pain
-            7,  // Thrush/candida
-            8,  // Discharge
-            10, // Temperature fluctuations
-            11, // Pimples
-            12, // Bloating
-            13, // Fainting
-            14, // Grumpiness
-            15, // Nausea
-            16, // Cravings
+        int eventIds[] = {
+                1,  // Intercourse
+                18, // Contraceptive pill
+                20, // Tired
+                21, // Energized
+                19, // Spotting
+                9,  // Intense bleeding
+                2,  // Cramps
+                17, // Headeache/migraine
+                3,  // Back pain
+                4,  // Middle pain left
+                5,  // Middle pain right
+                6,  // Breast pain/dragging pain
+                7,  // Thrush/candida
+                8,  // Discharge
+                10, // Temperature fluctuations
+                11, // Pimples
+                12, // Bloating
+                13, // Fainting
+                14, // Grumpiness
+                15, // Nausea
+                16, // Cravings
         };
-        int num=0;
-        for(int eventId : eventIds) {
-            String resName = format("label_details_ev%d",eventId);
+        int num = 0;
+        for (int eventId : eventIds) {
+            String resName = format("label_details_ev%d", eventId);
             int resId = resources.getIdentifier(resName, "string", packageName);
-            if(resId != 0) {
-                if(currentEntry.symptoms.contains(eventId)) {
-                    if(num<2) {
+            if (resId != 0) {
+                if (currentEntry.symptoms.contains(eventId)) {
+                    if (num < 2) {
                         if (!textEvents.isEmpty()) textEvents += "\n";
                         textEvents += "\u2022 " + resources.getString(resId);
                     } else {
@@ -141,11 +127,11 @@ class DayEntryAdapter extends ArrayAdapter<PeriodicalDatabase.DayEntry> {
         TextView view;
 
         view = listItem.findViewById(R.id.item_date);
-        switch(currentEntry.type) {
+        switch (currentEntry.type) {
             case PeriodicalDatabase.DayEntry.PERIOD_START:
                 view.setText(
                         dateFormat.format(currentEntry.date.getTime()) + " \u2014 " +
-                        resources.getString(R.string.event_periodstart));
+                                resources.getString(R.string.event_periodstart));
                 break;
             case PeriodicalDatabase.DayEntry.PERIOD_CONFIRMED:
                 view.setText(
@@ -160,15 +146,22 @@ class DayEntryAdapter extends ArrayAdapter<PeriodicalDatabase.DayEntry> {
         }
 
         view = listItem.findViewById(R.id.item_intensity);
-        if(currentEntry.type == PeriodicalDatabase.DayEntry.PERIOD_START ||
+        if (currentEntry.type == PeriodicalDatabase.DayEntry.PERIOD_START ||
                 currentEntry.type == PeriodicalDatabase.DayEntry.PERIOD_CONFIRMED) {
             String intensity = "?";
-            switch(currentEntry.intensity)
-            {
-                case 1: intensity = resources.getString(R.string.label_details_intensity1);break;
-                case 2: intensity = resources.getString(R.string.label_details_intensity2);break;
-                case 3: intensity = resources.getString(R.string.label_details_intensity3);break;
-                case 4: intensity = resources.getString(R.string.label_details_intensity4);break;
+            switch (currentEntry.intensity) {
+                case 1:
+                    intensity = resources.getString(R.string.label_details_intensity1);
+                    break;
+                case 2:
+                    intensity = resources.getString(R.string.label_details_intensity2);
+                    break;
+                case 3:
+                    intensity = resources.getString(R.string.label_details_intensity3);
+                    break;
+                case 4:
+                    intensity = resources.getString(R.string.label_details_intensity4);
+                    break;
             }
             view.setText(intensity);
         } else {
@@ -176,15 +169,15 @@ class DayEntryAdapter extends ArrayAdapter<PeriodicalDatabase.DayEntry> {
         }
 
         view = listItem.findViewById(R.id.item_notes);
-        if(currentEntry.notes.isEmpty()) view.setText("\u2014");
+        if (currentEntry.notes.isEmpty()) view.setText("\u2014");
         else view.setText(currentEntry.notes);
 
         view = listItem.findViewById(R.id.item_event);
-        if(textEvents.isEmpty()) view.setText("\u2014");
+        if (textEvents.isEmpty()) view.setText("\u2014");
         else view.setText(textEvents);
 
         view = listItem.findViewById(R.id.item_symptom);
-        if(textSymptoms.isEmpty()) view.setText("\u2014");
+        if (textSymptoms.isEmpty()) view.setText("\u2014");
         else view.setText(textSymptoms);
 
         return listItem;
