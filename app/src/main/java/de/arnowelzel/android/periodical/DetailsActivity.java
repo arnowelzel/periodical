@@ -80,13 +80,7 @@ public class DetailsActivity extends AppCompatActivity implements View.OnClickLi
 
         dbMain = new PeriodicalDatabase(context);
         dbMain.loadCalculatedData();
-
         entry = dbMain.getEntryWithDetails(year, month, day);
-        if (entry == null) {
-            entry = new PeriodicalDatabase.DayEntry(EMPTY, new GregorianCalendar(year, month - 1, day), 0, 2);
-        } else if (entry.type != PERIOD_START || entry.type != PERIOD_CONFIRMED) {
-            entry.intensity = 2;
-        }
 
         // Set header using the entry date
         DateFormat dateFormat = DateFormat.getDateInstance(DateFormat.LONG);
@@ -106,6 +100,8 @@ public class DetailsActivity extends AppCompatActivity implements View.OnClickLi
                 break;
             default:
                 buttonPeriodNo.setChecked(true);
+                // Default intensity for new period days
+                entry.intensity = 2;
                 break;
         }
 
