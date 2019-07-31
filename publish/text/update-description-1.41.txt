@@ -1,0 +1,55 @@
+<en-US>
+Corrected intensity in detail view.
+</en-US>
+
+<cs-CZ>
+Opravená intenzita v detailním pohledu.
+</cs-CZ>
+
+<de-DE>
+Korrektur der Intensität in der Detailansicht.
+</de-DE>
+
+<es-ES>
+Intensidad corregida en vista detallada.
+</es-ES>
+
+<fr-FR>
+Intensité corrigée dans la vue détaillée.
+</fr-FR>
+
+<it-IT>
+Intensità corretta nella vista dettagliata.
+</it-IT>
+
+<nl-NL>
+Gecorrigeerde intensiteit in detailweergave.
+</nl-NL>
+
+<ru-RU>
+Исправлена интенсивность в подробном представлении.
+</ru-RU>
+
+<af>
+Gekorrigeerde intensiteit in detailaansig.
+</af>
+
+<pt-BR>
+Intensidade corrigida na visualização detalhada.
+</pt-BR>
+
+<pl-PL>
+Poprawiona intensywność w widoku szczegółowym.
+</pl-PL>
+
+<el-GR>
+Διορθωμένη ένταση στη λεπτομέρεια.
+</el-GR>
+
+<ja-JP>
+詳細ビューで強度を修正しました。
+</ja-JP>
+
+<iw-IL>
+עוצמה מתוקנת בתצוגה מפורטת.
+</iw-IL>
