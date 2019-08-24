@@ -1,0 +1,55 @@
+<en-US>
+Starting a period after the first day of a predicted cycle is now possible again.
+</en-US>
+
+<cs-CZ>
+Zahájení periody po prvním dni předpokládaného cyklu je nyní možné znovu.
+</cs-CZ>
+
+<de-DE>
+Das Starten einer Periode nach dem ersten Tag eines vorhergesagten Zyklus ist jetzt wieder möglich.
+</de-DE>
+
+<es-ES>
+Comenzar un período después del primer día de un ciclo predicho ahora es posible nuevamente.
+</es-ES>
+
+<fr-FR>
+Commencer une période après le premier jour d'un cycle prédit est à nouveau possible.
+</fr-FR>
+
+<it-IT>
+Iniziare un periodo dopo il primo giorno di un ciclo previsto è ora di nuovo possibile.
+</it-IT>
+
+<nl-NL>
+Het starten van een periode na de eerste dag van een voorspelde cyclus is nu weer mogelijk.
+</nl-NL>
+
+<ru-RU>
+Начиная период после первого дня прогнозируемого цикла теперь возможно снова.
+</ru-RU>
+
+<af>
+Die begin van 'n periode na die eerste dag van 'n voorspelde siklus is nou weer moontlik.
+</af>
+
+<pt-BR>
+Começar um período após o primeiro dia de um ciclo previsto é agora possível novamente.
+</pt-BR>
+
+<pl-PL>
+Rozpoczęcie okresu po pierwszym dniu przewidywanego cyklu jest teraz znów możliwe.
+</pl-PL>
+
+<el-GR>
+Η έναρξη μιας περιόδου μετά την πρώτη ημέρα ενός προβλεπόμενου κύκλου είναι πλέον δυνατή.
+</el-GR>
+
+<ja-JP>
+予測されたサイクルの最初の日から期間を開始することが再び可能になりました。
+</ja-JP>
+
+<iw-IL>
+התחלת תקופה לאחר היום הראשון של מחזור חזוי אפשרית כעת שוב.
+</iw-IL>
