@@ -376,9 +376,9 @@ class PeriodicalDatabase {
             db.execSQL(statement);
             db.setTransactionSuccessful();
             db.endTransaction();
-        } else if (type == DayEntry.PERIOD_PREDICTED) {
-            // The day before was a predicted day of the period, then continue to the current day
-            while (type == DayEntry.PERIOD_PREDICTED) {
+        } else if (type == DayEntry.PERIOD_CONFIRMED) {
+            // The day before was a confirmed day of the period, then continue to the current day
+            while (type == DayEntry.PERIOD_CONFIRMED) {
                 dateLocal.add(GregorianCalendar.DATE, -1);
                 type = getEntryType(dateLocal);
             }
