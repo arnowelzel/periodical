@@ -376,32 +376,6 @@ class PeriodicalDatabase {
             db.execSQL(statement);
             db.setTransactionSuccessful();
             db.endTransaction();
-        } else if (type == DayEntry.PERIOD_CONFIRMED) {
-            // The day before was a confirmed day of the period, then continue to the current day
-            while (type == DayEntry.PERIOD_CONFIRMED) {
-                dateLocal.add(GregorianCalendar.DATE, -1);
-                type = getEntryType(dateLocal);
-            }
-            dateLocal.add(GregorianCalendar.DATE, 1);
-            db.beginTransaction();
-            while (dateLocal.getTimeInMillis() <= date.getTimeInMillis()) {
-                String datestring = format(Locale.getDefault(), "%04d%02d%02d",
-                        dateLocal.get(GregorianCalendar.YEAR),
-                        dateLocal.get(GregorianCalendar.MONTH) + 1,
-                        dateLocal.get(GregorianCalendar.DAY_OF_MONTH));
-                statement = format(
-                        "delete from data where eventdate = '%s'",
-                        datestring);
-                db.execSQL(statement);
-                statement = format(
-                        "insert into data (eventdate, eventtype, intensity) values ('%s', %d, 1)",
-                        datestring,
-                        DayEntry.PERIOD_CONFIRMED);
-                db.execSQL(statement);
-                dateLocal.add(GregorianCalendar.DATE, 1);
-            }
-            db.setTransactionSuccessful();
-            db.endTransaction();
         } else {
             // Probably start a new period
             String dateString = format(Locale.getDefault(), "%04d%02d%02d",
