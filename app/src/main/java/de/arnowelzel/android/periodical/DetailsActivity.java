@@ -24,9 +24,9 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
-import android.support.v7.app.ActionBar;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.AppCompatCheckBox;
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatCheckBox;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.MenuItem;
@@ -38,9 +38,7 @@ import android.widget.RadioButton;
 import android.widget.TextView;
 
 import java.text.DateFormat;
-import java.util.GregorianCalendar;
 
-import static de.arnowelzel.android.periodical.PeriodicalDatabase.DayEntry.EMPTY;
 import static de.arnowelzel.android.periodical.PeriodicalDatabase.DayEntry.PERIOD_CONFIRMED;
 import static de.arnowelzel.android.periodical.PeriodicalDatabase.DayEntry.PERIOD_START;
 
