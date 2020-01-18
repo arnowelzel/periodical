@@ -203,22 +203,22 @@ public class PreferenceActivity extends AppCompatPreferenceActivity implements S
     }
 
     /**
-     * Update summary text for a preference
-     */
-    private void updatePrefSummary(Preference p) {
-        if (p instanceof ListPreference) {
-            ListPreference listPref = (ListPreference) p;
-            p.setSummary(listPref.getEntry());
-        }
-        if (p instanceof EditTextPreference) {
-            EditTextPreference editTextPref = (EditTextPreference) p;
-            if (p.getTitle().toString().contains("assword")) {
-                p.setSummary("******");
-            } else {
-                p.setSummary(editTextPref.getText());
-            }
-        }
-    }
+	 * Update summary text for a preference
+	 */
+	private static void updatePrefSummary(Preference p) {
+		if (p instanceof ListPreference) {
+			ListPreference listPref = (ListPreference) p;
+			p.setSummary(listPref.getEntry());
+		}
+		if (p instanceof EditTextPreference) {
+			EditTextPreference editTextPref = (EditTextPreference) p;
+			if (p.getTitle().toString().contains("assword")) {
+				p.setSummary("******");
+			} else {
+				p.setSummary(editTextPref.getText());
+			}
+		}
+	}
 
     /**
      * Handler for ICS "home" button
