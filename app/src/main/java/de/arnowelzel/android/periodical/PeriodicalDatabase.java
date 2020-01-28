@@ -590,7 +590,7 @@ class PeriodicalDatabase {
                             // Calculate a predicted ovulation date
                             int average = this.cycleAverage;
                             if (count > 0) average /= count;
-                            ovulationday = average - luteallength;
+                            ovulationday = length - luteallength;
 
                             // Calculate days from the last event until now
                             GregorianCalendar datePrevious = new GregorianCalendar();
