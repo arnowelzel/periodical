@@ -10,7 +10,7 @@ android {
         targetSdkVersion 29
         versionCode 73
         versionName "1.43"
-        buildConfigField "String", "VERSION_YEAR", "\"2019\""
+        buildConfigField "String", "VERSION_YEAR", "\"2020\""
 
         return void
     }
