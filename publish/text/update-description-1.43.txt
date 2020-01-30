@@ -1,0 +1,83 @@
+<en-US>
+Fixed calculation of predicted ovulation.
+
+Update to AndroidX.
+</en-US>
+
+<cs-CZ>
+Opravený výpočet předvídané ovulace.
+
+Aktualizujte na AndroidX.
+</cs-CZ>
+
+<de-DE>
+Fehler bei der Berechnung des prognostizierten Eisprungs behoben.
+
+Update auf AndroidX.
+</de-DE>
+
+<es-ES>
+Cálculo fijo de la ovulación prevista.
+
+Actualización a AndroidX.
+</es-ES>
+
+<fr-FR>
+Correction du calcul de l'ovulation prédite.
+
+Mettez à jour vers AndroidX.
+</fr-FR>
+
+<it-IT>
+Calcolo fisso dell'ovulazione prevista.
+
+Aggiornamento ad AndroidX.
+</it-IT>
+
+<nl-NL>
+Vaste berekening van voorspelde ovulatie.
+
+Update naar AndroidX.
+</nl-NL>
+
+<ru-RU>
+Исправлен расчет прогнозируемой овуляции.
+
+Обновление до AndroidX.
+</ru-RU>
+
+<af>
+Vaste berekening van voorspelde ovulasie.
+
+Opdatering na AndroidX.
+</af>
+
+<pt-BR>
+Cálculo fixo da ovulação prevista.
+
+Atualize para o AndroidX.
+</pt-BR>
+
+<pl-PL>
+Naprawiono obliczanie przewidywanej owulacji.
+
+Zaktualizuj do AndroidaX.
+</pl-PL>
+
+<el-GR>
+Σταθερός υπολογισμός της προβλεπόμενης ωορρηξίας.
+
+Ενημερώστε το στο AndroidX.
+</el-GR>
+
+<ja-JP>
+予測排卵の計算を修正しました。
+
+AndroidXに更新します。
+</ja-JP>
+
+<iw-IL>
+חישוב קבוע של ביוץ חזוי.
+
+עדכן ל- AndroidX.
+</iw-IL>
