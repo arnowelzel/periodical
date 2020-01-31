@@ -1,7 +1,7 @@
 # Periodical
 A calendar to track your menstruation and calculate possible fertile days
 
-Copyright (C) 2012-2019 Arno Welzel
+Copyright (C) 2012-2020 Arno Welzel
 
 Translation:
 

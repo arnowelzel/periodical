@@ -1,6 +1,6 @@
 /*
  * File utilities
- * Copyright (C) 2012-2019 Arno Welzel
+ * Copyright (C) 2012-2020 Arno Welzel
  *
  * This code is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
