@@ -6,6 +6,6 @@
 
 Если у Вас есть вопросы или Вы хотите помочь мне перевести программу на другие языки, пожалуйста, свяжитесь со мной по электронной почте. Спасибо.
 
-Эта программа является свободным программным обеспечением: вы можете распространять ее и/или изменять ее в соответствии с GNU General Public License, опубликованной Free Software Foundation, или (по вашему выбору) любую более позднюю версию.
+This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
 
 Исходный код программы Вы можете найти на моём сайте.
