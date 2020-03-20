@@ -1,0 +1,59 @@
+<en-US>
+Added Azerbaijani translation.
+</en-US>
+
+<az-AZ>
+Azərbaycan dilinə tərcümə əlavə edildi.
+</az-AZ>
+
+<cs-CZ>
+Přidán překlad z Ázerbájdžánu.
+</cs-CZ>
+
+<de-DE>
+Aserbaidschanische Übersetzung hinzugefügt.
+</de-DE>
+
+<es-ES>
+Traducción azerbaiyana agregada.
+</es-ES>
+
+<fr-FR>
+Ajout de la traduction azerbaïdjanaise.
+</fr-FR>
+
+<it-IT>
+Aggiunta la traduzione in azero.
+</it-IT>
+
+<nl-NL>
+Azerbeidzjaanse vertaling toegevoegd.
+</nl-NL>
+
+<ru-RU>
+Добавлен азербайджанский перевод.
+</ru-RU>
+
+<af>
+Azerbeidjans-vertaling bygevoeg.
+</af>
+
+<pt-BR>
+Adicionada tradução do Azerbaijão.
+</pt-BR>
+
+<pl-PL>
+Dodano tłumaczenie z Azerbejdżanu.
+</pl-PL>
+
+<el-GR>
+Προστέθηκε μετάφραση από το Αζερμπαϊτζάν.
+</el-GR>
+
+<ja-JP>
+アゼルバイジャン語の翻訳を追加しました。
+</ja-JP>
+
+<iw-IL>
+נוסף תרגום אזרביג'יני.
+</iw-IL>

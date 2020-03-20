@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <string name="app_name">Periodical</string>
+    <string name="menuitem_help">Kömək</string>
+    <string name="menuitem_about">Proqram haqqında …</string>
+    <string name="current_day">Cari gün</string>
+    <string name="menuitem_list">Siyahı</string>
+    <string name="menuitem_listdetails">Ətraflı siyahı</string>
+    <string name="menuitem_copy">Ehtiyat kopiyası</string>
+    <string name="menuitem_restore">Bərpa</string>
+    <string name="menuitem_options">Sazlamalar</string>
+    <string name="menuitem_exit">Çıxış</string>
+    <string name="main_calday_su">Bz</string>
+    <string name="main_calday_mo">BE</string>
+    <string name="main_calday_tu">ÇA</string>
+    <string name="main_calday_we">Çr</string>
+    <string name="main_calday_th">ÇA</string>
+    <string name="main_calday_fr">Çm</string>
+    <string name="main_calday_sa">Şə</string>
+    <string name="main_calday_su_description">bazar</string>
+    <string name="main_calday_mo_description">bazar ertəsi</string>
+    <string name="main_calday_tu_description">çərşənbə axşamı</string>
+    <string name="main_calday_we_description">çərşənbə</string>
+    <string name="main_calday_th_description">cümə axşamı</string>
+    <string name="main_calday_fr_description">cümə</string>
+    <string name="main_calday_sa_description">şənbə</string>
+    <string name="details_title">Ətraflı</string>
+    <string name="list_title">Siyahı</string>
+    <string name="list_details_title">Ətraflı siyahı</string>
+    <string name="about_title">Proqram haqqında …</string>
+    <string name="help_title">Kömək</string>
+    <string name="backup_title">Məlumatları nüsxələ</string>
+    <string name="backup_text">Mövcud məlumataları rezerv yadda saxlamaq istəyirsinizmi?\nÖncəki rezerv məlumatı yeniləyəcək bu addım!</string>
+    <string name="backup_ok">OK</string>
+    <string name="backup_cancel">İmtina</string>
+    <string name="backup_finished">Nüsxələmə bitdi</string>
+    <string name="backup_failed">Nüxsələmə uğursuz oldu!</string>
+    <string name="restore_title">Məlumatları bərpa et</string>
+    <string name="restore_text">Siz ehtiyat kopiyasından məlumatların bərpasına əminsinizmi?\nƏvvəkli kopiya silinəcək!</string>
+    <string name="restore_ok">OK</string>
+    <string name="restore_cancel">İmtina</string>
+    <string name="restore_finished">Məlumatlar bərpa olundu</string>
+    <string name="restore_failed">Bərpa etmə uğursuz oldu!</string>
+    <string name="permissions_needed">Ehtiyat kopiyaların yaradılması üçün icazə tələb olunur.</string>
+    <string name="permissions_needed_ok">OK</string>
+    <string name="event_periodstart">Menstrual dövrün başlanması</string>
+    <string name="event_periodlength">Sonuncu dövrün müddəti %s gün</string>
+    <string name="event_ignored">Dövrünün uzunluğunu nəzərə almamaq</string>
+    <string name="event_periodfirst">Birinci qeyd</string>
+    <string name="calendaraction_title">Təqvim elementinin düzəldilməsi</string>
+    <string name="calendaraction_add">Günü \"Menstruasiya\" olaraq qeyd etmək?</string>
+    <string name="calendaraction_remove">Bu gün üçün \"Menstruasiya\" qeydini silmək?</string>
+    <string name="calendaraction_removeperiod">Bu menstrual dövrünü silmək?</string>
+    <string name="calendaraction_ok">Bəli</string>
+    <string name="calendaraction_cancel">Xeyr</string>
+    <string name="calendaraction_details">Ətraflı məlumatların dəyişdirilməsi</string>
+    <string name="options_title">Sazlamalar</string>
+    <string name="pref_periodlength">Default menstrual dövrün müddəti (gün)</string>
+    <string name="invalid_period_length">Default menstrual dövrün müddəti 1-14 aralığında olmalıdır!</string>
+    <string name="pref_luteallength">Luteal fazanın müddəti (gün)</string>
+    <string name="invalid_luteal_length">Luteal fazanın müddəti ən azı 1 olmalıdır!</string>
+    <string name="pref_startofweek">Həftənin başlanğıcı</string>
+    <string-array name="list_startofweek">
+        <item>Bazar</item>
+        <item>Bazar ertəsi</item>
+    </string-array>
+    <string-array name="values_startofweek">
+        <item>0</item>
+        <item>1</item>
+    </string-array>
+    <string name="pref_maximum_cycle_length">Maksimum dövr uzunluğu</string>
+    <string name="invalid_maximum_cycle_length">Maksimum dövr uzunluğu ən azı 60 olmalıdır!</string>
+    <string name="pref_direct_details">Dərhal detallara daxil olmaq</string>
+    <string name="pref_show_cycle">Dövr gününü göstər</string>
+    <string name="previous_month">Əvvəlki ay</string>
+    <string name="next_month">Növbəti ay</string>
+    <string name="label_average_cycle">orta dövr</string>
+    <string name="label_shortest_cycle">ən qısa dövr</string>
+    <string name="label_longest_cycle">ən uzun dövr</string>
+    <string name="label_infertile">qeyri-fertil</string>
+    <string name="label_fertile">fertil</string>
+    <string name="label_period_started">menstrual dövr başlanıb</string>
+    <string name="label_period">dövr</string>
+    <string name="label_period_predicted">proqnozlaşdırılan menstruasiya</string>
+    <string name="label_ovulation">ovulasiya</string>
+    <string name="asset_about">az/about.html</string>
+    <string name="asset_help">az/help.html</string>
+    <string name="label_details_period">Menstrual dövr</string>
+    <string name="label_details_yes">Bəli</string>
+    <string name="label_details_no">Xeyr</string>
+    <string name="label_details_intensity">İntensivlik</string>
+    <string name="label_details_intensity1">1</string>
+    <string name="label_details_intensity2">2</string>
+    <string name="label_details_intensity3">3</string>
+    <string name="label_details_intensity4">4 (intensiv)</string>
+    <string name="label_details_notes">Qeydlər</string>
+    <string name="label_details_events">Xadisələr</string>
+    <string name="label_details_symptoms">Simptomlar</string>
+    <string name="label_details_ev1" tools:keep="@string/label_details_ev1">Cinsi əlaqə</string>
+    <string name="label_details_ev2" tools:keep="@string/label_details_ev2">Spazm</string>
+    <string name="label_details_ev3" tools:keep="@string/label_details_ev3">Bel ağrısı</string>
+    <string name="label_details_ev4" tools:keep="@string/label_details_ev4">Sol tərəfdə orta dərəcəli ağrı</string>
+    <string name="label_details_ev5" tools:keep="@string/label_details_ev5">Sağ tərəfdə orta dərəcəli ağrı</string>
+    <string name="label_details_ev6" tools:keep="@string/label_details_ev6">Sinə ağrısı/Dəyişkən ağrı</string>
+    <string name="label_details_ev7" tools:keep="@string/label_details_ev7">Kandidoz</string>
+    <string name="label_details_ev8" tools:keep="@string/label_details_ev8">Axıntı</string>
+    <string name="label_details_ev9" tools:keep="@string/label_details_ev9">İntensiv qanaxmalar</string>
+    <string name="label_details_ev10" tools:keep="@string/label_details_ev10">Temperaturun dəyişkənliyi</string>
+    <string name="label_details_ev11" tools:keep="@string/label_details_ev11">Sızanaqlar</string>
+    <string name="label_details_ev12" tools:keep="@string/label_details_ev12">Meteorizm</string>
+    <string name="label_details_ev13" tools:keep="@string/label_details_ev13">Ürəkgetmə</string>
+    <string name="label_details_ev14" tools:keep="@string/label_details_ev14">Əsəb</string>
+    <string name="label_details_ev15" tools:keep="@string/label_details_ev15">Ürəkbulanma</string>
+    <string name="label_details_ev16" tools:keep="@string/label_details_ev16">Aclıq hissi</string>
+    <string name="label_details_ev17" tools:keep="@string/label_details_ev17">Baş ağrısı/migren</string>
+    <string name="label_details_ev18" tools:keep="@string/label_details_ev18">Hamiləlikdən qorunma həbləri</string>
+    <string name="label_details_ev19" tools:keep="@string/label_details_ev19">Vaginal qanaxma</string>
+    <string name="label_details_ev20" tools:keep="@string/label_details_ev20">Yorğunluq</string>
+    <string name="label_details_ev21" tools:keep="@string/label_details_ev21">Enerjilik</string>
+    <string name="label_period_day">Menstruasiya, gün %d</string>
+    <string name="navigation_drawer_open">Naviqasiya sazlamaları açmaq</string>
+    <string name="navigation_drawer_close">Naviqasiya sazlamaları bağlamaq</string>
+</resources>
