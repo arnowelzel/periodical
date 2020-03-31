@@ -55,8 +55,8 @@
     <string name="calendaraction_cancel">Xeyr</string>
     <string name="calendaraction_details">Ətraflı məlumatların dəyişdirilməsi</string>
     <string name="options_title">Sazlamalar</string>
-    <string name="pref_periodlength">Default menstrual dövrün müddəti (gün)</string>
-    <string name="invalid_period_length">Default menstrual dövrün müddəti 1-14 aralığında olmalıdır!</string>
+    <string name="pref_periodlength">Susmaya görə menstrual dövrün müddəti (gün)</string>
+    <string name="invalid_period_length">Susmaya görə menstrual dövrün müddəti 1-14 aralığında olmalıdır!</string>
     <string name="pref_luteallength">Luteal fazanın müddəti (gün)</string>
     <string name="invalid_luteal_length">Luteal fazanın müddəti ən azı 1 olmalıdır!</string>
     <string name="pref_startofweek">Həftənin başlanğıcı</string>
