@@ -1,59 +1,89 @@
 <en-US>
 Added Azerbaijani translation.
+
+Bugfix for backup and restore in Android 10
 </en-US>
 
 <az-AZ>
 Azərbaycan dilinə tərcümə əlavə edildi.
+
+Android 10-da backup və bərpa etmək üçün bugfix
 </az-AZ>
 
 <cs-CZ>
 Přidán překlad z Ázerbájdžánu.
+
+Oprava chyb pro zálohování a obnovení v systému Android 10
 </cs-CZ>
 
 <de-DE>
 Aserbaidschanische Übersetzung hinzugefügt.
+
+Bugfix zum Sichern und Wiederherstellen in Android 10
 </de-DE>
 
 <es-ES>
 Traducción azerbaiyana agregada.
+
+Corrección de errores para copia de seguridad y restauración en Android 10
 </es-ES>
 
 <fr-FR>
 Ajout de la traduction azerbaïdjanaise.
+
+Correctif pour la sauvegarde et la restauration dans Android 10
 </fr-FR>
 
 <it-IT>
 Aggiunta la traduzione in azero.
+
+Bugfix per backup e ripristino in Android 10
 </it-IT>
 
 <nl-NL>
 Azerbeidzjaanse vertaling toegevoegd.
+
+Bugfix voor back-up en herstel in Android 10
 </nl-NL>
 
 <ru-RU>
 Добавлен азербайджанский перевод.
+
+Исправление для резервного копирования и восстановления в Android 10
 </ru-RU>
 
 <af>
 Azerbeidjans-vertaling bygevoeg.
+
+Bugfix vir rugsteun en herstel in Android 10
 </af>
 
 <pt-BR>
 Adicionada tradução do Azerbaijão.
+
+Correção de bug para backup e restauração no Android 10
 </pt-BR>
 
 <pl-PL>
 Dodano tłumaczenie z Azerbejdżanu.
+
+Bugfix do tworzenia kopii zapasowych i przywracania w Androidzie 10
 </pl-PL>
 
 <el-GR>
 Προστέθηκε μετάφραση από το Αζερμπαϊτζάν.
+
+Επιδιόρθωση σφαλμάτων για δημιουργία αντιγράφων ασφαλείας και επαναφορά στο Android 10
 </el-GR>
 
 <ja-JP>
 アゼルバイジャン語の翻訳を追加しました。
+
+Android 10でのバックアップと復元のバグ修正
 </ja-JP>
 
 <iw-IL>
 נוסף תרגום אזרביג'יני.
+
+Bugfix לצורך גיבוי ושחזור ב- Android 10
 </iw-IL>
