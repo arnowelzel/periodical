@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <string name="app_name">Periodical</string>
+    <string name="menuitem_help">Laguntza</string>
+    <string name="menuitem_about">Honi buruz …</string>
+    <string name="current_day">Uneko eguna</string>
+    <string name="menuitem_list">Zerrenda</string>
+    <string name="menuitem_listdetails">Zerrenda xehetasunekin</string>
+    <string name="menuitem_copy">Babeskopia</string>
+    <string name="menuitem_restore">Berrezarri</string>
+    <string name="menuitem_options">Hobespenak</string>
+    <string name="menuitem_exit">Irten</string>
+    <string name="main_calday_su">IG</string>
+    <string name="main_calday_mo">AL</string>
+    <string name="main_calday_tu">AR</string>
+    <string name="main_calday_we">AZ</string>
+    <string name="main_calday_th">OG</string>
+    <string name="main_calday_fr">OR</string>
+    <string name="main_calday_sa">LR</string>
+    <string name="main_calday_su_description">igandea</string>
+    <string name="main_calday_mo_description">astelehena</string>
+    <string name="main_calday_tu_description">asteartea</string>
+    <string name="main_calday_we_description">asteazkena</string>
+    <string name="main_calday_th_description">osteguna</string>
+    <string name="main_calday_fr_description">ostirala</string>
+    <string name="main_calday_sa_description">larunbata</string>
+    <string name="details_title">Xehetasunak</string>
+    <string name="list_title">Zerrenda</string>
+    <string name="list_details_title">Zerrenda xehetasunekin</string>
+    <string name="about_title">Honi buruz …</string>
+    <string name="help_title">Laguntza</string>
+    <string name="backup_title">Datuen babeskopia</string>
+    <string name="backup_text">Uneko datuen babeskopia egin nahi duzu?\nHonek azkeneko babeskopia ordeztuko du!</string>
+    <string name="backup_ok">Ados</string>
+    <string name="backup_cancel">Utzi</string>
+    <string name="backup_finished">Babeskopia egin da</string>
+    <string name="backup_failed">Babeskopia egiteak huts egin du!</string>
+    <string name="restore_title">Datuak leheneratu</string>
+    <string name="restore_text">Azken babeskopia leheneratu nahi duzu?\nHonek uneko datuak ordeztuko ditu!</string>
+    <string name="restore_ok">Ados</string>
+    <string name="restore_cancel">Utzi</string>
+    <string name="restore_finished">Leheneratu da</string>
+    <string name="restore_failed">Leheneratzeak huts egin du!</string>
+    <string name="permissions_needed">Babeskopiak sortu edo leheneratzeko, Periodicalek fitxategi-biltegiratzera sartzeko baimena behar du.</string>
+    <string name="permissions_needed_ok">Ados</string>
+    <string name="event_periodstart">Hilekoa hasi da</string>
+    <string name="event_periodlength">Aurreko zikloak %s egun iraun zuen</string>
+    <string name="event_ignored">Zikloaren iraupena alde batera utzi da</string>
+    <string name="event_periodfirst">Lehenengo sarrera</string>
+    <string name="calendaraction_title">Editatu egutegiaren sarrera</string>
+    <string name="calendaraction_add">Markatu egun hau \"hileko\" gisa?</string>
+    <string name="calendaraction_remove">Kendu \"hileko\" marka egun honetatik?</string>
+    <string name="calendaraction_removeperiod">Kendu hileko hau?</string>
+    <string name="calendaraction_ok">Bai</string>
+    <string name="calendaraction_cancel">Ez</string>
+    <string name="calendaraction_details">Editatu xehetasunak</string>
+    <string name="options_title">Hobespenak</string>
+    <string name="pref_periodlength">Zikloaren lehenetsitako iraupena (egunak)</string>
+    <string name="invalid_period_length">Zikloaren lehenetsitako iraupenak 1 eta 14 bitarte egon behar du!</string>
+    <string name="pref_luteallength">Fase luteoaren iraupena (egunak)</string>
+    <string name="invalid_luteal_length">Fase luteoaren iraupenak gutxienez 1 izan behar du!</string>
+    <string name="pref_startofweek">Astearen hasiera</string>
+    <string-array name="list_startofweek">
+        <item>Igandea</item>
+        <item>Astelehena</item>
+    </string-array>
+    <string-array name="values_startofweek">
+        <item>0</item>
+        <item>1</item>
+    </string-array>
+    <string name="pref_maximum_cycle_length">Zikloaren gehienezko luzera</string>
+    <string name="invalid_maximum_cycle_length">Zikloaren gehienezko iraupenak gutxienez 60 izan behar du!</string>
+    <string name="pref_direct_details">Joan xehetasunetara zuzenean</string>
+    <string name="pref_show_cycle">Erakutsi zikloaren eguna</string>
+    <string name="previous_month">Aurreko hilabetea</string>
+    <string name="next_month">Hurrengo hilabetea</string>
+    <string name="label_average_cycle">batezbesteko zikloa</string>
+    <string name="label_shortest_cycle">ziklorik motzena</string>
+    <string name="label_longest_cycle">ziklorik luzeena</string>
+    <string name="label_infertile">antzu</string>
+    <string name="label_fertile">ugalkor</string>
+    <string name="label_period_started">hilekoa hasi da</string>
+    <string name="label_period">hilekoa</string>
+    <string name="label_period_predicted">hilekoa iragarri da</string>
+    <string name="label_ovulation">obulazioa</string>
+    <string name="asset_about">en/about.html</string>
+    <string name="asset_help">en/help.html</string>
+    <string name="label_details_period">Hilekoa</string>
+    <string name="label_details_yes">Bai</string>
+    <string name="label_details_no">Ez</string>
+    <string name="label_details_intensity">Intentsitatea</string>
+    <string name="label_details_intensity1">1</string>
+    <string name="label_details_intensity2">2</string>
+    <string name="label_details_intensity3">3</string>
+    <string name="label_details_intensity4">4 (ugari)</string>
+    <string name="label_details_notes">Oharrak</string>
+    <string name="label_details_events">Gertaerak</string>
+    <string name="label_details_symptoms">Sintomak</string>
+    <string name="label_details_ev1" tools:keep="@string/label_details_ev1">Sexu-harremana</string>
+    <string name="label_details_ev2" tools:keep="@string/label_details_ev2">Espasmoak</string>
+    <string name="label_details_ev3" tools:keep="@string/label_details_ev3">Bizkarreko mina</string>
+    <string name="label_details_ev4" tools:keep="@string/label_details_ev4">Obulazio-mina ezkerrean</string>
+    <string name="label_details_ev5" tools:keep="@string/label_details_ev5">Obulazio-mina eskuinean</string>
+    <string name="label_details_ev6" tools:keep="@string/label_details_ev6">Bularretako mina</string>
+    <string name="label_details_ev7" tools:keep="@string/label_details_ev7">Kandidiasia</string>
+    <string name="label_details_ev8" tools:keep="@string/label_details_ev8">Fluxua</string>
+    <string name="label_details_ev9" tools:keep="@string/label_details_ev9">Odoljario bizia</string>
+    <string name="label_details_ev10" tools:keep="@string/label_details_ev10">Tenperaturaren gorabeherak</string>
+    <string name="label_details_ev11" tools:keep="@string/label_details_ev11">Pustulak</string>
+    <string name="label_details_ev12" tools:keep="@string/label_details_ev12">Hantura</string>
+    <string name="label_details_ev13" tools:keep="@string/label_details_ev13">Zorabioa</string>
+    <string name="label_details_ev14" tools:keep="@string/label_details_ev14">Marmarti</string>
+    <string name="label_details_ev15" tools:keep="@string/label_details_ev15">Gorakoa</string>
+    <string name="label_details_ev16" tools:keep="@string/label_details_ev16">Irrikak</string>
+    <string name="label_details_ev17" tools:keep="@string/label_details_ev17">Buruko mina/migraina</string>
+    <string name="label_details_ev18" tools:keep="@string/label_details_ev18">Pilula antikontzeptiboa</string>
+    <string name="label_details_ev19" tools:keep="@string/label_details_ev19">Odoljario irregularra</string>
+    <string name="label_details_ev20" tools:keep="@string/label_details_ev20">Nekatuta</string>
+    <string name="label_details_ev21" tools:keep="@string/label_details_ev21">Energiarekin</string>
+    <string name="label_period_day">Hilekoa, %d. eguna</string>
+    <string name="navigation_drawer_open">Ireki nabigazio-tiradera</string>
+    <string name="navigation_drawer_close">Itxi nabigazio-tiradera</string>
+</resources>

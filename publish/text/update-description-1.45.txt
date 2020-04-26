@@ -1,0 +1,59 @@
+<en-US>
+Added Basque translation.
+</en-US>
+
+<az-AZ>
+Bask tərcüməsi əlavə edildi.
+</az-AZ>
+
+<cs-CZ>
+Přidán baskický překlad.
+</cs-CZ>
+
+<de-DE>
+Baskische Übersetzung hinzugefügt.
+</de-DE>
+
+<es-ES>
+Se agregó traducción al euskera.
+</es-ES>
+
+<fr-FR>
+Ajout de la traduction basque.
+</fr-FR>
+
+<it-IT>
+Aggiunta traduzione basca.
+</it-IT>
+
+<nl-NL>
+Baskische vertaling toegevoegd.
+</nl-NL>
+
+<ru-RU>
+Добавлен баскский перевод.
+</ru-RU>
+
+<af>
+Baskiese vertaling bygevoeg.
+</af>
+
+<pt-BR>
+Adicionado tradução basca.
+</pt-BR>
+
+<pl-PL>
+Dodano tłumaczenie baskijskie.
+</pl-PL>
+
+<el-GR>
+Προστέθηκε μετάφραση στα Βάσκα.
+</el-GR>
+
+<ja-JP>
+バスク語の翻訳を追加しました。
+</ja-JP>
+
+<iw-IL>
+נוסף תרגום לבסקי.
+</iw-IL>

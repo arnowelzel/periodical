@@ -1,0 +1,11 @@
+Aplikazio honek egun ugalkorrak kalkulatzen ditu Knaus-Ogino-ren arabera eta hilekoaren sintomen jarraipena egin dezake.
+
+ABISUA: Egutegi hau haurdunaldia ekiditeko erabiltzea ez da gomendatzen! Metodo zehatzagoak daude; esaterako, gorputzaren tenperatura basala neurtzea.
+
+Datuen babeskopia memoria-txartel edo barneko memorian egin daiteke, memoriarik baldin badago.
+
+Galdera gehiagorik baldin baduzu edo beste hizkuntzetako itzulpenekin lagundu nahi badidazu, kontaktatu nirekin e-postaz. Eskerrik asko.
+
+Programa hau software librea da: birbanatu eta/edo aldatu dezakezu, Software Librearen Fundazioak argitaratutako GNU Lizentzia Publiko Orokorraren arabera, lizentziaren 3. bertsioa edo (zure aukeran) edozein bertsio berriagoa.
+
+Iturburua nire web orrian eskuratu dezakezu.
