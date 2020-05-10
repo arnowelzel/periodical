@@ -166,6 +166,27 @@
             android:layout_marginBottom="16dp">
         </LinearLayout>
 
+        <!-- Mood -->
+
+        <TextView
+            android:id="@+id/labelMood"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="4dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginTop="0dp"
+            android:text="@string/label_details_mood"
+            android:textSize="18sp"
+            android:labelFor="@+id/groupMood"/>
+        <LinearLayout
+            android:id="@+id/groupMood"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginBottom="16dp">
+        </LinearLayout>
+
         <!-- Symptoms -->
 
         <TextView

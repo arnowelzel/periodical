@@ -95,6 +95,7 @@
     <string name="label_details_intensity4">4 (strong)</string>
     <string name="label_details_notes">Notes</string>
     <string name="label_details_events">Events</string>
+    <string name="label_details_mood">Mood</string>
     <string name="label_details_symptoms">Symptoms</string>
     <string name="label_details_ev1" tools:keep="@string/label_details_ev1">Intercourse</string>
     <string name="label_details_ev2" tools:keep="@string/label_details_ev2">Cramps</string>
@@ -117,6 +118,8 @@
     <string name="label_details_ev19" tools:keep="@string/label_details_ev19">Spotting</string>
     <string name="label_details_ev20" tools:keep="@string/label_details_ev20">Tired</string>
     <string name="label_details_ev21" tools:keep="@string/label_details_ev21">Energized</string>
+    <string name="label_details_ev22" tools:keep="@string/label_details_ev22">Sad</string>
+    <string name="label_details_ev23" tools:keep="@string/label_details_ev23">Edgy</string>
     <string name="label_period_day">Period, day %d</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>

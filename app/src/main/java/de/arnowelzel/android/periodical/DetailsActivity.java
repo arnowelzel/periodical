@@ -143,6 +143,7 @@ public class DetailsActivity extends AppCompatActivity implements View.OnClickLi
 
         // Build list of events and symptoms
         LinearLayout groupEvents = findViewById(R.id.groupEvents);
+        LinearLayout groupMood = findViewById(R.id.groupMood);
         LinearLayout groupSymptoms = findViewById(R.id.groupSymptoms);
         String packageName = getPackageName();
         Resources resources = getResources();
@@ -153,12 +154,15 @@ public class DetailsActivity extends AppCompatActivity implements View.OnClickLi
         int marginRight = (int) (12 * Resources.getSystem().getDisplayMetrics().density);
         layoutParams.setMargins(marginLeft, 0, marginRight, 0);
 
-        // Elements 0-1 are events, 3-20 are symptoms
+        // Elements 0-1 are events, 2-6 moods, 7-22 are symptoms
         int eventIds[] = {
                 1,  // Intercourse
                 18, // Contraceptive pill
                 20, // Tired
                 21, // Energized
+                22, // Sad
+                14, // Grumpiness
+                23, // Edgy
                 19, // Spotting
                 9,  // Intense bleeding
                 2,  // Cramps
@@ -173,7 +177,6 @@ public class DetailsActivity extends AppCompatActivity implements View.OnClickLi
                 11, // Pimples
                 12, // Bloating
                 13, // Fainting
-                14, // Grumpiness
                 15, // Nausea
                 16, // Cravings
         };
@@ -191,6 +194,8 @@ public class DetailsActivity extends AppCompatActivity implements View.OnClickLi
                 option.setOnClickListener(this);
                 if (num < 2) {
                     groupEvents.addView(option);
+                } else if(num > 1 && num < 7) {
+                    groupMood.addView(option);
                 } else {
                     groupSymptoms.addView(option);
                 }
