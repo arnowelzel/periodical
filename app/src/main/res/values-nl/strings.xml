@@ -95,6 +95,7 @@
     <string name="label_details_intensity4">4 (sterk)</string>
     <string name="label_details_notes">Notities</string>
     <string name="label_details_events">Voorkomens</string>
+    <string name="label_details_mood">Mood</string>
     <string name="label_details_symptoms">Symptomen</string>
     <string name="label_details_ev1" tools:keep="@string/label_details_ev1">Gemeenschap</string>
     <string name="label_details_ev2" tools:keep="@string/label_details_ev2">Krampen</string>
@@ -117,6 +118,8 @@
     <string name="label_details_ev19" tools:keep="@string/label_details_ev19">Spotten</string>
     <string name="label_details_ev20" tools:keep="@string/label_details_ev20">Vermoeid</string>
     <string name="label_details_ev21" tools:keep="@string/label_details_ev21">Energie</string>
+    <string name="label_details_ev22" tools:keep="@string/label_details_ev22">Sad</string>
+    <string name="label_details_ev23" tools:keep="@string/label_details_ev23">Edgy</string>
     <string name="label_period_day">Menstruatie, dag %d</string>
     <string name="navigation_drawer_open">Open de navigatiebalk</string>
     <string name="navigation_drawer_close">Sluit de navigatiebalk</string>

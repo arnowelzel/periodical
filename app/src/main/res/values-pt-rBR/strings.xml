@@ -95,6 +95,7 @@
     <string name="label_details_intensity4">4 (forte)</string>
     <string name="label_details_notes">Notas</string>
     <string name="label_details_events">Eventos</string>
+    <string name="label_details_mood">Humor</string>
     <string name="label_details_symptoms">Sintomas</string>
     <string name="label_details_ev1" tools:keep="@string/label_details_ev1">Sexo</string>
     <string name="label_details_ev2" tools:keep="@string/label_details_ev2">Cólicas</string>
@@ -117,6 +118,8 @@
     <string name="label_details_ev19" tools:keep="@string/label_details_ev19">Manchas</string>
     <string name="label_details_ev20" tools:keep="@string/label_details_ev20">Cansado</string>
     <string name="label_details_ev21" tools:keep="@string/label_details_ev21">Energizar</string>
+    <string name="label_details_ev22" tools:keep="@string/label_details_ev22">Triste</string>
+    <string name="label_details_ev23" tools:keep="@string/label_details_ev23">Nervoso</string>
     <string name="label_period_day">Menstruação, dia %d</string>
     <string name="navigation_drawer_open">Abrir barra de navegação</string>
     <string name="navigation_drawer_close">Fechar a barra de navegação</string>

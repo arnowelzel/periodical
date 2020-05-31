@@ -95,6 +95,7 @@
     <string name="label_details_intensity4">4 (сильная)</string>
     <string name="label_details_notes">Заметки</string>
     <string name="label_details_events">События</string>
+    <string name="label_details_mood">Настроение</string>
     <string name="label_details_symptoms">Симптомы</string>
     <string name="label_details_ev1" tools:keep="@string/label_details_ev1">Половой акт</string>
     <string name="label_details_ev2" tools:keep="@string/label_details_ev2">Спазмы</string>
@@ -117,6 +118,8 @@
     <string name="label_details_ev19" tools:keep="@string/label_details_ev19">Вагинальное кровотечение</string>
     <string name="label_details_ev20" tools:keep="@string/label_details_ev20">Усталость</string>
     <string name="label_details_ev21" tools:keep="@string/label_details_ev21">Полна сил</string>
+    <string name="label_details_ev22" tools:keep="@string/label_details_ev22">Печальный</string>
+    <string name="label_details_ev23" tools:keep="@string/label_details_ev23">Нервное</string>
     <string name="label_period_day">Менструация, день %d</string>
     <string name="navigation_drawer_open">Открыть панель навигации</string>
     <string name="navigation_drawer_close">Закрыть панель навигации</string>

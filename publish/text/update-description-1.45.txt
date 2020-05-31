@@ -1,59 +1,89 @@
 <en-US>
 Added Basque translation.
+
+Added new section "mood" for symptoms.
 </en-US>
 
 <az-AZ>
 Bask tərcüməsi əlavə edildi.
+
+Semptomlar üçün yeni "əhval" bölməsi əlavə edildi.
 </az-AZ>
 
 <cs-CZ>
 Přidán baskický překlad.
+
+Přidána nová sekce „nálada“ pro příznaky.
 </cs-CZ>
 
 <de-DE>
 Baskische Übersetzung hinzugefügt.
+
+Neuer Abschnitt "Stimmung" für Symptome hinzugefügt.
 </de-DE>
 
 <es-ES>
 Se agregó traducción al euskera.
+
+Se agregó una nueva sección de "estado de ánimo" para los síntomas.
 </es-ES>
 
 <fr-FR>
 Ajout de la traduction basque.
+
+Ajout d'une nouvelle section "humeur" pour les symptômes.
 </fr-FR>
 
 <it-IT>
 Aggiunta traduzione basca.
+
+Aggiunta una nuova sezione "umore" per i sintomi.
 </it-IT>
 
 <nl-NL>
 Baskische vertaling toegevoegd.
+
+"Umorea" atal berria gehitu da sintometarako.
 </nl-NL>
 
 <ru-RU>
 Добавлен баскский перевод.
+
+Добавлен новый раздел "настроение" для симптомов.
 </ru-RU>
 
 <af>
 Baskiese vertaling bygevoeg.
+
+Nuwe afdeling "bui" bygevoeg vir simptome.
 </af>
 
 <pt-BR>
 Adicionado tradução basca.
+
+Adicionada nova seção "humor" para sintomas.
 </pt-BR>
 
 <pl-PL>
 Dodano tłumaczenie baskijskie.
+
+Dodano nową sekcję „nastrój” dla objawów.
 </pl-PL>
 
 <el-GR>
 Προστέθηκε μετάφραση στα Βάσκα.
+
+Προστέθηκε νέα ενότητα "διάθεση" για συμπτώματα.
 </el-GR>
 
 <ja-JP>
 バスク語の翻訳を追加しました。
+
+症状の新しいセクション「気分」を追加しました。
 </ja-JP>
 
 <iw-IL>
 נוסף תרגום לבסקי.
+
+נוסף קטע חדש "מצב רוח" לתסמינים.
 </iw-IL>

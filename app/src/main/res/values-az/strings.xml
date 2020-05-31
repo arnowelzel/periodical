@@ -95,6 +95,7 @@
     <string name="label_details_intensity4">4 (intensiv)</string>
     <string name="label_details_notes">Qeydlər</string>
     <string name="label_details_events">Xadisələr</string>
+    <string name="label_details_mood">Əhval</string>
     <string name="label_details_symptoms">Simptomlar</string>
     <string name="label_details_ev1" tools:keep="@string/label_details_ev1">Cinsi əlaqə</string>
     <string name="label_details_ev2" tools:keep="@string/label_details_ev2">Spazm</string>
@@ -117,6 +118,8 @@
     <string name="label_details_ev19" tools:keep="@string/label_details_ev19">Vaginal qanaxma</string>
     <string name="label_details_ev20" tools:keep="@string/label_details_ev20">Yorğunluq</string>
     <string name="label_details_ev21" tools:keep="@string/label_details_ev21">Enerjilik</string>
+    <string name="label_details_ev22" tools:keep="@string/label_details_ev22">Kədərli</string>
+    <string name="label_details_ev23" tools:keep="@string/label_details_ev23">Əsəb</string>
     <string name="label_period_day">Menstruasiya, gün %d</string>
     <string name="navigation_drawer_open">Naviqasiya sazlamaları açmaq</string>
     <string name="navigation_drawer_close">Naviqasiya sazlamaları bağlamaq</string>

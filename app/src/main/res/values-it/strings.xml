@@ -95,6 +95,7 @@
     <string name="label_details_intensity4">4 (forte)</string>
     <string name="label_details_notes">Appunti</string>
     <string name="label_details_events">Eventi</string>
+    <string name="label_details_mood">Umore</string>
     <string name="label_details_symptoms">Sintomi</string>
     <string name="label_details_ev1" tools:keep="@string/label_details_ev1">Rapporto</string>
     <string name="label_details_ev2" tools:keep="@string/label_details_ev2">Spasmi</string>
@@ -117,6 +118,8 @@
     <string name="label_details_ev19" tools:keep="@string/label_details_ev19">Smacchiatura</string>
     <string name="label_details_ev20" tools:keep="@string/label_details_ev20">Stanco</string>
     <string name="label_details_ev21" tools:keep="@string/label_details_ev21">Pieno di energia</string>
+    <string name="label_details_ev22" tools:keep="@string/label_details_ev22">Triste</string>
+    <string name="label_details_ev23" tools:keep="@string/label_details_ev23">Nervoso</string>
     <string name="label_period_day">Ciclo, giorno %d</string>
     <string name="navigation_drawer_open">Apri la barra di navigazione</string>
     <string name="navigation_drawer_close">Chiudi la barra di navigazione</string>

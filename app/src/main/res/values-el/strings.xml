@@ -95,6 +95,7 @@
     <string name="label_details_intensity4">4 (ισχυρή)</string>
     <string name="label_details_notes">Σημειώσεις</string>
     <string name="label_details_events">Γεγονότα</string>
+    <string name="label_details_mood">Διάθεση</string>
     <string name="label_details_symptoms">Συμπτώματα</string>
     <string name="label_details_ev1" tools:keep="@string/label_details_ev1">Σεξουαλική επαφή</string>
     <string name="label_details_ev2" tools:keep="@string/label_details_ev2">Κράμπες</string>
@@ -117,6 +118,8 @@
     <string name="label_details_ev19" tools:keep="@string/label_details_ev19">Κηλίδες αίματος</string>
     <string name="label_details_ev20" tools:keep="@string/label_details_ev20">Κουρασμένη</string>
     <string name="label_details_ev21" tools:keep="@string/label_details_ev21">Ενεργητική</string>
+    <string name="label_details_ev22" tools:keep="@string/label_details_ev22">Λυπημένος</string>
+    <string name="label_details_ev23" tools:keep="@string/label_details_ev23">Νευρικός</string>
     <string name="label_period_day">Περιόδος, ημέρα %d</string>
     <string name="navigation_drawer_open">Άνοιγμα μενού πλοήγησης</string>
     <string name="navigation_drawer_close">Κλείσιμο μενού πλοήγησης</string>
