@@ -2,6 +2,8 @@
 Added Basque translation.
 
 Added new section "mood" for symptoms.
+
+Fixed calendar layout for larger text sizes.
 </en-US>
 
 <az-AZ>
