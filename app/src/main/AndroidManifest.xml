@@ -12,7 +12,6 @@
         android:fullBackupContent="true"
         android:theme="@style/Theme.AppCompat"
         android:supportsRtl="true"
-        android:requestLegacyExternalStorage="true"
         tools:ignore="GoogleAppIndexingWarning">
 
         <activity

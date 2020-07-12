@@ -19,6 +19,7 @@
 package de.arnowelzel.android.periodical;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -57,10 +58,16 @@ public class AboutActivity extends AppCompatActivity {
                     // Update version and year after loading the document
                     @Override
                     public void onPageFinished(WebView view, String url) {
+                        PreferenceUtils preferences = new PreferenceUtils(getApplicationContext());
+                        String backupUriString = preferences.getString("backup_uri", "");
+                        if (backupUriString.equals("")) {
+                            backupUriString = "<em>(" + getString(R.string.backup_noruiyet) + ")</em>";
+                        }
+
                         super.onPageFinished(view, url);
                         view.loadUrl("javascript:replace('version', '" + BuildConfig.VERSION_NAME + "')");
                         view.loadUrl("javascript:replace('year', '" + BuildConfig.VERSION_YEAR + "')");
-                        view.loadUrl("javascript:replace('backupfolder','" + Environment.getExternalStorageDirectory().getAbsolutePath() + "/" + getApplicationContext().getPackageName() + "')");
+                        view.loadUrl("javascript:replace('backupfolder','" + backupUriString + "')");
                     }
 
                     // Handle URLs always external links

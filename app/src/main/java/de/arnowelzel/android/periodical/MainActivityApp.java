@@ -28,6 +28,7 @@ import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.os.Bundle;
 import androidx.annotation.NonNull;
 import com.google.android.material.navigation.NavigationView;
@@ -38,6 +39,7 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+
 import android.view.GestureDetector;
 import android.view.GestureDetector.SimpleOnGestureListener;
 import android.view.MenuItem;
@@ -103,6 +105,8 @@ public class MainActivityApp extends AppCompatActivity
     private static final int HELP_CLOSED = 3;     // Help: closed
     private static final int ABOUT_CLOSED = 4;    // About: closed
     private static final int DETAILS_CLOSED = 5;  // Details: closed
+    private static final int STORAGE_ACCESS_SELECTED_BACKUP = 6;  // Location for backup selected for backup
+    private static final int STORAGE_ACCESS_SELECTED_RESTORE = 7; // Location for backup selected for restore
 
     /* Status of the main navigartion drawer */
     private boolean navigationDrawerActive = false;
@@ -520,108 +524,97 @@ public class MainActivityApp extends AppCompatActivity
     }
 
     /**
-     * Helper to request the required permissions for backups if needed
-     */
-    private boolean checkBackupStoragePermissions(final int requestCode) {
-        final Activity activity = this;
-
-        // Check if we have the permission to access storage
-        if (ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
-            final AlertDialog.Builder builder = new AlertDialog.Builder(activity);
-            builder.setMessage(getResources().getString(R.string.permissions_needed));
-
-            builder.setPositiveButton(getResources().getString(R.string.permissions_needed_ok),
-                    new OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            ActivityCompat.requestPermissions(activity,
-                                    new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},
-                                    requestCode
-                            );
-                        }
-                    });
-
-            builder.show();
-
-            return false;
-        } else {
-            return true;
-        }
-    }
-
-    /**
-     * Handle permission request
-     */
-    @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        final Context context = getApplicationContext();
-        assert context != null;
-
-        // If the requested permission was granted by the user,
-        // run the operation which requested the permission
-        if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-            switch (requestCode) {
-                case PERMISSION_CONFIRM_BACKUP:
-                    runBackup(context);
-                    break;
-                case PERMISSION_CONFIRM_RESTORE:
-                    runRestore(context);
-                    break;
-            }
-        }
-    }
-
-    /**
      * Handler for "backup" menu action
      */
     private void doBackup() {
         final Context context = getApplicationContext();
         assert context != null;
 
-        final AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle(getResources().getString(R.string.backup_title));
-        builder.setMessage(getResources().getString(R.string.backup_text));
-        builder.setIcon(R.drawable.ic_warning_black_40dp);
+        PreferenceUtils preferences = new PreferenceUtils(context);
+        String backupUriString = preferences.getString("backup_uri", "");
+        if (!backupUriString.equals("")) {
+            // The backup location is already selected, just use this
+            Uri uriBackup = Uri.parse(backupUriString);
 
-        builder.setPositiveButton(getResources().getString(R.string.backup_ok),
-                new OnClickListener() {
+            final AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setTitle(getResources().getString(R.string.backup_title));
+            builder.setMessage(getResources().getString(R.string.backup_text));
+            builder.setIcon(R.drawable.ic_warning_black_40dp);
 
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        if (checkBackupStoragePermissions(PERMISSION_CONFIRM_BACKUP)) {
-                            runBackup(context);
+            builder.setPositiveButton(getResources().getString(R.string.backup_ok),
+                    new OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            boolean ok = dbMain.backupToUri(context, uriBackup);
+                            String text;
+                            if (ok) {
+                                text = getResources().getString(R.string.backup_finished);
+                            } else {
+                                text = getResources().getString(R.string.backup_failed);
+                            }
+                            Toast toast = Toast.makeText(context, text, Toast.LENGTH_SHORT);
+                            toast.show();
                         }
-                    }
-                });
+                    });
 
-        builder.setNegativeButton(
-                getResources().getString(R.string.backup_cancel),
-                new OnClickListener() {
+            builder.setNeutralButton(
+                    getResources().getString(R.string.backup_newfolder),
+                    new OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            dbMain.setOption("backup_uri", "");
+                            dbMain.restorePreferences();
+                            doBackup();
+                        }
+                    });
 
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                    }
-                });
+            builder.setNegativeButton(
+                    getResources().getString(R.string.backup_cancel),
+                    new OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                        }
+                    });
 
-        builder.show();
-    }
-
-    /**
-     * Run database backup and show a toast for the result
-     */
-    private void runBackup(Context context) {
-        boolean ok = dbMain.backup();
-
-        // Show toast depending on result of operation
-        String text;
-        if (ok) {
-            text = getResources().getString(R.string.backup_finished);
+            builder.show();
         } else {
-            text = getResources().getString(R.string.backup_failed);
-        }
+            // There is no backup location stored yet, ask the user to select one
+            final AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setTitle(getResources().getString(R.string.backup_title));
+            builder.setMessage(getResources().getString(R.string.backup_selectfolder));
+            builder.setIcon(R.drawable.ic_warning_black_40dp);
 
-        Toast toast = Toast.makeText(context, text, Toast.LENGTH_SHORT);
-        toast.show();
+            builder.setPositiveButton(getResources().getString(R.string.backup_ok),
+                    new OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            Intent intent = new Intent(Intent.ACTION_OPEN_DOCUMENT_TREE);
+                            intent.addCategory(Intent.CATEGORY_DEFAULT);
+                            intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+                            intent.addFlags(Intent.FLAG_GRANT_PERSISTABLE_URI_PERMISSION);
+                            startActivityForResult(intent, STORAGE_ACCESS_SELECTED_BACKUP);
+                        }
+                    });
+
+            builder.setNeutralButton(
+                    getResources().getString(R.string.backup_help),
+                    new OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            showHelp();
+                        }
+                    });
+
+            builder.setNegativeButton(
+                    getResources().getString(R.string.backup_cancel),
+                    new OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                        }
+                    });
+
+            builder.show();
+        }
     }
 
     /**
@@ -631,52 +624,96 @@ public class MainActivityApp extends AppCompatActivity
         final Context context = getApplicationContext();
         assert context != null;
 
-        final AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle(getResources().getString(R.string.restore_title));
-        builder.setMessage(getResources().getString(R.string.restore_text));
-        builder.setIcon(R.drawable.ic_warning_black_40dp);
+        PreferenceUtils preferences = new PreferenceUtils(context);
+        String backupUriString = preferences.getString("backup_uri", "");
+        if (!backupUriString.equals("")) {
+            // The backup folder is already selected, just use this
+            Uri uriBackup = Uri.parse(backupUriString);
 
-        builder.setPositiveButton(
-                getResources().getString(R.string.restore_ok),
-                new OnClickListener() {
+            final AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setTitle(getResources().getString(R.string.restore_title));
+            builder.setMessage(getResources().getString(R.string.restore_text));
+            builder.setIcon(R.drawable.ic_warning_black_40dp);
 
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        if (checkBackupStoragePermissions(PERMISSION_CONFIRM_RESTORE)) {
-                            runRestore(context);
+            builder.setPositiveButton(
+                    getResources().getString(R.string.restore_ok),
+                    new OnClickListener() {
+
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            boolean ok = dbMain.restoreFromUri(context, uriBackup);
+                            dbMain.loadCalculatedData();
+                            calendarUpdate();
+                            String text;
+                            if (ok) {
+                                text = getResources().getString(R.string.restore_finished);
+                            } else {
+                                text = getResources().getString(R.string.restore_failed);
+                            }
+                            Toast toast = Toast.makeText(context, text, Toast.LENGTH_SHORT);
+                            toast.show();
                         }
-                    }
-                });
+                    });
 
-        builder.setNegativeButton(
-                getResources().getString(R.string.restore_cancel),
-                new OnClickListener() {
+            builder.setNeutralButton(
+                    getResources().getString(R.string.backup_newfolder),
+                    new OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            dbMain.setOption("backup_uri", "");
+                            dbMain.restorePreferences();
+                            doRestore();
+                        }
+                    });
 
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                    }
-                });
+            builder.setNegativeButton(
+                    getResources().getString(R.string.restore_cancel),
+                    new OnClickListener() {
 
-        builder.show();
-    }
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                        }
+                    });
 
-    /**
-     * Run database restore and show a toast for the result
-     */
-    private void runRestore(Context context) {
-        boolean ok = dbMain.restore();
-
-        // Show toast depending on result of operation
-        String text;
-        if (ok) {
-            dbMain.restorePreferences();
-            databaseChanged();
-            text = getResources().getString(R.string.restore_finished);
+            builder.show();
         } else {
-            text = getResources().getString(R.string.restore_failed);
+            // There is no backup location stored yet, ask the user to select one
+            final AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setTitle(getResources().getString(R.string.restore_title));
+            builder.setMessage(getResources().getString(R.string.restore_selectfolder));
+            builder.setIcon(R.drawable.ic_warning_black_40dp);
+
+            builder.setPositiveButton(getResources().getString(R.string.backup_ok),
+                    new OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            Intent intent = new Intent(Intent.ACTION_OPEN_DOCUMENT_TREE);
+                            intent.addCategory(Intent.CATEGORY_DEFAULT);
+                            intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+                            intent.addFlags(Intent.FLAG_GRANT_PERSISTABLE_URI_PERMISSION);
+                            startActivityForResult(intent, STORAGE_ACCESS_SELECTED_RESTORE);
+                        }
+                    });
+
+            builder.setNeutralButton(
+                    getResources().getString(R.string.backup_help),
+                    new OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            showHelp();
+                        }
+                    });
+
+            builder.setNegativeButton(
+                    getResources().getString(R.string.backup_cancel),
+                    new OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                        }
+                    });
+
+            builder.show();
         }
-        Toast toast = Toast.makeText(context, text, Toast.LENGTH_SHORT);
-        toast.show();
     }
 
     /**
@@ -815,6 +852,8 @@ public class MainActivityApp extends AppCompatActivity
      * Handler of activity results (detail list, options)
      */
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        Uri storageUri = null;
+
         switch (requestCode) {
             // Specific date in detail list selected
             case PICK_DATE:
@@ -839,6 +878,26 @@ public class MainActivityApp extends AppCompatActivity
             case DETAILS_CLOSED:
                 dbMain.loadCalculatedData();
                 calendarUpdate();
+                break;
+
+            // Backup location selected for backup
+            case STORAGE_ACCESS_SELECTED_BACKUP:
+                if (data != null) {
+                    storageUri = data.getData();
+                    dbMain.setOption("backup_uri", storageUri.toString());
+                    dbMain.restorePreferences();
+                    doBackup();
+                }
+                break;
+
+            // Backup location selected for restore
+            case STORAGE_ACCESS_SELECTED_RESTORE:
+                if (data != null) {
+                    storageUri = data.getData();
+                    dbMain.setOption("backup_uri", storageUri.toString());
+                    dbMain.restorePreferences();
+                    doRestore();
+                }
                 break;
         }
     }

@@ -25,12 +25,18 @@ import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.net.Uri;
 import android.os.Environment;
+
+import androidx.documentfile.provider.DocumentFile;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.GregorianCalendar;
 import java.util.List;
@@ -1119,92 +1125,160 @@ class PeriodicalDatabase {
     }
 
     /**
-     * Backup the database
+     * Backup database to a given URI
      */
-    boolean backup() {
-        return backupRestore(true);
-    }
+    boolean backupToUri(Context context, Uri uri) {
+        boolean result = false;
 
-    /**
-     * Restore the database
-     */
-    boolean restore() {
-        return backupRestore(false);
-    }
-
-    /**
-     * Helper to handle backup and restore operations
-     *
-     * @param backup true for doing a backup, false for a restore
-     */
-
-    private boolean backupRestore(boolean backup) {
-        boolean ok = true;
-
-        // Check if SD card is mounted
-        if (Environment.getExternalStorageState().equals(
-                android.os.Environment.MEDIA_UNMOUNTED))
-            return false;
-
-        File sourceFile;
-        File sourceFileJournal;
-        File destDir;
-        File destFile;
-        File destFileJournal;
-
-        // Get source of DB and path for external storage
-        if (backup) {
-            sourceFile = new File(db.getPath());
-            sourceFileJournal = new File(db.getPath() + "-journal");
-            destDir = new File(Environment.getExternalStorageDirectory()
-                    .getAbsolutePath() + "/" + context.getPackageName());
-            destFile = new File(destDir.getAbsolutePath() + "/"
-                    + sourceFile.getName());
-            destFileJournal = new File(destFile.getPath() + "-journal");
-        } else {
-            destDir = null; // If we restore, the directory is already there
-            destFile = new File(db.getPath());
-            destFileJournal = new File(db.getPath() + "-journal");
-            sourceFile = new File(Environment.getExternalStorageDirectory()
-                    .getAbsolutePath()
-                    + "/"
-                    + context.getPackageName()
-                    + "/"
-                    + destFile.getName());
-            sourceFileJournal = new File(sourceFile.getPath() + "-journal");
-        }
-
-        // Before we can copy anything, close the DB
+        // Close the database
         db.close();
 
-        // Check, if destination files exists and delete first
-        if (destFile.exists()) ok = destFile.delete();
-        if (destFileJournal.exists() && ok) ok = destFileJournal.delete();
+        // Check if uri is accessible
+        DocumentFile directory = DocumentFile.fromTreeUri(context, uri);
+        if (!directory.isDirectory()) {
+            return false;
+        }
 
-        // If everything is ok, then copy source to destination
-        if (ok) {
-            if (backup) {
-                //noinspection ResultOfMethodCallIgnored
-                destDir.mkdirs();
+        // First we need to create a directory where the backup will be stored
+        String destinationDirectoryName= context.getPackageName();
+        DocumentFile destinationDirectory = directory.findFile(destinationDirectoryName);
+        if (null == destinationDirectory || !destinationDirectory.isDirectory()) {
+            destinationDirectory = directory.createDirectory(destinationDirectoryName);
+        }
+
+        // Backup database file
+        File sourceFile = new File(db.getPath());
+        String destinationFileName = sourceFile.getName();
+        DocumentFile destinationFile = destinationDirectory.findFile(destinationFileName);
+        if (null != destinationFile) {
+            destinationFile.delete();
+        }
+        destinationFile = destinationDirectory.createFile("application/octet-stream", destinationFileName);
+        try {
+            OutputStream destinationStream = context.getContentResolver().openOutputStream(destinationFile.getUri());
+            FileInputStream sourceStream = new FileInputStream(sourceFile);
+            int byteRead = 0;
+            byte[] buffer = new byte[8192];
+            while ((byteRead = sourceStream.read(buffer, 0, 8192)) != -1) {
+                destinationStream.write(buffer, 0, byteRead);
             }
+            sourceStream.close();
+            destinationStream.close();
+            result = true;
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
+        // Backup journal if required and the previous backup was successful
+        sourceFile = new File(db.getPath() + "-journal");
+        if (result && sourceFile.   exists()) {
+            result = false;
+            destinationFileName = sourceFile.getName();
+            destinationFile = destinationDirectory.findFile(destinationFileName);
+            if (null != destinationFile) {
+                destinationFile.delete();
+            }
+            destinationFile = destinationDirectory.createFile("application/octet-stream", destinationFileName);
             try {
-                FileUtils.copyFile(new FileInputStream(sourceFile),
-                        new FileOutputStream(destFile));
-                // Try to copy journal only if it exists
-                if (sourceFileJournal.exists())
-                    FileUtils.copyFile(new FileInputStream(sourceFileJournal),
-                            new FileOutputStream(destFileJournal));
+                OutputStream outputStream = context.getContentResolver().openOutputStream(destinationFile.getUri());
+                FileInputStream sourceStream = new FileInputStream(sourceFile);
+                int byteRead = 0;
+                byte[] buffer = new byte[8192];
+                while ((byteRead = sourceStream.read(buffer, 0, 8192)) != -1) {
+                    outputStream.write(buffer, 0, byteRead);
+                }
+                sourceStream.close();
+                outputStream.close();
+                result = true;
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
             } catch (IOException e) {
-                ok = false;
                 e.printStackTrace();
             }
         }
 
-        // Open the DB again
+        // Open the database again
         open();
 
-        return ok;
+        return result;
+    }
+
+    /**
+     * Restore database from a given URI
+     */
+    boolean restoreFromUri(Context context, Uri uri) {
+        boolean result = false;
+
+        // Close the database
+        db.close();
+
+        // Check if uri exists
+        DocumentFile directory = DocumentFile.fromTreeUri(context, uri);
+        if (!directory.isDirectory()) {
+            return false;
+        }
+
+        // Check if subfolder with backup exists
+        String sourceDirectoryName= context.getPackageName();
+        DocumentFile sourceDirectory = directory.findFile(sourceDirectoryName);
+        if (null == sourceDirectory || !sourceDirectory.isDirectory()) {
+            return false;
+        }
+
+        // Restore database file
+        File destinationFile = new File(db.getPath());
+        String destinationFileName = destinationFile.getName();
+        DocumentFile sourceFile = sourceDirectory.findFile(destinationFileName);
+        if (null == sourceFile) {
+            return false;
+        }
+        try {
+            InputStream sourceStream = context.getContentResolver().openInputStream(sourceFile.getUri());
+            FileOutputStream destinationStream = new FileOutputStream(destinationFile);
+            int byteRead = 0;
+            byte[] buffer = new byte[8192];
+            while ((byteRead = sourceStream.read(buffer, 0, 8192)) != -1) {
+                destinationStream.write(buffer, 0, byteRead);
+            }
+            sourceStream.close();
+            destinationStream.close();
+            result = true;
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        // Restore journal if required
+        destinationFile = new File(db.getPath() + "-journal");
+        destinationFileName = destinationFile.getName();
+        sourceFile = sourceDirectory.findFile(destinationFileName);
+        if (null != sourceFile) {
+            result = false;
+            try {
+                InputStream sourceStream = context.getContentResolver().openInputStream(sourceFile.getUri());
+                FileOutputStream destinationStream = new FileOutputStream(destinationFile);
+                int byteRead = 0;
+                byte[] buffer = new byte[8192];
+                while ((byteRead = sourceStream.read(buffer, 0, 8192)) != -1) {
+                    destinationStream.write(buffer, 0, byteRead);
+                }
+                sourceStream.close();
+                destinationStream.close();
+                result = true;
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+
+        // Open the database again
+        open();
+
+        return result;
     }
 
     /**
@@ -1221,6 +1295,7 @@ class PeriodicalDatabase {
         Integer maximum_cycle_length = getOption("maximum_cycle_length", DEFAULT_CYCLE_LENGTH);
         boolean direct_details = getOption("direct_details", DEFAULT_DIRECT_DETAILS);
         boolean show_cycle = getOption("show_cycle", DEFAULT_SHOW_CYCLE);
+        String backup_uri = getOption( "backup_uri", null);
 
         PreferenceUtils preferences = new PreferenceUtils(context);
         SharedPreferences.Editor editor = preferences.edit();
@@ -1232,6 +1307,7 @@ class PeriodicalDatabase {
         editor.remove("maximum_cycle_length");
         editor.remove("direct_details");
         editor.remove("show_cycle");
+        editor.remove("backup_uri");
 
         // Store values
         editor.putString("period_length", period_length.toString());
@@ -1240,6 +1316,7 @@ class PeriodicalDatabase {
         editor.putString("maximum_cycle_length", maximum_cycle_length.toString());
         editor.putBoolean("direct_details", direct_details);
         editor.putBoolean("show_cycle", show_cycle);
+        editor.putString("backup_uri", backup_uri);
 
         editor.apply();
     }

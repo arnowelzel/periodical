@@ -31,11 +31,16 @@
     <string name="help_title">Help</string>
     <string name="backup_title">Backup data</string>
     <string name="backup_text">Do you want to backup the current data?\nThis will replace the last backup!</string>
+    <string name="backup_selectfolder">Please select where to save the backup. You need to give access to the selected location, which will be used for this and all future backups.\n\nTo learn more about how backup works, please refer to the help menu.</string>
     <string name="backup_ok">OK</string>
     <string name="backup_cancel">Cancel</string>
+    <string name="backup_newfolder">Select new location</string>
+    <string name="backup_help">Help</string>
     <string name="backup_finished">Backup done</string>
+    <string name="backup_noruiyet">no location selected yet</string>
     <string name="backup_failed">Backup failed!</string>
     <string name="restore_title">Restore data</string>
+    <string name="restore_selectfolder">Please select the location, where the backup was saved (the location with the folder \"de.arnowelzel.android.periodical\").</string>
     <string name="restore_text">Do you want to restore the last backup?\nThis will replace the current data!</string>
     <string name="restore_ok">OK</string>
     <string name="restore_cancel">Cancel</string>
