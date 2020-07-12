@@ -1,4 +1,6 @@
 <en-US>
+New backup system.
+
 Added Basque translation.
 
 Added new section "mood" for symptoms.
@@ -7,85 +9,141 @@ Fixed calendar layout for larger text sizes.
 </en-US>
 
 <az-AZ>
-Bask tərcüməsi əlavə edildi.
+Yeni ehtiyat sistem.
+
+Bask tərcümə əlavə edildi.
 
 Semptomlar üçün yeni "əhval" bölməsi əlavə edildi.
+
+Daha böyük mətn ölçüləri üçün sabit təqvim düzeni.
 </az-AZ>
 
 <cs-CZ>
+Nový záložní systém.
+
 Přidán baskický překlad.
 
 Přidána nová sekce „nálada“ pro příznaky.
+
+Opraveno rozložení kalendáře pro větší velikosti textu.
 </cs-CZ>
 
 <de-DE>
+Neues Backup-System.
+
 Baskische Übersetzung hinzugefügt.
 
 Neuer Abschnitt "Stimmung" für Symptome hinzugefügt.
+
+Das Kalenderlayout für größere Textgrößen wurde korrigiert.
 </de-DE>
 
 <es-ES>
+Nuevo sistema de respaldo.
+
 Se agregó traducción al euskera.
 
 Se agregó una nueva sección de "estado de ánimo" para los síntomas.
+
+Diseño de calendario fijo para tamaños de texto más grandes.
 </es-ES>
 
 <fr-FR>
+Nouveau système de sauvegarde.
+
 Ajout de la traduction basque.
 
 Ajout d'une nouvelle section "humeur" pour les symptômes.
+
+Mise en page du calendrier fixe pour les plus grandes tailles de texte.
 </fr-FR>
 
 <it-IT>
+Nuovo sistema di backup.
+
 Aggiunta traduzione basca.
 
 Aggiunta una nuova sezione "umore" per i sintomi.
+
+Layout del calendario fisso per dimensioni di testo più grandi.
 </it-IT>
 
 <nl-NL>
+Nieuw back-upsysteem.
+
 Baskische vertaling toegevoegd.
 
-"Umorea" atal berria gehitu da sintometarako.
+Nieuwe sectie "stemming" toegevoegd voor symptomen.
+
+Vaste kalenderlay-out voor grotere tekstgroottes.
 </nl-NL>
 
 <ru-RU>
+Новая резервная система.
+
 Добавлен баскский перевод.
 
 Добавлен новый раздел "настроение" для симптомов.
+
+Исправлен макет календаря для больших размеров текста.
 </ru-RU>
 
 <af>
+Nuwe rugsteunstelsel.
+
 Baskiese vertaling bygevoeg.
 
 Nuwe afdeling "bui" bygevoeg vir simptome.
+
+Vaste kalenderuitleg vir groter teksgroottes.
 </af>
 
 <pt-BR>
+Novo sistema de backup.
+
 Adicionado tradução basca.
 
 Adicionada nova seção "humor" para sintomas.
+
+Layout de calendário fixo para tamanhos de texto maiores.
 </pt-BR>
 
 <pl-PL>
+Nowy system tworzenia kopii zapasowych.
+
 Dodano tłumaczenie baskijskie.
 
 Dodano nową sekcję „nastrój” dla objawów.
+
+Naprawiono układ kalendarza dla większych rozmiarów tekstu.
 </pl-PL>
 
 <el-GR>
-Προστέθηκε μετάφραση στα Βάσκα.
+Νέο εφεδρικό σύστημα.
+
+Προστέθηκε μετάφραση των Βάσκων.
 
 Προστέθηκε νέα ενότητα "διάθεση" για συμπτώματα.
+
+Διορθώθηκε η διάταξη ημερολογίου για μεγαλύτερα μεγέθη κειμένου.
 </el-GR>
 
 <ja-JP>
+新しいバックアップシステム。
+
 バスク語の翻訳を追加しました。
 
 症状の新しいセクション「気分」を追加しました。
+
+より大きいテキストサイズのカレンダーレイアウトを修正しました。
 </ja-JP>
 
 <iw-IL>
+מערכת גיבוי חדשה.
+
 נוסף תרגום לבסקי.
 
 נוסף קטע חדש "מצב רוח" לתסמינים.
+
+פריסת לוח שנה קבועה לגדלי טקסט גדולים יותר.
 </iw-IL>
