@@ -31,11 +31,16 @@
     <string name="help_title">Помощь</string>
     <string name="backup_title">Резервное копирование</string>
     <string name="backup_text">Вы действительно хотите сохранить текущие данные?\nРезервная копия будет перезаписана!</string>
+    <string name="backup_selectfolder">Пожалуйста, выберите, где сохранить резервную копию. Вам нужно предоставить доступ к выбранному местоположению, который будет использоваться для этого и всех будущих резервных копий.\n\nПодробнее о том, как работает резервная копия, пожалуйста, обратитесь к меню справки.</string>
     <string name="backup_ok">ОК</string>
     <string name="backup_cancel">Отмена</string>
+    <string name="backup_newfolder">Выберите новое местоположение</string>
+    <string name="backup_help">Помощь</string>
     <string name="backup_finished">Резервное копирование завершено</string>
+    <string name="backup_noruiyet">местоположение не выбрано</string>
     <string name="backup_failed">Ошибка резервного копирования!</string>
     <string name="restore_title">Восстановление данных</string>
+    <string name="restore_selectfolder">Пожалуйста, выберите место, где была сохранена резервная копия (место в папке \"de.arnowelzel.android.periodical\").</string>
     <string name="restore_text">Вы действительно хотите восстановить данные из резервной копии?\nТекущие данные будут утеряны!</string>
     <string name="restore_ok">ОК</string>
     <string name="restore_cancel">Отмена</string>

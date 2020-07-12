@@ -31,11 +31,16 @@
     <string name="help_title">Kömək</string>
     <string name="backup_title">Məlumatları nüsxələ</string>
     <string name="backup_text">Mövcud məlumataları rezerv yadda saxlamaq istəyirsinizmi?\nÖncəki rezerv məlumatı yeniləyəcək bu addım!</string>
+    <string name="backup_selectfolder">Zəhmət olmasa, ehtiyat nüsxəsinin harada saxlanacağını seçin. Bu və bütün gələcək yedeklemeler üçün istifadə ediləcək seçilmiş məkana giriş verməlisiniz.\n\nYedekləmə necə işlədiyini öyrənmək üçün kömək menyusuna baxın.</string>
     <string name="backup_ok">OK</string>
     <string name="backup_cancel">İmtina</string>
+    <string name="backup_newfolder">Yeni yer seçin</string>
+    <string name="backup_help">Kömək</string>
     <string name="backup_finished">Nüsxələmə bitdi</string>
+    <string name="backup_noruiyet">hələ yer seçilməyib</string>
     <string name="backup_failed">Nüxsələmə uğursuz oldu!</string>
     <string name="restore_title">Məlumatları bərpa et</string>
+    <string name="restore_selectfolder">Zəhmət olmasa, ehtiyat nüsxəsinin saxlandığı yeri seçin (\"de.arnowelzel.android.periodical\" qovluğu olan yer).</string>
     <string name="restore_text">Siz ehtiyat kopiyasından məlumatların bərpasına əminsinizmi?\nƏvvəkli kopiya silinəcək!</string>
     <string name="restore_ok">OK</string>
     <string name="restore_cancel">İmtina</string>

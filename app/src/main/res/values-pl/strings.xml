@@ -31,11 +31,16 @@
     <string name="help_title">Pomoc</string>
     <string name="backup_title">Stwórz kopie zapasową danych</string>
     <string name="backup_text">Czy chcesz stworzyć kopie zapasową danych? \nTo zastąpi twoją ostatnią kopie zapasową danych!</string>
+    <string name="backup_selectfolder">Wybierz gdzie zapisać kopię zapasową. Musisz dać dostęp do wybranej lokalizacji, która będzie używana do tego i wszystkich przyszłych kopii zapasowych.\n\nAby dowiedzieć się więcej o tym, jak działa kopia zapasowa, zapoznaj się z menu pomocy.</string>
     <string name="backup_ok">OK</string>
     <string name="backup_cancel">Anuluj</string>
+    <string name="backup_newfolder">Wybierz nową lokalizację</string>
+    <string name="backup_help">Pomoc</string>
     <string name="backup_finished">Tworzenie zapasowej kopii danych skończone</string>
+    <string name="backup_noruiyet">nie wybrano jeszcze lokalizacji</string>
     <string name="backup_failed">Tworzenie zapasowej kopii danych nieudane!</string>
     <string name="restore_title">Przywróć dane</string>
+    <string name="restore_selectfolder">Wybierz lokalizację, gdzie kopia zapasowa została zapisana (lokalizacja z folderem \"de.arnowelzel.android.periodical\").</string>
     <string name="restore_text">Chcesz przywrócić ostatnią kopie zapasową?\nTo podmieni twoje obecne dane!</string>
     <string name="restore_ok">OK</string>
     <string name="restore_cancel">Anuluj</string>

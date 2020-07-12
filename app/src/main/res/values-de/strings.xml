@@ -31,11 +31,16 @@
     <string name="help_title">Hilfe</string>
     <string name="backup_title">Daten sichern</string>
     <string name="backup_text">Möchten Sie die aktuellen Daten sichern?\nDies wird die letzte Sicherung ersetzen!</string>
+    <string name="backup_selectfolder">Bitte wählen Sie aus, wo die Sicherung gespeichert werden soll. Sie müssen Zugriff auf den ausgewählten Ort gewähren, der für diese und alle zukünftigen Sicherungen verwendet wird.\n\nUm mehr darüber zu erfahren, wie die Sicherung funktioniert, lesen Sie bitte das Hilfe-Menü.</string>
     <string name="backup_ok">OK</string>
     <string name="backup_cancel">Abbrechen</string>
+    <string name="backup_newfolder">Neuen Ort auswählen</string>
+    <string name="backup_help">Hilfe</string>
     <string name="backup_finished">Sicherung ausgeführt</string>
+    <string name="backup_noruiyet">noch kein Ort ausgewählt</string>
     <string name="backup_failed">Sicherung fehlgeschlagen!</string>
     <string name="restore_title">Daten wiederherstellen</string>
+    <string name="restore_selectfolder">Bitte wählen Sie den Ort aus, an dem das Backup gespeichert wurde (der Ort mit dem Ordner \"de.arnowelzel.android.periodical\").</string>
     <string name="restore_text">Möchten Sie die letzte Sicherung wiederherstellen?\nDies wird die aktuellen Daten ersetzen!</string>
     <string name="restore_ok">OK</string>
     <string name="restore_cancel">Abbrechen</string>

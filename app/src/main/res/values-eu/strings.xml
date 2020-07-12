@@ -31,11 +31,16 @@
     <string name="help_title">Laguntza</string>
     <string name="backup_title">Datuen babeskopia</string>
     <string name="backup_text">Uneko datuen babeskopia egin nahi duzu?\nHonek azkeneko babeskopia ordeztuko du!</string>
+    <string name="backup_selectfolder">Hautatu babeskopia non gordeko duzun. Aukeratutako kokapenari sarbidea eman behar diozu, hau egiteko eta etorkizunean segurtasun kopia guztiak erabiliko dituzu.\n\nKopresio funtzionamenduari buruz gehiago jakiteko, ikus laguntza menura.</string>
     <string name="backup_ok">Ados</string>
     <string name="backup_cancel">Utzi</string>
+    <string name="backup_newfolder">Hautatu kokapen berria</string>
+    <string name="backup_help">Laguntza</string>
     <string name="backup_finished">Babeskopia egin da</string>
+    <string name="backup_noruiyet">oraindik ez da kokapenik aukeratu</string>
     <string name="backup_failed">Babeskopia egiteak huts egin du!</string>
     <string name="restore_title">Datuak leheneratu</string>
+    <string name="restore_selectfolder">Aukeratu babeskopia gorde den tokian (kokapena \"de.arnowelzel.android.periodical\" karpeta).</string>
     <string name="restore_text">Azken babeskopia leheneratu nahi duzu?\nHonek uneko datuak ordeztuko ditu!</string>
     <string name="restore_ok">Ados</string>
     <string name="restore_cancel">Utzi</string>
@@ -95,7 +100,7 @@
     <string name="label_details_intensity4">4 (ugari)</string>
     <string name="label_details_notes">Oharrak</string>
     <string name="label_details_events">Gertaerak</string>
-    <string name="label_details_mood">Humorea</string>
+    <string name="label_details_mood">Umorea</string>
     <string name="label_details_symptoms">Sintomak</string>
     <string name="label_details_ev1" tools:keep="@string/label_details_ev1">Sexu-harremana</string>
     <string name="label_details_ev2" tools:keep="@string/label_details_ev2">Espasmoak</string>
@@ -119,7 +124,7 @@
     <string name="label_details_ev20" tools:keep="@string/label_details_ev20">Nekatuta</string>
     <string name="label_details_ev21" tools:keep="@string/label_details_ev21">Energiarekin</string>
     <string name="label_details_ev22" tools:keep="@string/label_details_ev22">Triste</string>
-    <string name="label_details_ev23" tools:keep="@string/label_details_ev23">Nerbio</string>
+    <string name="label_details_ev23" tools:keep="@string/label_details_ev23">Urduri</string>
     <string name="label_period_day">Hilekoa, %d. eguna</string>
     <string name="navigation_drawer_open">Ireki nabigazio-tiradera</string>
     <string name="navigation_drawer_close">Itxi nabigazio-tiradera</string>

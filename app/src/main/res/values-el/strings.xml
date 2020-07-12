@@ -31,11 +31,16 @@
     <string name="help_title">Βοήθεια</string>
     <string name="backup_title">Αποθήκευση δεδομένων</string>
     <string name="backup_text">Θέλετε να αποθηκεύσετε τα τρέχοντα δεδομένα σας;\nΑυτό θα αντικαταστήσει το προηγούμενο αρχείο αποθήκευσης!</string>
+    <string name="backup_selectfolder">Επιλέξτε πού να αποθηκεύσετε το αντίγραφο ασφαλείας. Πρέπει να παραχωρήσετε πρόσβαση στην επιλεγμένη τοποθεσία, η οποία θα χρησιμοποιηθεί για αυτήν και όλα τα μελλοντικά αντίγραφα ασφαλείας.\n\nΓια να μάθετε περισσότερα σχετικά με τον τρόπο λειτουργίας του αντιγράφου ασφαλείας, ανατρέξτε στο μενού βοήθειας.</string>
     <string name="backup_ok">ΟΚ</string>
     <string name="backup_cancel">Άκυρο</string>
+    <string name="backup_newfolder">Επιλέξτε νέα τοποθεσία</string>
+    <string name="backup_help">Βοήθεια</string>
     <string name="backup_finished">Επιτυχία αποθήκευσης</string>
+    <string name="backup_noruiyet">δεν έχει επιλεγεί ακόμη τοποθεσία</string>
     <string name="backup_failed">Αποτυχία αποθήκευσης!</string>
     <string name="restore_title">Επαναφορά δεδομένων</string>
+    <string name="restore_selectfolder">Επιλέξτε την τοποθεσία, όπου αποθηκεύτηκε το αντίγραφο ασφαλείας (η τοποθεσία με το φάκελο \"de.arnowelzel.android.periodical\").</string>
     <string name="restore_text">Θέλετε να επαναφέρετε το τελευταίο αρχείο αποθήκευσης;\nΑυτό θα αντικαταστήσει τα τρέχοντα δεδομένα!</string>
     <string name="restore_ok">ΟΚ</string>
     <string name="restore_cancel">Άκυρο</string>
@@ -118,8 +123,8 @@
     <string name="label_details_ev19" tools:keep="@string/label_details_ev19">Κηλίδες αίματος</string>
     <string name="label_details_ev20" tools:keep="@string/label_details_ev20">Κουρασμένη</string>
     <string name="label_details_ev21" tools:keep="@string/label_details_ev21">Ενεργητική</string>
-    <string name="label_details_ev22" tools:keep="@string/label_details_ev22">Λυπημένος</string>
-    <string name="label_details_ev23" tools:keep="@string/label_details_ev23">Νευρικός</string>
+    <string name="label_details_ev22" tools:keep="@string/label_details_ev22">Λυπημένη</string>
+    <string name="label_details_ev23" tools:keep="@string/label_details_ev23">Νευρική</string>
     <string name="label_period_day">Περιόδος, ημέρα %d</string>
     <string name="navigation_drawer_open">Άνοιγμα μενού πλοήγησης</string>
     <string name="navigation_drawer_close">Κλείσιμο μενού πλοήγησης</string>

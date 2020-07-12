@@ -31,11 +31,16 @@
     <string name="help_title">Help</string>
     <string name="backup_title">Back-up gegevens</string>
     <string name="backup_text">Wil je een back-up maken van de huidige gegevens?\nDit overschrijft de laatste back-up!</string>
+    <string name="backup_selectfolder">Selecteer waar de back-up moet worden opgeslagen. U moet toegang geven tot de geselecteerde locatie, die voor deze en alle toekomstige back-ups zal worden gebruikt.\n\nVoor meer informatie over hoe back-up werkt, raadpleeg het helpmenu.</string>
     <string name="backup_ok">Oké</string>
     <string name="backup_cancel">Annuleer</string>
+    <string name="backup_newfolder">Selecteer een nieuwe locatie</string>
+    <string name="backup_help">Help</string>
     <string name="backup_finished">Back-up is klaar</string>
+    <string name="backup_noruiyet">geen locatie geselecteerd</string>
     <string name="backup_failed">Back-up is mislukt!</string>
     <string name="restore_title">Herstel gegevens</string>
+    <string name="restore_selectfolder">Selecteer de locatie, waar de back-up is opgeslagen (de locatie met de map \"de.arnowelzel.android.periodical\").</string>
     <string name="restore_text">Wil je de laatste back-up herstellen?\nDit overschrijft de huidige gegevens!</string>
     <string name="restore_ok">Oké</string>
     <string name="restore_cancel">Annuleer</string>
@@ -95,7 +100,7 @@
     <string name="label_details_intensity4">4 (sterk)</string>
     <string name="label_details_notes">Notities</string>
     <string name="label_details_events">Voorkomens</string>
-    <string name="label_details_mood">Mood</string>
+    <string name="label_details_mood">Stemming</string>
     <string name="label_details_symptoms">Symptomen</string>
     <string name="label_details_ev1" tools:keep="@string/label_details_ev1">Gemeenschap</string>
     <string name="label_details_ev2" tools:keep="@string/label_details_ev2">Krampen</string>
@@ -118,8 +123,8 @@
     <string name="label_details_ev19" tools:keep="@string/label_details_ev19">Spotten</string>
     <string name="label_details_ev20" tools:keep="@string/label_details_ev20">Vermoeid</string>
     <string name="label_details_ev21" tools:keep="@string/label_details_ev21">Energie</string>
-    <string name="label_details_ev22" tools:keep="@string/label_details_ev22">Sad</string>
-    <string name="label_details_ev23" tools:keep="@string/label_details_ev23">Edgy</string>
+    <string name="label_details_ev22" tools:keep="@string/label_details_ev22">Droevig</string>
+    <string name="label_details_ev23" tools:keep="@string/label_details_ev23">Afstand</string>
     <string name="label_period_day">Menstruatie, dag %d</string>
     <string name="navigation_drawer_open">Open de navigatiebalk</string>
     <string name="navigation_drawer_close">Sluit de navigatiebalk</string>

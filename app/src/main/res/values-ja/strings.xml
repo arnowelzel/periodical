@@ -31,11 +31,16 @@
     <string name="help_title">ヘルプ</string>
     <string name="backup_title">データをバックアップ</string>
     <string name="backup_text">現在のデータをバックアップしますか?\nこれは前回のバックアップを置き換えます!</string>
+    <string name="backup_selectfolder">バックアップを保存する場所を選択してください。 選択した場所へのアクセス権を与える必要があります。これは、今後のすべてのバックアップに使用されます。\n\nバックアップの仕組みの詳細については、ヘルプメニューを参照してください。</string>
     <string name="backup_ok">OK</string>
     <string name="backup_cancel">キャンセル</string>
+    <string name="backup_newfolder">新しい場所を選択</string>
+    <string name="backup_help">ヘルプ</string>
     <string name="backup_finished">バックアップ完了</string>
+    <string name="backup_noruiyet">位置情報が選択されていません</string>
     <string name="backup_failed">バックアップが失敗しました!</string>
     <string name="restore_title">データを復元</string>
+    <string name="restore_selectfolder">バックアップが保存された場所(フォルダ\"de.arnowelzel.android.periodical\")を選択してください。</string>
     <string name="restore_text">前回のバックアップを復元しますか?\nこれは現在のデータを置き換えます!</string>
     <string name="restore_ok">OK</string>
     <string name="restore_cancel">キャンセル</string>

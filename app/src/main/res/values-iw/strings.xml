@@ -31,11 +31,16 @@
     <string name="help_title">עזרה</string>
     <string name="backup_title">גיבוי נתונים</string>
     <string name="backup_text">לגבות את הנתונים הנוכחיים?\nפעולה זו תחליף את הגיבוי האחרון!</string>
+    <string name="backup_selectfolder">אנא בחרי היכן לשמור את הגיבוי. עלייך להעניק גישה למיקום הנבחר שישמש לגיבוי הזה ולכל הבאים אחריו.\n\nכדי ללמוד עוד על כיצד עובדים גיבויים, אנא פני אל תפריט העזרה.</string>
     <string name="backup_ok">אישור</string>
     <string name="backup_cancel">ביטול</string>
+    <string name="backup_newfolder">בחרי במיקום חדש</string>
+    <string name="backup_help">עזרה</string>
     <string name="backup_finished">הגיבוי הושלם</string>
+    <string name="backup_noruiyet">עדיין לא בחרת במיקום</string>
     <string name="backup_failed">הגיבוי נכשל!</string>
     <string name="restore_title">שחזור נתונים</string>
+    <string name="restore_selectfolder">אנא בחרי את המיקום לשמירת הגיבויים (המיקום עם התיקייה „de.arnowelzel.android.periodical”).</string>
     <string name="restore_text">לשחזר את הגיבוי האחרון?\nפעולה זו תדרוס את הנתונים הנוכחיים!</string>
     <string name="restore_ok">אישור</string>
     <string name="restore_cancel">ביטול</string>
@@ -118,8 +123,8 @@
     <string name="label_details_ev19" tools:keep="@string/label_details_ev19">דימום קל</string>
     <string name="label_details_ev20" tools:keep="@string/label_details_ev20">עייפות</string>
     <string name="label_details_ev21" tools:keep="@string/label_details_ev21">מרץ</string>
-    <string name="label_details_ev22" tools:keep="@string/label_details_ev22">עצוב</string>
-    <string name="label_details_ev23" tools:keep="@string/label_details_ev23">עצבים</string>
+    <string name="label_details_ev22" tools:keep="@string/label_details_ev22">עצובה</string>
+    <string name="label_details_ev23" tools:keep="@string/label_details_ev23">עצבנית</string>
     <string name="label_period_day">וסת, יום %d</string>
     <string name="navigation_drawer_open">פתיחת מגירת ניווט</string>
     <string name="navigation_drawer_close">סגירת מגירת ניווט</string>

@@ -31,11 +31,16 @@
     <string name="help_title">Help</string>
     <string name="backup_title">Backup data</string>
     <string name="backup_text">Wil U die huidige inligting backup?\nDit sal die laaste rugsteun vervang!</string>
+    <string name="backup_selectfolder">Kies waar u die rugsteun wil stoor. U moet toegang gee tot die geselekteerde ligging wat hiervoor gebruik sal word en alle toekomstige rugsteun.\n\nOm meer te wete te kom oor hoe rugsteun werk, raadpleeg die hulpmenu.</string>
     <string name="backup_ok">OK</string>
     <string name="backup_cancel">Kanselleer</string>
+    <string name="backup_newfolder">Kies \'n nuwe ligging</string>
+    <string name="backup_help">Help</string>
     <string name="backup_finished">Backup klaar</string>
+    <string name="backup_noruiyet">geen ligging gekies nie</string>
     <string name="backup_failed">Backup werk nie!</string>
     <string name="restore_title">Restore data</string>
+    <string name="restore_selectfolder">Kies die plek waar die rugsteun gestoor is (die plek met die lêergids \"de.arnowelzel.android.periodical\").</string>
     <string name="restore_text">Wil U die laaste backup restoreer?\nDit sal die huidige data vervang!</string>
     <string name="restore_ok">OK</string>
     <string name="restore_cancel">Kanselleer</string>

@@ -31,11 +31,16 @@
     <string name="help_title">Aide</string>
     <string name="backup_title">Sauvegarder les données</string>
     <string name="backup_text">Voulez-vous sauvegarder les données actuelles ?\nCela remplacera la dernière sauvegarde !</string>
+    <string name="backup_selectfolder">Veuillez sélectionner où enregistrer la sauvegarde. Vous devez donner accès à l\'emplacement sélectionné, qui sera utilisé pour cette sauvegarde et toutes les sauvegardes futures.\n\nPour en savoir plus sur le fonctionnement de la sauvegarde, veuillez vous référer au menu d\'aide.</string>
     <string name="backup_ok">Oui</string>
     <string name="backup_cancel">Annuler</string>
+    <string name="backup_newfolder">Sélectionnez un nouvel emplacement</string>
+    <string name="backup_help">Aide</string>
     <string name="backup_finished">Sauvegarde effectuée</string>
+    <string name="backup_noruiyet">aucun endroit sélectionné</string>
     <string name="backup_failed">Échec de la sauvegarde !</string>
     <string name="restore_title">Restaurer les données</string>
+    <string name="restore_selectfolder">Veuillez sélectionner l\'emplacement où la sauvegarde a été enregistrée (l\'emplacement avec le dossier \"de.arnowelzel.android.periodical\").</string>
     <string name="restore_text">Voulez-vous restaurer la dernière sauvegarde ?\nCela remplacera les données actuelles !</string>
     <string name="restore_ok">Oui</string>
     <string name="restore_cancel">Annuler</string>

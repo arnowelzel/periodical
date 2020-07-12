@@ -31,11 +31,16 @@
     <string name="help_title">Nápověda</string>
     <string name="backup_title">Záloha</string>
     <string name="backup_text">Chcete zálohovat současná data?\nTím bude nahrazena minulá záloha!</string>
+    <string name="backup_selectfolder">Vyberte, kde chcete zálohu uložit. Musíte povolit přístup k vybranému místu, které bude použito pro tento a všechny budoucí zálohy.\n\nChcete-li se dozvědět více o tom, jak funguje záloha, podívejte se na nabídku nápovědy.</string>
     <string name="backup_ok">OK</string>
     <string name="backup_cancel">Zrušit</string>
+    <string name="backup_newfolder">Vybrat nové umístění</string>
+    <string name="backup_help">Nápověda</string>
     <string name="backup_finished">Záloha uložena</string>
+    <string name="backup_noruiyet">zatím není vybrána žádná poloha</string>
     <string name="backup_failed">Záloha selhala!</string>
     <string name="restore_title">Obnovit data</string>
+    <string name="restore_selectfolder">Vyberte prosím umístění, kde byla uložena záloha (umístění se složkou \"de.arnowelzel.android.periodical\").</string>
     <string name="restore_text">Chcete obnovit data z poslední zálohy?\nTím budou nahrazena současná data!</string>
     <string name="restore_ok">OK</string>
     <string name="restore_cancel">Zrušit</string>
