@@ -1,0 +1,58 @@
+<en-US>
+Two options in the details did not get saved.
+</en-US>
+
+<az-AZ>
+Detallardakı iki seçim qurtarmadı.</az-AZ>
+
+<cs-CZ>
+Dvě možnosti v detailech nebyly uloženy.
+</cs-CZ>
+
+<de-DE>
+Zwei Optionen in den Details wurden nicht gespeichert.
+</de-DE>
+
+<es-ES>
+Dos opciones en los detalles no se guardaron.
+</es-ES>
+
+<fr-FR>
+Deux options dans les détails n'ont pas été enregistrées.
+</fr-FR>
+
+<it-IT>
+Due opzioni nei dettagli non sono state salvate.
+</it-IT>
+
+<nl-NL>
+Twee opties in de details zijn niet opgeslagen.
+</nl-NL>
+
+<ru-RU>
+Два варианта в деталях не сохранились.
+</ru-RU>
+
+<af>
+Twee opsies in die besonderhede is nie gestoor nie.
+</af>
+
+<pt-BR>
+Duas opções nos detalhes não foram salvas.
+</pt-BR>
+
+<pl-PL>
+Dwie opcje w szczegółach nie zostały zapisane.
+</pl-PL>
+
+<el-GR>
+Δεν αποθηκεύτηκαν δύο επιλογές στις λεπτομέρειες.
+</el-GR>
+
+<ja-JP>
+詳細の2つのオプションが保存されませんでした。
+</ja-JP>
+
+<iw-IL>
+שתי אפשרויות בפרטים לא נשמרו.
+</iw-IL>
