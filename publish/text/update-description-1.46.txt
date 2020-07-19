@@ -3,7 +3,8 @@ Two options in the details did not get saved.
 </en-US>
 
 <az-AZ>
-Detallardakı iki seçim qurtarmadı.</az-AZ>
+Detallardakı iki seçim qurtarmadı.
+</az-AZ>
 
 <cs-CZ>
 Dvě možnosti v detailech nebyly uloženy.
