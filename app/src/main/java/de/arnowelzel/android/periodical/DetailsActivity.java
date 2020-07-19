@@ -266,7 +266,7 @@ public class DetailsActivity extends AppCompatActivity implements View.OnClickLi
                 int resId;
                 entry.symptoms.clear();
                 int num = 1;
-                while (num < 22) {
+                while (num < 24) {
                     @SuppressLint("DefaultLocale") String resName = String.format("label_details_ev%d", num);
                     resId = getResources().getIdentifier(resName, "string", packageName);
                     if (resId != 0) {
