@@ -1,0 +1,119 @@
+<en-US>
+Fixed crash for backups when the selected storage location does not allow writing data.
+
+Updated detail list.
+
+Added dark background style for navigation bar.
+</en-US>
+
+<az-AZ>
+Seçilən saxlama yeri məlumat yazmağa imkan vermədikdə ehtiyat nüsxələri üçün sabit bir qəza.
+
+Ətraflı siyahı siyahısı yeniləndi.
+
+Naviqasiya çubuğu üçün qaranlıq fon stil əlavə edildi.
+</az-AZ>
+
+<cs-CZ>
+Opraveno selhání zálohování, když vybrané umístění úložiště neumožňuje zápis dat.
+
+Aktualizovaný seznam podrobností.
+
+Přidán tmavý styl pozadí pro navigační lištu.
+</cs-CZ>
+
+<de-DE>
+Absturz für Backups behoben, wenn der ausgewählte Speicherort das Schreiben von Daten nicht zulässt.
+
+Aktualisierte Detailliste.
+
+Dunkler Hintergrundstil für Navigationsleiste hinzugefügt.
+</de-DE>
+
+<es-ES>
+Se corrigió el bloqueo de las copias de seguridad cuando la ubicación de almacenamiento seleccionada no permite escribir datos.
+
+Lista de detalles actualizada.
+
+Estilo de fondo oscuro agregado para la barra de navegación.
+</es-ES>
+
+<fr-FR>
+Correction d'un crash pour les sauvegardes lorsque l'emplacement de stockage sélectionné ne permet pas d'écrire des données.
+
+Liste détaillée mise à jour.
+
+Ajout d'un style d'arrière-plan sombre pour la barre de navigation.
+</fr-FR>
+
+<it-IT>
+Risolto crash per i backup quando la posizione di archiviazione selezionata non consente la scrittura di dati.
+
+Elenco dettagli aggiornato.
+
+Aggiunto stile di sfondo scuro per la barra di navigazione.
+</it-IT>
+
+<nl-NL>
+Crash verholpen voor back-ups wanneer de geselecteerde opslaglocatie het schrijven van gegevens niet toestaat.
+
+Bijgewerkte detaillijst.
+
+Donkere achtergrondstijl toegevoegd voor navigatiebalk.
+</nl-NL>
+
+<ru-RU>
+Исправлен сбой для резервных копий, когда выбранное место хранения не позволяет записывать данные.
+
+Обновлен подробный список.
+
+Добавлен темный стиль фона для панели навигации.
+</ru-RU>
+
+<af>
+Vaste ongeluk vir rugsteun wanneer die geselekteerde bergingsplek nie die skryf van data toelaat nie.
+
+Opgedateerde detaillys.
+
+Donker agtergrondstyl bygevoeg vir die navigasiebalk.
+</af>
+
+<pt-BR>
+Corrigida falha nos backups quando o local de armazenamento selecionado não permite a gravação de dados.
+
+Lista de detalhes atualizada.
+
+Adicionado estilo de fundo escuro para a barra de navegação.
+</pt-BR>
+
+<pl-PL>
+Naprawiono awarię kopii zapasowych, gdy wybrana lokalizacja przechowywania nie pozwala na zapisywanie danych.
+
+Zaktualizowana lista szczegółów.
+
+Dodano styl ciemnego tła dla paska nawigacji.
+</pl-PL>
+
+<el-GR>
+Διορθώθηκε σφάλμα για αντίγραφα ασφαλείας όταν η επιλεγμένη τοποθεσία αποθήκευσης δεν επιτρέπει τη σύνταξη δεδομένων.
+
+Ενημερωμένη λίστα λεπτομερειών.
+
+Προστέθηκε στυλ σκούρου φόντου για γραμμή πλοήγησης.
+</el-GR>
+
+<ja-JP>
+選択した保存場所でデータの書き込みが許可されていない場合のバックアップのクラッシュが修正されました。
+
+詳細リストを更新しました。
+
+ナビゲーションバーに暗い背景スタイルを追加しました。
+</ja-JP>
+
+<iw-IL>
+קריסה קבועה לגיבויים כאשר מיקום האחסון שנבחר אינו מאפשר כתיבת נתונים.
+
+רשימת הפרטים המעודכנת.
+
+נוסף סגנון רקע כהה לסרגל הניווט.
+</iw-IL>
