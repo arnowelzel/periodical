@@ -1146,6 +1146,11 @@ class PeriodicalDatabase {
             destinationDirectory = directory.createDirectory(destinationDirectoryName);
         }
 
+        // If the directory could not be created, stop now
+        if (null == destinationDirectory) {
+            return false;
+        }
+
         // Backup database file
         File sourceFile = new File(db.getPath());
         String destinationFileName = sourceFile.getName();

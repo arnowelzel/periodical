@@ -62,6 +62,22 @@
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp" />
     <TextView
+        android:id="@+id/label_item_mood"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="@string/label_details_mood"
+        android:textSize="14sp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp" />
+    <TextView
+        android:id="@+id/item_mood"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="18sp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp" />
+    <TextView
         android:id="@+id/label_item_symptoms"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

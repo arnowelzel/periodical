@@ -78,18 +78,22 @@ class DayEntryAdapter extends ArrayAdapter<PeriodicalDatabase.DayEntry> {
         PeriodicalDatabase.DayEntry currentEntry = entryList.get(position);
 
         String textEvents = "";
+        String textMood = "";
         String textSymptoms = "";
 
-        // Elements 0-2 are events, 2-17 are symptoms
+        // Elements 0-1 are events, 2-6 moods, 7-22 are symptoms
         int eventIds[] = {
                 1,  // Intercourse
                 18, // Contraceptive pill
                 20, // Tired
                 21, // Energized
+                22, // Sad
+                14, // Grumpiness
+                23, // Edgy
                 19, // Spotting
                 9,  // Intense bleeding
                 2,  // Cramps
-                17, // Headeache/migraine
+                17, // Headache/migraine
                 3,  // Back pain
                 4,  // Middle pain left
                 5,  // Middle pain right
@@ -100,7 +104,6 @@ class DayEntryAdapter extends ArrayAdapter<PeriodicalDatabase.DayEntry> {
                 11, // Pimples
                 12, // Bloating
                 13, // Fainting
-                14, // Grumpiness
                 15, // Nausea
                 16, // Cravings
         };
@@ -113,6 +116,9 @@ class DayEntryAdapter extends ArrayAdapter<PeriodicalDatabase.DayEntry> {
                     if (num < 2) {
                         if (!textEvents.isEmpty()) textEvents += "\n";
                         textEvents += "\u2022 " + resources.getString(resId);
+                    } else if(num > 1 && num < 7) {
+                        if (!textMood.isEmpty()) textMood += "\n";
+                        textMood += "\u2022 " + resources.getString(resId);
                     } else {
                         if (!textSymptoms.isEmpty()) textSymptoms += "\n";
                         textSymptoms += "\u2022 " + resources.getString(resId);
@@ -175,6 +181,10 @@ class DayEntryAdapter extends ArrayAdapter<PeriodicalDatabase.DayEntry> {
         view = listItem.findViewById(R.id.item_event);
         if (textEvents.isEmpty()) view.setText("\u2014");
         else view.setText(textEvents);
+
+        view = listItem.findViewById(R.id.item_mood);
+        if (textMood.isEmpty()) view.setText("\u2014");
+        else view.setText(textMood);
 
         view = listItem.findViewById(R.id.item_symptom);
         if (textSymptoms.isEmpty()) view.setText("\u2014");
