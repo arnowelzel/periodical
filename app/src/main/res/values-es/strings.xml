@@ -40,7 +40,7 @@
     <string name="backup_noruiyet">no hay ubicación seleccionada aún</string>
     <string name="backup_failed">¡Falló la copia de seguridad!</string>
     <string name="restore_title">Restaurar datos</string>
-    <string name="restore_selectfolder">Por favor, seleccione la ubicación, donde se guardó la copia de seguridad (la ubicación con la carpeta \"de.arnowelzel.android.periodical\").</string>
+    <string name="restore_selectfolder">Por favor, seleccione la ubicación donde se guardó la copia de seguridad (la ubicación con la carpeta \"de.arnowelzel.android.periodical\").</string>
     <string name="restore_text">¿Quiere restaurar la última copia de seguridad?\n¡Esto reemplazará los datos actuales!</string>
     <string name="restore_ok">Aceptar</string>
     <string name="restore_cancel">Cancelar</string>

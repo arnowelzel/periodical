@@ -31,7 +31,7 @@
     <string name="help_title">Laguntza</string>
     <string name="backup_title">Datuen babeskopia</string>
     <string name="backup_text">Uneko datuen babeskopia egin nahi duzu?\nHonek azkeneko babeskopia ordeztuko du!</string>
-    <string name="backup_selectfolder">Hautatu babeskopia non gordeko duzun. Aukeratutako kokapenari sarbidea eman behar diozu, hau egiteko eta etorkizunean segurtasun kopia guztiak erabiliko dituzu.\n\nKopresio funtzionamenduari buruz gehiago jakiteko, ikus laguntza menura.</string>
+    <string name="backup_selectfolder">Hautatu babeskopia non gorde. Hautatutako kokapenari sarbidea eman behar diozu, etorkizuneko babeskopiak egiteko ere erabiliko dena.\n\nBabeskopiei buruz gehiago jakiteko, ikus laguntza menua.</string>
     <string name="backup_ok">Ados</string>
     <string name="backup_cancel">Utzi</string>
     <string name="backup_newfolder">Hautatu kokapen berria</string>
@@ -40,7 +40,7 @@
     <string name="backup_noruiyet">oraindik ez da kokapenik aukeratu</string>
     <string name="backup_failed">Babeskopia egiteak huts egin du!</string>
     <string name="restore_title">Datuak leheneratu</string>
-    <string name="restore_selectfolder">Aukeratu babeskopia gorde den tokian (kokapena \"de.arnowelzel.android.periodical\" karpeta).</string>
+    <string name="restore_selectfolder">Hautatu babeskopia gorde den kokalekua (\"de.arnowelzel.android.periodical\" karpeta duen kokalekua).</string>
     <string name="restore_text">Azken babeskopia leheneratu nahi duzu?\nHonek uneko datuak ordeztuko ditu!</string>
     <string name="restore_ok">Ados</string>
     <string name="restore_cancel">Utzi</string>
