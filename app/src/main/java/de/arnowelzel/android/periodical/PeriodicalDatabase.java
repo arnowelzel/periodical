@@ -1130,9 +1130,6 @@ class PeriodicalDatabase {
     boolean backupToUri(Context context, Uri uri) {
         boolean result = false;
 
-        // Close the database
-        db.close();
-
         // Check if uri is accessible
         DocumentFile directory = DocumentFile.fromTreeUri(context, uri);
         if (!directory.isDirectory()) {
@@ -1159,6 +1156,10 @@ class PeriodicalDatabase {
             destinationFile.delete();
         }
         destinationFile = destinationDirectory.createFile("application/octet-stream", destinationFileName);
+
+        // Close the database
+        db.close();
+
         try {
             OutputStream destinationStream = context.getContentResolver().openOutputStream(destinationFile.getUri());
             FileInputStream sourceStream = new FileInputStream(sourceFile);
@@ -1216,9 +1217,6 @@ class PeriodicalDatabase {
     boolean restoreFromUri(Context context, Uri uri) {
         boolean result = false;
 
-        // Close the database
-        db.close();
-
         // Check if uri exists
         DocumentFile directory = DocumentFile.fromTreeUri(context, uri);
         if (!directory.isDirectory()) {
@@ -1239,6 +1237,10 @@ class PeriodicalDatabase {
         if (null == sourceFile) {
             return false;
         }
+
+        // Close the database
+        db.close();
+
         try {
             InputStream sourceStream = context.getContentResolver().openInputStream(sourceFile.getUri());
             FileOutputStream destinationStream = new FileOutputStream(destinationFile);
