@@ -88,8 +88,8 @@
     <string name="label_period">hilekoa</string>
     <string name="label_period_predicted">hilekoa iragarri da</string>
     <string name="label_ovulation">obulazioa</string>
-    <string name="asset_about">en/about.html</string>
-    <string name="asset_help">en/help.html</string>
+    <string name="asset_about">eu/about.html</string>
+    <string name="asset_help">eu/help.html</string>
     <string name="label_details_period">Hilekoa</string>
     <string name="label_details_yes">Bai</string>
     <string name="label_details_no">Ez</string>
