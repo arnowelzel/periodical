@@ -1,0 +1,89 @@
+<en-US>
+Fixed crash when trying to restore without a backup at the selected location.
+
+Added Persian translations.
+</en-US>
+
+<az-AZ>
+Seçilmiş yerdə ehtiyat olmadan bərpa etməyə çalışarkən qəza düzəldi.
+
+Farsca tərcümələr əlavə edildi.
+</az-AZ>
+
+<cs-CZ>
+Opravené selhání při pokusu o obnovení bez zálohy ve vybraném umístění.
+
+Přidány perské překlady.
+</cs-CZ>
+
+<de-DE>
+Absturz beim Wiederherstellen ohne Sicherung am ausgewählten Speicherort behoben.
+
+Persische Übersetzungen hinzugefügt.
+</de-DE>
+
+<es-ES>
+Se corrigió el bloqueo al intentar restaurar sin una copia de seguridad en la ubicación seleccionada.
+
+Añadidas traducciones al persa.
+</es-ES>
+
+<fr-FR>
+Correction d'un crash lors de la tentative de restauration sans sauvegarde à l'emplacement sélectionné.
+
+Ajout de traductions en persan.
+</fr-FR>
+
+<it-IT>
+Risolto il crash durante il tentativo di ripristino senza un backup nella posizione selezionata.
+
+Aggiunte traduzioni in persiano.
+</it-IT>
+
+<nl-NL>
+Crash opgelost bij het herstellen zonder back-up op de geselecteerde locatie.
+
+Perzische vertalingen toegevoegd.
+</nl-NL>
+
+<ru-RU>
+Исправлен сбой при попытке восстановления без резервной копии в выбранном месте.
+
+Добавлены персидские переводы.
+</ru-RU>
+
+<af>
+Vaste crash wanneer u probeer om te herstel sonder 'n rugsteun op die geselekteerde plek.
+
+Persiese vertalings bygevoeg.
+</af>
+
+<pt-BR>
+Corrigida a falha ao tentar restaurar sem um backup no local selecionado.
+
+Adicionadas traduções persas.
+</pt-BR>
+
+<pl-PL>
+Naprawiono awarię podczas próby przywrócenia bez kopii zapasowej w wybranej lokalizacji.
+
+Dodano tłumaczenia perskie.
+</pl-PL>
+
+<el-GR>
+Διορθώθηκε το σφάλμα κατά την προσπάθεια επαναφοράς χωρίς αντίγραφο ασφαλείας στην επιλεγμένη τοποθεσία.
+
+Προστέθηκαν περσικές μεταφράσεις.
+</el-GR>
+
+<ja-JP>
+選択した場所にバックアップなしで復元しようとするとクラッシュする問題を修正しました。
+
+ペルシア語の翻訳を追加しました。
+</ja-JP>
+
+<iw-IL>
+תקלה קבועה בעת ניסיון לשחזר ללא גיבוי במיקום שנבחר.
+
+נוספו תרגומים פרסיים.
+</iw-IL>

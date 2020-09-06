@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <string name="app_name">Periodical</string>
+    <string name="menuitem_help">راهنما</string>
+    <string name="menuitem_about">درباره …</string>
+    <string name="current_day">روز جاری</string>
+    <string name="menuitem_list">لیست</string>
+    <string name="menuitem_listdetails">لیست و جزئیات</string>
+    <string name="menuitem_copy">پشتیبان گیری</string>
+    <string name="menuitem_restore">بازیابی</string>
+    <string name="menuitem_options">تنظیمات</string>
+    <string name="menuitem_exit">خروج</string>
+    <string name="main_calday_su">۱ش</string>
+    <string name="main_calday_mo">۲ش</string>
+    <string name="main_calday_tu">۳ش</string>
+    <string name="main_calday_we">۴ش</string>
+    <string name="main_calday_th">۵ش</string>
+    <string name="main_calday_fr">آد</string>
+    <string name="main_calday_sa">ش</string>
+    <string name="main_calday_su_description">یکشنبه</string>
+    <string name="main_calday_mo_description">دوشنبه</string>
+    <string name="main_calday_tu_description">سه‌شنبه</string>
+    <string name="main_calday_we_description">چهارشنبه</string>
+    <string name="main_calday_th_description">پنجشنبه</string>
+    <string name="main_calday_fr_description">آدینه</string>
+    <string name="main_calday_sa_description">شنبه</string>
+    <string name="details_title">جزئیات</string>
+    <string name="list_title">لیست</string>
+    <string name="list_details_title">لیست و جزئیات</string>
+    <string name="about_title">درباره …</string>
+    <string name="help_title">راهنما</string>
+    <string name="backup_title">پشتیبان گیری داده ها</string>
+    <string name="backup_text">آیا می‌خوای از داده‌های الآن پشتیبان بگیری؟ \nاین پشتیبانی جایگزین آخرین پشتیبانی میشه!</string>
+    <string name="backup_selectfolder">لطفاً محل پشتیبان گیری رو تعیین کنید. محلی که دسترسی بهش می‌دهید پشتیبانی حاضر و پشتیبانی های آینده در اونجا ذخیره خواهند شد.\n\nبرای یادگیری بیشتر درباره چگونگی کارکرد پشتیبان گیری از قسمت راهنما در منو استفاده کنید.</string>
+    <string name="backup_ok">خب</string>
+    <string name="backup_cancel">لغو</string>
+    <string name="backup_newfolder">انتخاب محل جدید</string>
+    <string name="backup_help">راهنما</string>
+    <string name="backup_finished">پشتیبان گیری انجام شد</string>
+    <string name="backup_noruiyet">هنوز محلی رو انتخاب نکردید</string>
+    <string name="backup_failed">پشتیبان گیری انجام نشد!</string>
+    <string name="restore_title">بازیابی داده‌ها</string>
+    <string name="restore_selectfolder">لطفاً محلی رو که پشتیبانی گرفتید انتخاب کنید (محلی با پوشه \"de.arnowelzel.android.periodical\").</string>
+    <string name="restore_text">آیا می‌خواهید آخرین پشتیبانی که گرفتید بازیابی بشه؟\nاین کار باعث جایگزینی داده‌های کنونی میشه!</string>
+    <string name="restore_ok">تایید</string>
+    <string name="restore_cancel">لغو</string>
+    <string name="restore_finished">بازیابی اطلاعات انجام شد</string>
+    <string name="restore_failed">بازیابی اطلاعات ناموفق بود!</string>
+    <string name="permissions_needed">پریودیکال برای پشتیبان‌گیری یا بازیابی اونها باید به پوشه حافظه دسترسی داشته باشه.</string>
+    <string name="permissions_needed_ok">تایید</string>
+    <string name="event_periodstart">پریود شروع شده</string>
+    <string name="event_periodlength">آخرین دوره %sروز داشته</string>
+    <string name="event_ignored">طول دوره نادیده گرفته شده</string>
+    <string name="event_periodfirst">اولین ورود</string>
+    <string name="calendaraction_title">تصحیح ورودی تقویم</string>
+    <string name="calendaraction_add">این روز را به عنوان \"پریود\" علامت‌گذاری می‌کنید?</string>
+    <string name="calendaraction_remove">حذف علامت \"پریود\" برای این روز?</string>
+    <string name="calendaraction_removeperiod">حذف این پریود?</string>
+    <string name="calendaraction_ok">تایید</string>
+    <string name="calendaraction_cancel">خیر</string>
+    <string name="calendaraction_details">ویرایش جزئیات</string>
+    <string name="options_title">تنظیمات</string>
+    <string name="pref_periodlength">طول دوره پریود به صورت پیش‌فرض (روز)</string>
+    <string name="invalid_period_length">طول دوره پریود به صورت پیش‌فرض باید بین ۱ تا ۱۴ باشد!</string>
+    <string name="pref_luteallength">طول دوره لوتئال (روز)</string>
+    <string name="invalid_luteal_length">طول دوره لوتئال یا باید حداقل ۱ باشد!</string>
+    <string name="pref_startofweek">آغاز هفته</string>
+    <string-array name="list_startofweek">
+        <item>یکشنبه</item>
+        <item>دوشنبه</item>
+    </string-array>
+    <string-array name="values_startofweek">
+        <item>۰</item>
+        <item>۱</item>
+    </string-array>
+    <string name="pref_maximum_cycle_length">حداکثر طول دوره</string>
+    <string name="invalid_maximum_cycle_length">حداکثر طول دوره باید حداقل ۶۰ باشد!</string>
+    <string name="pref_direct_details">مستقیم به جزئیات برو</string>
+    <string name="pref_show_cycle">روزِ دوره رو نشون بده</string>
+    <string name="previous_month">ماه قبل</string>
+    <string name="next_month">ماه آینده</string>
+    <string name="label_average_cycle">میانگین دوره</string>
+    <string name="label_shortest_cycle">کوتاه‌ترین دوره</string>
+    <string name="label_longest_cycle">طولانی‌ترین دوره</string>
+    <string name="label_infertile">لقاح نشده</string>
+    <string name="label_fertile">لقاح یافته</string>
+    <string name="label_period_started">پریود شروع شده</string>
+    <string name="label_period">پریود</string>
+    <string name="label_period_predicted">تخمین پریود</string>
+    <string name="label_ovulation">تخمک گذاری</string>
+    <string name="asset_about">fa/about.html</string>
+    <string name="asset_help">fa/help.html</string>
+    <string name="label_details_period">پریود</string>
+    <string name="label_details_yes">تایید</string>
+    <string name="label_details_no">خیر</string>
+    <string name="label_details_intensity">شدت</string>
+    <string name="label_details_intensity1">۱</string>
+    <string name="label_details_intensity2">۲</string>
+    <string name="label_details_intensity3">۳</string>
+    <string name="label_details_intensity4">۴ (قوی)</string>
+    <string name="label_details_notes">یادداشت‌ها</string>
+    <string name="label_details_events">رویدادها</string>
+    <string name="label_details_mood">خُلق</string>
+    <string name="label_details_symptoms">نشانه‌ها</string>
+    <string name="label_details_ev1" tools:keep="@string/label_details_ev1">دخول</string>
+    <string name="label_details_ev2" tools:keep="@string/label_details_ev2">گرفتگی عضلات</string>
+    <string name="label_details_ev3" tools:keep="@string/label_details_ev3">کمردرد</string>
+    <string name="label_details_ev4" tools:keep="@string/label_details_ev4">درد میانه‌ای سمت چپ</string>
+    <string name="label_details_ev5" tools:keep="@string/label_details_ev5">درد میانه‌ای سمت راست</string>
+    <string name="label_details_ev6" tools:keep="@string/label_details_ev6">پستان درد</string>
+    <string name="label_details_ev7" tools:keep="@string/label_details_ev7">برفک</string>
+    <string name="label_details_ev8" tools:keep="@string/label_details_ev8">ترشح</string>
+    <string name="label_details_ev9" tools:keep="@string/label_details_ev9">خونریزی شدید</string>
+    <string name="label_details_ev10" tools:keep="@string/label_details_ev10">تغییر دمای بدن</string>
+    <string name="label_details_ev11" tools:keep="@string/label_details_ev11">آکنه</string>
+    <string name="label_details_ev12" tools:keep="@string/label_details_ev12">نفخ</string>
+    <string name="label_details_ev13" tools:keep="@string/label_details_ev13">ضعف</string>
+    <string name="label_details_ev14" tools:keep="@string/label_details_ev14">تندخویی</string>
+    <string name="label_details_ev15" tools:keep="@string/label_details_ev15">تهوع/استفراغ</string>
+    <string name="label_details_ev16" tools:keep="@string/label_details_ev16">ویار و هوس شدید</string>
+    <string name="label_details_ev17" tools:keep="@string/label_details_ev17">سردرد/میگرن</string>
+    <string name="label_details_ev18" tools:keep="@string/label_details_ev18">قرص جلوگیری از بارداری</string>
+    <string name="label_details_ev19" tools:keep="@string/label_details_ev19">لکه بینی</string>
+    <string name="label_details_ev20" tools:keep="@string/label_details_ev20">خسته</string>
+    <string name="label_details_ev21" tools:keep="@string/label_details_ev21">تحریک شده</string>
+    <string name="label_details_ev22" tools:keep="@string/label_details_ev22">غمگین</string>
+    <string name="label_details_ev23" tools:keep="@string/label_details_ev23">حساس</string>
+    <string name="label_period_day">پریود، روز %d</string>
+    <string name="navigation_drawer_open">بازکردن کشوی هدایت</string>
+    <string name="navigation_drawer_close">بستن کشوی هدایت</string>
+</resources>
