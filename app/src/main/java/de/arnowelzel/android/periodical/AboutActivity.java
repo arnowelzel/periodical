@@ -68,10 +68,10 @@ public class AboutActivity extends AppCompatActivity {
                         view.loadUrl("javascript:replace('version', '" + BuildConfig.VERSION_NAME + "')");
                         view.loadUrl("javascript:replace('year', '" + BuildConfig.VERSION_YEAR + "')");
                         view.loadUrl("javascript:replace('backupfolder','" + backupUriString + "')");
-                        view.loadUrl("javascript:replace('translators','Albert Kannemeyer, Sébastien Gravier, Primokorn, Valerio Bozzolan, Ingrid Spangler,\n" +
-                                "Wjatscheslaw Stoljarski, Pander, Laura Arjona Reina, Naofumi Fukue, Tomasz Terka,\n" +
-                                "Nikoletta Karasmani, Yaron Shahrabani, Inbar Gover, Turan Guliyeva, Enara Larraitz,\n" +
-                                "Rza Sharifi'");
+                        view.loadUrl("javascript:replace('translation','Albert Kannemeyer, Sébastien Gravier, Primokorn, Valerio Bozzolan, Ingrid Spangler, " +
+                                "Wjatscheslaw Stoljarski, Pander, Laura Arjona Reina, Naofumi Fukue, Tomasz Terka, " +
+                                "Nikoletta Karasmani, Yaron Shahrabani, Inbar Gover, Turan Guliyeva, Enara Larraitz, " +
+                                "Rza Sharifi')");
                     }
 
                     // Handle URLs always external links
