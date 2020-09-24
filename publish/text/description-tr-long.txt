@@ -1,0 +1,11 @@
+Bu uygulama, doğurgan günlerinizi Knaus-Ogino'ya göre hesaplar ve âdet belirtilerinizi izlemenize yardımcı olabilir.
+
+UYARI: Bu takvimi gebelikten kaçınmak için kullanmak önerilmez! Bazal vücut sıcaklığını ölçmek gibi daha doğru yöntemler bulunmaktadır.
+
+Periodical'in verisi dosyalar olarak "iç depolamada" veya eğer varsa SD kartta yedeklenebilir.
+
+Eğer başka sorularınız varsa veya diğer dillerde çeviriler için yardım etmek istiyorsanız lütfen benimle e-posta ile iletişim kurun - teşekkürler.
+
+Bu program özgür yazılımdır: Özgür Yazılım Vakfı tarafından yayımlanan GNU Genel Kamu Lisansı’nın sürüm 3 ya da (isteğinize bağlı olarak) daha sonraki sürümlerinin hükümleri altında yeniden dağıtabilir ve/veya değiştirebilirsiniz.
+
+Kaynağı (açık kaynak kodu) benim ağ sayfam üzerinden edinebilirsiniz.

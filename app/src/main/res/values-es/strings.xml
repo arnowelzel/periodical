@@ -4,8 +4,8 @@
     <string name="menuitem_help">Ayuda</string>
     <string name="menuitem_about">Acerca de …</string>
     <string name="current_day">Día actual</string>
-    <string name="menuitem_list">Listado</string>
-    <string name="menuitem_listdetails">Lista con detalles</string>
+    <string name="menuitem_list">Información</string>
+    <string name="menuitem_listdetails">Información detallada</string>
     <string name="menuitem_copy">Copia de seguridad</string>
     <string name="menuitem_restore">Restaurar</string>
     <string name="menuitem_options">Preferencias</string>
@@ -25,9 +25,9 @@
     <string name="main_calday_fr_description">Viernes</string>
     <string name="main_calday_sa_description">Sábado</string>
     <string name="details_title">Detalles</string>
-    <string name="list_title">Lista</string>
-    <string name="list_details_title">Lista con detalles</string>
-    <string name="about_title">Acerca de …</string>
+    <string name="list_title">Información</string>
+    <string name="list_details_title">Información detallada</string>
+    <string name="about_title">Acerca de…</string>
     <string name="help_title">Ayuda</string>
     <string name="backup_title">Copia de seguridad</string>
     <string name="backup_text">¿Quiere hacer copia de seguridad de los datos actuales?\n¡Esto reemplazará la última copia!</string>
@@ -100,7 +100,7 @@
     <string name="label_details_intensity4">4 (fuerte)</string>
     <string name="label_details_notes">Notas</string>
     <string name="label_details_events">Eventos</string>
-    <string name="label_details_mood">Estado animico</string>
+    <string name="label_details_mood">Estado anímico</string>
     <string name="label_details_symptoms">Síntomas</string>
     <string name="label_details_ev1" tools:keep="@string/label_details_ev1">Coito</string>
     <string name="label_details_ev2" tools:keep="@string/label_details_ev2">Calambres</string>
@@ -123,8 +123,8 @@
     <string name="label_details_ev19" tools:keep="@string/label_details_ev19">Flujo marrón</string>
     <string name="label_details_ev20" tools:keep="@string/label_details_ev20">Cansancio</string>
     <string name="label_details_ev21" tools:keep="@string/label_details_ev21">Energizada</string>
-    <string name="label_details_ev22" tools:keep="@string/label_details_ev22">Triste</string>
-    <string name="label_details_ev23" tools:keep="@string/label_details_ev23">Nervioso</string>
+    <string name="label_details_ev22" tools:keep="@string/label_details_ev22">Tristeza</string>
+    <string name="label_details_ev23" tools:keep="@string/label_details_ev23">Nervios</string>
     <string name="label_period_day">Periodo, día %d</string>
     <string name="navigation_drawer_open">Abrir la barra de navegación</string>
     <string name="navigation_drawer_close">Cerrar la barra de navegación</string>

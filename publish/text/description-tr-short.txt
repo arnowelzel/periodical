@@ -1,0 +1,1 @@
+Doğurgan günlerinizi Knaus-Ogino'ya göre hesaplayan bir Aybaşı Döngüsü takvimi.
