@@ -18,22 +18,17 @@
 
 package de.arnowelzel.android.periodical;
 
-import android.Manifest;
 import android.annotation.SuppressLint;
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.backup.BackupManager;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
 import androidx.annotation.NonNull;
 import com.google.android.material.navigation.NavigationView;
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.ActionBarDrawerToggle;
@@ -42,6 +37,8 @@ import androidx.appcompat.widget.Toolbar;
 
 import android.view.GestureDetector;
 import android.view.GestureDetector.SimpleOnGestureListener;
+import android.view.KeyEvent;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
@@ -108,7 +105,7 @@ public class MainActivityApp extends AppCompatActivity
     private static final int STORAGE_ACCESS_SELECTED_BACKUP = 6;  // Location for backup selected for backup
     private static final int STORAGE_ACCESS_SELECTED_RESTORE = 7; // Location for backup selected for restore
 
-    /* Status of the main navigartion drawer */
+    /* Status of the main navigation drawer */
     private boolean navigationDrawerActive = false;
 
     /**
@@ -137,17 +134,20 @@ public class MainActivityApp extends AppCompatActivity
         // avoid the main view to handle the swipe of the navigation drawer
         drawer.addDrawerListener(new DrawerLayout.DrawerListener() {
             @Override
-            public void onDrawerSlide(@NonNull View drawerView, float slideOffset) {
+            public void onDrawerSlide(@NonNull View drawerView, float slideOffset)
+            {
                 navigationDrawerActive = true;
             }
 
             @Override
-            public void onDrawerOpened(@NonNull View drawerView) {
+            public void onDrawerOpened(@NonNull View drawerView)
+            {
                 navigationDrawerActive = true;
             }
 
             @Override
-            public void onDrawerClosed(@NonNull View drawerView) {
+            public void onDrawerClosed(@NonNull View drawerView)
+            {
                 navigationDrawerActive = false;
             }
 
@@ -234,7 +234,35 @@ public class MainActivityApp extends AppCompatActivity
     }
 
     /**
-     * Close draw when pressing "back"
+     * Create menu
+     *
+     * @param menu
+     * @return
+     */
+    @Override
+    public boolean onCreateOptionsMenu(final Menu menu) {
+        getMenuInflater().inflate(R.menu.main, menu);
+        return true;
+    }
+
+    /**
+     * Open navigation drawer when pressing "menu"
+     */
+    @Override
+    public boolean onKeyDown(final int keyCode, final KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_MENU) {
+            DrawerLayout drawer = findViewById(R.id.drawer_layout);
+            if (!drawer.isDrawerOpen(GravityCompat.START)) {
+                drawer.openDrawer(GravityCompat.START);
+            }
+            return true;
+        } else {
+            return super.onKeyDown(keyCode, event);
+        }
+    }
+
+    /**
+     * Close navigation drawer when pressing "back"
      */
     @Override
     public void onBackPressed() {
@@ -247,7 +275,15 @@ public class MainActivityApp extends AppCompatActivity
     }
 
     /**
-     * Called when the user selects an item in the navigation drawr
+     * Handle menu selection
+     */
+    @Override
+    public boolean onOptionsItemSelected(final MenuItem item) {
+        return onNavigationItemSelected(item);
+    }
+
+    /**
+     * Handle navigation item selection
      */
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
