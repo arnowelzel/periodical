@@ -349,8 +349,7 @@ public class MainActivityApp extends AppCompatActivity
                 return true;
 
             case R.id.exit:
-                finish();
-                System.exit(0);
+                finishAndRemoveTask();
                 return true;
         }
 
