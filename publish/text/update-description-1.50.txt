@@ -1,0 +1,59 @@
+<en-US>
+Language can be changed in the app.
+</en-US>
+
+<az-AZ>
+Dil tətbiqdə dəyişdirilə bilər.
+</az-AZ>
+
+<cs-CZ>
+Jazyk lze změnit v aplikaci.
+</cs-CZ>
+
+<de-DE>
+Die Sprache kann in der App geändert werden.
+</de-DE>
+
+<es-ES>
+El idioma se puede cambiar en la aplicación.
+</es-ES>
+
+<fr-FR>
+La langue peut être modifiée dans l'application.
+</fr-FR>
+
+<it-IT>
+La lingua può essere modificata nell'app.
+</it-IT>
+
+<nl-NL>
+De taal kan in de app worden gewijzigd.
+</nl-NL>
+
+<ru-RU>
+Язык можно изменить в приложении.
+</ru-RU>
+
+<af>
+Taal kan in die app verander word.
+</af>
+
+<pt-BR>
+O idioma pode ser alterado no aplicativo.
+</pt-BR>
+
+<pl-PL>
+Język można zmienić w aplikacji.
+</pl-PL>
+
+<el-GR>
+Η γλώσσα μπορεί να αλλάξει στην εφαρμογή.
+</el-GR>
+
+<ja-JP>
+言語はアプリで変更できます。
+</ja-JP>
+
+<iw-IL>
+ניתן לשנות שפה באפליקציה.
+</iw-IL>
