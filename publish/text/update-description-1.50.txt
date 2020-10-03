@@ -1,59 +1,89 @@
 <en-US>
 Language can be changed in the app.
+
+Start of week can be set to any day.
 </en-US>
 
 <az-AZ>
 Dil tətbiqdə dəyişdirilə bilər.
+
+Həftənin başlanğıcı istənilən günə təyin edilə bilər.
 </az-AZ>
 
 <cs-CZ>
 Jazyk lze změnit v aplikaci.
+
+Začátek týdne lze nastavit na libovolný den.
 </cs-CZ>
 
 <de-DE>
 Die Sprache kann in der App geändert werden.
+
+Wochenbeginn kann auf jeden Tag eingestellt werden.
 </de-DE>
 
 <es-ES>
 El idioma se puede cambiar en la aplicación.
+
+El inicio de la semana se puede configurar en cualquier día.
 </es-ES>
 
 <fr-FR>
 La langue peut être modifiée dans l'application.
+
+Le début de la semaine peut être défini sur n'importe quel jour.
 </fr-FR>
 
 <it-IT>
 La lingua può essere modificata nell'app.
+
+L'inizio della settimana può essere impostato su qualsiasi giorno.
 </it-IT>
 
 <nl-NL>
 De taal kan in de app worden gewijzigd.
+
+Start van de week kan op elke dag worden ingesteld.
 </nl-NL>
 
 <ru-RU>
 Язык можно изменить в приложении.
+
+Начало недели можно установить на любой день.
 </ru-RU>
 
 <af>
 Taal kan in die app verander word.
+
+Die begin van die week kan op enige dag ingestel word.
 </af>
 
 <pt-BR>
 O idioma pode ser alterado no aplicativo.
+
+O início da semana pode ser definido para qualquer dia.
 </pt-BR>
 
 <pl-PL>
 Język można zmienić w aplikacji.
+
+Początek tygodnia można ustawić na dowolny dzień.
 </pl-PL>
 
 <el-GR>
 Η γλώσσα μπορεί να αλλάξει στην εφαρμογή.
+
+Η έναρξη της εβδομάδας μπορεί να ρυθμιστεί σε οποιαδήποτε ημέρα.
 </el-GR>
 
 <ja-JP>
 言語はアプリで変更できます。
+
+週の始まりは任意の日に設定できます。
 </ja-JP>
 
 <iw-IL>
 ניתן לשנות שפה באפליקציה.
+
+ניתן להגדיר את תחילת השבוע לכל יום.
 </iw-IL>
