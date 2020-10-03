@@ -29,6 +29,8 @@ import android.net.Uri;
 import android.os.Bundle;
 import androidx.annotation.NonNull;
 import com.google.android.material.navigation.NavigationView;
+import com.yariksoffice.lingver.Lingver;
+
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.ActionBarDrawerToggle;
@@ -42,6 +44,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
+import android.webkit.WebView;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ViewFlipper;
@@ -108,15 +111,41 @@ public class MainActivityApp extends AppCompatActivity
     /* Status of the main navigation drawer */
     private boolean navigationDrawerActive = false;
 
+    /* Last active local in this view */
+    private String currentLocale = "";
+
+    /* Flag for Webview fix */
+    private boolean webviewFixRequired = true;
+
+    // For unknown reasons, the very first creation of a [WebView] (either programmatically
+    // or via inflation) resets an application locale to the system default.
+    // More on that: https://issuetracker.google.com/issues/37113860
+    //
+    // The workaround is to create a webview once, destroy it and set the locale again
+    private void webviewFix() {
+        if (webviewFixRequired) {
+            webviewFixRequired = false;
+
+            Context context = getApplicationContext();
+            WebView webView = new WebView(context);
+            webView.destroy();
+            Lingver lingver = Lingver.getInstance();
+            lingver.setLocale(context, lingver.getLocale());
+        }
+    }
+
     /**
      * Called when activity starts
      */
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         final Context context = getApplicationContext();
         assert context != null;
+
+        // Get current locale
+        PreferenceUtils preferenceUtils = new PreferenceUtils(this);
+        currentLocale = preferenceUtils.getString("locale", "system");
 
         // Setup main view with navigation drawer
         setContentView(R.layout.activity_main);
@@ -321,6 +350,7 @@ public class MainActivityApp extends AppCompatActivity
 
             case R.id.exit:
                 finish();
+                System.exit(0);
                 return true;
         }
 
@@ -331,6 +361,7 @@ public class MainActivityApp extends AppCompatActivity
      * Handler for "Help" menu action
      */
     private void showHelp() {
+        webviewFix();
         startActivityForResult(
                 new Intent(MainActivityApp.this, HelpActivity.class), HELP_CLOSED);
     }
@@ -339,6 +370,7 @@ public class MainActivityApp extends AppCompatActivity
      * Handler for "About" menu action
      */
     private void showAbout() {
+        webviewFix();
         startActivityForResult(
                 new Intent(MainActivityApp.this, AboutActivity.class), ABOUT_CLOSED);
     }
@@ -890,6 +922,8 @@ public class MainActivityApp extends AppCompatActivity
      * Handler of activity results (detail list, options)
      */
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
         Uri storageUri = null;
 
         switch (requestCode) {
@@ -908,8 +942,15 @@ public class MainActivityApp extends AppCompatActivity
 
             // Options modified
             case SET_OPTIONS:
-                databaseChanged();
-                calendarUpdate();
+                PreferenceUtils preferenceUtils = new PreferenceUtils(this);
+                String locale = preferenceUtils.getString("locale", "system");
+                if(currentLocale.equals(locale)) {
+                    databaseChanged();
+                    calendarUpdate();
+                } else {
+                    currentLocale = locale;
+                    this.recreate();
+                }
                 break;
 
             // Details closed

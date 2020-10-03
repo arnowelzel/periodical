@@ -60,6 +60,45 @@
     <string name="calendaraction_cancel">No</string>
     <string name="calendaraction_details">Edit details</string>
     <string name="options_title">Preferences</string>
+    <string name="pref_locale">Language</string>
+    <string-array name="list_locales">
+        <item>Default</item>
+        <item>Afrikaans</item>
+        <item>Azerbaijani</item>
+        <item>Basque</item>
+        <item>Czech</item>
+        <item>Dutch</item>
+        <item>French</item>
+        <item>German</item>
+        <item>Greek</item>
+        <item>Hebrew</item>
+        <item>Italian</item>
+        <item>Japanese</item>
+        <item>Persian</item>
+        <item>Polish</item>
+        <item>Portuguese in Brazil</item>
+        <item>Russian</item>
+        <item>Turkish</item>
+    </string-array>
+    <string-array name="values_locales">
+        <item>system</item>
+        <item>af</item>
+        <item>az</item>
+        <item>eu</item>
+        <item>cs</item>
+        <item>nl</item>
+        <item>fr</item>
+        <item>de</item>
+        <item>el</item>
+        <item>iw</item>
+        <item>it</item>
+        <item>ja</item>
+        <item>fa</item>
+        <item>pl</item>
+        <item>pt-rBR</item>
+        <item>ru</item>
+        <item>tr</item>
+    </string-array>
     <string name="pref_periodlength">Default length of period (days)</string>
     <string name="invalid_period_length">The default period length must be between 1 and 14!</string>
     <string name="pref_luteallength">Luteal phase length (days)</string>

@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <ListPreference
+        android:title="@string/pref_locale"
+        android:defaultValue="0"
+        android:key="locale"
+        android:entries="@array/list_locales"
+        android:entryValues="@array/values_locales" />
     <EditTextPreference
             android:title="@string/pref_periodlength"
             android:defaultValue="4"

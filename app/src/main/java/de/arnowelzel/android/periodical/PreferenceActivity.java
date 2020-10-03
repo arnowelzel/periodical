@@ -18,7 +18,9 @@
 
 package de.arnowelzel.android.periodical;
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.EditTextPreference;
@@ -29,11 +31,14 @@ import androidx.appcompat.app.ActionBar;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import com.yariksoffice.lingver.Lingver;
+
 /**
  * Activity to handle the "Preferences" command
  */
 public class PreferenceActivity extends AppCompatPreferenceActivity implements SharedPreferences.OnSharedPreferenceChangeListener {
     private PeriodicalDatabase dbMain;
+    private boolean localeChanged = false;
 
     /**
      * Called when activity starts
@@ -150,7 +155,7 @@ public class PreferenceActivity extends AppCompatPreferenceActivity implements S
     protected void onPause() {
         super.onPause();
 
-        // Unregister the listener whenever a key changes
+        // Unregister the listener for key changes
         getPreferenceScreen().getSharedPreferences()
                 .unregisterOnSharedPreferenceChangeListener(this);
     }
@@ -165,8 +170,18 @@ public class PreferenceActivity extends AppCompatPreferenceActivity implements S
 
         updatePrefSummary(pref);
 
-        // Store setting to database
+        // Store setting to database if needed (except locale setting)
         switch (key) {
+            case "locale":
+                localeChanged = true;
+                String locale = preferenceUtils.getString(key, "system");
+                if (locale.equals("system")) {
+                    Lingver.getInstance().setFollowSystemLocale(this);
+                } else {
+                    Lingver.getInstance().setLocale(this, locale);
+                }
+                this.recreate();
+                break;
             case "period_length":
                 dbMain.setOption(key, preferenceUtils.getInt(key, dbMain.DEFAULT_PERIOD_LENGTH));
                 break;
