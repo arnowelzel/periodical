@@ -107,10 +107,20 @@
     <string-array name="list_startofweek">
         <item>Sunday</item>
         <item>Monday</item>
+        <item>Tuesday</item>
+        <item>Wednesday</item>
+        <item>Thursday</item>
+        <item>Friday</item>
+        <item>Saturday</item>
     </string-array>
     <string-array name="values_startofweek">
         <item>0</item>
         <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
     </string-array>
     <string name="pref_maximum_cycle_length">Maximum cycle length</string>
     <string name="invalid_maximum_cycle_length">The maximum cycle length must be at least 60!</string>

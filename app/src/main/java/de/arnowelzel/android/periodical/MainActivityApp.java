@@ -419,17 +419,37 @@ public class MainActivityApp extends AppCompatActivity
         PreferenceUtils preferences = new PreferenceUtils(context);
 
         // Set weekday labels depending on selected start of week
-        int startofweek = preferences.getInt("startofweek", 0);
-        if (startofweek == 0) {
-            findViewById(R.id.rowcaldays0).setVisibility(View.VISIBLE);
-            findViewById(R.id.rowcaldays0_2).setVisibility(View.VISIBLE);
-            findViewById(R.id.rowcaldays1).setVisibility(View.GONE);
-            findViewById(R.id.rowcaldays1_2).setVisibility(View.GONE);
-        } else {
-            findViewById(R.id.rowcaldays0).setVisibility(View.GONE);
-            findViewById(R.id.rowcaldays0_2).setVisibility(View.GONE);
-            findViewById(R.id.rowcaldays1).setVisibility(View.VISIBLE);
-            findViewById(R.id.rowcaldays1_2).setVisibility(View.VISIBLE);
+        int startOfWeek = preferences.getInt("startofweek", 0);
+        int column = 0;
+        int dayIndex = startOfWeek;
+        int dayLabels[] = {
+                R.string.main_calday_su,
+                R.string.main_calday_mo,
+                R.string.main_calday_tu,
+                R.string.main_calday_we,
+                R.string.main_calday_th,
+                R.string.main_calday_fr,
+                R.string.main_calday_sa
+        };
+        int dayIds[][] = {
+                { R.id.daylabel0_0, R.id.daylabel1_0},
+                { R.id.daylabel0_1, R.id.daylabel1_1},
+                { R.id.daylabel0_2, R.id.daylabel1_2},
+                { R.id.daylabel0_3, R.id.daylabel1_3},
+                { R.id.daylabel0_4, R.id.daylabel1_4},
+                { R.id.daylabel0_5, R.id.daylabel1_5},
+                { R.id.daylabel0_6, R.id.daylabel1_6}
+        };
+        while (column<7) {
+            TextView view1 = findViewById(dayIds[column][0]);
+            TextView view2 = findViewById(dayIds[column][1]);
+            view1.setText(dayLabels[dayIndex]);
+            view2.setText(dayLabels[dayIndex]);
+            column++;
+            dayIndex++;
+            if (dayIndex>6) {
+                dayIndex = 0;
+            }
         }
 
         // Show day of cycle?
@@ -455,12 +475,9 @@ public class MainActivityApp extends AppCompatActivity
         firstDayOfWeek = cal.get(Calendar.DAY_OF_WEEK);
         int daysCount = cal.getActualMaximum(Calendar.DAY_OF_MONTH);
 
-        // If the week should start on monday, adjust the first day of the month,
-        // so every day moves one position to the left and sunday gets to the end
-        if (startofweek == 1) {
-            firstDayOfWeek--;
-            if (firstDayOfWeek == 0) firstDayOfWeek = 7;
-        }
+        // Adjust first day of week to selected start day of week
+        firstDayOfWeek -= startOfWeek;
+        if (firstDayOfWeek <= 0) firstDayOfWeek += 7;
 
         GregorianCalendar calToday = new GregorianCalendar();
         int dayToday = calToday.get(GregorianCalendar.DATE);

@@ -1297,8 +1297,9 @@ class PeriodicalDatabase {
         Integer period_length = getOption("period_length", DEFAULT_PERIOD_LENGTH);
         Integer luteal_length = getOption("luteal_length", DEFAULT_LUTEAL_LENGTH);
         Integer startofweek = getOption("startofweek", DEFAULT_START_OF_WEEK);
-        if (startofweek != DEFAULT_START_OF_WEEK && startofweek != 1)
+        if (startofweek < 0 && startofweek > 6) {
             startofweek = DEFAULT_START_OF_WEEK;
+        }
         Integer maximum_cycle_length = getOption("maximum_cycle_length", DEFAULT_CYCLE_LENGTH);
         boolean direct_details = getOption("direct_details", DEFAULT_DIRECT_DETAILS);
         boolean show_cycle = getOption("show_cycle", DEFAULT_SHOW_CYCLE);

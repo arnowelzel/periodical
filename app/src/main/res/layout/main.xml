@@ -61,7 +61,6 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:text=""
                 android:textColor="#ffffffff"
                 android:textSize="18sp"
                 android:textStyle="bold" />
@@ -88,136 +87,64 @@
                     android:orientation="horizontal">
 
                     <TextView
+                        android:id="@+id/daylabel0_0"
                         android:layout_height="fill_parent"
                         android:contentDescription="@string/main_calday_su_description"
                         android:gravity="center"
-                        android:text="@string/main_calday_su"
                         android:textColor="#ffffffff"
                         android:textSize="18sp"
                         android:textStyle="bold" />
 
                     <TextView
+                        android:id="@+id/daylabel0_1"
                         android:layout_height="fill_parent"
                         android:contentDescription="@string/main_calday_mo_description"
                         android:gravity="center"
-                        android:text="@string/main_calday_mo"
                         android:textColor="#ffffffff"
                         android:textSize="18sp"
                         android:textStyle="bold" />
 
                     <TextView
+                        android:id="@+id/daylabel0_2"
                         android:layout_height="fill_parent"
                         android:contentDescription="@string/main_calday_tu_description"
                         android:gravity="center"
-                        android:text="@string/main_calday_tu"
                         android:textColor="#ffffffff"
                         android:textSize="18sp"
                         android:textStyle="bold" />
 
                     <TextView
+                        android:id="@+id/daylabel0_3"
                         android:layout_height="fill_parent"
                         android:contentDescription="@string/main_calday_we_description"
                         android:gravity="center"
-                        android:text="@string/main_calday_we"
                         android:textColor="#ffffffff"
                         android:textSize="18sp"
                         android:textStyle="bold" />
 
                     <TextView
+                        android:id="@+id/daylabel0_4"
                         android:layout_height="fill_parent"
                         android:contentDescription="@string/main_calday_th_description"
                         android:gravity="center"
-                        android:text="@string/main_calday_th"
                         android:textColor="#ffffffff"
                         android:textSize="18sp"
                         android:textStyle="bold" />
 
                     <TextView
+                        android:id="@+id/daylabel0_5"
                         android:layout_height="fill_parent"
                         android:contentDescription="@string/main_calday_fr_description"
                         android:gravity="center"
-                        android:text="@string/main_calday_fr"
                         android:textColor="#ffffffff"
                         android:textSize="18sp"
                         android:textStyle="bold" />
 
                     <TextView
+                        android:id="@+id/daylabel0_6"
                         android:layout_height="fill_parent"
                         android:contentDescription="@string/main_calday_sa_description"
                         android:gravity="center"
-                        android:text="@string/main_calday_sa"
-                        android:textColor="#ffffffff"
-                        android:textSize="18sp"
-                        android:textStyle="bold" />
-                </TableRow>
-
-                <TableRow
-                    android:id="@+id/rowcaldays1"
-                    android:layout_width="fill_parent"
-                    android:layout_height="fill_parent"
-                    android:layout_weight="0.6"
-                    android:orientation="horizontal"
-                    android:visibility="gone">
-
-                    <TextView
-                        android:layout_height="fill_parent"
-                        android:contentDescription="@string/main_calday_mo_description"
-                        android:gravity="center"
-                        android:text="@string/main_calday_mo"
-                        android:textColor="#ffffffff"
-                        android:textSize="18sp"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:layout_height="fill_parent"
-                        android:contentDescription="@string/main_calday_tu_description"
-                        android:gravity="center"
-                        android:text="@string/main_calday_tu"
-                        android:textColor="#ffffffff"
-                        android:textSize="18sp"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:layout_height="fill_parent"
-                        android:contentDescription="@string/main_calday_we_description"
-                        android:gravity="center"
-                        android:text="@string/main_calday_we"
-                        android:textColor="#ffffffff"
-                        android:textSize="18sp"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:layout_height="fill_parent"
-                        android:contentDescription="@string/main_calday_th_description"
-                        android:gravity="center"
-                        android:text="@string/main_calday_th"
-                        android:textColor="#ffffffff"
-                        android:textSize="18sp"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:layout_height="fill_parent"
-                        android:contentDescription="@string/main_calday_fr_description"
-                        android:gravity="center"
-                        android:text="@string/main_calday_fr"
-                        android:textColor="#ffffffff"
-                        android:textSize="18sp"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:layout_height="fill_parent"
-                        android:contentDescription="@string/main_calday_sa_description"
-                        android:gravity="center"
-                        android:text="@string/main_calday_sa"
-                        android:textColor="#ffffffff"
-                        android:textSize="18sp"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:layout_height="fill_parent"
-                        android:contentDescription="@string/main_calday_su_description"
-                        android:gravity="center"
-                        android:text="@string/main_calday_su"
                         android:textColor="#ffffffff"
                         android:textSize="18sp"
                         android:textStyle="bold" />
@@ -658,143 +585,71 @@
                 android:stretchColumns="*">
 
                 <TableRow
-                    android:id="@+id/rowcaldays0_2"
+                    android:id="@+id/rowcaldays1"
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
                     android:layout_weight="0.6"
                     android:orientation="horizontal">
 
                     <TextView
-                        android:layout_height="fill_parent"
-                        android:contentDescription="@string/main_calday_su_description"
-                        android:gravity="center"
-                        android:text="@string/main_calday_su"
-                        android:textColor="#ffffffff"
-                        android:textSize="18sp"
-                        android:textStyle="bold" />
-
-                    <TextView
+                        android:id="@+id/daylabel1_0"
                         android:layout_height="fill_parent"
                         android:contentDescription="@string/main_calday_mo_description"
                         android:gravity="center"
-                        android:text="@string/main_calday_mo"
                         android:textColor="#ffffffff"
                         android:textSize="18sp"
                         android:textStyle="bold" />
 
                     <TextView
+                        android:id="@+id/daylabel1_1"
                         android:layout_height="fill_parent"
                         android:contentDescription="@string/main_calday_tu_description"
                         android:gravity="center"
-                        android:text="@string/main_calday_tu"
                         android:textColor="#ffffffff"
                         android:textSize="18sp"
                         android:textStyle="bold" />
 
                     <TextView
+                        android:id="@+id/daylabel1_2"
                         android:layout_height="fill_parent"
                         android:contentDescription="@string/main_calday_we_description"
                         android:gravity="center"
-                        android:text="@string/main_calday_we"
                         android:textColor="#ffffffff"
                         android:textSize="18sp"
                         android:textStyle="bold" />
 
                     <TextView
+                        android:id="@+id/daylabel1_3"
                         android:layout_height="fill_parent"
                         android:contentDescription="@string/main_calday_th_description"
                         android:gravity="center"
-                        android:text="@string/main_calday_th"
                         android:textColor="#ffffffff"
                         android:textSize="18sp"
                         android:textStyle="bold" />
 
                     <TextView
+                        android:id="@+id/daylabel1_4"
                         android:layout_height="fill_parent"
                         android:contentDescription="@string/main_calday_fr_description"
                         android:gravity="center"
-                        android:text="@string/main_calday_fr"
                         android:textColor="#ffffffff"
                         android:textSize="18sp"
                         android:textStyle="bold" />
 
                     <TextView
+                        android:id="@+id/daylabel1_5"
                         android:layout_height="fill_parent"
                         android:contentDescription="@string/main_calday_sa_description"
                         android:gravity="center"
-                        android:text="@string/main_calday_sa"
-                        android:textColor="#ffffffff"
-                        android:textSize="18sp"
-                        android:textStyle="bold" />
-                </TableRow>
-
-                <TableRow
-                    android:id="@+id/rowcaldays1_2"
-                    android:layout_width="fill_parent"
-                    android:layout_height="fill_parent"
-                    android:layout_weight="0.6"
-                    android:orientation="horizontal"
-                    android:visibility="gone">
-
-                    <TextView
-                        android:layout_height="fill_parent"
-                        android:contentDescription="@string/main_calday_mo_description"
-                        android:gravity="center"
-                        android:text="@string/main_calday_mo"
                         android:textColor="#ffffffff"
                         android:textSize="18sp"
                         android:textStyle="bold" />
 
                     <TextView
-                        android:layout_height="fill_parent"
-                        android:contentDescription="@string/main_calday_tu_description"
-                        android:gravity="center"
-                        android:text="@string/main_calday_tu"
-                        android:textColor="#ffffffff"
-                        android:textSize="18sp"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:layout_height="fill_parent"
-                        android:contentDescription="@string/main_calday_we_description"
-                        android:gravity="center"
-                        android:text="@string/main_calday_we"
-                        android:textColor="#ffffffff"
-                        android:textSize="18sp"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:layout_height="fill_parent"
-                        android:contentDescription="@string/main_calday_th_description"
-                        android:gravity="center"
-                        android:text="@string/main_calday_th"
-                        android:textColor="#ffffffff"
-                        android:textSize="18sp"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:layout_height="fill_parent"
-                        android:contentDescription="@string/main_calday_fr_description"
-                        android:gravity="center"
-                        android:text="@string/main_calday_fr"
-                        android:textColor="#ffffffff"
-                        android:textSize="18sp"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:layout_height="fill_parent"
-                        android:contentDescription="@string/main_calday_sa_description"
-                        android:gravity="center"
-                        android:text="@string/main_calday_sa"
-                        android:textColor="#ffffffff"
-                        android:textSize="18sp"
-                        android:textStyle="bold" />
-
-                    <TextView
+                        android:id="@+id/daylabel1_6"
                         android:layout_height="fill_parent"
                         android:contentDescription="@string/main_calday_su_description"
                         android:gravity="center"
-                        android:text="@string/main_calday_su"
                         android:textColor="#ffffffff"
                         android:textSize="18sp"
                         android:textStyle="bold" />
