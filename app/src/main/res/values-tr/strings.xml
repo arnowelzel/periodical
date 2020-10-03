@@ -60,6 +60,45 @@
     <string name="calendaraction_cancel">Hayır</string>
     <string name="calendaraction_details">Ayrıntıları düzenle</string>
     <string name="options_title">Ayarlar</string>
+    <string name="pref_locale">Dil</string>
+    <string-array name="list_locales">
+        <item>Standart</item>
+        <item>Afrikaans</item>
+        <item>Azerbaycanca</item>
+        <item>Bask</item>
+        <item>Çekçe</item>
+        <item>Flemenkçe</item>
+        <item>Fransız</item>
+        <item>Almanca</item>
+        <item>Yunanca</item>
+        <item>İbranice</item>
+        <item>İtalyanca</item>
+        <item>Japonca</item>
+        <item>Farsça</item>
+        <item>Polonya</item>
+        <item>Portekiz Brezilyası</item>
+        <item>Rusça</item>
+        <item>Türkçe</item>
+    </string-array>
+    <string-array name="values_locales">
+        <item comment="Used as a value for language preference - do not translate but only use this value is it is!">system</item>
+        <item comment="Used as a value for language preference - do not translate but only use this value is it is!">af</item>
+        <item comment="Used as a value for language preference - do not translate but only use this value is it is!">az</item>
+        <item comment="Used as a value for language preference - do not translate but only use this value is it is!">eu</item>
+        <item comment="Used as a value for language preference - do not translate but only use this value is it is!">cs</item>
+        <item comment="Used as a value for language preference - do not translate but only use this value is it is!">nl</item>
+        <item comment="Used as a value for language preference - do not translate but only use this value is it is!">fr</item>
+        <item comment="Used as a value for language preference - do not translate but only use this value is it is!">de</item>
+        <item comment="Used as a value for language preference - do not translate but only use this value is it is!">el</item>
+        <item comment="Used as a value for language preference - do not translate but only use this value is it is!">iw</item>
+        <item comment="Used as a value for language preference - do not translate but only use this value is it is!">it</item>
+        <item comment="Used as a value for language preference - do not translate but only use this value is it is!">ja</item>
+        <item comment="Used as a value for language preference - do not translate but only use this value is it is!">fa</item>
+        <item comment="Used as a value for language preference - do not translate but only use this value is it is!">pl</item>
+        <item comment="Used as a value for language preference - do not translate but only use this value is it is!">pt-rBR</item>
+        <item comment="Used as a value for language preference - do not translate but only use this value is it is!">ru</item>
+        <item comment="Used as a value for language preference - do not translate but only use this value is it is!">tr</item>
+    </string-array>
     <string name="pref_periodlength">Âdet dönemi için varsayılan uzunluk (gün)</string>
     <string name="invalid_period_length">Varsayılan âdet dönemi uzunluğu 1 ile 14 arasında olmalı!</string>
     <string name="pref_luteallength">Luteal faz uzunluğu (gün)</string>

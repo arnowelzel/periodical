@@ -60,6 +60,45 @@
     <string name="calendaraction_cancel">Non</string>
     <string name="calendaraction_details">Modifier les détails</string>
     <string name="options_title">Paramètres</string>
+    <string name="pref_locale">Langue</string>
+    <string-array name="list_locales">
+        <item>Normale</item>
+        <item>Afrikaans</item>
+        <item>Azerbaïdjan</item>
+        <item>Basque</item>
+        <item>Tchèque</item>
+        <item>Néerlandaise</item>
+        <item>Français</item>
+        <item>Allemand</item>
+        <item>Grecque</item>
+        <item>Hébreux</item>
+        <item>Italienne</item>
+        <item>Japonais</item>
+        <item>Persique</item>
+        <item>Polonaise</item>
+        <item>Portugais du Brésil</item>
+        <item>Russe</item>
+        <item>Turque</item>
+    </string-array>
+    <string-array name="values_locales">
+        <item comment="Used as a value for language preference - do not translate but only use this value is it is!">system</item>
+        <item comment="Used as a value for language preference - do not translate but only use this value is it is!">af</item>
+        <item comment="Used as a value for language preference - do not translate but only use this value is it is!">az</item>
+        <item comment="Used as a value for language preference - do not translate but only use this value is it is!">eu</item>
+        <item comment="Used as a value for language preference - do not translate but only use this value is it is!">cs</item>
+        <item comment="Used as a value for language preference - do not translate but only use this value is it is!">nl</item>
+        <item comment="Used as a value for language preference - do not translate but only use this value is it is!">fr</item>
+        <item comment="Used as a value for language preference - do not translate but only use this value is it is!">de</item>
+        <item comment="Used as a value for language preference - do not translate but only use this value is it is!">el</item>
+        <item comment="Used as a value for language preference - do not translate but only use this value is it is!">iw</item>
+        <item comment="Used as a value for language preference - do not translate but only use this value is it is!">it</item>
+        <item comment="Used as a value for language preference - do not translate but only use this value is it is!">ja</item>
+        <item comment="Used as a value for language preference - do not translate but only use this value is it is!">fa</item>
+        <item comment="Used as a value for language preference - do not translate but only use this value is it is!">pl</item>
+        <item comment="Used as a value for language preference - do not translate but only use this value is it is!">pt-rBR</item>
+        <item comment="Used as a value for language preference - do not translate but only use this value is it is!">ru</item>
+        <item comment="Used as a value for language preference - do not translate but only use this value is it is!">tr</item>
+    </string-array>
     <string name="pref_periodlength">Durée par défaut des règles (jours)</string>
     <string name="invalid_period_length">La durée par défaut des règles doit être comprise entre 1 et 14 !</string>
     <string name="pref_luteallength">Durée de la phase lutéale (jours)</string>

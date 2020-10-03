@@ -60,6 +60,45 @@
     <string name="calendaraction_cancel">Não</string>
     <string name="calendaraction_details">Editar detalhes</string>
     <string name="options_title">Preferências</string>
+    <string name="pref_locale">Língua</string>
+    <string-array name="list_locales">
+        <item>Padrão</item>
+        <item>Afrikaans</item>
+        <item>Azerbaijano</item>
+        <item>Basco</item>
+        <item>Tcheco</item>
+        <item>Holandês</item>
+        <item>Francês</item>
+        <item>Alemão</item>
+        <item>Grego</item>
+        <item>Hebraico</item>
+        <item>Italiano</item>
+        <item>Japonês</item>
+        <item>Persa</item>
+        <item>Polonês</item>
+        <item>Português do Brasil</item>
+        <item>Russo</item>
+        <item>Turco</item>
+    </string-array>
+    <string-array name="values_locales">
+        <item comment="Used as a value for language preference - do not translate but only use this value is it is!">system</item>
+        <item comment="Used as a value for language preference - do not translate but only use this value is it is!">af</item>
+        <item comment="Used as a value for language preference - do not translate but only use this value is it is!">az</item>
+        <item comment="Used as a value for language preference - do not translate but only use this value is it is!">eu</item>
+        <item comment="Used as a value for language preference - do not translate but only use this value is it is!">cs</item>
+        <item comment="Used as a value for language preference - do not translate but only use this value is it is!">nl</item>
+        <item comment="Used as a value for language preference - do not translate but only use this value is it is!">fr</item>
+        <item comment="Used as a value for language preference - do not translate but only use this value is it is!">de</item>
+        <item comment="Used as a value for language preference - do not translate but only use this value is it is!">el</item>
+        <item comment="Used as a value for language preference - do not translate but only use this value is it is!">iw</item>
+        <item comment="Used as a value for language preference - do not translate but only use this value is it is!">it</item>
+        <item comment="Used as a value for language preference - do not translate but only use this value is it is!">ja</item>
+        <item comment="Used as a value for language preference - do not translate but only use this value is it is!">fa</item>
+        <item comment="Used as a value for language preference - do not translate but only use this value is it is!">pl</item>
+        <item comment="Used as a value for language preference - do not translate but only use this value is it is!">pt-rBR</item>
+        <item comment="Used as a value for language preference - do not translate but only use this value is it is!">ru</item>
+        <item comment="Used as a value for language preference - do not translate but only use this value is it is!">tr</item>
+    </string-array>
     <string name="pref_periodlength">Duração padrão da menstruação (dias)</string>
     <string name="invalid_period_length">A duração padrão deve estar entre 1 e 14!</string>
     <string name="pref_luteallength">Duração da fase luteal (dias)</string>

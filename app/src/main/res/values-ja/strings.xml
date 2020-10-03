@@ -60,6 +60,45 @@
     <string name="calendaraction_cancel">いいえ</string>
     <string name="calendaraction_details">詳細の編集</string>
     <string name="options_title">設定</string>
+    <string name="pref_locale">言語</string>
+    <string-array name="list_locales">
+        <item>デフォルト</item>
+        <item>アフリカーンス語</item>
+        <item>アゼルバイジャン語</item>
+        <item>バスク語</item>
+        <item>チェコ語</item>
+        <item>オランダ語</item>
+        <item>フランス語</item>
+        <item>ドイツ語</item>
+        <item>ギリシャ語</item>
+        <item>ヘブライ語</item>
+        <item>イタリア語</item>
+        <item>日本語</item>
+        <item>ペルシャ語</item>
+        <item>ポーランド語</item>
+        <item>ブラジルのポルトガル語</item>
+        <item>Russian</item>
+        <item>トルコ語</item>
+    </string-array>
+    <string-array name="values_locales">
+        <item comment="Used as a value for language preference - do not translate but only use this value is it is!">system</item>
+        <item comment="Used as a value for language preference - do not translate but only use this value is it is!">af</item>
+        <item comment="Used as a value for language preference - do not translate but only use this value is it is!">az</item>
+        <item comment="Used as a value for language preference - do not translate but only use this value is it is!">eu</item>
+        <item comment="Used as a value for language preference - do not translate but only use this value is it is!">cs</item>
+        <item comment="Used as a value for language preference - do not translate but only use this value is it is!">nl</item>
+        <item comment="Used as a value for language preference - do not translate but only use this value is it is!">fr</item>
+        <item comment="Used as a value for language preference - do not translate but only use this value is it is!">de</item>
+        <item comment="Used as a value for language preference - do not translate but only use this value is it is!">el</item>
+        <item comment="Used as a value for language preference - do not translate but only use this value is it is!">iw</item>
+        <item comment="Used as a value for language preference - do not translate but only use this value is it is!">it</item>
+        <item comment="Used as a value for language preference - do not translate but only use this value is it is!">ja</item>
+        <item comment="Used as a value for language preference - do not translate but only use this value is it is!">fa</item>
+        <item comment="Used as a value for language preference - do not translate but only use this value is it is!">pl</item>
+        <item comment="Used as a value for language preference - do not translate but only use this value is it is!">pt-rBR</item>
+        <item comment="Used as a value for language preference - do not translate but only use this value is it is!">ru</item>
+        <item comment="Used as a value for language preference - do not translate but only use this value is it is!">tr</item>
+    </string-array>
     <string name="pref_periodlength">デフォルトの月経期 (日)</string>
     <string name="invalid_period_length">デフォルトの月経期は 1 ～ 14 の間にする必要があります!</string>
     <string name="pref_luteallength">黄体期 (日)</string>

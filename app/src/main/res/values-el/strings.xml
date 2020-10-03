@@ -60,6 +60,45 @@
     <string name="calendaraction_cancel">Όχι</string>
     <string name="calendaraction_details">Επεξεργασία λεπτομερειών</string>
     <string name="options_title">Προτιμήσεις</string>
+    <string name="pref_locale">Γλώσσα</string>
+    <string-array name="list_locales">
+        <item>Προκαθορισμένο</item>
+        <item>Αφρικάανς</item>
+        <item>Αζερικά</item>
+        <item>Βασκικά</item>
+        <item>Τσέχος</item>
+        <item>Ολλανδικά</item>
+        <item>Γαλλική γλώσσα</item>
+        <item>Γερμανός</item>
+        <item>Ελληνικά</item>
+        <item>Εβραϊκά</item>
+        <item>Ιταλικά</item>
+        <item>Ιαπωνικά</item>
+        <item>Περσικά</item>
+        <item>Πολωνικά</item>
+        <item>Πορτογαλικά Βραζιλιάνικα</item>
+        <item>Ρωσικά</item>
+        <item>Τουρκικά</item>
+    </string-array>
+    <string-array name="values_locales">
+        <item comment="Used as a value for language preference - do not translate but only use this value is it is!">system</item>
+        <item comment="Used as a value for language preference - do not translate but only use this value is it is!">af</item>
+        <item comment="Used as a value for language preference - do not translate but only use this value is it is!">az</item>
+        <item comment="Used as a value for language preference - do not translate but only use this value is it is!">eu</item>
+        <item comment="Used as a value for language preference - do not translate but only use this value is it is!">cs</item>
+        <item comment="Used as a value for language preference - do not translate but only use this value is it is!">nl</item>
+        <item comment="Used as a value for language preference - do not translate but only use this value is it is!">fr</item>
+        <item comment="Used as a value for language preference - do not translate but only use this value is it is!">de</item>
+        <item comment="Used as a value for language preference - do not translate but only use this value is it is!">el</item>
+        <item comment="Used as a value for language preference - do not translate but only use this value is it is!">iw</item>
+        <item comment="Used as a value for language preference - do not translate but only use this value is it is!">it</item>
+        <item comment="Used as a value for language preference - do not translate but only use this value is it is!">ja</item>
+        <item comment="Used as a value for language preference - do not translate but only use this value is it is!">fa</item>
+        <item comment="Used as a value for language preference - do not translate but only use this value is it is!">pl</item>
+        <item comment="Used as a value for language preference - do not translate but only use this value is it is!">pt-rBR</item>
+        <item comment="Used as a value for language preference - do not translate but only use this value is it is!">ru</item>
+        <item comment="Used as a value for language preference - do not translate but only use this value is it is!">tr</item>
+    </string-array>
     <string name="pref_periodlength">Μήκος πλήρους περιόδου (ημέρες)</string>
     <string name="invalid_period_length">Το προεπιλεγμένο μήκος περιόδου πρέπει να είναι μεταξύ 1 και 14!</string>
     <string name="pref_luteallength">Μήκος ωχρινικής φάσης (ημέρες)</string>
