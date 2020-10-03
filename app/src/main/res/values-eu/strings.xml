@@ -81,23 +81,23 @@
         <item>Turkiera</item>
     </string-array>
     <string-array name="values_locales">
-        <item comment="Used as a value for language preference - do not translate but only use this value is it is!">system</item>
-        <item comment="Used as a value for language preference - do not translate but only use this value is it is!">af</item>
-        <item comment="Used as a value for language preference - do not translate but only use this value is it is!">az</item>
-        <item comment="Used as a value for language preference - do not translate but only use this value is it is!">eu</item>
-        <item comment="Used as a value for language preference - do not translate but only use this value is it is!">cs</item>
-        <item comment="Used as a value for language preference - do not translate but only use this value is it is!">nl</item>
-        <item comment="Used as a value for language preference - do not translate but only use this value is it is!">fr</item>
-        <item comment="Used as a value for language preference - do not translate but only use this value is it is!">de</item>
-        <item comment="Used as a value for language preference - do not translate but only use this value is it is!">el</item>
-        <item comment="Used as a value for language preference - do not translate but only use this value is it is!">iw</item>
-        <item comment="Used as a value for language preference - do not translate but only use this value is it is!">it</item>
-        <item comment="Used as a value for language preference - do not translate but only use this value is it is!">ja</item>
-        <item comment="Used as a value for language preference - do not translate but only use this value is it is!">fa</item>
-        <item comment="Used as a value for language preference - do not translate but only use this value is it is!">pl</item>
-        <item comment="Used as a value for language preference - do not translate but only use this value is it is!">pt-rBR</item>
-        <item comment="Used as a value for language preference - do not translate but only use this value is it is!">ru</item>
-        <item comment="Used as a value for language preference - do not translate but only use this value is it is!">tr</item>
+        <item>system</item>
+        <item>af</item>
+        <item>az</item>
+        <item>eu</item>
+        <item>cs</item>
+        <item>nl</item>
+        <item>fr</item>
+        <item>de</item>
+        <item>el</item>
+        <item>iw</item>
+        <item>it</item>
+        <item>ja</item>
+        <item>fa</item>
+        <item>pl</item>
+        <item>pt-rBR</item>
+        <item>ru</item>
+        <item>tr</item>
     </string-array>
     <string name="pref_periodlength">Zikloaren lehenetsitako iraupena (egunak)</string>
     <string name="invalid_period_length">Zikloaren lehenetsitako iraupenak 1 eta 14 bitarte egon behar du!</string>
@@ -107,10 +107,20 @@
     <string-array name="list_startofweek">
         <item>Igandea</item>
         <item>Astelehena</item>
+        <item>Asteartea</item>
+        <item>Asteazkena</item>
+        <item>Osteguna</item>
+        <item>Ostirala</item>
+        <item>Larunbata</item>
     </string-array>
     <string-array name="values_startofweek">
-        <item>0</item>
-        <item>1</item>
+        <item comment="Used as a value for first day of week setting - do not translate but only use this value is it is!">0</item>
+        <item comment="Used as a value for first day of week setting - do not translate but only use this value is it is!">1</item>
+        <item comment="Used as a value for first day of week setting - do not translate but only use this value is it is!">2</item>
+        <item comment="Used as a value for first day of week setting - do not translate but only use this value is it is!">3</item>
+        <item comment="Used as a value for first day of week setting - do not translate but only use this value is it is!">4</item>
+        <item comment="Used as a value for first day of week setting - do not translate but only use this value is it is!">5</item>
+        <item comment="Used as a value for first day of week setting - do not translate but only use this value is it is!">6</item>
     </string-array>
     <string name="pref_maximum_cycle_length">Zikloaren gehienezko luzera</string>
     <string name="invalid_maximum_cycle_length">Zikloaren gehienezko iraupenak gutxienez 60 izan behar du!</string>
