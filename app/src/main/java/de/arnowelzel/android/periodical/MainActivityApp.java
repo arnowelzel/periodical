@@ -263,34 +263,6 @@ public class MainActivityApp extends AppCompatActivity
     }
 
     /**
-     * Create menu
-     *
-     * @param menu
-     * @return
-     */
-    @Override
-    public boolean onCreateOptionsMenu(final Menu menu) {
-        getMenuInflater().inflate(R.menu.main, menu);
-        return true;
-    }
-
-    /**
-     * Open navigation drawer when pressing "menu"
-     */
-    @Override
-    public boolean onKeyDown(final int keyCode, final KeyEvent event) {
-        if (keyCode == KeyEvent.KEYCODE_MENU) {
-            DrawerLayout drawer = findViewById(R.id.drawer_layout);
-            if (!drawer.isDrawerOpen(GravityCompat.START)) {
-                drawer.openDrawer(GravityCompat.START);
-            }
-            return true;
-        } else {
-            return super.onKeyDown(keyCode, event);
-        }
-    }
-
-    /**
      * Close navigation drawer when pressing "back"
      */
     @Override
@@ -301,14 +273,6 @@ public class MainActivityApp extends AppCompatActivity
         } else {
             super.onBackPressed();
         }
-    }
-
-    /**
-     * Handle menu selection
-     */
-    @Override
-    public boolean onOptionsItemSelected(final MenuItem item) {
-        return onNavigationItemSelected(item);
     }
 
     /**
