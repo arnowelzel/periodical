@@ -31,6 +31,16 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+    bundle {
+        language {
+            // Specifies that the app bundle should not support configuration APKs for
+            // language resources. These resources are instead packaged with each base and
+            // dynamic feature APK.
+            //
+            // This allows us to choose any of the supported languages within the app
+            enableSplit = false
+        }
+    }
 
     return void
 }
