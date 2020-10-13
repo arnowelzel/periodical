@@ -1,0 +1,59 @@
+<en-US>
+Fixed missing display in Turkish.
+</en-US>
+
+<az-AZ>
+Türk dilində əskik ekran düzəldildi.
+</az-AZ>
+
+<cs-CZ>
+Opravený chybějící displej v turečtině.
+</cs-CZ>
+
+<de-DE>
+Fehlende Anzeige auf Türkisch behoben.
+</de-DE>
+
+<es-ES>
+Se corrigió la falta de visualización en turco.
+</es-ES>
+
+<fr-FR>
+Correction de l'affichage manquant en turc.
+</fr-FR>
+
+<it-IT>
+Risolto il problema con la visualizzazione mancante in turco.
+</it-IT>
+
+<nl-NL>
+Ontbrekende weergave in het Turks opgelost.
+</nl-NL>
+
+<ru-RU>
+Исправлено отсутствие отображения на турецком языке.
+</ru-RU>
+
+<af>
+Ontbrekende vertoon in Turks reggestel.
+</af>
+
+<pt-BR>
+Corrigida a falta de exibição em turco.
+</pt-BR>
+
+<pl-PL>
+Naprawiono brakujące wyświetlanie w języku tureckim.
+</pl-PL>
+
+<el-GR>
+Διορθώθηκε η λείπει οθόνη στα Τουρκικά.
+</el-GR>
+
+<ja-JP>
+トルコ語で表示されない問題を修正しました。
+</ja-JP>
+
+<iw-IL>
+תצוגה חסרה קבועה בטורקית.
+</iw-IL>

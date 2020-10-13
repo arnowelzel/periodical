@@ -62,21 +62,21 @@
     <string name="options_title">Ayarlar</string>
     <string name="pref_locale">Dil</string>
     <string-array name="list_locales">
-        <item>Standart</item>
+        <item>Varsayılan</item>
         <item>Afrikaans</item>
         <item>Azerbaycanca</item>
-        <item>Bask</item>
+        <item>Baskça</item>
         <item>Çekçe</item>
         <item>Flemenkçe</item>
-        <item>Fransız</item>
+        <item>Fransızca</item>
         <item>Almanca</item>
         <item>Yunanca</item>
         <item>İbranice</item>
         <item>İtalyanca</item>
         <item>Japonca</item>
         <item>Farsça</item>
-        <item>Polonya</item>
-        <item>Portekiz Brezilyası</item>
+        <item>Lehçe</item>
+        <item>Brezilya Portekizcesi</item>
         <item>Rusça</item>
         <item>Türkçe</item>
     </string-array>
@@ -107,11 +107,11 @@
     <string-array name="list_startofweek">
         <item>Pazar</item>
         <item>Pazartesi</item>
-        <item>Tuesday</item>
-        <item>Wednesday</item>
-        <item>Thursday</item>
-        <item>Friday</item>
-        <item>Saturday</item>
+        <item>Salı</item>
+        <item>Çarşamba</item>
+        <item>Perşembe</item>
+        <item>Cuma</item>
+        <item>Cumartesi</item>
     </string-array>
     <string-array name="values_startofweek">
         <item comment="Used as a value for first day of week setting - do not translate but only use this value is it is!">0</item>
@@ -137,8 +137,8 @@
     <string name="label_period">âdet dönemi</string>
     <string name="label_period_predicted">öngörülen âdet dönemi</string>
     <string name="label_ovulation">yumurtlama</string>
-    <string name="asset_about">en/about.html</string>
-    <string name="asset_help">en/help.html</string>
+    <string name="asset_about">tr/about.html</string>
+    <string name="asset_help">tr/help.html</string>
     <string name="label_details_period">Âdet Dönemi</string>
     <string name="label_details_yes">Evet</string>
     <string name="label_details_no">Hayır</string>
