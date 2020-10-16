@@ -7,7 +7,8 @@ Translation:
 
 Albert Kannemeyer, Sébastien Gravier, Primokorn, Valerio Bozzolan, Ingrid Spangler,
 Wjatscheslaw Stoljarski, Pander, Laura Arjona Reina, Naofumi Fukue, Tomasz Terka,
-Nikoletta Karasmani, Yaron Shahrabani, Inbar Gover
+Nikoletta Karasmani, Yaron Shahrabani, Inbar Gover, Turan Guliyeva, Enara Larraitz,
+Rza Sharifi, Mevlüt Erdem Güven
 
 If you want to help with the translation, you can join the project on Crowdin:
 
