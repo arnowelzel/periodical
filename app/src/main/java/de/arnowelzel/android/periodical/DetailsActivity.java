@@ -18,7 +18,6 @@
 
 package de.arnowelzel.android.periodical;
 
-import android.annotation.SuppressLint;
 import android.app.backup.BackupManager;
 import android.content.Context;
 import android.content.Intent;
@@ -38,6 +37,7 @@ import android.widget.RadioButton;
 import android.widget.TextView;
 
 import java.text.DateFormat;
+import java.util.Locale;
 
 import static de.arnowelzel.android.periodical.PeriodicalDatabase.DayEntry.PERIOD_CONFIRMED;
 import static de.arnowelzel.android.periodical.PeriodicalDatabase.DayEntry.PERIOD_START;
@@ -182,7 +182,7 @@ public class DetailsActivity extends AppCompatActivity implements View.OnClickLi
         };
         int num = 0;
         for (int eventId : eventIds) {
-            @SuppressLint("DefaultLocale") String resName = String.format("label_details_ev%d", eventId);
+            String resName = String.format(Locale.ENGLISH, "label_details_ev%d", eventId);
             int resId = resources.getIdentifier(resName, "string", packageName);
             if (resId != 0) {
                 AppCompatCheckBox option = new AppCompatCheckBox(this);
@@ -267,7 +267,7 @@ public class DetailsActivity extends AppCompatActivity implements View.OnClickLi
                 entry.symptoms.clear();
                 int num = 1;
                 while (num < 24) {
-                    @SuppressLint("DefaultLocale") String resName = String.format("label_details_ev%d", num);
+                    String resName = String.format(Locale.ENGLISH,"label_details_ev%d", num);
                     resId = getResources().getIdentifier(resName, "string", packageName);
                     if (resId != 0) {
                         CheckBox option = findViewById(resId);

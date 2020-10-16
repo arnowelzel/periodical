@@ -413,7 +413,7 @@ public class CalendarCell extends Button {
 
         // Draw day of cycle, if applicable
         if (!isPressed() && dayofcycle != 0) {
-            label = ((Integer) dayofcycle).toString();
+            label = String.format("%d", dayofcycle);
             paintLabel.setTextSize(12 * metrics.scaledDensity);
             paintLabel.setColor(colorLabel);
             paintLabel.getTextBounds(label, 0, label.length(), rectLabel);

@@ -14,22 +14,27 @@
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
         android:layout_marginBottom="8dp" />
-    <TextView
-        android:id="@+id/label_item_intensity"
+    <LinearLayout
+        android:id="@+id/block_intensity"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="16dp"
-        android:layout_marginRight="16dp"
-        android:text="@string/label_details_intensity"
-        android:textSize="14sp" />
-    <TextView
-        android:id="@+id/item_intensity"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="18sp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginRight="16dp"
-        android:layout_marginBottom="8dp" />
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/label_item_intensity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:text="@string/label_details_intensity"
+            android:textSize="14sp" />
+        <TextView
+            android:id="@+id/item_intensity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginBottom="8dp" />
+    </LinearLayout>
     <TextView
         android:id="@+id/label_item_notes"
         android:layout_width="match_parent"

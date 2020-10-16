@@ -1,0 +1,127 @@
+<en-US>
+Added English in language selection.
+
+Farsca tərcümədə bir çox problem həll edildi.
+
+Ətraflı siyahının tərtibatı dəyişdirildi.
+</en-US>
+
+<az-AZ>
+Dil seçimində İngilis dili əlavə edildi.
+
+Farsca tərcümədə bir çox problem həll edildi.
+
+Ətraflı siyahının tərtibatı dəyişdirildi.
+</az-AZ>
+
+<cs-CZ>
+Přidána angličtina při výběru jazyka.
+
+Opraveno několik problémů s perským překladem.
+
+Změněné rozložení podrobného seznamu.
+</cs-CZ>
+
+<de-DE>
+Englisch in der Sprachauswahl hinzugefügt.
+
+Mehrere Probleme mit der persischen Übersetzung wurden behoben.
+
+Das Layout der detaillierten Liste wurde geändert.
+</de-DE>
+
+<es-ES>
+Se agregó inglés en la selección de idiomas.
+
+Se corrigieron varios problemas con la traducción al persa.
+
+Diseño modificado de la lista detallada.
+</es-ES>
+
+<fr-FR>
+Ajout de l'anglais dans la sélection de la langue.
+
+Correction de plusieurs problèmes avec la traduction en persan.
+
+Mise en page modifiée de la liste détaillée.
+</fr-FR>
+
+<it-IT>
+Aggiunto inglese nella selezione della lingua.
+
+Risolti diversi problemi con la traduzione in persiano.
+
+Layout dell'elenco dettagliato modificato.
+</it-IT>
+
+<nl-NL>
+Engels toegevoegd in taalselectie.
+
+Meerdere problemen met Perzische vertaling opgelost.
+
+Gewijzigde lay-out van gedetailleerde lijst.
+</nl-NL>
+
+<ru-RU>
+Добавлен английский при выборе языка.
+
+Исправлено несколько проблем с персидским переводом.
+
+Изменена раскладка подробного списка.
+</ru-RU>
+
+<af>
+Engels bygevoeg in taalkeuse.
+
+Verskillende probleme met Persiese vertaling reggestel.
+
+Veranderde uitleg van gedetailleerde lys.
+</af>
+
+<pt-BR>
+Adicionado inglês na seleção de idioma.
+
+Vários problemas corrigidos com a tradução persa.
+
+Layout alterado da lista detalhada.
+</pt-BR>
+
+<pl-PL>
+Dodano język angielski w wyborze języka.
+
+Naprawiono wiele problemów z tłumaczeniem na perski.
+
+Zmieniono układ szczegółowej listy.
+</pl-PL>
+
+<el-GR>
+Προστέθηκε Αγγλικά στην επιλογή γλώσσας.
+
+Διορθώθηκαν πολλά ζητήματα με την περσική μετάφραση.
+
+Άλλαξε διάταξη λεπτομερούς λίστας.
+</el-GR>
+
+<ja-JP>
+言語選択に英語を追加しました。
+
+ペルシア語翻訳に関する複数の問題を修正しました。
+
+詳細リストのレイアウトを変更しました。
+</ja-JP>
+
+<iw-IL>
+נוספה אנגלית בבחירת השפה.
+
+תוקנו מספר בעיות בתרגום לפרסית.
+
+פריסת הרשימה המפורטת שונתה.
+</iw-IL>
+
+<tr-TR>
+Dil seçimine İngilizce eklendi.
+
+Farsça çeviriyle ilgili birden fazla sorun düzeltildi.
+
+Ayrıntılı listenin düzeni değiştirildi.
+</tr-TR>

@@ -30,6 +30,7 @@ import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
 import java.util.List;
+import java.util.Locale;
 
 import static java.lang.String.*;
 
@@ -109,7 +110,7 @@ class DayEntryAdapter extends ArrayAdapter<PeriodicalDatabase.DayEntry> {
         };
         int num = 0;
         for (int eventId : eventIds) {
-            String resName = format("label_details_ev%d", eventId);
+            String resName = format(Locale.ENGLISH,"label_details_ev%d", eventId);
             int resId = resources.getIdentifier(resName, "string", packageName);
             if (resId != 0) {
                 if (currentEntry.symptoms.contains(eventId)) {
@@ -152,6 +153,7 @@ class DayEntryAdapter extends ArrayAdapter<PeriodicalDatabase.DayEntry> {
                 break;
         }
 
+        View blockIntensity = listItem.findViewById(R.id.block_intensity);
         viewLabel = listItem.findViewById(R.id.label_item_intensity);
         view = listItem.findViewById(R.id.item_intensity);
         if (currentEntry.type == PeriodicalDatabase.DayEntry.PERIOD_START ||
@@ -173,6 +175,7 @@ class DayEntryAdapter extends ArrayAdapter<PeriodicalDatabase.DayEntry> {
             }
             view.setText(intensity);
         } else {
+            blockIntensity.setVisibility(View.GONE);
             viewLabel.setVisibility(View.GONE);
             view.setVisibility(View.GONE);
             view.setText("\u2014");
