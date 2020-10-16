@@ -58,6 +58,6 @@ Dodano język angielski w wyborze języka.
 נוספה אנגלית בבחירת השפה.
 </iw-IL>
 
-<tr>
+<tr-TR>
 Dil seçimine İngilizce eklendi.
-</tr>
+</tr-TR>
