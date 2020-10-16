@@ -8,8 +8,8 @@ android {
         applicationId "de.arnowelzel.android.periodical"
         minSdkVersion 21
         targetSdkVersion 29
-        versionCode 83
-        versionName "1.53"
+        versionCode 84
+        versionName "1.54"
         buildConfigField "String", "VERSION_YEAR", "\"2020\""
 
         return void

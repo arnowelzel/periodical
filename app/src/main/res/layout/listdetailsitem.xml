@@ -2,7 +2,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:paddingTop="8dp">
 
     <TextView
         android:id="@+id/item_date"
@@ -12,14 +13,13 @@
         android:textSize="18sp"
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
-        android:layout_marginTop="8dp" />
+        android:layout_marginBottom="8dp" />
     <TextView
         android:id="@+id/label_item_intensity"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
-        android:layout_marginTop="8dp"
         android:text="@string/label_details_intensity"
         android:textSize="14sp" />
     <TextView
@@ -28,12 +28,12 @@
         android:layout_height="wrap_content"
         android:textSize="18sp"
         android:layout_marginLeft="16dp"
-        android:layout_marginRight="16dp" />
+        android:layout_marginRight="16dp"
+        android:layout_marginBottom="8dp" />
     <TextView
         android:id="@+id/label_item_notes"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
         android:text="@string/label_details_notes"
         android:textSize="14sp"
         android:layout_marginLeft="16dp"
@@ -44,12 +44,12 @@
         android:layout_height="wrap_content"
         android:textSize="18sp"
         android:layout_marginLeft="16dp"
-        android:layout_marginRight="16dp" />
+        android:layout_marginRight="16dp"
+        android:layout_marginBottom="8dp" />
     <TextView
         android:id="@+id/label_item_events"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
         android:text="@string/label_details_events"
         android:textSize="14sp"
         android:layout_marginLeft="16dp"
@@ -60,12 +60,12 @@
         android:layout_height="wrap_content"
         android:textSize="18sp"
         android:layout_marginLeft="16dp"
-        android:layout_marginRight="16dp" />
+        android:layout_marginRight="16dp"
+        android:layout_marginBottom="8dp" />
     <TextView
         android:id="@+id/label_item_mood"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
         android:text="@string/label_details_mood"
         android:textSize="14sp"
         android:layout_marginLeft="16dp"
@@ -76,12 +76,12 @@
         android:layout_height="wrap_content"
         android:textSize="18sp"
         android:layout_marginLeft="16dp"
-        android:layout_marginRight="16dp" />
+        android:layout_marginRight="16dp"
+        android:layout_marginBottom="8dp" />
     <TextView
         android:id="@+id/label_item_symptoms"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
         android:text="@string/label_details_symptoms"
         android:textSize="14sp"
         android:layout_marginLeft="16dp"
@@ -93,5 +93,5 @@
         android:textSize="18sp"
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
-        android:layout_marginBottom="8dp"/>
+        android:layout_marginBottom="8dp" />
 </LinearLayout>
