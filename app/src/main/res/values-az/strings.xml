@@ -79,6 +79,7 @@
         <item>Polşaca</item>
         <item>Braziliyada Portuqal</item>
         <item>Rusca</item>
+        <item>İspanca</item>
         <item>Türkcə</item>
     </string-array>
     <string-array name="values_locales">
@@ -99,6 +100,7 @@
         <item>pl</item>
         <item>pt-rBR</item>
         <item>ru</item>
+        <item>es</item>
         <item>tr</item>
     </string-array>
     <string name="pref_periodlength">Susmaya görə menstrual dövrün müddəti (gün)</string>

@@ -68,7 +68,7 @@
         <item>Baskisch</item>
         <item>Tschechisch</item>
         <item>Niederländisch</item>
-        <item>English</item>
+        <item>Englisch</item>
         <item>Französisch</item>
         <item>Deutsch</item>
         <item>Griechisch</item>
@@ -79,6 +79,7 @@
         <item>Polnisch</item>
         <item>Brasilianisches Portugiesisch</item>
         <item>Russisch</item>
+        <item>Spanisch</item>
         <item>Türkisch</item>
     </string-array>
     <string-array name="values_locales">
@@ -99,6 +100,7 @@
         <item>pl</item>
         <item>pt-rBR</item>
         <item>ru</item>
+        <item>es</item>
         <item>tr</item>
     </string-array>
     <string name="pref_periodlength">Standardlänge der Periode (Tage)</string>

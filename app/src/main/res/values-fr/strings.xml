@@ -79,6 +79,7 @@
         <item>Polonaise</item>
         <item>Portugais du Brésil</item>
         <item>Russe</item>
+        <item>Espagnol</item>
         <item>Turque</item>
     </string-array>
     <string-array name="values_locales">
@@ -99,6 +100,7 @@
         <item>pl</item>
         <item>pt-rBR</item>
         <item>ru</item>
+        <item>es</item>
         <item>tr</item>
     </string-array>
     <string name="pref_periodlength">Durée par défaut des règles (jours)</string>

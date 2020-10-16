@@ -79,6 +79,7 @@
         <item>لهستانی</item>
         <item>پرتغالی در برزیل</item>
         <item>روسی</item>
+        <item>اسپانیایی</item>
         <item>ترکی</item>
     </string-array>
     <string-array name="values_locales">
@@ -99,6 +100,7 @@
         <item>pl</item>
         <item>pt-rBR</item>
         <item>ru</item>
+        <item>es</item>
         <item>tr</item>
     </string-array>
     <string name="pref_periodlength">طول دوره پریود به صورت پیش‌فرض (روز)</string>

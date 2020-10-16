@@ -79,6 +79,7 @@
         <item>Польский</item>
         <item>Португальский в Бразилии</item>
         <item>Русский</item>
+        <item>Испанский</item>
         <item>Турецкий</item>
     </string-array>
     <string-array name="values_locales">
@@ -99,6 +100,7 @@
         <item>pl</item>
         <item>pt-rBR</item>
         <item>ru</item>
+        <item>es</item>
         <item>tr</item>
     </string-array>
     <string name="pref_periodlength">Продолжительность менструации по умолчанию (дней)</string>

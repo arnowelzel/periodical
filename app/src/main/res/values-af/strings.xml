@@ -79,6 +79,7 @@
         <item>Pools</item>
         <item>Portugees in Brasilië</item>
         <item>Russies</item>
+        <item>Spaans</item>
         <item>Turks</item>
     </string-array>
     <string-array name="values_locales">
@@ -99,6 +100,7 @@
         <item>pl</item>
         <item>pt-rBR</item>
         <item>ru</item>
+        <item>es</item>
         <item>tr</item>
     </string-array>
     <string name="pref_periodlength">Versteklengte</string>

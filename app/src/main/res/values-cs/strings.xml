@@ -79,6 +79,7 @@
         <item>Polština</item>
         <item>Portugalština v Brazílii</item>
         <item>Ruština</item>
+        <item>Španělština</item>
         <item>Turečtina</item>
     </string-array>
     <string-array name="values_locales">
@@ -99,6 +100,7 @@
         <item>pl</item>
         <item>pt-rBR</item>
         <item>ru</item>
+        <item>es</item>
         <item>tr</item>
     </string-array>
     <string name="pref_periodlength">Základní délka periody (dny)</string>
