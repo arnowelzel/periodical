@@ -68,6 +68,7 @@
         <item>Euskalduna</item>
         <item>Txekia</item>
         <item>Nederlandera</item>
+        <item>Ingelesa</item>
         <item>Frantsesa</item>
         <item>Alemana</item>
         <item>Grekoa</item>
@@ -87,6 +88,7 @@
         <item>eu</item>
         <item>cs</item>
         <item>nl</item>
+        <item>en</item>
         <item>fr</item>
         <item>de</item>
         <item>el</item>
@@ -114,13 +116,13 @@
         <item>Larunbata</item>
     </string-array>
     <string-array name="values_startofweek">
-        <item comment="Used as a value for first day of week setting - do not translate but only use this value is it is!">0</item>
-        <item comment="Used as a value for first day of week setting - do not translate but only use this value is it is!">1</item>
-        <item comment="Used as a value for first day of week setting - do not translate but only use this value is it is!">2</item>
-        <item comment="Used as a value for first day of week setting - do not translate but only use this value is it is!">3</item>
-        <item comment="Used as a value for first day of week setting - do not translate but only use this value is it is!">4</item>
-        <item comment="Used as a value for first day of week setting - do not translate but only use this value is it is!">5</item>
-        <item comment="Used as a value for first day of week setting - do not translate but only use this value is it is!">6</item>
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
     </string-array>
     <string name="pref_maximum_cycle_length">Zikloaren gehienezko luzera</string>
     <string name="invalid_maximum_cycle_length">Zikloaren gehienezko iraupenak gutxienez 60 izan behar du!</string>
