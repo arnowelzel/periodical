@@ -132,6 +132,7 @@ class DayEntryAdapter extends ArrayAdapter<PeriodicalDatabase.DayEntry> {
         java.text.DateFormat dateFormat = android.text.format.DateFormat.getDateFormat(context);
 
         TextView view;
+        TextView viewLabel;
 
         view = listItem.findViewById(R.id.item_date);
         switch (currentEntry.type) {
@@ -152,6 +153,7 @@ class DayEntryAdapter extends ArrayAdapter<PeriodicalDatabase.DayEntry> {
                 break;
         }
 
+        View viewIntensity = listItem.findViewById(R.id.block_intensity);
         view = listItem.findViewById(R.id.item_intensity);
         if (currentEntry.type == PeriodicalDatabase.DayEntry.PERIOD_START ||
                 currentEntry.type == PeriodicalDatabase.DayEntry.PERIOD_CONFIRMED) {
@@ -171,37 +173,59 @@ class DayEntryAdapter extends ArrayAdapter<PeriodicalDatabase.DayEntry> {
                     break;
             }
             view.setText(intensity);
+            viewIntensity.setVisibility(View.VISIBLE);
         } else {
             view.setText("\u2014");
+            viewIntensity.setVisibility(View.GONE);
         }
 
+        viewLabel = listItem.findViewById(R.id.label_item_notes);
         view = listItem.findViewById(R.id.item_notes);
         if (currentEntry.notes.isEmpty()) {
             view.setText("\u2014");
+            view.setVisibility(View.GONE);
+            viewLabel.setVisibility(View.GONE);
         }
         else {
             view.setText(currentEntry.notes);
+            view.setVisibility(View.VISIBLE);
+            viewLabel.setVisibility(View.VISIBLE);
         }
 
+        viewLabel = listItem.findViewById(R.id.label_item_events);
         view = listItem.findViewById(R.id.item_event);
         if (textEvents.length() == 0) {
             view.setText("\u2014");
+            view.setVisibility(View.GONE);
+            viewLabel.setVisibility(View.GONE);
         } else {
             view.setText(textEvents.toString());
+            view.setVisibility(View.VISIBLE);
+            viewLabel.setVisibility(View.VISIBLE);
         }
 
+        viewLabel = listItem.findViewById(R.id.label_item_mood);
         view = listItem.findViewById(R.id.item_mood);
         if (textMood.length() == 0) {
             view.setText("\u2014");
+            view.setVisibility(View.GONE);
+            viewLabel.setVisibility(View.GONE);
         } else {
             view.setText(textMood.toString());
+            view.setVisibility(View.VISIBLE);
+            viewLabel.setVisibility(View.VISIBLE);
         }
 
+        viewLabel = listItem.findViewById(R.id.label_item_symptoms);
         view = listItem.findViewById(R.id.item_symptom);
         if (textSymptoms.length() == 0) {
             view.setText("\u2014");
+            view.setVisibility(View.GONE);
+            viewLabel.setVisibility(View.GONE);
         } else {
             view.setText(textSymptoms.toString());
+            view.setVisibility(View.VISIBLE);
+            viewLabel.setVisibility(View.VISIBLE);
         }
 
         return listItem;
