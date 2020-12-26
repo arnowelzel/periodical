@@ -1,0 +1,95 @@
+<en-US>
+Cleaning up unused data in the internal database.
+
+Updated translations.
+</en-US>
+
+<az-AZ>
+Daxili verilənlər bazasında istifadə edilməmiş məlumatların təmizlənməsi.
+
+Tərcümələr yeniləndi.
+</az-AZ>
+
+<cs-CZ>
+Vyčištění nepoužívaných dat v interní databázi.
+
+Aktualizované překlady.
+</cs-CZ>
+
+<de-DE>
+Bereinigen nicht verwendeter Daten in der internen Datenbank.
+
+Aktualisierte Übersetzungen.
+</de-DE>
+
+<es-ES>
+Limpieza de datos no utilizados en la base de datos interna.
+
+Traducciones actualizadas.
+</es-ES>
+
+<fr-FR>
+Nettoyage des données inutilisées dans la base de données interne.
+
+Traductions mises à jour.
+</fr-FR>
+
+<it-IT>
+Pulizia dei dati inutilizzati nel database interno.
+
+Traduzioni aggiornate.
+</it-IT>
+
+<nl-NL>
+Opschonen van ongebruikte gegevens in de interne database.
+
+Bijgewerkte vertalingen.
+</nl-NL>
+
+<ru-RU>
+Очистка неиспользуемых данных во внутренней базе данных.
+
+Обновленные переводы.
+</ru-RU>
+
+<af>
+Skoonmaak van ongebruikte data in die interne databasis.
+
+Opgedateerde vertalings.
+</af>
+
+<pt-BR>
+Limpando dados não utilizados no banco de dados interno.
+
+Traduções atualizadas.
+</pt-BR>
+
+<pl-PL>
+Czyszczenie nieużywanych danych w wewnętrznej bazie danych.
+
+Zaktualizowane tłumaczenia.
+</pl-PL>
+
+<el-GR>
+Εκκαθάριση αχρησιμοποίητων δεδομένων στην εσωτερική βάση δεδομένων.
+
+Ενημερωμένες μεταφράσεις.
+</el-GR>
+
+<ja-JP>
+内部データベース内の未使用データをクリーンアップします。
+
+翻訳を更新しました。
+</ja-JP>
+
+<iw-IL>
+ניקוי נתונים שאינם בשימוש במאגר המידע הפנימי.
+
+תרגומים מעודכנים.
+</iw-IL>
+
+<tr-TR>
+Dahili veri tabanında kullanılmayan verileri temizleme.
+
+Çeviriler güncellendi.
+</tr-TR>
