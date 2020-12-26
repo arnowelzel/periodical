@@ -1,0 +1,95 @@
+<en-US>
+Fixed some problems when editing existing entries.
+
+Fixed missing elements in detailed list.
+</en-US>
+
+<az-AZ>
+Mövcud girişləri redaktə edərkən bəzi problemlər həll edildi.
+
+Ətraflı siyahıda itkin elementlər düzəldildi.
+</az-AZ>
+
+<cs-CZ>
+Opraveny některé problémy při úpravách existujících záznamů.
+
+Opravené chybějící prvky v podrobném seznamu.
+</cs-CZ>
+
+<de-DE>
+Einige Probleme beim Bearbeiten vorhandener Einträge wurden behoben.
+
+Fehlende Elemente in der detaillierten Liste behoben.
+</de-DE>
+
+<es-ES>
+Se corrigieron algunos problemas al editar entradas existentes.
+
+Se corrigieron los elementos faltantes en la lista detallada.
+</es-ES>
+
+<fr-FR>
+Correction de quelques problèmes lors de la modification des entrées existantes.
+
+Correction des éléments manquants dans la liste détaillée.
+</fr-FR>
+
+<it-IT>
+Risolti alcuni problemi durante la modifica di voci esistenti.
+
+Risolti gli elementi mancanti nell'elenco dettagliato.
+</it-IT>
+
+<nl-NL>
+Enkele problemen opgelost bij het bewerken van bestaande vermeldingen.
+
+Ontbrekende elementen in gedetailleerde lijst opgelost.
+</nl-NL>
+
+<ru-RU>
+Исправлены некоторые проблемы при редактировании существующих записей.
+
+Исправлены недостающие элементы в подробном списке.
+</ru-RU>
+
+<af>
+Sommige probleme het opgelos tydens die wysiging van bestaande inskrywings.
+
+Ontbrekende elemente in die gedetailleerde lys is reggestel.
+</af>
+
+<pt-BR>
+Corrigidos alguns problemas ao editar entradas existentes.
+
+Elementos ausentes corrigidos na lista detalhada.
+</pt-BR>
+
+<pl-PL>
+Naprawiono niektóre problemy podczas edycji istniejących wpisów.
+
+Naprawiono brakujące elementy w szczegółowej liście.
+</pl-PL>
+
+<el-GR>
+Διορθώθηκαν ορισμένα προβλήματα κατά την επεξεργασία των υπαρχουσών καταχωρήσεων.
+
+Διορθώθηκαν στοιχεία που λείπουν σε λεπτομερή λίστα.
+</el-GR>
+
+<ja-JP>
+既存のエントリを編集する際のいくつかの問題を修正しました。
+
+詳細リストの欠落している要素を修正しました。
+</ja-JP>
+
+<iw-IL>
+תוקנו כמה בעיות בעת עריכת ערכים קיימים.
+
+תוקן אלמנטים חסרים ברשימה מפורטת.
+</iw-IL>
+
+<tr-TR>
+Mevcut girişleri düzenlerken bazı sorunlar giderildi.
+
+Ayrıntılı listedeki eksik öğeler düzeltildi.
+</tr-TR>
