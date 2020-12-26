@@ -729,13 +729,23 @@ class PeriodicalDatabase {
         }
 
         // Fill details for each day
+        fillDetailsFromResult("select eventdate, symptom from symptoms order by eventdate", false);
+        fillDetailsFromResult("select eventdate, content from notes order by eventdate", true);
+
+        System.gc();
+    }
+
+    /**
+     * Fill entry list with details
+     *
+     * @param query Query to get details
+     * @param isNotes Query is for notes or symptoms
+     */
+    void fillDetailsFromResult(String query, boolean isNotes)
+    {
+        Cursor result = db.rawQuery(query, null);
         int index = 0;
         DayEntry entryTarget = null;
-        result = db.rawQuery("select notes.eventdate, content, symptom from " +
-                        "notes " +
-                        "left outer join symptoms on notes.eventdate=symptoms.eventdate " +
-                        "order by notes.eventdate",
-                null);
         while (result.moveToNext()) {
             String dbdate = result.getString(0);
             assert dbdate != null;
@@ -743,9 +753,15 @@ class PeriodicalDatabase {
             int eventmonth = Integer.parseInt(dbdate.substring(4, 6), 10);
             int eventday = Integer.parseInt(dbdate.substring(6, 8), 10);
             GregorianCalendar eventdate = new GregorianCalendar(eventyear, eventmonth - 1, eventday);
-            String notes = result.getString(1);
-            if (notes == null) notes = "";
-            int symptom = result.getInt(2);
+
+            String notes = "";
+            int symptom = 0;
+            if (isNotes) {
+                notes = result.getString(1);
+                if (notes == null) notes = "";
+            } else {
+                symptom = result.getInt(1);
+            }
 
             if (dayEntries.size() == 0) {
                 // If we don't have any entries yet, create an empty entry for the details
@@ -755,7 +771,7 @@ class PeriodicalDatabase {
             } else {
                 // We have at least ony entry, but it may be in the future
                 if (dayEntries.size() > index) {
-                    entry = dayEntries.get(index);
+                    DayEntry entry = dayEntries.get(index);
                     if (entry.date.getTimeInMillis() > eventdate.getTimeInMillis()) {
                         // The existing entry is in the future, so create a new blank entry before
                         // this day to hold the details
@@ -780,16 +796,17 @@ class PeriodicalDatabase {
 
                 // Add symptom to the current entry
                 if (null != entryTarget) {
-                    if (symptom != 0) {
-                        entryTarget.symptoms.add(symptom);
+                    if (isNotes) {
+                        entryTarget.notes = notes;
+                    } else {
+                        if (symptom != 0) {
+                            entryTarget.symptoms.add(symptom);
+                        }
                     }
-                    entryTarget.notes = notes;
                 }
             }
         }
         result.close();
-
-        System.gc();
     }
 
 
