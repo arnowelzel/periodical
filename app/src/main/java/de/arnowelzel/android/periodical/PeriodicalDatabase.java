@@ -67,7 +67,7 @@ class PeriodicalDatabase {
         /**
          * Version of the database
          */
-        final static int DATABASE_VERSION = 5;
+        final static int DATABASE_VERSION = 6;
 
         /**
          * Create a new database for the app
@@ -241,6 +241,8 @@ class PeriodicalDatabase {
             }
 
             if (oldVersion < 5 && newVersion >= 5) {
+                db.beginTransaction();
+
                 // Add missing placeholders for details which might have been removed when deleting a period day
                 Cursor resultSymptoms = db.rawQuery("select eventdate from symptoms group by eventdate", null);
                 while (resultSymptoms.moveToNext()) {
@@ -257,6 +259,37 @@ class PeriodicalDatabase {
 
                 // Clean up unused note entries
                 db.execSQL("delete from notes where content=''");
+
+                db.setTransactionSuccessful();
+                db.endTransaction();
+            }
+
+            if (oldVersion < 6 && newVersion >= 6) {
+                db.beginTransaction();
+
+                // Remove superfluous placeholders which may got inserted due to a bug in
+                // version 1.61 and before:
+                //
+                // When adding details to a day that day gets a placeholder with eventtype 0.
+                // However this was not checked when this day was afterwards marked as
+                // "period started" and therefore these days could get two records with eventtype 0
+                // and eventtype 2.
+                //
+                // Therefore we check for days which have more then one record and remove all
+                // records with eventtype 0 for these days.
+
+                Cursor resultCheck = db.rawQuery("select eventdate, count from (select eventdate, sum(1) as count from data group by eventdate) where count>1", null);
+                while (resultCheck.moveToNext()) {
+                    String dbdate = resultCheck.getString(0);
+                    String statement = format(
+                            Locale.ENGLISH,
+                            "delete from data where eventtype = 0 and eventdate = '%s'",
+                            dbdate);
+                    db.execSQL(statement);
+                }
+
+                db.setTransactionSuccessful();
+                db.endTransaction();
             }
         }
     }
