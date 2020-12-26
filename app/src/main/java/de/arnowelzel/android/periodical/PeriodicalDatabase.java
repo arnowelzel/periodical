@@ -26,7 +26,6 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.net.Uri;
-import android.os.Environment;
 
 import androidx.documentfile.provider.DocumentFile;
 
@@ -68,7 +67,7 @@ class PeriodicalDatabase {
         /**
          * Version of the database
          */
-        final static int DATABASE_VERSION = 4;
+        final static int DATABASE_VERSION = 5;
 
         /**
          * Create a new database for the app
@@ -240,6 +239,25 @@ class PeriodicalDatabase {
                 db.setTransactionSuccessful();
                 db.endTransaction();
             }
+
+            if (oldVersion < 5 && newVersion >= 5) {
+                // Add missing placeholders for details which might have been removed when deleting a period day
+                Cursor resultSymptoms = db.rawQuery("select eventdate from symptoms group by eventdate", null);
+                while (resultSymptoms.moveToNext()) {
+                    String dbdate = resultSymptoms.getString(0);
+                    Cursor resultData = db.rawQuery(format(Locale.ENGLISH, "select eventtype from data where eventdate='%s'", dbdate), null);
+                    if(!resultData.moveToNext()) {
+                        String statement = format(
+                                Locale.ENGLISH,
+                                "insert into data (eventdate, eventtype, intensity) values ('%s', 0, 0)",
+                                dbdate);
+                        db.execSQL(statement);
+                    }
+                }
+
+                // Clean up unused note entries
+                db.execSQL("delete from notes where content=''");
+            }
         }
     }
 
@@ -387,6 +405,16 @@ class PeriodicalDatabase {
             db.setTransactionSuccessful();
             db.endTransaction();
         } else {
+            // Remove placeholder for details at this day
+            statement = format(
+                    Locale.ENGLISH,
+                    "delete from data where eventdate='%s'",
+                    format(Locale.ENGLISH, "%04d%02d%02d",
+                            date.get(GregorianCalendar.YEAR),
+                            date.get(GregorianCalendar.MONTH) + 1,
+                            date.get(GregorianCalendar.DAY_OF_MONTH)));
+            db.execSQL(statement);
+
             // Probably start a new period
             String dateString = format(Locale.ENGLISH, "%04d%02d%02d",
                     date.get(GregorianCalendar.YEAR),
@@ -480,18 +508,28 @@ class PeriodicalDatabase {
 
         db.beginTransaction();
 
-        // Remove period entry for the selected and all following days
         while (true) {
-            int type = getEntryType(dateLocal);
-            if (type == DayEntry.PERIOD_START || type == DayEntry.PERIOD_CONFIRMED) {
-                statement = format(
-                        Locale.ENGLISH,
-                        "delete from data where eventdate = '%s'",
-                        format(Locale.ENGLISH, "%04d%02d%02d",
-                                dateLocal.get(GregorianCalendar.YEAR),
-                                dateLocal.get(GregorianCalendar.MONTH) + 1,
-                                dateLocal.get(GregorianCalendar.DAY_OF_MONTH)));
+            DayEntry day = getEntry(dateLocal);
+            if (day.type == DayEntry.PERIOD_START || day.type == DayEntry.PERIOD_CONFIRMED) {
+                if (day.notes.isEmpty() && day.symptoms.isEmpty()) {
+                    statement = format(
+                            Locale.ENGLISH,
+                            "delete from data where eventdate = '%s'",
+                            format(Locale.ENGLISH, "%04d%02d%02d",
+                                    dateLocal.get(GregorianCalendar.YEAR),
+                                    dateLocal.get(GregorianCalendar.MONTH) + 1,
+                                    dateLocal.get(GregorianCalendar.DAY_OF_MONTH)));
+                } else {
+                    statement = format(
+                            Locale.ENGLISH,
+                            "update data set eventtype = 0 where eventdate = '%s'",
+                            format(Locale.ENGLISH, "%04d%02d%02d",
+                                    dateLocal.get(GregorianCalendar.YEAR),
+                                    dateLocal.get(GregorianCalendar.MONTH) + 1,
+                                    dateLocal.get(GregorianCalendar.DAY_OF_MONTH)));
+                }
                 db.execSQL(statement);
+
                 dateLocal.add(GregorianCalendar.DATE, 1);
             } else {
                 break;
@@ -858,7 +896,7 @@ class PeriodicalDatabase {
             }
         }
 
-        System.gc();
+        // System.gc();
     }
 
     /**
@@ -992,47 +1030,61 @@ class PeriodicalDatabase {
                 dateString);
         db.execSQL(statement);
 
-        // If there is no calendar entry for this day yet, then add one first
-        boolean addNew = false;
-        statement = format(
-                Locale.ENGLISH,
-                "select eventtype from data where eventdate='%s'",
-                dateString);
-        Cursor result = db.rawQuery(statement, null);
-        if (!result.moveToNext()) addNew = true;
-        result.close();
-        if (addNew) {
+        // If there is nothing to store, remove existing entry
+        if (entry.type != DayEntry.PERIOD_START && entry.type != DayEntry.PERIOD_CONFIRMED
+            && entry.notes.isEmpty() && entry.symptoms.isEmpty()) {
             statement = format(
                     Locale.ENGLISH,
-                    "insert into data (eventdate, eventtype) values ('%s', %d)",
-                    dateString,
-                    DayEntry.EMPTY);
+                    "delete from data where eventdate = '%s'",
+                    dateString);
             db.execSQL(statement);
-        }
-
-        // Store new details
-        statement = format(
-                Locale.ENGLISH,
-                "update data set intensity = %d where eventdate='%s'",
-                entry.intensity,
-                dateString);
-        db.execSQL(statement);
-
-        statement = format(
-                Locale.ENGLISH,
-                "insert into notes (eventdate, content) values ('%s', ?)",
-                dateString);
-        db.execSQL(statement, new String[]{entry.notes});
-
-        int count = 0;
-        while (count < entry.symptoms.size()) {
+        } else {
+            // If there is no calendar entry for this day yet, then add one first
+            boolean addNew = false;
             statement = format(
                     Locale.ENGLISH,
-                    "insert into symptoms (eventdate, symptom) values ('%s', %d)",
-                    dateString,
-                    entry.symptoms.get(count));
-            db.execSQL(statement);
-            count++;
+                    "select eventtype from data where eventdate='%s'",
+                    dateString);
+            Cursor result = db.rawQuery(statement, null);
+            if (!result.moveToNext()) addNew = true;
+            result.close();
+            if (addNew) {
+                statement = format(
+                        Locale.ENGLISH,
+                        "insert into data (eventdate, eventtype) values ('%s', %d)",
+                        dateString,
+                        DayEntry.EMPTY);
+                db.execSQL(statement);
+            }
+
+            // Store new details
+            if (entry.type == DayEntry.PERIOD_START || entry.type == DayEntry.PERIOD_CONFIRMED) {
+                statement = format(
+                        Locale.ENGLISH,
+                        "update data set intensity = %d where eventdate='%s'",
+                        entry.intensity,
+                        dateString);
+                db.execSQL(statement);
+            }
+
+            if (!entry.notes.isEmpty()) {
+                statement = format(
+                        Locale.ENGLISH,
+                        "insert into notes (eventdate, content) values ('%s', ?)",
+                        dateString);
+                db.execSQL(statement, new String[]{entry.notes});
+            }
+
+            int count = 0;
+            while (count < entry.symptoms.size()) {
+                statement = format(
+                        Locale.ENGLISH,
+                        "insert into symptoms (eventdate, symptom) values ('%s', %d)",
+                        dateString,
+                        entry.symptoms.get(count));
+                db.execSQL(statement);
+                count++;
+            }
         }
 
         db.setTransactionSuccessful();

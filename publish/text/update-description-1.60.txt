@@ -1,9 +1,9 @@
 <en-US>
 Added English in language selection.
 
-Farsca tərcümədə bir çox problem həll edildi.
+Fixed multiple problems with the persian translation.
 
-Ətraflı siyahının tərtibatı dəyişdirildi.
+Changed layout of the detailed list.
 </en-US>
 
 <az-AZ>

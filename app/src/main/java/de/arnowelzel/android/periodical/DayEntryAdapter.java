@@ -78,9 +78,9 @@ class DayEntryAdapter extends ArrayAdapter<PeriodicalDatabase.DayEntry> {
 
         PeriodicalDatabase.DayEntry currentEntry = entryList.get(position);
 
-        String textEvents = "";
-        String textMood = "";
-        String textSymptoms = "";
+        StringBuilder textEvents = new StringBuilder();
+        StringBuilder textMood = new StringBuilder();
+        StringBuilder textSymptoms = new StringBuilder();
 
         // Elements 0-1 are events, 2-6 moods, 7-22 are symptoms
         int eventIds[] = {
@@ -115,14 +115,14 @@ class DayEntryAdapter extends ArrayAdapter<PeriodicalDatabase.DayEntry> {
             if (resId != 0) {
                 if (currentEntry.symptoms.contains(eventId)) {
                     if (num < 2) {
-                        if (!textEvents.isEmpty()) textEvents += "\n";
-                        textEvents += "\u2022 " + resources.getString(resId);
+                        if (textEvents.length() > 0) textEvents.append("\n");
+                        textEvents.append("\u2022 ").append(resources.getString(resId));
                     } else if(num > 1 && num < 7) {
-                        if (!textMood.isEmpty()) textMood += "\n";
-                        textMood += "\u2022 " + resources.getString(resId);
+                        if (textMood.length() > 0) textMood.append("\n");
+                        textMood.append("\u2022 ").append(resources.getString(resId));
                     } else {
-                        if (!textSymptoms.isEmpty()) textSymptoms += "\n";
-                        textSymptoms += "\u2022 " + resources.getString(resId);
+                        if (textSymptoms.length() > 0) textSymptoms.append("\n");
+                        textSymptoms.append("\u2022 ").append(resources.getString(resId));
                     }
                 }
             }
@@ -131,7 +131,6 @@ class DayEntryAdapter extends ArrayAdapter<PeriodicalDatabase.DayEntry> {
 
         java.text.DateFormat dateFormat = android.text.format.DateFormat.getDateFormat(context);
 
-        TextView viewLabel;
         TextView view;
 
         view = listItem.findViewById(R.id.item_date);
@@ -153,8 +152,6 @@ class DayEntryAdapter extends ArrayAdapter<PeriodicalDatabase.DayEntry> {
                 break;
         }
 
-        View blockIntensity = listItem.findViewById(R.id.block_intensity);
-        viewLabel = listItem.findViewById(R.id.label_item_intensity);
         view = listItem.findViewById(R.id.item_intensity);
         if (currentEntry.type == PeriodicalDatabase.DayEntry.PERIOD_START ||
                 currentEntry.type == PeriodicalDatabase.DayEntry.PERIOD_CONFIRMED) {
@@ -175,51 +172,36 @@ class DayEntryAdapter extends ArrayAdapter<PeriodicalDatabase.DayEntry> {
             }
             view.setText(intensity);
         } else {
-            blockIntensity.setVisibility(View.GONE);
-            viewLabel.setVisibility(View.GONE);
-            view.setVisibility(View.GONE);
             view.setText("\u2014");
         }
 
-        viewLabel = listItem.findViewById(R.id.label_item_notes);
         view = listItem.findViewById(R.id.item_notes);
         if (currentEntry.notes.isEmpty()) {
-            viewLabel.setVisibility(View.GONE);
-            view.setVisibility(View.GONE);
             view.setText("\u2014");
         }
         else {
             view.setText(currentEntry.notes);
         }
 
-        viewLabel = listItem.findViewById(R.id.label_item_events);
         view = listItem.findViewById(R.id.item_event);
-        if (textEvents.isEmpty()) {
-            viewLabel.setVisibility(View.GONE);
-            view.setVisibility(View.GONE);
+        if (textEvents.length() == 0) {
             view.setText("\u2014");
         } else {
-            view.setText(textEvents);
+            view.setText(textEvents.toString());
         }
 
-        viewLabel = listItem.findViewById(R.id.label_item_mood);
         view = listItem.findViewById(R.id.item_mood);
-        if (textMood.isEmpty()) {
-            viewLabel.setVisibility(View.GONE);
-            view.setVisibility(View.GONE);
+        if (textMood.length() == 0) {
             view.setText("\u2014");
         } else {
-            view.setText(textMood);
+            view.setText(textMood.toString());
         }
 
-        viewLabel = listItem.findViewById(R.id.label_item_symptoms);
         view = listItem.findViewById(R.id.item_symptom);
-        if (textSymptoms.isEmpty()) {
-            viewLabel.setVisibility(View.GONE);
-            view.setVisibility(View.GONE);
+        if (textSymptoms.length() == 0) {
             view.setText("\u2014");
         } else {
-            view.setText(textSymptoms);
+            view.setText(textSymptoms.toString());
         }
 
         return listItem;

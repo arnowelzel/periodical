@@ -30,7 +30,7 @@
     <string name="about_title">About …</string>
     <string name="help_title">Help</string>
     <string name="backup_title">Backup data</string>
-    <string name="backup_text">Do you want to backup the current data?\nThis will replace the last backup!</string>
+    <string name="backup_text">Do you want to backup the current data? This will replace the last backup!</string>
     <string name="backup_selectfolder">Please select where to save the backup. You need to give access to the selected location, which will be used for this and all future backups.\n\nTo learn more about how backup works, please refer to the help menu.</string>
     <string name="backup_ok">OK</string>
     <string name="backup_cancel">Cancel</string>
