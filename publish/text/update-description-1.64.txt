@@ -1,0 +1,63 @@
+<en-US>
+Fixing a possible crash.
+</en-US>
+
+<az-AZ>
+Mümkün bir qəza düzəldilir.
+</az-AZ>
+
+<cs-CZ>
+Oprava možného selhání.
+</cs-CZ>
+
+<de-DE>
+Behebung eines möglichen Absturzes.
+</de-DE>
+
+<es-ES>
+Arreglando un posible bloqueo.
+</es-ES>
+
+<fr-FR>
+Correction d'un éventuel crash.
+</fr-FR>
+
+<it-IT>
+Risolvere un possibile crash.
+</it-IT>
+
+<nl-NL>
+Een mogelijke crash verhelpen.
+</nl-NL>
+
+<ru-RU>
+Устранение возможного сбоя.
+</ru-RU>
+
+<af>
+Oplossing van 'n moontlike ongeluk.
+</af>
+
+<pt-BR>
+Reparando uma possível falha.
+</pt-BR>
+
+<pl-PL>
+Naprawianie możliwej awarii.
+</pl-PL>
+
+<el-GR>
+Διορθώνοντας πιθανό σφάλμα.
+</el-GR>
+
+<ja-JP>
+発生する可能性のあるクラッシュを修正します。
+</ja-JP>
+
+<iw-IL>
+תיקון התרסקות אפשרית.
+</iw-IL>
+
+<tr-TR>
+Olası bir çökmeyi düzeltmek.
+</tr-TR>
