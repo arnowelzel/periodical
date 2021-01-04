@@ -543,6 +543,9 @@ class PeriodicalDatabase {
 
         while (true) {
             DayEntry day = getEntry(dateLocal);
+            if (null == day) {
+                break;
+            }
             if (day.type == DayEntry.PERIOD_START || day.type == DayEntry.PERIOD_CONFIRMED) {
                 if (day.notes.isEmpty() && day.symptoms.isEmpty()) {
                     statement = format(
