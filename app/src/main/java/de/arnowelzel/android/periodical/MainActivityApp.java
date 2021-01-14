@@ -600,6 +600,15 @@ public class MainActivityApp extends AppCompatActivity
                             }
                             Toast toast = Toast.makeText(context, text, Toast.LENGTH_SHORT);
                             toast.show();
+
+                            // When the backup failed, ask for a new backup location
+                            if (!ok) {
+                                Intent intent = new Intent(Intent.ACTION_OPEN_DOCUMENT_TREE);
+                                intent.addCategory(Intent.CATEGORY_DEFAULT);
+                                intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+                                intent.addFlags(Intent.FLAG_GRANT_PERSISTABLE_URI_PERMISSION);
+                                startActivityForResult(intent, STORAGE_ACCESS_SELECTED_BACKUP);
+                            }
                         }
                     });
 
