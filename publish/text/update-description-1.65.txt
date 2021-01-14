@@ -1,0 +1,95 @@
+<en-US>
+Fixed a bug for editing period intensity.
+
+Updated translation.
+</en-US>
+
+<az-AZ>
+Dövr intensivliyini düzəltmək üçün bir səhv düzəldildi.
+
+Tərcümə yeniləndi.
+</az-AZ>
+
+<cs-CZ>
+Opravená chyba pro úpravu intenzity období.
+
+Aktualizovaný překlad.
+</cs-CZ>
+
+<de-DE>
+Ein Fehler beim Bearbeiten der Periodenintensität wurde behoben.
+
+Aktualisierte Übersetzung.
+</de-DE>
+
+<es-ES>
+Se corrigió un error para editar la intensidad del período.
+
+Traducción actualizada.
+</es-ES>
+
+<fr-FR>
+Correction d'un bug pour modifier l'intensité de la période.
+
+Traduction mise à jour.
+</fr-FR>
+
+<it-IT>
+Risolto un bug per la modifica dell'intensità del periodo.
+
+Traduzione aggiornata.
+</it-IT>
+
+<nl-NL>
+Een bug verholpen voor het bewerken van de periode-intensiteit.
+
+Bijgewerkte vertaling.
+</nl-NL>
+
+<ru-RU>
+Исправлена ошибка редактирования интенсивности периода.
+
+Обновленный перевод.
+</ru-RU>
+
+<af>
+'N Fout reggestel vir die redigering van die intensiteit van die tydperk.
+
+Opgedateerde vertaling.
+</af>
+
+<pt-BR>
+Corrigido um bug para editar a intensidade do período.
+
+Tradução atualizada.
+</pt-BR>
+
+<pl-PL>
+Naprawiono błąd związany z intensywnością okresu edycji.
+
+Zaktualizowane tłumaczenie.
+</pl-PL>
+
+<el-GR>
+Διορθώθηκε ένα σφάλμα για την ένταση της περιόδου επεξεργασίας.
+
+Ενημερωμένη μετάφραση.
+</el-GR>
+
+<ja-JP>
+期間強度を編集する際のバグを修正しました。
+
+翻訳を更新しました。
+</ja-JP>
+
+<iw-IL>
+תוקן באג לעריכת עוצמת תקופה.
+
+תרגום מעודכן.
+</iw-IL>
+
+<tr-TR>
+Dönem yoğunluğunu düzenlemeyle ilgili bir hata düzeltildi.
+
+Çeviri güncellendi.
+</tr-TR>
