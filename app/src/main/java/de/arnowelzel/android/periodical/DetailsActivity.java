@@ -227,6 +227,7 @@ public class DetailsActivity extends AppCompatActivity implements View.OnClickLi
         switch (id) {
             case R.id.periodYes:
                 dbMain.addPeriod(entry.date);
+                entry.type = PeriodicalDatabase.DayEntry.PERIOD_START;
                 databaseChanged();
                 buttonPeriodIntensity1.setEnabled(true);
                 buttonPeriodIntensity2.setEnabled(true);
@@ -235,6 +236,7 @@ public class DetailsActivity extends AppCompatActivity implements View.OnClickLi
                 break;
             case R.id.periodNo:
                 dbMain.removePeriod(entry.date);
+                entry.type = PeriodicalDatabase.DayEntry.EMPTY;
                 databaseChanged();
                 buttonPeriodIntensity1.setEnabled(false);
                 buttonPeriodIntensity2.setEnabled(false);
