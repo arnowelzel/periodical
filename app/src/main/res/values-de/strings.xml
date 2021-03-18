@@ -37,7 +37,7 @@
     <string name="backup_newfolder">Neuen Ort auswählen</string>
     <string name="backup_help">Hilfe</string>
     <string name="backup_finished">Sicherung ausgeführt</string>
-    <string name="backup_noruiyet">noch kein Ort ausgewählt</string>
+    <string name="backup_noruiyet" comment="This message will be displayed when you try to backup or restore data and the location for the backup (internal memory or SD card) was not selected yet.">noch kein Ort ausgewählt</string>
     <string name="backup_failed">Sicherung fehlgeschlagen!</string>
     <string name="restore_title">Daten wiederherstellen</string>
     <string name="restore_selectfolder">Bitte wählen Sie den Ort aus, an dem das Backup gespeichert wurde (der Ort mit dem Ordner \"de.arnowelzel.android.periodical\").</string>
@@ -89,19 +89,19 @@
         <item>eu</item>
         <item>cs</item>
         <item>nl</item>
-        <item>en</item>
-        <item>fr</item>
-        <item>de</item>
-        <item>el</item>
-        <item>iw</item>
-        <item>it</item>
-        <item>ja</item>
-        <item>fa</item>
-        <item>pl</item>
-        <item>pt-rBR</item>
-        <item>ru</item>
-        <item>es</item>
-        <item>tr</item>
+        <item comment="Used as a value for language preference - do not translate but only use this value is it is!">en</item>
+        <item comment="Used as a value for language preference - do not translate but only use this value is it is!">fr</item>
+        <item comment="Used as a value for language preference - do not translate but only use this value is it is!">de</item>
+        <item comment="Used as a value for language preference - do not translate but only use this value is it is!">el</item>
+        <item comment="Used as a value for language preference - do not translate but only use this value is it is!">iw</item>
+        <item comment="Used as a value for language preference - do not translate but only use this value is it is!">it</item>
+        <item comment="Used as a value for language preference - do not translate but only use this value is it is!">ja</item>
+        <item comment="Used as a value for language preference - do not translate but only use this value is it is!">fa</item>
+        <item comment="Used as a value for language preference - do not translate but only use this value is it is!">pl</item>
+        <item comment="Used as a value for language preference - do not translate but only use this value is it is!">pt-rBR</item>
+        <item comment="Used as a value for language preference - do not translate but only use this value is it is!">ru</item>
+        <item comment="Used as a value for language preference - do not translate but only use this value is it is!">es</item>
+        <item comment="Used as a value for language preference - do not translate but only use this value is it is!">tr</item>
     </string-array>
     <string name="pref_periodlength">Standardlänge der Periode (Tage)</string>
     <string name="invalid_period_length">Die Standardlänge der Periode muss zwischen 1 und 14 sein!</string>
@@ -179,6 +179,6 @@
     <string name="label_details_ev22" tools:keep="@string/label_details_ev22">Traurig</string>
     <string name="label_details_ev23" tools:keep="@string/label_details_ev23">Gereizt</string>
     <string name="label_period_day">Periode, Tag %d</string>
-    <string name="navigation_drawer_open">Navigationsleiste öffnen</string>
-    <string name="navigation_drawer_close">Navigationsleiste schließen</string>
+    <string name="navigation_drawer_open" comment="This text is used for Google Talkback assistance (text to speech)">Navigationsleiste öffnen</string>
+    <string name="navigation_drawer_close" comment="This text is used for Google Talkback assistance (text to speech)">Navigationsleiste schließen</string>
 </resources>

@@ -37,7 +37,7 @@
     <string name="backup_newfolder">انتخاب محل جدید</string>
     <string name="backup_help">راهنما</string>
     <string name="backup_finished">پشتیبان گیری انجام شد</string>
-    <string name="backup_noruiyet">هنوز محلی رو انتخاب نکردید</string>
+    <string name="backup_noruiyet" comment="This message will be displayed when you try to backup or restore data and the location for the backup (internal memory or SD card) was not selected yet.">هنوز محلی رو انتخاب نکردید</string>
     <string name="backup_failed">پشتیبان گیری انجام نشد!</string>
     <string name="restore_title">بازیابی داده‌ها</string>
     <string name="restore_selectfolder">لطفاً محلی رو که پشتیبانی گرفتید انتخاب کنید (محلی با پوشه \"de.arnowelzel.android.periodical\").</string>
@@ -89,19 +89,19 @@
         <item>eu</item>
         <item>cs</item>
         <item>nl</item>
-        <item>en</item>
-        <item>fr</item>
-        <item>de</item>
-        <item>el</item>
-        <item>iw</item>
-        <item>it</item>
-        <item>ja</item>
-        <item>fa</item>
-        <item>pl</item>
-        <item>pt-rBR</item>
-        <item>ru</item>
-        <item>es</item>
-        <item>tr</item>
+        <item comment="Used as a value for language preference - do not translate but only use this value is it is!">en</item>
+        <item comment="Used as a value for language preference - do not translate but only use this value is it is!">fr</item>
+        <item comment="Used as a value for language preference - do not translate but only use this value is it is!">de</item>
+        <item comment="Used as a value for language preference - do not translate but only use this value is it is!">el</item>
+        <item comment="Used as a value for language preference - do not translate but only use this value is it is!">iw</item>
+        <item comment="Used as a value for language preference - do not translate but only use this value is it is!">it</item>
+        <item comment="Used as a value for language preference - do not translate but only use this value is it is!">ja</item>
+        <item comment="Used as a value for language preference - do not translate but only use this value is it is!">fa</item>
+        <item comment="Used as a value for language preference - do not translate but only use this value is it is!">pl</item>
+        <item comment="Used as a value for language preference - do not translate but only use this value is it is!">pt-rBR</item>
+        <item comment="Used as a value for language preference - do not translate but only use this value is it is!">ru</item>
+        <item comment="Used as a value for language preference - do not translate but only use this value is it is!">es</item>
+        <item comment="Used as a value for language preference - do not translate but only use this value is it is!">tr</item>
     </string-array>
     <string name="pref_periodlength">طول دوره پریود به صورت پیش‌فرض (روز)</string>
     <string name="invalid_period_length">طول دوره پریود به صورت پیش‌فرض باید بین ۱ تا ۱۴ باشد!</string>
@@ -179,6 +179,6 @@
     <string name="label_details_ev22" tools:keep="@string/label_details_ev22">غمگین</string>
     <string name="label_details_ev23" tools:keep="@string/label_details_ev23">حساس</string>
     <string name="label_period_day">پریود، روز %d</string>
-    <string name="navigation_drawer_open">بازکردن کشوی هدایت</string>
-    <string name="navigation_drawer_close">بستن کشوی هدایت</string>
+    <string name="navigation_drawer_open" comment="This text is used for Google Talkback assistance (text to speech)">بازکردن کشوی هدایت</string>
+    <string name="navigation_drawer_close" comment="This text is used for Google Talkback assistance (text to speech)">بستن کشوی هدایت</string>
 </resources>

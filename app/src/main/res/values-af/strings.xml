@@ -37,7 +37,7 @@
     <string name="backup_newfolder">Kies \'n nuwe ligging</string>
     <string name="backup_help">Help</string>
     <string name="backup_finished">Backup klaar</string>
-    <string name="backup_noruiyet">geen ligging gekies nie</string>
+    <string name="backup_noruiyet" comment="This message will be displayed when you try to backup or restore data and the location for the backup (internal memory or SD card) was not selected yet.">geen ligging gekies nie</string>
     <string name="backup_failed">Backup werk nie!</string>
     <string name="restore_title">Restore data</string>
     <string name="restore_selectfolder">Kies die plek waar die rugsteun gestoor is (die plek met die lêergids \"de.arnowelzel.android.periodical\").</string>
@@ -89,19 +89,19 @@
         <item>eu</item>
         <item>cs</item>
         <item>nl</item>
-        <item>en</item>
-        <item>fr</item>
-        <item>de</item>
-        <item>el</item>
-        <item>iw</item>
-        <item>it</item>
-        <item>ja</item>
-        <item>fa</item>
-        <item>pl</item>
-        <item>pt-rBR</item>
-        <item>ru</item>
-        <item>es</item>
-        <item>tr</item>
+        <item comment="Used as a value for language preference - do not translate but only use this value is it is!">en</item>
+        <item comment="Used as a value for language preference - do not translate but only use this value is it is!">fr</item>
+        <item comment="Used as a value for language preference - do not translate but only use this value is it is!">de</item>
+        <item comment="Used as a value for language preference - do not translate but only use this value is it is!">el</item>
+        <item comment="Used as a value for language preference - do not translate but only use this value is it is!">iw</item>
+        <item comment="Used as a value for language preference - do not translate but only use this value is it is!">it</item>
+        <item comment="Used as a value for language preference - do not translate but only use this value is it is!">ja</item>
+        <item comment="Used as a value for language preference - do not translate but only use this value is it is!">fa</item>
+        <item comment="Used as a value for language preference - do not translate but only use this value is it is!">pl</item>
+        <item comment="Used as a value for language preference - do not translate but only use this value is it is!">pt-rBR</item>
+        <item comment="Used as a value for language preference - do not translate but only use this value is it is!">ru</item>
+        <item comment="Used as a value for language preference - do not translate but only use this value is it is!">es</item>
+        <item comment="Used as a value for language preference - do not translate but only use this value is it is!">tr</item>
     </string-array>
     <string name="pref_periodlength">Versteklengte</string>
     <string name="invalid_period_length">Die verstek periode lengte moet tussen 1 en 14 wees!</string>
@@ -179,6 +179,6 @@
     <string name="label_details_ev22" tools:keep="@string/label_details_ev22">Hartseer</string>
     <string name="label_details_ev23" tools:keep="@string/label_details_ev23">Senuweeagtig</string>
     <string name="label_period_day">Periode, dag %d</string>
-    <string name="navigation_drawer_open">Open navigasie balk</string>
-    <string name="navigation_drawer_close">Maak die navigatiebalk toe</string>
+    <string name="navigation_drawer_open" comment="This text is used for Google Talkback assistance (text to speech)">Open navigasie balk</string>
+    <string name="navigation_drawer_close" comment="This text is used for Google Talkback assistance (text to speech)">Maak die navigatiebalk toe</string>
 </resources>

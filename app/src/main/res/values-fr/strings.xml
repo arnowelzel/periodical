@@ -37,7 +37,7 @@
     <string name="backup_newfolder">Sélectionnez un nouvel emplacement</string>
     <string name="backup_help">Aide</string>
     <string name="backup_finished">Sauvegarde effectuée</string>
-    <string name="backup_noruiyet">aucun endroit sélectionné</string>
+    <string name="backup_noruiyet" comment="This message will be displayed when you try to backup or restore data and the location for the backup (internal memory or SD card) was not selected yet.">aucun endroit sélectionné</string>
     <string name="backup_failed">Échec de la sauvegarde !</string>
     <string name="restore_title">Restaurer les données</string>
     <string name="restore_selectfolder">Veuillez sélectionner l\'emplacement où la sauvegarde a été enregistrée (l\'emplacement avec le dossier \"de.arnowelzel.android.periodical\").</string>
@@ -89,19 +89,19 @@
         <item>eu</item>
         <item>cs</item>
         <item>nl</item>
-        <item>en</item>
-        <item>fr</item>
-        <item>de</item>
-        <item>el</item>
-        <item>iw</item>
-        <item>it</item>
-        <item>ja</item>
-        <item>fa</item>
-        <item>pl</item>
-        <item>pt-rBR</item>
-        <item>ru</item>
-        <item>es</item>
-        <item>tr</item>
+        <item comment="Used as a value for language preference - do not translate but only use this value is it is!">en</item>
+        <item comment="Used as a value for language preference - do not translate but only use this value is it is!">fr</item>
+        <item comment="Used as a value for language preference - do not translate but only use this value is it is!">de</item>
+        <item comment="Used as a value for language preference - do not translate but only use this value is it is!">el</item>
+        <item comment="Used as a value for language preference - do not translate but only use this value is it is!">iw</item>
+        <item comment="Used as a value for language preference - do not translate but only use this value is it is!">it</item>
+        <item comment="Used as a value for language preference - do not translate but only use this value is it is!">ja</item>
+        <item comment="Used as a value for language preference - do not translate but only use this value is it is!">fa</item>
+        <item comment="Used as a value for language preference - do not translate but only use this value is it is!">pl</item>
+        <item comment="Used as a value for language preference - do not translate but only use this value is it is!">pt-rBR</item>
+        <item comment="Used as a value for language preference - do not translate but only use this value is it is!">ru</item>
+        <item comment="Used as a value for language preference - do not translate but only use this value is it is!">es</item>
+        <item comment="Used as a value for language preference - do not translate but only use this value is it is!">tr</item>
     </string-array>
     <string name="pref_periodlength">Durée par défaut des règles (jours)</string>
     <string name="invalid_period_length">La durée par défaut des règles doit être comprise entre 1 et 14 !</string>
@@ -153,7 +153,7 @@
     <string name="label_details_intensity4">4 (fort)</string>
     <string name="label_details_notes">Remarques</string>
     <string name="label_details_events">Événements</string>
-    <string name="label_details_mood">Ambiance</string>
+    <string name="label_details_mood">Humeur</string>
     <string name="label_details_symptoms">Symptômes</string>
     <string name="label_details_ev1" tools:keep="@string/label_details_ev1">Rapports sexuels</string>
     <string name="label_details_ev2" tools:keep="@string/label_details_ev2">Crampes</string>
@@ -173,12 +173,12 @@
     <string name="label_details_ev16" tools:keep="@string/label_details_ev16">Envies de nourriture</string>
     <string name="label_details_ev17" tools:keep="@string/label_details_ev17">Maux de tête/migraine</string>
     <string name="label_details_ev18" tools:keep="@string/label_details_ev18">Pilule contraceptive</string>
-    <string name="label_details_ev19" tools:keep="@string/label_details_ev19">Repérage</string>
+    <string name="label_details_ev19" tools:keep="@string/label_details_ev19">Légers saignements</string>
     <string name="label_details_ev20" tools:keep="@string/label_details_ev20">Fatigué</string>
     <string name="label_details_ev21" tools:keep="@string/label_details_ev21">Énergisé</string>
     <string name="label_details_ev22" tools:keep="@string/label_details_ev22">Triste</string>
     <string name="label_details_ev23" tools:keep="@string/label_details_ev23">Nerveux</string>
     <string name="label_period_day">Règles, jour %d</string>
-    <string name="navigation_drawer_open">Ouvrir le panneau de navigation</string>
-    <string name="navigation_drawer_close">Fermer le panneau de navigation</string>
+    <string name="navigation_drawer_open" comment="This text is used for Google Talkback assistance (text to speech)">Ouvrir le panneau de navigation</string>
+    <string name="navigation_drawer_close" comment="This text is used for Google Talkback assistance (text to speech)">Fermer le panneau de navigation</string>
 </resources>

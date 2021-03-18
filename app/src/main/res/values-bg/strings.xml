@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <string name="app_name">Periodical</string>
+    <string name="menuitem_help">Помощ</string>
+    <string name="menuitem_about">Относно …</string>
+    <string name="current_day">Текущ ден</string>
+    <string name="menuitem_list">Списък</string>
+    <string name="menuitem_listdetails">Списък с подробности</string>
+    <string name="menuitem_copy">Резервно копие</string>
+    <string name="menuitem_restore">Възстановяване</string>
+    <string name="menuitem_options">Предпочитания</string>
+    <string name="menuitem_exit">Изход</string>
+    <string name="main_calday_su">НД</string>
+    <string name="main_calday_mo">ПН</string>
+    <string name="main_calday_tu">ВТ</string>
+    <string name="main_calday_we">СР</string>
+    <string name="main_calday_th">ЧТ</string>
+    <string name="main_calday_fr">ПТ</string>
+    <string name="main_calday_sa">СБ</string>
+    <string name="main_calday_su_description">неделя</string>
+    <string name="main_calday_mo_description">понеделник</string>
+    <string name="main_calday_tu_description">вторник</string>
+    <string name="main_calday_we_description">сряда</string>
+    <string name="main_calday_th_description">четвъртък</string>
+    <string name="main_calday_fr_description">петък</string>
+    <string name="main_calday_sa_description">събота</string>
+    <string name="details_title">Подробности</string>
+    <string name="list_title">Списък</string>
+    <string name="list_details_title">Списък с подробности</string>
+    <string name="about_title">Относно …</string>
+    <string name="help_title">Помощ</string>
+    <string name="backup_title">Създаване на резервно копие</string>
+    <string name="backup_text">Искате ли да създадете резервно копие на текущите данни?\nТова ще замени последното такова!</string>
+    <string name="backup_selectfolder">Моля, изберете къде да запазите резервното копие. Трябва да предоставите достъп до избраното местоположение, което ще се използва за това и всички бъдещи резервни копия.\n\nЗа да научите повече как работи създаването на резервно копие, вижте менюто за помощ.</string>
+    <string name="backup_ok">Добре</string>
+    <string name="backup_cancel">Отказ</string>
+    <string name="backup_newfolder">Избор на ново местоположение</string>
+    <string name="backup_help">Помощ</string>
+    <string name="backup_finished">Резервното копие е създадено</string>
+    <string name="backup_noruiyet" comment="This message will be displayed when you try to backup or restore data and the location for the backup (internal memory or SD card) was not selected yet.">все още няма избрано местоположение</string>
+    <string name="backup_failed">Неуспешно резервно копие!</string>
+    <string name="restore_title">Възстановяване на данните</string>
+    <string name="restore_selectfolder">Моля, изберете местоположението, където е запазено резервното копие(местоположението с папката \"de.arnowelzel.android.periodical\").</string>
+    <string name="restore_text">Искате ли да възстановите последното резервно копие?\nТова ще замени текущите данни!</string>
+    <string name="restore_ok">Добре</string>
+    <string name="restore_cancel">Отказ</string>
+    <string name="restore_finished">Възстановяването е готово</string>
+    <string name="restore_failed">Неуспешно възстановяване!</string>
+    <string name="permissions_needed">За да създава или възстановява резервни копия, Periodical се нуждае от разрешение за достъп до хранилището с файлове.</string>
+    <string name="permissions_needed_ok">Добре</string>
+    <string name="event_periodstart">Цикълът започна</string>
+    <string name="event_periodlength">Последният цикъл продължи %s дена</string>
+    <string name="event_ignored">Продължителността на цикъла се игнорира</string>
+    <string name="event_periodfirst">Първо въвеждане</string>
+    <string name="calendaraction_title">Редактиране на въвеждане в календара</string>
+    <string name="calendaraction_add">Да се отбележи ли този ден като „Цикъл“?</string>
+    <string name="calendaraction_remove">Да се премахне ли отбелязването „Цикъл“ за този ден?</string>
+    <string name="calendaraction_removeperiod">Да се премахне ли този Цикъл?</string>
+    <string name="calendaraction_ok">Да</string>
+    <string name="calendaraction_cancel">Не</string>
+    <string name="calendaraction_details">Редактиране на подробности</string>
+    <string name="options_title">Предпочитания</string>
+    <string name="pref_locale">Език</string>
+    <string-array name="list_locales">
+        <item>По подразбиране</item>
+        <item>Африкански</item>
+        <item>Азербайджански</item>
+        <item>Баски</item>
+        <item>Чешки</item>
+        <item>Нидерландски</item>
+        <item>Английски</item>
+        <item>Френски</item>
+        <item>Немски</item>
+        <item>Гръцки</item>
+        <item>Иврит</item>
+        <item>Италиански</item>
+        <item>Японски</item>
+        <item>Персийски</item>
+        <item>Полски</item>
+        <item>Португалски в Бразилия</item>
+        <item>Руски</item>
+        <item>Испански</item>
+        <item>Турски</item>
+    </string-array>
+    <string-array name="values_locales">
+        <item>системен</item>
+        <item>af</item>
+        <item>az</item>
+        <item>eu</item>
+        <item>cs</item>
+        <item>nl</item>
+        <item comment="Used as a value for language preference - do not translate but only use this value is it is!">en</item>
+        <item comment="Used as a value for language preference - do not translate but only use this value is it is!">fr</item>
+        <item comment="Used as a value for language preference - do not translate but only use this value is it is!">de</item>
+        <item comment="Used as a value for language preference - do not translate but only use this value is it is!">el</item>
+        <item comment="Used as a value for language preference - do not translate but only use this value is it is!">iw</item>
+        <item comment="Used as a value for language preference - do not translate but only use this value is it is!">it</item>
+        <item comment="Used as a value for language preference - do not translate but only use this value is it is!">ja</item>
+        <item comment="Used as a value for language preference - do not translate but only use this value is it is!">fa</item>
+        <item comment="Used as a value for language preference - do not translate but only use this value is it is!">pl</item>
+        <item comment="Used as a value for language preference - do not translate but only use this value is it is!">pt-rBR</item>
+        <item comment="Used as a value for language preference - do not translate but only use this value is it is!">ru</item>
+        <item comment="Used as a value for language preference - do not translate but only use this value is it is!">es</item>
+        <item comment="Used as a value for language preference - do not translate but only use this value is it is!">tr</item>
+    </string-array>
+    <string name="pref_periodlength">Продължителност на цикъла по подразбиране (дни)</string>
+    <string name="invalid_period_length">Продължителността на цикъла по подразбиране трябва да бъде между 1 и 14!</string>
+    <string name="pref_luteallength">Продължителност на лутеалната фаза (дни)</string>
+    <string name="invalid_luteal_length">Продължителността на лутеала трябва да бъде поне 1!</string>
+    <string name="pref_startofweek">Начало на седмицата</string>
+    <string-array name="list_startofweek">
+        <item>Неделя</item>
+        <item>Понеделник</item>
+        <item>Вторник</item>
+        <item>Сряда</item>
+        <item>Четвъртък</item>
+        <item>Петък</item>
+        <item>Събота</item>
+    </string-array>
+    <string-array name="values_startofweek">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+    </string-array>
+    <string name="pref_maximum_cycle_length">Максимална продължителност на цикъла</string>
+    <string name="invalid_maximum_cycle_length">Максималната продължителност на цикъла трябва да бъде поне 60!</string>
+    <string name="pref_direct_details">Отиване директно към подробностите</string>
+    <string name="pref_show_cycle">Показване на деня от цикъла</string>
+    <string name="previous_month">Предишен месец</string>
+    <string name="next_month">Следващ месец</string>
+    <string name="label_average_cycle">среден цикъл</string>
+    <string name="label_shortest_cycle">най-кратък цикъл</string>
+    <string name="label_longest_cycle">най-дълъг цикъл</string>
+    <string name="label_infertile">неплодовитост</string>
+    <string name="label_fertile">плодовитост</string>
+    <string name="label_period_started">цикълът започна</string>
+    <string name="label_period">цикъл</string>
+    <string name="label_period_predicted">предвиден цикъл</string>
+    <string name="label_ovulation">овулация</string>
+    <string name="asset_about">en/about.html</string>
+    <string name="asset_help">en/help.html</string>
+    <string name="label_details_period">Цикъл</string>
+    <string name="label_details_yes">Да</string>
+    <string name="label_details_no">Не</string>
+    <string name="label_details_intensity">Интензивност</string>
+    <string name="label_details_intensity1">1</string>
+    <string name="label_details_intensity2">2</string>
+    <string name="label_details_intensity3">3</string>
+    <string name="label_details_intensity4">4 (силно)</string>
+    <string name="label_details_notes">Бележки</string>
+    <string name="label_details_events">Събития</string>
+    <string name="label_details_mood">Настроение</string>
+    <string name="label_details_symptoms">Симптоми</string>
+    <string name="label_details_ev1" tools:keep="@string/label_details_ev1">Полово сношение</string>
+    <string name="label_details_ev2" tools:keep="@string/label_details_ev2">Крампи</string>
+    <string name="label_details_ev3" tools:keep="@string/label_details_ev3">Болка в гърба</string>
+    <string name="label_details_ev4" tools:keep="@string/label_details_ev4">Болка в средата вляво</string>
+    <string name="label_details_ev5" tools:keep="@string/label_details_ev5">Болка в средата вдясно</string>
+    <string name="label_details_ev6" tools:keep="@string/label_details_ev6">Болка в гърдите</string>
+    <string name="label_details_ev7" tools:keep="@string/label_details_ev7">Млечница/кандида</string>
+    <string name="label_details_ev8" tools:keep="@string/label_details_ev8">Течение</string>
+    <string name="label_details_ev9" tools:keep="@string/label_details_ev9">Интензивно кървене</string>
+    <string name="label_details_ev10" tools:keep="@string/label_details_ev10">Температурни колебания</string>
+    <string name="label_details_ev11" tools:keep="@string/label_details_ev11">Пъпки</string>
+    <string name="label_details_ev12" tools:keep="@string/label_details_ev12">Подуване на корема</string>
+    <string name="label_details_ev13" tools:keep="@string/label_details_ev13">Припадане</string>
+    <string name="label_details_ev14" tools:keep="@string/label_details_ev14">Нацупеност</string>
+    <string name="label_details_ev15" tools:keep="@string/label_details_ev15">Гадене</string>
+    <string name="label_details_ev16" tools:keep="@string/label_details_ev16">Прищевки</string>
+    <string name="label_details_ev17" tools:keep="@string/label_details_ev17">Главоболие/мигрена</string>
+    <string name="label_details_ev18" tools:keep="@string/label_details_ev18">Противозачатъчно хапче</string>
+    <string name="label_details_ev19" tools:keep="@string/label_details_ev19">Опетняване</string>
+    <string name="label_details_ev20" tools:keep="@string/label_details_ev20">Уморена</string>
+    <string name="label_details_ev21" tools:keep="@string/label_details_ev21">Енергизирана</string>
+    <string name="label_details_ev22" tools:keep="@string/label_details_ev22">Тъжна</string>
+    <string name="label_details_ev23" tools:keep="@string/label_details_ev23">Нервна</string>
+    <string name="label_period_day">Цикъл, ден %d</string>
+    <string name="navigation_drawer_open" comment="This text is used for Google Talkback assistance (text to speech)">Отваряне на чекмеджето за навигация</string>
+    <string name="navigation_drawer_close" comment="This text is used for Google Talkback assistance (text to speech)">Затваряне на чекмеджето за навигация</string>
+</resources>
