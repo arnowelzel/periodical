@@ -153,7 +153,7 @@
     <string name="label_details_intensity4">4 (fort)</string>
     <string name="label_details_notes">Remarques</string>
     <string name="label_details_events">Événements</string>
-    <string name="label_details_mood">Ambiance</string>
+    <string name="label_details_mood">Humeur</string>
     <string name="label_details_symptoms">Symptômes</string>
     <string name="label_details_ev1" tools:keep="@string/label_details_ev1">Rapports sexuels</string>
     <string name="label_details_ev2" tools:keep="@string/label_details_ev2">Crampes</string>
@@ -173,7 +173,7 @@
     <string name="label_details_ev16" tools:keep="@string/label_details_ev16">Envies de nourriture</string>
     <string name="label_details_ev17" tools:keep="@string/label_details_ev17">Maux de tête/migraine</string>
     <string name="label_details_ev18" tools:keep="@string/label_details_ev18">Pilule contraceptive</string>
-    <string name="label_details_ev19" tools:keep="@string/label_details_ev19">Repérage</string>
+    <string name="label_details_ev19" tools:keep="@string/label_details_ev19">Légers saignements</string>
     <string name="label_details_ev20" tools:keep="@string/label_details_ev20">Fatigué</string>
     <string name="label_details_ev21" tools:keep="@string/label_details_ev21">Énergisé</string>
     <string name="label_details_ev22" tools:keep="@string/label_details_ev22">Triste</string>
