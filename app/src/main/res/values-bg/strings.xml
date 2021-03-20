@@ -84,7 +84,7 @@
         <item>Турски</item>
     </string-array>
     <string-array name="values_locales">
-        <item comment="This is value is a system value - do not translate!">системен</item>
+        <item comment="This is value is a system value - do not translate!">system</item>
         <item comment="This is value is a system value - do not translate!">af</item>
         <item comment="This is value is a system value - do not translate!">az</item>
         <item comment="This is value is a system value - do not translate!">eu</item>
