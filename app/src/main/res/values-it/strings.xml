@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <string name="app_name">Periodical</string>
+    <string name="app_name" comment="The title of the app. Please leave this untranslated.">Periodical</string>
     <string name="menuitem_help">Aiuto</string>
     <string name="menuitem_about">Info …</string>
     <string name="current_day">Giorno attuale</string>
@@ -17,13 +17,13 @@
     <string name="main_calday_th">GI</string>
     <string name="main_calday_fr">VE</string>
     <string name="main_calday_sa">SA</string>
-    <string name="main_calday_su_description">domenica</string>
-    <string name="main_calday_mo_description">lunedi</string>
-    <string name="main_calday_tu_description">martedì</string>
-    <string name="main_calday_we_description">mercoledì</string>
-    <string name="main_calday_th_description">giovedi</string>
-    <string name="main_calday_fr_description">venerdì</string>
-    <string name="main_calday_sa_description">sabato</string>
+    <string name="main_calday_su_description" comment="This text is used for Google Talkback and other assistive technologies.">domenica</string>
+    <string name="main_calday_mo_description" comment="This text is used for Google Talkback and other assistive technologies.">lunedi</string>
+    <string name="main_calday_tu_description" comment="This text is used for Google Talkback and other assistive technologies.">martedì</string>
+    <string name="main_calday_we_description" comment="This text is used for Google Talkback and other assistive technologies.">mercoledì</string>
+    <string name="main_calday_th_description" comment="This text is used for Google Talkback and other assistive technologies.">giovedi</string>
+    <string name="main_calday_fr_description" comment="This text is used for Google Talkback and other assistive technologies.">venerdì</string>
+    <string name="main_calday_sa_description" comment="This text is used for Google Talkback and other assistive technologies.">sabato</string>
     <string name="details_title">Dettagli</string>
     <string name="list_title">Lista</string>
     <string name="list_details_title">Lista con dettagli</string>
@@ -37,7 +37,7 @@
     <string name="backup_newfolder">Seleziona nuova posizione</string>
     <string name="backup_help">Aiuto</string>
     <string name="backup_finished">Backup completato</string>
-    <string name="backup_noruiyet" comment="This message will be displayed when you try to backup or restore data and the location for the backup (internal memory or SD card) was not selected yet.">nessuna posizione ancora selezionata</string>
+    <string name="backup_noruiyet">nessuna posizione ancora selezionata</string>
     <string name="backup_failed">Backup fallito!</string>
     <string name="restore_title">Ripristina dati</string>
     <string name="restore_selectfolder">Selezionare la posizione, dove è stato salvato il backup (la posizione con la cartella \"de.arnowelzel.android.periodical\").</string>
@@ -66,6 +66,7 @@
         <item>Afrikaans</item>
         <item>Azerbaigian</item>
         <item>Basco</item>
+        <item>Bulgaro</item>
         <item>Ceco</item>
         <item>Olandese</item>
         <item>Inglese</item>
@@ -83,25 +84,26 @@
         <item>Turco</item>
     </string-array>
     <string-array name="values_locales">
-        <item>system</item>
-        <item>af</item>
-        <item>az</item>
-        <item>eu</item>
-        <item>cs</item>
-        <item>nl</item>
-        <item comment="Used as a value for language preference - do not translate but only use this value is it is!">en</item>
-        <item comment="Used as a value for language preference - do not translate but only use this value is it is!">fr</item>
-        <item comment="Used as a value for language preference - do not translate but only use this value is it is!">de</item>
-        <item comment="Used as a value for language preference - do not translate but only use this value is it is!">el</item>
-        <item comment="Used as a value for language preference - do not translate but only use this value is it is!">iw</item>
-        <item comment="Used as a value for language preference - do not translate but only use this value is it is!">it</item>
-        <item comment="Used as a value for language preference - do not translate but only use this value is it is!">ja</item>
-        <item comment="Used as a value for language preference - do not translate but only use this value is it is!">fa</item>
-        <item comment="Used as a value for language preference - do not translate but only use this value is it is!">pl</item>
-        <item comment="Used as a value for language preference - do not translate but only use this value is it is!">pt-rBR</item>
-        <item comment="Used as a value for language preference - do not translate but only use this value is it is!">ru</item>
-        <item comment="Used as a value for language preference - do not translate but only use this value is it is!">es</item>
-        <item comment="Used as a value for language preference - do not translate but only use this value is it is!">tr</item>
+        <item comment="This is value is a system value - do not translate!">system</item>
+        <item comment="This is value is a system value - do not translate!">af</item>
+        <item comment="This is value is a system value - do not translate!">az</item>
+        <item comment="This is value is a system value - do not translate!">eu</item>
+        <item comment="This is value is a system value - do not translate!">bg</item>
+        <item comment="This is value is a system value - do not translate!">cs</item>
+        <item comment="This is value is a system value - do not translate!">nl</item>
+        <item comment="This is value is a system value - do not translate!">en</item>
+        <item comment="This is value is a system value - do not translate!">fr</item>
+        <item comment="This is value is a system value - do not translate!">de</item>
+        <item comment="This is value is a system value - do not translate!">el</item>
+        <item comment="This is value is a system value - do not translate!">iw</item>
+        <item comment="This is value is a system value - do not translate!">it</item>
+        <item comment="This is value is a system value - do not translate!">ja</item>
+        <item comment="This is value is a system value - do not translate!">fa</item>
+        <item comment="This is value is a system value - do not translate!">pl</item>
+        <item comment="This is value is a system value - do not translate!">pt-rBR</item>
+        <item comment="This is value is a system value - do not translate!">ru</item>
+        <item comment="This is value is a system value - do not translate!">es</item>
+        <item comment="This is value is a system value - do not translate!">tr</item>
     </string-array>
     <string name="pref_periodlength">Durata predefinita del ciclo (giorni)</string>
     <string name="invalid_period_length">La durata predefinita del ciclo deve essere fra 1 e 14 giorni!</string>
@@ -118,13 +120,13 @@
         <item>Sabato</item>
     </string-array>
     <string-array name="values_startofweek">
-        <item>1</item>
-        <item>0</item>
-        <item>2</item>
-        <item>3</item>
-        <item>4</item>
-        <item>5</item>
-        <item>6</item>
+        <item comment="This is value is a system value - do not translate!">1</item>
+        <item comment="This is value is a system value - do not translate!">0</item>
+        <item comment="This is value is a system value - do not translate!">2</item>
+        <item comment="This is value is a system value - do not translate!">3</item>
+        <item comment="This is value is a system value - do not translate!">4</item>
+        <item comment="This is value is a system value - do not translate!">5</item>
+        <item comment="This is value is a system value - do not translate!">6</item>
     </string-array>
     <string name="pref_maximum_cycle_length">Durata massima del ciclo</string>
     <string name="invalid_maximum_cycle_length">La durata massima del ciclo deve essere almeno 60!</string>
@@ -179,6 +181,6 @@
     <string name="label_details_ev22" tools:keep="@string/label_details_ev22">Triste</string>
     <string name="label_details_ev23" tools:keep="@string/label_details_ev23">Nervoso</string>
     <string name="label_period_day">Ciclo, giorno %d</string>
-    <string name="navigation_drawer_open" comment="This text is used for Google Talkback assistance (text to speech)">Apri la barra di navigazione</string>
-    <string name="navigation_drawer_close" comment="This text is used for Google Talkback assistance (text to speech)">Chiudi la barra di navigazione</string>
+    <string name="navigation_drawer_open">Apri la barra di navigazione</string>
+    <string name="navigation_drawer_close">Chiudi la barra di navigazione</string>
 </resources>

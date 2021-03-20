@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <string name="app_name">Periodical</string>
+    <string name="app_name" comment="The title of the app. Please leave this untranslated.">Periodical</string>
     <string name="menuitem_help">Yardım</string>
     <string name="menuitem_about">Hakkında…</string>
     <string name="current_day">Bugün</string>
@@ -17,13 +17,13 @@
     <string name="main_calday_th">PE</string>
     <string name="main_calday_fr">CU</string>
     <string name="main_calday_sa">CT</string>
-    <string name="main_calday_su_description">pazar</string>
-    <string name="main_calday_mo_description">pazartesi</string>
-    <string name="main_calday_tu_description">salı</string>
-    <string name="main_calday_we_description">çarşamba</string>
-    <string name="main_calday_th_description">perşembe</string>
-    <string name="main_calday_fr_description">cuma</string>
-    <string name="main_calday_sa_description">cumartesi</string>
+    <string name="main_calday_su_description" comment="This text is used for Google Talkback and other assistive technologies.">pazar</string>
+    <string name="main_calday_mo_description" comment="This text is used for Google Talkback and other assistive technologies.">pazartesi</string>
+    <string name="main_calday_tu_description" comment="This text is used for Google Talkback and other assistive technologies.">salı</string>
+    <string name="main_calday_we_description" comment="This text is used for Google Talkback and other assistive technologies.">çarşamba</string>
+    <string name="main_calday_th_description" comment="This text is used for Google Talkback and other assistive technologies.">perşembe</string>
+    <string name="main_calday_fr_description" comment="This text is used for Google Talkback and other assistive technologies.">cuma</string>
+    <string name="main_calday_sa_description" comment="This text is used for Google Talkback and other assistive technologies.">cumartesi</string>
     <string name="details_title">Ayrıntılar</string>
     <string name="list_title">Dizelge</string>
     <string name="list_details_title">Ayrıntılı dizelge</string>
@@ -37,7 +37,7 @@
     <string name="backup_newfolder">Yeni konum seç</string>
     <string name="backup_help">Yardım</string>
     <string name="backup_finished">Yedekleme başarılı</string>
-    <string name="backup_noruiyet" comment="This message will be displayed when you try to backup or restore data and the location for the backup (internal memory or SD card) was not selected yet.">henüz konum seçilmedi</string>
+    <string name="backup_noruiyet">henüz konum seçilmedi</string>
     <string name="backup_failed">Yedekleme başarısız!</string>
     <string name="restore_title">Verileri geri yükle</string>
     <string name="restore_selectfolder">Lütfen yedeğin kaydedileceği konumu seçin (\"de.arnowelzel.android.periodical\" dizininin bulunduğu konumu).</string>
@@ -66,6 +66,7 @@
         <item>Afrikaans</item>
         <item>Azerbaycanca</item>
         <item>Baskça</item>
+        <item>Bulgarca</item>
         <item>Çekçe</item>
         <item>Flemenkçe</item>
         <item>İngilizce</item>
@@ -83,25 +84,26 @@
         <item>Türkçe</item>
     </string-array>
     <string-array name="values_locales">
-        <item>system</item>
-        <item>af</item>
-        <item>az</item>
-        <item>eu</item>
-        <item>cs</item>
-        <item>nl</item>
-        <item comment="Used as a value for language preference - do not translate but only use this value is it is!">en</item>
-        <item comment="Used as a value for language preference - do not translate but only use this value is it is!">fr</item>
-        <item comment="Used as a value for language preference - do not translate but only use this value is it is!">de</item>
-        <item comment="Used as a value for language preference - do not translate but only use this value is it is!">el</item>
-        <item comment="Used as a value for language preference - do not translate but only use this value is it is!">iw</item>
-        <item comment="Used as a value for language preference - do not translate but only use this value is it is!">it</item>
-        <item comment="Used as a value for language preference - do not translate but only use this value is it is!">ja</item>
-        <item comment="Used as a value for language preference - do not translate but only use this value is it is!">fa</item>
-        <item comment="Used as a value for language preference - do not translate but only use this value is it is!">pl</item>
-        <item comment="Used as a value for language preference - do not translate but only use this value is it is!">pt-rBR</item>
-        <item comment="Used as a value for language preference - do not translate but only use this value is it is!">ru</item>
-        <item comment="Used as a value for language preference - do not translate but only use this value is it is!">es</item>
-        <item comment="Used as a value for language preference - do not translate but only use this value is it is!">tr</item>
+        <item comment="This is value is a system value - do not translate!">system</item>
+        <item comment="This is value is a system value - do not translate!">af</item>
+        <item comment="This is value is a system value - do not translate!">az</item>
+        <item comment="This is value is a system value - do not translate!">eu</item>
+        <item comment="This is value is a system value - do not translate!">bg</item>
+        <item comment="This is value is a system value - do not translate!">cs</item>
+        <item comment="This is value is a system value - do not translate!">nl</item>
+        <item comment="This is value is a system value - do not translate!">en</item>
+        <item comment="This is value is a system value - do not translate!">fr</item>
+        <item comment="This is value is a system value - do not translate!">de</item>
+        <item comment="This is value is a system value - do not translate!">el</item>
+        <item comment="This is value is a system value - do not translate!">iw</item>
+        <item comment="This is value is a system value - do not translate!">it</item>
+        <item comment="This is value is a system value - do not translate!">ja</item>
+        <item comment="This is value is a system value - do not translate!">fa</item>
+        <item comment="This is value is a system value - do not translate!">pl</item>
+        <item comment="This is value is a system value - do not translate!">pt-rBR</item>
+        <item comment="This is value is a system value - do not translate!">ru</item>
+        <item comment="This is value is a system value - do not translate!">es</item>
+        <item comment="This is value is a system value - do not translate!">tr</item>
     </string-array>
     <string name="pref_periodlength">Âdet dönemi için varsayılan uzunluk (gün)</string>
     <string name="invalid_period_length">Varsayılan âdet dönemi uzunluğu 1 ile 14 arasında olmalı!</string>
@@ -118,13 +120,13 @@
         <item>Cumartesi</item>
     </string-array>
     <string-array name="values_startofweek">
-        <item>0</item>
-        <item>1</item>
-        <item>2</item>
-        <item>3</item>
-        <item>4</item>
-        <item>5</item>
-        <item>6</item>
+        <item comment="This is value is a system value - do not translate!">0</item>
+        <item comment="This is value is a system value - do not translate!">1</item>
+        <item comment="This is value is a system value - do not translate!">2</item>
+        <item comment="This is value is a system value - do not translate!">3</item>
+        <item comment="This is value is a system value - do not translate!">4</item>
+        <item comment="This is value is a system value - do not translate!">5</item>
+        <item comment="This is value is a system value - do not translate!">6</item>
     </string-array>
     <string name="pref_maximum_cycle_length">En yüksek döngü uzunluğu</string>
     <string name="invalid_maximum_cycle_length">En yüksek döngü uzunluğu en az 60 olmalı!</string>
@@ -179,6 +181,6 @@
     <string name="label_details_ev22" tools:keep="@string/label_details_ev22">Üzgün</string>
     <string name="label_details_ev23" tools:keep="@string/label_details_ev23">Sinirli</string>
     <string name="label_period_day">Âdet günü %d</string>
-    <string name="navigation_drawer_open" comment="This text is used for Google Talkback assistance (text to speech)">Gezinti çekmecesini aç</string>
-    <string name="navigation_drawer_close" comment="This text is used for Google Talkback assistance (text to speech)">Gezinti çekmecesini kapat</string>
+    <string name="navigation_drawer_open">Gezinti çekmecesini aç</string>
+    <string name="navigation_drawer_close">Gezinti çekmecesini kapat</string>
 </resources>

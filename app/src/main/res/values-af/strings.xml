@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <string name="app_name">Periodical</string>
+    <string name="app_name" comment="The title of the app. Please leave this untranslated.">Periodical</string>
     <string name="menuitem_help">Help</string>
     <string name="menuitem_about">Omtrent</string>
     <string name="current_day">Huidige dag</string>
     <string name="menuitem_list">Lys</string>
     <string name="menuitem_listdetails">Lys met besonderhede</string>
-    <string name="menuitem_copy">Backup</string>
-    <string name="menuitem_restore">Restore</string>
+    <string name="menuitem_copy">Rugsteun</string>
+    <string name="menuitem_restore">Laai terug</string>
     <string name="menuitem_options">Opsies</string>
-    <string name="menuitem_exit">Exit</string>
+    <string name="menuitem_exit">Verlaat</string>
     <string name="main_calday_su">SO</string>
     <string name="main_calday_mo">MA</string>
     <string name="main_calday_tu">DI</string>
@@ -17,37 +17,37 @@
     <string name="main_calday_th">DO</string>
     <string name="main_calday_fr">FR</string>
     <string name="main_calday_sa">SA</string>
-    <string name="main_calday_su_description">sondag</string>
-    <string name="main_calday_mo_description">maandag</string>
-    <string name="main_calday_tu_description">dinsdag</string>
-    <string name="main_calday_we_description">woensdag</string>
-    <string name="main_calday_th_description">donderdag</string>
-    <string name="main_calday_fr_description">frydag</string>
-    <string name="main_calday_sa_description">saterdag</string>
+    <string name="main_calday_su_description" comment="This text is used for Google Talkback and other assistive technologies.">sondag</string>
+    <string name="main_calday_mo_description" comment="This text is used for Google Talkback and other assistive technologies.">maandag</string>
+    <string name="main_calday_tu_description" comment="This text is used for Google Talkback and other assistive technologies.">dinsdag</string>
+    <string name="main_calday_we_description" comment="This text is used for Google Talkback and other assistive technologies.">woensdag</string>
+    <string name="main_calday_th_description" comment="This text is used for Google Talkback and other assistive technologies.">donderdag</string>
+    <string name="main_calday_fr_description" comment="This text is used for Google Talkback and other assistive technologies.">frydag</string>
+    <string name="main_calday_sa_description" comment="This text is used for Google Talkback and other assistive technologies.">saterdag</string>
     <string name="details_title">Besonderhede</string>
     <string name="list_title">Lys</string>
     <string name="list_details_title">Lys met besonderhede</string>
     <string name="about_title">Omtrent</string>
     <string name="help_title">Help</string>
-    <string name="backup_title">Backup data</string>
+    <string name="backup_title">Rugsteun data</string>
     <string name="backup_text">Wil U die huidige inligting backup?\nDit sal die laaste rugsteun vervang!</string>
     <string name="backup_selectfolder">Kies waar u die rugsteun wil stoor. U moet toegang gee tot die geselekteerde ligging wat hiervoor gebruik sal word en alle toekomstige rugsteun.\n\nOm meer te wete te kom oor hoe rugsteun werk, raadpleeg die hulpmenu.</string>
-    <string name="backup_ok">OK</string>
+    <string name="backup_ok">Goed</string>
     <string name="backup_cancel">Kanselleer</string>
     <string name="backup_newfolder">Kies \'n nuwe ligging</string>
     <string name="backup_help">Help</string>
     <string name="backup_finished">Backup klaar</string>
-    <string name="backup_noruiyet" comment="This message will be displayed when you try to backup or restore data and the location for the backup (internal memory or SD card) was not selected yet.">geen ligging gekies nie</string>
+    <string name="backup_noruiyet">geen ligging gekies nie</string>
     <string name="backup_failed">Backup werk nie!</string>
-    <string name="restore_title">Restore data</string>
+    <string name="restore_title">Restoreer klaar</string>
     <string name="restore_selectfolder">Kies die plek waar die rugsteun gestoor is (die plek met die lêergids \"de.arnowelzel.android.periodical\").</string>
     <string name="restore_text">Wil U die laaste backup restoreer?\nDit sal die huidige data vervang!</string>
-    <string name="restore_ok">OK</string>
+    <string name="restore_ok">Goed</string>
     <string name="restore_cancel">Kanselleer</string>
     <string name="restore_finished">Restoreer klaar</string>
     <string name="restore_failed">Restoreer werk nie !</string>
     <string name="permissions_needed">Vir die backups om te werk moet Periodical toestemming kry tot die file stoor area.</string>
-    <string name="permissions_needed_ok">OK</string>
+    <string name="permissions_needed_ok">Goed</string>
     <string name="event_periodstart">Periode het begin</string>
     <string name="event_periodlength">Laaste sieklus was %s dae</string>
     <string name="event_ignored">Siklus lengte ge-ignoreer</string>
@@ -66,6 +66,7 @@
         <item>Afrikaans</item>
         <item>Azerbeidjaans</item>
         <item>Baskies</item>
+        <item>Bulgaars</item>
         <item>Tsjeggies</item>
         <item>Hollands</item>
         <item>Engels</item>
@@ -83,25 +84,26 @@
         <item>Turks</item>
     </string-array>
     <string-array name="values_locales">
-        <item>system</item>
-        <item>af</item>
-        <item>az</item>
-        <item>eu</item>
-        <item>cs</item>
-        <item>nl</item>
-        <item comment="Used as a value for language preference - do not translate but only use this value is it is!">en</item>
-        <item comment="Used as a value for language preference - do not translate but only use this value is it is!">fr</item>
-        <item comment="Used as a value for language preference - do not translate but only use this value is it is!">de</item>
-        <item comment="Used as a value for language preference - do not translate but only use this value is it is!">el</item>
-        <item comment="Used as a value for language preference - do not translate but only use this value is it is!">iw</item>
-        <item comment="Used as a value for language preference - do not translate but only use this value is it is!">it</item>
-        <item comment="Used as a value for language preference - do not translate but only use this value is it is!">ja</item>
-        <item comment="Used as a value for language preference - do not translate but only use this value is it is!">fa</item>
-        <item comment="Used as a value for language preference - do not translate but only use this value is it is!">pl</item>
-        <item comment="Used as a value for language preference - do not translate but only use this value is it is!">pt-rBR</item>
-        <item comment="Used as a value for language preference - do not translate but only use this value is it is!">ru</item>
-        <item comment="Used as a value for language preference - do not translate but only use this value is it is!">es</item>
-        <item comment="Used as a value for language preference - do not translate but only use this value is it is!">tr</item>
+        <item comment="This is value is a system value - do not translate!">system</item>
+        <item comment="This is value is a system value - do not translate!">af</item>
+        <item comment="This is value is a system value - do not translate!">az</item>
+        <item comment="This is value is a system value - do not translate!">eu</item>
+        <item comment="This is value is a system value - do not translate!">bg</item>
+        <item comment="This is value is a system value - do not translate!">cs</item>
+        <item comment="This is value is a system value - do not translate!">nl</item>
+        <item comment="This is value is a system value - do not translate!">en</item>
+        <item comment="This is value is a system value - do not translate!">fr</item>
+        <item comment="This is value is a system value - do not translate!">de</item>
+        <item comment="This is value is a system value - do not translate!">el</item>
+        <item comment="This is value is a system value - do not translate!">iw</item>
+        <item comment="This is value is a system value - do not translate!">it</item>
+        <item comment="This is value is a system value - do not translate!">ja</item>
+        <item comment="This is value is a system value - do not translate!">fa</item>
+        <item comment="This is value is a system value - do not translate!">pl</item>
+        <item comment="This is value is a system value - do not translate!">pt-rBR</item>
+        <item comment="This is value is a system value - do not translate!">ru</item>
+        <item comment="This is value is a system value - do not translate!">es</item>
+        <item comment="This is value is a system value - do not translate!">tr</item>
     </string-array>
     <string name="pref_periodlength">Versteklengte</string>
     <string name="invalid_period_length">Die verstek periode lengte moet tussen 1 en 14 wees!</string>
@@ -118,13 +120,13 @@
         <item>Saterdag</item>
     </string-array>
     <string-array name="values_startofweek">
-        <item>0</item>
-        <item>1</item>
-        <item>2</item>
-        <item>3</item>
-        <item>4</item>
-        <item>5</item>
-        <item>6</item>
+        <item comment="This is value is a system value - do not translate!">0</item>
+        <item comment="This is value is a system value - do not translate!">1</item>
+        <item comment="This is value is a system value - do not translate!">2</item>
+        <item comment="This is value is a system value - do not translate!">3</item>
+        <item comment="This is value is a system value - do not translate!">4</item>
+        <item comment="This is value is a system value - do not translate!">5</item>
+        <item comment="This is value is a system value - do not translate!">6</item>
     </string-array>
     <string name="pref_maximum_cycle_length">Maksimum periode siklus lengte</string>
     <string name="invalid_maximum_cycle_length">Die maksimum siklus moet ten minste 60 wees!</string>
@@ -179,6 +181,6 @@
     <string name="label_details_ev22" tools:keep="@string/label_details_ev22">Hartseer</string>
     <string name="label_details_ev23" tools:keep="@string/label_details_ev23">Senuweeagtig</string>
     <string name="label_period_day">Periode, dag %d</string>
-    <string name="navigation_drawer_open" comment="This text is used for Google Talkback assistance (text to speech)">Open navigasie balk</string>
-    <string name="navigation_drawer_close" comment="This text is used for Google Talkback assistance (text to speech)">Maak die navigatiebalk toe</string>
+    <string name="navigation_drawer_open">Open navigasie balk</string>
+    <string name="navigation_drawer_close">Maak die navigatiebalk toe</string>
 </resources>

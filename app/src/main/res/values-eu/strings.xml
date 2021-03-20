@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <string name="app_name">Periodical</string>
+    <string name="app_name" comment="The title of the app. Please leave this untranslated.">Periodical</string>
     <string name="menuitem_help">Laguntza</string>
     <string name="menuitem_about">Honi buruz …</string>
     <string name="current_day">Uneko eguna</string>
@@ -17,13 +17,13 @@
     <string name="main_calday_th">OG</string>
     <string name="main_calday_fr">OR</string>
     <string name="main_calday_sa">LR</string>
-    <string name="main_calday_su_description">igandea</string>
-    <string name="main_calday_mo_description">astelehena</string>
-    <string name="main_calday_tu_description">asteartea</string>
-    <string name="main_calday_we_description">asteazkena</string>
-    <string name="main_calday_th_description">osteguna</string>
-    <string name="main_calday_fr_description">ostirala</string>
-    <string name="main_calday_sa_description">larunbata</string>
+    <string name="main_calday_su_description" comment="This text is used for Google Talkback and other assistive technologies.">igandea</string>
+    <string name="main_calday_mo_description" comment="This text is used for Google Talkback and other assistive technologies.">astelehena</string>
+    <string name="main_calday_tu_description" comment="This text is used for Google Talkback and other assistive technologies.">asteartea</string>
+    <string name="main_calday_we_description" comment="This text is used for Google Talkback and other assistive technologies.">asteazkena</string>
+    <string name="main_calday_th_description" comment="This text is used for Google Talkback and other assistive technologies.">osteguna</string>
+    <string name="main_calday_fr_description" comment="This text is used for Google Talkback and other assistive technologies.">ostirala</string>
+    <string name="main_calday_sa_description" comment="This text is used for Google Talkback and other assistive technologies.">larunbata</string>
     <string name="details_title">Xehetasunak</string>
     <string name="list_title">Zerrenda</string>
     <string name="list_details_title">Zerrenda xehetasunekin</string>
@@ -37,7 +37,7 @@
     <string name="backup_newfolder">Hautatu kokapen berria</string>
     <string name="backup_help">Laguntza</string>
     <string name="backup_finished">Babeskopia egin da</string>
-    <string name="backup_noruiyet" comment="This message will be displayed when you try to backup or restore data and the location for the backup (internal memory or SD card) was not selected yet.">oraindik ez da kokapenik aukeratu</string>
+    <string name="backup_noruiyet">oraindik ez da kokapenik aukeratu</string>
     <string name="backup_failed">Babeskopia egiteak huts egin du!</string>
     <string name="restore_title">Datuak leheneratu</string>
     <string name="restore_selectfolder">Hautatu babeskopia gorde den kokalekua (\"de.arnowelzel.android.periodical\" karpeta duen kokalekua).</string>
@@ -66,6 +66,7 @@
         <item>Afrikaansa</item>
         <item>Azerbaijanera</item>
         <item>Euskara</item>
+        <item>Bulgariarra</item>
         <item>Txekiera</item>
         <item>Nederlandera</item>
         <item>Ingelesa</item>
@@ -83,25 +84,26 @@
         <item>Turkiera</item>
     </string-array>
     <string-array name="values_locales">
-        <item>system</item>
-        <item>af</item>
-        <item>az</item>
-        <item>eu</item>
-        <item>cs</item>
-        <item>nl</item>
-        <item comment="Used as a value for language preference - do not translate but only use this value is it is!">en</item>
-        <item comment="Used as a value for language preference - do not translate but only use this value is it is!">fr</item>
-        <item comment="Used as a value for language preference - do not translate but only use this value is it is!">de</item>
-        <item comment="Used as a value for language preference - do not translate but only use this value is it is!">el</item>
-        <item comment="Used as a value for language preference - do not translate but only use this value is it is!">iw</item>
-        <item comment="Used as a value for language preference - do not translate but only use this value is it is!">it</item>
-        <item comment="Used as a value for language preference - do not translate but only use this value is it is!">ja</item>
-        <item comment="Used as a value for language preference - do not translate but only use this value is it is!">fa</item>
-        <item comment="Used as a value for language preference - do not translate but only use this value is it is!">pl</item>
-        <item comment="Used as a value for language preference - do not translate but only use this value is it is!">pt-rBR</item>
-        <item comment="Used as a value for language preference - do not translate but only use this value is it is!">ru</item>
-        <item comment="Used as a value for language preference - do not translate but only use this value is it is!">es</item>
-        <item comment="Used as a value for language preference - do not translate but only use this value is it is!">tr</item>
+        <item comment="This is value is a system value - do not translate!">system</item>
+        <item comment="This is value is a system value - do not translate!">af</item>
+        <item comment="This is value is a system value - do not translate!">az</item>
+        <item comment="This is value is a system value - do not translate!">eu</item>
+        <item comment="This is value is a system value - do not translate!">bg</item>
+        <item comment="This is value is a system value - do not translate!">cs</item>
+        <item comment="This is value is a system value - do not translate!">nl</item>
+        <item comment="This is value is a system value - do not translate!">en</item>
+        <item comment="This is value is a system value - do not translate!">fr</item>
+        <item comment="This is value is a system value - do not translate!">de</item>
+        <item comment="This is value is a system value - do not translate!">el</item>
+        <item comment="This is value is a system value - do not translate!">iw</item>
+        <item comment="This is value is a system value - do not translate!">it</item>
+        <item comment="This is value is a system value - do not translate!">fa</item>
+        <item comment="This is value is a system value - do not translate!">pl</item>
+        <item comment="This is value is a system value - do not translate!">pl</item>
+        <item comment="This is value is a system value - do not translate!">pt-rBR</item>
+        <item comment="This is value is a system value - do not translate!">ru</item>
+        <item comment="This is value is a system value - do not translate!">es</item>
+        <item comment="This is value is a system value - do not translate!">tr</item>
     </string-array>
     <string name="pref_periodlength">Zikloaren lehenetsitako iraupena (egunak)</string>
     <string name="invalid_period_length">Zikloaren lehenetsitako iraupenak 1 eta 14 bitarte egon behar du!</string>
@@ -118,13 +120,13 @@
         <item>Larunbata</item>
     </string-array>
     <string-array name="values_startofweek">
-        <item>0</item>
-        <item>1</item>
-        <item>2</item>
-        <item>3</item>
-        <item>4</item>
-        <item>5</item>
-        <item>6</item>
+        <item comment="This is value is a system value - do not translate!">0</item>
+        <item comment="This is value is a system value - do not translate!">1</item>
+        <item comment="This is value is a system value - do not translate!">2</item>
+        <item comment="This is value is a system value - do not translate!">3</item>
+        <item comment="This is value is a system value - do not translate!">4</item>
+        <item comment="This is value is a system value - do not translate!">5</item>
+        <item comment="This is value is a system value - do not translate!">6</item>
     </string-array>
     <string name="pref_maximum_cycle_length">Zikloaren gehienezko luzera</string>
     <string name="invalid_maximum_cycle_length">Zikloaren gehienezko iraupenak gutxienez 60 izan behar du!</string>
@@ -179,6 +181,6 @@
     <string name="label_details_ev22" tools:keep="@string/label_details_ev22">Triste</string>
     <string name="label_details_ev23" tools:keep="@string/label_details_ev23">Urduri</string>
     <string name="label_period_day">Hilekoa, %d. eguna</string>
-    <string name="navigation_drawer_open" comment="This text is used for Google Talkback assistance (text to speech)">Ireki nabigazio-tiradera</string>
-    <string name="navigation_drawer_close" comment="This text is used for Google Talkback assistance (text to speech)">Itxi nabigazio-tiradera</string>
+    <string name="navigation_drawer_open">Ireki nabigazio-tiradera</string>
+    <string name="navigation_drawer_close">Itxi nabigazio-tiradera</string>
 </resources>

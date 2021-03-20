@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <string name="app_name">Periodical</string>
+    <string name="app_name" comment="The title of the app. Please leave this untranslated.">Periodical</string>
     <string name="menuitem_help">עזרה</string>
     <string name="menuitem_about">על אודות…</string>
     <string name="current_day">היום הנוכחי</string>
@@ -17,13 +17,13 @@
     <string name="main_calday_th">ה</string>
     <string name="main_calday_fr">ו׳</string>
     <string name="main_calday_sa">ש׳</string>
-    <string name="main_calday_su_description">ראשון</string>
-    <string name="main_calday_mo_description">שני</string>
-    <string name="main_calday_tu_description">שלישי</string>
-    <string name="main_calday_we_description">רביעי</string>
-    <string name="main_calday_th_description">חמישי</string>
-    <string name="main_calday_fr_description">שישי</string>
-    <string name="main_calday_sa_description">שבת</string>
+    <string name="main_calday_su_description" comment="This text is used for Google Talkback and other assistive technologies.">ראשון</string>
+    <string name="main_calday_mo_description" comment="This text is used for Google Talkback and other assistive technologies.">שני</string>
+    <string name="main_calday_tu_description" comment="This text is used for Google Talkback and other assistive technologies.">שלישי</string>
+    <string name="main_calday_we_description" comment="This text is used for Google Talkback and other assistive technologies.">רביעי</string>
+    <string name="main_calday_th_description" comment="This text is used for Google Talkback and other assistive technologies.">חמישי</string>
+    <string name="main_calday_fr_description" comment="This text is used for Google Talkback and other assistive technologies.">שישי</string>
+    <string name="main_calday_sa_description" comment="This text is used for Google Talkback and other assistive technologies.">שבת</string>
     <string name="details_title">פרטים</string>
     <string name="list_title">רשימה</string>
     <string name="list_details_title">רשימה מפורטת</string>
@@ -37,7 +37,7 @@
     <string name="backup_newfolder">בחרי במיקום חדש</string>
     <string name="backup_help">עזרה</string>
     <string name="backup_finished">הגיבוי הושלם</string>
-    <string name="backup_noruiyet" comment="This message will be displayed when you try to backup or restore data and the location for the backup (internal memory or SD card) was not selected yet.">עדיין לא בחרת במיקום</string>
+    <string name="backup_noruiyet">עדיין לא בחרת במיקום</string>
     <string name="backup_failed">הגיבוי נכשל!</string>
     <string name="restore_title">שחזור נתונים</string>
     <string name="restore_selectfolder">אנא בחרי את המיקום לשמירת הגיבויים (המיקום עם התיקייה „de.arnowelzel.android.periodical”).</string>
@@ -66,42 +66,44 @@
         <item>אפריקאנס</item>
         <item>אזרית</item>
         <item>בסקית</item>
+        <item>בולגרית</item>
         <item>צ׳כית</item>
         <item>הולנדית</item>
         <item>אנגלית</item>
         <item>צרפתית</item>
         <item>גרמנית</item>
         <item>יוונית</item>
-        <item>עברית</item>
+        <item>עִברִית</item>
         <item>איטלקית</item>
         <item>יפנית</item>
-        <item>פרסית</item>
-        <item>הברקה</item>
+        <item>פרסי</item>
+        <item>פולנית</item>
         <item>פורטוגזית בברזיל</item>
         <item>רוסית</item>
         <item>ספרדית</item>
         <item>טורקית</item>
     </string-array>
     <string-array name="values_locales">
-        <item>system</item>
-        <item>af</item>
-        <item>az</item>
-        <item>eu</item>
-        <item>cs</item>
-        <item>nl</item>
-        <item comment="Used as a value for language preference - do not translate but only use this value is it is!">en</item>
-        <item comment="Used as a value for language preference - do not translate but only use this value is it is!">fr</item>
-        <item comment="Used as a value for language preference - do not translate but only use this value is it is!">de</item>
-        <item comment="Used as a value for language preference - do not translate but only use this value is it is!">el</item>
-        <item comment="Used as a value for language preference - do not translate but only use this value is it is!">iw</item>
-        <item comment="Used as a value for language preference - do not translate but only use this value is it is!">it</item>
-        <item comment="Used as a value for language preference - do not translate but only use this value is it is!">ja</item>
-        <item comment="Used as a value for language preference - do not translate but only use this value is it is!">fa</item>
-        <item comment="Used as a value for language preference - do not translate but only use this value is it is!">pl</item>
-        <item comment="Used as a value for language preference - do not translate but only use this value is it is!">pt-rBR</item>
-        <item comment="Used as a value for language preference - do not translate but only use this value is it is!">ru</item>
-        <item comment="Used as a value for language preference - do not translate but only use this value is it is!">es</item>
-        <item comment="Used as a value for language preference - do not translate but only use this value is it is!">tr</item>
+        <item comment="This is value is a system value - do not translate!">system</item>
+        <item comment="This is value is a system value - do not translate!">af</item>
+        <item comment="This is value is a system value - do not translate!">az</item>
+        <item comment="This is value is a system value - do not translate!">eu</item>
+        <item comment="This is value is a system value - do not translate!">bg</item>
+        <item comment="This is value is a system value - do not translate!">cs</item>
+        <item comment="This is value is a system value - do not translate!">nl</item>
+        <item comment="This is value is a system value - do not translate!">en</item>
+        <item comment="This is value is a system value - do not translate!">fr</item>
+        <item comment="This is value is a system value - do not translate!">de</item>
+        <item comment="This is value is a system value - do not translate!">el</item>
+        <item comment="This is value is a system value - do not translate!">iw</item>
+        <item comment="This is value is a system value - do not translate!">it</item>
+        <item comment="This is value is a system value - do not translate!">ja</item>
+        <item comment="This is value is a system value - do not translate!">fa</item>
+        <item comment="This is value is a system value - do not translate!">pl</item>
+        <item comment="This is value is a system value - do not translate!">pt-rBR</item>
+        <item comment="This is value is a system value - do not translate!">ru</item>
+        <item comment="This is value is a system value - do not translate!">es</item>
+        <item comment="This is value is a system value - do not translate!">tr</item>
     </string-array>
     <string name="pref_periodlength">אורך הווסת כבררת מחדל (ימים)</string>
     <string name="invalid_period_length">אורך בררת המחדל לווסת צריך להיות בין 1 ל־14!</string>
@@ -118,13 +120,13 @@
         <item>שבת</item>
     </string-array>
     <string-array name="values_startofweek">
-        <item>0</item>
-        <item>1</item>
-        <item>2</item>
-        <item>3</item>
-        <item>4</item>
-        <item>5</item>
-        <item>6</item>
+        <item comment="This is value is a system value - do not translate!">0</item>
+        <item comment="This is value is a system value - do not translate!">1</item>
+        <item comment="This is value is a system value - do not translate!">2</item>
+        <item comment="This is value is a system value - do not translate!">3</item>
+        <item comment="This is value is a system value - do not translate!">4</item>
+        <item comment="This is value is a system value - do not translate!">5</item>
+        <item comment="This is value is a system value - do not translate!">6</item>
     </string-array>
     <string name="pref_maximum_cycle_length">אורך מחזור מרבי</string>
     <string name="invalid_maximum_cycle_length">האורך המרבי למחזור חייב להיות 60 לפחות!</string>
@@ -179,6 +181,6 @@
     <string name="label_details_ev22" tools:keep="@string/label_details_ev22">עצובה</string>
     <string name="label_details_ev23" tools:keep="@string/label_details_ev23">עצבנית</string>
     <string name="label_period_day">וסת, יום %d</string>
-    <string name="navigation_drawer_open" comment="This text is used for Google Talkback assistance (text to speech)">פתיחת מגירת ניווט</string>
-    <string name="navigation_drawer_close" comment="This text is used for Google Talkback assistance (text to speech)">סגירת מגירת ניווט</string>
+    <string name="navigation_drawer_open">פתיחת מגירת ניווט</string>
+    <string name="navigation_drawer_close">סגירת מגירת ניווט</string>
 </resources>
