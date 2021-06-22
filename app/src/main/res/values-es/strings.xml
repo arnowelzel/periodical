@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <string name="app_name" comment="The title of the app. Please leave this untranslated.">Periodical</string>
+    <string name="app_name">Periodical</string>
     <string name="menuitem_help">Ayuda</string>
     <string name="menuitem_about">Acerca de …</string>
     <string name="current_day">Día actual</string>
@@ -17,13 +17,13 @@
     <string name="main_calday_th">JU</string>
     <string name="main_calday_fr">VI</string>
     <string name="main_calday_sa">SÁ</string>
-    <string name="main_calday_su_description" comment="This text is used for Google Talkback and other assistive technologies.">Domingo</string>
-    <string name="main_calday_mo_description" comment="This text is used for Google Talkback and other assistive technologies.">Lunes</string>
-    <string name="main_calday_tu_description" comment="This text is used for Google Talkback and other assistive technologies.">Martes</string>
-    <string name="main_calday_we_description" comment="This text is used for Google Talkback and other assistive technologies.">Miércoles</string>
-    <string name="main_calday_th_description" comment="This text is used for Google Talkback and other assistive technologies.">Jueves</string>
-    <string name="main_calday_fr_description" comment="This text is used for Google Talkback and other assistive technologies.">Viernes</string>
-    <string name="main_calday_sa_description" comment="This text is used for Google Talkback and other assistive technologies.">Sábado</string>
+    <string name="main_calday_su_description">Domingo</string>
+    <string name="main_calday_mo_description">Lunes</string>
+    <string name="main_calday_tu_description">Martes</string>
+    <string name="main_calday_we_description">Miércoles</string>
+    <string name="main_calday_th_description">Jueves</string>
+    <string name="main_calday_fr_description">Viernes</string>
+    <string name="main_calday_sa_description">Sábado</string>
     <string name="details_title">Detalles</string>
     <string name="list_title">Información</string>
     <string name="list_details_title">Información detallada</string>
@@ -82,28 +82,30 @@
         <item>Ruso</item>
         <item>Español</item>
         <item>Turco</item>
+        <item>Ucraniano</item>
     </string-array>
     <string-array name="values_locales">
-        <item comment="This is value is a system value - do not translate!">system</item>
-        <item comment="This is value is a system value - do not translate!">af</item>
-        <item comment="This is value is a system value - do not translate!">az</item>
-        <item comment="This is value is a system value - do not translate!">eu</item>
-        <item comment="This is value is a system value - do not translate!">bg</item>
-        <item comment="This is value is a system value - do not translate!">cs</item>
-        <item comment="This is value is a system value - do not translate!">nl</item>
-        <item comment="This is value is a system value - do not translate!">en</item>
-        <item comment="This is value is a system value - do not translate!">fr</item>
-        <item comment="This is value is a system value - do not translate!">de</item>
-        <item comment="This is value is a system value - do not translate!">el</item>
-        <item comment="This is value is a system value - do not translate!">iw</item>
-        <item comment="This is value is a system value - do not translate!">it</item>
-        <item comment="This is value is a system value - do not translate!">ja</item>
-        <item comment="This is value is a system value - do not translate!">fa</item>
-        <item comment="This is value is a system value - do not translate!">pl</item>
-        <item comment="This is value is a system value - do not translate!">pt-rBR</item>
-        <item comment="This is value is a system value - do not translate!">ru</item>
-        <item comment="This is value is a system value - do not translate!">es</item>
-        <item comment="This is value is a system value - do not translate!">tr</item>
+        <item>system</item>
+        <item>af</item>
+        <item>az</item>
+        <item>eu</item>
+        <item>bg</item>
+        <item>cs</item>
+        <item>nl</item>
+        <item>en</item>
+        <item>fr</item>
+        <item>de</item>
+        <item>el</item>
+        <item>iw</item>
+        <item>it</item>
+        <item>ja</item>
+        <item>fa</item>
+        <item>pl</item>
+        <item>pt-rBR</item>
+        <item>ru</item>
+        <item>es</item>
+        <item>tr</item>
+        <item comment="This is value is a system value - do not translate!">uk</item>
     </string-array>
     <string name="pref_periodlength">Duración predeterminada del periodo (días)</string>
     <string name="invalid_period_length">¡La duración predeterminada del periodo debe ser entre 1 y 14!</string>
@@ -120,13 +122,13 @@
         <item>Sábado</item>
     </string-array>
     <string-array name="values_startofweek">
-        <item comment="This is value is a system value - do not translate!">0</item>
-        <item comment="This is value is a system value - do not translate!">1</item>
-        <item comment="This is value is a system value - do not translate!">2</item>
-        <item comment="This is value is a system value - do not translate!">3</item>
-        <item comment="This is value is a system value - do not translate!">4</item>
-        <item comment="This is value is a system value - do not translate!">5</item>
-        <item comment="This is value is a system value - do not translate!">6</item>
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
     </string-array>
     <string name="pref_maximum_cycle_length">Longitud máxima del ciclo</string>
     <string name="invalid_maximum_cycle_length">¡La longitud máxima del ciclo debe ser de al menos 60!</string>
@@ -162,7 +164,7 @@
     <string name="label_details_ev3" tools:keep="@string/label_details_ev3">Dolor de espalda</string>
     <string name="label_details_ev4" tools:keep="@string/label_details_ev4">Dolor medio en lado izquierdo</string>
     <string name="label_details_ev5" tools:keep="@string/label_details_ev5">Dolor medio en lado derecho</string>
-    <string name="label_details_ev6" tools:keep="@string/label_details_ev6">Dolor de pecho/Dolor de arrastre</string>
+    <string name="label_details_ev6" tools:keep="@string/label_details_ev6">Dolor de mama</string>
     <string name="label_details_ev7" tools:keep="@string/label_details_ev7">Afta/cándida</string>
     <string name="label_details_ev8" tools:keep="@string/label_details_ev8">Descarga</string>
     <string name="label_details_ev9" tools:keep="@string/label_details_ev9">Sangrado intenso</string>
@@ -175,7 +177,7 @@
     <string name="label_details_ev16" tools:keep="@string/label_details_ev16">Antojos</string>
     <string name="label_details_ev17" tools:keep="@string/label_details_ev17">Dolor de cabeza/migraña</string>
     <string name="label_details_ev18" tools:keep="@string/label_details_ev18">Píldora anticonceptiva</string>
-    <string name="label_details_ev19" tools:keep="@string/label_details_ev19">Flujo marrón</string>
+    <string name="label_details_ev19" tools:keep="@string/label_details_ev19">Manchas de sangre</string>
     <string name="label_details_ev20" tools:keep="@string/label_details_ev20">Cansancio</string>
     <string name="label_details_ev21" tools:keep="@string/label_details_ev21">Energizada</string>
     <string name="label_details_ev22" tools:keep="@string/label_details_ev22">Tristeza</string>

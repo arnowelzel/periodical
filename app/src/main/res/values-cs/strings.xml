@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <string name="app_name" comment="The title of the app. Please leave this untranslated.">Periodical</string>
+    <string name="app_name">Periodical</string>
     <string name="menuitem_help">Nápověda</string>
     <string name="menuitem_about">O Periodical …</string>
     <string name="current_day">Dnes</string>
@@ -17,13 +17,13 @@
     <string name="main_calday_th">Čt</string>
     <string name="main_calday_fr">Pá</string>
     <string name="main_calday_sa">So</string>
-    <string name="main_calday_su_description" comment="This text is used for Google Talkback and other assistive technologies.">neděle</string>
-    <string name="main_calday_mo_description" comment="This text is used for Google Talkback and other assistive technologies.">pondělí</string>
-    <string name="main_calday_tu_description" comment="This text is used for Google Talkback and other assistive technologies.">úterý</string>
-    <string name="main_calday_we_description" comment="This text is used for Google Talkback and other assistive technologies.">středa</string>
-    <string name="main_calday_th_description" comment="This text is used for Google Talkback and other assistive technologies.">čtvrtek</string>
-    <string name="main_calday_fr_description" comment="This text is used for Google Talkback and other assistive technologies.">pátek</string>
-    <string name="main_calday_sa_description" comment="This text is used for Google Talkback and other assistive technologies.">sobota</string>
+    <string name="main_calday_su_description">neděle</string>
+    <string name="main_calday_mo_description">pondělí</string>
+    <string name="main_calday_tu_description">úterý</string>
+    <string name="main_calday_we_description">středa</string>
+    <string name="main_calday_th_description">čtvrtek</string>
+    <string name="main_calday_fr_description">pátek</string>
+    <string name="main_calday_sa_description">sobota</string>
     <string name="details_title">Podrobnosti</string>
     <string name="list_title">Seznam</string>
     <string name="list_details_title">Seznam s podrobnostmi</string>
@@ -82,28 +82,30 @@
         <item>Ruština</item>
         <item>Španělština</item>
         <item>Turečtina</item>
+        <item>Ukrajinština</item>
     </string-array>
     <string-array name="values_locales">
-        <item comment="This is value is a system value - do not translate!">system</item>
-        <item comment="This is value is a system value - do not translate!">af</item>
-        <item comment="This is value is a system value - do not translate!">az</item>
-        <item comment="This is value is a system value - do not translate!">eu</item>
-        <item comment="This is value is a system value - do not translate!">bg</item>
-        <item comment="This is value is a system value - do not translate!">cs</item>
-        <item comment="This is value is a system value - do not translate!">nl</item>
-        <item comment="This is value is a system value - do not translate!">en</item>
-        <item comment="This is value is a system value - do not translate!">fr</item>
-        <item comment="This is value is a system value - do not translate!">de</item>
-        <item comment="This is value is a system value - do not translate!">el</item>
-        <item comment="This is value is a system value - do not translate!">iw</item>
-        <item comment="This is value is a system value - do not translate!">it</item>
-        <item comment="This is value is a system value - do not translate!">ja</item>
-        <item comment="This is value is a system value - do not translate!">fa</item>
-        <item comment="This is value is a system value - do not translate!">pl</item>
-        <item comment="This is value is a system value - do not translate!">pt-rBR</item>
-        <item comment="This is value is a system value - do not translate!">ru</item>
-        <item comment="This is value is a system value - do not translate!">es</item>
-        <item comment="This is value is a system value - do not translate!">tr</item>
+        <item>system</item>
+        <item>af</item>
+        <item>az</item>
+        <item>eu</item>
+        <item>bg</item>
+        <item>cs</item>
+        <item>nl</item>
+        <item>en</item>
+        <item>fr</item>
+        <item>de</item>
+        <item>el</item>
+        <item>iw</item>
+        <item>it</item>
+        <item>ja</item>
+        <item>fa</item>
+        <item>pl</item>
+        <item>pt-rBR</item>
+        <item>ru</item>
+        <item>es</item>
+        <item>tr</item>
+        <item comment="This is value is a system value - do not translate!">uk</item>
     </string-array>
     <string name="pref_periodlength">Základní délka periody (dny)</string>
     <string name="invalid_period_length">Základní délka periody musí být mezi 1 a 14!</string>
@@ -120,13 +122,13 @@
         <item>Sobota</item>
     </string-array>
     <string-array name="values_startofweek">
-        <item comment="This is value is a system value - do not translate!">0</item>
-        <item comment="This is value is a system value - do not translate!">1</item>
-        <item comment="This is value is a system value - do not translate!">2</item>
-        <item comment="This is value is a system value - do not translate!">3</item>
-        <item comment="This is value is a system value - do not translate!">4</item>
-        <item comment="This is value is a system value - do not translate!">5</item>
-        <item comment="This is value is a system value - do not translate!">6</item>
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
     </string-array>
     <string name="pref_maximum_cycle_length">Maximální délka cyklu</string>
     <string name="invalid_maximum_cycle_length">Maximální délka cyklu musí být nejméně 60!</string>

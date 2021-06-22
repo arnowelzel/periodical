@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <string name="app_name" comment="The title of the app. Please leave this untranslated.">Periodical</string>
+    <string name="app_name">Periodical</string>
     <string name="menuitem_help">راهنما</string>
     <string name="menuitem_about">درباره …</string>
     <string name="current_day">روز جاری</string>
@@ -17,13 +17,13 @@
     <string name="main_calday_th">۵ش</string>
     <string name="main_calday_fr">آد</string>
     <string name="main_calday_sa">ش</string>
-    <string name="main_calday_su_description" comment="This text is used for Google Talkback and other assistive technologies.">یکشنبه</string>
-    <string name="main_calday_mo_description" comment="This text is used for Google Talkback and other assistive technologies.">دوشنبه</string>
-    <string name="main_calday_tu_description" comment="This text is used for Google Talkback and other assistive technologies.">سه‌شنبه</string>
-    <string name="main_calday_we_description" comment="This text is used for Google Talkback and other assistive technologies.">چهارشنبه</string>
-    <string name="main_calday_th_description" comment="This text is used for Google Talkback and other assistive technologies.">پنجشنبه</string>
-    <string name="main_calday_fr_description" comment="This text is used for Google Talkback and other assistive technologies.">آدینه</string>
-    <string name="main_calday_sa_description" comment="This text is used for Google Talkback and other assistive technologies.">شنبه</string>
+    <string name="main_calday_su_description">یکشنبه</string>
+    <string name="main_calday_mo_description">دوشنبه</string>
+    <string name="main_calday_tu_description">سه‌شنبه</string>
+    <string name="main_calday_we_description">چهارشنبه</string>
+    <string name="main_calday_th_description">پنجشنبه</string>
+    <string name="main_calday_fr_description">آدینه</string>
+    <string name="main_calday_sa_description">شنبه</string>
     <string name="details_title">جزئیات</string>
     <string name="list_title">لیست</string>
     <string name="list_details_title">لیست و جزئیات</string>
@@ -82,28 +82,30 @@
         <item>روسی</item>
         <item>اسپانیایی</item>
         <item>ترکی</item>
+        <item>اوکراینی</item>
     </string-array>
     <string-array name="values_locales">
-        <item comment="This is value is a system value - do not translate!">system</item>
-        <item comment="This is value is a system value - do not translate!">af</item>
-        <item comment="This is value is a system value - do not translate!">az</item>
-        <item comment="This is value is a system value - do not translate!">eu</item>
-        <item comment="This is value is a system value - do not translate!">bg</item>
-        <item comment="This is value is a system value - do not translate!">cs</item>
-        <item comment="This is value is a system value - do not translate!">nl</item>
-        <item comment="This is value is a system value - do not translate!">en</item>
-        <item comment="This is value is a system value - do not translate!">fr</item>
-        <item comment="This is value is a system value - do not translate!">de</item>
-        <item comment="This is value is a system value - do not translate!">el</item>
-        <item comment="This is value is a system value - do not translate!">iw</item>
-        <item comment="This is value is a system value - do not translate!">it</item>
-        <item comment="This is value is a system value - do not translate!">ja</item>
-        <item comment="This is value is a system value - do not translate!">fa</item>
-        <item comment="This is value is a system value - do not translate!">pl</item>
-        <item comment="This is value is a system value - do not translate!">pt-rBR</item>
-        <item comment="This is value is a system value - do not translate!">ru</item>
-        <item comment="This is value is a system value - do not translate!">es</item>
-        <item comment="This is value is a system value - do not translate!">tr</item>
+        <item>system</item>
+        <item>af</item>
+        <item>az</item>
+        <item>eu</item>
+        <item>bg</item>
+        <item>cs</item>
+        <item>nl</item>
+        <item>en</item>
+        <item>fr</item>
+        <item>de</item>
+        <item>el</item>
+        <item>iw</item>
+        <item>it</item>
+        <item>ja</item>
+        <item>fa</item>
+        <item>pl</item>
+        <item>pt-rBR</item>
+        <item>ru</item>
+        <item>es</item>
+        <item>tr</item>
+        <item comment="This is value is a system value - do not translate!">uk</item>
     </string-array>
     <string name="pref_periodlength">طول دوره پریود به صورت پیش‌فرض (روز)</string>
     <string name="invalid_period_length">طول دوره پریود به صورت پیش‌فرض باید بین ۱ تا ۱۴ باشد!</string>
@@ -120,13 +122,13 @@
         <item>شنبه</item>
     </string-array>
     <string-array name="values_startofweek">
-        <item comment="This is value is a system value - do not translate!">۰</item>
-        <item comment="This is value is a system value - do not translate!">۱</item>
-        <item comment="This is value is a system value - do not translate!">2</item>
-        <item comment="This is value is a system value - do not translate!">3</item>
-        <item comment="This is value is a system value - do not translate!">4</item>
-        <item comment="This is value is a system value - do not translate!">5</item>
-        <item comment="This is value is a system value - do not translate!">6</item>
+        <item>۰</item>
+        <item>۱</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
     </string-array>
     <string name="pref_maximum_cycle_length">حداکثر طول دوره</string>
     <string name="invalid_maximum_cycle_length">حداکثر طول دوره باید حداقل ۶۰ باشد!</string>

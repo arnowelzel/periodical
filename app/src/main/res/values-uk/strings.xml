@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <string name="app_name">Periodical</string>
+    <string name="menuitem_help">Допомога</string>
+    <string name="menuitem_about">Про програму …</string>
+    <string name="current_day">Поточний день</string>
+    <string name="menuitem_list">Список</string>
+    <string name="menuitem_listdetails">Список з подробицями</string>
+    <string name="menuitem_copy">Резервне копіювання</string>
+    <string name="menuitem_restore">Відновлення</string>
+    <string name="menuitem_options">Налаштування</string>
+    <string name="menuitem_exit">Вихід</string>
+    <string name="main_calday_su">НД</string>
+    <string name="main_calday_mo">ПН</string>
+    <string name="main_calday_tu">ВТ</string>
+    <string name="main_calday_we">СР</string>
+    <string name="main_calday_th">ЧТ</string>
+    <string name="main_calday_fr">ПТ</string>
+    <string name="main_calday_sa">СБ</string>
+    <string name="main_calday_su_description">неділя</string>
+    <string name="main_calday_mo_description">понеділок</string>
+    <string name="main_calday_tu_description">вівторок</string>
+    <string name="main_calday_we_description">середа</string>
+    <string name="main_calday_th_description">четвер</string>
+    <string name="main_calday_fr_description">п\'ятниця</string>
+    <string name="main_calday_sa_description">субота</string>
+    <string name="details_title">Подробиці</string>
+    <string name="list_title">Список</string>
+    <string name="list_details_title">Список з подробицями</string>
+    <string name="about_title">Про програму …</string>
+    <string name="help_title">Допомога</string>
+    <string name="backup_title">Резервне копіювання даних</string>
+    <string name="backup_text">Бажаєте зробити резервну копію поточних даних? Це замінить останню резервну копію!</string>
+    <string name="backup_selectfolder">Будь ласка, виберіть, де зберігати резервну копію. Вам потрібно надати доступ до вибраного місця, яке буде використовуватися для цього та всіх майбутніх резервних копій.\n\nЩоб дізнатися більше про те, як працює резервне копіювання, зверніться до меню довідки.</string>
+    <string name="backup_ok">OK</string>
+    <string name="backup_cancel">Скасувати</string>
+    <string name="backup_newfolder">Виберіть нове розташування</string>
+    <string name="backup_help">Допомога</string>
+    <string name="backup_finished">Резервну копію створено</string>
+    <string name="backup_noruiyet">не вибрано жодного розташування</string>
+    <string name="backup_failed">Помилка резервного копіювання!</string>
+    <string name="restore_title">Відновити дані</string>
+    <string name="restore_selectfolder">Будь ласка, виберіть місце, де було збережено резервну копію (місце з папкою \"de.arnowelzel.android.periodical\").</string>
+    <string name="restore_text">Хочете відновити останню резервну копію?\nЦе замінить поточні дані!</string>
+    <string name="restore_ok">ОК</string>
+    <string name="restore_cancel">Скасувати</string>
+    <string name="restore_finished">Відновлення виконано</string>
+    <string name="restore_failed">Не вдалося відновити!</string>
+    <string name="permissions_needed">Щоб створити або відновити резервні копії, Periodical потребує дозволу на доступ до сховища файлів.</string>
+    <string name="permissions_needed_ok">ОК</string>
+    <string name="event_periodstart">Період розпочався</string>
+    <string name="event_periodlength">Останній цикл мав %s днів</string>
+    <string name="event_ignored">Тривалість циклу ігнорується</string>
+    <string name="event_periodfirst">Перший запис</string>
+    <string name="calendaraction_title">Редагувати запис календаря</string>
+    <string name="calendaraction_add">Позначити цей день як \"Період\"?</string>
+    <string name="calendaraction_remove">Вилучити позначку \"Період\" на цей день?</string>
+    <string name="calendaraction_removeperiod">Вилучити цей період?</string>
+    <string name="calendaraction_ok">Так</string>
+    <string name="calendaraction_cancel">Ні</string>
+    <string name="calendaraction_details">Редагувати деталі</string>
+    <string name="options_title">Налаштування</string>
+    <string name="pref_locale">Мова</string>
+    <string-array name="list_locales">
+        <item>За замовчуванням</item>
+        <item>Африканська</item>
+        <item>Азербайджанська</item>
+        <item>Баскська</item>
+        <item>Болгарська</item>
+        <item>Чеська</item>
+        <item>Голландська</item>
+        <item>Англійська</item>
+        <item>Французька</item>
+        <item>Німецька</item>
+        <item>Грецька</item>
+        <item>Іврит</item>
+        <item>Італійська</item>
+        <item>Японська</item>
+        <item>Перська</item>
+        <item>Польська</item>
+        <item>Португальська в Бразилії</item>
+        <item>Російська</item>
+        <item>Іспанська</item>
+        <item>Турецька</item>
+        <item>Українська</item>
+    </string-array>
+    <string-array name="values_locales">
+        <item>система</item>
+        <item>af</item>
+        <item>az</item>
+        <item>eu</item>
+        <item>bg</item>
+        <item>cs</item>
+        <item>nl</item>
+        <item>en</item>
+        <item>fr</item>
+        <item>de</item>
+        <item>el</item>
+        <item>iw</item>
+        <item>it</item>
+        <item>ja</item>
+        <item>fa</item>
+        <item>pl</item>
+        <item>pt-rBR</item>
+        <item>ru</item>
+        <item>es</item>
+        <item>tr</item>
+        <item comment="This is value is a system value - do not translate!">uk</item>
+    </string-array>
+    <string name="pref_periodlength">Тривалість періоду за замовчуванням (дні)</string>
+    <string name="invalid_period_length">Тривалість періоду за замовчуванням повинна бути від 1 до 14!</string>
+    <string name="pref_luteallength">Тривалість лютеїнової фази (дні)</string>
+    <string name="invalid_luteal_length">Довжина лютеїну повинна бути не менше 1!</string>
+    <string name="pref_startofweek">Початок тижня</string>
+    <string-array name="list_startofweek">
+        <item>Неділя</item>
+        <item>Понеділок</item>
+        <item>Вівторок</item>
+        <item>Середа</item>
+        <item>Четвер</item>
+        <item>П\'ятниця</item>
+        <item>Субота</item>
+    </string-array>
+    <string-array name="values_startofweek">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+    </string-array>
+    <string name="pref_maximum_cycle_length">Максимальна тривалість циклу</string>
+    <string name="invalid_maximum_cycle_length">Максимальна тривалість циклу повинна бути не менше 60!</string>
+    <string name="pref_direct_details">Перейдіть безпосередньо до деталей</string>
+    <string name="pref_show_cycle">Показати день циклу</string>
+    <string name="previous_month">Попередній місяць</string>
+    <string name="next_month">Наступний місяць</string>
+    <string name="label_average_cycle">середній цикл</string>
+    <string name="label_shortest_cycle">найкоротший цикл</string>
+    <string name="label_longest_cycle">найдовший цикл</string>
+    <string name="label_infertile">безпліддя</string>
+    <string name="label_fertile">родюча</string>
+    <string name="label_period_started">період розпочався</string>
+    <string name="label_period">період</string>
+    <string name="label_period_predicted">прогнозований період</string>
+    <string name="label_ovulation">овуляція</string>
+    <string name="asset_about">en/about.html</string>
+    <string name="asset_help">en/help.html</string>
+    <string name="label_details_period">Період</string>
+    <string name="label_details_yes">Так</string>
+    <string name="label_details_no">Ніт</string>
+    <string name="label_details_intensity">Інтенсивність</string>
+    <string name="label_details_intensity1">1</string>
+    <string name="label_details_intensity2">2</string>
+    <string name="label_details_intensity3">3</string>
+    <string name="label_details_intensity4">4 (сильно)</string>
+    <string name="label_details_notes">Примітки</string>
+    <string name="label_details_events">Події</string>
+    <string name="label_details_mood">Настрій</string>
+    <string name="label_details_symptoms">Симптоми</string>
+    <string name="label_details_ev1" tools:keep="@string/label_details_ev1">Статевий акт</string>
+    <string name="label_details_ev2" tools:keep="@string/label_details_ev2">Судоми</string>
+    <string name="label_details_ev3" tools:keep="@string/label_details_ev3">Біль у спині</string>
+    <string name="label_details_ev4" tools:keep="@string/label_details_ev4">Біль в середині зліва</string>
+    <string name="label_details_ev5" tools:keep="@string/label_details_ev5">Біль в середині справа</string>
+    <string name="label_details_ev6" tools:keep="@string/label_details_ev6">Біль у грудях/тягнуча біль</string>
+    <string name="label_details_ev7" tools:keep="@string/label_details_ev7">Молочниця/кандіда</string>
+    <string name="label_details_ev8" tools:keep="@string/label_details_ev8">Розрядка</string>
+    <string name="label_details_ev9" tools:keep="@string/label_details_ev9">Інтенсивна кровотеча</string>
+    <string name="label_details_ev10" tools:keep="@string/label_details_ev10">Коливання температури</string>
+    <string name="label_details_ev11" tools:keep="@string/label_details_ev11">Прищі</string>
+    <string name="label_details_ev12" tools:keep="@string/label_details_ev12">Здуття живота</string>
+    <string name="label_details_ev13" tools:keep="@string/label_details_ev13">Непритомність</string>
+    <string name="label_details_ev14" tools:keep="@string/label_details_ev14">Сварливість</string>
+    <string name="label_details_ev15" tools:keep="@string/label_details_ev15">Нудота</string>
+    <string name="label_details_ev16" tools:keep="@string/label_details_ev16">Тяга</string>
+    <string name="label_details_ev17" tools:keep="@string/label_details_ev17">Головний біль/мігрень</string>
+    <string name="label_details_ev18" tools:keep="@string/label_details_ev18">Протизаплідні таблетки</string>
+    <string name="label_details_ev19" tools:keep="@string/label_details_ev19">Виділення</string>
+    <string name="label_details_ev20" tools:keep="@string/label_details_ev20">Втома</string>
+    <string name="label_details_ev21" tools:keep="@string/label_details_ev21">Збадьоритись</string>
+    <string name="label_details_ev22" tools:keep="@string/label_details_ev22">Сумно</string>
+    <string name="label_details_ev23" tools:keep="@string/label_details_ev23">Різкий</string>
+    <string name="label_period_day">Період, день %d</string>
+    <string name="navigation_drawer_open">Відкрити панель навігації</string>
+    <string name="navigation_drawer_close">Закрити панель навігації</string>
+</resources>

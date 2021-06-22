@@ -82,6 +82,7 @@
         <item>Russian</item>
         <item>Spanish</item>
         <item>Turkish</item>
+        <item>Ukrainian</item>
     </string-array>
     <string-array name="values_locales">
         <item>system</item>
@@ -104,6 +105,7 @@
         <item>ru</item>
         <item>es</item>
         <item>tr</item>
+        <item>uk</item>
     </string-array>
     <string name="pref_periodlength">Default length of period (days)</string>
     <string name="invalid_period_length">The default period length must be between 1 and 14!</string>

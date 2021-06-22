@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <string name="app_name" comment="The title of the app. Please leave this untranslated.">Periodical</string>
+    <string name="app_name">Periodical</string>
     <string name="menuitem_help">Hilfe</string>
     <string name="menuitem_about">Über …</string>
     <string name="current_day">Aktueller Tag</string>
@@ -17,13 +17,13 @@
     <string name="main_calday_th">DO</string>
     <string name="main_calday_fr">FR</string>
     <string name="main_calday_sa">SA</string>
-    <string name="main_calday_su_description" comment="This text is used for Google Talkback and other assistive technologies.">Sonntag</string>
-    <string name="main_calday_mo_description" comment="This text is used for Google Talkback and other assistive technologies.">Montag</string>
-    <string name="main_calday_tu_description" comment="This text is used for Google Talkback and other assistive technologies.">Dienstag</string>
-    <string name="main_calday_we_description" comment="This text is used for Google Talkback and other assistive technologies.">Mittwoch</string>
-    <string name="main_calday_th_description" comment="This text is used for Google Talkback and other assistive technologies.">Donnerstag</string>
-    <string name="main_calday_fr_description" comment="This text is used for Google Talkback and other assistive technologies.">Freitag</string>
-    <string name="main_calday_sa_description" comment="This text is used for Google Talkback and other assistive technologies.">Samstag</string>
+    <string name="main_calday_su_description">Sonntag</string>
+    <string name="main_calday_mo_description">Montag</string>
+    <string name="main_calday_tu_description">Dienstag</string>
+    <string name="main_calday_we_description">Mittwoch</string>
+    <string name="main_calday_th_description">Donnerstag</string>
+    <string name="main_calday_fr_description">Freitag</string>
+    <string name="main_calday_sa_description">Samstag</string>
     <string name="details_title">Details</string>
     <string name="list_title">Liste</string>
     <string name="list_details_title">Liste mit Details</string>
@@ -53,7 +53,7 @@
     <string name="event_ignored">Zykluslänge ignoriert</string>
     <string name="event_periodfirst">Erster Eintrag</string>
     <string name="calendaraction_title">Kalendereintrag bearbeiten</string>
-    <string name="calendaraction_add">Diesen Tag als \"Periode \" kennzeichnen?</string>
+    <string name="calendaraction_add">Diesen Tag als \"Periode\" kennzeichnen?</string>
     <string name="calendaraction_remove">Kennzeichnung \"Periode\" für diesen Tag entfernen?</string>
     <string name="calendaraction_removeperiod">Diese Periode entfernen?</string>
     <string name="calendaraction_ok">Ja</string>
@@ -82,28 +82,30 @@
         <item>Russisch</item>
         <item>Spanisch</item>
         <item>Türkisch</item>
+        <item>Ukrainisch</item>
     </string-array>
     <string-array name="values_locales">
-        <item comment="This is value is a system value - do not translate!">system</item>
-        <item comment="This is value is a system value - do not translate!">af</item>
-        <item comment="This is value is a system value - do not translate!">az</item>
-        <item comment="This is value is a system value - do not translate!">eu</item>
-        <item comment="This is value is a system value - do not translate!">bg</item>
-        <item comment="This is value is a system value - do not translate!">cs</item>
-        <item comment="This is value is a system value - do not translate!">nl</item>
-        <item comment="This is value is a system value - do not translate!">en</item>
-        <item comment="This is value is a system value - do not translate!">fr</item>
-        <item comment="This is value is a system value - do not translate!">de</item>
-        <item comment="This is value is a system value - do not translate!">el</item>
-        <item comment="This is value is a system value - do not translate!">iw</item>
-        <item comment="This is value is a system value - do not translate!">it</item>
-        <item comment="This is value is a system value - do not translate!">ja</item>
-        <item comment="This is value is a system value - do not translate!">fa</item>
-        <item comment="This is value is a system value - do not translate!">pl</item>
-        <item comment="This is value is a system value - do not translate!">pt-rBR</item>
-        <item comment="This is value is a system value - do not translate!">ru</item>
-        <item comment="This is value is a system value - do not translate!">es</item>
-        <item comment="This is value is a system value - do not translate!">tr</item>
+        <item>system</item>
+        <item>af</item>
+        <item>az</item>
+        <item>eu</item>
+        <item>bg</item>
+        <item>cs</item>
+        <item>nl</item>
+        <item>en</item>
+        <item>fr</item>
+        <item>de</item>
+        <item>el</item>
+        <item>iw</item>
+        <item>it</item>
+        <item>ja</item>
+        <item>fa</item>
+        <item>pl</item>
+        <item>pt-rBR</item>
+        <item>ru</item>
+        <item>es</item>
+        <item>tr</item>
+        <item comment="This is value is a system value - do not translate!">uk</item>
     </string-array>
     <string name="pref_periodlength">Standardlänge der Periode (Tage)</string>
     <string name="invalid_period_length">Die Standardlänge der Periode muss zwischen 1 und 14 sein!</string>
@@ -120,13 +122,13 @@
         <item>Samstag</item>
     </string-array>
     <string-array name="values_startofweek">
-        <item comment="This is value is a system value - do not translate!">0</item>
-        <item comment="This is value is a system value - do not translate!">1</item>
-        <item comment="This is value is a system value - do not translate!">2</item>
-        <item comment="This is value is a system value - do not translate!">3</item>
-        <item comment="This is value is a system value - do not translate!">4</item>
-        <item comment="This is value is a system value - do not translate!">5</item>
-        <item comment="This is value is a system value - do not translate!">6</item>
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
     </string-array>
     <string name="pref_maximum_cycle_length">Maximale Zykluslänge</string>
     <string name="invalid_maximum_cycle_length">Die maximale Zykluslänge muss mindestens 60 sein!</string>

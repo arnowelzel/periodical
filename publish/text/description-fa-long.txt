@@ -6,6 +6,6 @@
 
 در صورت داشتن هر پرسشی یا کمک به من در ترجمه به زبان‌های دیگر لطفاً با ایمیل با من در تماس باشید - با سپاس.
 
-این برنامه نرم‌افزار آزاد است: شما می‌توانید از نو توسعه اش بدید و یا تحت شرایط جنو به وسیله بنیاد نرم‌افزار آزاد منتشرش کنید، چه ورژن ۳ از لایسنس یا هر ورژن بعدی که بخواهید.
+This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
 
 منابع در وب‌سایت من در دسترس شماست.
