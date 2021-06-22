@@ -1,0 +1,95 @@
+<en-US>
+Updated translation.
+
+Added Ukrainian (thanks to Stanislav Zinchenko)
+</en-US>
+
+<az-AZ>
+Tərcümə yeniləndi.
+
+Ukraynalı əlavə edildi (Stanislav Zinchenko sayəsində)
+</az-AZ>
+
+<cs-CZ>
+Aktualizovaný překlad.
+
+Přidána ukrajinština (díky Stanislavu Zinchenkovi)
+</cs-CZ>
+
+<de-DE>
+Aktualisierte Übersetzung.
+
+Ukrainisch hinzugefügt (Dank an Stanislav Zinchenko)
+</de-DE>
+
+<es-ES>
+Traducción actualizada.
+
+Ucraniano añadido (gracias a Stanislav Zinchenko)
+</es-ES>
+
+<fr-FR>
+Traduction mise à jour.
+
+Ukrainien ajouté (merci à Stanislav Zinchenko)
+</fr-FR>
+
+<it-IT>
+Traduzione aggiornata.
+
+Aggiunto ucraino (grazie a Stanislav Zinchenko)
+</it-IT>
+
+<nl-NL>
+Bijgewerkte vertaling.
+
+Oekraïens toegevoegd (met dank aan Stanislav Zinchenko)
+</nl-NL>
+
+<ru-RU>
+Обновленный перевод.
+
+Добавлен украинский (спасибо Станиславу Зинченко)
+</ru-RU>
+
+<af>
+Opgedateerde vertaling.
+
+Oekraïens bygevoeg (danksy Stanislav Zinchenko)
+</af>
+
+<pt-BR>
+Tradução atualizada.
+
+Adicionado ucraniano (graças a Stanislav Zinchenko)
+</pt-BR>
+
+<pl-PL>
+Zaktualizowane tłumaczenie.
+
+Dodano ukraiński (dzięki Stanislavowi Zinchenko)
+</pl-PL>
+
+<el-GR>
+Ενημερωμένη μετάφραση.
+
+Προστέθηκε Ουκρανικά (χάρη στον Stanislav Zinchenko)
+</el-GR>
+
+<ja-JP>
+翻訳を更新しました。
+
+ウクライナ語を追加しました（Stanislav Zinchenkoに感謝します）
+</ja-JP>
+
+<iw-IL>
+תרגום מעודכן.
+
+נוספה אוקראינית (תודה לסטניסלב זינצ'נקו)
+</iw-IL>
+
+<tr-TR>
+Çeviri güncellendi.
+
+Ukraynaca eklendi (Stanislav Zinchenko sayesinde)
+</tr-TR>
