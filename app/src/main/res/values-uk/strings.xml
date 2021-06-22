@@ -145,8 +145,8 @@
     <string name="label_period">період</string>
     <string name="label_period_predicted">прогнозований період</string>
     <string name="label_ovulation">овуляція</string>
-    <string name="asset_about">en/about.html</string>
-    <string name="asset_help">en/help.html</string>
+    <string name="asset_about">uk/about.html</string>
+    <string name="asset_help">uk/help.html</string>
     <string name="label_details_period">Період</string>
     <string name="label_details_yes">Так</string>
     <string name="label_details_no">Ніт</string>
