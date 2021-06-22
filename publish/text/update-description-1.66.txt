@@ -93,3 +93,9 @@ Dodano ukraiński (dzięki Stanislavowi Zinchenko)
 
 Ukraynaca eklendi (Stanislav Zinchenko sayesinde)
 </tr-TR>
+
+<uk>
+Оновлений переклад.
+
+Додано українську (завдяки Станіславу Зінченку)
+</uk>
