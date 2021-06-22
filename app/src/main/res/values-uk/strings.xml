@@ -85,7 +85,7 @@
         <item>Українська</item>
     </string-array>
     <string-array name="values_locales">
-        <item>система</item>
+        <item>system</item>
         <item>af</item>
         <item>az</item>
         <item>eu</item>
