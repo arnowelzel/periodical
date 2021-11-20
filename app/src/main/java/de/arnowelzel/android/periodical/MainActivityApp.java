@@ -950,6 +950,10 @@ public class MainActivityApp extends AppCompatActivity
             case STORAGE_ACCESS_SELECTED_BACKUP:
                 if (data != null) {
                     storageUri = data.getData();
+                    getContentResolver().takePersistableUriPermission(
+                            storageUri,
+                            Intent.FLAG_GRANT_READ_URI_PERMISSION |
+                                    Intent.FLAG_GRANT_WRITE_URI_PERMISSION);
                     dbMain.setOption("backup_uri", storageUri.toString());
                     dbMain.restorePreferences();
                     doBackup();
@@ -960,6 +964,10 @@ public class MainActivityApp extends AppCompatActivity
             case STORAGE_ACCESS_SELECTED_RESTORE:
                 if (data != null) {
                     storageUri = data.getData();
+                    getContentResolver().takePersistableUriPermission(
+                            storageUri,
+                            Intent.FLAG_GRANT_READ_URI_PERMISSION |
+                            Intent.FLAG_GRANT_WRITE_URI_PERMISSION);
                     dbMain.setOption("backup_uri", storageUri.toString());
                     dbMain.restorePreferences();
                     doRestore();
