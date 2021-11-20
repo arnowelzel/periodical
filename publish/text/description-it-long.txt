@@ -1,4 +1,4 @@
-Calcolo della fertilità in base a Knaus–Ogino.
+Questa applicazione calcola i giorni fertili secondo il metodo Knaus-Ogino e può tenere traccia dei sintomi mestruali.
 
 ATTENZIONE: Non è consigliabile usare questo calendario per evitare la gravidanza! Ci sono metodi molto più accurati, come misurare la temperatura corporea basale.
 
