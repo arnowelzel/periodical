@@ -1,0 +1,67 @@
+<en-US>
+Updated translation.
+</en-US>
+
+<az-AZ>
+Tərcümə yeniləndi.
+</az-AZ>
+
+<cs-CZ>
+Aktualizovaný překlad.
+</cs-CZ>
+
+<de-DE>
+Aktualisierte Übersetzung.
+</de-DE>
+
+<es-ES>
+Traducción actualizada.
+</es-ES>
+
+<fr-FR>
+Traduction mise à jour.
+</fr-FR>
+
+<it-IT>
+Traduzione aggiornata.
+</it-IT>
+
+<nl-NL>
+Bijgewerkte vertaling.
+</nl-NL>
+
+<ru-RU>
+Обновленный перевод.
+</ru-RU>
+
+<af>
+Opgedateerde vertaling.
+</af>
+
+<pt-BR>
+Tradução atualizada.
+</pt-BR>
+
+<pl-PL>
+Zaktualizowane tłumaczenie.
+</pl-PL>
+
+<el-GR>
+Ενημερωμένη μετάφραση.
+</el-GR>
+
+<ja-JP>
+翻訳を更新しました。
+</ja-JP>
+
+<iw-IL>
+תרגום מעודכן.
+</iw-IL>
+
+<tr-TR>
+Çeviri güncellendi.
+</tr-TR>
+
+<uk>
+Оновлений переклад.
+</uk>
