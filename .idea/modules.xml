@@ -2,8 +2,11 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/source.iml" filepath="$PROJECT_DIR$/.idea/source.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/source.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/source.app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/periodical.iml" filepath="$PROJECT_DIR$/.idea/modules/periodical.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/periodical.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/periodical.app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/periodical.app.androidTest.iml" filepath="$PROJECT_DIR$/.idea/modules/app/periodical.app.androidTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/periodical.app.main.iml" filepath="$PROJECT_DIR$/.idea/modules/app/periodical.app.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/periodical.app.unitTest.iml" filepath="$PROJECT_DIR$/.idea/modules/app/periodical.app.unitTest.iml" />
     </modules>
   </component>
 </project>
