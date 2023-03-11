@@ -28,6 +28,8 @@ import android.preference.ListPreference;
 import android.preference.Preference;
 import android.preference.PreferenceGroup;
 import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AppCompatDelegate;
+
 import android.view.MenuItem;
 import android.widget.Toast;
 
@@ -45,6 +47,8 @@ public class PreferenceActivity extends AppCompatPreferenceActivity implements S
      */
     @SuppressWarnings("deprecation")
     public void onCreate(Bundle savedInstanceState) {
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM);
+
         super.onCreate(savedInstanceState);
 
         final Context context = getApplicationContext();

@@ -31,6 +31,7 @@ import androidx.annotation.NonNull;
 import com.google.android.material.navigation.NavigationView;
 import com.yariksoffice.lingver.Lingver;
 
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.ActionBarDrawerToggle;
@@ -137,6 +138,8 @@ public class MainActivityApp extends AppCompatActivity
      */
     @Override
     public void onCreate(Bundle savedInstanceState) {
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM);
+
         super.onCreate(savedInstanceState);
         final Context context = getApplicationContext();
         assert context != null;
@@ -422,15 +425,18 @@ public class MainActivityApp extends AppCompatActivity
         // Output current year/month
         TextView displayDate = findViewById(R.id.displaydate);
         @SuppressLint("SimpleDateFormat") SimpleDateFormat dateFormat = new SimpleDateFormat("MMMM yyyy");
-        displayDate.setText(String.format("%s\nØ%d ↓%d ↑%d",
-                dateFormat.format(cal.getTime()),
-                dbMain.cycleAverage, dbMain.cycleShortest,
-                dbMain.cycleLongest));
-        displayDate.setContentDescription(String.format("%s - %s %d - %s %d - %s %d",
-                dateFormat.format(cal.getTime()),
+        displayDate.setText(String.format("%s", dateFormat.format(cal.getTime())));
+        displayDate.setContentDescription(String.format("%s", dateFormat.format(cal.getTime())));
+        /*
+        displayInfo.setText(String.format("%s %d - %s %d - %s %d",
+                getResources().getString(R.string.label_average), dbMain.cycleAverage,
+                getResources().getString(R.string.label_shortest), dbMain.cycleShortest,
+                getResources().getString(R.string.label_longest), dbMain.cycleLongest));
+        displayInfo.setContentDescription(String.format("%s %d - %s %d - %s %d",
                 getResources().getString(R.string.label_average_cycle), dbMain.cycleAverage,
                 getResources().getString(R.string.label_shortest_cycle), dbMain.cycleShortest,
                 getResources().getString(R.string.label_longest_cycle), dbMain.cycleLongest));
+         */
 
         // Calculate first week day of month
         firstDayOfWeek = cal.get(Calendar.DAY_OF_WEEK);
@@ -558,6 +564,14 @@ public class MainActivityApp extends AppCompatActivity
     public void goCurrent(View v) {
         initMonth();
         calendarUpdate();
+    }
+
+    /**
+     * Handler for "show info" button in main view
+     */
+    @SuppressWarnings({"UnusedParameters", "SameParameterValue"})
+    public void showInfo(View v) {
+
     }
 
     /**

@@ -26,38 +26,31 @@
         <activity
             android:name=".MainActivityApp"
             android:label="@string/app_name"
-            android:theme="@style/AppTheme.NoActionBar"
-            android:configChanges="orientation|screenSize">
+            android:theme="@style/AppTheme.NoActionBar">
         </activity>
 
         <activity
             android:name=".DetailsActivity"
-            android:label="@string/details_title"
-            android:configChanges="orientation|screenSize" />
+            android:label="@string/details_title" />
 
         <activity
             android:name=".ListActivity"
-            android:label="@string/list_title"
-            android:configChanges="orientation|screenSize" />
+            android:label="@string/list_title" />
 
         <activity
             android:name=".ListDetailsActivity"
-            android:label="@string/list_details_title"
-            android:configChanges="orientation|screenSize" />
+            android:label="@string/list_details_title" />
 
         <activity
             android:name=".PreferenceActivity"
-            android:configChanges="orientation|screenSize"
             android:label="@string/options_title" />
 
         <activity
             android:name=".HelpActivity"
-            android:configChanges="orientation|screenSize"
             android:label="@string/help_title" />
 
         <activity
             android:name=".AboutActivity"
-            android:configChanges="orientation|screenSize"
             android:label="@string/about_title" />
 
         <meta-data

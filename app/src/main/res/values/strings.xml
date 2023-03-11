@@ -139,6 +139,9 @@
     <string name="label_average_cycle">average cycle</string>
     <string name="label_shortest_cycle">shortest cycle</string>
     <string name="label_longest_cycle">longest cycle</string>
+    <string name="label_average">average</string>
+    <string name="label_shortest">shortest</string>
+    <string name="label_longest">longest</string>
     <string name="label_infertile">infertile</string>
     <string name="label_fertile">fertile</string>
     <string name="label_period_started">period has started</string>

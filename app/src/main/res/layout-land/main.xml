@@ -19,7 +19,7 @@
 
     <RelativeLayout
         android:id="@+id/monthselector"
-        android:layout_width="186dp"
+        android:layout_width="216dp"
         android:layout_height="wrap_content"
         android:gravity="end"
         android:orientation="horizontal">
@@ -59,12 +59,20 @@
                 android:onClick="goNext"
                 android:drawableLeft="@drawable/ic_arrow_forward_black_32dp"
                 tools:ignore="ButtonStyle" />
+
+            <Button
+                android:id="@+id/buttoninfo"
+                android:layout_width="54dp"
+                android:layout_height="wrap_content"
+                android:contentDescription="@string/next_month"
+                android:drawableLeft="@drawable/ic_info_outline_black_32dp"
+                android:onClick="showInfo" />
         </LinearLayout>
 
         <TextView
             android:id="@+id/displaydate"
             android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="54dp"
             android:layout_below="@+id/monthbuttons"
             android:gravity="center"
             android:textColor="#ffffffff"
