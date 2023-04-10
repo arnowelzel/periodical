@@ -212,6 +212,8 @@ public class DetailsActivity extends AppCompatActivity implements View.OnClickLi
         switch (item.getItemId()) {
             case android.R.id.home:
                 // Home icon in action bar clicked, then close activity
+                Intent intent = getIntent();
+                setResult(RESULT_OK, intent);
                 finish();
                 return true;
             default:

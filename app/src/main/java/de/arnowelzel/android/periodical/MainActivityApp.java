@@ -19,6 +19,7 @@
 package de.arnowelzel.android.periodical;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.backup.BackupManager;
 import android.content.Context;
@@ -27,6 +28,9 @@ import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import com.google.android.material.navigation.NavigationView;
 import com.yariksoffice.lingver.Lingver;
@@ -98,15 +102,6 @@ public class MainActivityApp extends AppCompatActivity
 
     private PeriodicalDatabase dbMain;
 
-    /* Request codes for other activities */
-    private static final int PICK_DATE = 1;       // Detail list: Date selected in detail list
-    private static final int SET_OPTIONS = 2;     // Preferences: Options changed
-    private static final int HELP_CLOSED = 3;     // Help: closed
-    private static final int ABOUT_CLOSED = 4;    // About: closed
-    private static final int DETAILS_CLOSED = 5;  // Details: closed
-    private static final int STORAGE_ACCESS_SELECTED_BACKUP = 6;  // Location for backup selected for backup
-    private static final int STORAGE_ACCESS_SELECTED_RESTORE = 7; // Location for backup selected for restore
-
     /* Status of the main navigation drawer */
     private boolean navigationDrawerActive = false;
 
@@ -115,6 +110,13 @@ public class MainActivityApp extends AppCompatActivity
 
     /* Flag for Webview fix */
     private boolean webviewFixRequired = true;
+
+    /* Launchers for activities with result */
+    private ActivityResultLauncher<Intent> pickDateResultLauncher;
+    private ActivityResultLauncher<Intent> setOptionsResultLauncher;
+    private ActivityResultLauncher<Intent> detailsResultLauncher;
+    private ActivityResultLauncher<Intent> setOptionsResultStorageAccessSelectBackup;
+    private ActivityResultLauncher<Intent> setOptionsResultStorageAccessSelectRestore;
 
     // For unknown reasons, the very first creation of a [WebView] (either programmatically
     // or via inflation) resets an application locale to the system default.
@@ -226,6 +228,43 @@ public class MainActivityApp extends AppCompatActivity
 
         // Update calculated values
         dbMain.loadCalculatedData();
+
+        // Register activity result launchers
+        pickDateResultLauncher = registerForActivityResult(
+                new ActivityResultContracts.StartActivityForResult(),
+                result -> {
+                    if (result.getResultCode() == Activity.RESULT_OK) {
+                        handleActivityResultPickDate(result.getData());
+                    }
+                });
+        setOptionsResultLauncher = registerForActivityResult(
+                new ActivityResultContracts.StartActivityForResult(),
+                result -> {
+                    if (result.getResultCode() == Activity.RESULT_OK) {
+                        handleActivityResultOptions(result.getData());
+                    }
+                });
+        detailsResultLauncher = registerForActivityResult(
+                new ActivityResultContracts.StartActivityForResult(),
+                result -> {
+                    if (result.getResultCode() == Activity.RESULT_OK) {
+                        handleActivityResultDetails(result.getData());
+                    }
+                });
+        setOptionsResultStorageAccessSelectBackup = registerForActivityResult(
+                new ActivityResultContracts.StartActivityForResult(),
+                result -> {
+                    if (result.getResultCode() == Activity.RESULT_OK) {
+                        handleActivityResultStorageAccessSelectBackup(result.getData());
+                    }
+                });
+        setOptionsResultStorageAccessSelectRestore = registerForActivityResult(
+                new ActivityResultContracts.StartActivityForResult(),
+                result -> {
+                    if (result.getResultCode() == Activity.RESULT_OK) {
+                        handleActivityResultStorageAccessSelectRestore(result.getData());
+                    }
+                });
     }
 
     /**
@@ -326,8 +365,8 @@ public class MainActivityApp extends AppCompatActivity
      */
     private void showHelp() {
         webviewFix();
-        startActivityForResult(
-                new Intent(MainActivityApp.this, HelpActivity.class), HELP_CLOSED);
+        startActivity(
+                new Intent(MainActivityApp.this, HelpActivity.class));
     }
 
     /**
@@ -335,32 +374,33 @@ public class MainActivityApp extends AppCompatActivity
      */
     private void showAbout() {
         webviewFix();
-        startActivityForResult(
-                new Intent(MainActivityApp.this, AboutActivity.class), ABOUT_CLOSED);
+        startActivity(
+                new Intent(MainActivityApp.this, AboutActivity.class));
     }
 
     /**
      * Handler for "List" menu action
      */
     private void showList() {
-        startActivityForResult(
-                new Intent(MainActivityApp.this, ListActivity.class), PICK_DATE);
+        pickDateResultLauncher.launch(new Intent(MainActivityApp.this, ListActivity.class));
     }
 
     /**
      * Handler for "List, details" menu action
      */
     private void showListDetails() {
-        startActivityForResult(
-                new Intent(MainActivityApp.this, ListDetailsActivity.class), PICK_DATE);
+        pickDateResultLauncher.launch(
+                new Intent(MainActivityApp.this, ListDetailsActivity.class)
+        );
     }
 
     /**
      * Handler for "Options" menu action
      */
     private void showOptions() {
-        startActivityForResult(
-                new Intent(MainActivityApp.this, PreferenceActivity.class), SET_OPTIONS);
+        setOptionsResultLauncher.launch(
+                new Intent(MainActivityApp.this, PreferenceActivity.class)
+        );
     }
 
     /**
@@ -621,7 +661,7 @@ public class MainActivityApp extends AppCompatActivity
                                 intent.addCategory(Intent.CATEGORY_DEFAULT);
                                 intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
                                 intent.addFlags(Intent.FLAG_GRANT_PERSISTABLE_URI_PERMISSION);
-                                startActivityForResult(intent, STORAGE_ACCESS_SELECTED_BACKUP);
+                                setOptionsResultStorageAccessSelectBackup.launch(intent);
                             }
                         }
                     });
@@ -661,7 +701,7 @@ public class MainActivityApp extends AppCompatActivity
                             intent.addCategory(Intent.CATEGORY_DEFAULT);
                             intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
                             intent.addFlags(Intent.FLAG_GRANT_PERSISTABLE_URI_PERMISSION);
-                            startActivityForResult(intent, STORAGE_ACCESS_SELECTED_BACKUP);
+                            setOptionsResultStorageAccessSelectBackup.launch(intent);
                         }
                     });
 
@@ -762,7 +802,7 @@ public class MainActivityApp extends AppCompatActivity
                             intent.addFlags(Intent.FLAG_GRANT_WRITE_URI_PERMISSION);
                             intent.addFlags(Intent.FLAG_GRANT_PERSISTABLE_URI_PERMISSION);
                             intent.addFlags(Intent.FLAG_GRANT_PREFIX_URI_PERMISSION);
-                            startActivityForResult(intent, STORAGE_ACCESS_SELECTED_RESTORE);
+                            setOptionsResultStorageAccessSelectRestore.launch(intent);
                         }
                     });
 
@@ -903,7 +943,7 @@ public class MainActivityApp extends AppCompatActivity
         details.putExtra("year", year);
         details.putExtra("month", month);
         details.putExtra("day", day);
-        startActivityForResult(details, DETAILS_CLOSED);
+        detailsResultLauncher.launch(details);
     }
 
     /**
@@ -919,74 +959,67 @@ public class MainActivityApp extends AppCompatActivity
         bm.dataChanged();
     }
 
+    protected void handleActivityResultPickDate(Intent data) {
+        Bundle extras = data.getExtras();
+        if (extras != null) {
+            monthCurrent = Integer.parseInt(extras.getString("month")) + 1;
+            yearCurrent = Integer.parseInt(extras.getString("year"));
+            calendarUpdate();
+        }
+    }
+
     /**
-     * Handler of activity results (detail list, options)
+     * Handler for activity result - options changed
      */
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
+    protected void handleActivityResultOptions(Intent data) {
+        PreferenceUtils preferenceUtils = new PreferenceUtils(this);
+        String locale = preferenceUtils.getString("locale", "system");
+        if(currentLocale.equals(locale)) {
+            databaseChanged();
+            calendarUpdate();
+        } else {
+            currentLocale = locale;
+            this.recreate();
+        }
+    }
 
-        Uri storageUri = null;
+    /**
+     * Handler for activity result - details closed
+     */
+    protected void handleActivityResultDetails(Intent data) {
+        dbMain.loadCalculatedData();
+        calendarUpdate();
+    }
 
-        switch (requestCode) {
-            // Specific date in detail list selected
-            case PICK_DATE:
-                if (resultCode == RESULT_OK) {
-                    Bundle extras = data.getExtras();
-                    if (extras != null) {
-                        monthCurrent = Integer.parseInt(extras.getString("month")) + 1;
-                        yearCurrent = Integer.parseInt(extras.getString("year"));
-                        calendarUpdate();
-                    }
-
-                }
-                break;
-
-            // Options modified
-            case SET_OPTIONS:
-                PreferenceUtils preferenceUtils = new PreferenceUtils(this);
-                String locale = preferenceUtils.getString("locale", "system");
-                if(currentLocale.equals(locale)) {
-                    databaseChanged();
-                    calendarUpdate();
-                } else {
-                    currentLocale = locale;
-                    this.recreate();
-                }
-                break;
-
-            // Details closed
-            case DETAILS_CLOSED:
-                dbMain.loadCalculatedData();
-                calendarUpdate();
-                break;
-
-            // Backup location selected for backup
-            case STORAGE_ACCESS_SELECTED_BACKUP:
-                if (data != null) {
-                    storageUri = data.getData();
-                    getContentResolver().takePersistableUriPermission(
-                            storageUri,
-                            Intent.FLAG_GRANT_READ_URI_PERMISSION |
-                                    Intent.FLAG_GRANT_WRITE_URI_PERMISSION);
-                    dbMain.setOption("backup_uri", storageUri.toString());
-                    dbMain.restorePreferences();
-                    doBackup();
-                }
-                break;
-
-            // Backup location selected for restore
-            case STORAGE_ACCESS_SELECTED_RESTORE:
-                if (data != null) {
-                    storageUri = data.getData();
-                    getContentResolver().takePersistableUriPermission(
-                            storageUri,
-                            Intent.FLAG_GRANT_READ_URI_PERMISSION |
+    /**
+     * Handler for activity result - details closed
+     */
+    protected void handleActivityResultStorageAccessSelectBackup(Intent data) {
+        if (data != null) {
+            Uri storageUri = data.getData();
+            getContentResolver().takePersistableUriPermission(
+                    storageUri,
+                    Intent.FLAG_GRANT_READ_URI_PERMISSION |
                             Intent.FLAG_GRANT_WRITE_URI_PERMISSION);
-                    dbMain.setOption("backup_uri", storageUri.toString());
-                    dbMain.restorePreferences();
-                    doRestore();
-                }
-                break;
+            dbMain.setOption("backup_uri", storageUri.toString());
+            dbMain.restorePreferences();
+            doBackup();
+        }
+    }
+
+    /**
+     * Handler for activity result - details closed
+     */
+    protected void handleActivityResultStorageAccessSelectRestore(Intent data) {
+        if (data != null) {
+            Uri storageUri = data.getData();
+            getContentResolver().takePersistableUriPermission(
+                    storageUri,
+                    Intent.FLAG_GRANT_READ_URI_PERMISSION |
+                            Intent.FLAG_GRANT_WRITE_URI_PERMISSION);
+            dbMain.setOption("backup_uri", storageUri.toString());
+            dbMain.restorePreferences();
+            doRestore();
         }
     }
 
