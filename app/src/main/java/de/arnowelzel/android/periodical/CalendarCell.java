@@ -188,9 +188,6 @@ public class CalendarCell extends Button {
      */
     private final Paint paintBitmap;
 
-    /* Current view orientation (portrait, landscape) */
-    private int orientation;
-
     /**
      * Constructor
      *
@@ -255,15 +252,6 @@ public class CalendarCell extends Button {
                 R.drawable.ic_notes);
         bitmapNotesBlack = BitmapFactory.decodeResource(getResources(),
                 R.drawable.ic_notes_black);
-
-        // Get current screen orientation
-        if (!isInEditMode()) { // Don't try this in layout editor
-            WindowManager wm = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
-            if (wm != null) {
-                Display display = wm.getDefaultDisplay();
-                if (display != null) orientation = display.getRotation();
-            }
-        }
     }
 
     /**
@@ -297,7 +285,7 @@ public class CalendarCell extends Button {
 
         // Adjust overlay size depending on orientation
         int overlaysize = 18;
-        if (orientation == Surface.ROTATION_90 || orientation == Surface.ROTATION_270) {
+        if (rectCanvas.width() > rectCanvas.height()) {
             overlaysize = 14;
         }
 
