@@ -7,7 +7,8 @@ Separate information view about cycles.
 <az-AZ>
 Android 13 üçün yeniləmələr.
 
-Dövrlər haqqında ayrıca məlumat görünüşü.</az-AZ>
+Dövrlər haqqında ayrıca məlumat görünüşü.
+</az-AZ>
 
 <cs-CZ>
 Aktualizace pro Android 13.
