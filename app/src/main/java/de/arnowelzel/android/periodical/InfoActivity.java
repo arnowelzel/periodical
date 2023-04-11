@@ -18,11 +18,16 @@
 
 package de.arnowelzel.android.periodical;
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.TextView;
 
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -31,6 +36,9 @@ public class InfoActivity extends AppCompatActivity {
      * Database for calendar data
      */
     private PeriodicalDatabase dbMain;
+
+    /* Launchers for activities with result */
+    private ActivityResultLauncher<Intent> pickDateResultLauncher;
 
     /**
      * Called when the activity starts
@@ -60,6 +68,15 @@ public class InfoActivity extends AppCompatActivity {
         TextView viewLongest = findViewById(R.id.infoDurationLongest);
         viewLongest.setText(String.format("%d", dbMain.cycleLongest));
 
+        // Register activity result launchers
+        pickDateResultLauncher = registerForActivityResult(
+                new ActivityResultContracts.StartActivityForResult(),
+                result -> {
+                    if (result.getResultCode() == Activity.RESULT_OK) {
+                        handleActivityResultPickDate(result.getData());
+                    }
+                });
+
         // Activate "back button" in Action Bar if possible
         ActionBar actionBar = getSupportActionBar();
         assert actionBar != null;
@@ -79,5 +96,33 @@ public class InfoActivity extends AppCompatActivity {
             default:
                 return super.onOptionsItemSelected(item);
         }
+    }
+
+    /**
+     * Handler for "List" menu action
+     */
+    public void showList(View v) {
+        pickDateResultLauncher.launch(new Intent(InfoActivity.this, ListActivity.class));
+    }
+
+    /**
+     * Handler for "List, details" menu action
+     */
+    public void showListDetails(View v) {
+        pickDateResultLauncher.launch(
+                new Intent(InfoActivity.this, ListDetailsActivity.class)
+        );
+    }
+
+    /**
+     * Handler for date selection in list views
+     */
+    protected void handleActivityResultPickDate(Intent data) {
+        // Forward the result to the calling view
+        Bundle extras = data.getExtras();
+        Intent intent = getIntent();
+        intent.putExtras(extras);
+        setResult(RESULT_OK, intent);
+        finish();
     }
 }

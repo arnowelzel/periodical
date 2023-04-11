@@ -601,8 +601,9 @@ public class MainActivityApp extends AppCompatActivity
      */
     @SuppressWarnings({"UnusedParameters", "SameParameterValue"})
     public void showInfo(View v) {
-        startActivity(
-                new Intent(MainActivityApp.this, InfoActivity.class));
+        pickDateResultLauncher.launch(
+                new Intent(MainActivityApp.this, InfoActivity.class)
+        );
     }
 
     /**
@@ -950,6 +951,9 @@ public class MainActivityApp extends AppCompatActivity
         bm.dataChanged();
     }
 
+    /**
+     * Handler for date selection in list views
+     */
     protected void handleActivityResultPickDate(Intent data) {
         Bundle extras = data.getExtras();
         if (extras != null) {
