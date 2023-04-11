@@ -20,11 +20,8 @@ package de.arnowelzel.android.periodical;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
-import android.app.AlertDialog;
 import android.app.backup.BackupManager;
 import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -41,6 +38,7 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.fragment.app.FragmentResultListener;
 
 import android.view.GestureDetector;
 import android.view.GestureDetector.SimpleOnGestureListener;
@@ -263,6 +261,67 @@ public class MainActivityApp extends AppCompatActivity
                 result -> {
                     if (result.getResultCode() == Activity.RESULT_OK) {
                         handleActivityResultStorageAccessSelectRestore(result.getData());
+                    }
+                });
+
+        // Fragment listener for dialogs
+        getSupportFragmentManager().setFragmentResultListener(
+            BackupConfirmationDialogFragment.RESULT_BUNDLE_KEY,
+            this,
+            new FragmentResultListener() {
+                @Override
+                public void onFragmentResult(@NonNull String requestKey, @NonNull Bundle bundle) {
+                    handleBackupConfirmation(
+                            bundle.getInt(BackupConfirmationDialogFragment.RESULT_CHOICE)
+                    );
+                }
+        });
+        getSupportFragmentManager().setFragmentResultListener(
+                BackupSelectLocationDialogFragment.RESULT_BUNDLE_KEY,
+                this,
+                new FragmentResultListener() {
+                    @Override
+                    public void onFragmentResult(@NonNull String requestKey, @NonNull Bundle bundle) {
+                        handleBackupSelectLocation(
+                                bundle.getInt(BackupSelectLocationDialogFragment.RESULT_CHOICE)
+                        );
+                    }
+                });
+        getSupportFragmentManager().setFragmentResultListener(
+                RestoreConfirmationDialogFragment.RESULT_BUNDLE_KEY,
+                this,
+                new FragmentResultListener() {
+                    @Override
+                    public void onFragmentResult(@NonNull String requestKey, @NonNull Bundle bundle) {
+                        handleRestoreConfirmation(
+                                bundle.getInt(RestoreConfirmationDialogFragment.RESULT_CHOICE)
+                        );
+                    }
+                });
+        getSupportFragmentManager().setFragmentResultListener(
+                RestoreSelectLocationDialogFragment.RESULT_BUNDLE_KEY,
+                this,
+                new FragmentResultListener() {
+                    @Override
+                    public void onFragmentResult(@NonNull String requestKey, @NonNull Bundle bundle) {
+                        handleRestoreSelectLocation(
+                                bundle.getInt(RestoreSelectLocationDialogFragment.RESULT_CHOICE)
+                        );
+                    }
+                });
+        getSupportFragmentManager().setFragmentResultListener(
+                EditCalendarEntryDialogFragment.RESULT_BUNDLE_KEY,
+                this,
+                new FragmentResultListener() {
+                    @Override
+                    public void onFragmentResult(@NonNull String requestKey, @NonNull Bundle bundle) {
+                        handleEditCalendarEntry(
+                                bundle.getInt(EditCalendarEntryDialogFragment.RESULT_TYPE),
+                                bundle.getInt(EditCalendarEntryDialogFragment.RESULT_CHOICE),
+                                bundle.getInt(EditCalendarEntryDialogFragment.RESULT_YEAR),
+                                bundle.getInt(EditCalendarEntryDialogFragment.RESULT_MONTH),
+                                bundle.getInt(EditCalendarEntryDialogFragment.RESULT_DAY)
+                        );
                     }
                 });
     }
@@ -622,99 +681,77 @@ public class MainActivityApp extends AppCompatActivity
         final Context context = getApplicationContext();
         assert context != null;
 
-        PreferenceUtils preferences = new PreferenceUtils(context);
-        String backupUriString = preferences.getString("backup_uri", "");
-        if (!backupUriString.equals("")) {
+        Uri uriBackup = getUriBackup(context);
+        if (uriBackup != null) {
             // The backup location is already selected, just use this
-            Uri uriBackup = Uri.parse(backupUriString);
-
-            final AlertDialog.Builder builder = new AlertDialog.Builder(this);
-            builder.setTitle(getResources().getString(R.string.backup_title));
-            builder.setMessage(getResources().getString(R.string.backup_text));
-            builder.setIcon(R.drawable.ic_warning_black_40dp);
-
-            builder.setPositiveButton(getResources().getString(R.string.backup_ok),
-                    new OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            boolean ok = dbMain.backupToUri(context, uriBackup);
-                            String text;
-                            if (ok) {
-                                text = getResources().getString(R.string.backup_finished);
-                            } else {
-                                text = getResources().getString(R.string.backup_failed);
-                            }
-                            Toast toast = Toast.makeText(context, text, Toast.LENGTH_SHORT);
-                            toast.show();
-
-                            // When the backup failed, ask for a new backup location
-                            if (!ok) {
-                                Intent intent = new Intent(Intent.ACTION_OPEN_DOCUMENT_TREE);
-                                intent.addCategory(Intent.CATEGORY_DEFAULT);
-                                intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
-                                intent.addFlags(Intent.FLAG_GRANT_PERSISTABLE_URI_PERMISSION);
-                                setOptionsResultStorageAccessSelectBackup.launch(intent);
-                            }
-                        }
-                    });
-
-            builder.setNeutralButton(
-                    getResources().getString(R.string.backup_newfolder),
-                    new OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            dbMain.setOption("backup_uri", "");
-                            dbMain.restorePreferences();
-                            doBackup();
-                        }
-                    });
-
-            builder.setNegativeButton(
-                    getResources().getString(R.string.backup_cancel),
-                    new OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                        }
-                    });
-
-            builder.show();
+            new BackupConfirmationDialogFragment().show(
+                    getSupportFragmentManager(), BackupConfirmationDialogFragment.TAG
+            );
         } else {
             // There is no backup location stored yet, ask the user to select one
-            final AlertDialog.Builder builder = new AlertDialog.Builder(this);
-            builder.setTitle(getResources().getString(R.string.backup_title));
-            builder.setMessage(getResources().getString(R.string.backup_selectfolder));
-            builder.setIcon(R.drawable.ic_warning_black_40dp);
+            new BackupSelectLocationDialogFragment().show(
+                    getSupportFragmentManager(), BackupSelectLocationDialogFragment.TAG
+            );
+        }
+    }
 
-            builder.setPositiveButton(getResources().getString(R.string.backup_ok),
-                    new OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            Intent intent = new Intent(Intent.ACTION_OPEN_DOCUMENT_TREE);
-                            intent.addCategory(Intent.CATEGORY_DEFAULT);
-                            intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
-                            intent.addFlags(Intent.FLAG_GRANT_PERSISTABLE_URI_PERMISSION);
-                            setOptionsResultStorageAccessSelectBackup.launch(intent);
-                        }
-                    });
+    /**
+     * Handler for backup confirmation dialog
+     */
+    private void handleBackupConfirmation(int choice) {
+        final Context context = getApplicationContext();
+        assert context != null;
 
-            builder.setNeutralButton(
-                    getResources().getString(R.string.backup_help),
-                    new OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            showHelp();
-                        }
-                    });
+        Uri uriBackup = getUriBackup(context);
 
-            builder.setNegativeButton(
-                    getResources().getString(R.string.backup_cancel),
-                    new OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                        }
-                    });
+        switch(choice) {
+            case BackupConfirmationDialogFragment.CHOICE_OK:
+                boolean ok = dbMain.backupToUri(context, uriBackup);
+                String text;
+                if (ok) {
+                    text = getResources().getString(R.string.backup_finished);
+                } else {
+                    text = getResources().getString(R.string.backup_failed);
+                }
+                Toast toast = Toast.makeText(context, text, Toast.LENGTH_SHORT);
+                toast.show();
 
-            builder.show();
+                // When the backup failed, ask for a new backup location
+                if (!ok) {
+                    Intent intent = new Intent(Intent.ACTION_OPEN_DOCUMENT_TREE);
+                    intent.addCategory(Intent.CATEGORY_DEFAULT);
+                    intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+                    intent.addFlags(Intent.FLAG_GRANT_PERSISTABLE_URI_PERMISSION);
+                    setOptionsResultStorageAccessSelectBackup.launch(intent);
+                }
+                break;
+
+            case BackupConfirmationDialogFragment.CHOICE_NEW_LOCATION:
+                dbMain.setOption("backup_uri", "");
+                dbMain.restorePreferences();
+                doBackup();
+                break;
+        }
+    }
+
+    /**
+     * Handler for backup select location dialog
+     */
+    private void handleBackupSelectLocation(int choice) {
+        final Context context = getApplicationContext();
+        assert context != null;
+
+        switch (choice) {
+            case BackupSelectLocationDialogFragment.CHOICE_OK:
+                Intent intent = new Intent(Intent.ACTION_OPEN_DOCUMENT_TREE);
+                intent.addCategory(Intent.CATEGORY_DEFAULT);
+                intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+                intent.addFlags(Intent.FLAG_GRANT_PERSISTABLE_URI_PERMISSION);
+                setOptionsResultStorageAccessSelectBackup.launch(intent);
+                break;
+            case BackupSelectLocationDialogFragment.CHOICE_HELP:
+                showHelp();
+                break;
         }
     }
 
@@ -725,97 +762,79 @@ public class MainActivityApp extends AppCompatActivity
         final Context context = getApplicationContext();
         assert context != null;
 
-        PreferenceUtils preferences = new PreferenceUtils(context);
-        String backupUriString = preferences.getString("backup_uri", "");
-        if (!backupUriString.equals("")) {
-            // The backup folder is already selected, just use this
-            Uri uriBackup = Uri.parse(backupUriString);
-
-            final AlertDialog.Builder builder = new AlertDialog.Builder(this);
-            builder.setTitle(getResources().getString(R.string.restore_title));
-            builder.setMessage(getResources().getString(R.string.restore_text));
-            builder.setIcon(R.drawable.ic_warning_black_40dp);
-
-            builder.setPositiveButton(
-                    getResources().getString(R.string.restore_ok),
-                    new OnClickListener() {
-
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            boolean ok = dbMain.restoreFromUri(context, uriBackup);
-                            dbMain.loadCalculatedData();
-                            calendarUpdate();
-                            String text;
-                            if (ok) {
-                                text = getResources().getString(R.string.restore_finished);
-                            } else {
-                                text = getResources().getString(R.string.restore_failed);
-                            }
-                            Toast toast = Toast.makeText(context, text, Toast.LENGTH_SHORT);
-                            toast.show();
-                        }
-                    });
-
-            builder.setNeutralButton(
-                    getResources().getString(R.string.backup_newfolder),
-                    new OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            dbMain.setOption("backup_uri", "");
-                            dbMain.restorePreferences();
-                            doRestore();
-                        }
-                    });
-
-            builder.setNegativeButton(
-                    getResources().getString(R.string.restore_cancel),
-                    new OnClickListener() {
-
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                        }
-                    });
-
-            builder.show();
+        Uri uriBackup = getUriBackup(context);
+        if (uriBackup != null) {
+            // The backup location is already selected, just use this
+            new RestoreConfirmationDialogFragment().show(
+                    getSupportFragmentManager(), RestoreConfirmationDialogFragment.TAG
+            );
         } else {
             // There is no backup location stored yet, ask the user to select one
-            final AlertDialog.Builder builder = new AlertDialog.Builder(this);
-            builder.setTitle(getResources().getString(R.string.restore_title));
-            builder.setMessage(getResources().getString(R.string.restore_selectfolder));
-            builder.setIcon(R.drawable.ic_warning_black_40dp);
+            new RestoreSelectLocationDialogFragment().show(
+                    getSupportFragmentManager(), RestoreSelectLocationDialogFragment.TAG
+            );
+        }
+    }
 
-            builder.setPositiveButton(getResources().getString(R.string.backup_ok),
-                    new OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            Intent intent = new Intent(Intent.ACTION_OPEN_DOCUMENT_TREE);
-                            intent.addCategory(Intent.CATEGORY_DEFAULT);
-                            intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
-                            intent.addFlags(Intent.FLAG_GRANT_WRITE_URI_PERMISSION);
-                            intent.addFlags(Intent.FLAG_GRANT_PERSISTABLE_URI_PERMISSION);
-                            intent.addFlags(Intent.FLAG_GRANT_PREFIX_URI_PERMISSION);
-                            setOptionsResultStorageAccessSelectRestore.launch(intent);
-                        }
-                    });
+    /**
+     * Handler for restore confirmation dialog
+     */
+    private void handleRestoreConfirmation(int choice) {
+        final Context context = getApplicationContext();
+        assert context != null;
 
-            builder.setNeutralButton(
-                    getResources().getString(R.string.backup_help),
-                    new OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            showHelp();
-                        }
-                    });
+        Uri uriBackup = getUriBackup(context);
 
-            builder.setNegativeButton(
-                    getResources().getString(R.string.backup_cancel),
-                    new OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                        }
-                    });
+        switch(choice) {
+            case RestoreConfirmationDialogFragment.CHOICE_OK:
+                boolean ok = dbMain.restoreFromUri(context, uriBackup);
+                dbMain.loadCalculatedData();
+                calendarUpdate();
+                String text;
+                if (ok) {
+                    text = getResources().getString(R.string.restore_finished);
+                } else {
+                    text = getResources().getString(R.string.restore_failed);
+                }
+                Toast toast = Toast.makeText(context, text, Toast.LENGTH_SHORT);
+                toast.show();
 
-            builder.show();
+                // When the restore failed, ask for a new backup location
+                if (!ok) {
+                    Intent intent = new Intent(Intent.ACTION_OPEN_DOCUMENT_TREE);
+                    intent.addCategory(Intent.CATEGORY_DEFAULT);
+                    intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+                    intent.addFlags(Intent.FLAG_GRANT_PERSISTABLE_URI_PERMISSION);
+                    setOptionsResultStorageAccessSelectRestore.launch(intent);
+                }
+                break;
+
+            case RestoreConfirmationDialogFragment.CHOICE_NEW_LOCATION:
+                dbMain.setOption("backup_uri", "");
+                dbMain.restorePreferences();
+                doRestore();
+                break;
+        }
+    }
+
+    /**
+     * Handler for restore select location dialog
+     */
+    private void handleRestoreSelectLocation(int choice) {
+        final Context context = getApplicationContext();
+        assert context != null;
+
+        switch (choice) {
+            case RestoreSelectLocationDialogFragment.CHOICE_OK:
+                Intent intent = new Intent(Intent.ACTION_OPEN_DOCUMENT_TREE);
+                intent.addCategory(Intent.CATEGORY_DEFAULT);
+                intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+                intent.addFlags(Intent.FLAG_GRANT_PERSISTABLE_URI_PERMISSION);
+                setOptionsResultStorageAccessSelectRestore.launch(intent);
+                break;
+            case RestoreSelectLocationDialogFragment.CHOICE_HELP:
+                showHelp();
+                break;
         }
     }
 
@@ -851,79 +870,53 @@ public class MainActivityApp extends AppCompatActivity
             showDetailsActivity(yearCurrent, monthCurrent, day);
         } else {
             // Set or remove entry with confirmation
-            final AlertDialog.Builder builder = new AlertDialog.Builder(this);
-            builder.setTitle(getResources()
-                    .getString(R.string.calendaraction_title));
 
             final GregorianCalendar date = new GregorianCalendar(yearCurrent, monthCurrent - 1, day);
             int type = dbMain.getEntryType(date);
             if (type != PERIOD_START && type != PERIOD_CONFIRMED) {
-                builder.setMessage(getResources().getString(
-                        R.string.calendaraction_add));
-                builder.setPositiveButton(
-                        getResources().getString(R.string.calendaraction_ok),
-                        new OnClickListener() {
-
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                dbMain.addPeriod(date);
-                                databaseChanged();
-                            }
-                        });
-
-                builder.setNegativeButton(
-                        getResources().getString(R.string.calendaraction_cancel),
-                        new OnClickListener() {
-
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                            }
-                        });
-
-                builder.setNeutralButton(
-                        getResources().getString(R.string.calendaraction_details),
-                        new OnClickListener() {
-
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                showDetailsActivity(yearCurrent, monthCurrent, day);
-                            }
-                        });
+                EditCalendarEntryDialogFragment.newInstance(EditCalendarEntryDialogFragment.TYPE_ADD, yearCurrent, monthCurrent, day).show(
+                        getSupportFragmentManager(), EditCalendarEntryDialogFragment.TAG
+                );
             } else {
-                if (type == PERIOD_START)
-                    builder.setMessage(getResources().getString(R.string.calendaraction_removeperiod));
-                else builder.setMessage(getResources().getString(R.string.calendaraction_remove));
-                builder.setPositiveButton(
-                        getResources().getString(R.string.calendaraction_ok),
-                        new OnClickListener() {
-
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                dbMain.removePeriod(date);
-                                databaseChanged();
-                            }
-                        });
-
-                builder.setNegativeButton(
-                        getResources().getString(R.string.calendaraction_cancel),
-                        new OnClickListener() {
-
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                            }
-                        });
-
-                builder.setNeutralButton(
-                        getResources().getString(R.string.calendaraction_details),
-                        new OnClickListener() {
-
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                showDetailsActivity(yearCurrent, monthCurrent, day);
-                            }
-                        });
+                if (type == PERIOD_START) {
+                    EditCalendarEntryDialogFragment.newInstance(EditCalendarEntryDialogFragment.TYPE_REMOVE_PERIOD, yearCurrent, monthCurrent, day).show(
+                            getSupportFragmentManager(), EditCalendarEntryDialogFragment.TAG
+                    );
+                } else {
+                    EditCalendarEntryDialogFragment.newInstance(EditCalendarEntryDialogFragment.TYPE_REMOVE, yearCurrent, monthCurrent - 1, day).show(
+                            getSupportFragmentManager(), EditCalendarEntryDialogFragment.TAG
+                    );
+                }
             }
-            builder.show();
+        }
+    }
+
+    /**
+     * Handle calender edit dialog result
+     */
+    private void handleEditCalendarEntry(int type, int choice, int year, int month, int day) {
+        final GregorianCalendar date = new GregorianCalendar(yearCurrent, monthCurrent - 1, day);
+
+        if (choice == EditCalendarEntryDialogFragment.CHOICE_DETAILS) {
+            showDetailsActivity(year, month, day);
+
+            return;
+        }
+
+        if (choice == EditCalendarEntryDialogFragment.CHOICE_OK) {
+            if (type == EditCalendarEntryDialogFragment.TYPE_ADD) {
+                dbMain.addPeriod(date);
+                databaseChanged();
+
+                return;
+            }
+
+            if (type == EditCalendarEntryDialogFragment.TYPE_REMOVE || type == EditCalendarEntryDialogFragment.TYPE_REMOVE_PERIOD) {
+                dbMain.removePeriod(date);
+                databaseChanged();
+
+                return;
+            }
         }
     }
 
@@ -949,6 +942,17 @@ public class MainActivityApp extends AppCompatActivity
         // Notify backup agent about the change and mark DB as clean
         BackupManager bm = new BackupManager(this);
         bm.dataChanged();
+    }
+
+    private Uri getUriBackup(Context context) {
+        PreferenceUtils preferences = new PreferenceUtils(context);
+        String backupUriString = preferences.getString("backup_uri", "");
+
+        if (backupUriString.equals("")) {
+            return null;
+        }
+
+        return Uri.parse(backupUriString);
     }
 
     /**
