@@ -1,6 +1,6 @@
 /*
  * Periodical main activity
- * Copyright (C) 2012-2020 Arno Welzel
+ * Copyright (C) 2012-2023 Arno Welzel
  *
  * This code is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -467,16 +467,6 @@ public class MainActivityApp extends AppCompatActivity
         @SuppressLint("SimpleDateFormat") SimpleDateFormat dateFormat = new SimpleDateFormat("MMMM yyyy");
         displayDate.setText(String.format("%s", dateFormat.format(cal.getTime())));
         displayDate.setContentDescription(String.format("%s", dateFormat.format(cal.getTime())));
-        /*
-        displayInfo.setText(String.format("%s %d - %s %d - %s %d",
-                getResources().getString(R.string.label_average), dbMain.cycleAverage,
-                getResources().getString(R.string.label_shortest), dbMain.cycleShortest,
-                getResources().getString(R.string.label_longest), dbMain.cycleLongest));
-        displayInfo.setContentDescription(String.format("%s %d - %s %d - %s %d",
-                getResources().getString(R.string.label_average_cycle), dbMain.cycleAverage,
-                getResources().getString(R.string.label_shortest_cycle), dbMain.cycleShortest,
-                getResources().getString(R.string.label_longest_cycle), dbMain.cycleLongest));
-         */
 
         // Calculate first week day of month
         firstDayOfWeek = cal.get(Calendar.DAY_OF_WEEK);
@@ -611,7 +601,8 @@ public class MainActivityApp extends AppCompatActivity
      */
     @SuppressWarnings({"UnusedParameters", "SameParameterValue"})
     public void showInfo(View v) {
-
+        startActivity(
+                new Intent(MainActivityApp.this, InfoActivity.class));
     }
 
     /**

@@ -27,6 +27,7 @@
     <string name="details_title">Details</string>
     <string name="list_title">List</string>
     <string name="list_details_title">List with details</string>
+    <string name="info_title">Information</string>
     <string name="about_title">About …</string>
     <string name="help_title">Help</string>
     <string name="backup_title">Backup data</string>
@@ -136,12 +137,10 @@
     <string name="pref_show_cycle">Show day of cycle</string>
     <string name="previous_month">Previous month</string>
     <string name="next_month">Next month</string>
-    <string name="label_average_cycle">average cycle</string>
-    <string name="label_shortest_cycle">shortest cycle</string>
-    <string name="label_longest_cycle">longest cycle</string>
-    <string name="label_average">average</string>
-    <string name="label_shortest">shortest</string>
-    <string name="label_longest">longest</string>
+    <string name="label_cycle_count">Number of cycles</string>
+    <string name="label_average_cycle">Average cycle</string>
+    <string name="label_shortest_cycle">Shortest cycle</string>
+    <string name="label_longest_cycle">Longest cycle</string>
     <string name="label_infertile">infertile</string>
     <string name="label_fertile">fertile</string>
     <string name="label_period_started">period has started</string>

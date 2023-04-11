@@ -45,6 +45,7 @@
                 android:layout_height="wrap_content"
                 android:contentDescription="@string/next_month"
                 android:drawableLeft="@drawable/ic_arrow_forward_black_32dp"
+                android:gravity="center"
                 android:onClick="goNext" />
 
             <Button
@@ -52,7 +53,8 @@
                 android:layout_width="54dp"
                 android:layout_height="wrap_content"
                 android:contentDescription="@string/next_month"
-                android:drawableLeft="@drawable/ic_info_outline_black_32dp"
+                android:drawableLeft="@drawable/ic_list_black_32dp"
+                android:gravity="center"
                 android:onClick="showInfo" />
 
             <TextView

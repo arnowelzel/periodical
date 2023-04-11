@@ -27,6 +27,7 @@
     <string name="details_title">Details</string>
     <string name="list_title">Liste</string>
     <string name="list_details_title">Liste mit Details</string>
+    <string name="info_title">Informationen</string>
     <string name="about_title">Über …</string>
     <string name="help_title">Hilfe</string>
     <string name="backup_title">Daten sichern</string>
@@ -105,7 +106,7 @@
         <item>ru</item>
         <item>es</item>
         <item>tr</item>
-        <item comment="This is value is a system value - do not translate!">uk</item>
+        <item>uk</item>
     </string-array>
     <string name="pref_periodlength">Standardlänge der Periode (Tage)</string>
     <string name="invalid_period_length">Die Standardlänge der Periode muss zwischen 1 und 14 sein!</string>
@@ -136,6 +137,7 @@
     <string name="pref_show_cycle">Tag des Zyklus anzeigen</string>
     <string name="previous_month">Vorheriger Monat</string>
     <string name="next_month">Nächster Monat</string>
+    <string name="label_cycle_count">Anzahl der Zyklen</string>
     <string name="label_average_cycle">Durchschnittlicher Zyklus</string>
     <string name="label_shortest_cycle">Kürzester Zyklus</string>
     <string name="label_longest_cycle">Längster Zyklus</string>

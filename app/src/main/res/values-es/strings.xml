@@ -27,6 +27,7 @@
     <string name="details_title">Detalles</string>
     <string name="list_title">Información</string>
     <string name="list_details_title">Información detallada</string>
+    <string name="info_title">Información</string>
     <string name="about_title">Acerca de…</string>
     <string name="help_title">Ayuda</string>
     <string name="backup_title">Copia de seguridad</string>
@@ -105,7 +106,7 @@
         <item>ru</item>
         <item>es</item>
         <item>tr</item>
-        <item comment="This is value is a system value - do not translate!">uk</item>
+        <item>uk</item>
     </string-array>
     <string name="pref_periodlength">Duración predeterminada del periodo (días)</string>
     <string name="invalid_period_length">¡La duración predeterminada del periodo debe ser entre 1 y 14!</string>
@@ -136,7 +137,8 @@
     <string name="pref_show_cycle">Mostrar día de ciclo</string>
     <string name="previous_month">Mes anterior</string>
     <string name="next_month">Siguiente mes</string>
-    <string name="label_average_cycle">Ciclo medio</string>
+    <string name="label_cycle_count">Número de ciclos</string>
+    <string name="label_average_cycle">Ciclo promedio</string>
     <string name="label_shortest_cycle">Ciclo más corto</string>
     <string name="label_longest_cycle">Ciclo más largo</string>
     <string name="label_infertile">infértil</string>

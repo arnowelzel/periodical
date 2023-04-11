@@ -36,36 +36,35 @@
                 android:layout_width="54dp"
                 android:layout_height="wrap_content"
                 android:contentDescription="@string/previous_month"
-                android:onClick="goPrev"
                 android:gravity="center"
                 android:drawableLeft="@drawable/ic_arrow_back_black_32dp"
-                tools:ignore="ButtonStyle" />
+                android:onClick="goPrev" />
 
             <Button
                 android:id="@+id/buttontoday"
                 android:layout_width="54dp"
                 android:layout_height="wrap_content"
                 android:contentDescription="@string/current_day"
-                android:onClick="goCurrent"
-                android:gravity="center"
                 android:drawableLeft="@drawable/ic_today_black_32dp"
-                tools:ignore="ButtonStyle" />
+                android:gravity="center"
+                android:onClick="goCurrent" />
 
             <Button
                 android:id="@+id/buttonnext"
                 android:layout_width="54dp"
                 android:layout_height="wrap_content"
                 android:contentDescription="@string/next_month"
-                android:onClick="goNext"
                 android:drawableLeft="@drawable/ic_arrow_forward_black_32dp"
-                tools:ignore="ButtonStyle" />
+                android:gravity="center"
+                android:onClick="goNext" />
 
             <Button
                 android:id="@+id/buttoninfo"
                 android:layout_width="54dp"
                 android:layout_height="wrap_content"
                 android:contentDescription="@string/next_month"
-                android:drawableLeft="@drawable/ic_info_outline_black_32dp"
+                android:drawableLeft="@drawable/ic_list_black_32dp"
+                android:gravity="center"
                 android:onClick="showInfo" />
         </LinearLayout>
 

@@ -27,6 +27,7 @@
     <string name="details_title">Подробности</string>
     <string name="list_title">Список</string>
     <string name="list_details_title">Список с подробностями</string>
+    <string name="info_title">Информация</string>
     <string name="about_title">О программе …</string>
     <string name="help_title">Помощь</string>
     <string name="backup_title">Резервное копирование</string>
@@ -105,7 +106,7 @@
         <item>ru</item>
         <item>es</item>
         <item>tr</item>
-        <item comment="This is value is a system value - do not translate!">uk</item>
+        <item>uk</item>
     </string-array>
     <string name="pref_periodlength">Продолжительность менструации по умолчанию (дней)</string>
     <string name="invalid_period_length">Продолжительность менструации по умолчанию должна быть от 1 до 14!</string>
@@ -136,9 +137,10 @@
     <string name="pref_show_cycle">Показывать день цикла</string>
     <string name="previous_month">Предыдущий месяц</string>
     <string name="next_month">Следующий месяц</string>
-    <string name="label_average_cycle">средний цикл</string>
-    <string name="label_shortest_cycle">самый короткий цикл</string>
-    <string name="label_longest_cycle">самый длинный цикл</string>
+    <string name="label_cycle_count">Количество циклов</string>
+    <string name="label_average_cycle">Средний цикл</string>
+    <string name="label_shortest_cycle">Краткий цикл</string>
+    <string name="label_longest_cycle">Длинный цикл</string>
     <string name="label_infertile">нефертильный</string>
     <string name="label_fertile">фертильный</string>
     <string name="label_period_started">начало менструации</string>

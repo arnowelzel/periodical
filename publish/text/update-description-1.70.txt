@@ -1,0 +1,100 @@
+<en-US>
+Updates for Android 13.
+
+Separate information view about cycles.
+</en-US>
+
+<az-AZ>
+Android 13 üçün yeniləmələr.
+
+Dövrlər haqqında ayrıca məlumat görünüşü.</az-AZ>
+
+<cs-CZ>
+Aktualizace pro Android 13.
+
+Samostatný informační pohled o cyklech.
+</cs-CZ>
+
+<de-DE>
+Updates für Android 13.
+
+Separate Informationsansicht zu Zyklen.
+</de-DE>
+
+<es-ES>
+Actualizaciones para Android 13.
+
+Vista de información separada sobre ciclos.
+</es-ES>
+
+<fr-FR>
+Mises à jour pour Android 13.
+
+Affichage séparé des informations sur les cycles.
+</fr-FR>
+
+<it-IT>
+Aggiornamenti per Android 13.
+
+Visualizzazione separata delle informazioni sui cicli.
+</it-IT>
+
+<nl-NL>
+Updates voor Android 13.
+
+Apart informatieoverzicht over fietsen.
+</nl-NL>
+
+<ru-RU>
+Обновления для Android 13.
+
+Отдельное представление информации о циклах.
+</ru-RU>
+
+<af>
+Opdaterings vir Android 13.
+
+Afsonderlike inligting-aansig oor siklusse.
+</af>
+
+<pt-BR>
+Atualizações para o Android 13.
+
+Exibição de informações separadas sobre os ciclos.
+</pt-BR>
+
+<pl-PL>
+Aktualizacje dla Androida 13.
+
+Oddzielny widok informacji o cyklach.
+</pl-PL>
+
+<el-GR>
+Ενημερώσεις για το Android 13.
+
+Ξεχωριστή προβολή πληροφοριών σχετικά με τους κύκλους.
+</el-GR>
+
+<ja-JP>
+Android 13 のアップデート。
+
+サイクルに関する別の情報ビュー。
+</ja-JP>
+
+<iw-IL>
+עדכונים עבור אנדרואיד 13.
+
+תצוגת מידע נפרדת על מחזורים.
+</iw-IL>
+
+<tr-TR>
+Android 13 için güncellemeler.
+
+Döngüler hakkında ayrı bilgi görünümü.
+</tr-TR>
+
+<uk>
+Оновлення для Android 13.
+
+Окремий перегляд інформації про цикли.
+</uk>

@@ -1,6 +1,6 @@
 /*
  * Extended calendar class to provide correct date difference calculation
- * Copyright (C) 2012-2020 Arno Welzel
+ * Copyright (C) 2012-2023 Arno Welzel
  *
  * This code is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by

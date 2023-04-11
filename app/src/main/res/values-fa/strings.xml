@@ -27,6 +27,7 @@
     <string name="details_title">جزئیات</string>
     <string name="list_title">لیست</string>
     <string name="list_details_title">لیست و جزئیات</string>
+    <string name="info_title">اطلاعات</string>
     <string name="about_title">درباره …</string>
     <string name="help_title">راهنما</string>
     <string name="backup_title">پشتیبان گیری داده ها</string>
@@ -105,7 +106,7 @@
         <item>ru</item>
         <item>es</item>
         <item>tr</item>
-        <item comment="This is value is a system value - do not translate!">uk</item>
+        <item>uk</item>
     </string-array>
     <string name="pref_periodlength">طول دوره پریود به صورت پیش‌فرض (روز)</string>
     <string name="invalid_period_length">طول دوره پریود به صورت پیش‌فرض باید بین ۱ تا ۱۴ باشد!</string>
@@ -136,9 +137,10 @@
     <string name="pref_show_cycle">روزِ دوره رو نشون بده</string>
     <string name="previous_month">ماه قبل</string>
     <string name="next_month">ماه آینده</string>
-    <string name="label_average_cycle">میانگین دوره</string>
-    <string name="label_shortest_cycle">کوتاه‌ترین دوره</string>
-    <string name="label_longest_cycle">طولانی‌ترین دوره</string>
+    <string name="label_cycle_count">تعداد چرخه ها</string>
+    <string name="label_average_cycle">چرخه متوسط</string>
+    <string name="label_shortest_cycle">کوتاه ترین چرخه</string>
+    <string name="label_longest_cycle">طولانی ترین چرخه</string>
     <string name="label_infertile">لقاح نشده</string>
     <string name="label_fertile">لقاح یافته</string>
     <string name="label_period_started">پریود شروع شده</string>

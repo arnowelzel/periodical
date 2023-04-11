@@ -27,6 +27,7 @@
     <string name="details_title">פרטים</string>
     <string name="list_title">רשימה</string>
     <string name="list_details_title">רשימה מפורטת</string>
+    <string name="info_title">מיידע</string>
     <string name="about_title">על אודות…</string>
     <string name="help_title">עזרה</string>
     <string name="backup_title">גיבוי נתונים</string>
@@ -105,7 +106,7 @@
         <item>ru</item>
         <item>es</item>
         <item>tr</item>
-        <item comment="This is value is a system value - do not translate!">uk</item>
+        <item>uk</item>
     </string-array>
     <string name="pref_periodlength">אורך הווסת כבררת מחדל (ימים)</string>
     <string name="invalid_period_length">אורך בררת המחדל לווסת צריך להיות בין 1 ל־14!</string>
@@ -136,6 +137,7 @@
     <string name="pref_show_cycle">הצגת יום במחזור</string>
     <string name="previous_month">החודש הקודם</string>
     <string name="next_month">החודש הבא</string>
+    <string name="label_cycle_count">מספר מחזורים</string>
     <string name="label_average_cycle">מחזור ממוצע</string>
     <string name="label_shortest_cycle">המחזור הקצר ביותר</string>
     <string name="label_longest_cycle">המחזור הארוך ביותר</string>

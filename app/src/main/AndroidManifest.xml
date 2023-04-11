@@ -53,6 +53,10 @@
             android:name=".AboutActivity"
             android:label="@string/about_title" />
 
+        <activity
+            android:name=".InfoActivity"
+            android:label="@string/info_title" />
+
         <meta-data
             android:name="com.google.android.backup.api_key"
             android:value="AEdPqrEAAAAIC54Akxjv9DZ71SEaObLVvtC_2t4sBM0GPgC8Fg" />

@@ -27,6 +27,7 @@
     <string name="details_title">Détails</string>
     <string name="list_title">Historique</string>
     <string name="list_details_title">Historique détaillé</string>
+    <string name="info_title">Information</string>
     <string name="about_title">À propos…</string>
     <string name="help_title">Aide</string>
     <string name="backup_title">Sauvegarder les données</string>
@@ -105,7 +106,7 @@
         <item>ru</item>
         <item>es</item>
         <item>tr</item>
-        <item comment="This is value is a system value - do not translate!">uk</item>
+        <item>uk</item>
     </string-array>
     <string name="pref_periodlength">Durée par défaut des règles (jours)</string>
     <string name="invalid_period_length">La durée par défaut des règles doit être comprise entre 1 et 14 !</string>
@@ -136,6 +137,7 @@
     <string name="pref_show_cycle">Afficher le jour du cycle</string>
     <string name="previous_month">Mois précédent</string>
     <string name="next_month">Mois suivant</string>
+    <string name="label_cycle_count">Nombre de cycles</string>
     <string name="label_average_cycle">Cycle moyen</string>
     <string name="label_shortest_cycle">Cycle le plus court</string>
     <string name="label_longest_cycle">Cycle le plus long</string>

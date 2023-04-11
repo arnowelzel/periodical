@@ -27,6 +27,7 @@
     <string name="details_title">Dettagli</string>
     <string name="list_title">Lista</string>
     <string name="list_details_title">Lista con dettagli</string>
+    <string name="info_title">Informazioni</string>
     <string name="about_title">Info …</string>
     <string name="help_title">Aiuto</string>
     <string name="backup_title">Esporta dati</string>
@@ -105,7 +106,7 @@
         <item>ru</item>
         <item>es</item>
         <item>tr</item>
-        <item comment="This is value is a system value - do not translate!">uk</item>
+        <item>uk</item>
     </string-array>
     <string name="pref_periodlength">Durata predefinita del ciclo (giorni)</string>
     <string name="invalid_period_length">La durata del ciclo deve essere compresa tra 1 e 14!</string>
@@ -136,9 +137,10 @@
     <string name="pref_show_cycle">Mostra il giorno del ciclo</string>
     <string name="previous_month">Mese precedente</string>
     <string name="next_month">Mese successivo</string>
-    <string name="label_average_cycle">media ciclo</string>
-    <string name="label_shortest_cycle">ciclo più breve</string>
-    <string name="label_longest_cycle">ciclo più lungo</string>
+    <string name="label_cycle_count">Numero di cicli</string>
+    <string name="label_average_cycle">Ciclo medio</string>
+    <string name="label_shortest_cycle">Ciclo più breve</string>
+    <string name="label_longest_cycle">Ciclo più lungo</string>
     <string name="label_infertile">non fertile</string>
     <string name="label_fertile">fertile</string>
     <string name="label_period_started">ciclo iniziato</string>

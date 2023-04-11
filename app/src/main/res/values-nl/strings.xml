@@ -27,6 +27,7 @@
     <string name="details_title">Details</string>
     <string name="list_title">Lijst</string>
     <string name="list_details_title">Lijst met details</string>
+    <string name="info_title">Informatie</string>
     <string name="about_title">Over …</string>
     <string name="help_title">Help</string>
     <string name="backup_title">Back-up gegevens</string>
@@ -105,7 +106,7 @@
         <item>ru</item>
         <item>es</item>
         <item>tr</item>
-        <item comment="This is value is a system value - do not translate!">uk</item>
+        <item>uk</item>
     </string-array>
     <string name="pref_periodlength">Standaardduur van menstruatiecyclus (dagen)</string>
     <string name="invalid_period_length">De standaardduur van een menstruatie moet tussen 1 en 14 liggen!</string>
@@ -136,9 +137,10 @@
     <string name="pref_show_cycle">Toon de dag van de cyclus</string>
     <string name="previous_month">Vorige maand</string>
     <string name="next_month">Volgende maand</string>
-    <string name="label_average_cycle">gemiddelde cyclus</string>
-    <string name="label_shortest_cycle">kortste cyclus</string>
-    <string name="label_longest_cycle">langste cyclus</string>
+    <string name="label_cycle_count">Aantal cycli</string>
+    <string name="label_average_cycle">Gemiddelde cyclus</string>
+    <string name="label_shortest_cycle">Kortste cyclus</string>
+    <string name="label_longest_cycle">Langste cyclus</string>
     <string name="label_infertile">onvruchtbaar</string>
     <string name="label_fertile">vruchtbaar</string>
     <string name="label_period_started">menstruatiecyclus is begonnen</string>

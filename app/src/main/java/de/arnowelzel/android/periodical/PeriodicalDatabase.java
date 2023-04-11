@@ -1,6 +1,6 @@
 /*
  * Periodical database class
- * Copyright (C) 2012-2020 Arno Welzel
+ * Copyright (C) 2012-2023 Arno Welzel
  *
  * This code is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -354,6 +354,10 @@ class PeriodicalDatabase {
      */
     final Vector<DayEntry> dayEntries;
     /**
+     * Number of cycles
+     */
+    int cycleCount;
+    /**
      * Calculated average cycle length
      */
     int cycleAverage;
@@ -588,6 +592,7 @@ class PeriodicalDatabase {
         boolean isFirst = true;
         int count = 0;
         int countlimit = 1;
+        this.cycleCount = 0;
         this.cycleAverage = 0;
         this.cycleLongest = 28;
         this.cycleShortest = 28;
@@ -640,6 +645,8 @@ class PeriodicalDatabase {
 
             switch (eventtype) {
                 case DayEntry.PERIOD_START:
+                    this.cycleCount++;
+
                     if (isFirst) {
                         // First event at all - just create an initial start entry
                         dayofcycle = 1;

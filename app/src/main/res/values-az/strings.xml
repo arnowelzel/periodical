@@ -27,6 +27,7 @@
     <string name="details_title">Ətraflı</string>
     <string name="list_title">Siyahı</string>
     <string name="list_details_title">Ətraflı siyahı</string>
+    <string name="info_title">Məlumat</string>
     <string name="about_title">Proqram haqqında …</string>
     <string name="help_title">Kömək</string>
     <string name="backup_title">Məlumatları nüsxələ</string>
@@ -105,7 +106,7 @@
         <item>ru</item>
         <item>es</item>
         <item>tr</item>
-        <item comment="This is value is a system value - do not translate!">uk</item>
+        <item>uk</item>
     </string-array>
     <string name="pref_periodlength">Susmaya görə menstrual dövrün müddəti (gün)</string>
     <string name="invalid_period_length">Susmaya görə menstrual dövrün müddəti 1-14 aralığında olmalıdır!</string>
@@ -136,9 +137,10 @@
     <string name="pref_show_cycle">Dövr gününü göstər</string>
     <string name="previous_month">Əvvəlki ay</string>
     <string name="next_month">Növbəti ay</string>
-    <string name="label_average_cycle">orta dövr</string>
-    <string name="label_shortest_cycle">ən qısa dövr</string>
-    <string name="label_longest_cycle">ən uzun dövr</string>
+    <string name="label_cycle_count">Dövrlərin sayı</string>
+    <string name="label_average_cycle">Orta dövr</string>
+    <string name="label_shortest_cycle">Ən qısa dövr</string>
+    <string name="label_longest_cycle">Ən uzun dövr</string>
     <string name="label_infertile">qeyri-fertil</string>
     <string name="label_fertile">fertil</string>
     <string name="label_period_started">menstrual dövr başlanıb</string>
