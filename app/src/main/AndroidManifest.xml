@@ -10,8 +10,7 @@
         android:fullBackupContent="true"
         android:theme="@style/Theme.AppCompat"
         android:supportsRtl="true"
-        tools:ignore="GoogleAppIndexingWarning"
-        android:dataExtractionRules="@xml/data_extraction_rules">
+        tools:ignore="GoogleAppIndexingWarning">
 
         <activity
             android:name=".MainActivity"
