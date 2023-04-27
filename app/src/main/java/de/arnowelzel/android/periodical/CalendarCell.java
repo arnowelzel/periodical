@@ -136,9 +136,17 @@ public class CalendarCell extends Button {
      */
     private LinearGradient gradientFertilityPredicted;
     /**
+     * Gradient for entries of type "predicted fertility standard"
+     */
+    private LinearGradient gradientFertilityStandardPredicted;
+    /**
      * Gradient for entries of type "predicted fertility in the future" and "ovulation in the future
      */
     private LinearGradient gradientFertilityFuture;
+    /**
+     * Gradient for entries of type "predicted fertility standard in the future"
+     */
+    private LinearGradient gradientFertilityStandardFuture;
     /**
      * Gradient for entries of type "infertile day predicted"
      */
@@ -228,7 +236,9 @@ public class CalendarCell extends Button {
         gradientPeriodConfirmed = makeCellGradient(0xfff44336, 0xfff44336);
         gradientPeriodPredicted = makeCellGradient(0xffef9a9a, 0xffef9a9a);
         gradientFertilityPredicted = makeCellGradient(0xff2196F3, 0xff2196F3);
+        gradientFertilityStandardPredicted = makeCellGradient(0xff90c2a5, 0xff90c2a5);
         gradientFertilityFuture = makeCellGradient(0xff90CAF9, 0xff90CAF9);
+        gradientFertilityStandardFuture = makeCellGradient(0xffc8e0cb, 0xffc8e0cb);
         gradientInfertilePredicted = makeCellGradient(0xffffee58, 0xffffee58);
         gradientInfertileFuture = makeCellGradient(0xfffff59d, 0xfffff59d);
         gradientEmpty = makeCellGradient(0xff757575, 0xff757575);
@@ -318,6 +328,14 @@ public class CalendarCell extends Button {
                 case DayEntry.FERTILITY_FUTURE: // Calculated fertile day in the future
                 case DayEntry.OVULATION_FUTURE: // Calculated day of ovulation in the future
                     gradient = gradientFertilityFuture;
+                    colorLabel = 0xde000000;
+                    break;
+                case DayEntry.FERTILITY_STANDARD_PREDICTED: // Calculated fertile standard day
+                    gradient = gradientFertilityStandardPredicted;
+                    colorLabel = 0xffffffff;
+                    break;
+                case DayEntry.FERTILITY_STANDARD_FUTURE: // Calculated fertile day in the future
+                    gradient = gradientFertilityStandardFuture;
                     colorLabel = 0xde000000;
                     break;
                 case DayEntry.INFERTILE_PREDICTED:        // Calculated infertile day
@@ -503,6 +521,10 @@ public class CalendarCell extends Button {
             case DayEntry.INFERTILE_PREDICTED:
             case DayEntry.INFERTILE_FUTURE:
                 contentDescription += " - " + getResources().getString(R.string.label_infertile);
+                break;
+            case DayEntry.FERTILITY_STANDARD_PREDICTED:
+            case DayEntry.FERTILITY_STANDARD_FUTURE:
+                contentDescription += " - " + getResources().getString(R.string.label_fertile_standard);
                 break;
         }
         setContentDescription(contentDescription);
