@@ -143,6 +143,7 @@
     <string name="label_longest_cycle">Longest cycle</string>
     <string name="label_infertile">infertile</string>
     <string name="label_fertile">fertile</string>
+    <string name="label_fertile_standard">fertile std</string>
     <string name="label_period_started">period has started</string>
     <string name="label_period">period</string>
     <string name="label_period_predicted">period predicted</string>
