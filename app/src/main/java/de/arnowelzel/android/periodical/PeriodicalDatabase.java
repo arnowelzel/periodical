@@ -700,11 +700,11 @@ class PeriodicalDatabase {
 
                                 int type;
 
-                                if (day == ovulationday) {
+                                if (dayofcycle == ovulationday) {
                                     // Day of ovulation
                                     type = DayEntry.OVULATION_PREDICTED;
-                                } else if (day >= this.cycleShortest - luteallength - 4
-                                        && day <= this.cycleLongest - luteallength + 3) {
+                                } else if (dayofcycle >= this.cycleShortest - luteallength - 4
+                                        && dayofcycle <= this.cycleLongest - luteallength + 3) {
                                     // Fertile days
                                     type = DayEntry.FERTILITY_PREDICTED;
                                 } else {
@@ -713,7 +713,7 @@ class PeriodicalDatabase {
                                 }
 
                                 // Standard days Method
-                                if (day >= 8 && day <= 19) {
+                                if (dayofcycle >= 8 && dayofcycle <= 19) {
                                     if(type != DayEntry.FERTILITY_PREDICTED && type != DayEntry.OVULATION_PREDICTED) {
                                         type = DayEntry.FERTILITY_STANDARD_PREDICTED;
                                     }
