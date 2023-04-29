@@ -698,11 +698,11 @@ class PeriodicalDatabase {
 
                                 int type;
 
-                                if (day == ovulationday) {
+                                if (dayofcycle == ovulationday) {
                                     // Day of ovulation
                                     type = DayEntry.OVULATION_PREDICTED;
-                                } else if (day >= this.cycleShortest - luteallength - 4
-                                        && day <= this.cycleLongest - luteallength + 3) {
+                                } else if (dayofcycle >= this.cycleShortest - luteallength - 4
+                                        && dayofcycle <= this.cycleLongest - luteallength + 3) {
                                     // Fertile days
                                     type = DayEntry.FERTILITY_PREDICTED;
                                 } else {
