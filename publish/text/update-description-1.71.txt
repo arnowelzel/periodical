@@ -25,7 +25,8 @@ Korrigiert die Verwendung des falschen Tages im Detaildialog.
 <es-ES>
 Corrección en el cálculo de los días previstos.
 
-Corrija el uso de un día incorrecto en el cuadro de diálogo de detalles.</es-ES>
+Corrija el uso de un día incorrecto en el cuadro de diálogo de detalles.
+</es-ES>
 
 <fr-FR>
 Correction dans le calcul des jours prévus.
