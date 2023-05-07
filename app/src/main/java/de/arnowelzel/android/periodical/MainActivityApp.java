@@ -883,7 +883,7 @@ public class MainActivityApp extends AppCompatActivity
                             getSupportFragmentManager(), EditCalendarEntryDialogFragment.TAG
                     );
                 } else {
-                    EditCalendarEntryDialogFragment.newInstance(EditCalendarEntryDialogFragment.TYPE_REMOVE, yearCurrent, monthCurrent - 1, day).show(
+                    EditCalendarEntryDialogFragment.newInstance(EditCalendarEntryDialogFragment.TYPE_REMOVE, yearCurrent, monthCurrent, day).show(
                             getSupportFragmentManager(), EditCalendarEntryDialogFragment.TAG
                     );
                 }
