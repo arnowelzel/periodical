@@ -1,0 +1,100 @@
+<en-US>
+Fix in calculation of predicted days.
+
+Fix using wrong day in details dialog.
+</en-US>
+
+<az-AZ>
+Proqnozlaşdırılan günlərin hesablanmasında düzəldin.
+
+Təfərrüatlar dialoqunda yanlış gündən istifadə edərək düzəldin.
+</az-AZ>
+
+<cs-CZ>
+Oprava ve výpočtu předpokládaných dnů.
+
+Opravte použití nesprávného dne v dialogovém okně podrobností.
+</cs-CZ>
+
+<de-DE>
+Korrektur bei der Berechnung der vorhergesagten Tage.
+
+Korrigiert die Verwendung des falschen Tages im Detaildialog.
+</de-DE>
+
+<es-ES>
+Corrección en el cálculo de los días previstos.
+
+Corrija el uso de un día incorrecto en el cuadro de diálogo de detalles.</es-ES>
+
+<fr-FR>
+Correction dans le calcul des jours prévus.
+
+Correction de l'utilisation du mauvais jour dans la boîte de dialogue des détails.
+</fr-FR>
+
+<it-IT>
+Fix nel calcolo dei giorni previsti.
+
+Risolto il problema con il giorno sbagliato nella finestra di dialogo dei dettagli.
+</it-IT>
+
+<nl-NL>
+Fix in berekening van voorspelde dagen.
+
+Herstel het gebruik van een verkeerde dag in het detailsdialoogvenster.
+</nl-NL>
+
+<ru-RU>
+Исправлен расчет прогнозируемых дней.
+
+Исправлено использование неправильного дня в диалоговом окне сведений.
+</ru-RU>
+
+<af>
+Herstel in berekening van voorspelde dae.
+
+Herstel die gebruik van verkeerde dag in besonderhede-dialoog.
+</af>
+
+<pt-BR>
+Correção no cálculo dos dias previstos.
+
+Correção usando dia errado na caixa de diálogo de detalhes.
+</pt-BR>
+
+<pl-PL>
+Poprawka w obliczaniu przewidywanych dni.
+
+Napraw przy użyciu niewłaściwego dnia w oknie dialogowym szczegółów.
+</pl-PL>
+
+<el-GR>
+Διορθώστε τον υπολογισμό των προβλεπόμενων ημερών.
+
+Διορθώστε χρησιμοποιώντας το παράθυρο διαλόγου λανθασμένης ημέρας στις λεπτομέρειες.
+</el-GR>
+
+<ja-JP>
+予測日数の計算を修正。
+
+詳細ダイアログで間違った日を使用する問題を修正しました。
+</ja-JP>
+
+<iw-IL>
+תיקון בחישוב הימים החזויים.
+
+תקן שימוש ביום שגוי בתיבת הדו-שיח לפרטים.
+</iw-IL>
+
+<tr-TR>
+Tahmini günlerin hesaplanmasında düzeltme.
+
+Ayrıntılar iletişim kutusunda yanlış gün kullanımını düzeltin.
+</tr-TR>
+
+<uk>
+Виправлення розрахунку прогнозованих днів.
+
+Виправте неправильний день у діалоговому вікні деталей.
+</uk>
