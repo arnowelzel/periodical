@@ -602,6 +602,7 @@ class PeriodicalDatabase {
         int luteallength;
         int maximumcyclelength;
         int dayofcycle = 1;
+        String dbdateCurrent = "";
 
         // Get default values from preferences
         PreferenceUtils preferences = new PreferenceUtils(context);
@@ -642,6 +643,13 @@ class PeriodicalDatabase {
             int eventday = Integer.parseInt(dbdate.substring(6, 8), 10);
             GregorianCalendar eventdate = new GregorianCalendar(eventyear,
                     eventmonth - 1, eventday);
+
+            // Make sure, we only use the entry if we don't already have it
+            // also see https://github.com/arnowelzel/periodical/issues/97
+            if (dbdateCurrent.equals(dbdate)) {
+                continue;
+            }
+            dbdateCurrent = dbdate;
 
             switch (eventtype) {
                 case DayEntry.PERIOD_START:
@@ -858,6 +866,7 @@ class PeriodicalDatabase {
      */
     void loadRawData() {
         DayEntry entry;
+        String dbdateCurrent = "";
 
         // Clean up existing data
         dayEntries.removeAllElements();
@@ -875,6 +884,13 @@ class PeriodicalDatabase {
             int eventday = Integer.parseInt(dbdate.substring(6, 8), 10);
             GregorianCalendar eventdate = new GregorianCalendar(eventyear,
                     eventmonth - 1, eventday);
+
+            // Make sure, we only use the entry if we don't already have it
+            // also see https://github.com/arnowelzel/periodical/issues/97
+            if (dbdateCurrent.equals(dbdate)) {
+                continue;
+            }
+            dbdateCurrent = dbdate;
 
             // Create new day entry
             entry = new DayEntry(DayEntry.PERIOD_START, eventdate, 1, 0);
