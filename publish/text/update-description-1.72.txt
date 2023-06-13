@@ -1,0 +1,67 @@
+<en-US>
+Filtering of duplicate database records.
+</en-US>
+
+<az-AZ>
+Dublikat verilənlər bazası qeydlərinin filtrasiyası.
+</az-AZ>
+
+<cs-CZ>
+Filtrování duplicitních záznamů databáze.
+</cs-CZ>
+
+<de-DE>
+Filterung doppelter Datenbankeinträge.
+</de-DE>
+
+<es-ES>
+Filtrado de registros de base de datos duplicados.
+</es-ES>
+
+<fr-FR>
+Filtrage des enregistrements de base de données en double.
+</fr-FR>
+
+<it-IT>
+Filtraggio dei record di database duplicati.
+</it-IT>
+
+<nl-NL>
+Filteren van dubbele databaserecords.
+</nl-NL>
+
+<ru-RU>
+Фильтрация повторяющихся записей базы данных.
+</ru-RU>
+
+<af>
+Filtrering van duplikaat databasis rekords.
+</af>
+
+<pt-BR>
+Filtragem de registros de banco de dados duplicados.
+</pt-BR>
+
+<pl-PL>
+Filtrowanie zduplikowanych rekordów bazy danych.
+</pl-PL>
+
+<el-GR>
+Φιλτράρισμα διπλών εγγραφών βάσης δεδομένων.
+</el-GR>
+
+<ja-JP>
+重複するデータベース レコードのフィルタリング。
+</ja-JP>
+
+<iw-IL>
+סינון של רשומות מסד נתונים כפולות.
+</iw-IL>
+
+<tr-TR>
+Yinelenen veritabanı kayıtlarının filtrelenmesi.
+</tr-TR>
+
+<uk>
+Фільтрація дублікатів записів бази даних.
+</uk>
