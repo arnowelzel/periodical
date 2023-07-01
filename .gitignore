@@ -8,4 +8,4 @@
 /app/build
 /app/release/
 /.vs
-/.idea/modules.xml
+java_pid*.hprof
