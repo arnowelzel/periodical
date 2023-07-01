@@ -311,6 +311,8 @@ class PeriodicalDatabase {
         final static int OVULATION_FUTURE = 7;
         final static int INFERTILE_PREDICTED = 8;
         final static int INFERTILE_FUTURE = 9;
+        final static int FERTILITY_STANDARD_PREDICTED = 10;
+        final static int FERTILITY_STANDARD_FUTURE = 11;
         int type;
         final GregorianCalendarExt date;
         int dayofcycle;
@@ -718,6 +720,14 @@ class PeriodicalDatabase {
                                     type = DayEntry.INFERTILE_PREDICTED;
                                 }
 
+                                // Standard days Method
+                                if (dayofcycle >= 8 && dayofcycle <= 19) {
+                                    if(type != DayEntry.FERTILITY_PREDICTED && type != DayEntry.OVULATION_PREDICTED) {
+                                        type = DayEntry.FERTILITY_STANDARD_PREDICTED;
+                                    }
+                                }
+
+
                                 DayEntry entryCalculated = new DayEntry(type, datePrevious, dayofcycle, 1);
                                 dayEntries.add(entryCalculated);
                             }
@@ -755,6 +765,7 @@ class PeriodicalDatabase {
 
                     int type;
 
+                    // Ogino Method
                     if (day <= periodlength) {
                         // Predicted days of period
                         type = DayEntry.PERIOD_PREDICTED;
@@ -768,6 +779,13 @@ class PeriodicalDatabase {
                     } else {
                         // Infertile days
                         type = DayEntry.INFERTILE_FUTURE;
+                    }
+
+                    // Standard days Method
+                    if (day >= 8 && day <= 19) {
+                        if(type != DayEntry.FERTILITY_FUTURE && type != DayEntry.OVULATION_FUTURE) {
+                            type = DayEntry.FERTILITY_STANDARD_FUTURE;
+                        }
                     }
 
                     DayEntry entryCalculated = new DayEntry(type, datePredicted, dayofcycle, 1);
