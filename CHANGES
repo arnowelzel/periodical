@@ -1,241 +1,392 @@
+1.73
+
+Feature: Replace app icon.
+
+Feature: Backup/Restore now uses compressed JSON instead of a binary
+copy of the database files to improve compatibilty of restore to a
+different device.
+
+1.72
+
+Bugfix: Duplicate entries in the database are ignored if they exist.
+
+1.71
+
+Bugfix: Fixed calculation of predicted cycles.
+
+Bugfix: Detail view now uses the correct again for days within a cycle.
+
+1.70
+
+Feature: Various adjustments for Android 13.
+
+Feature: Information about the cycle data (number, duration) is displayed in a
+separate view.
+
+1.67
+
+Feature: Updated translations.
+
+Bugfix: The app now tries to keep the storage permission persistent after a
+folder for backups was selected.
+
+1.66
+
+Feature: Added Ukrainian as language and updated translations.
+
+1.65
+
+Bugfix: Changing the period intensity on a day without any other information
+caused the deletion of this entry.
+
+Feature: When a backup is not possible the dialog to select the storage
+location will be opened automatically.
+
+1.64
+
+Bugfix: Fixed potential crash when adding new data.
+
+1.63
+
+Bugfix: Cleaning up unused data in the internal database.
+
+1.62
+
+Bugfix: Fixed missing elements in the detailed list.
+
+1.61
+
+Feature: Changed layout of the detailed list.
+
+Bugfix: Fixed problems with Persian translation.
+
+Feature: Added English in language selection.
+
+1.52
+
+Bugfix: Display of “help” and app information now also works in Turkish.
+
+1.50-1.51
+
+Feature: Language can be changed within the app.
+
+Feature: Start of week can be set to any day of the week.
+
+1.49
+
+Bugfix: Fixed crash when trying to restore without a backup at the selected
+location.
+
+Feature: Added Persian translations.
+
+1.48
+
+Bugfix: If the selected location for backups does not allow write access
+Periodical does not crash any longer.
+
+Bugfix: Corrected list with details.
+
+Feature: Navigation bar with dark background.
+
+1.47
+
+Bugfix: Two options for “mood” did not get saved.
+
+1.45
+
+Feature: New section for “mood” in the details.
+
+Feature: Added Basque as language.
+
+Feature: Backup and restore now use the Storage Access Framework.
+
+1.44
+
+Feature: Added Azerbaijani as language.
+
+Bugfix: Backup and restore is now also possible with Android 10.
+
+1.43
+
+Feature: Update to AndroidX.
+
+Bugfix: Fixed calculation of predicted ovulation.
+
+1.42
+
+Bugfix: Starting a period after the first day of a predicted cycle is now
+possible again.
+
+1.41
+
+Bugfix: Corrected intensity in detail view.
+
+1.40
+
+Bugfix: Symbols for details will now be displayed in empty days as well.
+
+Bugfix: Adding and removing days to/from a period now always works correct.
+
+1.32
+
+Feature: Added new symptom and updated help text.
+
+1.31:
+
+Feature: Added Hebrew translation.
+
+1.30:
+
+Feature: The calendar now indicates if there are events, symptoms or notes for
+a day.
+
+Feature: Events and symptoms are now separate lists in the details.
+
+Feature: Added Greek translation.
+
 1.23
 
-Adding details for an empty day is now possible (thanks Dace Jansone for the fix).
+Bugfix: Details can now also be added or opened in empty days.
 
 1.22
 
-Added loading screen.
+Feature: Added loading screen.
 
 1.20
 
-New translation: Polish.
+Feature: New translation: Polish.
 
 1.18
 
-Updated translations.
+Feature: Updated translations.
 
-Reverted language codes back to their generic form to avoid missing translations when a regional language setting is  used.
+Bugfix: Reverted language codes back to their generic form to avoid missing
+translations when a regional language setting is used.
 
 1.16
 
-Fixed a crash when changing the month using the buttons.
+Bugfix: Fixed a crash when changing the month using the buttons.
 
 1.15
 
-Changed preferences did not get stored when the app was closed with the preferences opened.
+Bugfix: Changed preferences did not get stored when the app was closed with
+the preferences opened.
 
 1.13
 
-Updated translations.
+Feature: Updated translations.
 
-Links in the version information will now be opened with the standard browser and not inside
-Periodical (which couldn’t work since Periodical does not request internet access).
+Bugfix: Links in the version information will now be opened with the standard
+browser and not inside Periodical (which couldn’t work since Periodical does
+not request internet access).
 
 1.12
 
-Added symptom "headache/migraine".
+Feature: New symptom: headache/migraine
 
-More code cleanup.
+1.11
 
-1.10-1.11
+Feature: Redesign with navigation drawer.
 
-Code and UI cleanup.
+Feature: Simple list view with cycle lengths added again.
 
-New UI with navigation drawer and vector icons.
+1.06
 
-Added simple list with period lengths again.
+Feature: Added translation for Portuguese (Brazil).
 
-Added Afrikaans translation.
+1.05
 
-1.0-1.06
+Feature: Updated symptom descriptions.
 
-Single days in a period can be added or removed individually.
+1.04
 
-For every day you can enter period intensity, notes and events/symptoms.
+Feature: Single days can be added to a period or removed from a period.
 
-Calendar view will show intensity and day of cycle.
+Feature: Days of the period can be marked with an individual intensity.
 
-List view will show intensity, notes and events/symptoms for every day of the period or
-if the day is outside a period, but contains notes or events/symptoms.
+Feature: You can add notes and symptoms to every day.
 
-0.34-0.35
+Feature: The calendar view shows the day of the cycle and the intensity of the
+period.
 
-Added option to set maximum cycle length which will be used for the calculation.
+Feature: The list view shows the intensity of the period, notes and symptoms.
+
+0.35
+
+Feature: Added maximum cycle length.
 
 0.33
 
-Updated French translation.
+Feature: Updated French translation.
 
 0.32
 
-Added Japanese translation.
+Feature: Added Japanese translation.
 
 0.31
 
-Integrated AppCompact.
+Feature: Added AppCompat for older devices.
 
 0.30
 
-Added option to change luteal phase length.
+Feature: Added option to change luteal phase length.
 
-Fixed wrong sort order in list view.
+Bugfix: Fixed wrong sort order in list view.
 
-Improved permission handling for Android 6 or later.
+Feature: Improved permission handling for Android 6 or later.
 
-0.28-0.29
+0.29
 
-Fixed handling of backups in newer Android versions.
+Bugfix: Fixed handling of backups in newer Android versions.
 
-0.24-0.27
+0.27
 
-Added translations for Czech and Dutch (thanks to the Github user „Pander“).
+Feature: Added translations for Czech and Dutch (thanks to the Github user
+„Pander“) ergänzt.
 
-Adjusted color scheme to Material Design.
-
-0.24
-
-Changed build system to Gradle.
-
-Updated project target API to level 23 (Android 6.0).
-
-Main activity and list now uses a black background.
-
-Added some missing content description translations.
+Feature: Adjusted color scheme to Material Design.
 
 0.23
 
-Added Russian translation (thanks to Wjatscheslaw Stoljarski).
+Feature: Added Russian translation.
 
-Replaced deprecated DateUtils with SimpleDateFormat.
-
-Added some missing content description for some week day labels.
-
-Updated project target API to level 20 (Android 4.4).
+Bugfix: Added some missing content descriptions for some week day labels.
 
 0.22
 
-Improved accessibility support: All elements now provide a meaningful content
-description, so the app can also be used by blind people with TalkBack.
+Feature: Improved accessibility support: All elements now provide a meaningful
+content description, so the app can also be used with TalkBack.
 
 0.21
 
-Reverted database sort option so the details list will be displayed properly again.
+Bugfix: Details list in right sort order again.
 
 0.20
 
-Added Spanish translation.
+Feature: Added Spanish translation (thanks to Laura Arjona Reina).
 
-Extended color scheme to indicate days before the first cycle and after the last
-calculated cycle.
+Feature: Extended the color scheme to display days before the first cycle and
+after the last calculated cycle.
 
-Code cleanup and optimization.
+Feature: Code cleanup and optimization.
 
-Changed target SDK version to 20 (Android 4.4). 
+Feature: Target platform changed to SDK version 20 (Android 4.4).
 
 0.19
 
-Fixed a problem with the weekday labels when changing start of week from sunday to monday.
+Bugfix: Fixed wrong weekday labels when changing the start of the week.
 
 0.18
 
-Added Italian translation.
+Feature: Added Italian translation (thanks to Valerio Bozzola).
 
-Added preference for start of week (sunday or monday).
+Feature: Additional preference for start of the week (sunday or monday).
 
 0.17
 
-Fixed a problem with restoring databases and preferences.
+Bugfix: Fixed a problem with restoring databases and preferences.
 
 0.16
 
-Fixed a crash when opening the preferences in Android 2.
+Bugfix: Under Android 2 there was a crash when you tried to open the newly
+introduced preferences.
 
-Updated French translation.
+Feature: The French translation has been updated.
 
 0.15
 
-Changed from Eclipse to IntelliJ IDEA.
+Feature: Added preferences to adjust the default length of a period in days.
 
-Added application preferences.
+Feature: “About” and “Help” are now separate activities displaying HTML and no
+dialog boxes any longer.
 
-Extended database to store application preferences, so they get can get
-backed up/restored.
-
-"About" and "Help" are now separate activities to display HTML content and no dialog
-boxes any longer.
+Note to developers: Beginning with version 0.15 Eclipse is not used any
+longer. The project now uses IntelliJ IDEA Community Edition.
 
 0.14
 
-Modified color scheme to display calculated fertile days for future periods
-a bit lighter.
+Feature: Modified color scheme to display future fertile days a bit lighter.
 
-The shortest and longest period are now being determined for the last 12 entries only
-and not the whole list to avoid the fertile period getting longer but never shorter
-again.
+Feature: The calculation of the longest and shortest period is now done for
+the last 12 entries only to avoid the fertile period getting longer but never
+shorter again.
 
-Modified "Today" marker to be a round circle and not an oval.  
+Feature: The “today” marker is now a circle and not an oval any longer.
 
 0.13
 
-Added landscape layout.
+Feature: French translation updated.
 
-Improved resolution of overlay icons for HDPI.
+Feature: Increased resolution of overlay icons for MDPI devices.
 
-Updated French translation.
+Feature: There is now a separate layout for landscape view.
 
 0.12
 
-The calendar is now  a bit "nicer" with rounded corners, nicer "today" marker and symbols
+Feature: The calendar is now a bit “nicer” with rounded corners, nicer “today”
+marker and symbols
 for the first day of the period and the day of ovulation.
 
 0.11
 
-The possible day of ovulation is now being calculated and displayed in the calendar.
+Feature: The day of ovulation is now being calculated and displayed in the
+calendar.
 
 0.10
 
-Modified colour scheme to make the blue color more visible.
+Feature: Added new app icons for low and high density display devices (ldpi,
+hdpi, xhdpi).
 
-Added app icons with nicer "round" corners for different resolutions (ldpi, mdpi, hdpi).
+Feature: Detail list now allows to select an entry to display the
+corresponding month.
 
-Changed manifest, so backups using a full system backup are possible. 
+Feature: Reworked color display and focused elements in the calendar are now
+displayed properly.
+
+Feature: Modified manifest so the app and its data may be backed up using ADB.
+
+Bugix: Database cursor was not closed properly when loading the detail list.
 
 0.9
 
-Added GPL text to "about" dialog.
+Feature: Added new dialog to display help text.
 
-Added new separate dialog for help text.
+Feature: Added GPL text to “about” dialog.
 
-Changed color scheme from red, green, white to red, blue, yellow according the chain of
-Maria Hengstberger.
+Feature: Changed color scheme from red, green, white to red, blue, yellow
+according to the chain of Maria Hengstberger.
 
-Updated french translation.
+Feature: Modified layout to display text in calendar view more readable.
 
-Modified layout to display text in calendar view more readable. 
+Feature: Updated french translation.
 
 0.8
 
-Added French as supported language, some spelling fixes in the English version.
+Feature: Added French as additional language.
+
+Bugfix: Text correction.
 
 0.7
 
-Additional UI improvements.
+Feature: Better support for newer Android versions (Action Bar, adjusted
+layout) and improvements in the UI.
 
-0.6
+Feature: The detailed list now also shows period lengths.
 
-Better support for Android 3 and 4.
-
-List now also shows lengths of cycles.
-
-Maximum length is now properly displayed, if it is shorter than 28 days.  
-
-0.5
-
-Fixed an internal bug (database cursor was not closed properly after reading the data).
+Bugfix: The longest period is now correctly displayed if it is shorter than 28
+days.
 
 0.4
 
-Calendar view is now being updated when the application is in activated again, so a day
-change background to ensure that the current day is always marked properly (Issue #1).
+Bugfix: The database cursor was not closed properly after reading the data.
 
-Added an application icon.
+0.3
+
+Bugfix: The identification of the current day in the calendar was not updated
+if Periodical was in the background and activated again on the next day.
+
+Feature: An individual application icon was added.
+
+0.1
+
+First release.

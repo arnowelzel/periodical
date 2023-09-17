@@ -26,21 +26,27 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.net.Uri;
+import android.util.JsonReader;
+import android.util.JsonWriter;
 
+import androidx.arch.core.util.Function;
 import androidx.documentfile.provider.DocumentFile;
 
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.io.OutputStream;
+import java.io.OutputStreamWriter;
 import java.util.ArrayList;
 import java.util.GregorianCalendar;
 import java.util.List;
 import java.util.Locale;
 import java.util.Vector;
+import java.util.zip.GZIPInputStream;
+import java.util.zip.GZIPOutputStream;
 
 import static java.lang.String.*;
 
@@ -721,12 +727,13 @@ class PeriodicalDatabase {
                                 }
 
                                 // Standard days Method
+                                /*
                                 if (dayofcycle >= 8 && dayofcycle <= 19) {
                                     if(type != DayEntry.FERTILITY_PREDICTED && type != DayEntry.OVULATION_PREDICTED) {
                                         type = DayEntry.FERTILITY_STANDARD_PREDICTED;
                                     }
                                 }
-
+                                */
 
                                 DayEntry entryCalculated = new DayEntry(type, datePrevious, dayofcycle, 1);
                                 dayEntries.add(entryCalculated);
@@ -782,11 +789,13 @@ class PeriodicalDatabase {
                     }
 
                     // Standard days Method
+                    /*
                     if (day >= 8 && day <= 19) {
                         if(type != DayEntry.FERTILITY_FUTURE && type != DayEntry.OVULATION_FUTURE) {
                             type = DayEntry.FERTILITY_STANDARD_FUTURE;
                         }
                     }
+                    */
 
                     DayEntry entryCalculated = new DayEntry(type, datePredicted, dayofcycle, 1);
                     dayEntries.add(entryCalculated);
@@ -1290,170 +1299,6 @@ class PeriodicalDatabase {
     }
 
     /**
-     * Backup database to a given URI
-     */
-    boolean backupToUri(Context context, Uri uri) {
-        boolean result = false;
-
-        // Check if uri is accessible
-        DocumentFile directory = DocumentFile.fromTreeUri(context, uri);
-        if (!directory.isDirectory()) {
-            return false;
-        }
-
-        // First we need to create a directory where the backup will be stored
-        String destinationDirectoryName= context.getPackageName();
-        DocumentFile destinationDirectory = directory.findFile(destinationDirectoryName);
-        if (null == destinationDirectory || !destinationDirectory.isDirectory()) {
-            destinationDirectory = directory.createDirectory(destinationDirectoryName);
-        }
-
-        // If the directory could not be created, stop now
-        if (null == destinationDirectory) {
-            return false;
-        }
-
-        // Backup database file
-        File sourceFile = new File(db.getPath());
-        String destinationFileName = sourceFile.getName();
-        DocumentFile destinationFile = destinationDirectory.findFile(destinationFileName);
-        if (null != destinationFile) {
-            destinationFile.delete();
-        }
-        destinationFile = destinationDirectory.createFile("application/octet-stream", destinationFileName);
-
-        // Close the database
-        db.close();
-
-        try {
-            OutputStream destinationStream = context.getContentResolver().openOutputStream(destinationFile.getUri());
-            FileInputStream sourceStream = new FileInputStream(sourceFile);
-            int byteRead = 0;
-            byte[] buffer = new byte[8192];
-            while ((byteRead = sourceStream.read(buffer, 0, 8192)) != -1) {
-                destinationStream.write(buffer, 0, byteRead);
-            }
-            sourceStream.close();
-            destinationStream.close();
-            result = true;
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        // Backup journal if required and the previous backup was successful
-        sourceFile = new File(db.getPath() + "-journal");
-        if (result && sourceFile.   exists()) {
-            result = false;
-            destinationFileName = sourceFile.getName();
-            destinationFile = destinationDirectory.findFile(destinationFileName);
-            if (null != destinationFile) {
-                destinationFile.delete();
-            }
-            destinationFile = destinationDirectory.createFile("application/octet-stream", destinationFileName);
-            try {
-                OutputStream outputStream = context.getContentResolver().openOutputStream(destinationFile.getUri());
-                FileInputStream sourceStream = new FileInputStream(sourceFile);
-                int byteRead = 0;
-                byte[] buffer = new byte[8192];
-                while ((byteRead = sourceStream.read(buffer, 0, 8192)) != -1) {
-                    outputStream.write(buffer, 0, byteRead);
-                }
-                sourceStream.close();
-                outputStream.close();
-                result = true;
-            } catch (FileNotFoundException e) {
-                e.printStackTrace();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-
-        // Open the database again
-        open();
-
-        return result;
-    }
-
-    /**
-     * Restore database from a given URI
-     */
-    boolean restoreFromUri(Context context, Uri uri) {
-        boolean result = false;
-
-        // Check if uri exists
-        DocumentFile directory = DocumentFile.fromTreeUri(context, uri);
-        if (!directory.isDirectory()) {
-            return false;
-        }
-
-        // Check if subfolder with backup exists
-        String sourceDirectoryName= context.getPackageName();
-        DocumentFile sourceDirectory = directory.findFile(sourceDirectoryName);
-        if (null == sourceDirectory || !sourceDirectory.isDirectory()) {
-            return false;
-        }
-
-        // Restore database file
-        File destinationFile = new File(db.getPath());
-        String destinationFileName = destinationFile.getName();
-        DocumentFile sourceFile = sourceDirectory.findFile(destinationFileName);
-        if (null == sourceFile) {
-            return false;
-        }
-
-        // Close the database
-        db.close();
-
-        try {
-            InputStream sourceStream = context.getContentResolver().openInputStream(sourceFile.getUri());
-            FileOutputStream destinationStream = new FileOutputStream(destinationFile);
-            int byteRead = 0;
-            byte[] buffer = new byte[8192];
-            while ((byteRead = sourceStream.read(buffer, 0, 8192)) != -1) {
-                destinationStream.write(buffer, 0, byteRead);
-            }
-            sourceStream.close();
-            destinationStream.close();
-            result = true;
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        // Restore journal if required
-        destinationFile = new File(db.getPath() + "-journal");
-        destinationFileName = destinationFile.getName();
-        sourceFile = sourceDirectory.findFile(destinationFileName);
-        if (null != sourceFile) {
-            result = false;
-            try {
-                InputStream sourceStream = context.getContentResolver().openInputStream(sourceFile.getUri());
-                FileOutputStream destinationStream = new FileOutputStream(destinationFile);
-                int byteRead = 0;
-                byte[] buffer = new byte[8192];
-                while ((byteRead = sourceStream.read(buffer, 0, 8192)) != -1) {
-                    destinationStream.write(buffer, 0, byteRead);
-                }
-                sourceStream.close();
-                destinationStream.close();
-                result = true;
-            } catch (FileNotFoundException e) {
-                e.printStackTrace();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-
-        // Open the database again
-        open();
-
-        return result;
-    }
-
-    /**
      * Restore application preferences from the database
      *
      * <br><br><i>(Just a hack for now - in the future we might want to get rid of shared preferences)</i>
@@ -1492,5 +1337,323 @@ class PeriodicalDatabase {
         editor.putString("backup_uri", backup_uri);
 
         editor.apply();
+    }
+
+    /**
+     * Backup database to a given URI
+     */
+    boolean backupToUri(Context context, Uri uri) {
+        boolean result = false;
+
+        // Check if uri is accessible
+        DocumentFile directory = DocumentFile.fromTreeUri(context, uri);
+        if (!directory.isDirectory()) {
+            return false;
+        }
+
+        // First we need to create a directory where the backup will be stored
+        String destinationDirectoryName= context.getPackageName();
+        DocumentFile destinationDirectory = directory.findFile(destinationDirectoryName);
+        if (null == destinationDirectory || !destinationDirectory.isDirectory()) {
+            destinationDirectory = directory.createDirectory(destinationDirectoryName);
+        }
+
+        // If the directory could not be created, stop now
+        if (null == destinationDirectory) {
+            return false;
+        }
+
+        // Create backup file
+        File sourceFile = new File(db.getPath());
+        String destinationFileName = "backup.json.gz";
+        DocumentFile destinationFile = destinationDirectory.findFile(destinationFileName);
+        if (null != destinationFile) {
+            destinationFile.delete();
+        }
+        destinationFile = destinationDirectory.createFile("application/octet-stream", destinationFileName);
+
+        // Backup database to file
+        try {
+            OutputStream destinationStream = context.getContentResolver().openOutputStream(destinationFile.getUri());
+            GZIPOutputStream out = new GZIPOutputStream(destinationStream);
+            JsonWriter writer = new JsonWriter(new OutputStreamWriter(out, "UTF-8"));
+            writeBackup(writer, this.db);
+            writer.close();
+            destinationStream.close();
+
+            // Check if we have an old backup and clean this up
+            File databaseFile = new File(db.getPath());
+            String databaseFileName = databaseFile.getName();
+            DocumentFile oldBackupFile = destinationDirectory.findFile(databaseFileName);
+            if (oldBackupFile != null) {
+                oldBackupFile.delete();
+            }
+            DocumentFile oldBackupFileJournal = destinationDirectory.findFile(databaseFileName + "-journal");
+            if (oldBackupFileJournal != null) {
+                oldBackupFileJournal.delete();
+            }
+
+            result = true;
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+
+        return result;
+    }
+
+    /**
+     * Restore database from a given URI
+     *
+     * @noinspection ReassignedVariable
+     */
+    boolean restoreFromUri(Context context, Uri uri) {
+        boolean result = false;
+
+        // Check if uri exists
+        DocumentFile directory = DocumentFile.fromTreeUri(context, uri);
+        if (!directory.isDirectory()) {
+            return false;
+        }
+
+        // Check if subfolder with backup exists
+        String sourceDirectoryName= context.getPackageName();
+        DocumentFile sourceDirectory = directory.findFile(sourceDirectoryName);
+        if (null == sourceDirectory || !sourceDirectory.isDirectory()) {
+            return false;
+        }
+
+        File destinationFile = new File(db.getPath());
+        String destinationFileName = destinationFile.getName();
+
+        // First check, if there is an old version of the backup
+        // If this is the case, we will try to restore that
+        DocumentFile sourceFile = sourceDirectory.findFile(destinationFileName);
+        if (null != sourceFile) {
+            // Close the database
+            db.close();
+
+            // Restore database file
+
+            try {
+                InputStream sourceStream = context.getContentResolver().openInputStream(sourceFile.getUri());
+                FileOutputStream destinationStream = new FileOutputStream(destinationFile);
+                int byteRead = 0;
+                byte[] buffer = new byte[8192];
+                while ((byteRead = sourceStream.read(buffer, 0, 8192)) != -1) {
+                    destinationStream.write(buffer, 0, byteRead);
+                }
+                sourceStream.close();
+                destinationStream.close();
+                result = true;
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+            // Restore journal if required
+            File destinationFileJournal = new File(db.getPath() + "-journal");
+            String destinationFileNameJournal = destinationFile.getName();
+            DocumentFile sourceFileJournal = sourceDirectory.findFile(destinationFileName);
+            if (null != sourceFileJournal) {
+                result = false;
+                try {
+                    InputStream sourceStreamJournal = context.getContentResolver().openInputStream(sourceFileJournal.getUri());
+                    FileOutputStream destinationStreamJournal = new FileOutputStream(destinationFileJournal);
+                    int byteRead = 0;
+                    byte[] buffer = new byte[8192];
+                    while ((byteRead = sourceStreamJournal.read(buffer, 0, 8192)) != -1) {
+                        destinationStreamJournal.write(buffer, 0, byteRead);
+                    }
+                    sourceStreamJournal.close();
+                    destinationStreamJournal.close();
+                    result = true;
+                } catch (FileNotFoundException e) {
+                    e.printStackTrace();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+
+            // Open the database again
+            open();
+
+            // Create a new backup with current format and delete old backup, if sucessful
+            if (backupToUri(context, uri)) {
+                sourceFile.delete();
+                sourceFileJournal.delete();
+            }
+
+            return result;
+        }
+
+        // Check, if there is a usable backup
+        DocumentFile sourceFileBackup = sourceDirectory.findFile("backup.json.gz");
+        if (null == sourceFileBackup) {
+            return false;
+        }
+
+        try {
+            InputStream sourceStream = context.getContentResolver().openInputStream(sourceFileBackup.getUri());
+            GZIPInputStream in = new GZIPInputStream(sourceStream);
+            JsonReader reader = new JsonReader(new InputStreamReader(in, "UTF-8"));
+            readBackup(reader, this.db);
+            reader.close();
+            sourceStream.close();
+            result = true;
+        } catch (IOException | RuntimeException e) {
+            e.printStackTrace();
+            result = false;
+        }
+
+        return result;
+    }
+
+    /**
+     * Helper to write database to the backup
+     *
+     * @param writer
+     * @param db
+     *
+     * @throws IOException
+     */
+    private void writeBackup(final JsonWriter writer, final SQLiteDatabase db) throws IOException {
+        writer.beginArray();
+        writer.beginObject();
+        writer.name("version").value(PeriodicalDataOpenHelper.DATABASE_VERSION);
+        writer.endObject();
+        writeTable(writer, db, "data", new String[]{"eventtype", "eventdate", "eventcvx", "eventtemp", "intensity"});
+        writeTable(writer, db, "options", new String[]{"name", "value"});
+        writeTable(writer, db, "notes", new String[]{"eventdate", "content"});
+        writeTable(writer, db, "symptoms", new String[]{"eventdate", "symptom"});
+        writer.endArray();
+    }
+
+    /**
+     * Helper to write a table to the backup
+     *
+     * @param writer
+     * @param db
+     *
+     * @throws IOException
+     */
+    private void writeTable(final JsonWriter writer, final SQLiteDatabase db, String tableName, String[] fieldList) throws IOException {
+        writer.beginObject();
+        writer.name(tableName);
+        writer.beginArray();
+        DatabaseHelper.iterateOverCursor(db.query(tableName, null, null, null, null, null, null), new Function<Cursor, Void>() {
+            /** @noinspection ReassignedVariable*/
+            @SuppressLint("Range")
+            @Override
+            public Void apply(Cursor cursor) {
+                try {
+                    writer.beginObject();
+                    for (String field : fieldList) {
+                        String fieldValue = cursor.getString(cursor.getColumnIndex(field));
+                        if (fieldValue == null) {
+                            fieldValue = "";
+                        }
+                        writer.name(field).value(fieldValue);
+                    }
+                    writer.endObject();
+                    return null;
+                } catch(IOException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+        });
+        writer.endArray();
+        writer.endObject();
+    }
+
+    /**
+     * Helper to read database from the backup
+     *
+     * @param reader
+     * @param db
+     *
+     * @throws IOException
+     */
+    private void readBackup(final JsonReader reader, final SQLiteDatabase db) throws IOException {
+        reader.beginArray();
+        reader.beginObject();
+        reader.nextName();
+        int version = reader.nextInt();
+        if (version < 6 || version > 6) {
+            throw new IOException("Version of this backup is not supported");
+        }
+        reader.endObject();
+        while (reader.hasNext()) {
+            reader.beginObject();
+            String tableName = reader.nextName();
+            switch (tableName) {
+                case "data":
+                    readTable(reader, version, db, "data", new String[]{"eventtype", "eventdate", "eventcvx", "eventtemp", "intensity"});
+                    break;
+                case "options":
+                    readTable(reader, version, db, "options", new String[]{"name", "value"});
+                    break;
+                case "notes":
+                    readTable(reader, version, db, "notes", new String[]{"eventdate", "content"});
+                    break;
+                case "symptoms":
+                    readTable(reader, version, db, "symptoms", new String[]{"eventdate", "symptom"});
+                    break;
+            }
+            reader.endObject();
+        }
+        reader.endArray();
+    }
+
+    /**
+     * Helper to read a table from the backup
+     *
+     * @param reader
+     * @param db
+     *
+     * @throws IOException
+     * @noinspection ReassignedVariable
+     */
+    private void readTable(final JsonReader reader, final int version, final SQLiteDatabase db, String tableName, String[] fieldList) throws IOException {
+        db.beginTransaction();
+        db.execSQL("delete from "+tableName);
+        try {
+            reader.beginArray();
+            while (reader.hasNext()) {
+                reader.beginObject();
+                String statementFields = "";
+                String statementPlaceholders = "";
+                ArrayList statementValues = new ArrayList();
+                for (String field : fieldList) {
+                    String jsonFieldName = reader.nextName();
+                    String jsonFieldValue = reader.nextString();
+
+                    if (!statementFields.isEmpty()) {
+                        statementFields += ",";
+                    }
+                    statementFields += jsonFieldName;
+
+                    if (!statementPlaceholders.isEmpty()) {
+                        statementPlaceholders += ",";
+                    }
+                    statementPlaceholders += "?";
+
+                    statementValues.add(jsonFieldValue);
+                }
+                String statement =
+                    "insert into " + tableName
+                    + " (" + statementFields + ") values ("
+                    + statementPlaceholders + ")";
+                db.execSQL(statement, statementValues.toArray());
+                reader.endObject();
+            }
+            reader.endArray();
+            db.setTransactionSuccessful();
+        } finally {
+            db.endTransaction();
+        }
     }
 }
