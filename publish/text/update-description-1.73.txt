@@ -1,0 +1,101 @@
+<en-US>
+New application logo.
+
+Backups are now done as JSON to make it easier to change the device.
+</en-US>
+
+<az-AZ>
+Yeni proqram loqosu.
+
+Cihazın dəyişdirilməsini asanlaşdırmaq üçün ehtiyat nüsxələri indi JSON kimi edilir.
+</az-AZ>
+
+<cs-CZ>
+Nové logo aplikace.
+
+Zálohy se nyní provádějí jako JSON, aby bylo snazší měnit zařízení.
+</cs-CZ>
+
+<de-DE>
+Neues Anwendungslogo.
+
+Sicherungen werden jetzt als JSON erstellt, um den Gerätewechsel zu erleichtern.
+</de-DE>
+
+<es-ES>
+Nuevo logotipo de la aplicación.
+
+Las copias de seguridad ahora se realizan como JSON para facilitar el cambio de dispositivo.
+</es-ES>
+
+<fr-FR>
+Nouveau logo d'application.
+
+Les sauvegardes sont désormais effectuées au format JSON pour faciliter le changement de périphérique.
+</fr-FR>
+
+<it-IT>
+Nuovo logo dell'applicazione.
+
+I backup ora vengono eseguiti come JSON per semplificare la modifica del dispositivo.
+</it-IT>
+
+<nl-NL>
+Nieuw applicatielogo.
+
+Back-ups worden nu gemaakt als JSON om het gemakkelijker te maken om van apparaat te wisselen.
+</nl-NL>
+
+<ru-RU>
+Новый логотип приложения.
+
+Резервные копии теперь создаются в формате JSON, чтобы упростить смену устройства.
+</ru-RU>
+
+<af>
+Nuwe toepassingslogo.
+
+Rugsteun word nou as JSON gedoen om dit makliker te maak om die toestel te verander.
+</af>
+
+<pt-BR>
+Novo logotipo do aplicativo.
+
+Os backups agora são feitos como JSON para facilitar a troca de dispositivo.
+</pt-BR>
+
+<pl-PL>
+Nowe logo aplikacji.
+
+Kopie zapasowe są teraz wykonywane w formacie JSON, aby ułatwić zmianę urządzenia.
+</pl-PL>
+
+<el-GR>
+Νέο λογότυπο εφαρμογής.
+
+Τα αντίγραφα ασφαλείας γίνονται πλέον ως JSON για να διευκολύνεται η αλλαγή της συσκευής.
+</el-GR>
+
+<ja-JP>
+新しいアプリケーションのロゴ。
+
+デバイスの変更が簡単になるように、バックアップは JSON として実行されるようになりました。
+</ja-JP>
+
+<iw-IL>
+לוגו אפליקציה חדש.
+
+גיבויים נעשים כעת כ-JSON כדי להקל על החלפת המכשיר.
+</iw-IL>
+
+<tr-TR>
+Yeni uygulama logosu.
+
+Cihaz değişimini kolaylaştırmak için yedeklemeler artık JSON olarak yapılıyor.
+</tr-TR>
+
+<uk>
+Новий логотип програми.
+
+Тепер резервні копії створюються як JSON, щоб було легше змінити пристрій.
+</uk>
