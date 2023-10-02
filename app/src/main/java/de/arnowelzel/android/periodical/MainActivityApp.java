@@ -238,16 +238,16 @@ public class MainActivityApp extends AppCompatActivity
         setOptionsResultLauncher = registerForActivityResult(
                 new ActivityResultContracts.StartActivityForResult(),
                 result -> {
-                    if (result.getResultCode() == Activity.RESULT_OK) {
-                        handleActivityResultOptions(result.getData());
-                    }
+                    // We ignore the result since the activity may just
+                    // have been closed by using the Android "back" gesture
+                    loadOptions();
                 });
         detailsResultLauncher = registerForActivityResult(
                 new ActivityResultContracts.StartActivityForResult(),
                 result -> {
-                    if (result.getResultCode() == Activity.RESULT_OK) {
-                        handleActivityResultDetails(result.getData());
-                    }
+                    // We ignore the result since the activity may just
+                    // have been closed by using the Android "back" gesture
+                    updateCalendarView();
                 });
         setOptionsResultStorageAccessSelectBackup = registerForActivityResult(
                 new ActivityResultContracts.StartActivityForResult(),
@@ -970,7 +970,7 @@ public class MainActivityApp extends AppCompatActivity
     /**
      * Handler for activity result - options changed
      */
-    protected void handleActivityResultOptions(Intent data) {
+    protected void loadOptions() {
         PreferenceUtils preferenceUtils = new PreferenceUtils(this);
         String locale = preferenceUtils.getString("locale", "system");
         if(currentLocale.equals(locale)) {
@@ -983,15 +983,15 @@ public class MainActivityApp extends AppCompatActivity
     }
 
     /**
-     * Handler for activity result - details closed
+     * Update calendar view
      */
-    protected void handleActivityResultDetails(Intent data) {
+    protected void updateCalendarView() {
         dbMain.loadCalculatedData();
         calendarUpdate();
     }
 
     /**
-     * Handler for activity result - details closed
+     * Handler for activity result - storage selection for backup
      */
     protected void handleActivityResultStorageAccessSelectBackup(Intent data) {
         if (data != null) {
@@ -1007,7 +1007,7 @@ public class MainActivityApp extends AppCompatActivity
     }
 
     /**
-     * Handler for activity result - details closed
+     * Handler for activity result - storage selection for restore
      */
     protected void handleActivityResultStorageAccessSelectRestore(Intent data) {
         if (data != null) {
