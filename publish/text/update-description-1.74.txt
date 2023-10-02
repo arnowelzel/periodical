@@ -1,0 +1,67 @@
+<en-US>
+Calendar view is now also updated when using the "back" gesture in the details view.
+</en-US>
+
+<az-AZ>
+Təfərrüatlar görünüşündə "geri" jestindən istifadə edərkən təqvim görünüşü də yenilənir.
+</az-AZ>
+
+<cs-CZ>
+Zobrazení kalendáře je nyní aktualizováno také při použití gesta "zpět" v zobrazení podrobností.
+</cs-CZ>
+
+<de-DE>
+Die Kalenderansicht wird jetzt auch aktualisiert, wenn in der Detailansicht die "Zurück"-Geste verwendet wird.
+</de-DE>
+
+<es-ES>
+La vista de calendario ahora también se actualiza cuando se utiliza el gesto "atrás" en la vista de detalles.
+</es-ES>
+
+<fr-FR>
+La vue Calendrier est désormais également mise à jour lors de l'utilisation du geste « retour » dans la vue détaillée.
+</fr-FR>
+
+<it-IT>
+La visualizzazione del calendario ora viene aggiornata anche quando si utilizza il gesto "indietro" nella visualizzazione dei dettagli.
+</it-IT>
+
+<nl-NL>
+De kalenderweergave wordt nu ook bijgewerkt wanneer u het "terug"-gebaar gebruikt in de detailweergave.
+</nl-NL>
+
+<ru-RU>
+Представление календаря теперь также обновляется при использовании жеста «назад» в подробном представлении.
+</ru-RU>
+
+<af>
+Kalenderaansig word nou ook opgedateer wanneer die "terug"-gebaar in die besonderhede-aansig gebruik word.
+</af>
+
+<pt-BR>
+A visualização do calendário agora também é atualizada ao usar o gesto "voltar" na visualização de detalhes.
+</pt-BR>
+
+<pl-PL>
+Widok kalendarza jest teraz aktualizowany również w przypadku użycia gestu „wstecz” w widoku szczegółów.
+</pl-PL>
+
+<el-GR>
+Η προβολή ημερολογίου ενημερώνεται επίσης όταν χρησιμοποιείται η κίνηση "πίσω" στην προβολή λεπτομερειών.
+</el-GR>
+
+<ja-JP>
+詳細ビューで「戻る」ジェスチャを使用すると、カレンダー ビューも更新されるようになりました。
+</ja-JP>
+
+<iw-IL>
+תצוגת לוח השנה מתעדכנת כעת גם בעת שימוש בתנועת ה"חזרה" בתצוגת הפרטים.
+</iw-IL>
+
+<tr-TR>
+Takvim görünümü artık ayrıntılar görünümünde "geri" hareketi kullanıldığında da güncelleniyor.
+</tr-TR>
+
+<uk>
+Перегляд календаря тепер також оновлюється під час використання жесту «назад» у перегляді деталей.
+</uk>
