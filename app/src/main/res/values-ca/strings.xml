@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <string name="app_name">Periodical</string>
+    <string name="menuitem_help">Ajuda</string>
+    <string name="menuitem_about">Quant a…</string>
+    <string name="current_day">Dia actual</string>
+    <string name="menuitem_list">Llista</string>
+    <string name="menuitem_listdetails">Llista amb detalls</string>
+    <string name="menuitem_copy">Còpia de seguretat</string>
+    <string name="menuitem_restore">Restaura</string>
+    <string name="menuitem_options">Preferències</string>
+    <string name="menuitem_exit">Surt</string>
+    <string name="main_calday_su">dg</string>
+    <string name="main_calday_mo">dl</string>
+    <string name="main_calday_tu">dt</string>
+    <string name="main_calday_we">dc</string>
+    <string name="main_calday_th">dj</string>
+    <string name="main_calday_fr">dv</string>
+    <string name="main_calday_sa">ds</string>
+    <string name="main_calday_su_description">diumenge</string>
+    <string name="main_calday_mo_description">dilluns</string>
+    <string name="main_calday_tu_description">dimarts</string>
+    <string name="main_calday_we_description">dimecres</string>
+    <string name="main_calday_th_description">dijous</string>
+    <string name="main_calday_fr_description">divendres</string>
+    <string name="main_calday_sa_description">dissabte</string>
+    <string name="details_title">Detalls</string>
+    <string name="list_title">Llista</string>
+    <string name="list_details_title">Llista amb detalls</string>
+    <string name="info_title">Informació</string>
+    <string name="about_title">Quant a…</string>
+    <string name="help_title">Ajuda</string>
+    <string name="backup_title">Còpia de seguretat</string>
+    <string name="backup_text">Voleu fer una còpia de seguretat de les dades actuals? Això substituirà l\'última còpia de seguretat!</string>
+    <string name="backup_selectfolder">Seleccioneu on voleu desar la còpia de seguretat. Cal que doneu accés a la ubicació seleccionada, que s\'usarà per a aquesta còpia de seguretat i també les futures.\n\nPer a aprendre més sobre com funciona la còpia de seguretat, accediu al menú ajuda.</string>
+    <string name="backup_ok">D\'acord</string>
+    <string name="backup_cancel">Cancel·la</string>
+    <string name="backup_newfolder">Seleccioneu una nova ubicació</string>
+    <string name="backup_help">Ajuda</string>
+    <string name="backup_finished">S\'ha fet la còpia de seguretat</string>
+    <string name="backup_noruiyet">encara no heu seleccionat ubicació</string>
+    <string name="backup_failed">Ha fallat la còpia de seguretat!</string>
+    <string name="restore_title">Restaura les dades</string>
+    <string name="restore_selectfolder">Seleccioneu una ubicació, on es desarà la còpia de seguretat (la ubicació de la carpeta «de.arnowelzel.android.periodical»)l</string>
+    <string name="restore_text">Voleu restaurar l\'última còpia de seguretat?\nAixò substituirà les dades actuals!</string>
+    <string name="restore_ok">D\'acord</string>
+    <string name="restore_cancel">Cancel·la</string>
+    <string name="restore_finished">S\'ha completat la restauració</string>
+    <string name="restore_failed">La restauració ha fallat!</string>
+    <string name="permissions_needed">Per a crear o recuperar còpies de seguretat, Periodical requereix permisos per a accedir a l\'emmagatzematge de fitxers.</string>
+    <string name="permissions_needed_ok">D\'acord</string>
+    <string name="event_periodstart">Ha començat el període</string>
+    <string name="event_periodlength">L\'últim cicle va durar %s dies</string>
+    <string name="event_ignored">S\'ha ignorat la durada del cicle</string>
+    <string name="event_periodfirst">Primera entrada</string>
+    <string name="calendaraction_title">Edita l\'entrada del calendari</string>
+    <string name="calendaraction_add">Voleu marcar aquest dia com a «període»?</string>
+    <string name="calendaraction_remove">Voleu suprimir la marca de «període» d\'aquest dia?</string>
+    <string name="calendaraction_removeperiod">Voleu suprimir aquest període?</string>
+    <string name="calendaraction_ok">Sí</string>
+    <string name="calendaraction_cancel">No</string>
+    <string name="calendaraction_details">Edita els detalls</string>
+    <string name="options_title">Preferències</string>
+    <string name="pref_locale">Llengua</string>
+    <string-array name="list_locales">
+        <item>Predeterminada</item>
+        <item>Afrikaans</item>
+        <item>Azərbaycan</item>
+        <item>Euskara</item>
+        <item>Българска</item>
+        <item>Català</item>
+        <item>Čeština</item>
+        <item>Nederlands</item>
+        <item>English</item>
+        <item>Français</item>
+        <item>Deutsch</item>
+        <item>Ελληνικά</item>
+        <item>עִברִית</item>
+        <item>Italiana</item>
+        <item>日本語</item>
+        <item>فارسی</item>
+        <item>Polski</item>
+        <item>Português no Brasil</item>
+        <item>Русский</item>
+        <item>Española</item>
+        <item>Türkçe</item>
+        <item>Українська</item>
+    </string-array>
+    <string-array name="values_locales">
+        <item>system</item>
+        <item>af</item>
+        <item>az</item>
+        <item>eu</item>
+        <item>bg</item>
+        <item>ca</item>
+        <item>cs</item>
+        <item>nl</item>
+        <item>en</item>
+        <item>fr</item>
+        <item>de</item>
+        <item>el</item>
+        <item>iw</item>
+        <item>it</item>
+        <item>ja</item>
+        <item>fa</item>
+        <item>pl</item>
+        <item>pt-rBR</item>
+        <item>ru</item>
+        <item>es</item>
+        <item>tr</item>
+        <item>uk</item>
+    </string-array>
+    <string name="pref_periodlength">Durada predeterminada del període (dies)</string>
+    <string name="invalid_period_length">La durada predeterminada del període ha de ser entre 1 i 14!</string>
+    <string name="pref_luteallength">Durada de la fase lútea (dies)</string>
+    <string name="invalid_luteal_length">La durada de la fase lútea ha de ser almenys 1!</string>
+    <string name="pref_startofweek">Inici de la setmana</string>
+    <string-array name="list_startofweek">
+        <item>Diumenge</item>
+        <item>Dilluns</item>
+        <item>Dimarts</item>
+        <item>Dimecres</item>
+        <item>Dijous</item>
+        <item>Divendres</item>
+        <item>Dissabte</item>
+    </string-array>
+    <string-array name="values_startofweek">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+    </string-array>
+    <string name="pref_maximum_cycle_length">Durada màxima del cicle</string>
+    <string name="invalid_maximum_cycle_length">La durada màxima del cicle ha de ser com a mínim 60!</string>
+    <string name="pref_direct_details">Ves directament als detalls</string>
+    <string name="pref_show_cycle">Mostra el dia del cicle</string>
+    <string name="previous_month">Mes anterior</string>
+    <string name="next_month">Mes següent</string>
+    <string name="label_cycle_count">Nombre de cicles</string>
+    <string name="label_average_cycle">Cicle amitjanat</string>
+    <string name="label_shortest_cycle">Cicle més curt</string>
+    <string name="label_longest_cycle">Cicle més llarg</string>
+    <string name="label_infertile">no fèrtil</string>
+    <string name="label_fertile">fèrtil</string>
+    <string name="label_fertile_standard">fertile std</string>
+    <string name="label_period_started">ha començat el període</string>
+    <string name="label_period">període</string>
+    <string name="label_period_predicted">s\'ha predit el període</string>
+    <string name="label_ovulation">ovulació</string>
+    <string name="asset_about">ca/about.html</string>
+    <string name="asset_help">ca/help.html</string>
+    <string name="label_details_period">Període</string>
+    <string name="label_details_yes">Sí</string>
+    <string name="label_details_no">No</string>
+    <string name="label_details_intensity">Intensitat</string>
+    <string name="label_details_intensity1">1</string>
+    <string name="label_details_intensity2">2</string>
+    <string name="label_details_intensity3">3</string>
+    <string name="label_details_intensity4">4 (fort)</string>
+    <string name="label_details_notes">Notes</string>
+    <string name="label_details_events">Esdeveniments</string>
+    <string name="label_details_mood">Estat d\'ànim</string>
+    <string name="label_details_symptoms">Símptomes</string>
+    <string name="label_details_ev1" tools:keep="@string/label_details_ev1">Coit</string>
+    <string name="label_details_ev2" tools:keep="@string/label_details_ev2">Rampes</string>
+    <string name="label_details_ev3" tools:keep="@string/label_details_ev3">Mal d\'esquena</string>
+    <string name="label_details_ev4" tools:keep="@string/label_details_ev4">Dolor a l\'esquerra</string>
+    <string name="label_details_ev5" tools:keep="@string/label_details_ev5">Dolor a la dreta</string>
+    <string name="label_details_ev6" tools:keep="@string/label_details_ev6">Dolor al pit / dolor arrossegant</string>
+    <string name="label_details_ev7" tools:keep="@string/label_details_ev7">Candidosi</string>
+    <string name="label_details_ev8" tools:keep="@string/label_details_ev8">Descàrrega</string>
+    <string name="label_details_ev9" tools:keep="@string/label_details_ev9">Sagnat abundant</string>
+    <string name="label_details_ev10" tools:keep="@string/label_details_ev10">Fluctuacions de temperatura</string>
+    <string name="label_details_ev11" tools:keep="@string/label_details_ev11">Grans</string>
+    <string name="label_details_ev12" tools:keep="@string/label_details_ev12">Inflada</string>
+    <string name="label_details_ev13" tools:keep="@string/label_details_ev13">Desmais</string>
+    <string name="label_details_ev14" tools:keep="@string/label_details_ev14">Irritable</string>
+    <string name="label_details_ev15" tools:keep="@string/label_details_ev15">Nàusees</string>
+    <string name="label_details_ev16" tools:keep="@string/label_details_ev16">Desitjos</string>
+    <string name="label_details_ev17" tools:keep="@string/label_details_ev17">Mal de cap o migranya</string>
+    <string name="label_details_ev18" tools:keep="@string/label_details_ev18">Pastilla anticonceptiva</string>
+    <string name="label_details_ev19" tools:keep="@string/label_details_ev19">Tacat</string>
+    <string name="label_details_ev20" tools:keep="@string/label_details_ev20">Cansada</string>
+    <string name="label_details_ev21" tools:keep="@string/label_details_ev21">Amb energia</string>
+    <string name="label_details_ev22" tools:keep="@string/label_details_ev22">Trista</string>
+    <string name="label_details_ev23" tools:keep="@string/label_details_ev23">Nerviosa</string>
+    <string name="label_period_day">Període, dia %d</string>
+    <string name="navigation_drawer_open">Obre el panell de navegació</string>
+    <string name="navigation_drawer_close">Tanca el panell de navegació</string>
+</resources>

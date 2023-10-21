@@ -65,25 +65,26 @@
     <string-array name="list_locales">
         <item>Standart</item>
         <item>Afrikanca</item>
-        <item>Azərbaycanca</item>
-        <item>Baskca</item>
-        <item>Bulqarca</item>
-        <item>Çexiya</item>
-        <item>Hollandca</item>
-        <item>İngiliscə</item>
-        <item>Fransızca</item>
-        <item>Almanca</item>
-        <item>Yunanca</item>
-        <item>Ibranicə</item>
-        <item>İtalyanca</item>
-        <item>Yaponca</item>
-        <item>Farsca</item>
-        <item>Polşaca</item>
-        <item>Braziliyada Portuqal</item>
-        <item>Rusca</item>
-        <item>İspanca</item>
-        <item>Türkcə</item>
-        <item>Ukrayince</item>
+        <item>Azərbaycan</item>
+        <item>Euskara</item>
+        <item>Българска</item>
+        <item>Català</item>
+        <item>Čeština</item>
+        <item>Nederlands</item>
+        <item>English</item>
+        <item>Français</item>
+        <item>Deutsch</item>
+        <item>Ελληνικά</item>
+        <item>עִברִית</item>
+        <item>Italiana</item>
+        <item>日本語</item>
+        <item>فارسی</item>
+        <item>Polski</item>
+        <item>Português no Brasil</item>
+        <item>Русский</item>
+        <item>Española</item>
+        <item>Türkçe</item>
+        <item>Українська</item>
     </string-array>
     <string-array name="values_locales">
         <item>system</item>
@@ -91,6 +92,7 @@
         <item>az</item>
         <item>eu</item>
         <item>bg</item>
+        <item>ca</item>
         <item>cs</item>
         <item>nl</item>
         <item>en</item>
@@ -143,6 +145,7 @@
     <string name="label_longest_cycle">Ən uzun dövr</string>
     <string name="label_infertile">qeyri-fertil</string>
     <string name="label_fertile">fertil</string>
+    <string name="label_fertile_standard">fertile std</string>
     <string name="label_period_started">menstrual dövr başlanıb</string>
     <string name="label_period">dövr</string>
     <string name="label_period_predicted">proqnozlaşdırılan menstruasiya</string>

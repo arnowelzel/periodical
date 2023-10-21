@@ -1,0 +1,11 @@
+Aquesta aplicacio calcula els dies fèrtils segons el mètode Knaus-Ogino i pot fer seguiment dels símptomes menstruals.
+
+ATENCIÓ: no és recomanable d'usar aquest calendari per a evitar embarassos! Hi ha mètodes més fiables, com ara mesurar la temperatura basal del cos.
+
+Es pot fer còpia de seguretat de les dades en una targeta de memòria o en la memòria «interna», si està disponible.
+
+Si teniu cap questió addcional, o voleu ajudar traduint a altres llengües, contacteu amb mi via correu electrònic. Gràcies.
+
+Aquest programari és programari lliure; podeu redistribuir i/o modificar-lo sota els termes de la Llicència Pública General Menor GNU publicada per la Free Software Foundation; o la versió 3 de la Llicència, o (a la vostra elecció) qualsevulla versió posterior.
+
+Podeu obtenir el codi font en el meu lloc web.

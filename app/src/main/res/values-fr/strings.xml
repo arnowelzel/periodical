@@ -65,25 +65,26 @@
     <string-array name="list_locales">
         <item>Normale</item>
         <item>Afrikaans</item>
-        <item>Azerbaïdjan</item>
-        <item>Basque</item>
-        <item>Bulgare</item>
-        <item>Tchèque</item>
-        <item>Néerlandaise</item>
-        <item>Anglais</item>
+        <item>Azərbaycan</item>
+        <item>Euskara</item>
+        <item>Българска</item>
+        <item>Català</item>
+        <item>Čeština</item>
+        <item>Nederlands</item>
+        <item>English</item>
         <item>Français</item>
-        <item>Allemand</item>
-        <item>Grecque</item>
-        <item>Hébreux</item>
-        <item>Italienne</item>
-        <item>Japonais</item>
-        <item>Persique</item>
-        <item>Polonaise</item>
-        <item>Portugais du Brésil</item>
-        <item>Russe</item>
-        <item>Espagnol</item>
-        <item>Turque</item>
-        <item>Ukrainien</item>
+        <item>Deutsch</item>
+        <item>Ελληνικά</item>
+        <item>עִברִית</item>
+        <item>Italiana</item>
+        <item>日本語</item>
+        <item>فارسی</item>
+        <item>Polski</item>
+        <item>Português no Brasil</item>
+        <item>Русский</item>
+        <item>Española</item>
+        <item>Türkçe</item>
+        <item>Українська</item>
     </string-array>
     <string-array name="values_locales">
         <item>system</item>
@@ -91,6 +92,7 @@
         <item>az</item>
         <item>eu</item>
         <item>bg</item>
+        <item>ca</item>
         <item>cs</item>
         <item>nl</item>
         <item>en</item>

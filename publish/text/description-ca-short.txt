@@ -1,0 +1,1 @@
+Un calendari menstrual amb càlcul de dies fèrtils segons el mètode Knaus-Ogino.

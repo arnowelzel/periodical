@@ -65,25 +65,26 @@
     <string-array name="list_locales">
         <item>Стандарт</item>
         <item>Африкаанс</item>
-        <item>Азербайджанский</item>
-        <item>Баскский</item>
-        <item>Болгарский</item>
-        <item>Чешский</item>
-        <item>Голландский</item>
-        <item>Английский</item>
-        <item>Французский</item>
-        <item>Немецкий</item>
-        <item>Греческий</item>
-        <item>Иврит</item>
-        <item>Итальянский</item>
-        <item>Японский</item>
-        <item>Персидский</item>
-        <item>Польский</item>
-        <item>Португальский в Бразилии</item>
+        <item>Azərbaycan</item>
+        <item>Euskara</item>
+        <item>Българска</item>
+        <item>Català</item>
+        <item>Čeština</item>
+        <item>Nederlands</item>
+        <item>English</item>
+        <item>Français</item>
+        <item>Deutsch</item>
+        <item>Ελληνικά</item>
+        <item>עִברִית</item>
+        <item>Italiana</item>
+        <item>日本語</item>
+        <item>فارسی</item>
+        <item>Polski</item>
+        <item>Português no Brasil</item>
         <item>Русский</item>
-        <item>Испанский</item>
-        <item>Турецкий</item>
-        <item>Украинский</item>
+        <item>Española</item>
+        <item>Türkçe</item>
+        <item>Українська</item>
     </string-array>
     <string-array name="values_locales">
         <item>system</item>
@@ -91,6 +92,7 @@
         <item>az</item>
         <item>eu</item>
         <item>bg</item>
+        <item>ca</item>
         <item>cs</item>
         <item>nl</item>
         <item>en</item>
@@ -143,6 +145,7 @@
     <string name="label_longest_cycle">Длинный цикл</string>
     <string name="label_infertile">нефертильный</string>
     <string name="label_fertile">фертильный</string>
+    <string name="label_fertile_standard">fertile std</string>
     <string name="label_period_started">начало менструации</string>
     <string name="label_period">период</string>
     <string name="label_period_predicted">прогнозируемая менструация</string>

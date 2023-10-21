@@ -65,25 +65,26 @@
     <string-array name="list_locales">
         <item>Verstek</item>
         <item>Afrikaans</item>
-        <item>Azerbeidjaans</item>
-        <item>Baskies</item>
-        <item>Bulgaars</item>
-        <item>Tsjeggies</item>
-        <item>Hollands</item>
-        <item>Engels</item>
-        <item>Frans</item>
-        <item>Duits</item>
-        <item>Grieks</item>
-        <item>Hebreeus</item>
-        <item>Italiaans</item>
-        <item>Japannees</item>
-        <item>Persies</item>
-        <item>Pools</item>
-        <item>Portugees in Brasilië</item>
-        <item>Russies</item>
-        <item>Spaans</item>
-        <item>Turks</item>
-        <item>Oekraïens</item>
+        <item>Azərbaycan</item>
+        <item>Euskara</item>
+        <item>Българска</item>
+        <item>Català</item>
+        <item>Čeština</item>
+        <item>Nederlands</item>
+        <item>English</item>
+        <item>Français</item>
+        <item>Deutsch</item>
+        <item>Ελληνικά</item>
+        <item>עִברִית</item>
+        <item>Italiana</item>
+        <item>日本語</item>
+        <item>فارسی</item>
+        <item>Polski</item>
+        <item>Português no Brasil</item>
+        <item>Русский</item>
+        <item>Española</item>
+        <item>Türkçe</item>
+        <item>Українська</item>
     </string-array>
     <string-array name="values_locales">
         <item>system</item>
@@ -91,6 +92,7 @@
         <item>az</item>
         <item>eu</item>
         <item>bg</item>
+        <item>ca</item>
         <item>cs</item>
         <item>nl</item>
         <item>en</item>
@@ -143,6 +145,7 @@
     <string name="label_longest_cycle">Langste siklus</string>
     <string name="label_infertile">on-vrugbaar</string>
     <string name="label_fertile">vrugbaar</string>
+    <string name="label_fertile_standard">fertile std</string>
     <string name="label_period_started">periode het begin</string>
     <string name="label_period">periode</string>
     <string name="label_period_predicted">periode voorspel</string>

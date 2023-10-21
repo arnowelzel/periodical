@@ -65,25 +65,26 @@
     <string-array name="list_locales">
         <item>Lehenetsia</item>
         <item>Afrikaansa</item>
-        <item>Azerbaijanera</item>
+        <item>Azərbaycan</item>
         <item>Euskara</item>
-        <item>Bulgariarra</item>
-        <item>Txekiera</item>
-        <item>Nederlandera</item>
-        <item>Ingelesa</item>
-        <item>Frantsesa</item>
-        <item>Alemana</item>
-        <item>Greziera</item>
-        <item>Hebreera</item>
-        <item>Italiera</item>
-        <item>Japoniera</item>
-        <item>Persiera</item>
-        <item>Poloniera</item>
-        <item>Portugesa Brasilen</item>
-        <item>Errusiera</item>
-        <item>Gaztelera</item>
-        <item>Turkiera</item>
-        <item>Ukrainera</item>
+        <item>Българска</item>
+        <item>Català</item>
+        <item>Čeština</item>
+        <item>Nederlands</item>
+        <item>English</item>
+        <item>Français</item>
+        <item>Deutsch</item>
+        <item>Ελληνικά</item>
+        <item>עִברִית</item>
+        <item>Italiana</item>
+        <item>日本語</item>
+        <item>فارسی</item>
+        <item>Polski</item>
+        <item>Português no Brasil</item>
+        <item>Русский</item>
+        <item>Española</item>
+        <item>Türkçe</item>
+        <item>Українська</item>
     </string-array>
     <string-array name="values_locales">
         <item>system</item>
@@ -91,6 +92,7 @@
         <item>az</item>
         <item>eu</item>
         <item>bg</item>
+        <item>ca</item>
         <item>cs</item>
         <item>nl</item>
         <item>en</item>
@@ -99,8 +101,8 @@
         <item>el</item>
         <item>iw</item>
         <item>it</item>
+        <item>ja</item>
         <item>fa</item>
-        <item>pl</item>
         <item>pl</item>
         <item>pt-rBR</item>
         <item>ru</item>
@@ -143,6 +145,7 @@
     <string name="label_longest_cycle">Ziklorik luzeena</string>
     <string name="label_infertile">antzu</string>
     <string name="label_fertile">ugalkor</string>
+    <string name="label_fertile_standard">fertile std</string>
     <string name="label_period_started">hilekoa hasi da</string>
     <string name="label_period">hilekoa</string>
     <string name="label_period_predicted">hilekoa iragarri da</string>
