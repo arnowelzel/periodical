@@ -1,14 +1,12 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 33
-    buildToolsVersion '30.0.3'
-
     defaultConfig {
         applicationId "de.arnowelzel.android.periodical"
+        compileSdk 34
         minSdkVersion 21
-        targetSdkVersion 33
-        versionCode 97
+        targetSdkVersion 34
+        versionCode 98
         versionName "1.75"
         buildConfigField "String", "VERSION_YEAR", "\"2023\""
 
