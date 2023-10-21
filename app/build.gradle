@@ -9,7 +9,7 @@ android {
         minSdkVersion 21
         targetSdkVersion 33
         versionCode 97
-        versionName "1.74"
+        versionName "1.75"
         buildConfigField "String", "VERSION_YEAR", "\"2023\""
 
         return void
