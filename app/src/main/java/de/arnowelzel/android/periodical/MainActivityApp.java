@@ -50,7 +50,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ViewFlipper;
 
-import java.text.SimpleDateFormat;
+import java.time.format.DateTimeFormatter;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
@@ -523,9 +523,10 @@ public class MainActivityApp extends AppCompatActivity
 
         // Output current year/month
         TextView displayDate = findViewById(R.id.displaydate);
-        @SuppressLint("SimpleDateFormat") SimpleDateFormat dateFormat = new SimpleDateFormat("MMMM yyyy");
-        displayDate.setText(String.format("%s", dateFormat.format(cal.getTime())));
-        displayDate.setContentDescription(String.format("%s", dateFormat.format(cal.getTime())));
+        DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("LLLL yyyy");
+        String formatted = dateFormat.format(cal.toZonedDateTime());
+        displayDate.setText(String.format("%s", formatted));
+        displayDate.setContentDescription(String.format("%s", formatted));
 
         // Calculate first week day of month
         firstDayOfWeek = cal.get(Calendar.DAY_OF_WEEK);
