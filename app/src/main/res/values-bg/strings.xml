@@ -64,7 +64,7 @@
     <string name="pref_locale">Език</string>
     <string-array name="list_locales">
         <item>По подразбиране</item>
-        <item>Африкански</item>
+        <item>Afrikaans</item>
         <item>Azərbaycan</item>
         <item>Euskara</item>
         <item>Българска</item>

@@ -1,11 +1,11 @@
-Tato aplikace vypočítá plodné dny podle Knaus-Ogino a mohou sledovat menstruační příznaky.
+Tato aplikace vypočítává plodné dny pomocí metody Knaus-Ogino a umožňuje sledovat menstruační příznaky.
 
-POZOR: Nedoporučuje se používat tento kalendář, aby se zabránilo těhotenství! K dispozici jsou přesnější metody, jako je měření bazální tělesné teploty.
+POZOR: Nedoporučuje se používat tento kalendář k zabránění početí! K dispozici jsou přesnější metody, jako je měření bazální tělesné teploty.
 
-Data lze zálohovat na paměťovou kartu nebo "vnitřní" paměti, pokud jsou přítomny.
+Data lze zálohovat na paměťovou kartu nebo do "interní" paměti, pokud je k dispozici.
 
-Máte-li jakékoli další dotazy nebo chcete, aby mi pomohl s překlady v jiných jazycích, prosím, kontaktujte mě e-mailem - děkuji.
+Máte-li jakékoli další dotazy nebo mi chcete pomoci s překlady do jiných jazyků, kontaktujte mě prosím e-mailem - děkuji.
 
-Tento program je svobodný software: můžete jej šířit a/nebo modifikovat podle podmínek GNU General Public License, vydávané Free Software Foundation, a to buď verze 3 této licence, nebo (podle vlastního uvážení) kterékoli pozdější verze.
+Tento program je svobodný software: můžete jej dále šířit a/nebo upravovat při dodržení podmínek GNU General Public License tak jak ji zvěřejňuje Free Software Foundation, ve 3. verzi licence, nebo (dle vaší volby) jakékoli pozdější verze.
 
-Můžete získat zdroje na mých webových stránkách.
+Zdroj najdete na mých webových stránkách.

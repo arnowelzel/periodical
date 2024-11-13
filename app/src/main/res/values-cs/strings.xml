@@ -2,7 +2,7 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name">Periodical</string>
     <string name="menuitem_help">Nápověda</string>
-    <string name="menuitem_about">O Periodical …</string>
+    <string name="menuitem_about">O aplikaci …</string>
     <string name="current_day">Dnes</string>
     <string name="menuitem_list">Seznam</string>
     <string name="menuitem_listdetails">Seznam s podrobnostmi</string>
@@ -28,43 +28,43 @@
     <string name="list_title">Seznam</string>
     <string name="list_details_title">Seznam s podrobnostmi</string>
     <string name="info_title">Informace</string>
-    <string name="about_title">O Periodical …</string>
+    <string name="about_title">O aplikaci …</string>
     <string name="help_title">Nápověda</string>
-    <string name="backup_title">Záloha</string>
+    <string name="backup_title">Zálohovat data</string>
     <string name="backup_text">Chcete zálohovat současná data?\nTím bude nahrazena minulá záloha!</string>
-    <string name="backup_selectfolder">Vyberte, kde chcete zálohu uložit. Musíte povolit přístup k vybranému místu, které bude použito pro tento a všechny budoucí zálohy.\n\nChcete-li se dozvědět více o tom, jak funguje záloha, podívejte se na nabídku nápovědy.</string>
+    <string name="backup_selectfolder">Vyberte, kde chcete zálohu uložit. Musíte povolit přístup k vybranému místu, které bude použito pro tento a všechny budoucí zálohy.\n\nChcete-li se dozvědět více o tom, jak funguje záloha, podívejte se do menu Nápověda.</string>
     <string name="backup_ok">OK</string>
     <string name="backup_cancel">Zrušit</string>
     <string name="backup_newfolder">Vybrat nové umístění</string>
     <string name="backup_help">Nápověda</string>
-    <string name="backup_finished">Záloha uložena</string>
-    <string name="backup_noruiyet">zatím není vybrána žádná poloha</string>
-    <string name="backup_failed">Záloha selhala!</string>
+    <string name="backup_finished">Zálohování dokončeno</string>
+    <string name="backup_noruiyet">zatím nebylo vybráno žádné umístění</string>
+    <string name="backup_failed">Zálohování selhalo!</string>
     <string name="restore_title">Obnovit data</string>
     <string name="restore_selectfolder">Vyberte prosím umístění, kde byla uložena záloha (umístění se složkou \"de.arnowelzel.android.periodical\").</string>
     <string name="restore_text">Chcete obnovit data z poslední zálohy?\nTím budou nahrazena současná data!</string>
     <string name="restore_ok">OK</string>
     <string name="restore_cancel">Zrušit</string>
-    <string name="restore_finished">Obnova dokončena</string>
-    <string name="restore_failed">Obnova selhala!</string>
+    <string name="restore_finished">Obnovení dokončeno</string>
+    <string name="restore_failed">Obnovení selhalo!</string>
     <string name="permissions_needed">Chcete-li vytvořit nebo obnovit zálohy, Periodical potřebuje oprávnění pro přístup k ukládání souborů.</string>
     <string name="permissions_needed_ok">Ano</string>
-    <string name="event_periodstart">Začátek periody</string>
+    <string name="event_periodstart">Perioda začala</string>
     <string name="event_periodlength">Poslední cyklus měl %s dní</string>
-    <string name="event_ignored">Délka cyklu byla ignorována</string>
-    <string name="event_periodfirst">První data</string>
-    <string name="calendaraction_title">Upravit data kalendáře</string>
-    <string name="calendaraction_add">Označit tento den jako \"Začátek periody\"?</string>
-    <string name="calendaraction_remove">Pro tento den odebrat značku \"Začátek periody\"?</string>
-    <string name="calendaraction_removeperiod">Odstranit toto období?</string>
+    <string name="event_ignored">Délka cyklu se nezohledňuje</string>
+    <string name="event_periodfirst">První položka</string>
+    <string name="calendaraction_title">Úprava položky kalendáře</string>
+    <string name="calendaraction_add">Označit tento den jako \"Perioda\"?</string>
+    <string name="calendaraction_remove">Odstranit značku \"Perioda\" u tohoto dne?</string>
+    <string name="calendaraction_removeperiod">Odstranit tuto Periodu?</string>
     <string name="calendaraction_ok">Ano</string>
     <string name="calendaraction_cancel">Ne</string>
-    <string name="calendaraction_details">Upravit detaily</string>
+    <string name="calendaraction_details">Upravit podrobnosti</string>
     <string name="options_title">Nastavení</string>
     <string name="pref_locale">Jazyk</string>
     <string-array name="list_locales">
         <item>Standardní</item>
-        <item>Afrikánština</item>
+        <item>Afrikaans</item>
         <item>Azərbaycan</item>
         <item>Euskara</item>
         <item>Българска</item>
@@ -110,10 +110,10 @@
         <item>tr</item>
         <item>uk</item>
     </string-array>
-    <string name="pref_periodlength">Základní délka periody (dny)</string>
-    <string name="invalid_period_length">Základní délka periody musí být mezi 1 a 14!</string>
-    <string name="pref_luteallength">Luteální fáze délka (dny)</string>
-    <string name="invalid_luteal_length">Luteální délka musí být alespoň 1!</string>
+    <string name="pref_periodlength">Výchozí délka periody (ve dnech)</string>
+    <string name="invalid_period_length">Výchozí délka periody musí být mezi 1 a 14!</string>
+    <string name="pref_luteallength">Délka luteální fáze (ve dnech)</string>
+    <string name="invalid_luteal_length">Délka luteální fáze musí být nejméně 1!</string>
     <string name="pref_startofweek">Začátek týdne</string>
     <string-array name="list_startofweek">
         <item>Neděle</item>
@@ -135,7 +135,7 @@
     </string-array>
     <string name="pref_maximum_cycle_length">Maximální délka cyklu</string>
     <string name="invalid_maximum_cycle_length">Maximální délka cyklu musí být nejméně 60!</string>
-    <string name="pref_direct_details">Přejděte přímo na detaily</string>
+    <string name="pref_direct_details">Přejít přímo na podrobnosti</string>
     <string name="pref_show_cycle">Zobrazit den cyklu</string>
     <string name="previous_month">Minulý měsíc</string>
     <string name="next_month">Další měsíc</string>
@@ -146,9 +146,9 @@
     <string name="label_infertile">neplodné</string>
     <string name="label_fertile">plodné</string>
     <string name="label_fertile_standard">fertile std</string>
-    <string name="label_period_started">začátek periody</string>
+    <string name="label_period_started">perioda začala</string>
     <string name="label_period">perioda</string>
-    <string name="label_period_predicted">předpověď periody</string>
+    <string name="label_period_predicted">perioda předpovězena</string>
     <string name="label_ovulation">ovulace</string>
     <string name="asset_about">cs/about.html</string>
     <string name="asset_help">cs/help.html</string>
@@ -163,18 +163,18 @@
     <string name="label_details_notes">Poznámky</string>
     <string name="label_details_events">Události</string>
     <string name="label_details_mood">Nálada</string>
-    <string name="label_details_symptoms">Události</string>
-    <string name="label_details_ev1" tools:keep="@string/label_details_ev1">Soulož</string>
+    <string name="label_details_symptoms">Symptomy</string>
+    <string name="label_details_ev1" tools:keep="@string/label_details_ev1">Pohlavní styk</string>
     <string name="label_details_ev2" tools:keep="@string/label_details_ev2">Křeče</string>
-    <string name="label_details_ev3" tools:keep="@string/label_details_ev3">Bolesti zad</string>
-    <string name="label_details_ev4" tools:keep="@string/label_details_ev4">Střední bolest odešla</string>
-    <string name="label_details_ev5" tools:keep="@string/label_details_ev5">Střední bolesti správně</string>
-    <string name="label_details_ev6" tools:keep="@string/label_details_ev6">Bolest prsu / tahání bolesti</string>
-    <string name="label_details_ev7" tools:keep="@string/label_details_ev7">Drozd/candida</string>
+    <string name="label_details_ev3" tools:keep="@string/label_details_ev3">Bolest zad</string>
+    <string name="label_details_ev4" tools:keep="@string/label_details_ev4">Ovulační bolest na levé straně</string>
+    <string name="label_details_ev5" tools:keep="@string/label_details_ev5">Ovulační bolest na pravé straně</string>
+    <string name="label_details_ev6" tools:keep="@string/label_details_ev6">Bolest prsou/citlivá prsa</string>
+    <string name="label_details_ev7" tools:keep="@string/label_details_ev7">Vaginální kandidóza</string>
     <string name="label_details_ev8" tools:keep="@string/label_details_ev8">Výtok</string>
-    <string name="label_details_ev9" tools:keep="@string/label_details_ev9">Intenzivní krvácení</string>
-    <string name="label_details_ev10" tools:keep="@string/label_details_ev10">Kolísání teplot</string>
-    <string name="label_details_ev11" tools:keep="@string/label_details_ev11">Pupínek</string>
+    <string name="label_details_ev9" tools:keep="@string/label_details_ev9">Silné menstruační krvácení</string>
+    <string name="label_details_ev10" tools:keep="@string/label_details_ev10">Kolísání teploty</string>
+    <string name="label_details_ev11" tools:keep="@string/label_details_ev11">Pupínky</string>
     <string name="label_details_ev12" tools:keep="@string/label_details_ev12">Nadýmání</string>
     <string name="label_details_ev13" tools:keep="@string/label_details_ev13">Mdloby</string>
     <string name="label_details_ev14" tools:keep="@string/label_details_ev14">Nevrlost</string>
@@ -183,11 +183,11 @@
     <string name="label_details_ev17" tools:keep="@string/label_details_ev17">Bolest hlavy/migréna</string>
     <string name="label_details_ev18" tools:keep="@string/label_details_ev18">Antikoncepční pilulka</string>
     <string name="label_details_ev19" tools:keep="@string/label_details_ev19">Špinění</string>
-    <string name="label_details_ev20" tools:keep="@string/label_details_ev20">Unavený</string>
-    <string name="label_details_ev21" tools:keep="@string/label_details_ev21">Energanizovaná</string>
-    <string name="label_details_ev22" tools:keep="@string/label_details_ev22">Smutný</string>
-    <string name="label_details_ev23" tools:keep="@string/label_details_ev23">Nervový</string>
-    <string name="label_period_day">Období, den %d</string>
-    <string name="navigation_drawer_open">Otevřete navigační zásuvku</string>
-    <string name="navigation_drawer_close">Zavřete navigační panel</string>
+    <string name="label_details_ev20" tools:keep="@string/label_details_ev20">Unavená</string>
+    <string name="label_details_ev21" tools:keep="@string/label_details_ev21">Nabitá energií</string>
+    <string name="label_details_ev22" tools:keep="@string/label_details_ev22">Smutná</string>
+    <string name="label_details_ev23" tools:keep="@string/label_details_ev23">Nervózní</string>
+    <string name="label_period_day">Perioda, den %d</string>
+    <string name="navigation_drawer_open">Otevřít navigační panel</string>
+    <string name="navigation_drawer_close">Zavřít navigační panel</string>
 </resources>

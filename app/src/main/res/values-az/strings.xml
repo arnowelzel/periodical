@@ -17,7 +17,7 @@
     <string name="main_calday_th">ÇA</string>
     <string name="main_calday_fr">Çm</string>
     <string name="main_calday_sa">Şə</string>
-    <string name="main_calday_su_description">bazar</string>
+    <string name="main_calday_su_description">bazar günü</string>
     <string name="main_calday_mo_description">bazar ertəsi</string>
     <string name="main_calday_tu_description">çərşənbə axşamı</string>
     <string name="main_calday_we_description">çərşənbə</string>
@@ -64,7 +64,7 @@
     <string name="pref_locale">Dil</string>
     <string-array name="list_locales">
         <item>Standart</item>
-        <item>Afrikanca</item>
+        <item>Afrikaans</item>
         <item>Azərbaycan</item>
         <item>Euskara</item>
         <item>Българска</item>
