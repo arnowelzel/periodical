@@ -6,8 +6,8 @@ android {
         compileSdk 35
         minSdkVersion 21
         targetSdkVersion 35
-        versionCode 101
-        versionName "1.76"
+        versionCode 102
+        versionName "1.77"
         buildConfigField "String", "VERSION_YEAR", "\"2024\""
 
         return void
