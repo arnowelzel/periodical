@@ -110,7 +110,7 @@
         <item>es</item>
         <item>tr</item>
         <item>uk</item>
-        <item>zh-rCN</item>
+        <item>zh</item>
     </string-array>
     <string name="pref_periodlength">Standardlänge der Periode (Tage)</string>
     <string name="invalid_period_length">Die Standardlänge der Periode muss zwischen 1 und 14 sein!</string>

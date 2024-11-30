@@ -110,7 +110,7 @@
         <item>es</item>
         <item>tr</item>
         <item>uk</item>
-        <item>zh-rCN</item>
+        <item>zh</item>
     </string-array>
     <string name="pref_periodlength">Μήκος πλήρους περιόδου (ημέρες)</string>
     <string name="invalid_period_length">Το προεπιλεγμένο μήκος περιόδου πρέπει να είναι μεταξύ 1 και 14!</string>

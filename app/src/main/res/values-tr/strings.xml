@@ -110,7 +110,7 @@
         <item>es</item>
         <item>tr</item>
         <item>uk</item>
-        <item>zh-rCN</item>
+        <item>zh</item>
     </string-array>
     <string name="pref_periodlength">Âdet dönemi için varsayılan uzunluk (gün)</string>
     <string name="invalid_period_length">Varsayılan âdet dönemi uzunluğu 1 ile 14 arasında olmalı!</string>

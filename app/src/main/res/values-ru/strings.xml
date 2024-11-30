@@ -110,7 +110,7 @@
         <item>es</item>
         <item>tr</item>
         <item>uk</item>
-        <item>zh-rCN</item>
+        <item>zh</item>
     </string-array>
     <string name="pref_periodlength">Продолжительность менструации по умолчанию (дней)</string>
     <string name="invalid_period_length">Продолжительность менструации по умолчанию должна быть от 1 до 14!</string>

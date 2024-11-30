@@ -110,7 +110,7 @@
         <item>es</item>
         <item>tr</item>
         <item>uk</item>
-        <item>zh-rCN</item>
+        <item>zh</item>
     </string-array>
     <string name="pref_periodlength">Versteklengte</string>
     <string name="invalid_period_length">Die verstek periode lengte moet tussen 1 en 14 wees!</string>

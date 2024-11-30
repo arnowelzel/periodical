@@ -110,7 +110,7 @@
         <item>es</item>
         <item>tr</item>
         <item>uk</item>
-        <item>zh-rCN</item>
+        <item>zh</item>
     </string-array>
     <string name="pref_periodlength">默认经期长度 (天)</string>
     <string name="invalid_period_length">默认的经期天数必须介于 1 到 14 之间 ！</string>

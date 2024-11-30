@@ -110,7 +110,7 @@
         <item>es</item>
         <item>tr</item>
         <item>uk</item>
-        <item>zh-rCN</item>
+        <item>zh</item>
     </string-array>
     <string name="pref_periodlength">Продължителност на цикъла по подразбиране (дни)</string>
     <string name="invalid_period_length">Продължителността на цикъла по подразбиране трябва да бъде между 1 и 14!</string>

@@ -110,7 +110,7 @@
         <item>es</item>
         <item>tr</item>
         <item>uk</item>
-        <item>zh-rCN</item>
+        <item>zh</item>
     </string-array>
     <string name="pref_periodlength">Zikloaren lehenetsitako iraupena (egunak)</string>
     <string name="invalid_period_length">Zikloaren lehenetsitako iraupenak 1 eta 14 bitarte egon behar du!</string>

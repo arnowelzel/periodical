@@ -110,7 +110,7 @@
         <item>es</item>
         <item>tr</item>
         <item>uk</item>
-        <item>zh-rCN</item>
+        <item>zh</item>
     </string-array>
     <string name="pref_periodlength">Durée par défaut des règles (jours)</string>
     <string name="invalid_period_length">La durée par défaut des règles doit être comprise entre 1 et 14 !</string>

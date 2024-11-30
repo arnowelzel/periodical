@@ -110,7 +110,7 @@
         <item>es</item>
         <item>tr</item>
         <item>uk</item>
-        <item>zh-rCN</item>
+        <item>zh</item>
     </string-array>
     <string name="pref_periodlength">Durata predefinita del ciclo (giorni)</string>
     <string name="invalid_period_length">La durata del ciclo deve essere compresa tra 1 e 14!</string>

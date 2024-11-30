@@ -110,7 +110,7 @@
         <item>es</item>
         <item>tr</item>
         <item>uk</item>
-        <item>zh-rCN</item>
+        <item>zh</item>
     </string-array>
     <string name="pref_periodlength">Duração padrão da menstruação (dias)</string>
     <string name="invalid_period_length">A duração padrão deve estar entre 1 e 14!</string>

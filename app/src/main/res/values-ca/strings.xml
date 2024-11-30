@@ -110,7 +110,7 @@
         <item>es</item>
         <item>tr</item>
         <item>uk</item>
-        <item>zh-rCN</item>
+        <item>zh</item>
     </string-array>
     <string name="pref_periodlength">Durada predeterminada del període (dies)</string>
     <string name="invalid_period_length">La durada predeterminada del període ha de ser entre 1 i 14!</string>

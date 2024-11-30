@@ -110,7 +110,7 @@
         <item>es</item>
         <item>tr</item>
         <item>uk</item>
-        <item>zh-rCN</item>
+        <item>zh</item>
     </string-array>
     <string name="pref_periodlength">طول دوره پریود به صورت پیش‌فرض (روز)</string>
     <string name="invalid_period_length">طول دوره پریود به صورت پیش‌فرض باید بین ۱ تا ۱۴ باشد!</string>

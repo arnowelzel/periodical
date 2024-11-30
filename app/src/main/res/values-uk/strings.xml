@@ -110,7 +110,7 @@
         <item>es</item>
         <item>tr</item>
         <item>uk</item>
-        <item>zh-rCN</item>
+        <item>zh</item>
     </string-array>
     <string name="pref_periodlength">Тривалість періоду за замовчуванням (дні)</string>
     <string name="invalid_period_length">Тривалість періоду за замовчуванням повинна бути від 1 до 14!</string>

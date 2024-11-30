@@ -110,7 +110,7 @@
         <item>es</item>
         <item>tr</item>
         <item>uk</item>
-        <item>zh-rCN</item>
+        <item>zh</item>
     </string-array>
     <string name="pref_periodlength">Standaardduur van menstruatiecyclus (dagen)</string>
     <string name="invalid_period_length">De standaardduur van een menstruatie moet tussen 1 en 14 liggen!</string>

@@ -110,7 +110,7 @@
         <item>es</item>
         <item>tr</item>
         <item>uk</item>
-        <item>zh-rCN</item>
+        <item>zh</item>
     </string-array>
     <string name="pref_periodlength">אורך הווסת כבררת מחדל (ימים)</string>
     <string name="invalid_period_length">אורך בררת המחדל לווסת צריך להיות בין 1 ל־14!</string>

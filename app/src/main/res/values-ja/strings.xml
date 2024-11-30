@@ -110,7 +110,7 @@
         <item>es</item>
         <item>tr</item>
         <item>uk</item>
-        <item>zh-rCN</item>
+        <item>zh</item>
     </string-array>
     <string name="pref_periodlength">デフォルトの月経期 (日)</string>
     <string name="invalid_period_length">デフォルトの月経期は 1 ～ 14 の間にする必要があります!</string>

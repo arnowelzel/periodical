@@ -110,7 +110,7 @@
         <item>es</item>
         <item>tr</item>
         <item>uk</item>
-        <item>zh-rCN</item>
+        <item>zh</item>
     </string-array>
     <string name="pref_periodlength">Výchozí délka periody (ve dnech)</string>
     <string name="invalid_period_length">Výchozí délka periody musí být mezi 1 a 14!</string>
