@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <string name="app_name">周期记录</string>
+    <string name="menuitem_help">帮助</string>
+    <string name="menuitem_about">关于</string>
+    <string name="current_day">当前日期</string>
+    <string name="menuitem_list">列表</string>
+    <string name="menuitem_listdetails">详细列表</string>
+    <string name="menuitem_copy">备份</string>
+    <string name="menuitem_restore">恢复</string>
+    <string name="menuitem_options">设置</string>
+    <string name="menuitem_exit">退出</string>
+    
+    <!-- 星期缩写 -->
+    <string name="main_calday_su">日</string>
+    <string name="main_calday_mo">一</string>
+    <string name="main_calday_tu">二</string>
+    <string name="main_calday_we">三</string>
+    <string name="main_calday_th">四</string>
+    <string name="main_calday_fr">五</string>
+    <string name="main_calday_sa">六</string>
+    
+    <!-- 星期全称 -->
+    <string name="main_calday_su_description">星期日</string>
+    <string name="main_calday_mo_description">星期一</string>
+    <string name="main_calday_tu_description">星期二</string>
+    <string name="main_calday_we_description">星期三</string>
+    <string name="main_calday_th_description">星期四</string>
+    <string name="main_calday_fr_description">星期五</string>
+    <string name="main_calday_sa_description">星期六</string>
+    
+    <!-- 标题 -->
+    <string name="details_title">详情</string>
+    <string name="list_title">列表</string>
+    <string name="list_details_title">详细列表</string>
+    <string name="info_title">信息</string>
+    <string name="about_title">关于</string>
+    <string name="help_title">帮助</string>
+    
+    <!-- 备份相关 -->
+    <string name="backup_title">备份数据</string>
+    <string name="backup_text">是否要备份当前数据？这将覆盖上次的备份！</string>
+    <string name="backup_selectfolder">请选择备份保存位置。您需要授予对所选位置的访问权限，该位置将用于此次和所有未来的备份。\n\n要了解更多关于备份工作原理的信息，请参阅帮助菜单。</string>
+    <string name="backup_ok">确定</string>
+    <string name="backup_cancel">取消</string>
+    <string name="backup_newfolder">选择新位置</string>
+    <string name="backup_help">帮助</string>
+    <string name="backup_finished">备份完成</string>
+    <string name="backup_noruiyet">尚未选择位置</string>
+    <string name="backup_failed">备份失败！</string>
+    
+    <!-- 恢复相关 -->
+    <string name="restore_title">恢复数据</string>
+    <string name="restore_selectfolder">请选择备份文件所在位置（包含"de.arnowelzel.android.periodical"文件夹的位置）。</string>
+    <string name="restore_text">是否要恢复上次的备份？这将覆盖当前数据！</string>
+    <string name="restore_ok">确定</string>
+    <string name="restore_cancel">取消</string>
+    <string name="restore_finished">恢复完成</string>
+    <string name="restore_failed">恢复失败！</string>
+    
+    <string name="permissions_needed">为了创建或恢复备份，周期记录需要访问文件存储的权限。</string>
+    <string name="permissions_needed_ok">确定</string>
+    
+    <!-- 事件相关 -->
+    <string name="event_periodstart">经期开始</string>
+    <string name="event_periodlength">上个周期持续 %s 天</string>
+    <string name="event_ignored">周期长度已忽略</string>
+    <string name="event_periodfirst">首次记录</string>
+    
+    <!-- 日历操作 -->
+    <string name="calendaraction_title">编辑日历记录</string>
+    <string name="calendaraction_add">标记这一天为"经期"？</string>
+    <string name="calendaraction_remove">移除这一天的"经期"标记？</string>
+    <string name="calendaraction_removeperiod">删除这个经期记录？</string>
+    <string name="calendaraction_ok">是</string>
+    <string name="calendaraction_cancel">否</string>
+    <string name="calendaraction_details">编辑详情</string>
+    
+    <!-- 设置相关 -->
+    <string name="options_title">设置</string>
+    <string name="pref_locale">语言</string>
+    <string name="pref_periodlength">默认经期长度（天）</string>
+    <string name="invalid_period_length">默认经期长度必须在1到14天之间！</string>
+    <string name="pref_luteallength">黄体期长度（天）</string>
+    <string name="invalid_luteal_length">黄体期长度必须至少为1天！</string>
+    <string name="pref_startofweek">每周开始日</string>
+    <string name="pref_maximum_cycle_length">最大周期长度</string>
+    <string name="invalid_maximum_cycle_length">最大周期长度必须至少为60天！</string>
+    <string name="pref_direct_details">直接进入详情</string>
+    <string name="pref_show_cycle">显示周期天数</string>
+    
+    <!-- 导航 -->
+    <string name="previous_month">上个月</string>
+    <string name="next_month">下个月</string>
+    
+    <!-- 标签 -->
+    <string name="label_cycle_count">周期数量</string>
+    <string name="label_average_cycle">平均周期</string>
+    <string name="label_shortest_cycle">最短周期</string>
+    <string name="label_longest_cycle">最长周期</string>
+    <string name="label_infertile">不孕期</string>
+    <string name="label_fertile">易孕期</string>
+    <string name="label_fertile_standard">标准易孕期</string>
+    <string name="label_period_started">经期已开始</string>
+    <string name="label_period">经期</string>
+    <string name="label_period_predicted">预测经期</string>
+    <string name="label_ovulation">排卵日</string>
+    
+    <!-- 详情页面标签 -->
+    <string name="label_details_period">经期</string>
+    <string name="label_details_yes">是</string>
+    <string name="label_details_no">否</string>
+    <string name="label_details_intensity">强度</string>
+    <string name="label_details_intensity1">1</string>
+    <string name="label_details_intensity2">2</string>
+    <string name="label_details_intensity3">3</string>
+    <string name="label_details_intensity4">4（强）</string>
+    <string name="label_details_notes">备注</string>
+    <string name="label_details_events">事件</string>
+    <string name="label_details_mood">心情</string>
+    <string name="label_details_symptoms">症状</string>
+    
+    <!-- 症状详情 -->
+    <string name="label_details_ev1" tools:keep="@string/label_details_ev1">同房</string>
+    <string name="label_details_ev2" tools:keep="@string/label_details_ev2">痛经</string>
+    <string name="label_details_ev3" tools:keep="@string/label_details_ev3">背痛</string>
+    <string name="label_details_ev4" tools:keep="@string/label_details_ev4">左侧中部疼痛</string>
+    <string name="label_details_ev5" tools:keep="@string/label_details_ev5">右侧中部疼痛</string>
+    <string name="label_details_ev6" tools:keep="@string/label_details_ev6">乳房胀痛</string>
+    <string name="label_details_ev7" tools:keep="@string/label_details_ev7">念珠菌/真菌</string>
+    <string name="label_details_ev8" tools:keep="@string/label_details_ev8">分泌物</string>
+    <string name="label_details_ev9" tools:keep="@string/label_details_ev9">大量出血</string>
+    <string name="label_details_ev10" tools:keep="@string/label_details_ev10">体温波动</string>
+    <string name="label_details_ev11" tools:keep="@string/label_details_ev11">痘痘</string>
+    <string name="label_details_ev12" tools:keep="@string/label_details_ev12">腹胀</string>
+    <string name="label_details_ev13" tools:keep="@string/label_details_ev13">晕厥</string>
+    <string name="label_details_ev14" tools:keep="@string/label_details_ev14">烦躁</string>
+    <string name="label_details_ev15" tools:keep="@string/label_details_ev15">恶心</string>
+    <string name="label_details_ev16" tools:keep="@string/label_details_ev16">食欲增强</string>
+    <string name="label_details_ev17" tools:keep="@string/label_details_ev17">头痛/偏头痛</string>
+    <string name="label_details_ev18" tools:keep="@string/label_details_ev18">避孕药</string>
+    <string name="label_details_ev19" tools:keep="@string/label_details_ev19">点滴出血</string>
+    <string name="label_details_ev20" tools:keep="@string/label_details_ev20">疲倦</string>
+    <string name="label_details_ev21" tools:keep="@string/label_details_ev21">精力充沛</string>
+    <string name="label_details_ev22" tools:keep="@string/label_details_ev22">悲伤</string>
+    <string name="label_details_ev23" tools:keep="@string/label_details_ev23">易怒</string>
+    
+    <string name="label_period_day">经期，第%d天</string>
+    <string name="navigation_drawer_open">打开导航抽屉</string>
+    <string name="navigation_drawer_close">关闭导航抽屉</string>
+</resources>
