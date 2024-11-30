@@ -9,8 +9,8 @@ android {
         versionCode 102
         versionName "1.77"
         buildConfigField "String", "VERSION_YEAR", "\"2024\""
-
-        return void
+        // Required when setting minSdkVersion to 20 or lower
+        multiDexEnabled true
     }
     buildTypes {
         release {
@@ -26,6 +26,9 @@ android {
         }
     }
     compileOptions {
+        // Flag to enable support for the new language APIs
+        coreLibraryDesugaringEnabled true
+        // Sets Java compatibility to Java 8
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
@@ -61,4 +64,6 @@ dependencies {
             because("kotlin-stdlib-jdk8 is now a part of kotlin-stdlib")
         }
     }
+
+    coreLibraryDesugaring 'com.android.tools:desugar_jdk_libs:2.1.3'
 }
