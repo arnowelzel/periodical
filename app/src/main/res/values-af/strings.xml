@@ -85,6 +85,7 @@
         <item>Española</item>
         <item>Türkçe</item>
         <item>Українська</item>
+        <item>简体中文</item>
     </string-array>
     <string-array name="values_locales">
         <item>system</item>
@@ -109,6 +110,7 @@
         <item>es</item>
         <item>tr</item>
         <item>uk</item>
+        <item>zh-rCN</item>
     </string-array>
     <string name="pref_periodlength">Versteklengte</string>
     <string name="invalid_period_length">Die verstek periode lengte moet tussen 1 en 14 wees!</string>
@@ -145,7 +147,7 @@
     <string name="label_longest_cycle">Langste siklus</string>
     <string name="label_infertile">on-vrugbaar</string>
     <string name="label_fertile">vrugbaar</string>
-    <string name="label_fertile_standard">fertile std</string>
+    <string name="label_fertile_standard">vrugbaar</string>
     <string name="label_period_started">periode het begin</string>
     <string name="label_period">periode</string>
     <string name="label_period_predicted">periode voorspel</string>

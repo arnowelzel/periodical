@@ -85,6 +85,7 @@
         <item>Española</item>
         <item>Türkçe</item>
         <item>Українська</item>
+        <item>简体中文</item>
     </string-array>
     <string-array name="values_locales">
         <item>system</item>
@@ -109,6 +110,7 @@
         <item>es</item>
         <item>tr</item>
         <item>uk</item>
+        <item>zh-rCN</item>
     </string-array>
     <string name="pref_periodlength">طول دوره پریود به صورت پیش‌فرض (روز)</string>
     <string name="invalid_period_length">طول دوره پریود به صورت پیش‌فرض باید بین ۱ تا ۱۴ باشد!</string>
@@ -145,7 +147,7 @@
     <string name="label_longest_cycle">طولانی ترین چرخه</string>
     <string name="label_infertile">لقاح نشده</string>
     <string name="label_fertile">لقاح یافته</string>
-    <string name="label_fertile_standard">fertile std</string>
+    <string name="label_fertile_standard">پربار</string>
     <string name="label_period_started">پریود شروع شده</string>
     <string name="label_period">پریود</string>
     <string name="label_period_predicted">تخمین پریود</string>

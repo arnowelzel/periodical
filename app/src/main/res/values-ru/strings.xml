@@ -85,6 +85,7 @@
         <item>Española</item>
         <item>Türkçe</item>
         <item>Українська</item>
+        <item>简体中文</item>
     </string-array>
     <string-array name="values_locales">
         <item>system</item>
@@ -109,6 +110,7 @@
         <item>es</item>
         <item>tr</item>
         <item>uk</item>
+        <item>zh-rCN</item>
     </string-array>
     <string name="pref_periodlength">Продолжительность менструации по умолчанию (дней)</string>
     <string name="invalid_period_length">Продолжительность менструации по умолчанию должна быть от 1 до 14!</string>
@@ -145,7 +147,7 @@
     <string name="label_longest_cycle">Длинный цикл</string>
     <string name="label_infertile">нефертильный</string>
     <string name="label_fertile">фертильный</string>
-    <string name="label_fertile_standard">fertile std</string>
+    <string name="label_fertile_standard">фертильный</string>
     <string name="label_period_started">начало менструации</string>
     <string name="label_period">период</string>
     <string name="label_period_predicted">прогнозируемая менструация</string>

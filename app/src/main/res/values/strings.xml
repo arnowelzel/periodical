@@ -85,6 +85,7 @@
         <item>Española</item>
         <item>Türkçe</item>
         <item>Українська</item>
+        <item>简体中文</item>
     </string-array>
     <string-array name="values_locales">
         <item>system</item>
@@ -109,6 +110,7 @@
         <item>es</item>
         <item>tr</item>
         <item>uk</item>
+        <item>zh-rCN</item>
     </string-array>
     <string name="pref_periodlength">Default length of period (days)</string>
     <string name="invalid_period_length">The default period length must be between 1 and 14!</string>
@@ -145,7 +147,7 @@
     <string name="label_longest_cycle">Longest cycle</string>
     <string name="label_infertile">infertile</string>
     <string name="label_fertile">fertile</string>
-    <string name="label_fertile_standard">fertile std</string>
+    <string name="label_fertile_standard">fertile</string>
     <string name="label_period_started">period has started</string>
     <string name="label_period">period</string>
     <string name="label_period_predicted">period predicted</string>

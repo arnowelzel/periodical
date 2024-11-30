@@ -85,6 +85,7 @@
         <item>Española</item>
         <item>Türkçe</item>
         <item>Українська</item>
+        <item>简体中文</item>
     </string-array>
     <string-array name="values_locales">
         <item>system</item>
@@ -109,6 +110,7 @@
         <item>es</item>
         <item>tr</item>
         <item>uk</item>
+        <item>zh-rCN</item>
     </string-array>
     <string name="pref_periodlength">Âdet dönemi için varsayılan uzunluk (gün)</string>
     <string name="invalid_period_length">Varsayılan âdet dönemi uzunluğu 1 ile 14 arasında olmalı!</string>
@@ -145,7 +147,7 @@
     <string name="label_longest_cycle">En uzun döngü</string>
     <string name="label_infertile">kısır (infertil)</string>
     <string name="label_fertile">doğurgan</string>
-    <string name="label_fertile_standard">fertile std</string>
+    <string name="label_fertile_standard">doğurgan</string>
     <string name="label_period_started">âdet dönemi başladı</string>
     <string name="label_period">âdet dönemi</string>
     <string name="label_period_predicted">öngörülen âdet dönemi</string>
