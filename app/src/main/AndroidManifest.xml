@@ -8,7 +8,7 @@
 		android:icon="@drawable/periodical"
 		android:allowBackup="true"
         android:fullBackupContent="true"
-        android:theme="@style/Theme.AppCompat"
+        android:theme="@style/Theme.AppCompat.NoActionBar"
         android:supportsRtl="true"
         tools:ignore="GoogleAppIndexingWarning">
 

@@ -29,6 +29,7 @@ import android.preference.Preference;
 import android.preference.PreferenceGroup;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatDelegate;
+import androidx.appcompat.widget.Toolbar;
 
 import android.view.MenuItem;
 import android.widget.Toast;
@@ -132,10 +133,13 @@ public class PreferenceActivity extends AppCompatPreferenceActivity implements S
                     }
                 });
 
-        // Activate "back button" in Action Bar
+        // Set up main toolbar
+        /*
+        Toolbar toolbar = findViewById(R.id.toolbar);
         ActionBar actionBar = getSupportActionBar();
         assert actionBar != null;
         actionBar.setDisplayHomeAsUpEnabled(true);
+        */
     }
 
     /**

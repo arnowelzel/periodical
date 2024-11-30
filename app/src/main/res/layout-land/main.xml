@@ -5,1087 +5,1101 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context=".MainActivityApp"
-    tools:showIn="@layout/app_bar_main">
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/mainview"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="#ff000000"
-    android:baselineAligned="false"
-    android:orientation="horizontal"
-    tools:ignore="Overdraw,TooManyViews">
+    android:fitsSystemWindows="true">
 
-    <RelativeLayout
-        android:id="@+id/monthselector"
-        android:layout_width="216dp"
-        android:layout_height="wrap_content"
-        android:gravity="end"
-        android:orientation="horizontal">
+    <!-- App toolbar -->
 
-        <LinearLayout
-            android:id="@+id/monthbuttons"
-            android:layout_width="wrap_content"
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"
+        android:elevation="4dp"
+        android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        tools:context=".MainActivity"
+        tools:ignore="MissingConstraints" />
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/mainview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#ff000000"
+        android:baselineAligned="false"
+        android:orientation="horizontal"
+        android:layout_marginTop="?android:attr/actionBarSize"
+        tools:ignore="Overdraw,TooManyViews">
+
+        <RelativeLayout
+            android:id="@+id/monthselector"
+            android:layout_width="216dp"
             android:layout_height="wrap_content"
-            android:layoutDirection="ltr"
-            android:layout_centerHorizontal="true">
+            android:gravity="end"
+            android:orientation="horizontal">
 
-            <Button
-                android:id="@+id/buttonprev"
-                android:layout_width="54dp"
+            <LinearLayout
+                android:id="@+id/monthbuttons"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:contentDescription="@string/previous_month"
-                android:gravity="center"
-                android:drawableLeft="@drawable/ic_arrow_back_black_32dp"
-                android:onClick="goPrev" />
+                android:layoutDirection="ltr"
+                android:layout_centerHorizontal="true">
 
-            <Button
-                android:id="@+id/buttontoday"
-                android:layout_width="54dp"
-                android:layout_height="wrap_content"
-                android:contentDescription="@string/current_day"
-                android:drawableLeft="@drawable/ic_today_black_32dp"
-                android:gravity="center"
-                android:onClick="goCurrent" />
+                <Button
+                    android:id="@+id/buttonprev"
+                    android:layout_width="54dp"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="@string/previous_month"
+                    android:gravity="center"
+                    android:drawableLeft="@drawable/ic_arrow_back_black_32dp"
+                    android:onClick="goPrev" />
 
-            <Button
-                android:id="@+id/buttonnext"
-                android:layout_width="54dp"
-                android:layout_height="wrap_content"
-                android:contentDescription="@string/next_month"
-                android:drawableLeft="@drawable/ic_arrow_forward_black_32dp"
-                android:gravity="center"
-                android:onClick="goNext" />
+                <Button
+                    android:id="@+id/buttontoday"
+                    android:layout_width="54dp"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="@string/current_day"
+                    android:drawableLeft="@drawable/ic_today_black_32dp"
+                    android:gravity="center"
+                    android:onClick="goCurrent" />
 
-            <Button
-                android:id="@+id/buttoninfo"
-                android:layout_width="54dp"
-                android:layout_height="wrap_content"
-                android:contentDescription="@string/next_month"
-                android:drawableLeft="@drawable/ic_list_black_32dp"
-                android:gravity="center"
-                android:onClick="showInfo" />
-        </LinearLayout>
+                <Button
+                    android:id="@+id/buttonnext"
+                    android:layout_width="54dp"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="@string/next_month"
+                    android:drawableLeft="@drawable/ic_arrow_forward_black_32dp"
+                    android:gravity="center"
+                    android:onClick="goNext" />
 
-        <TextView
-            android:id="@+id/displaydate"
+                <Button
+                    android:id="@+id/buttoninfo"
+                    android:layout_width="54dp"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="@string/next_month"
+                    android:drawableLeft="@drawable/ic_list_black_32dp"
+                    android:gravity="center"
+                    android:onClick="showInfo" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/displaydate"
+                android:layout_width="fill_parent"
+                android:layout_height="54dp"
+                android:layout_below="@+id/monthbuttons"
+                android:gravity="center"
+                android:textColor="#ffffffff"
+                android:textStyle="bold"
+                android:textSize="18sp"/>
+        </RelativeLayout>
+
+        <ViewFlipper
+            android:id="@+id/mainwidget"
             android:layout_width="fill_parent"
-            android:layout_height="54dp"
-            android:layout_below="@+id/monthbuttons"
-            android:gravity="center"
-            android:textColor="#ffffffff"
-            android:textStyle="bold"
-            android:textSize="18sp"/>
-    </RelativeLayout>
+            android:layout_height="match_parent">
 
-    <ViewFlipper
-        android:id="@+id/mainwidget"
-        android:layout_width="fill_parent"
-        android:layout_height="match_parent">
-
-        <TableLayout
-            android:id="@+id/calendar"
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:shrinkColumns="*"
-            android:stretchColumns="*">
-
-            <TableRow
-                android:id="@+id/rowcaldays0"
+            <TableLayout
+                android:id="@+id/calendar"
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
-                android:layout_weight="0.6"
-                android:orientation="horizontal">
+                android:shrinkColumns="*"
+                android:stretchColumns="*">
 
-                <TextView
-                    android:id="@+id/daylabel0_0"
+                <TableRow
+                    android:id="@+id/rowcaldays0"
+                    android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
-                    android:contentDescription="@string/main_calday_su_description"
-                    android:gravity="center"
-                    android:textColor="#ffffffff"
-                    android:textStyle="bold"
-                    android:textSize="18sp" />
+                    android:layout_weight="0.6"
+                    android:orientation="horizontal">
 
-                <TextView
-                    android:id="@+id/daylabel0_1"
+                    <TextView
+                        android:id="@+id/daylabel0_0"
+                        android:layout_height="fill_parent"
+                        android:contentDescription="@string/main_calday_su_description"
+                        android:gravity="center"
+                        android:textColor="#ffffffff"
+                        android:textStyle="bold"
+                        android:textSize="18sp" />
+
+                    <TextView
+                        android:id="@+id/daylabel0_1"
+                        android:layout_height="fill_parent"
+                        android:contentDescription="@string/main_calday_mo_description"
+                        android:gravity="center"
+                        android:textColor="#ffffffff"
+                        android:textStyle="bold"
+                        android:textSize="18sp" />
+
+                    <TextView
+                        android:id="@+id/daylabel0_2"
+                        android:layout_height="fill_parent"
+                        android:contentDescription="@string/main_calday_tu_description"
+                        android:gravity="center"
+                        android:textColor="#ffffffff"
+                        android:textStyle="bold"
+                        android:textSize="18sp" />
+
+                    <TextView
+                        android:id="@+id/daylabel0_3"
+                        android:layout_height="fill_parent"
+                        android:contentDescription="@string/main_calday_we_description"
+                        android:gravity="center"
+                        android:textColor="#ffffffff"
+                        android:textStyle="bold"
+                        android:textSize="18sp" />
+
+                    <TextView
+                        android:id="@+id/daylabel0_4"
+                        android:layout_height="fill_parent"
+                        android:contentDescription="@string/main_calday_th_description"
+                        android:gravity="center"
+                        android:textColor="#ffffffff"
+                        android:textStyle="bold"
+                        android:textSize="18sp" />
+
+                    <TextView
+                        android:id="@+id/daylabel0_5"
+                        android:layout_height="fill_parent"
+                        android:contentDescription="@string/main_calday_fr_description"
+                        android:gravity="center"
+                        android:textColor="#ffffffff"
+                        android:textStyle="bold"
+                        android:textSize="18sp" />
+
+                    <TextView
+                        android:id="@+id/daylabel0_6"
+                        android:layout_height="fill_parent"
+                        android:contentDescription="@string/main_calday_sa_description"
+                        android:gravity="center"
+                        android:textColor="#ffffffff"
+                        android:textStyle="bold"
+                        android:textSize="18sp" />
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/rowcal0107"
+                    android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
-                    android:contentDescription="@string/main_calday_mo_description"
-                    android:gravity="center"
-                    android:textColor="#ffffffff"
-                    android:textStyle="bold"
-                    android:textSize="18sp" />
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
 
-                <TextView
-                    android:id="@+id/daylabel0_2"
+                    <de.arnowelzel.android.periodical.CalendarCell
+                        android:id="@+id/cal01"
+                        android:layout_height="fill_parent"
+                        android:layout_margin="1dp"
+                        android:background="@drawable/button_calendar"
+                        android:minHeight="10dp"
+                        android:minWidth="10dp"
+                        android:onClick="handleCalendarButton" />
+
+                    <de.arnowelzel.android.periodical.CalendarCell
+                        android:id="@+id/cal02"
+                        android:layout_height="fill_parent"
+                        android:layout_margin="1dp"
+                        android:background="@drawable/button_calendar"
+                        android:minHeight="10dp"
+                        android:minWidth="10dp"
+                        android:onClick="handleCalendarButton" />
+
+                    <de.arnowelzel.android.periodical.CalendarCell
+                        android:id="@+id/cal03"
+                        android:layout_height="fill_parent"
+                        android:layout_margin="1dp"
+                        android:background="@drawable/button_calendar"
+                        android:minHeight="10dp"
+                        android:minWidth="10dp"
+                        android:onClick="handleCalendarButton" />
+
+                    <de.arnowelzel.android.periodical.CalendarCell
+                        android:id="@+id/cal04"
+                        android:layout_height="fill_parent"
+                        android:layout_margin="1dp"
+                        android:background="@drawable/button_calendar"
+                        android:minHeight="10dp"
+                        android:minWidth="10dp"
+                        android:onClick="handleCalendarButton" />
+
+                    <de.arnowelzel.android.periodical.CalendarCell
+                        android:id="@+id/cal05"
+                        android:layout_height="fill_parent"
+                        android:layout_margin="1dp"
+                        android:background="@drawable/button_calendar"
+                        android:minHeight="10dp"
+                        android:minWidth="10dp"
+                        android:onClick="handleCalendarButton" />
+
+                    <de.arnowelzel.android.periodical.CalendarCell
+                        android:id="@+id/cal06"
+                        android:layout_height="fill_parent"
+                        android:layout_margin="1dp"
+                        android:background="@drawable/button_calendar"
+                        android:minHeight="10dp"
+                        android:minWidth="10dp"
+                        android:onClick="handleCalendarButton" />
+
+                    <de.arnowelzel.android.periodical.CalendarCell
+                        android:id="@+id/cal07"
+                        android:layout_height="fill_parent"
+                        android:layout_margin="1dp"
+                        android:background="@drawable/button_calendar"
+                        android:minHeight="10dp"
+                        android:minWidth="10dp"
+                        android:onClick="handleCalendarButton" />
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/rowcal0814"
+                    android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
-                    android:contentDescription="@string/main_calday_tu_description"
-                    android:gravity="center"
-                    android:textColor="#ffffffff"
-                    android:textStyle="bold"
-                    android:textSize="18sp" />
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
 
-                <TextView
-                    android:id="@+id/daylabel0_3"
+                    <de.arnowelzel.android.periodical.CalendarCell
+                        android:id="@+id/cal08"
+                        android:layout_height="fill_parent"
+                        android:layout_margin="1dp"
+                        android:background="@drawable/button_calendar"
+                        android:minHeight="10dp"
+                        android:minWidth="10dp"
+                        android:onClick="handleCalendarButton" />
+
+                    <de.arnowelzel.android.periodical.CalendarCell
+                        android:id="@+id/cal09"
+                        android:layout_height="fill_parent"
+                        android:layout_margin="1dp"
+                        android:background="@drawable/button_calendar"
+                        android:minHeight="10dp"
+                        android:minWidth="10dp"
+                        android:onClick="handleCalendarButton" />
+
+                    <de.arnowelzel.android.periodical.CalendarCell
+                        android:id="@+id/cal10"
+                        android:layout_height="fill_parent"
+                        android:layout_margin="1dp"
+                        android:background="@drawable/button_calendar"
+                        android:minHeight="10dp"
+                        android:minWidth="10dp"
+                        android:onClick="handleCalendarButton" />
+
+                    <de.arnowelzel.android.periodical.CalendarCell
+                        android:id="@+id/cal11"
+                        android:layout_height="fill_parent"
+                        android:layout_margin="1dp"
+                        android:background="@drawable/button_calendar"
+                        android:minHeight="10dp"
+                        android:minWidth="10dp"
+                        android:onClick="handleCalendarButton" />
+
+                    <de.arnowelzel.android.periodical.CalendarCell
+                        android:id="@+id/cal12"
+                        android:layout_height="fill_parent"
+                        android:layout_margin="1dp"
+                        android:background="@drawable/button_calendar"
+                        android:minHeight="10dp"
+                        android:minWidth="10dp"
+                        android:onClick="handleCalendarButton" />
+
+                    <de.arnowelzel.android.periodical.CalendarCell
+                        android:id="@+id/cal13"
+                        android:layout_height="fill_parent"
+                        android:layout_margin="1dp"
+                        android:background="@drawable/button_calendar"
+                        android:minHeight="10dp"
+                        android:minWidth="10dp"
+                        android:onClick="handleCalendarButton" />
+
+                    <de.arnowelzel.android.periodical.CalendarCell
+                        android:id="@+id/cal14"
+                        android:layout_height="fill_parent"
+                        android:layout_margin="1dp"
+                        android:background="@drawable/button_calendar"
+                        android:minHeight="10dp"
+                        android:minWidth="10dp"
+                        android:onClick="handleCalendarButton" />
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/rowcal1521"
+                    android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
-                    android:contentDescription="@string/main_calday_we_description"
-                    android:gravity="center"
-                    android:textColor="#ffffffff"
-                    android:textStyle="bold"
-                    android:textSize="18sp" />
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
 
-                <TextView
-                    android:id="@+id/daylabel0_4"
+                    <de.arnowelzel.android.periodical.CalendarCell
+                        android:id="@+id/cal15"
+                        android:layout_height="fill_parent"
+                        android:layout_margin="1dp"
+                        android:background="@drawable/button_calendar"
+                        android:minHeight="10dp"
+                        android:minWidth="10dp"
+                        android:onClick="handleCalendarButton" />
+
+                    <de.arnowelzel.android.periodical.CalendarCell
+                        android:id="@+id/cal16"
+                        android:layout_height="fill_parent"
+                        android:layout_margin="1dp"
+                        android:background="@drawable/button_calendar"
+                        android:minHeight="10dp"
+                        android:minWidth="10dp"
+                        android:onClick="handleCalendarButton" />
+
+                    <de.arnowelzel.android.periodical.CalendarCell
+                        android:id="@+id/cal17"
+                        android:layout_height="fill_parent"
+                        android:layout_margin="1dp"
+                        android:background="@drawable/button_calendar"
+                        android:minHeight="10dp"
+                        android:minWidth="10dp"
+                        android:onClick="handleCalendarButton" />
+
+                    <de.arnowelzel.android.periodical.CalendarCell
+                        android:id="@+id/cal18"
+                        android:layout_height="fill_parent"
+                        android:layout_margin="1dp"
+                        android:background="@drawable/button_calendar"
+                        android:minHeight="10dp"
+                        android:minWidth="10dp"
+                        android:onClick="handleCalendarButton" />
+
+                    <de.arnowelzel.android.periodical.CalendarCell
+                        android:id="@+id/cal19"
+                        android:layout_height="fill_parent"
+                        android:layout_margin="1dp"
+                        android:background="@drawable/button_calendar"
+                        android:minHeight="10dp"
+                        android:minWidth="10dp"
+                        android:onClick="handleCalendarButton" />
+
+                    <de.arnowelzel.android.periodical.CalendarCell
+                        android:id="@+id/cal20"
+                        android:layout_height="fill_parent"
+                        android:layout_margin="1dp"
+                        android:background="@drawable/button_calendar"
+                        android:minHeight="10dp"
+                        android:minWidth="10dp"
+                        android:onClick="handleCalendarButton" />
+
+                    <de.arnowelzel.android.periodical.CalendarCell
+                        android:id="@+id/cal21"
+                        android:layout_height="fill_parent"
+                        android:layout_margin="1dp"
+                        android:background="@drawable/button_calendar"
+                        android:minHeight="10dp"
+                        android:minWidth="10dp"
+                        android:onClick="handleCalendarButton" />
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/rowcal2228"
+                    android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
-                    android:contentDescription="@string/main_calday_th_description"
-                    android:gravity="center"
-                    android:textColor="#ffffffff"
-                    android:textStyle="bold"
-                    android:textSize="18sp" />
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
 
-                <TextView
-                    android:id="@+id/daylabel0_5"
+                    <de.arnowelzel.android.periodical.CalendarCell
+                        android:id="@+id/cal22"
+                        android:layout_height="fill_parent"
+                        android:layout_margin="1dp"
+                        android:background="@drawable/button_calendar"
+                        android:minHeight="10dp"
+                        android:minWidth="10dp"
+                        android:onClick="handleCalendarButton" />
+
+                    <de.arnowelzel.android.periodical.CalendarCell
+                        android:id="@+id/cal23"
+                        android:layout_height="fill_parent"
+                        android:layout_margin="1dp"
+                        android:background="@drawable/button_calendar"
+                        android:minHeight="10dp"
+                        android:minWidth="10dp"
+                        android:onClick="handleCalendarButton" />
+
+                    <de.arnowelzel.android.periodical.CalendarCell
+                        android:id="@+id/cal24"
+                        android:layout_height="fill_parent"
+                        android:layout_margin="1dp"
+                        android:background="@drawable/button_calendar"
+                        android:minHeight="10dp"
+                        android:minWidth="10dp"
+                        android:onClick="handleCalendarButton" />
+
+                    <de.arnowelzel.android.periodical.CalendarCell
+                        android:id="@+id/cal25"
+                        android:layout_height="fill_parent"
+                        android:layout_margin="1dp"
+                        android:background="@drawable/button_calendar"
+                        android:minHeight="10dp"
+                        android:minWidth="10dp"
+                        android:onClick="handleCalendarButton" />
+
+                    <de.arnowelzel.android.periodical.CalendarCell
+                        android:id="@+id/cal26"
+                        android:layout_height="fill_parent"
+                        android:layout_margin="1dp"
+                        android:background="@drawable/button_calendar"
+                        android:minHeight="10dp"
+                        android:minWidth="10dp"
+                        android:onClick="handleCalendarButton" />
+
+                    <de.arnowelzel.android.periodical.CalendarCell
+                        android:id="@+id/cal27"
+                        android:layout_height="fill_parent"
+                        android:layout_margin="1dp"
+                        android:background="@drawable/button_calendar"
+                        android:minHeight="10dp"
+                        android:minWidth="10dp"
+                        android:onClick="handleCalendarButton" />
+
+                    <de.arnowelzel.android.periodical.CalendarCell
+                        android:id="@+id/cal28"
+                        android:layout_height="fill_parent"
+                        android:layout_margin="1dp"
+                        android:background="@drawable/button_calendar"
+                        android:minHeight="10dp"
+                        android:minWidth="10dp"
+                        android:onClick="handleCalendarButton" />
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/rowcal2935"
+                    android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
-                    android:contentDescription="@string/main_calday_fr_description"
-                    android:gravity="center"
-                    android:textColor="#ffffffff"
-                    android:textStyle="bold"
-                    android:textSize="18sp" />
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
 
-                <TextView
-                    android:id="@+id/daylabel0_6"
+                    <de.arnowelzel.android.periodical.CalendarCell
+                        android:id="@+id/cal29"
+                        android:layout_height="fill_parent"
+                        android:layout_margin="1dp"
+                        android:background="@drawable/button_calendar"
+                        android:minHeight="10dp"
+                        android:minWidth="10dp"
+                        android:onClick="handleCalendarButton" />
+
+                    <de.arnowelzel.android.periodical.CalendarCell
+                        android:id="@+id/cal30"
+                        android:layout_height="fill_parent"
+                        android:layout_margin="1dp"
+                        android:background="@drawable/button_calendar"
+                        android:minHeight="10dp"
+                        android:minWidth="10dp"
+                        android:onClick="handleCalendarButton" />
+
+                    <de.arnowelzel.android.periodical.CalendarCell
+                        android:id="@+id/cal31"
+                        android:layout_height="fill_parent"
+                        android:layout_margin="1dp"
+                        android:background="@drawable/button_calendar"
+                        android:minHeight="10dp"
+                        android:minWidth="10dp"
+                        android:onClick="handleCalendarButton" />
+
+                    <de.arnowelzel.android.periodical.CalendarCell
+                        android:id="@+id/cal32"
+                        android:layout_height="fill_parent"
+                        android:layout_margin="1dp"
+                        android:background="@drawable/button_calendar"
+                        android:minHeight="10dp"
+                        android:minWidth="10dp"
+                        android:onClick="handleCalendarButton" />
+
+                    <de.arnowelzel.android.periodical.CalendarCell
+                        android:id="@+id/cal33"
+                        android:layout_height="fill_parent"
+                        android:layout_margin="1dp"
+                        android:background="@drawable/button_calendar"
+                        android:minHeight="10dp"
+                        android:minWidth="10dp"
+                        android:onClick="handleCalendarButton" />
+
+                    <de.arnowelzel.android.periodical.CalendarCell
+                        android:id="@+id/cal34"
+                        android:layout_height="fill_parent"
+                        android:layout_margin="1dp"
+                        android:background="@drawable/button_calendar"
+                        android:minHeight="10dp"
+                        android:minWidth="10dp"
+                        android:onClick="handleCalendarButton" />
+
+                    <de.arnowelzel.android.periodical.CalendarCell
+                        android:id="@+id/cal35"
+                        android:layout_height="fill_parent"
+                        android:layout_margin="1dp"
+                        android:background="@drawable/button_calendar"
+                        android:minHeight="10dp"
+                        android:minWidth="10dp"
+                        android:onClick="handleCalendarButton" />
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/rowcal3642"
+                    android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
-                    android:contentDescription="@string/main_calday_sa_description"
-                    android:gravity="center"
-                    android:textColor="#ffffffff"
-                    android:textStyle="bold"
-                    android:textSize="18sp" />
-            </TableRow>
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
 
-            <TableRow
-                android:id="@+id/rowcal0107"
+                    <de.arnowelzel.android.periodical.CalendarCell
+                        android:id="@+id/cal36"
+                        android:layout_height="fill_parent"
+                        android:layout_margin="1dp"
+                        android:background="@drawable/button_calendar"
+                        android:minHeight="10dp"
+                        android:minWidth="10dp"
+                        android:onClick="handleCalendarButton" />
+
+                    <de.arnowelzel.android.periodical.CalendarCell
+                        android:id="@+id/cal37"
+                        android:layout_height="fill_parent"
+                        android:layout_margin="1dp"
+                        android:background="@drawable/button_calendar"
+                        android:minHeight="10dp"
+                        android:minWidth="10dp"
+                        android:onClick="handleCalendarButton" />
+
+                    <de.arnowelzel.android.periodical.CalendarCell
+                        android:id="@+id/cal38"
+                        android:layout_height="fill_parent"
+                        android:layout_margin="1dp"
+                        android:background="@drawable/button_calendar"
+                        android:minHeight="10dp"
+                        android:minWidth="10dp"
+                        android:onClick="handleCalendarButton" />
+
+                    <de.arnowelzel.android.periodical.CalendarCell
+                        android:id="@+id/cal39"
+                        android:layout_height="fill_parent"
+                        android:layout_margin="1dp"
+                        android:background="@drawable/button_calendar"
+                        android:minHeight="10dp"
+                        android:minWidth="10dp"
+                        android:onClick="handleCalendarButton" />
+
+                    <de.arnowelzel.android.periodical.CalendarCell
+                        android:id="@+id/cal40"
+                        android:layout_height="fill_parent"
+                        android:layout_margin="1dp"
+                        android:background="@drawable/button_calendar"
+                        android:minHeight="10dp"
+                        android:minWidth="10dp"
+                        android:onClick="handleCalendarButton" />
+
+                    <de.arnowelzel.android.periodical.CalendarCell
+                        android:id="@+id/cal41"
+                        android:layout_height="fill_parent"
+                        android:layout_margin="1dp"
+                        android:background="@drawable/button_calendar"
+                        android:minHeight="10dp"
+                        android:minWidth="10dp"
+                        android:onClick="handleCalendarButton" />
+
+                    <de.arnowelzel.android.periodical.CalendarCell
+                        android:id="@+id/cal42"
+                        android:layout_height="fill_parent"
+                        android:layout_margin="1dp"
+                        android:background="@drawable/button_calendar"
+                        android:minHeight="10dp"
+                        android:minWidth="10dp"
+                        android:onClick="handleCalendarButton" />
+                </TableRow>
+            </TableLayout>
+
+            <TableLayout
+                android:id="@+id/calendar_2"
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
-                android:layout_weight="1"
-                android:orientation="horizontal">
-
-                <de.arnowelzel.android.periodical.CalendarCell
-                    android:id="@+id/cal01"
-                    android:layout_height="fill_parent"
-                    android:layout_margin="1dp"
-                    android:background="@drawable/button_calendar"
-                    android:minHeight="10dp"
-                    android:minWidth="10dp"
-                    android:onClick="handleCalendarButton" />
-
-                <de.arnowelzel.android.periodical.CalendarCell
-                    android:id="@+id/cal02"
-                    android:layout_height="fill_parent"
-                    android:layout_margin="1dp"
-                    android:background="@drawable/button_calendar"
-                    android:minHeight="10dp"
-                    android:minWidth="10dp"
-                    android:onClick="handleCalendarButton" />
-
-                <de.arnowelzel.android.periodical.CalendarCell
-                    android:id="@+id/cal03"
-                    android:layout_height="fill_parent"
-                    android:layout_margin="1dp"
-                    android:background="@drawable/button_calendar"
-                    android:minHeight="10dp"
-                    android:minWidth="10dp"
-                    android:onClick="handleCalendarButton" />
-
-                <de.arnowelzel.android.periodical.CalendarCell
-                    android:id="@+id/cal04"
-                    android:layout_height="fill_parent"
-                    android:layout_margin="1dp"
-                    android:background="@drawable/button_calendar"
-                    android:minHeight="10dp"
-                    android:minWidth="10dp"
-                    android:onClick="handleCalendarButton" />
-
-                <de.arnowelzel.android.periodical.CalendarCell
-                    android:id="@+id/cal05"
-                    android:layout_height="fill_parent"
-                    android:layout_margin="1dp"
-                    android:background="@drawable/button_calendar"
-                    android:minHeight="10dp"
-                    android:minWidth="10dp"
-                    android:onClick="handleCalendarButton" />
-
-                <de.arnowelzel.android.periodical.CalendarCell
-                    android:id="@+id/cal06"
-                    android:layout_height="fill_parent"
-                    android:layout_margin="1dp"
-                    android:background="@drawable/button_calendar"
-                    android:minHeight="10dp"
-                    android:minWidth="10dp"
-                    android:onClick="handleCalendarButton" />
-
-                <de.arnowelzel.android.periodical.CalendarCell
-                    android:id="@+id/cal07"
-                    android:layout_height="fill_parent"
-                    android:layout_margin="1dp"
-                    android:background="@drawable/button_calendar"
-                    android:minHeight="10dp"
-                    android:minWidth="10dp"
-                    android:onClick="handleCalendarButton" />
-            </TableRow>
-
-            <TableRow
-                android:id="@+id/rowcal0814"
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
-                android:layout_weight="1"
-                android:orientation="horizontal">
-
-                <de.arnowelzel.android.periodical.CalendarCell
-                    android:id="@+id/cal08"
-                    android:layout_height="fill_parent"
-                    android:layout_margin="1dp"
-                    android:background="@drawable/button_calendar"
-                    android:minHeight="10dp"
-                    android:minWidth="10dp"
-                    android:onClick="handleCalendarButton" />
-
-                <de.arnowelzel.android.periodical.CalendarCell
-                    android:id="@+id/cal09"
-                    android:layout_height="fill_parent"
-                    android:layout_margin="1dp"
-                    android:background="@drawable/button_calendar"
-                    android:minHeight="10dp"
-                    android:minWidth="10dp"
-                    android:onClick="handleCalendarButton" />
-
-                <de.arnowelzel.android.periodical.CalendarCell
-                    android:id="@+id/cal10"
-                    android:layout_height="fill_parent"
-                    android:layout_margin="1dp"
-                    android:background="@drawable/button_calendar"
-                    android:minHeight="10dp"
-                    android:minWidth="10dp"
-                    android:onClick="handleCalendarButton" />
-
-                <de.arnowelzel.android.periodical.CalendarCell
-                    android:id="@+id/cal11"
-                    android:layout_height="fill_parent"
-                    android:layout_margin="1dp"
-                    android:background="@drawable/button_calendar"
-                    android:minHeight="10dp"
-                    android:minWidth="10dp"
-                    android:onClick="handleCalendarButton" />
-
-                <de.arnowelzel.android.periodical.CalendarCell
-                    android:id="@+id/cal12"
-                    android:layout_height="fill_parent"
-                    android:layout_margin="1dp"
-                    android:background="@drawable/button_calendar"
-                    android:minHeight="10dp"
-                    android:minWidth="10dp"
-                    android:onClick="handleCalendarButton" />
-
-                <de.arnowelzel.android.periodical.CalendarCell
-                    android:id="@+id/cal13"
-                    android:layout_height="fill_parent"
-                    android:layout_margin="1dp"
-                    android:background="@drawable/button_calendar"
-                    android:minHeight="10dp"
-                    android:minWidth="10dp"
-                    android:onClick="handleCalendarButton" />
-
-                <de.arnowelzel.android.periodical.CalendarCell
-                    android:id="@+id/cal14"
-                    android:layout_height="fill_parent"
-                    android:layout_margin="1dp"
-                    android:background="@drawable/button_calendar"
-                    android:minHeight="10dp"
-                    android:minWidth="10dp"
-                    android:onClick="handleCalendarButton" />
-            </TableRow>
-
-            <TableRow
-                android:id="@+id/rowcal1521"
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
-                android:layout_weight="1"
-                android:orientation="horizontal">
-
-                <de.arnowelzel.android.periodical.CalendarCell
-                    android:id="@+id/cal15"
-                    android:layout_height="fill_parent"
-                    android:layout_margin="1dp"
-                    android:background="@drawable/button_calendar"
-                    android:minHeight="10dp"
-                    android:minWidth="10dp"
-                    android:onClick="handleCalendarButton" />
-
-                <de.arnowelzel.android.periodical.CalendarCell
-                    android:id="@+id/cal16"
-                    android:layout_height="fill_parent"
-                    android:layout_margin="1dp"
-                    android:background="@drawable/button_calendar"
-                    android:minHeight="10dp"
-                    android:minWidth="10dp"
-                    android:onClick="handleCalendarButton" />
-
-                <de.arnowelzel.android.periodical.CalendarCell
-                    android:id="@+id/cal17"
-                    android:layout_height="fill_parent"
-                    android:layout_margin="1dp"
-                    android:background="@drawable/button_calendar"
-                    android:minHeight="10dp"
-                    android:minWidth="10dp"
-                    android:onClick="handleCalendarButton" />
-
-                <de.arnowelzel.android.periodical.CalendarCell
-                    android:id="@+id/cal18"
-                    android:layout_height="fill_parent"
-                    android:layout_margin="1dp"
-                    android:background="@drawable/button_calendar"
-                    android:minHeight="10dp"
-                    android:minWidth="10dp"
-                    android:onClick="handleCalendarButton" />
-
-                <de.arnowelzel.android.periodical.CalendarCell
-                    android:id="@+id/cal19"
-                    android:layout_height="fill_parent"
-                    android:layout_margin="1dp"
-                    android:background="@drawable/button_calendar"
-                    android:minHeight="10dp"
-                    android:minWidth="10dp"
-                    android:onClick="handleCalendarButton" />
-
-                <de.arnowelzel.android.periodical.CalendarCell
-                    android:id="@+id/cal20"
-                    android:layout_height="fill_parent"
-                    android:layout_margin="1dp"
-                    android:background="@drawable/button_calendar"
-                    android:minHeight="10dp"
-                    android:minWidth="10dp"
-                    android:onClick="handleCalendarButton" />
-
-                <de.arnowelzel.android.periodical.CalendarCell
-                    android:id="@+id/cal21"
-                    android:layout_height="fill_parent"
-                    android:layout_margin="1dp"
-                    android:background="@drawable/button_calendar"
-                    android:minHeight="10dp"
-                    android:minWidth="10dp"
-                    android:onClick="handleCalendarButton" />
-            </TableRow>
-
-            <TableRow
-                android:id="@+id/rowcal2228"
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
-                android:layout_weight="1"
-                android:orientation="horizontal">
-
-                <de.arnowelzel.android.periodical.CalendarCell
-                    android:id="@+id/cal22"
-                    android:layout_height="fill_parent"
-                    android:layout_margin="1dp"
-                    android:background="@drawable/button_calendar"
-                    android:minHeight="10dp"
-                    android:minWidth="10dp"
-                    android:onClick="handleCalendarButton" />
-
-                <de.arnowelzel.android.periodical.CalendarCell
-                    android:id="@+id/cal23"
-                    android:layout_height="fill_parent"
-                    android:layout_margin="1dp"
-                    android:background="@drawable/button_calendar"
-                    android:minHeight="10dp"
-                    android:minWidth="10dp"
-                    android:onClick="handleCalendarButton" />
-
-                <de.arnowelzel.android.periodical.CalendarCell
-                    android:id="@+id/cal24"
-                    android:layout_height="fill_parent"
-                    android:layout_margin="1dp"
-                    android:background="@drawable/button_calendar"
-                    android:minHeight="10dp"
-                    android:minWidth="10dp"
-                    android:onClick="handleCalendarButton" />
-
-                <de.arnowelzel.android.periodical.CalendarCell
-                    android:id="@+id/cal25"
-                    android:layout_height="fill_parent"
-                    android:layout_margin="1dp"
-                    android:background="@drawable/button_calendar"
-                    android:minHeight="10dp"
-                    android:minWidth="10dp"
-                    android:onClick="handleCalendarButton" />
-
-                <de.arnowelzel.android.periodical.CalendarCell
-                    android:id="@+id/cal26"
-                    android:layout_height="fill_parent"
-                    android:layout_margin="1dp"
-                    android:background="@drawable/button_calendar"
-                    android:minHeight="10dp"
-                    android:minWidth="10dp"
-                    android:onClick="handleCalendarButton" />
-
-                <de.arnowelzel.android.periodical.CalendarCell
-                    android:id="@+id/cal27"
-                    android:layout_height="fill_parent"
-                    android:layout_margin="1dp"
-                    android:background="@drawable/button_calendar"
-                    android:minHeight="10dp"
-                    android:minWidth="10dp"
-                    android:onClick="handleCalendarButton" />
-
-                <de.arnowelzel.android.periodical.CalendarCell
-                    android:id="@+id/cal28"
-                    android:layout_height="fill_parent"
-                    android:layout_margin="1dp"
-                    android:background="@drawable/button_calendar"
-                    android:minHeight="10dp"
-                    android:minWidth="10dp"
-                    android:onClick="handleCalendarButton" />
-            </TableRow>
-
-            <TableRow
-                android:id="@+id/rowcal2935"
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
-                android:layout_weight="1"
-                android:orientation="horizontal">
-
-                <de.arnowelzel.android.periodical.CalendarCell
-                    android:id="@+id/cal29"
-                    android:layout_height="fill_parent"
-                    android:layout_margin="1dp"
-                    android:background="@drawable/button_calendar"
-                    android:minHeight="10dp"
-                    android:minWidth="10dp"
-                    android:onClick="handleCalendarButton" />
-
-                <de.arnowelzel.android.periodical.CalendarCell
-                    android:id="@+id/cal30"
-                    android:layout_height="fill_parent"
-                    android:layout_margin="1dp"
-                    android:background="@drawable/button_calendar"
-                    android:minHeight="10dp"
-                    android:minWidth="10dp"
-                    android:onClick="handleCalendarButton" />
-
-                <de.arnowelzel.android.periodical.CalendarCell
-                    android:id="@+id/cal31"
-                    android:layout_height="fill_parent"
-                    android:layout_margin="1dp"
-                    android:background="@drawable/button_calendar"
-                    android:minHeight="10dp"
-                    android:minWidth="10dp"
-                    android:onClick="handleCalendarButton" />
-
-                <de.arnowelzel.android.periodical.CalendarCell
-                    android:id="@+id/cal32"
-                    android:layout_height="fill_parent"
-                    android:layout_margin="1dp"
-                    android:background="@drawable/button_calendar"
-                    android:minHeight="10dp"
-                    android:minWidth="10dp"
-                    android:onClick="handleCalendarButton" />
-
-                <de.arnowelzel.android.periodical.CalendarCell
-                    android:id="@+id/cal33"
-                    android:layout_height="fill_parent"
-                    android:layout_margin="1dp"
-                    android:background="@drawable/button_calendar"
-                    android:minHeight="10dp"
-                    android:minWidth="10dp"
-                    android:onClick="handleCalendarButton" />
-
-                <de.arnowelzel.android.periodical.CalendarCell
-                    android:id="@+id/cal34"
-                    android:layout_height="fill_parent"
-                    android:layout_margin="1dp"
-                    android:background="@drawable/button_calendar"
-                    android:minHeight="10dp"
-                    android:minWidth="10dp"
-                    android:onClick="handleCalendarButton" />
-
-                <de.arnowelzel.android.periodical.CalendarCell
-                    android:id="@+id/cal35"
-                    android:layout_height="fill_parent"
-                    android:layout_margin="1dp"
-                    android:background="@drawable/button_calendar"
-                    android:minHeight="10dp"
-                    android:minWidth="10dp"
-                    android:onClick="handleCalendarButton" />
-            </TableRow>
-
-            <TableRow
-                android:id="@+id/rowcal3642"
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
-                android:layout_weight="1"
-                android:orientation="horizontal">
-
-                <de.arnowelzel.android.periodical.CalendarCell
-                    android:id="@+id/cal36"
-                    android:layout_height="fill_parent"
-                    android:layout_margin="1dp"
-                    android:background="@drawable/button_calendar"
-                    android:minHeight="10dp"
-                    android:minWidth="10dp"
-                    android:onClick="handleCalendarButton" />
-
-                <de.arnowelzel.android.periodical.CalendarCell
-                    android:id="@+id/cal37"
-                    android:layout_height="fill_parent"
-                    android:layout_margin="1dp"
-                    android:background="@drawable/button_calendar"
-                    android:minHeight="10dp"
-                    android:minWidth="10dp"
-                    android:onClick="handleCalendarButton" />
-
-                <de.arnowelzel.android.periodical.CalendarCell
-                    android:id="@+id/cal38"
-                    android:layout_height="fill_parent"
-                    android:layout_margin="1dp"
-                    android:background="@drawable/button_calendar"
-                    android:minHeight="10dp"
-                    android:minWidth="10dp"
-                    android:onClick="handleCalendarButton" />
-
-                <de.arnowelzel.android.periodical.CalendarCell
-                    android:id="@+id/cal39"
-                    android:layout_height="fill_parent"
-                    android:layout_margin="1dp"
-                    android:background="@drawable/button_calendar"
-                    android:minHeight="10dp"
-                    android:minWidth="10dp"
-                    android:onClick="handleCalendarButton" />
-
-                <de.arnowelzel.android.periodical.CalendarCell
-                    android:id="@+id/cal40"
-                    android:layout_height="fill_parent"
-                    android:layout_margin="1dp"
-                    android:background="@drawable/button_calendar"
-                    android:minHeight="10dp"
-                    android:minWidth="10dp"
-                    android:onClick="handleCalendarButton" />
-
-                <de.arnowelzel.android.periodical.CalendarCell
-                    android:id="@+id/cal41"
-                    android:layout_height="fill_parent"
-                    android:layout_margin="1dp"
-                    android:background="@drawable/button_calendar"
-                    android:minHeight="10dp"
-                    android:minWidth="10dp"
-                    android:onClick="handleCalendarButton" />
-
-                <de.arnowelzel.android.periodical.CalendarCell
-                    android:id="@+id/cal42"
-                    android:layout_height="fill_parent"
-                    android:layout_margin="1dp"
-                    android:background="@drawable/button_calendar"
-                    android:minHeight="10dp"
-                    android:minWidth="10dp"
-                    android:onClick="handleCalendarButton" />
-            </TableRow>
-        </TableLayout>
-
-        <TableLayout
-            android:id="@+id/calendar_2"
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:shrinkColumns="*"
-            android:stretchColumns="*">
-
-            <TableRow
-                android:id="@+id/rowcaldays1"
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
-                android:layout_weight="0.6"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:id="@+id/daylabel1_0"
-                    android:layout_height="fill_parent"
-                    android:gravity="center"
-                    android:textColor="#ffffffff"
-                    android:textStyle="bold"
-                    android:textSize="18sp" />
-
-                <TextView
-                    android:id="@+id/daylabel1_1"
-                    android:layout_height="fill_parent"
-                    android:gravity="center"
-                    android:textColor="#ffffffff"
-                    android:textStyle="bold"
-                    android:textSize="18sp" />
-
-                <TextView
-                    android:id="@+id/daylabel1_2"
-                    android:layout_height="fill_parent"
-                    android:gravity="center"
-                    android:textColor="#ffffffff"
-                    android:textStyle="bold"
-                    android:textSize="18sp" />
-
-                <TextView
-                    android:id="@+id/daylabel1_3"
-                    android:layout_height="fill_parent"
-                    android:gravity="center"
-                    android:textColor="#ffffffff"
-                    android:textStyle="bold"
-                    android:textSize="18sp" />
-
-                <TextView
-                    android:id="@+id/daylabel1_4"
-                    android:layout_height="fill_parent"
-                    android:gravity="center"
-                    android:textColor="#ffffffff"
-                    android:textStyle="bold"
-                    android:textSize="18sp" />
-
-                <TextView
-                    android:id="@+id/daylabel1_5"
-                    android:layout_height="fill_parent"
-                    android:gravity="center"
-                    android:textColor="#ffffffff"
-                    android:textStyle="bold"
-                    android:textSize="18sp" />
-
-                <TextView
-                    android:id="@+id/daylabel1_6"
-                    android:layout_height="fill_parent"
-                    android:gravity="center"
-                    android:textColor="#ffffffff"
-                    android:textStyle="bold"
-                    android:textSize="18sp" />
-            </TableRow>
-
-            <TableRow
-                android:id="@+id/rowcal0107_2"
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
-                android:layout_weight="1"
-                android:orientation="horizontal">
-
-                <de.arnowelzel.android.periodical.CalendarCell
-                    android:id="@+id/cal01_2"
-                    android:layout_height="fill_parent"
-                    android:layout_margin="1dp"
-                    android:background="@drawable/button_calendar"
-                    android:minHeight="10dp"
-                    android:minWidth="10dp"
-                    android:onClick="handleCalendarButton" />
-
-                <de.arnowelzel.android.periodical.CalendarCell
-                    android:id="@+id/cal02_2"
-                    android:layout_height="fill_parent"
-                    android:layout_margin="1dp"
-                    android:background="@drawable/button_calendar"
-                    android:minHeight="10dp"
-                    android:minWidth="10dp"
-                    android:onClick="handleCalendarButton" />
-
-                <de.arnowelzel.android.periodical.CalendarCell
-                    android:id="@+id/cal03_2"
-                    android:layout_height="fill_parent"
-                    android:layout_margin="1dp"
-                    android:background="@drawable/button_calendar"
-                    android:minHeight="10dp"
-                    android:minWidth="10dp"
-                    android:onClick="handleCalendarButton" />
-
-                <de.arnowelzel.android.periodical.CalendarCell
-                    android:id="@+id/cal04_2"
-                    android:layout_height="fill_parent"
-                    android:layout_margin="1dp"
-                    android:background="@drawable/button_calendar"
-                    android:minHeight="10dp"
-                    android:minWidth="10dp"
-                    android:onClick="handleCalendarButton" />
-
-                <de.arnowelzel.android.periodical.CalendarCell
-                    android:id="@+id/cal05_2"
-                    android:layout_height="fill_parent"
-                    android:layout_margin="1dp"
-                    android:background="@drawable/button_calendar"
-                    android:minHeight="10dp"
-                    android:minWidth="10dp"
-                    android:onClick="handleCalendarButton" />
-
-                <de.arnowelzel.android.periodical.CalendarCell
-                    android:id="@+id/cal06_2"
-                    android:layout_height="fill_parent"
-                    android:layout_margin="1dp"
-                    android:background="@drawable/button_calendar"
-                    android:minHeight="10dp"
-                    android:minWidth="10dp"
-                    android:onClick="handleCalendarButton" />
-
-                <de.arnowelzel.android.periodical.CalendarCell
-                    android:id="@+id/cal07_2"
-                    android:layout_height="fill_parent"
-                    android:layout_margin="1dp"
-                    android:background="@drawable/button_calendar"
-                    android:minHeight="10dp"
-                    android:minWidth="10dp"
-                    android:onClick="handleCalendarButton" />
-            </TableRow>
-
-            <TableRow
-                android:id="@+id/rowcal0814_2"
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
-                android:layout_weight="1"
-                android:orientation="horizontal">
-
-                <de.arnowelzel.android.periodical.CalendarCell
-                    android:id="@+id/cal08_2"
-                    android:layout_height="fill_parent"
-                    android:layout_margin="1dp"
-                    android:background="@drawable/button_calendar"
-                    android:minHeight="10dp"
-                    android:minWidth="10dp"
-                    android:onClick="handleCalendarButton" />
-
-                <de.arnowelzel.android.periodical.CalendarCell
-                    android:id="@+id/cal09_2"
-                    android:layout_height="fill_parent"
-                    android:layout_margin="1dp"
-                    android:background="@drawable/button_calendar"
-                    android:minHeight="10dp"
-                    android:minWidth="10dp"
-                    android:onClick="handleCalendarButton" />
-
-                <de.arnowelzel.android.periodical.CalendarCell
-                    android:id="@+id/cal10_2"
-                    android:layout_height="fill_parent"
-                    android:layout_margin="1dp"
-                    android:background="@drawable/button_calendar"
-                    android:minHeight="10dp"
-                    android:minWidth="10dp"
-                    android:onClick="handleCalendarButton" />
-
-                <de.arnowelzel.android.periodical.CalendarCell
-                    android:id="@+id/cal11_2"
-                    android:layout_height="fill_parent"
-                    android:layout_margin="1dp"
-                    android:background="@drawable/button_calendar"
-                    android:minHeight="10dp"
-                    android:minWidth="10dp"
-                    android:onClick="handleCalendarButton" />
-
-                <de.arnowelzel.android.periodical.CalendarCell
-                    android:id="@+id/cal12_2"
-                    android:layout_height="fill_parent"
-                    android:layout_margin="1dp"
-                    android:background="@drawable/button_calendar"
-                    android:minHeight="10dp"
-                    android:minWidth="10dp"
-                    android:onClick="handleCalendarButton" />
-
-                <de.arnowelzel.android.periodical.CalendarCell
-                    android:id="@+id/cal13_2"
-                    android:layout_height="fill_parent"
-                    android:layout_margin="1dp"
-                    android:background="@drawable/button_calendar"
-                    android:minHeight="10dp"
-                    android:minWidth="10dp"
-                    android:onClick="handleCalendarButton" />
-
-                <de.arnowelzel.android.periodical.CalendarCell
-                    android:id="@+id/cal14_2"
-                    android:layout_height="fill_parent"
-                    android:layout_margin="1dp"
-                    android:background="@drawable/button_calendar"
-                    android:minHeight="10dp"
-                    android:minWidth="10dp"
-                    android:onClick="handleCalendarButton" />
-            </TableRow>
-
-            <TableRow
-                android:id="@+id/rowcal1521_2"
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
-                android:layout_weight="1"
-                android:orientation="horizontal">
-
-                <de.arnowelzel.android.periodical.CalendarCell
-                    android:id="@+id/cal15_2"
-                    android:layout_height="fill_parent"
-                    android:layout_margin="1dp"
-                    android:background="@drawable/button_calendar"
-                    android:minHeight="10dp"
-                    android:minWidth="10dp"
-                    android:onClick="handleCalendarButton" />
-
-                <de.arnowelzel.android.periodical.CalendarCell
-                    android:id="@+id/cal16_2"
-                    android:layout_height="fill_parent"
-                    android:layout_margin="1dp"
-                    android:background="@drawable/button_calendar"
-                    android:minHeight="10dp"
-                    android:minWidth="10dp"
-                    android:onClick="handleCalendarButton" />
-
-                <de.arnowelzel.android.periodical.CalendarCell
-                    android:id="@+id/cal17_2"
-                    android:layout_height="fill_parent"
-                    android:layout_margin="1dp"
-                    android:background="@drawable/button_calendar"
-                    android:minHeight="10dp"
-                    android:minWidth="10dp"
-                    android:onClick="handleCalendarButton" />
-
-                <de.arnowelzel.android.periodical.CalendarCell
-                    android:id="@+id/cal18_2"
-                    android:layout_height="fill_parent"
-                    android:layout_margin="1dp"
-                    android:background="@drawable/button_calendar"
-                    android:minHeight="10dp"
-                    android:minWidth="10dp"
-                    android:onClick="handleCalendarButton" />
-
-                <de.arnowelzel.android.periodical.CalendarCell
-                    android:id="@+id/cal19_2"
-                    android:layout_height="fill_parent"
-                    android:layout_margin="1dp"
-                    android:background="@drawable/button_calendar"
-                    android:minHeight="10dp"
-                    android:minWidth="10dp"
-                    android:onClick="handleCalendarButton" />
-
-                <de.arnowelzel.android.periodical.CalendarCell
-                    android:id="@+id/cal20_2"
-                    android:layout_height="fill_parent"
-                    android:layout_margin="1dp"
-                    android:background="@drawable/button_calendar"
-                    android:minHeight="10dp"
-                    android:minWidth="10dp"
-                    android:onClick="handleCalendarButton" />
-
-                <de.arnowelzel.android.periodical.CalendarCell
-                    android:id="@+id/cal21_2"
-                    android:layout_height="fill_parent"
-                    android:layout_margin="1dp"
-                    android:background="@drawable/button_calendar"
-                    android:minHeight="10dp"
-                    android:minWidth="10dp"
-                    android:onClick="handleCalendarButton" />
-            </TableRow>
-
-            <TableRow
-                android:id="@+id/rowcal2228_2"
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
-                android:layout_weight="1"
-                android:orientation="horizontal">
-
-                <de.arnowelzel.android.periodical.CalendarCell
-                    android:id="@+id/cal22_2"
-                    android:layout_height="fill_parent"
-                    android:layout_margin="1dp"
-                    android:background="@drawable/button_calendar"
-                    android:minHeight="10dp"
-                    android:minWidth="10dp"
-                    android:onClick="handleCalendarButton" />
-
-                <de.arnowelzel.android.periodical.CalendarCell
-                    android:id="@+id/cal23_2"
-                    android:layout_height="fill_parent"
-                    android:layout_margin="1dp"
-                    android:background="@drawable/button_calendar"
-                    android:minHeight="10dp"
-                    android:minWidth="10dp"
-                    android:onClick="handleCalendarButton" />
-
-                <de.arnowelzel.android.periodical.CalendarCell
-                    android:id="@+id/cal24_2"
-                    android:layout_height="fill_parent"
-                    android:layout_margin="1dp"
-                    android:background="@drawable/button_calendar"
-                    android:minHeight="10dp"
-                    android:minWidth="10dp"
-                    android:onClick="handleCalendarButton" />
-
-                <de.arnowelzel.android.periodical.CalendarCell
-                    android:id="@+id/cal25_2"
-                    android:layout_height="fill_parent"
-                    android:layout_margin="1dp"
-                    android:background="@drawable/button_calendar"
-                    android:minHeight="10dp"
-                    android:minWidth="10dp"
-                    android:onClick="handleCalendarButton" />
-
-                <de.arnowelzel.android.periodical.CalendarCell
-                    android:id="@+id/cal26_2"
-                    android:layout_height="fill_parent"
-                    android:layout_margin="1dp"
-                    android:background="@drawable/button_calendar"
-                    android:minHeight="10dp"
-                    android:minWidth="10dp"
-                    android:onClick="handleCalendarButton" />
-
-                <de.arnowelzel.android.periodical.CalendarCell
-                    android:id="@+id/cal27_2"
-                    android:layout_height="fill_parent"
-                    android:layout_margin="1dp"
-                    android:background="@drawable/button_calendar"
-                    android:minHeight="10dp"
-                    android:minWidth="10dp"
-                    android:onClick="handleCalendarButton" />
-
-                <de.arnowelzel.android.periodical.CalendarCell
-                    android:id="@+id/cal28_2"
-                    android:layout_height="fill_parent"
-                    android:layout_margin="1dp"
-                    android:background="@drawable/button_calendar"
-                    android:minHeight="10dp"
-                    android:minWidth="10dp"
-                    android:onClick="handleCalendarButton" />
-            </TableRow>
-
-            <TableRow
-                android:id="@+id/rowcal2935_2"
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
-                android:layout_weight="1"
-                android:orientation="horizontal">
-
-                <de.arnowelzel.android.periodical.CalendarCell
-                    android:id="@+id/cal29_2"
-                    android:layout_height="fill_parent"
-                    android:layout_margin="1dp"
-                    android:background="@drawable/button_calendar"
-                    android:minHeight="10dp"
-                    android:minWidth="10dp"
-                    android:onClick="handleCalendarButton" />
-
-                <de.arnowelzel.android.periodical.CalendarCell
-                    android:id="@+id/cal30_2"
-                    android:layout_height="fill_parent"
-                    android:layout_margin="1dp"
-                    android:background="@drawable/button_calendar"
-                    android:minHeight="10dp"
-                    android:minWidth="10dp"
-                    android:onClick="handleCalendarButton" />
-
-                <de.arnowelzel.android.periodical.CalendarCell
-                    android:id="@+id/cal31_2"
-                    android:layout_height="fill_parent"
-                    android:layout_margin="1dp"
-                    android:background="@drawable/button_calendar"
-                    android:minHeight="10dp"
-                    android:minWidth="10dp"
-                    android:onClick="handleCalendarButton" />
-
-                <de.arnowelzel.android.periodical.CalendarCell
-                    android:id="@+id/cal32_2"
-                    android:layout_height="fill_parent"
-                    android:layout_margin="1dp"
-                    android:background="@drawable/button_calendar"
-                    android:minHeight="10dp"
-                    android:minWidth="10dp"
-                    android:onClick="handleCalendarButton" />
-
-                <de.arnowelzel.android.periodical.CalendarCell
-                    android:id="@+id/cal33_2"
-                    android:layout_height="fill_parent"
-                    android:layout_margin="1dp"
-                    android:background="@drawable/button_calendar"
-                    android:minHeight="10dp"
-                    android:minWidth="10dp"
-                    android:onClick="handleCalendarButton" />
-
-                <de.arnowelzel.android.periodical.CalendarCell
-                    android:id="@+id/cal34_2"
-                    android:layout_height="fill_parent"
-                    android:layout_margin="1dp"
-                    android:background="@drawable/button_calendar"
-                    android:minHeight="10dp"
-                    android:minWidth="10dp"
-                    android:onClick="handleCalendarButton" />
-
-                <de.arnowelzel.android.periodical.CalendarCell
-                    android:id="@+id/cal35_2"
-                    android:layout_height="fill_parent"
-                    android:layout_margin="1dp"
-                    android:background="@drawable/button_calendar"
-                    android:minHeight="10dp"
-                    android:minWidth="10dp"
-                    android:onClick="handleCalendarButton" />
-            </TableRow>
-
-            <TableRow
-                android:id="@+id/rowcal3642_2"
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
-                android:layout_weight="1"
-                android:orientation="horizontal">
-
-                <de.arnowelzel.android.periodical.CalendarCell
-                    android:id="@+id/cal36_2"
-                    android:layout_height="fill_parent"
-                    android:layout_margin="1dp"
-                    android:background="@drawable/button_calendar"
-                    android:minHeight="10dp"
-                    android:minWidth="10dp"
-                    android:onClick="handleCalendarButton" />
-
-                <de.arnowelzel.android.periodical.CalendarCell
-                    android:id="@+id/cal37_2"
-                    android:layout_height="fill_parent"
-                    android:layout_margin="1dp"
-                    android:background="@drawable/button_calendar"
-                    android:minHeight="10dp"
-                    android:minWidth="10dp"
-                    android:onClick="handleCalendarButton" />
-
-                <de.arnowelzel.android.periodical.CalendarCell
-                    android:id="@+id/cal38_2"
-                    android:layout_height="fill_parent"
-                    android:layout_margin="1dp"
-                    android:background="@drawable/button_calendar"
-                    android:minHeight="10dp"
-                    android:minWidth="10dp"
-                    android:onClick="handleCalendarButton" />
-
-                <de.arnowelzel.android.periodical.CalendarCell
-                    android:id="@+id/cal39_2"
-                    android:layout_height="fill_parent"
-                    android:layout_margin="1dp"
-                    android:background="@drawable/button_calendar"
-                    android:minHeight="10dp"
-                    android:minWidth="10dp"
-                    android:onClick="handleCalendarButton" />
-
-                <de.arnowelzel.android.periodical.CalendarCell
-                    android:id="@+id/cal40_2"
-                    android:layout_height="fill_parent"
-                    android:layout_margin="1dp"
-                    android:background="@drawable/button_calendar"
-                    android:minHeight="10dp"
-                    android:minWidth="10dp"
-                    android:onClick="handleCalendarButton" />
-
-                <de.arnowelzel.android.periodical.CalendarCell
-                    android:id="@+id/cal41_2"
-                    android:layout_height="fill_parent"
-                    android:layout_margin="1dp"
-                    android:background="@drawable/button_calendar"
-                    android:minHeight="10dp"
-                    android:minWidth="10dp"
-                    android:onClick="handleCalendarButton" />
-
-                <de.arnowelzel.android.periodical.CalendarCell
-                    android:id="@+id/cal42_2"
-                    android:layout_height="fill_parent"
-                    android:layout_margin="1dp"
-                    android:background="@drawable/button_calendar"
-                    android:minHeight="10dp"
-                    android:minWidth="10dp"
-                    android:onClick="handleCalendarButton" />
-            </TableRow>
-        </TableLayout>
-    </ViewFlipper>
-</LinearLayout>
+                android:shrinkColumns="*"
+                android:stretchColumns="*">
+
+                <TableRow
+                    android:id="@+id/rowcaldays1"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="0.6"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/daylabel1_0"
+                        android:layout_height="fill_parent"
+                        android:gravity="center"
+                        android:textColor="#ffffffff"
+                        android:textStyle="bold"
+                        android:textSize="18sp" />
+
+                    <TextView
+                        android:id="@+id/daylabel1_1"
+                        android:layout_height="fill_parent"
+                        android:gravity="center"
+                        android:textColor="#ffffffff"
+                        android:textStyle="bold"
+                        android:textSize="18sp" />
+
+                    <TextView
+                        android:id="@+id/daylabel1_2"
+                        android:layout_height="fill_parent"
+                        android:gravity="center"
+                        android:textColor="#ffffffff"
+                        android:textStyle="bold"
+                        android:textSize="18sp" />
+
+                    <TextView
+                        android:id="@+id/daylabel1_3"
+                        android:layout_height="fill_parent"
+                        android:gravity="center"
+                        android:textColor="#ffffffff"
+                        android:textStyle="bold"
+                        android:textSize="18sp" />
+
+                    <TextView
+                        android:id="@+id/daylabel1_4"
+                        android:layout_height="fill_parent"
+                        android:gravity="center"
+                        android:textColor="#ffffffff"
+                        android:textStyle="bold"
+                        android:textSize="18sp" />
+
+                    <TextView
+                        android:id="@+id/daylabel1_5"
+                        android:layout_height="fill_parent"
+                        android:gravity="center"
+                        android:textColor="#ffffffff"
+                        android:textStyle="bold"
+                        android:textSize="18sp" />
+
+                    <TextView
+                        android:id="@+id/daylabel1_6"
+                        android:layout_height="fill_parent"
+                        android:gravity="center"
+                        android:textColor="#ffffffff"
+                        android:textStyle="bold"
+                        android:textSize="18sp" />
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/rowcal0107_2"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+                    <de.arnowelzel.android.periodical.CalendarCell
+                        android:id="@+id/cal01_2"
+                        android:layout_height="fill_parent"
+                        android:layout_margin="1dp"
+                        android:background="@drawable/button_calendar"
+                        android:minHeight="10dp"
+                        android:minWidth="10dp"
+                        android:onClick="handleCalendarButton" />
+
+                    <de.arnowelzel.android.periodical.CalendarCell
+                        android:id="@+id/cal02_2"
+                        android:layout_height="fill_parent"
+                        android:layout_margin="1dp"
+                        android:background="@drawable/button_calendar"
+                        android:minHeight="10dp"
+                        android:minWidth="10dp"
+                        android:onClick="handleCalendarButton" />
+
+                    <de.arnowelzel.android.periodical.CalendarCell
+                        android:id="@+id/cal03_2"
+                        android:layout_height="fill_parent"
+                        android:layout_margin="1dp"
+                        android:background="@drawable/button_calendar"
+                        android:minHeight="10dp"
+                        android:minWidth="10dp"
+                        android:onClick="handleCalendarButton" />
+
+                    <de.arnowelzel.android.periodical.CalendarCell
+                        android:id="@+id/cal04_2"
+                        android:layout_height="fill_parent"
+                        android:layout_margin="1dp"
+                        android:background="@drawable/button_calendar"
+                        android:minHeight="10dp"
+                        android:minWidth="10dp"
+                        android:onClick="handleCalendarButton" />
+
+                    <de.arnowelzel.android.periodical.CalendarCell
+                        android:id="@+id/cal05_2"
+                        android:layout_height="fill_parent"
+                        android:layout_margin="1dp"
+                        android:background="@drawable/button_calendar"
+                        android:minHeight="10dp"
+                        android:minWidth="10dp"
+                        android:onClick="handleCalendarButton" />
+
+                    <de.arnowelzel.android.periodical.CalendarCell
+                        android:id="@+id/cal06_2"
+                        android:layout_height="fill_parent"
+                        android:layout_margin="1dp"
+                        android:background="@drawable/button_calendar"
+                        android:minHeight="10dp"
+                        android:minWidth="10dp"
+                        android:onClick="handleCalendarButton" />
+
+                    <de.arnowelzel.android.periodical.CalendarCell
+                        android:id="@+id/cal07_2"
+                        android:layout_height="fill_parent"
+                        android:layout_margin="1dp"
+                        android:background="@drawable/button_calendar"
+                        android:minHeight="10dp"
+                        android:minWidth="10dp"
+                        android:onClick="handleCalendarButton" />
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/rowcal0814_2"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+                    <de.arnowelzel.android.periodical.CalendarCell
+                        android:id="@+id/cal08_2"
+                        android:layout_height="fill_parent"
+                        android:layout_margin="1dp"
+                        android:background="@drawable/button_calendar"
+                        android:minHeight="10dp"
+                        android:minWidth="10dp"
+                        android:onClick="handleCalendarButton" />
+
+                    <de.arnowelzel.android.periodical.CalendarCell
+                        android:id="@+id/cal09_2"
+                        android:layout_height="fill_parent"
+                        android:layout_margin="1dp"
+                        android:background="@drawable/button_calendar"
+                        android:minHeight="10dp"
+                        android:minWidth="10dp"
+                        android:onClick="handleCalendarButton" />
+
+                    <de.arnowelzel.android.periodical.CalendarCell
+                        android:id="@+id/cal10_2"
+                        android:layout_height="fill_parent"
+                        android:layout_margin="1dp"
+                        android:background="@drawable/button_calendar"
+                        android:minHeight="10dp"
+                        android:minWidth="10dp"
+                        android:onClick="handleCalendarButton" />
+
+                    <de.arnowelzel.android.periodical.CalendarCell
+                        android:id="@+id/cal11_2"
+                        android:layout_height="fill_parent"
+                        android:layout_margin="1dp"
+                        android:background="@drawable/button_calendar"
+                        android:minHeight="10dp"
+                        android:minWidth="10dp"
+                        android:onClick="handleCalendarButton" />
+
+                    <de.arnowelzel.android.periodical.CalendarCell
+                        android:id="@+id/cal12_2"
+                        android:layout_height="fill_parent"
+                        android:layout_margin="1dp"
+                        android:background="@drawable/button_calendar"
+                        android:minHeight="10dp"
+                        android:minWidth="10dp"
+                        android:onClick="handleCalendarButton" />
+
+                    <de.arnowelzel.android.periodical.CalendarCell
+                        android:id="@+id/cal13_2"
+                        android:layout_height="fill_parent"
+                        android:layout_margin="1dp"
+                        android:background="@drawable/button_calendar"
+                        android:minHeight="10dp"
+                        android:minWidth="10dp"
+                        android:onClick="handleCalendarButton" />
+
+                    <de.arnowelzel.android.periodical.CalendarCell
+                        android:id="@+id/cal14_2"
+                        android:layout_height="fill_parent"
+                        android:layout_margin="1dp"
+                        android:background="@drawable/button_calendar"
+                        android:minHeight="10dp"
+                        android:minWidth="10dp"
+                        android:onClick="handleCalendarButton" />
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/rowcal1521_2"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+                    <de.arnowelzel.android.periodical.CalendarCell
+                        android:id="@+id/cal15_2"
+                        android:layout_height="fill_parent"
+                        android:layout_margin="1dp"
+                        android:background="@drawable/button_calendar"
+                        android:minHeight="10dp"
+                        android:minWidth="10dp"
+                        android:onClick="handleCalendarButton" />
+
+                    <de.arnowelzel.android.periodical.CalendarCell
+                        android:id="@+id/cal16_2"
+                        android:layout_height="fill_parent"
+                        android:layout_margin="1dp"
+                        android:background="@drawable/button_calendar"
+                        android:minHeight="10dp"
+                        android:minWidth="10dp"
+                        android:onClick="handleCalendarButton" />
+
+                    <de.arnowelzel.android.periodical.CalendarCell
+                        android:id="@+id/cal17_2"
+                        android:layout_height="fill_parent"
+                        android:layout_margin="1dp"
+                        android:background="@drawable/button_calendar"
+                        android:minHeight="10dp"
+                        android:minWidth="10dp"
+                        android:onClick="handleCalendarButton" />
+
+                    <de.arnowelzel.android.periodical.CalendarCell
+                        android:id="@+id/cal18_2"
+                        android:layout_height="fill_parent"
+                        android:layout_margin="1dp"
+                        android:background="@drawable/button_calendar"
+                        android:minHeight="10dp"
+                        android:minWidth="10dp"
+                        android:onClick="handleCalendarButton" />
+
+                    <de.arnowelzel.android.periodical.CalendarCell
+                        android:id="@+id/cal19_2"
+                        android:layout_height="fill_parent"
+                        android:layout_margin="1dp"
+                        android:background="@drawable/button_calendar"
+                        android:minHeight="10dp"
+                        android:minWidth="10dp"
+                        android:onClick="handleCalendarButton" />
+
+                    <de.arnowelzel.android.periodical.CalendarCell
+                        android:id="@+id/cal20_2"
+                        android:layout_height="fill_parent"
+                        android:layout_margin="1dp"
+                        android:background="@drawable/button_calendar"
+                        android:minHeight="10dp"
+                        android:minWidth="10dp"
+                        android:onClick="handleCalendarButton" />
+
+                    <de.arnowelzel.android.periodical.CalendarCell
+                        android:id="@+id/cal21_2"
+                        android:layout_height="fill_parent"
+                        android:layout_margin="1dp"
+                        android:background="@drawable/button_calendar"
+                        android:minHeight="10dp"
+                        android:minWidth="10dp"
+                        android:onClick="handleCalendarButton" />
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/rowcal2228_2"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+                    <de.arnowelzel.android.periodical.CalendarCell
+                        android:id="@+id/cal22_2"
+                        android:layout_height="fill_parent"
+                        android:layout_margin="1dp"
+                        android:background="@drawable/button_calendar"
+                        android:minHeight="10dp"
+                        android:minWidth="10dp"
+                        android:onClick="handleCalendarButton" />
+
+                    <de.arnowelzel.android.periodical.CalendarCell
+                        android:id="@+id/cal23_2"
+                        android:layout_height="fill_parent"
+                        android:layout_margin="1dp"
+                        android:background="@drawable/button_calendar"
+                        android:minHeight="10dp"
+                        android:minWidth="10dp"
+                        android:onClick="handleCalendarButton" />
+
+                    <de.arnowelzel.android.periodical.CalendarCell
+                        android:id="@+id/cal24_2"
+                        android:layout_height="fill_parent"
+                        android:layout_margin="1dp"
+                        android:background="@drawable/button_calendar"
+                        android:minHeight="10dp"
+                        android:minWidth="10dp"
+                        android:onClick="handleCalendarButton" />
+
+                    <de.arnowelzel.android.periodical.CalendarCell
+                        android:id="@+id/cal25_2"
+                        android:layout_height="fill_parent"
+                        android:layout_margin="1dp"
+                        android:background="@drawable/button_calendar"
+                        android:minHeight="10dp"
+                        android:minWidth="10dp"
+                        android:onClick="handleCalendarButton" />
+
+                    <de.arnowelzel.android.periodical.CalendarCell
+                        android:id="@+id/cal26_2"
+                        android:layout_height="fill_parent"
+                        android:layout_margin="1dp"
+                        android:background="@drawable/button_calendar"
+                        android:minHeight="10dp"
+                        android:minWidth="10dp"
+                        android:onClick="handleCalendarButton" />
+
+                    <de.arnowelzel.android.periodical.CalendarCell
+                        android:id="@+id/cal27_2"
+                        android:layout_height="fill_parent"
+                        android:layout_margin="1dp"
+                        android:background="@drawable/button_calendar"
+                        android:minHeight="10dp"
+                        android:minWidth="10dp"
+                        android:onClick="handleCalendarButton" />
+
+                    <de.arnowelzel.android.periodical.CalendarCell
+                        android:id="@+id/cal28_2"
+                        android:layout_height="fill_parent"
+                        android:layout_margin="1dp"
+                        android:background="@drawable/button_calendar"
+                        android:minHeight="10dp"
+                        android:minWidth="10dp"
+                        android:onClick="handleCalendarButton" />
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/rowcal2935_2"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+                    <de.arnowelzel.android.periodical.CalendarCell
+                        android:id="@+id/cal29_2"
+                        android:layout_height="fill_parent"
+                        android:layout_margin="1dp"
+                        android:background="@drawable/button_calendar"
+                        android:minHeight="10dp"
+                        android:minWidth="10dp"
+                        android:onClick="handleCalendarButton" />
+
+                    <de.arnowelzel.android.periodical.CalendarCell
+                        android:id="@+id/cal30_2"
+                        android:layout_height="fill_parent"
+                        android:layout_margin="1dp"
+                        android:background="@drawable/button_calendar"
+                        android:minHeight="10dp"
+                        android:minWidth="10dp"
+                        android:onClick="handleCalendarButton" />
+
+                    <de.arnowelzel.android.periodical.CalendarCell
+                        android:id="@+id/cal31_2"
+                        android:layout_height="fill_parent"
+                        android:layout_margin="1dp"
+                        android:background="@drawable/button_calendar"
+                        android:minHeight="10dp"
+                        android:minWidth="10dp"
+                        android:onClick="handleCalendarButton" />
+
+                    <de.arnowelzel.android.periodical.CalendarCell
+                        android:id="@+id/cal32_2"
+                        android:layout_height="fill_parent"
+                        android:layout_margin="1dp"
+                        android:background="@drawable/button_calendar"
+                        android:minHeight="10dp"
+                        android:minWidth="10dp"
+                        android:onClick="handleCalendarButton" />
+
+                    <de.arnowelzel.android.periodical.CalendarCell
+                        android:id="@+id/cal33_2"
+                        android:layout_height="fill_parent"
+                        android:layout_margin="1dp"
+                        android:background="@drawable/button_calendar"
+                        android:minHeight="10dp"
+                        android:minWidth="10dp"
+                        android:onClick="handleCalendarButton" />
+
+                    <de.arnowelzel.android.periodical.CalendarCell
+                        android:id="@+id/cal34_2"
+                        android:layout_height="fill_parent"
+                        android:layout_margin="1dp"
+                        android:background="@drawable/button_calendar"
+                        android:minHeight="10dp"
+                        android:minWidth="10dp"
+                        android:onClick="handleCalendarButton" />
+
+                    <de.arnowelzel.android.periodical.CalendarCell
+                        android:id="@+id/cal35_2"
+                        android:layout_height="fill_parent"
+                        android:layout_margin="1dp"
+                        android:background="@drawable/button_calendar"
+                        android:minHeight="10dp"
+                        android:minWidth="10dp"
+                        android:onClick="handleCalendarButton" />
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/rowcal3642_2"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+                    <de.arnowelzel.android.periodical.CalendarCell
+                        android:id="@+id/cal36_2"
+                        android:layout_height="fill_parent"
+                        android:layout_margin="1dp"
+                        android:background="@drawable/button_calendar"
+                        android:minHeight="10dp"
+                        android:minWidth="10dp"
+                        android:onClick="handleCalendarButton" />
+
+                    <de.arnowelzel.android.periodical.CalendarCell
+                        android:id="@+id/cal37_2"
+                        android:layout_height="fill_parent"
+                        android:layout_margin="1dp"
+                        android:background="@drawable/button_calendar"
+                        android:minHeight="10dp"
+                        android:minWidth="10dp"
+                        android:onClick="handleCalendarButton" />
+
+                    <de.arnowelzel.android.periodical.CalendarCell
+                        android:id="@+id/cal38_2"
+                        android:layout_height="fill_parent"
+                        android:layout_margin="1dp"
+                        android:background="@drawable/button_calendar"
+                        android:minHeight="10dp"
+                        android:minWidth="10dp"
+                        android:onClick="handleCalendarButton" />
+
+                    <de.arnowelzel.android.periodical.CalendarCell
+                        android:id="@+id/cal39_2"
+                        android:layout_height="fill_parent"
+                        android:layout_margin="1dp"
+                        android:background="@drawable/button_calendar"
+                        android:minHeight="10dp"
+                        android:minWidth="10dp"
+                        android:onClick="handleCalendarButton" />
+
+                    <de.arnowelzel.android.periodical.CalendarCell
+                        android:id="@+id/cal40_2"
+                        android:layout_height="fill_parent"
+                        android:layout_margin="1dp"
+                        android:background="@drawable/button_calendar"
+                        android:minHeight="10dp"
+                        android:minWidth="10dp"
+                        android:onClick="handleCalendarButton" />
+
+                    <de.arnowelzel.android.periodical.CalendarCell
+                        android:id="@+id/cal41_2"
+                        android:layout_height="fill_parent"
+                        android:layout_margin="1dp"
+                        android:background="@drawable/button_calendar"
+                        android:minHeight="10dp"
+                        android:minWidth="10dp"
+                        android:onClick="handleCalendarButton" />
+
+                    <de.arnowelzel.android.periodical.CalendarCell
+                        android:id="@+id/cal42_2"
+                        android:layout_height="fill_parent"
+                        android:layout_margin="1dp"
+                        android:background="@drawable/button_calendar"
+                        android:minHeight="10dp"
+                        android:minWidth="10dp"
+                        android:onClick="handleCalendarButton" />
+                </TableRow>
+            </TableLayout>
+        </ViewFlipper>
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

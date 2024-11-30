@@ -1,211 +1,232 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/detailsview"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    android:fitsSystemWindows="true">
 
-    <LinearLayout
+    <!-- App toolbar -->
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"
+        android:elevation="4dp"
+        android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        tools:ignore="MissingConstraints" />
 
+    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/detailsview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-        <!-- Header -->
-
-        <TextView
-            android:id="@+id/labelDetailsHeader"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
-            android:layout_marginLeft="16dp"
-            android:layout_marginRight="16dp"
-            android:layout_marginTop="16dp"
-            android:textSize="22sp" />
+            android:orientation="vertical">
 
-        <!-- Period yes/no -->
+            <!-- Header -->
 
-        <TextView
-            android:id="@+id/labelPeriod"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="4dp"
-            android:layout_marginLeft="16dp"
-            android:layout_marginRight="16dp"
-            android:layout_marginTop="16dp"
-            android:text="@string/label_details_period"
-            android:textSize="18sp"
-            android:labelFor="@+id/periodOptions"/>
-
-        <RadioGroup
-            android:id="@+id/periodOptions"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="12dp"
-            android:layout_marginRight="12dp"
-            android:orientation="horizontal">
-
-            <RadioButton
-                android:id="@+id/periodYes"
-                android:layout_width="wrap_content"
+            <TextView
+                android:id="@+id/labelDetailsHeader"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/label_details_yes"
-                android:textSize="18sp" />
+                android:layout_marginBottom="8dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginTop="16dp"
+                android:textSize="22sp" />
 
-            <RadioButton
-                android:id="@+id/periodNo"
-                android:layout_width="wrap_content"
+            <!-- Period yes/no -->
+
+            <TextView
+                android:id="@+id/labelPeriod"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/label_details_no"
-                android:textSize="18sp" />
-        </RadioGroup>
-
-        <!-- Period intensity -->
-
-        <TextView
-            android:id="@+id/labelPeriodIntensity"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="4dp"
-            android:layout_marginLeft="16dp"
-            android:layout_marginRight="16dp"
-            android:layout_marginTop="16dp"
-            android:text="@string/label_details_intensity"
-            android:textSize="18sp"
-            android:labelFor="@+id/periodIntensity"/>
-
-        <RadioGroup
-            android:id="@+id/periodIntensity"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="12dp"
-            android:layout_marginRight="12dp"
-            android:orientation="horizontal">
-
-            <RadioButton
-                android:id="@+id/periodIntensity1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/label_details_intensity1"
-                android:textSize="18sp" />
-
-            <RadioButton
-                android:id="@+id/periodIntensity2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/label_details_intensity2"
-                android:textSize="18sp" />
-
-            <RadioButton
-                android:id="@+id/periodIntensity3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/label_details_intensity3"
-                android:textSize="18sp" />
-            <RadioButton
-                android:id="@+id/periodIntensity4"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/label_details_intensity4"
+                android:layout_marginBottom="4dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginTop="16dp"
+                android:text="@string/label_details_period"
                 android:textSize="18sp"
-                android:nextFocusRight="@+id/editNotes"
-                android:nextFocusDown="@+id/editNotes"
-                />
-        </RadioGroup>
+                android:labelFor="@+id/periodOptions"/>
 
-        <!-- Notes -->
+            <RadioGroup
+                android:id="@+id/periodOptions"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="12dp"
+                android:layout_marginRight="12dp"
+                android:orientation="horizontal">
 
-        <TextView
-            android:id="@+id/labelNotes"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="4dp"
-            android:layout_marginLeft="16dp"
-            android:layout_marginRight="16dp"
-            android:layout_marginTop="16dp"
-            android:text="@string/label_details_notes"
-            android:textSize="18sp"
-            android:labelFor="@+id/editNotes"/>
-        <!-- Hack to avoid initial focus on edit widget -->
-        <LinearLayout
-            android:layout_width="0px"
-            android:layout_height="0px"
-            android:focusable="true"
-            android:focusableInTouchMode="true"
-            tools:ignore="UselessLeaf" />
+                <RadioButton
+                    android:id="@+id/periodYes"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/label_details_yes"
+                    android:textSize="18sp" />
 
-        <MultiAutoCompleteTextView
-            android:id="@+id/editNotes"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="12dp"
-            android:layout_marginRight="12dp"
-            android:nextFocusLeft="@+id/periodIntensity4"
-            android:nextFocusUp="@+id/periodIntensity4"
-            android:textSize="18sp"
-            tools:ignore="LabelFor" />
+                <RadioButton
+                    android:id="@+id/periodNo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/label_details_no"
+                    android:textSize="18sp" />
+            </RadioGroup>
 
-        <!-- Events -->
+            <!-- Period intensity -->
 
-        <TextView
-            android:id="@+id/labelEvents"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="4dp"
-            android:layout_marginLeft="16dp"
-            android:layout_marginRight="16dp"
-            android:layout_marginTop="16dp"
-            android:text="@string/label_details_events"
-            android:textSize="18sp"
-            android:labelFor="@+id/groupEvents"/>
-        <LinearLayout
-            android:id="@+id/groupEvents"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_marginBottom="16dp">
+            <TextView
+                android:id="@+id/labelPeriodIntensity"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="4dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginTop="16dp"
+                android:text="@string/label_details_intensity"
+                android:textSize="18sp"
+                android:labelFor="@+id/periodIntensity"/>
+
+            <RadioGroup
+                android:id="@+id/periodIntensity"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="12dp"
+                android:layout_marginRight="12dp"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/periodIntensity1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/label_details_intensity1"
+                    android:textSize="18sp" />
+
+                <RadioButton
+                    android:id="@+id/periodIntensity2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/label_details_intensity2"
+                    android:textSize="18sp" />
+
+                <RadioButton
+                    android:id="@+id/periodIntensity3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/label_details_intensity3"
+                    android:textSize="18sp" />
+                <RadioButton
+                    android:id="@+id/periodIntensity4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/label_details_intensity4"
+                    android:textSize="18sp"
+                    android:nextFocusRight="@+id/editNotes"
+                    android:nextFocusDown="@+id/editNotes"
+                    />
+            </RadioGroup>
+
+            <!-- Notes -->
+
+            <TextView
+                android:id="@+id/labelNotes"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="4dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginTop="16dp"
+                android:text="@string/label_details_notes"
+                android:textSize="18sp"
+                android:labelFor="@+id/editNotes"/>
+            <!-- Hack to avoid initial focus on edit widget -->
+            <LinearLayout
+                android:layout_width="0px"
+                android:layout_height="0px"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                tools:ignore="UselessLeaf" />
+
+            <MultiAutoCompleteTextView
+                android:id="@+id/editNotes"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="12dp"
+                android:layout_marginRight="12dp"
+                android:nextFocusLeft="@+id/periodIntensity4"
+                android:nextFocusUp="@+id/periodIntensity4"
+                android:textSize="18sp"
+                tools:ignore="LabelFor" />
+
+            <!-- Events -->
+
+            <TextView
+                android:id="@+id/labelEvents"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="4dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginTop="16dp"
+                android:text="@string/label_details_events"
+                android:textSize="18sp"
+                android:labelFor="@+id/groupEvents"/>
+            <LinearLayout
+                android:id="@+id/groupEvents"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginBottom="16dp">
+            </LinearLayout>
+
+            <!-- Mood -->
+
+            <TextView
+                android:id="@+id/labelMood"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="4dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginTop="0dp"
+                android:text="@string/label_details_mood"
+                android:textSize="18sp"
+                android:labelFor="@+id/groupMood"/>
+            <LinearLayout
+                android:id="@+id/groupMood"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginBottom="16dp">
+            </LinearLayout>
+
+            <!-- Symptoms -->
+
+            <TextView
+                android:id="@+id/labelSymptoms"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="4dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginTop="0dp"
+                android:text="@string/label_details_symptoms"
+                android:textSize="18sp"
+                android:labelFor="@+id/groupEvents"/>
+            <LinearLayout
+                android:id="@+id/groupSymptoms"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginBottom="16dp">
+            </LinearLayout>
         </LinearLayout>
-
-        <!-- Mood -->
-
-        <TextView
-            android:id="@+id/labelMood"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="4dp"
-            android:layout_marginLeft="16dp"
-            android:layout_marginRight="16dp"
-            android:layout_marginTop="0dp"
-            android:text="@string/label_details_mood"
-            android:textSize="18sp"
-            android:labelFor="@+id/groupMood"/>
-        <LinearLayout
-            android:id="@+id/groupMood"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_marginBottom="16dp">
-        </LinearLayout>
-
-        <!-- Symptoms -->
-
-        <TextView
-            android:id="@+id/labelSymptoms"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="4dp"
-            android:layout_marginLeft="16dp"
-            android:layout_marginRight="16dp"
-            android:layout_marginTop="0dp"
-            android:text="@string/label_details_symptoms"
-            android:textSize="18sp"
-            android:labelFor="@+id/groupEvents"/>
-        <LinearLayout
-            android:id="@+id/groupSymptoms"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_marginBottom="16dp">
-        </LinearLayout>
-    </LinearLayout>
-</ScrollView>
+    </ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>

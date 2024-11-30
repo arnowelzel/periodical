@@ -1,8 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-<ListView xmlns:android="http://schemas.android.com/apk/res/android"
-	android:id="@+id/listview_details"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:tools="http://schemas.android.com/tools"
 	android:layout_width="match_parent"
 	android:layout_height="match_parent"
-	android:drawSelectorOnTop="false"
-	android:scrollbars="vertical"/>
+	app:layout_behavior="@string/appbar_scrolling_view_behavior"
+	android:fitsSystemWindows="true">
+
+	<!-- App toolbar -->
+
+	<androidx.appcompat.widget.Toolbar
+		android:id="@+id/toolbar"
+		android:layout_width="match_parent"
+		android:layout_height="?attr/actionBarSize"
+		android:background="?attr/colorPrimary"
+		android:elevation="4dp"
+		android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+		app:popupTheme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+		tools:ignore="MissingConstraints" />
+
+	<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+		android:orientation="vertical"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:layout_marginTop="?android:attr/actionBarSize">
+
+		<ListView xmlns:android="http://schemas.android.com/apk/res/android"
+			android:id="@+id/listview_details"
+			android:layout_width="match_parent"
+			android:layout_height="match_parent"
+			android:drawSelectorOnTop="false"
+			android:scrollbars="vertical"/>
+	</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

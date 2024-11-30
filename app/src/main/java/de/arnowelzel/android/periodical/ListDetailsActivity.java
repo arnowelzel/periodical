@@ -24,6 +24,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
@@ -66,17 +68,19 @@ public class ListDetailsActivity extends AppCompatActivity implements AdapterVie
             dayList.add(0, day);
         }
 
-        // Set custom view
+        // Set up view
         setContentView(R.layout.activity_list_details);
-
-        // Activate "back button" in Action Bar
-        ActionBar actionBar = getSupportActionBar();
-        assert actionBar != null;
-        actionBar.setDisplayHomeAsUpEnabled(true);
 
         ListView listView = findViewById(R.id.listview_details);
         listView.setAdapter(new DayEntryAdapter(this, dayList, getPackageName(), getResources()));
         listView.setOnItemClickListener(this);
+
+        // Set up main toolbar
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        ActionBar actionBar = getSupportActionBar();
+        assert actionBar != null;
+        actionBar.setDisplayHomeAsUpEnabled(true);
     }
 
     /**

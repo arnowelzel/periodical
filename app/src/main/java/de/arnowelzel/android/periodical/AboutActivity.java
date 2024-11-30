@@ -26,6 +26,8 @@ import android.os.Bundle;
 import android.os.Environment;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+
 import android.view.MenuItem;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
@@ -46,7 +48,9 @@ public class AboutActivity extends AppCompatActivity {
         // Set up view
         setContentView(R.layout.webview);
 
-        // Activate "back button" in Action Bar
+        // Set up main toolbar
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
         ActionBar actionBar = getSupportActionBar();
         assert actionBar != null;
         actionBar.setDisplayHomeAsUpEnabled(true);

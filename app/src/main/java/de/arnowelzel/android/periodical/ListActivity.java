@@ -25,6 +25,8 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
@@ -113,16 +115,16 @@ public class ListActivity extends AppCompatActivity implements AdapterView.OnIte
             entries[pos - 1] += "\n" + getString(R.string.event_periodfirst);
         }
 
-
-        // Set custom view
+        // Set up view
         setContentView(R.layout.activity_list);
 
         ListView listView = findViewById(R.id.listview);
-        listView.setAdapter(new ArrayAdapter<>(this, R.layout.listitem,
-                entries));
+        listView.setAdapter(new ArrayAdapter<>(this, R.layout.listitem, entries));
         listView.setOnItemClickListener(this);
 
-        // Activate "back button" in Action Bar if possible
+        // Set up main toolbar
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
         ActionBar actionBar = getSupportActionBar();
         assert actionBar != null;
         actionBar.setDisplayHomeAsUpEnabled(true);
