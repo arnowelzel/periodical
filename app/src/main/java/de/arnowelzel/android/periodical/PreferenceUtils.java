@@ -1,6 +1,6 @@
 /*
  * Utility class to access shared preferences
- * Copyright (C) 2012-2023 Arno Welzel
+ * Copyright (C) 2012-2024 Arno Welzel
  *
  * This code is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -20,7 +20,7 @@ package de.arnowelzel.android.periodical;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.preference.PreferenceManager;
+import androidx.preference.PreferenceManager;
 
 /**
  * Preference utilities

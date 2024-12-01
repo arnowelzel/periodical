@@ -1,6 +1,6 @@
 /*
  * Periodical main activity
- * Copyright (C) 2012-2023 Arno Welzel
+ * Copyright (C) 2012-2024 Arno Welzel
  *
  * This code is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -148,9 +148,10 @@ public class MainActivityApp extends AppCompatActivity
         PreferenceUtils preferenceUtils = new PreferenceUtils(this);
         currentLocale = preferenceUtils.getString("locale", "system");
 
-        // Setup main view with navigation drawer
+        // Set up main view with navigation drawer
         setContentView(R.layout.activity_main);
 
+        // Set up main toolbar
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -458,7 +459,7 @@ public class MainActivityApp extends AppCompatActivity
      */
     private void showOptions() {
         setOptionsResultLauncher.launch(
-                new Intent(MainActivityApp.this, PreferenceActivity.class)
+                new Intent(MainActivityApp.this, SettingsActivity.class)
         );
     }
 
@@ -789,6 +790,7 @@ public class MainActivityApp extends AppCompatActivity
         switch(choice) {
             case RestoreConfirmationDialogFragment.CHOICE_OK:
                 boolean ok = dbMain.restoreFromUri(context, uriBackup);
+                dbMain.restorePreferences();
                 dbMain.loadCalculatedData();
                 calendarUpdate();
                 String text;

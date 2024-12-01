@@ -1,0 +1,71 @@
+<en-US>
+Updated translations and improved stability.
+</en-US>
+
+<az-AZ>
+Yenilənmiş tərcümələr və təkmilləşdirilmiş sabitlik.
+</az-AZ>
+
+<cs-CZ>
+Aktualizované překlady a vylepšená stabilita.
+</cs-CZ>
+
+<de-DE>
+Aktualisierte Übersetzungen und verbesserte Stabilität.
+</de-DE>
+
+<es-ES>
+Traducciones actualizadas y estabilidad mejorada.
+</es-ES>
+
+<fr-FR>
+Traductions mises à jour et stabilité améliorée.
+</fr-FR>
+
+<it-IT>
+Traduzioni aggiornate e stabilità migliorata.
+</it-IT>
+
+<nl-NL>
+Bijgewerkte vertalingen en verbeterde stabiliteit.
+</nl-NL>
+
+<ru-RU>
+Обновлены переводы и улучшена стабильность.
+</ru-RU>
+
+<af>
+Opgedateerde vertalings en verbeterde stabiliteit.
+</af>
+
+<pt-BR>
+Traduções atualizadas e estabilidade melhorada.
+</pt-BR>
+
+<pl-PL>
+Zaktualizowane tłumaczenia i poprawiona stabilność.
+</pl-PL>
+
+<el-GR>
+Ενημερωμένες μεταφράσεις και βελτιωμένη σταθερότητα.
+</el-GR>
+
+<ja-JP>
+翻訳が更新され、安定性が向上しました。
+</ja-JP>
+
+<iw-IL>
+תרגומים מעודכנים ויציבות משופרת.
+</iw-IL>
+
+<tr-TR>
+Güncellenmiş çeviriler ve iyileştirilmiş kararlılık.
+</tr-TR>
+
+<uk>
+Оновлені переклади та покращена стабільність.
+</uk>
+
+<zh>
+更新翻译并提高稳定性。
+</zh>

@@ -7,7 +7,7 @@ android {
         minSdkVersion 21
         targetSdkVersion 35
         versionCode 102
-        versionName "1.77"
+        versionName "1.80"
         buildConfigField "String", "VERSION_YEAR", "\"2024\""
         // Required when setting minSdkVersion to 20 or lower
         multiDexEnabled true

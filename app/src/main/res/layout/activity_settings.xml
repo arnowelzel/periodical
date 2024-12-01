@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    android:fitsSystemWindows="true">
+    android:fitsSystemWindows="true"
+    tools:context=".SettingsActivity">
 
     <!-- App toolbar -->
 
@@ -18,16 +19,10 @@
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
         tools:ignore="MissingConstraints" />
 
-    <LinearLayout
-        android:orientation="vertical"
+    <FrameLayout
+        android:id="@+id/idFrameLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="?android:attr/actionBarSize">
+        android:layout_marginTop="?android:attr/actionBarSize" />
 
-        <WebView
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:layout_gravity="center_horizontal" android:id="@+id/webView"/>
-
-    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

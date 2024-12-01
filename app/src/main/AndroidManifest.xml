@@ -41,7 +41,7 @@
             android:label="@string/list_details_title" />
 
         <activity
-            android:name=".PreferenceActivity"
+            android:name=".SettingsActivity"
             android:label="@string/options_title" />
 
         <activity
