@@ -32,7 +32,6 @@ import androidx.annotation.NonNull;
 import com.google.android.material.navigation.NavigationView;
 import com.yariksoffice.lingver.Lingver;
 
-import androidx.appcompat.app.AppCompatDelegate;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.ActionBarDrawerToggle;
@@ -138,8 +137,6 @@ public class MainActivityApp extends AppCompatActivity
      */
     @Override
     public void onCreate(Bundle savedInstanceState) {
-        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM);
-
         super.onCreate(savedInstanceState);
         final Context context = getApplicationContext();
         assert context != null;
@@ -360,19 +357,6 @@ public class MainActivityApp extends AppCompatActivity
 
         if (dbMain != null)
             dbMain.close();
-    }
-
-    /**
-     * Close navigation drawer when pressing "back"
-     */
-    @Override
-    public void onBackPressed() {
-        DrawerLayout drawer = findViewById(R.id.drawer_layout);
-        if (drawer.isDrawerOpen(GravityCompat.START)) {
-            drawer.closeDrawer(GravityCompat.START);
-        } else {
-            super.onBackPressed();
-        }
     }
 
     /**
