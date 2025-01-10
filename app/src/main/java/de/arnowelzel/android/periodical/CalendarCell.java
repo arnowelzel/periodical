@@ -41,6 +41,8 @@ import android.view.Surface;
 import android.view.WindowManager;
 import android.widget.Button;
 
+import androidx.core.content.ContextCompat;
+
 /**
  * Custom button class to display the calendar cells
  */
@@ -197,6 +199,23 @@ public class CalendarCell extends Button {
     private final Paint paintBitmap;
 
     /**
+     * Colors
+     */
+    int colorPeriodConfirmed = ContextCompat.getColor(this.getContext(), R.color.colorPeriodConfirmed);
+    int colorPeriodPredicted = ContextCompat.getColor(this.getContext(), R.color.colorPeriodPredicted);
+    int colorFertilityPredicted = ContextCompat.getColor(this.getContext(), R.color.colorFertilityPredicted);
+    int colorFertilityStandardPredicted = ContextCompat.getColor(this.getContext(), R.color.colorFertilityStandardPredicted);
+    int colorFertilityFuture = ContextCompat.getColor(this.getContext(), R.color.colorFertilityFuture);
+    int colorFertilityStandardFuture = ContextCompat.getColor(this.getContext(), R.color.colorFertilityStandardFuture);
+    int colorInfertilePredicted = ContextCompat.getColor(this.getContext(), R.color.colorInfertilePredicted);
+    int colorInfertileFuture = ContextCompat.getColor(this.getContext(), R.color.colorInfertileFuture);
+    int colorEmpty = ContextCompat.getColor(this.getContext(), R.color.colorEmpty);
+    int colorBlack = ContextCompat.getColor(this.getContext(), R.color.colorBlack);
+    int colorWhite = ContextCompat.getColor(this.getContext(), R.color.colorWhite);
+    int colorFocus = ContextCompat.getColor(this.getContext(), R.color.colorFocus);
+    int colorOpacity = ContextCompat.getColor(this.getContext(), R.color.colorOpacity);
+
+    /**
      * Constructor
      *
      * @param context Application context
@@ -225,7 +244,7 @@ public class CalendarCell extends Button {
         paintLabel.setTextAlign(Align.LEFT);
         paintIntensity = new Paint();
         paintIntensity.setStyle(Style.FILL);
-        paintIntensity.setColor(0xffffffff);
+        paintIntensity.setColor(colorWhite);
         paintBackground = new Paint();
         paintOval = new Paint();
         paintFocus = new Paint();
@@ -233,15 +252,15 @@ public class CalendarCell extends Button {
         rectOval1 = new RectF();
         rectOval2 = new RectF();
         rectLabel = new Rect();
-        gradientPeriodConfirmed = makeCellGradient(0xfff44336, 0xfff44336);
-        gradientPeriodPredicted = makeCellGradient(0xffef9a9a, 0xffef9a9a);
-        gradientFertilityPredicted = makeCellGradient(0xff2196F3, 0xff2196F3);
-        gradientFertilityStandardPredicted = makeCellGradient(0xff90c2a5, 0xff90c2a5);
-        gradientFertilityFuture = makeCellGradient(0xff90CAF9, 0xff90CAF9);
-        gradientFertilityStandardFuture = makeCellGradient(0xffc8e0cb, 0xffc8e0cb);
-        gradientInfertilePredicted = makeCellGradient(0xffffee58, 0xffffee58);
-        gradientInfertileFuture = makeCellGradient(0xfffff59d, 0xfffff59d);
-        gradientEmpty = makeCellGradient(0xff757575, 0xff757575);
+        gradientPeriodConfirmed = makeCellGradient(colorPeriodConfirmed, colorPeriodConfirmed);
+        gradientPeriodPredicted = makeCellGradient(colorPeriodPredicted, colorPeriodPredicted);
+        gradientFertilityPredicted = makeCellGradient(colorFertilityPredicted, colorFertilityPredicted);
+        gradientFertilityStandardPredicted = makeCellGradient(colorFertilityStandardPredicted, colorFertilityStandardPredicted);
+        gradientFertilityFuture = makeCellGradient(colorFertilityFuture, colorFertilityFuture);
+        gradientFertilityStandardFuture = makeCellGradient(colorFertilityStandardFuture, colorFertilityStandardFuture);
+        gradientInfertilePredicted = makeCellGradient(colorInfertilePredicted, colorInfertilePredicted);
+        gradientInfertileFuture = makeCellGradient(colorInfertileFuture, colorInfertileFuture);
+        gradientEmpty = makeCellGradient(colorEmpty, colorEmpty);
 
         // Overlays
         rectOverlay = new Rect();
@@ -275,12 +294,12 @@ public class CalendarCell extends Button {
     protected void onSizeChanged(int w, int h, int oldw, int oldh) {
         super.onSizeChanged(w, h, oldw, oldh);
         rectCanvas.set(0, 0, w, h);
-        gradientPeriodConfirmed = makeCellGradient(0xfff44336, 0xfff44336);
-        gradientPeriodPredicted = makeCellGradient(0xffef9a9a, 0xffef9a9a);
-        gradientFertilityPredicted = makeCellGradient(0xff2196F3, 0xff2196F3);
-        gradientFertilityFuture = makeCellGradient(0xff90CAF9, 0xff90CAF9);
-        gradientInfertilePredicted = makeCellGradient(0xffffee58, 0xffffee58);
-        gradientInfertileFuture = makeCellGradient(0xfffff59d, 0xfffff59d);
+        gradientPeriodConfirmed = makeCellGradient(colorPeriodConfirmed, colorPeriodConfirmed);
+        gradientPeriodPredicted = makeCellGradient(colorPeriodPredicted, colorPeriodPredicted);
+        gradientFertilityPredicted = makeCellGradient(colorFertilityPredicted, colorFertilityPredicted);
+        gradientFertilityFuture = makeCellGradient(colorFertilityFuture, colorFertilityFuture);
+        gradientInfertilePredicted = makeCellGradient(colorInfertilePredicted, colorInfertilePredicted);
+        gradientInfertileFuture = makeCellGradient(colorInfertileFuture, colorInfertileFuture);
     }
 
     /**
@@ -290,7 +309,7 @@ public class CalendarCell extends Button {
      */
     protected void onDraw(Canvas canvas) {
         LinearGradient gradient = gradientEmpty;
-        int colorLabel = 0xffffffff;
+        int colorLabel = colorWhite;
         String label;
 
         // Adjust overlay size depending on orientation
@@ -303,9 +322,9 @@ public class CalendarCell extends Button {
         if (isPressed()) {
             // If cell is pressed, then fill with solid color
             paintFocus.setStyle(Style.FILL);
-            paintFocus.setColor(0xffff9e08);
+            paintFocus.setColor(colorFocus);
             canvas.drawRoundRect(rectCanvas, 3 * metrics.density, 3 * metrics.density, paintFocus);
-            colorLabel = 0xde000000;
+            colorLabel = colorOpacity;
         } else {
             // normal state (or focused), then draw color
             // depending on entry type
@@ -314,37 +333,37 @@ public class CalendarCell extends Button {
                 case DayEntry.PERIOD_START: // Start of period
                 case DayEntry.PERIOD_CONFIRMED: // Confirmed period day
                     gradient = gradientPeriodConfirmed;
-                    colorLabel = 0xffffffff;
+                    colorLabel = colorWhite;
                     break;
                 case DayEntry.PERIOD_PREDICTED: // Predicted period day
                     gradient = gradientPeriodPredicted;
-                    colorLabel = 0xde000000;
+                    colorLabel = colorOpacity;
                     break;
                 case DayEntry.FERTILITY_PREDICTED: // Calculated fertile day
                 case DayEntry.OVULATION_PREDICTED: // Calculated day of ovulation
                     gradient = gradientFertilityPredicted;
-                    colorLabel = 0xffffffff;
+                    colorLabel = colorWhite;
                     break;
                 case DayEntry.FERTILITY_FUTURE: // Calculated fertile day in the future
                 case DayEntry.OVULATION_FUTURE: // Calculated day of ovulation in the future
                     gradient = gradientFertilityFuture;
-                    colorLabel = 0xde000000;
+                    colorLabel = colorOpacity;
                     break;
                 case DayEntry.FERTILITY_STANDARD_PREDICTED: // Calculated fertile standard day
                     gradient = gradientFertilityStandardPredicted;
-                    colorLabel = 0xffffffff;
+                    colorLabel = colorWhite;
                     break;
                 case DayEntry.FERTILITY_STANDARD_FUTURE: // Calculated fertile day in the future
                     gradient = gradientFertilityStandardFuture;
-                    colorLabel = 0xde000000;
+                    colorLabel = colorOpacity;
                     break;
                 case DayEntry.INFERTILE_PREDICTED:        // Calculated infertile day
                     gradient = gradientInfertilePredicted;
-                    colorLabel = 0xde000000;
+                    colorLabel = colorOpacity;
                     break;
                 case DayEntry.INFERTILE_FUTURE: // Calculated infertile day in the future
                     gradient = gradientInfertileFuture;
-                    colorLabel = 0xde000000;
+                    colorLabel = colorOpacity;
                     break;
             }
 
@@ -387,7 +406,7 @@ public class CalendarCell extends Button {
                     (int) rectCanvas.width() - (int) (4 * metrics.density),
                     (int) (overlaysize * metrics.density));
             if (intercourse) {
-                if (colorLabel == 0xffffffff) {
+                if (colorLabel == colorWhite) {
                     canvas.drawBitmap(bitmapIntercourse, null, rectOverlay, paintBitmap);
                 } else {
                     canvas.drawBitmap(bitmapIntercourseBlack, null, rectOverlay, paintBitmap);
@@ -400,7 +419,7 @@ public class CalendarCell extends Button {
                     (int) (rectCanvas.width() / 2 + (overlaysize * metrics.density) / 2),
                     (int) rectCanvas.height() - (int) (4 * metrics.density));
             if (notes) {
-                if (colorLabel == 0xffffffff) {
+                if (colorLabel == colorWhite) {
                     canvas.drawBitmap(bitmapNotes, null, rectOverlay, paintBitmap);
                 } else {
                     canvas.drawBitmap(bitmapNotesBlack, null, rectOverlay, paintBitmap);
@@ -456,12 +475,12 @@ public class CalendarCell extends Button {
                 }
 
                 // Draw oval
-                paintOval.setColor(0xde000000);
+                paintOval.setColor(colorOpacity);
                 paintOval.setStrokeWidth(3 * metrics.density);
                 canvas.drawArc(rectOval1, 200, 160, false, paintOval);
                 canvas.drawArc(rectOval2, 0, 240, false, paintOval);
 
-                paintOval.setColor(0xffffffff);
+                paintOval.setColor(colorWhite);
                 paintOval.setStrokeWidth(2 * metrics.density);
                 canvas.drawArc(rectOval1, 200, 160, false, paintOval);
                 canvas.drawArc(rectOval2, 0, 240, false, paintOval);
@@ -472,7 +491,7 @@ public class CalendarCell extends Button {
         if (isFocused()) {
             paintFocus.setStyle(Style.STROKE);
             paintFocus.setStrokeWidth(4 * metrics.density);
-            paintFocus.setColor(0xffff9e08);
+            paintFocus.setColor(colorFocus);
             canvas.drawRoundRect(rectCanvas, 3 * metrics.density, 3 * metrics.density, paintFocus);
         }
     }
