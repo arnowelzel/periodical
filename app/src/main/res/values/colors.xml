@@ -1,4 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="gray">#444440</color>
+    
+    <color name="colorPeriodConfirmed">#f44336</color>
+    <color name="colorPeriodPredicted">#ef9a9a</color>
+    <color name="colorFertilityPredicted">#2196f3</color>
+    <color name="colorFertilityStandardPredicted">#90c2a5</color>
+    <color name="colorFertilityFuture">#90caf9</color>
+    <color name="colorFertilityStandardFuture">#c8e0cb</color>
+    <color name="colorInfertilePredicted">#ffee58</color>
+    <color name="colorInfertileFuture">#fff59d</color>
+    <color name="colorEmpty">#757575</color>
+    <color name="colorBlack">#000000</color>
+    <color name="colorWhite">#ffffff</color>
+    <color name="colorFocus">#ff9e08</color>
+    <color name="colorOpacity">#de000000</color>
 </resources>
