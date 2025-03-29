@@ -1,6 +1,6 @@
 /*
  * Periodical database helper
- * Copyright (C) 2012-2024 Arno Welzel
+ * Copyright (C) 2012-2025 Arno Welzel
  *
  * This code is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -25,8 +25,8 @@ public class DatabaseHelper {
     /**
      * Helper to iterate over cursor
      *
-     * @param cursor
-     * @param function
+     * @param cursor Cursor to use for the iteration
+     * @param function Function to be called for each iteration
      */
     public static void iterateOverCursor(Cursor cursor, Function<Cursor,Void> function){
         if (cursor .moveToFirst()) {

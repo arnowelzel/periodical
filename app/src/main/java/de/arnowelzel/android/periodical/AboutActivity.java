@@ -1,6 +1,6 @@
 /*
  * Periodical "about" activity
- * Copyright (C) 2012-2024 Arno Welzel
+ * Copyright (C) 2012-2025 Arno Welzel
  *
  * This code is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -19,18 +19,17 @@
 package de.arnowelzel.android.periodical;
 
 import android.annotation.SuppressLint;
-import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.os.Environment;
+import android.view.MenuItem;
+import android.webkit.WebResourceRequest;
+import android.webkit.WebView;
+import android.webkit.WebViewClient;
+
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-
-import android.view.MenuItem;
-import android.webkit.WebView;
-import android.webkit.WebViewClient;
 
 /**
  * Activity to handle the "About" command
@@ -79,10 +78,19 @@ public class AboutActivity extends AppCompatActivity {
                     }
 
                     // Handle URLs always external links
+                    // Note: we need to implement both overrides as long as we target API level <24
+                    /** @noinspection RedundantSuppression*/
                     @SuppressWarnings("deprecation")
                     @Override
                     public boolean shouldOverrideUrlLoading(WebView view, String url) {
                         Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+                        startActivity(intent);
+                        return true;
+                    }
+
+                    @Override
+                    public boolean shouldOverrideUrlLoading(WebView view, WebResourceRequest request) {
+                        Intent intent = new Intent(Intent.ACTION_VIEW, request.getUrl());
                         startActivity(intent);
                         return true;
                     }

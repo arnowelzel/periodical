@@ -1,6 +1,6 @@
 /*
  * Periodical main activity
- * Copyright (C) 2012-2024 Arno Welzel
+ * Copyright (C) 2012-2025 Arno Welzel
  *
  * This code is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -52,6 +52,7 @@ import android.widget.ViewFlipper;
 import java.time.format.DateTimeFormatter;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
+import java.util.Objects;
 
 import static de.arnowelzel.android.periodical.PeriodicalDatabase.DayEntry.PERIOD_CONFIRMED;
 import static de.arnowelzel.android.periodical.PeriodicalDatabase.DayEntry.PERIOD_START;
@@ -230,6 +231,7 @@ public class MainActivityApp extends AppCompatActivity
                 new ActivityResultContracts.StartActivityForResult(),
                 result -> {
                     if (result.getResultCode() == Activity.RESULT_OK) {
+                        assert result.getData() != null;
                         handleActivityResultPickDate(result.getData());
                     }
                 });
@@ -341,7 +343,7 @@ public class MainActivityApp extends AppCompatActivity
      * @param outState Bundle to place the saved state
      */
     @Override
-    protected void onSaveInstanceState(Bundle outState) {
+    protected void onSaveInstanceState(@NonNull Bundle outState) {
         super.onSaveInstanceState(outState);
 
         outState.putInt(STATE_MONTH, monthCurrent);
@@ -367,38 +369,24 @@ public class MainActivityApp extends AppCompatActivity
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
 
-        switch (item.getItemId()) {
-            case R.id.list:
-                showList();
-                return true;
+        int id = item.getItemId();
 
-            case R.id.listdetails:
-                showListDetails();
-                return true;
-
-            case R.id.help:
-                showHelp();
-                return true;
-
-            case R.id.about:
-                showAbout();
-                return true;
-
-            case R.id.copy:
-                doBackup();
-                return true;
-
-            case R.id.restore:
-                doRestore();
-                return true;
-
-            case R.id.options:
-                showOptions();
-                return true;
-
-            case R.id.exit:
-                finishAndRemoveTask();
-                return true;
+        if (id == R.id.list) {
+            showList();
+        } else if (id == R.id.listdetails) {
+            showListDetails();
+        } else if (id == R.id.help) {
+            showHelp();
+        } else if (id == R.id.about) {
+            showAbout();
+        } else if (id == R.id.copy) {
+            doBackup();
+        } else if (id == R.id.restore) {
+            doRestore();
+        } else if (id == R.id.options) {
+            showOptions();
+        } else if (id == R.id.exit) {
+            finishAndRemoveTask();
         }
 
         return true;
@@ -457,7 +445,7 @@ public class MainActivityApp extends AppCompatActivity
         assert context != null;
 
         // Initialize control ids for the target view to be used
-        int calendarCells[];
+        int[] calendarCells;
         if (viewCurrent == R.id.calendar) {
             calendarCells = calButtonIds;
         } else {
@@ -470,7 +458,7 @@ public class MainActivityApp extends AppCompatActivity
         int startOfWeek = preferences.getInt("startofweek", 0);
         int column = 0;
         int dayIndex = startOfWeek;
-        int dayLabels[] = {
+        int[] dayLabels = {
                 R.string.main_calday_su,
                 R.string.main_calday_mo,
                 R.string.main_calday_tu,
@@ -479,7 +467,7 @@ public class MainActivityApp extends AppCompatActivity
                 R.string.main_calday_fr,
                 R.string.main_calday_sa
         };
-        int dayIds[][] = {
+        int[][] dayIds = {
                 { R.id.daylabel0_0, R.id.daylabel1_0},
                 { R.id.daylabel0_1, R.id.daylabel1_1},
                 { R.id.daylabel0_2, R.id.daylabel1_2},
@@ -540,11 +528,7 @@ public class MainActivityApp extends AppCompatActivity
                 cell.setVisibility(android.view.View.VISIBLE);
                 PeriodicalDatabase.DayEntry entry = dbMain.getEntry(cal);
 
-                boolean current = false;
-
-                if (day == dayToday && monthCurrent == monthToday && yearCurrent == yearToday) {
-                    current = true;
-                }
+                boolean current = day == dayToday && monthCurrent == monthToday && yearCurrent == yearToday;
 
                 // Set other button attributes
                 cell.setYear(yearCurrent);
@@ -830,13 +814,12 @@ public class MainActivityApp extends AppCompatActivity
      */
     public void handleCalendarButton(View v) {
         final Context context = getApplicationContext();
-        assert context != null;
 
         // Determine selected date
         int idButton = v.getId();
         int nButtonClicked = 0;
 
-        int calButtonIds[];
+        int[] calButtonIds;
         if (viewCurrent == R.id.calendar) {
             calButtonIds = this.calButtonIds;
         } else {
@@ -935,7 +918,7 @@ public class MainActivityApp extends AppCompatActivity
         PreferenceUtils preferences = new PreferenceUtils(context);
         String backupUriString = preferences.getString("backup_uri", "");
 
-        if (backupUriString.equals("")) {
+        if (backupUriString.isEmpty()) {
             return null;
         }
 
@@ -948,8 +931,8 @@ public class MainActivityApp extends AppCompatActivity
     protected void handleActivityResultPickDate(Intent data) {
         Bundle extras = data.getExtras();
         if (extras != null) {
-            monthCurrent = Integer.parseInt(extras.getString("month")) + 1;
-            yearCurrent = Integer.parseInt(extras.getString("year"));
+            monthCurrent = Integer.parseInt(Objects.requireNonNull(extras.getString("month"))) + 1;
+            yearCurrent = Integer.parseInt(Objects.requireNonNull(extras.getString("year")));
             calendarUpdate();
         }
     }
@@ -983,6 +966,7 @@ public class MainActivityApp extends AppCompatActivity
     protected void handleActivityResultStorageAccessSelectBackup(Intent data) {
         if (data != null) {
             Uri storageUri = data.getData();
+            assert storageUri != null;
             getContentResolver().takePersistableUriPermission(
                     storageUri,
                     Intent.FLAG_GRANT_READ_URI_PERMISSION |
@@ -999,6 +983,7 @@ public class MainActivityApp extends AppCompatActivity
     protected void handleActivityResultStorageAccessSelectRestore(Intent data) {
         if (data != null) {
             Uri storageUri = data.getData();
+            assert storageUri != null;
             getContentResolver().takePersistableUriPermission(
                     storageUri,
                     Intent.FLAG_GRANT_READ_URI_PERMISSION |
@@ -1035,8 +1020,7 @@ public class MainActivityApp extends AppCompatActivity
         private static final int SWIPE_THRESHOLD_VELOCITY = 200;
 
         @Override
-        public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX,
-                               float velocityY) {
+        public boolean onFling(MotionEvent e1, @NonNull MotionEvent e2, float velocityX, float velocityY) {
             try {
                 // if swipe is not straight enough then ignore
                 if (Math.abs(e1.getY() - e2.getY()) > SWIPE_MAX_OFF_PATH) {

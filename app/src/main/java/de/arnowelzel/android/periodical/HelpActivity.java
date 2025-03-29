@@ -1,6 +1,6 @@
 /*
  * Periodical "help" activity
- * Copyright (C) 2012-2024 Arno Welzel
+ * Copyright (C) 2012-2025 Arno Welzel
  *
  * This code is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -21,13 +21,13 @@ package de.arnowelzel.android.periodical;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import androidx.appcompat.app.ActionBar;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-
 import android.view.MenuItem;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 /**
  * Activity to handle the "Help" command
@@ -53,16 +53,15 @@ public class HelpActivity extends AppCompatActivity {
 
         WebView view = findViewById(R.id.webView);
         view.setWebViewClient(
-                new WebViewClient() {
-                    // Handle URLs always as external links
-                    @SuppressWarnings("deprecation")
-                    @Override
-                    public boolean shouldOverrideUrlLoading(WebView view, String url) {
-                        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
-                        startActivity(intent);
-                        return true;
-                    }
-                });
+            new WebViewClient() {
+                // Handle URLs always as external links
+                @Override
+                public boolean shouldOverrideUrlLoading(WebView view, String url) {
+                    Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+                    startActivity(intent);
+                    return true;
+                }
+            });
         view.loadUrl("file:///android_asset/" + getString(R.string.asset_help));
     }
 
@@ -71,13 +70,10 @@ public class HelpActivity extends AppCompatActivity {
      */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case android.R.id.home:
-                // Home icon in action bar clicked, then close activity
-                finish();
-                return true;
-            default:
-                return super.onOptionsItemSelected(item);
+        if (item.getItemId() == android.R.id.home) {// Home icon in action bar clicked, then close activity
+            finish();
+            return true;
         }
+        return super.onOptionsItemSelected(item);
     }
 }

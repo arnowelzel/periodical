@@ -1,6 +1,6 @@
 /*
  * Periodical calendar cell class
- * Copyright (C) 2012-2024 Arno Welzel
+ * Copyright (C) 2012-2025 Arno Welzel
  *
  * This code is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -36,9 +36,7 @@ import android.graphics.Rect;
 import android.graphics.RectF;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
-import android.view.Display;
-import android.view.Surface;
-import android.view.WindowManager;
+import android.util.TypedValue;
 import android.widget.Button;
 
 import androidx.core.content.ContextCompat;
@@ -140,7 +138,7 @@ public class CalendarCell extends Button {
     /**
      * Gradient for entries of type "predicted fertility standard"
      */
-    private LinearGradient gradientFertilityStandardPredicted;
+    private final LinearGradient gradientFertilityStandardPredicted;
     /**
      * Gradient for entries of type "predicted fertility in the future" and "ovulation in the future
      */
@@ -148,7 +146,7 @@ public class CalendarCell extends Button {
     /**
      * Gradient for entries of type "predicted fertility standard in the future"
      */
-    private LinearGradient gradientFertilityStandardFuture;
+    private final LinearGradient gradientFertilityStandardFuture;
     /**
      * Gradient for entries of type "infertile day predicted"
      */
@@ -307,6 +305,7 @@ public class CalendarCell extends Button {
      *
      * @param canvas The canvas to draw on
      */
+    @SuppressLint("DefaultLocale")
     protected void onDraw(Canvas canvas) {
         LinearGradient gradient = gradientEmpty;
         int colorLabel = colorWhite;
@@ -429,23 +428,23 @@ public class CalendarCell extends Button {
 
         // Draw main label
         label = getText().toString();
-        paintLabel.setTextSize(16 * metrics.scaledDensity);
+        paintLabel.setTextSize(TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 16, metrics));
         paintLabel.setColor(colorLabel);
         paintLabel.getTextBounds(label, 0, label.length(), rectLabel);
 
-        canvas.drawText(label, (getWidth() - rectLabel.width()) / 2,
-                rectLabel.height() + (getHeight() - rectLabel.height()) / 2, paintLabel);
+        canvas.drawText(label, (float) (getWidth() - rectLabel.width()) / 2,
+                rectLabel.height() + (float) (getHeight() - rectLabel.height()) / 2, paintLabel);
 
         // Draw day of cycle, if applicable
         if (!isPressed() && dayofcycle != 0) {
             label = String.format("%d", dayofcycle);
-            paintLabel.setTextSize(12 * metrics.scaledDensity);
+            paintLabel.setTextSize(TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 12, metrics));
             paintLabel.setColor(colorLabel);
             paintLabel.getTextBounds(label, 0, label.length(), rectLabel);
 
             canvas.drawText(label,
-                    rectCanvas.width() - rectLabel.width() - 4 * metrics.density,
-                    rectCanvas.height() - rectLabel.height() / 2 - 1 * metrics.density,
+                    rectCanvas.width() - (float) rectLabel.width() - 4 * metrics.density,
+                    rectCanvas.height() - (float) rectLabel.height() / 2 - 1 * metrics.density,
                     paintLabel);
         }
 

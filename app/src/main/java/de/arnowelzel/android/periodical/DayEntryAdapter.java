@@ -1,6 +1,6 @@
 /*
  * Custom adapter for calendar entry list view
- * Copyright (C) 2012-2024 Arno Welzel
+ * Copyright (C) 2012-2025 Arno Welzel
  *
  * This code is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -83,7 +83,7 @@ class DayEntryAdapter extends ArrayAdapter<PeriodicalDatabase.DayEntry> {
         StringBuilder textSymptoms = new StringBuilder();
 
         // Elements 0-1 are events, 2-6 moods, 7-22 are symptoms
-        int eventIds[] = {
+        int[] eventIds = {
                 1,  // Intercourse
                 18, // Contraceptive pill
                 20, // Tired
@@ -111,18 +111,18 @@ class DayEntryAdapter extends ArrayAdapter<PeriodicalDatabase.DayEntry> {
         int num = 0;
         for (int eventId : eventIds) {
             String resName = format(Locale.ENGLISH,"label_details_ev%d", eventId);
-            int resId = resources.getIdentifier(resName, "string", packageName);
+            @SuppressLint("DiscouragedApi") int resId = resources.getIdentifier(resName, "string", packageName);
             if (resId != 0) {
                 if (currentEntry.symptoms.contains(eventId)) {
                     if (num < 2) {
                         if (textEvents.length() > 0) textEvents.append("\n");
-                        textEvents.append("\u2022 ").append(resources.getString(resId));
-                    } else if(num > 1 && num < 7) {
+                        textEvents.append("• ").append(resources.getString(resId));
+                    } else if(num < 7) {
                         if (textMood.length() > 0) textMood.append("\n");
-                        textMood.append("\u2022 ").append(resources.getString(resId));
+                        textMood.append("• ").append(resources.getString(resId));
                     } else {
                         if (textSymptoms.length() > 0) textSymptoms.append("\n");
-                        textSymptoms.append("\u2022 ").append(resources.getString(resId));
+                        textSymptoms.append("• ").append(resources.getString(resId));
                     }
                 }
             }
@@ -138,12 +138,12 @@ class DayEntryAdapter extends ArrayAdapter<PeriodicalDatabase.DayEntry> {
         switch (currentEntry.type) {
             case PeriodicalDatabase.DayEntry.PERIOD_START:
                 view.setText(
-                        dateFormat.format(currentEntry.date.getTime()) + " \u2014 " +
+                        dateFormat.format(currentEntry.date.getTime()) + " — " +
                                 resources.getString(R.string.event_periodstart));
                 break;
             case PeriodicalDatabase.DayEntry.PERIOD_CONFIRMED:
                 view.setText(
-                        dateFormat.format(currentEntry.date.getTime()) + " \u2014 " +
+                        dateFormat.format(currentEntry.date.getTime()) + " — " +
                                 format(
                                         resources.getString(R.string.label_period_day),
                                         currentEntry.dayofcycle));
@@ -175,14 +175,14 @@ class DayEntryAdapter extends ArrayAdapter<PeriodicalDatabase.DayEntry> {
             view.setText(intensity);
             viewIntensity.setVisibility(View.VISIBLE);
         } else {
-            view.setText("\u2014");
+            view.setText("—");
             viewIntensity.setVisibility(View.GONE);
         }
 
         viewLabel = listItem.findViewById(R.id.label_item_notes);
         view = listItem.findViewById(R.id.item_notes);
         if (currentEntry.notes.isEmpty()) {
-            view.setText("\u2014");
+            view.setText("—");
             view.setVisibility(View.GONE);
             viewLabel.setVisibility(View.GONE);
         }
@@ -195,7 +195,7 @@ class DayEntryAdapter extends ArrayAdapter<PeriodicalDatabase.DayEntry> {
         viewLabel = listItem.findViewById(R.id.label_item_events);
         view = listItem.findViewById(R.id.item_event);
         if (textEvents.length() == 0) {
-            view.setText("\u2014");
+            view.setText("—");
             view.setVisibility(View.GONE);
             viewLabel.setVisibility(View.GONE);
         } else {
@@ -207,7 +207,7 @@ class DayEntryAdapter extends ArrayAdapter<PeriodicalDatabase.DayEntry> {
         viewLabel = listItem.findViewById(R.id.label_item_mood);
         view = listItem.findViewById(R.id.item_mood);
         if (textMood.length() == 0) {
-            view.setText("\u2014");
+            view.setText("—");
             view.setVisibility(View.GONE);
             viewLabel.setVisibility(View.GONE);
         } else {
@@ -219,7 +219,7 @@ class DayEntryAdapter extends ArrayAdapter<PeriodicalDatabase.DayEntry> {
         viewLabel = listItem.findViewById(R.id.label_item_symptoms);
         view = listItem.findViewById(R.id.item_symptom);
         if (textSymptoms.length() == 0) {
-            view.setText("\u2014");
+            view.setText("—");
             view.setVisibility(View.GONE);
             viewLabel.setVisibility(View.GONE);
         } else {

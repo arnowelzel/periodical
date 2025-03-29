@@ -1,6 +1,6 @@
 /*
  * Periodical "list" activity
- * Copyright (C) 2012-2024 Arno Welzel
+ * Copyright (C) 2012-2025 Arno Welzel
  *
  * This code is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -23,16 +23,16 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import androidx.appcompat.app.ActionBar;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import androidx.preference.PreferenceManager;
 import android.widget.ListView;
+
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.preference.PreferenceManager;
 
 import java.util.Calendar;
 import java.util.Iterator;
@@ -88,24 +88,22 @@ public class ListActivity extends AppCompatActivity implements AdapterView.OnIte
             day = dayIterator.next();
 
             entries[pos] = dateFormat.format(day.date.getTime());
-            switch (day.type) {
-                case DayEntry.PERIOD_START:
-                    entries[pos] = entries[pos] + " \u2014 " + getString(R.string.event_periodstart);
-                    if (dayPrevious != null) {
-                        // If we have a previous day, then update the previous
-                        // days length description
-                        Integer length = day.date.diffDayPeriods(dayPrevious.date);
-                        if (length <= maximumcyclelength) {
-                            entries[pos - 1] += "\n"
-                                    + String.format(
-                                    getString(R.string.event_periodlength),
-                                    length.toString());
-                        } else {
-                            entries[pos - 1] +=
-                                    String.format("\n%s", getString(R.string.event_ignored));
-                        }
+            if (day.type == DayEntry.PERIOD_START) {
+                entries[pos] = entries[pos] + " — " + getString(R.string.event_periodstart);
+                if (dayPrevious != null) {
+                    // If we have a previous day, then update the previous
+                    // days length description
+                    int length = day.date.diffDayPeriods(dayPrevious.date);
+                    if (length <= maximumcyclelength) {
+                        entries[pos - 1] += "\n"
+                                + String.format(
+                                getString(R.string.event_periodlength),
+                                Integer.toString(length));
+                    } else {
+                        entries[pos - 1] +=
+                                String.format("\n%s", getString(R.string.event_ignored));
                     }
-                    break;
+                }
             }
             pos++;
         }
@@ -146,14 +144,11 @@ public class ListActivity extends AppCompatActivity implements AdapterView.OnIte
      */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case android.R.id.home:
-                // Home icon in action bar clicked, then close activity
-                finish();
-                return true;
-            default:
-                return super.onOptionsItemSelected(item);
+        if (item.getItemId() == android.R.id.home) {// Home icon in action bar clicked, then close activity
+            finish();
+            return true;
         }
+        return super.onOptionsItemSelected(item);
     }
 
     /**
@@ -171,12 +166,12 @@ public class ListActivity extends AppCompatActivity implements AdapterView.OnIte
                 && position < dbMain.dayEntries.size()) {
             DayEntry selectedEntry = dbMain.dayEntries.get(position);
 
-            Integer month = selectedEntry.date.get(Calendar.MONTH);
-            Integer year = selectedEntry.date.get(Calendar.YEAR);
+            int month = selectedEntry.date.get(Calendar.MONTH);
+            int year = selectedEntry.date.get(Calendar.YEAR);
 
             Intent intent = getIntent();
-            intent.putExtra("month", month.toString());
-            intent.putExtra("year", year.toString());
+            intent.putExtra("month", Integer.toString(month));
+            intent.putExtra("year", Integer.toString(year));
 
             setResult(RESULT_OK, intent);
             finish();

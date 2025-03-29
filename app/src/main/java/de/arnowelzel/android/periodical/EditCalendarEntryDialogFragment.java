@@ -1,6 +1,6 @@
 /*
  * Periodical dialog fragment for calendar entry details
- * Copyright (C) 2012-2024 Arno Welzel
+ * Copyright (C) 2012-2025 Arno Welzel
  *
  * This code is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -64,6 +64,7 @@ public class EditCalendarEntryDialogFragment extends DialogFragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        assert getArguments() != null;
         type = getArguments().getInt(RESULT_TYPE);
         year = getArguments().getInt(RESULT_YEAR);
         month = getArguments().getInt(RESULT_MONTH);
@@ -81,11 +82,8 @@ public class EditCalendarEntryDialogFragment extends DialogFragment {
             case TYPE_REMOVE:
                 messageId = R.string.calendaraction_remove;
                 break;
-            default:
-                messageId = R.string.calendaraction_add;
         }
         String message = getResources().getString(messageId);
-
 
         return new AlertDialog.Builder(getActivity())
             .setTitle(getResources().getString(R.string.calendaraction_title))

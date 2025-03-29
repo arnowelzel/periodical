@@ -1,6 +1,6 @@
 /*
  * Periodical settings fragment
- * Copyright (C) 2012-2024 Arno Welzel
+ * Copyright (C) 2012-2025 Arno Welzel
  *
  * This code is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -185,7 +185,7 @@ public class SettingsFragment extends PreferenceFragmentCompat {
             value = 0;
         }
 
-        if ((minValue != null && value < minValue.intValue()) || (maxValue != null && value > maxValue)) {
+        if ((minValue != null && value < minValue) || (maxValue != null && value > maxValue)) {
             Toast.makeText(getContext(),
                     getResources().getString(idErrorMessage),
                     Toast.LENGTH_SHORT).show();

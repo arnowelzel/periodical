@@ -1,6 +1,6 @@
 /*
  * Periodical "info" activity
- * Copyright (C) 2012-2024 Arno Welzel
+ * Copyright (C) 2012-2025 Arno Welzel
  *
  * This code is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -18,6 +18,7 @@
 
 package de.arnowelzel.android.periodical;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -33,10 +34,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 public class InfoActivity extends AppCompatActivity {
-    /**
-     * Database for calendar data
-     */
-    private PeriodicalDatabase dbMain;
 
     /* Launchers for activities with result */
     private ActivityResultLauncher<Intent> pickDateResultLauncher;
@@ -44,6 +41,7 @@ public class InfoActivity extends AppCompatActivity {
     /**
      * Called when the activity starts
      */
+    @SuppressLint("DefaultLocale")
     @Override
     public void onCreate(Bundle savedInstanceState) {
         final Context context = getApplicationContext();
@@ -54,7 +52,7 @@ public class InfoActivity extends AppCompatActivity {
         setContentView(R.layout.info);
 
         // Calculate data
-        dbMain = new PeriodicalDatabase(context);
+        PeriodicalDatabase dbMain = new PeriodicalDatabase(context);
         dbMain.loadCalculatedData();
 
         TextView viewCountEntries = findViewById(R.id.infoCountEntries);
@@ -74,6 +72,7 @@ public class InfoActivity extends AppCompatActivity {
                 new ActivityResultContracts.StartActivityForResult(),
                 result -> {
                     if (result.getResultCode() == Activity.RESULT_OK) {
+                        assert result.getData() != null;
                         handleActivityResultPickDate(result.getData());
                     }
                 });
@@ -91,14 +90,11 @@ public class InfoActivity extends AppCompatActivity {
      */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case android.R.id.home:
-                // Home icon in action bar clicked, then close activity
-                finish();
-                return true;
-            default:
-                return super.onOptionsItemSelected(item);
+        if (item.getItemId() == android.R.id.home) {// Home icon in action bar clicked, then close activity
+            finish();
+            return true;
         }
+        return super.onOptionsItemSelected(item);
     }
 
     /**
@@ -124,6 +120,7 @@ public class InfoActivity extends AppCompatActivity {
         // Forward the result to the calling view
         Bundle extras = data.getExtras();
         Intent intent = getIntent();
+        assert extras != null;
         intent.putExtras(extras);
         setResult(RESULT_OK, intent);
         finish();

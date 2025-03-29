@@ -1,6 +1,6 @@
 /*
  * Periodical "list with details" activity
- * Copyright (C) 2012-2024 Arno Welzel
+ * Copyright (C) 2012-2025 Arno Welzel
  *
  * This code is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -22,14 +22,14 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import androidx.appcompat.app.ActionBar;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -99,14 +99,11 @@ public class ListDetailsActivity extends AppCompatActivity implements AdapterVie
      */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case android.R.id.home:
-                // Home icon in action bar clicked, then close activity
-                finish();
-                return true;
-            default:
-                return super.onOptionsItemSelected(item);
+        if (item.getItemId() == android.R.id.home) {// Home icon in action bar clicked, then close activity
+            finish();
+            return true;
         }
+        return super.onOptionsItemSelected(item);
     }
 
     /**
@@ -124,12 +121,12 @@ public class ListDetailsActivity extends AppCompatActivity implements AdapterVie
         if (position >= 0 && position < listsize) {
             DayEntry selectedEntry = dbMain.dayEntries.get(listsize - position - 1);
 
-            Integer month = selectedEntry.date.get(Calendar.MONTH);
-            Integer year = selectedEntry.date.get(Calendar.YEAR);
+            int month = selectedEntry.date.get(Calendar.MONTH);
+            int year = selectedEntry.date.get(Calendar.YEAR);
 
             Intent intent = getIntent();
-            intent.putExtra("month", month.toString());
-            intent.putExtra("year", year.toString());
+            intent.putExtra("month", Integer.toString(month));
+            intent.putExtra("year", Integer.toString(year));
 
             setResult(RESULT_OK, intent);
             finish();

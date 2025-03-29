@@ -1,6 +1,6 @@
 /*
  * Periodical database class
- * Copyright (C) 2012-2024 Arno Welzel
+ * Copyright (C) 2012-2025 Arno Welzel
  *
  * This code is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -19,7 +19,6 @@
 package de.arnowelzel.android.periodical;
 
 import android.annotation.SuppressLint;
-
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.database.Cursor;
@@ -40,6 +39,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.GregorianCalendar;
 import java.util.List;
@@ -250,10 +250,10 @@ class PeriodicalDatabase {
                 db.beginTransaction();
 
                 // Add missing placeholders for details which might have been removed when deleting a period day
-                Cursor resultSymptoms = db.rawQuery("select eventdate from symptoms group by eventdate", null);
+                @SuppressLint("Recycle") Cursor resultSymptoms = db.rawQuery("select eventdate from symptoms group by eventdate", null);
                 while (resultSymptoms.moveToNext()) {
                     String dbdate = resultSymptoms.getString(0);
-                    Cursor resultData = db.rawQuery(format(Locale.ENGLISH, "select eventtype from data where eventdate='%s'", dbdate), null);
+                    @SuppressLint("Recycle") Cursor resultData = db.rawQuery(format(Locale.ENGLISH, "select eventtype from data where eventdate='%s'", dbdate), null);
                     if(!resultData.moveToNext()) {
                         String statement = format(
                                 Locale.ENGLISH,
@@ -284,7 +284,7 @@ class PeriodicalDatabase {
                 // Therefore we check for days which have more then one record and remove all
                 // records with eventtype 0 for these days.
 
-                Cursor resultCheck = db.rawQuery("select eventdate, count from (select eventdate, sum(1) as count from data group by eventdate) where count>1", null);
+                @SuppressLint("Recycle") Cursor resultCheck = db.rawQuery("select eventdate, count from (select eventdate, sum(1) as count from data group by eventdate) where count>1", null);
                 while (resultCheck.moveToNext()) {
                     String dbdate = resultCheck.getString(0);
                     String statement = format(
@@ -397,11 +397,10 @@ class PeriodicalDatabase {
 
     /**
      * Open the database
+     * @noinspection resource
      */
-    @SuppressLint("Recycle")
     private void open() {
-        PeriodicalDataOpenHelper dataOpenHelper;
-        dataOpenHelper = new PeriodicalDataOpenHelper(context);
+        PeriodicalDataOpenHelper dataOpenHelper = new PeriodicalDataOpenHelper(context);
         db = dataOpenHelper.getWritableDatabase();
         assert db != null;
     }
@@ -841,7 +840,7 @@ class PeriodicalDatabase {
                 symptom = result.getInt(1);
             }
 
-            if (dayEntries.size() == 0) {
+            if (dayEntries.isEmpty()) {
                 // If we don't have any entries yet, create an empty entry for the details
                 entryTarget = new DayEntry(DayEntry.EMPTY, eventdate, 0, 0);
                 dayEntries.add(entryTarget);
@@ -873,13 +872,11 @@ class PeriodicalDatabase {
                 }
 
                 // Add symptom to the current entry
-                if (null != entryTarget) {
-                    if (isNotes) {
-                        entryTarget.notes = notes;
-                    } else {
-                        if (symptom != 0) {
-                            entryTarget.symptoms.add(symptom);
-                        }
+                if (isNotes) {
+                    entryTarget.notes = notes;
+                } else {
+                    if (symptom != 0) {
+                        entryTarget.symptoms.add(symptom);
                     }
                 }
             }
@@ -955,7 +952,7 @@ class PeriodicalDatabase {
                 if (entry != null) {
                     entry.dayofcycle = dayofcycle;
                     entry.symptoms = symptoms;
-                    if (entry.type != DayEntry.EMPTY || !entry.notes.isEmpty() || entry.symptoms.size() > 0) {
+                    if (entry.type != DayEntry.EMPTY || !entry.notes.isEmpty() || !entry.symptoms.isEmpty()) {
                         dayEntries.add(entry);
                     }
                 }
@@ -994,7 +991,7 @@ class PeriodicalDatabase {
         if (entry != null) {
             entry.symptoms = symptoms;
             entry.dayofcycle = dayofcycle;
-            if (entry.type != DayEntry.EMPTY || !entry.notes.isEmpty() || entry.symptoms.size() > 0) {
+            if (entry.type != DayEntry.EMPTY || !entry.notes.isEmpty() || !entry.symptoms.isEmpty()) {
                 dayEntries.add(entry);
             }
         }
@@ -1031,6 +1028,7 @@ class PeriodicalDatabase {
     private DayEntry getEntry(int year, int month, int day) {
         for (DayEntry entry : dayEntries) {
             // If entry was found, then return entry
+            //noinspection MagicConstant
             if (entry.date.get(GregorianCalendar.YEAR) == year
                     && entry.date.get(GregorianCalendar.MONTH) == month - 1
                     && entry.date.get(GregorianCalendar.DATE) == day) {
@@ -1199,6 +1197,7 @@ class PeriodicalDatabase {
      *
      * @param name         Name of the option to retrieve
      * @param defaultvalue Default value to be used if the option is not stored yet
+     * @noinspection SameParameterValue
      */
     private String getOption(String name, String defaultvalue) {
         String value = defaultvalue;
@@ -1304,13 +1303,13 @@ class PeriodicalDatabase {
      * <br><br><i>(Just a hack for now - in the future we might want to get rid of shared preferences)</i>
      */
     void restorePreferences() {
-        Integer period_length = getOption("period_length", DEFAULT_PERIOD_LENGTH);
-        Integer luteal_length = getOption("luteal_length", DEFAULT_LUTEAL_LENGTH);
-        Integer startofweek = getOption("startofweek", DEFAULT_START_OF_WEEK);
-        if (startofweek < 0 && startofweek > 6) {
+        int period_length = getOption("period_length", DEFAULT_PERIOD_LENGTH);
+        int luteal_length = getOption("luteal_length", DEFAULT_LUTEAL_LENGTH);
+        int startofweek = getOption("startofweek", DEFAULT_START_OF_WEEK);
+        if (startofweek < 0 || startofweek > 6) {
             startofweek = DEFAULT_START_OF_WEEK;
         }
-        Integer maximum_cycle_length = getOption("maximum_cycle_length", DEFAULT_CYCLE_LENGTH);
+        int maximum_cycle_length = getOption("maximum_cycle_length", DEFAULT_CYCLE_LENGTH);
         boolean direct_details = getOption("direct_details", DEFAULT_DIRECT_DETAILS);
         boolean show_cycle = getOption("show_cycle", DEFAULT_SHOW_CYCLE);
         String backup_uri = getOption( "backup_uri", null);
@@ -1328,10 +1327,10 @@ class PeriodicalDatabase {
         editor.remove("backup_uri");
 
         // Store values
-        editor.putString("period_length", period_length.toString());
-        editor.putString("luteal_length", luteal_length.toString());
-        editor.putString("startofweek", startofweek.toString());
-        editor.putString("maximum_cycle_length", maximum_cycle_length.toString());
+        editor.putString("period_length", Integer.toString(period_length));
+        editor.putString("luteal_length", Integer.toString(luteal_length));
+        editor.putString("startofweek", Integer.toString(startofweek));
+        editor.putString("maximum_cycle_length", Integer.toString(maximum_cycle_length));
         editor.putBoolean("direct_details", direct_details);
         editor.putBoolean("show_cycle", show_cycle);
         editor.putString("backup_uri", backup_uri);
@@ -1347,6 +1346,7 @@ class PeriodicalDatabase {
 
         // Check if uri is accessible
         DocumentFile directory = DocumentFile.fromTreeUri(context, uri);
+        assert directory != null;
         if (!directory.isDirectory()) {
             return false;
         }
@@ -1374,11 +1374,13 @@ class PeriodicalDatabase {
 
         // Backup database to file
         try {
+            assert destinationFile != null;
             OutputStream destinationStream = context.getContentResolver().openOutputStream(destinationFile.getUri());
             GZIPOutputStream out = new GZIPOutputStream(destinationStream);
-            JsonWriter writer = new JsonWriter(new OutputStreamWriter(out, "UTF-8"));
+            JsonWriter writer = new JsonWriter(new OutputStreamWriter(out, StandardCharsets.UTF_8));
             writeBackup(writer, this.db);
             writer.close();
+            assert destinationStream != null;
             destinationStream.close();
 
             // Check if we have an old backup and clean this up
@@ -1394,9 +1396,8 @@ class PeriodicalDatabase {
             }
 
             result = true;
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
         } catch (IOException e) {
+            //noinspection CallToPrintStackTrace
             e.printStackTrace();
         }
 
@@ -1414,6 +1415,7 @@ class PeriodicalDatabase {
 
         // Check if uri exists
         DocumentFile directory = DocumentFile.fromTreeUri(context, uri);
+        assert directory != null;
         if (!directory.isDirectory()) {
             return false;
         }
@@ -1442,15 +1444,15 @@ class PeriodicalDatabase {
                 FileOutputStream destinationStream = new FileOutputStream(destinationFile);
                 int byteRead = 0;
                 byte[] buffer = new byte[8192];
+                assert sourceStream != null;
                 while ((byteRead = sourceStream.read(buffer, 0, 8192)) != -1) {
                     destinationStream.write(buffer, 0, byteRead);
                 }
                 sourceStream.close();
                 destinationStream.close();
                 result = true;
-            } catch (FileNotFoundException e) {
-                e.printStackTrace();
             } catch (IOException e) {
+                //noinspection CallToPrintStackTrace
                 e.printStackTrace();
             }
 
@@ -1465,15 +1467,15 @@ class PeriodicalDatabase {
                     FileOutputStream destinationStreamJournal = new FileOutputStream(destinationFileJournal);
                     int byteRead = 0;
                     byte[] buffer = new byte[8192];
+                    assert sourceStreamJournal != null;
                     while ((byteRead = sourceStreamJournal.read(buffer, 0, 8192)) != -1) {
                         destinationStreamJournal.write(buffer, 0, byteRead);
                     }
                     sourceStreamJournal.close();
                     destinationStreamJournal.close();
                     result = true;
-                } catch (FileNotFoundException e) {
-                    e.printStackTrace();
                 } catch (IOException e) {
+                    //noinspection CallToPrintStackTrace
                     e.printStackTrace();
                 }
             }
@@ -1484,6 +1486,7 @@ class PeriodicalDatabase {
             // Create a new backup with current format and delete old backup, if sucessful
             if (backupToUri(context, uri)) {
                 sourceFile.delete();
+                assert sourceFileJournal != null;
                 sourceFileJournal.delete();
             }
 
@@ -1499,14 +1502,15 @@ class PeriodicalDatabase {
         try {
             InputStream sourceStream = context.getContentResolver().openInputStream(sourceFileBackup.getUri());
             GZIPInputStream in = new GZIPInputStream(sourceStream);
-            JsonReader reader = new JsonReader(new InputStreamReader(in, "UTF-8"));
+            JsonReader reader = new JsonReader(new InputStreamReader(in, StandardCharsets.UTF_8));
             readBackup(reader, this.db);
             reader.close();
+            assert sourceStream != null;
             sourceStream.close();
             result = true;
         } catch (IOException | RuntimeException e) {
+            //noinspection CallToPrintStackTrace
             e.printStackTrace();
-            result = false;
         }
 
         return result;
@@ -1515,10 +1519,8 @@ class PeriodicalDatabase {
     /**
      * Helper to write database to the backup
      *
-     * @param writer
-     * @param db
-     *
-     * @throws IOException
+     * @param writer Writer to use for the output
+     * @param db Database to be backed up
      */
     private void writeBackup(final JsonWriter writer, final SQLiteDatabase db) throws IOException {
         writer.beginArray();
@@ -1535,10 +1537,8 @@ class PeriodicalDatabase {
     /**
      * Helper to write a table to the backup
      *
-     * @param writer
-     * @param db
-     *
-     * @throws IOException
+     * @param writer Write to use for the output
+     * @param db Database to be backed up
      */
     private void writeTable(final JsonWriter writer, final SQLiteDatabase db, String tableName, String[] fieldList) throws IOException {
         writer.beginObject();
@@ -1572,17 +1572,15 @@ class PeriodicalDatabase {
     /**
      * Helper to read database from the backup
      *
-     * @param reader
-     * @param db
-     *
-     * @throws IOException
+     * @param reader Reader to be used for the input
+     * @param db Database to be restored
      */
     private void readBackup(final JsonReader reader, final SQLiteDatabase db) throws IOException {
         reader.beginArray();
         reader.beginObject();
         reader.nextName();
         int version = reader.nextInt();
-        if (version < 6 || version > 6) {
+        if (version != 6) {
             throw new IOException("Version of this backup is not supported");
         }
         reader.endObject();
@@ -1611,11 +1609,8 @@ class PeriodicalDatabase {
     /**
      * Helper to read a table from the backup
      *
-     * @param reader
-     * @param db
-     *
-     * @throws IOException
-     * @noinspection ReassignedVariable
+     * @param reader Reader to be used for the input
+     * @param db Database to be restored
      */
     private void readTable(final JsonReader reader, final int version, final SQLiteDatabase db, String tableName, String[] fieldList) throws IOException {
         db.beginTransaction();
@@ -1624,23 +1619,25 @@ class PeriodicalDatabase {
             reader.beginArray();
             while (reader.hasNext()) {
                 reader.beginObject();
-                String statementFields = "";
-                String statementPlaceholders = "";
+                StringBuilder statementFields = new StringBuilder();
+                StringBuilder statementPlaceholders = new StringBuilder();
+                //noinspection rawtypes
                 ArrayList statementValues = new ArrayList();
                 for (String field : fieldList) {
                     String jsonFieldName = reader.nextName();
                     String jsonFieldValue = reader.nextString();
 
-                    if (!statementFields.isEmpty()) {
-                        statementFields += ",";
+                    if (statementFields.length() > 0) {
+                        statementFields.append(",");
                     }
-                    statementFields += jsonFieldName;
+                    statementFields.append(jsonFieldName);
 
-                    if (!statementPlaceholders.isEmpty()) {
-                        statementPlaceholders += ",";
+                    if (statementPlaceholders.length() > 0) {
+                        statementPlaceholders.append(",");
                     }
-                    statementPlaceholders += "?";
+                    statementPlaceholders.append("?");
 
+                    //noinspection unchecked
                     statementValues.add(jsonFieldValue);
                 }
                 String statement =

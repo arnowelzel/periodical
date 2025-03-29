@@ -1,6 +1,6 @@
 /*
  * Periodical settings activity
- * Copyright (C) 2012-2024 Arno Welzel
+ * Copyright (C) 2012-2025 Arno Welzel
  *
  * This code is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -56,13 +56,10 @@ public class SettingsActivity extends AppCompatActivity {
      */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case android.R.id.home:
-                // Home icon in action bar clicked, then close activity
-                finish();
-                return true;
-            default:
-                return super.onOptionsItemSelected(item);
+        if (item.getItemId() == android.R.id.home) {// Home icon in action bar clicked, then close activity
+            finish();
+            return true;
         }
+        return super.onOptionsItemSelected(item);
     }
 }

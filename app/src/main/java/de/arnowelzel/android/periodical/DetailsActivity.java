@@ -1,6 +1,6 @@
 /*
  * Periodical "details" activity
- * Copyright (C) 2012-2024 Arno Welzel
+ * Copyright (C) 2012-2025 Arno Welzel
  *
  * This code is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -18,16 +18,12 @@
 
 package de.arnowelzel.android.periodical;
 
+import android.annotation.SuppressLint;
 import android.app.backup.BackupManager;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
-import androidx.appcompat.app.ActionBar;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.AppCompatCheckBox;
-import androidx.appcompat.widget.Toolbar;
-
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.MenuItem;
@@ -37,6 +33,11 @@ import android.widget.LinearLayout;
 import android.widget.MultiAutoCompleteTextView;
 import android.widget.RadioButton;
 import android.widget.TextView;
+
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatCheckBox;
+import androidx.appcompat.widget.Toolbar;
 
 import java.text.DateFormat;
 import java.util.Locale;
@@ -159,7 +160,7 @@ public class DetailsActivity extends AppCompatActivity implements View.OnClickLi
         layoutParams.setMargins(marginLeft, 0, marginRight, 0);
 
         // Elements 0-1 are events, 2-6 moods, 7-22 are symptoms
-        int eventIds[] = {
+        int[] eventIds = {
                 1,  // Intercourse
                 18, // Contraceptive pill
                 20, // Tired
@@ -187,7 +188,7 @@ public class DetailsActivity extends AppCompatActivity implements View.OnClickLi
         int num = 0;
         for (int eventId : eventIds) {
             String resName = String.format(Locale.ENGLISH, "label_details_ev%d", eventId);
-            int resId = resources.getIdentifier(resName, "string", packageName);
+            @SuppressLint("DiscouragedApi") int resId = resources.getIdentifier(resName, "string", packageName);
             if (resId != 0) {
                 AppCompatCheckBox option = new AppCompatCheckBox(this);
                 option.setLayoutParams(layoutParams);
@@ -198,7 +199,7 @@ public class DetailsActivity extends AppCompatActivity implements View.OnClickLi
                 option.setOnClickListener(this);
                 if (num < 2) {
                     groupEvents.addView(option);
-                } else if(num > 1 && num < 7) {
+                } else if(num < 7) {
                     groupMood.addView(option);
                 } else {
                     groupSymptoms.addView(option);
@@ -213,79 +214,69 @@ public class DetailsActivity extends AppCompatActivity implements View.OnClickLi
      */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case android.R.id.home:
-                // Home icon in action bar clicked, then close activity
-                Intent intent = getIntent();
-                setResult(RESULT_OK, intent);
-                finish();
-                return true;
-            default:
-                return true;
+        if (item.getItemId() == android.R.id.home) {// Home icon in action bar clicked, then close activity
+            Intent intent = getIntent();
+            setResult(RESULT_OK, intent);
+            finish();
+            return true;
         }
+        return true;
     }
 
     /**
      * Listener for clicks on the radio buttons and checkboxes
      */
+    @SuppressLint("DiscouragedApi")
     public void onClick(View v) {
         int id = v.getId();
-        switch (id) {
-            case R.id.periodYes:
-                dbMain.addPeriod(entry.date);
-                entry.type = PeriodicalDatabase.DayEntry.PERIOD_START;
-                databaseChanged();
-                buttonPeriodIntensity1.setEnabled(true);
-                buttonPeriodIntensity2.setEnabled(true);
-                buttonPeriodIntensity3.setEnabled(true);
-                buttonPeriodIntensity4.setEnabled(true);
-                break;
-            case R.id.periodNo:
-                dbMain.removePeriod(entry.date);
-                entry.type = PeriodicalDatabase.DayEntry.EMPTY;
-                databaseChanged();
-                buttonPeriodIntensity1.setEnabled(false);
-                buttonPeriodIntensity2.setEnabled(false);
-                buttonPeriodIntensity3.setEnabled(false);
-                buttonPeriodIntensity4.setEnabled(false);
-                break;
-            case R.id.periodIntensity1:
-                entry.intensity = 1;
-                dbMain.addEntryDetails(entry);
-                databaseChanged();
-                break;
-            case R.id.periodIntensity2:
-                entry.intensity = 2;
-                dbMain.addEntryDetails(entry);
-                databaseChanged();
-                break;
-            case R.id.periodIntensity3:
-                entry.intensity = 3;
-                dbMain.addEntryDetails(entry);
-                databaseChanged();
-                break;
-            case R.id.periodIntensity4:
-                entry.intensity = 4;
-                dbMain.addEntryDetails(entry);
-                databaseChanged();
-                break;
-            default:
-                String packageName = getPackageName();
-                int resId;
-                entry.symptoms.clear();
-                int num = 1;
-                while (num < 24) {
-                    String resName = String.format(Locale.ENGLISH,"label_details_ev%d", num);
-                    resId = getResources().getIdentifier(resName, "string", packageName);
-                    if (resId != 0) {
-                        CheckBox option = findViewById(resId);
-                        if (option.isChecked()) entry.symptoms.add(num);
-                    }
-                    num++;
+        if (id == R.id.periodYes) {
+            dbMain.addPeriod(entry.date);
+            entry.type = PeriodicalDatabase.DayEntry.PERIOD_START;
+            databaseChanged();
+            buttonPeriodIntensity1.setEnabled(true);
+            buttonPeriodIntensity2.setEnabled(true);
+            buttonPeriodIntensity3.setEnabled(true);
+            buttonPeriodIntensity4.setEnabled(true);
+        } else if (id == R.id.periodNo) {
+            dbMain.removePeriod(entry.date);
+            entry.type = PeriodicalDatabase.DayEntry.EMPTY;
+            databaseChanged();
+            buttonPeriodIntensity1.setEnabled(false);
+            buttonPeriodIntensity2.setEnabled(false);
+            buttonPeriodIntensity3.setEnabled(false);
+            buttonPeriodIntensity4.setEnabled(false);
+        } else if (id == R.id.periodIntensity1) {
+            entry.intensity = 1;
+            dbMain.addEntryDetails(entry);
+            databaseChanged();
+        } else if (id == R.id.periodIntensity2) {
+            entry.intensity = 2;
+            dbMain.addEntryDetails(entry);
+            databaseChanged();
+        } else if (id == R.id.periodIntensity3) {
+            entry.intensity = 3;
+            dbMain.addEntryDetails(entry);
+            databaseChanged();
+        } else if (id == R.id.periodIntensity4) {
+            entry.intensity = 4;
+            dbMain.addEntryDetails(entry);
+            databaseChanged();
+        } else {
+            String packageName = getPackageName();
+            int resId;
+            entry.symptoms.clear();
+            int num = 1;
+            while (num < 24) {
+                String resName = String.format(Locale.ENGLISH, "label_details_ev%d", num);
+                resId = getResources().getIdentifier(resName, "string", packageName);
+                if (resId != 0) {
+                    CheckBox option = findViewById(resId);
+                    if (option.isChecked()) entry.symptoms.add(num);
                 }
-                dbMain.addEntryDetails(entry);
-                databaseChanged();
-                break;
+                num++;
+            }
+            dbMain.addEntryDetails(entry);
+            databaseChanged();
         }
     }
 
