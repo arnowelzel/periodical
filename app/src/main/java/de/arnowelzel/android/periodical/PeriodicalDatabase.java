@@ -61,6 +61,7 @@ class PeriodicalDatabase {
     public final Integer DEFAULT_START_OF_WEEK = 0;
     public final Boolean DEFAULT_DIRECT_DETAILS = false;
     public final Boolean DEFAULT_SHOW_CYCLE = true;
+    private final String fileNameBackup = "Periodical-backup.json.gz";
 
     /**
      * Helper to create or open database
@@ -1351,26 +1352,12 @@ class PeriodicalDatabase {
             return false;
         }
 
-        // First we need to create a directory where the backup will be stored
-        String destinationDirectoryName= context.getPackageName();
-        DocumentFile destinationDirectory = directory.findFile(destinationDirectoryName);
-        if (null == destinationDirectory || !destinationDirectory.isDirectory()) {
-            destinationDirectory = directory.createDirectory(destinationDirectoryName);
-        }
-
-        // If the directory could not be created, stop now
-        if (null == destinationDirectory) {
-            return false;
-        }
-
         // Create backup file
-        File sourceFile = new File(db.getPath());
-        String destinationFileName = "backup.json.gz";
-        DocumentFile destinationFile = destinationDirectory.findFile(destinationFileName);
+        DocumentFile destinationFile = directory.findFile(this.fileNameBackup);
         if (null != destinationFile) {
             destinationFile.delete();
         }
-        destinationFile = destinationDirectory.createFile("application/octet-stream", destinationFileName);
+        destinationFile = directory.createFile("application/octet-stream", this.fileNameBackup);
 
         // Backup database to file
         try {
@@ -1383,16 +1370,25 @@ class PeriodicalDatabase {
             assert destinationStream != null;
             destinationStream.close();
 
-            // Check if we have an old backup and clean this up
-            File databaseFile = new File(db.getPath());
-            String databaseFileName = databaseFile.getName();
-            DocumentFile oldBackupFile = destinationDirectory.findFile(databaseFileName);
-            if (oldBackupFile != null) {
-                oldBackupFile.delete();
-            }
-            DocumentFile oldBackupFileJournal = destinationDirectory.findFile(databaseFileName + "-journal");
-            if (oldBackupFileJournal != null) {
-                oldBackupFileJournal.delete();
+            // Backup completed, now check if we have old backup files and clean them up
+            String oldDestinationDirectoryName= context.getPackageName();
+            DocumentFile oldDestinationDirectory = directory.findFile(oldDestinationDirectoryName);
+            if (null != oldDestinationDirectory && oldDestinationDirectory.isDirectory()) {
+                File databaseFile = new File(db.getPath());
+                String databaseFileName = databaseFile.getName();
+                DocumentFile oldBackupFile = oldDestinationDirectory.findFile(databaseFileName);
+                if (oldBackupFile != null) {
+                    oldBackupFile.delete();
+                }
+                DocumentFile oldBackupFileJournal = oldDestinationDirectory.findFile(databaseFileName + "-journal");
+                if (oldBackupFileJournal != null) {
+                    oldBackupFileJournal.delete();
+                }
+                DocumentFile oldBackupFileArchive = oldDestinationDirectory.findFile("backup.json.gz");
+                if (oldBackupFileArchive != null) {
+                    oldBackupFileArchive.delete();
+                }
+                oldDestinationDirectory.delete();
             }
 
             result = true;
@@ -1400,7 +1396,6 @@ class PeriodicalDatabase {
             //noinspection CallToPrintStackTrace
             e.printStackTrace();
         }
-
 
         return result;
     }
@@ -1412,6 +1407,7 @@ class PeriodicalDatabase {
      */
     boolean restoreFromUri(Context context, Uri uri) {
         boolean result = false;
+        DocumentFile sourceFileBackup = null;
 
         // Check if uri exists
         DocumentFile directory = DocumentFile.fromTreeUri(context, uri);
@@ -1420,83 +1416,80 @@ class PeriodicalDatabase {
             return false;
         }
 
-        // Check if subfolder with backup exists
+        // Check if subfolder with backup exists and use that
         String sourceDirectoryName= context.getPackageName();
         DocumentFile sourceDirectory = directory.findFile(sourceDirectoryName);
-        if (null == sourceDirectory || !sourceDirectory.isDirectory()) {
-            return false;
-        }
+        if (null != sourceDirectory && sourceDirectory.isDirectory()) {
+            File destinationFile = new File(db.getPath());
+            String destinationFileName = destinationFile.getName();
 
-        File destinationFile = new File(db.getPath());
-        String destinationFileName = destinationFile.getName();
+            // First check, if there is an old version of the backup
+            // If this is the case, we will try to restore that
+            DocumentFile sourceFile = sourceDirectory.findFile(destinationFileName);
+            if (null != sourceFile) {
+                // Close the database
+                db.close();
 
-        // First check, if there is an old version of the backup
-        // If this is the case, we will try to restore that
-        DocumentFile sourceFile = sourceDirectory.findFile(destinationFileName);
-        if (null != sourceFile) {
-            // Close the database
-            db.close();
-
-            // Restore database file
-
-            try {
-                InputStream sourceStream = context.getContentResolver().openInputStream(sourceFile.getUri());
-                FileOutputStream destinationStream = new FileOutputStream(destinationFile);
-                int byteRead = 0;
-                byte[] buffer = new byte[8192];
-                assert sourceStream != null;
-                while ((byteRead = sourceStream.read(buffer, 0, 8192)) != -1) {
-                    destinationStream.write(buffer, 0, byteRead);
-                }
-                sourceStream.close();
-                destinationStream.close();
-                result = true;
-            } catch (IOException e) {
-                //noinspection CallToPrintStackTrace
-                e.printStackTrace();
-            }
-
-            // Restore journal if required
-            File destinationFileJournal = new File(db.getPath() + "-journal");
-            String destinationFileNameJournal = destinationFile.getName();
-            DocumentFile sourceFileJournal = sourceDirectory.findFile(destinationFileName);
-            if (null != sourceFileJournal) {
-                result = false;
+                // Restore database file
                 try {
-                    InputStream sourceStreamJournal = context.getContentResolver().openInputStream(sourceFileJournal.getUri());
-                    FileOutputStream destinationStreamJournal = new FileOutputStream(destinationFileJournal);
+                    InputStream sourceStream = context.getContentResolver().openInputStream(sourceFile.getUri());
+                    FileOutputStream destinationStream = new FileOutputStream(destinationFile);
                     int byteRead = 0;
                     byte[] buffer = new byte[8192];
-                    assert sourceStreamJournal != null;
-                    while ((byteRead = sourceStreamJournal.read(buffer, 0, 8192)) != -1) {
-                        destinationStreamJournal.write(buffer, 0, byteRead);
+                    assert sourceStream != null;
+                    while ((byteRead = sourceStream.read(buffer, 0, 8192)) != -1) {
+                        destinationStream.write(buffer, 0, byteRead);
                     }
-                    sourceStreamJournal.close();
-                    destinationStreamJournal.close();
+                    sourceStream.close();
+                    destinationStream.close();
                     result = true;
                 } catch (IOException e) {
                     //noinspection CallToPrintStackTrace
                     e.printStackTrace();
                 }
+
+                // Restore journal if required
+                File destinationFileJournal = new File(db.getPath() + "-journal");
+                String destinationFileNameJournal = destinationFile.getName();
+                DocumentFile sourceFileJournal = sourceDirectory.findFile(destinationFileName);
+                if (null != sourceFileJournal) {
+                    result = false;
+                    try {
+                        InputStream sourceStreamJournal = context.getContentResolver().openInputStream(sourceFileJournal.getUri());
+                        FileOutputStream destinationStreamJournal = new FileOutputStream(destinationFileJournal);
+                        int byteRead = 0;
+                        byte[] buffer = new byte[8192];
+                        assert sourceStreamJournal != null;
+                        while ((byteRead = sourceStreamJournal.read(buffer, 0, 8192)) != -1) {
+                            destinationStreamJournal.write(buffer, 0, byteRead);
+                        }
+                        sourceStreamJournal.close();
+                        destinationStreamJournal.close();
+                        result = true;
+                    } catch (IOException e) {
+                        //noinspection CallToPrintStackTrace
+                        e.printStackTrace();
+                    }
+                }
+
+                // Open the database again
+                open();
+
+                return result;
             }
 
-            // Open the database again
-            open();
-
-            // Create a new backup with current format and delete old backup, if sucessful
-            if (backupToUri(context, uri)) {
-                sourceFile.delete();
-                assert sourceFileJournal != null;
-                sourceFileJournal.delete();
+            // Check, if there is a usable backup
+            sourceFileBackup = sourceDirectory.findFile("backup.json.gz");
+            if (null == sourceFileBackup) {
+                return false;
             }
+        } else {
+            // We don't have a sub dictory, then check for the backup file itself
+            sourceFileBackup = directory.findFile(this.fileNameBackup);
 
-            return result;
-        }
-
-        // Check, if there is a usable backup
-        DocumentFile sourceFileBackup = sourceDirectory.findFile("backup.json.gz");
-        if (null == sourceFileBackup) {
-            return false;
+            if (null == sourceFileBackup) {
+                return false;
+            }
         }
 
         try {
