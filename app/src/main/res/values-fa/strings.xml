@@ -41,7 +41,7 @@
     <string name="backup_noruiyet">هنوز محلی رو انتخاب نکردید</string>
     <string name="backup_failed">پشتیبان گیری انجام نشد!</string>
     <string name="restore_title">بازیابی داده‌ها</string>
-    <string name="restore_selectfolder">لطفاً محلی رو که پشتیبانی گرفتید انتخاب کنید (محلی با پوشه \"de.arnowelzel.android.periodical\").</string>
+    <string name="restore_selectfolder">لطفاً مکانی را انتخاب کنید که نسخه پشتیبان در آن ذخیره شده است.</string>
     <string name="restore_text">آیا می‌خواهید آخرین پشتیبانی که گرفتید بازیابی بشه؟\nاین کار باعث جایگزینی داده‌های کنونی میشه!</string>
     <string name="restore_ok">تایید</string>
     <string name="restore_cancel">لغو</string>

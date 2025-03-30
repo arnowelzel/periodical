@@ -41,7 +41,7 @@
     <string name="backup_noruiyet">geen locatie geselecteerd</string>
     <string name="backup_failed">Back-up is mislukt!</string>
     <string name="restore_title">Herstel gegevens</string>
-    <string name="restore_selectfolder">Selecteer de locatie, waar de back-up is opgeslagen (de locatie met de map \"de.arnowelzel.android.periodical\").</string>
+    <string name="restore_selectfolder">Selecteer de locatie waar de back-up is opgeslagen.</string>
     <string name="restore_text">Wil je de laatste back-up herstellen?\nDit overschrijft de huidige gegevens!</string>
     <string name="restore_ok">Oké</string>
     <string name="restore_cancel">Annuleer</string>

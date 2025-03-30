@@ -41,7 +41,7 @@
     <string name="backup_noruiyet">местоположение не выбрано</string>
     <string name="backup_failed">Ошибка резервного копирования!</string>
     <string name="restore_title">Восстановление данных</string>
-    <string name="restore_selectfolder">Пожалуйста, выберите место, где была сохранена резервная копия (место в папке \"de.arnowelzel.android.periodical\").</string>
+    <string name="restore_selectfolder">Пожалуйста, выберите место, где была сохранена резервная копия.</string>
     <string name="restore_text">Вы действительно хотите восстановить данные из резервной копии?\nТекущие данные будут утеряны!</string>
     <string name="restore_ok">ОК</string>
     <string name="restore_cancel">Отмена</string>

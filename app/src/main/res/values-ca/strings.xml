@@ -41,7 +41,7 @@
     <string name="backup_noruiyet">encara no heu seleccionat ubicació</string>
     <string name="backup_failed">Ha fallat la còpia de seguretat!</string>
     <string name="restore_title">Restaura les dades</string>
-    <string name="restore_selectfolder">Seleccioneu una ubicació, on es desarà la còpia de seguretat (la ubicació de la carpeta «de.arnowelzel.android.periodical»)l</string>
+    <string name="restore_selectfolder">Seleccioneu la ubicació on s\'ha desat la còpia de seguretat.</string>
     <string name="restore_text">Voleu restaurar l\'última còpia de seguretat?\nAixò substituirà les dades actuals!</string>
     <string name="restore_ok">D\'acord</string>
     <string name="restore_cancel">Cancel·la</string>

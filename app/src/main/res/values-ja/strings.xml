@@ -41,7 +41,7 @@
     <string name="backup_noruiyet">位置情報が選択されていません</string>
     <string name="backup_failed">バックアップが失敗しました!</string>
     <string name="restore_title">データを復元</string>
-    <string name="restore_selectfolder">バックアップが保存された場所(フォルダ\"de.arnowelzel.android.periodical\")を選択してください。</string>
+    <string name="restore_selectfolder">バックアップが保存された場所を選択してください。</string>
     <string name="restore_text">前回のバックアップを復元しますか?\nこれは現在のデータを置き換えます!</string>
     <string name="restore_ok">OK</string>
     <string name="restore_cancel">キャンセル</string>

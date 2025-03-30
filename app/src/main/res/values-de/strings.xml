@@ -41,7 +41,7 @@
     <string name="backup_noruiyet">noch kein Ort ausgewählt</string>
     <string name="backup_failed">Sicherung fehlgeschlagen!</string>
     <string name="restore_title">Daten wiederherstellen</string>
-    <string name="restore_selectfolder">Bitte wählen Sie den Ort aus, an dem das Backup gespeichert wurde (der Ort mit dem Ordner \"de.arnowelzel.android.periodical\").</string>
+    <string name="restore_selectfolder">Bitte wählen Sie den Ort, an dem die Sicherung gespeichert wurde.</string>
     <string name="restore_text">Möchten Sie die letzte Sicherung wiederherstellen?\nDies wird die aktuellen Daten ersetzen!</string>
     <string name="restore_ok">OK</string>
     <string name="restore_cancel">Abbrechen</string>

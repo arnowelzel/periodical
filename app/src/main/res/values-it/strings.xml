@@ -41,7 +41,7 @@
     <string name="backup_noruiyet">nessuna posizione selezionata</string>
     <string name="backup_failed">Backup fallito!</string>
     <string name="restore_title">Ripristina dati</string>
-    <string name="restore_selectfolder">Selezionare la posizione in cui è stato salvato il backup (quella in cui è presente la cartella \"de.arnowelzel.android.periodical\").</string>
+    <string name="restore_selectfolder">Seleziona la posizione, dove è stato salvato il backup.</string>
     <string name="restore_text">Ripristinare l\'ultimo backup?\nI dati attuali verranno sovrascritti!</string>
     <string name="restore_ok">OK</string>
     <string name="restore_cancel">Annulla</string>

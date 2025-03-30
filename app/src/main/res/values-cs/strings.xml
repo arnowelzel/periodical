@@ -41,7 +41,7 @@
     <string name="backup_noruiyet">zatím nebylo vybráno žádné umístění</string>
     <string name="backup_failed">Zálohování selhalo!</string>
     <string name="restore_title">Obnovit data</string>
-    <string name="restore_selectfolder">Vyberte prosím umístění, kde byla uložena záloha (umístění se složkou \"de.arnowelzel.android.periodical\").</string>
+    <string name="restore_selectfolder">Vyberte prosím místo, kde byla záloha uložena.</string>
     <string name="restore_text">Chcete obnovit data z poslední zálohy?\nTím budou nahrazena současná data!</string>
     <string name="restore_ok">OK</string>
     <string name="restore_cancel">Zrušit</string>
@@ -63,7 +63,7 @@
     <string name="options_title">Nastavení</string>
     <string name="pref_locale">Jazyk</string>
     <string-array name="list_locales">
-        <item>Standardní</item>
+        <item>Výchozí</item>
         <item>Afrikaans</item>
         <item>Azərbaycan</item>
         <item>Euskara</item>

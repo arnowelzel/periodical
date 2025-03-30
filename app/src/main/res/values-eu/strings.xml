@@ -41,7 +41,7 @@
     <string name="backup_noruiyet">oraindik ez da kokapenik aukeratu</string>
     <string name="backup_failed">Babeskopia egiteak huts egin du!</string>
     <string name="restore_title">Datuak leheneratu</string>
-    <string name="restore_selectfolder">Hautatu babeskopia gorde den kokalekua (\"de.arnowelzel.android.periodical\" karpeta duen kokalekua).</string>
+    <string name="restore_selectfolder">Mesedez, hautatu kokapena, non gorde den babeskopia.</string>
     <string name="restore_text">Azken babeskopia leheneratu nahi duzu?\nHonek uneko datuak ordeztuko ditu!</string>
     <string name="restore_ok">Ados</string>
     <string name="restore_cancel">Utzi</string>

@@ -41,7 +41,7 @@
     <string name="backup_noruiyet">aucun endroit sélectionné</string>
     <string name="backup_failed">Échec de la sauvegarde !</string>
     <string name="restore_title">Restaurer les données</string>
-    <string name="restore_selectfolder">Veuillez sélectionner l\'emplacement où la sauvegarde a été enregistrée (l\'emplacement avec le dossier \"de.arnowelzel.android.periodical\").</string>
+    <string name="restore_selectfolder">Veuillez sélectionner l\'emplacement où la sauvegarde a été enregistrée.</string>
     <string name="restore_text">Voulez-vous restaurer la dernière sauvegarde ?\nCela remplacera les données actuelles !</string>
     <string name="restore_ok">Oui</string>
     <string name="restore_cancel">Annuler</string>

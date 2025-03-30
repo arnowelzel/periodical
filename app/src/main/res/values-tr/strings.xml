@@ -41,7 +41,7 @@
     <string name="backup_noruiyet">henüz konum seçilmedi</string>
     <string name="backup_failed">Yedekleme başarısız!</string>
     <string name="restore_title">Verileri geri yükle</string>
-    <string name="restore_selectfolder">Lütfen yedeğin kaydedileceği konumu seçin (\"de.arnowelzel.android.periodical\" dizininin bulunduğu konumu).</string>
+    <string name="restore_selectfolder">Lütfen yedeklemenin kaydedildiği konumu seçin.</string>
     <string name="restore_text">Son yedeği geri yüklemek istiyor musunuz?\nBu geçerli verilerin yerine geçecektir!</string>
     <string name="restore_ok">Tamam</string>
     <string name="restore_cancel">Vazgeç</string>

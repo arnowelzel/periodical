@@ -41,7 +41,7 @@
     <string name="backup_noruiyet">hələ yer seçilməyib</string>
     <string name="backup_failed">Nüxsələmə uğursuz oldu!</string>
     <string name="restore_title">Məlumatları bərpa et</string>
-    <string name="restore_selectfolder">Zəhmət olmasa, ehtiyat nüsxəsinin saxlandığı yeri seçin (\"de.arnowelzel.android.periodical\" qovluğu olan yer).</string>
+    <string name="restore_selectfolder">Zəhmət olmasa, ehtiyat nüsxənin saxlandığı yeri seçin.</string>
     <string name="restore_text">Siz ehtiyat kopiyasından məlumatların bərpasına əminsinizmi?\nƏvvəkli kopiya silinəcək!</string>
     <string name="restore_ok">OK</string>
     <string name="restore_cancel">İmtina</string>

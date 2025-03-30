@@ -41,7 +41,7 @@
     <string name="backup_noruiyet">δεν έχει επιλεγεί ακόμη τοποθεσία</string>
     <string name="backup_failed">Αποτυχία αποθήκευσης!</string>
     <string name="restore_title">Επαναφορά δεδομένων</string>
-    <string name="restore_selectfolder">Επιλέξτε την τοποθεσία, όπου αποθηκεύτηκε το αντίγραφο ασφαλείας (η τοποθεσία με το φάκελο \"de.arnowelzel.android.periodical\").</string>
+    <string name="restore_selectfolder">Επιλέξτε την τοποθεσία όπου αποθηκεύτηκε το αντίγραφο ασφαλείας.</string>
     <string name="restore_text">Θέλετε να επαναφέρετε το τελευταίο αρχείο αποθήκευσης;\nΑυτό θα αντικαταστήσει τα τρέχοντα δεδομένα!</string>
     <string name="restore_ok">ΟΚ</string>
     <string name="restore_cancel">Άκυρο</string>

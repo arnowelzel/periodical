@@ -41,7 +41,7 @@
     <string name="backup_noruiyet">не вибрано жодного розташування</string>
     <string name="backup_failed">Помилка резервного копіювання!</string>
     <string name="restore_title">Відновити дані</string>
-    <string name="restore_selectfolder">Будь ласка, виберіть місце, де було збережено резервну копію (місце з папкою \"de.arnowelzel.android.periodical\").</string>
+    <string name="restore_selectfolder">Будь ласка, виберіть місце, де була збережена резервна копія.</string>
     <string name="restore_text">Хочете відновити останню резервну копію?\nЦе замінить поточні дані!</string>
     <string name="restore_ok">ОК</string>
     <string name="restore_cancel">Скасувати</string>

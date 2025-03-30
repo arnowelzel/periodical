@@ -41,7 +41,7 @@
     <string name="backup_noruiyet">все още няма избрано местоположение</string>
     <string name="backup_failed">Неуспешно резервно копие!</string>
     <string name="restore_title">Възстановяване на данните</string>
-    <string name="restore_selectfolder">Моля, изберете местоположението, където е запазено резервното копие(местоположението с папката \"de.arnowelzel.android.periodical\").</string>
+    <string name="restore_selectfolder">Моля, изберете местоположението, където е запазен архивът.</string>
     <string name="restore_text">Искате ли да възстановите последното резервно копие?\nТова ще замени текущите данни!</string>
     <string name="restore_ok">Добре</string>
     <string name="restore_cancel">Отказ</string>

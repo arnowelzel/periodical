@@ -41,7 +41,7 @@
     <string name="backup_noruiyet">nenhuma localização selecionada ainda</string>
     <string name="backup_failed">Backup falhou!</string>
     <string name="restore_title">Restaurar dados</string>
-    <string name="restore_selectfolder">Por favor, selecione o local, onde o backup foi salvo (a localização com a pasta \"de.arnowelzel.android.periodical\").</string>
+    <string name="restore_selectfolder">Por favor selecione o local, onde o backup foi salvo.</string>
     <string name="restore_text">Deseja restaurar o último backup?\nIsto irá substituir os dados atuais!</string>
     <string name="restore_ok">OK</string>
     <string name="restore_cancel">Cancelar</string>
