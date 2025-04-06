@@ -1,0 +1,71 @@
+<en-US>
+Updated translations and changed backup procedure.
+</en-US>
+
+<az-AZ>
+Yenilənmiş tərcümələr və dəyişdirilmiş ehtiyat proseduru.
+</az-AZ>
+
+<cs-CZ>
+Aktualizované překlady a změněný postup zálohování.
+</cs-CZ>
+
+<de-DE>
+Übersetzungen aktualisiert und Backup-Verfahren geändert.
+</de-DE>
+
+<es-ES>
+Traducciones actualizadas y procedimiento de copia de seguridad modificado.
+</es-ES>
+
+<fr-FR>
+Traductions mises à jour et procédure de sauvegarde modifiée.
+</fr-FR>
+
+<it-IT>
+Aggiornate le traduzioni e modificata la procedura di backup.
+</it-IT>
+
+<nl-NL>
+Bijgewerkte vertalingen en gewijzigde back-upprocedure.
+</nl-NL>
+
+<ru-RU>
+Обновлены переводы и изменена процедура резервного копирования.
+</ru-RU>
+
+<af>
+Opgedateerde vertalings en verander rugsteunprosedure.
+</af>
+
+<pt-BR>
+Traduções atualizadas e procedimento de backup alterado.
+</pt-BR>
+
+<pl-PL>
+Zaktualizowano tłumaczenia i zmieniono procedurę tworzenia kopii zapasowej.
+</pl-PL>
+
+<el-GR>
+Ενημερώθηκαν οι μεταφράσεις και άλλαξε η διαδικασία δημιουργίας αντιγράφων ασφαλείας.
+</el-GR>
+
+<ja-JP>
+翻訳を更新し、バックアップ手順を変更しました。
+</ja-JP>
+
+<iw-IL>
+תרגומים מעודכנים ושינוי נוהל גיבוי.
+</iw-IL>
+
+<tr-TR>
+Çeviriler güncellendi ve yedekleme prosedürü değiştirildi.
+</tr-TR>
+
+<uk>
+Оновлені переклади та змінена процедура резервного копіювання.
+</uk>
+
+<zh-CN>
+更新了翻译并改变了备份程序。
+</zh-CN>
