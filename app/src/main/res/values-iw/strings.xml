@@ -2,7 +2,7 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name">Periodical</string>
     <string name="menuitem_help">עזרה</string>
-    <string name="menuitem_about">על אודות…</string>
+    <string name="menuitem_about">אודות…</string>
     <string name="current_day">היום הנוכחי</string>
     <string name="menuitem_list">רשימה</string>
     <string name="menuitem_listdetails">רשימה מפורטת</string>
@@ -14,7 +14,7 @@
     <string name="main_calday_mo">ב׳</string>
     <string name="main_calday_tu">ג׳</string>
     <string name="main_calday_we">ד׳</string>
-    <string name="main_calday_th">ה</string>
+    <string name="main_calday_th">ה׳</string>
     <string name="main_calday_fr">ו׳</string>
     <string name="main_calday_sa">ש׳</string>
     <string name="main_calday_su_description">ראשון</string>
@@ -41,7 +41,7 @@
     <string name="backup_noruiyet">עדיין לא בחרת במיקום</string>
     <string name="backup_failed">הגיבוי נכשל!</string>
     <string name="restore_title">שחזור נתונים</string>
-    <string name="restore_selectfolder">אנא בחר את המיקום שבו נשמר הגיבוי.</string>
+    <string name="restore_selectfolder">אנא בחר את המיקום שבו ישמר הגיבוי.</string>
     <string name="restore_text">לשחזר את הגיבוי האחרון?\nפעולה זו תדרוס את הנתונים הנוכחיים!</string>
     <string name="restore_ok">אישור</string>
     <string name="restore_cancel">ביטול</string>
@@ -63,8 +63,8 @@
     <string name="options_title">העדפות</string>
     <string name="pref_locale">שפה</string>
     <string-array name="list_locales">
-        <item>בְּרִירַת מֶחדָל</item>
-        <item>אפריקאנס</item>
+        <item>ברירת מחדל</item>
+        <item>Afrikaans</item>
         <item>Azərbaycan</item>
         <item>Euskara</item>
         <item>Българска</item>
@@ -85,7 +85,7 @@
         <item>Española</item>
         <item>Türkçe</item>
         <item>Українська</item>
-        <item>סינית מפושטת</item>
+        <item>简体中文</item>
     </string-array>
     <string-array name="values_locales">
         <item>system</item>
