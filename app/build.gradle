@@ -6,8 +6,8 @@ android {
         compileSdk 35
         minSdkVersion 21
         targetSdkVersion 35
-        versionCode 104
-        versionName "1.91"
+        versionCode 105
+        versionName "1.92"
         buildConfigField "String", "VERSION_YEAR", "\"2025\""
         // Required when setting minSdkVersion to 20 or lower
         multiDexEnabled true
