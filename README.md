@@ -10,9 +10,8 @@ Wjatscheslaw Stoljarski, Pander, Laura Arjona Reina, Naofumi Fukue, Tomasz Terka
 Nikoletta Karasmani, Yaron Shahrabani, Inbar Gover, Turan Guliyeva, Enara Larraitz,
 Rza Sharifi, Mevlüt Erdem Güven
 
-If you want to help with the translation, you can join the project on Crowdin:
+If you want to help with the translation, you can join the [project on Crowdin](https://crowdin.com/project/periodical/).
 
-https://crwd.in/periodical
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
